@@ -6,10 +6,27 @@
     <description>Recent content in Posts on KUMA2X</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 14 Jun 2018 13:56:22 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 17 Sep 2018 21:47:14 +0000</lastBuildDate>
     
 	<atom:link href="http://boseman1024.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Array_Top Interview Questions</title>
+      <link>http://boseman1024.github.io/2018/array_top-interview-questions-easy/</link>
+      <pubDate>Mon, 17 Sep 2018 21:47:14 +0000</pubDate>
+      
+      <guid>http://boseman1024.github.io/2018/array_top-interview-questions-easy/</guid>
+      <description>Single Number Given a non-empty array of integers, every element appears twice except for one. Find that single one.
+Note:
+ Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?  Example 1:
+ Input: [2,2,1]
+Output: 1
+ Example 2:
+ Input: [4,1,2,1,2]
+Output: 4
+ 解答： public int singleNumber(int[] nums) { List&amp;lt;Integer&amp;gt; list = new ArrayList&amp;lt;Integer&amp;gt;(); for(int i=0;i&amp;lt;nums.length;i++){ if(list.contains(nums[i])){ list.remove(Integer.valueOf(nums[i])); }else{ list.</description>
+    </item>
     
     <item>
       <title>排序算法整理</title>
@@ -154,16 +171,31 @@ function getItem(arr,n,v) { for (var i = 0; i &amp;lt; arr.</description>
       
       <guid>http://boseman1024.github.io/2018/new-year-2018/</guid>
       <description>HAPPY 2017 8 NEW YEAR. NEW YOU. Just kidding. You&amp;rsquo;re still the same. piece of shit you were yesterday. 
-{% fold 八月 %} 8月22日12点05分 N2过了。
+{% fold 八月 %}
+8月22日12点05分
+N2过了。
 {% endfold %}
-　{% fold 七月 %} 7月13日17点02分 放暑假了。
-7月1日21点31分 N2结束了，听力炸了。 天気がいいから、一緒に散歩にまび。
+　{% fold 七月 %}
+7月13日17点02分
+放暑假了。
+7月1日21点31分
+N2结束了，听力炸了。
+天気がいいから、一緒に散歩にまび。
 {% endfold %}
-　{% fold 六月 %} 6月26日21点50分 想死的情绪是不需要理由的， 由内向外渗透的异样感， 被突如其来的不安笼罩， 一时之间不知所措。
-6月21日22点42分 物欲。
-6月15日18点11分 拔了两颗智齿。
-6月12日 16点23分 今年过了一半。
-6月10日 9点58分 想成为碎片。
+　{% fold 六月 %}
+6月26日21点50分
+想死的情绪是不需要理由的，
+由内向外渗透的异样感，
+被突如其来的不安笼罩，
+一时之间不知所措。
+6月21日22点42分
+物欲。
+6月15日18点11分
+拔了两颗智齿。
+6月12日 16点23分
+今年过了一半。
+6月10日 9点58分
+想成为碎片。
 {% endfold %}
 　{% fold 五月 %}</description>
     </item>
