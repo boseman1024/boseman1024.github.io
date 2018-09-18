@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>技术 on KUMA2X</title>
-    <link>http://boseman1024.github.io/categories/%E6%8A%80%E6%9C%AF/</link>
+    <link>https://boseman1024.github.io/categories/%E6%8A%80%E6%9C%AF/</link>
     <description>Recent content in 技术 on KUMA2X</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 17 Sep 2018 21:47:14 +0000</lastBuildDate>
     
-	<atom:link href="http://boseman1024.github.io/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://boseman1024.github.io/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Array_Top Interview Questions</title>
-      <link>http://boseman1024.github.io/2018/array_top-interview-questions-easy/</link>
+      <link>https://boseman1024.github.io/2018/array_top-interview-questions-easy/</link>
       <pubDate>Mon, 17 Sep 2018 21:47:14 +0000</pubDate>
       
-      <guid>http://boseman1024.github.io/2018/array_top-interview-questions-easy/</guid>
+      <guid>https://boseman1024.github.io/2018/array_top-interview-questions-easy/</guid>
       <description>Single Number Given a non-empty array of integers, every element appears twice except for one. Find that single one.
 Note:
  Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?  Example 1:
@@ -30,19 +30,19 @@ Output: 4
     
     <item>
       <title>排序算法整理</title>
-      <link>http://boseman1024.github.io/2018/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/</link>
+      <link>https://boseman1024.github.io/2018/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/</link>
       <pubDate>Thu, 14 Jun 2018 13:56:22 +0000</pubDate>
       
-      <guid>http://boseman1024.github.io/2018/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/</guid>
+      <guid>https://boseman1024.github.io/2018/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/</guid>
       <description>冒泡排序 public static void Bubble(int num[]) { for(int i=0;i&amp;lt;num.length-1;i++) { for(int j=0;j&amp;lt;num.length-i-1;j++) { if(num[j]&amp;gt;num[j+1]) { int temp = num[j+1]; num[j+1] = num[j]; num[j] = temp; } } } }  选择排序 public static void Selection(int num[]) { for(int i=0;i&amp;lt;num.length;i++) { //最小元素的下标 int min = i; //找出最小元素 for(int j=i;j&amp;lt;num.length;j++) { if(num[j]&amp;lt;num[min]) { min = j; } } //交换元素 int temp = num[i]; num[i] = num[min]; num[min] = temp; } show(num); }  插入排序 直接插入排序 public static void StraightInsert(int num[]) { for(int i=1;i&amp;lt;num.</description>
     </item>
     
     <item>
       <title>JAVA虚拟机笔记</title>
-      <link>http://boseman1024.github.io/2018/java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%94%E8%AE%B0/</link>
+      <link>https://boseman1024.github.io/2018/java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Thu, 07 Jun 2018 20:40:26 +0000</pubDate>
       
-      <guid>http://boseman1024.github.io/2018/java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%94%E8%AE%B0/</guid>
+      <guid>https://boseman1024.github.io/2018/java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%94%E8%AE%B0/</guid>
       <description>JAVA内存区域 程序计数器 *程序计数器（Program Counter Register）*是当前线程所执行的字节码的行号指示器，通过计数器的值选取下一条需要执行的字节码指令（java方法）。 可参考《计算机系统组成》 每个线程都需要一个独立的程序计数器，各线程间计数器互不影响，独立储存，称之为“线程私有”的内存。
 JAVA虚拟机栈 *JAVA虚拟机栈（Java Virtual Machine Stacks）*描述的是JAVA方法执行的内存模型：每个方法执行的同时会创建一个栈帧，用于存储局部变量表、操作数栈、动态链接、方法出口等信息。每个方法从调用到执行完成的过程，就对应着一个栈帧在虚拟机栈中入栈出栈的过程。 同时其也是线程私有，生命周期与线程相同。 其中局部变量表，存放了编译器可知的各种基本数据类型（boolean、byte、char、short、int、float、long、double）、对象引用类型（reference类型，可能是指向对象起始地址的引用指针，也可能是指向一个代表对象的句柄或其他与此对象相关的位置）和returnAddress类型（指向一条字节码指令的地址）。其中64位长度的long和double类型数据占用2个局部变量空间（slot），其余只占用1个。 局部变量表所需的内存空间在编译期间完成分配，当进入一个方法时，需要在帧中分配多大的局部变量空间时完全确定的，在方法执行期间不会改变局部变量表大小。
 本地方法栈 *本地方法栈（Native Method Stack）*于虚拟机栈相似，但其为虚拟机使用到的Native方法服务。在JVM规范中，并没有对本地方发展的具体实现方法以及数据结构作强制规定，虚拟机可以自由实现它。在HotSopt虚拟机中直接就把本地方法栈和Java虚拟机栈合二为一。
@@ -58,10 +58,10 @@ JAVA堆 *JAVA堆（JAVA Heap）*被所有线程共享的一块内存区域，在
     
     <item>
       <title>图总结及代码实现</title>
-      <link>http://boseman1024.github.io/2018/%E5%9B%BE%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/</link>
+      <link>https://boseman1024.github.io/2018/%E5%9B%BE%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/</link>
       <pubDate>Thu, 07 Jun 2018 11:31:26 +0000</pubDate>
       
-      <guid>http://boseman1024.github.io/2018/%E5%9B%BE%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/</guid>
+      <guid>https://boseman1024.github.io/2018/%E5%9B%BE%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/</guid>
       <description>图 数组表示法 无向图 数组矩阵表示如下： 010101101000010101101011000101101110
 有向图 数组矩阵表示如下： ∞5∞7∞∞∞∞4∞∞∞∞∞∞∞∞9∞∞5∞∞6∞∞∞5∞∞3∞∞∞1∞
 图的遍历 深度优先搜索 其过程简要来说是对每一个可能的分支路径深入到不能再深入为止，而且每个节点只能访问一次。 深度优先搜索的遍历访问顺序并不唯一。
@@ -81,10 +81,10 @@ index\i12345UV-Uk(选择序列)1V1-6V1-1V1-5{V1}{V2,V3,V4,V5,V6}22V3-50V1-5V3-6V
     
     <item>
       <title>JAVA基础整理</title>
-      <link>http://boseman1024.github.io/2018/java%E5%9F%BA%E7%A1%80%E6%95%B4%E7%90%86/</link>
+      <link>https://boseman1024.github.io/2018/java%E5%9F%BA%E7%A1%80%E6%95%B4%E7%90%86/</link>
       <pubDate>Sun, 03 Jun 2018 21:47:14 +0000</pubDate>
       
-      <guid>http://boseman1024.github.io/2018/java%E5%9F%BA%E7%A1%80%E6%95%B4%E7%90%86/</guid>
+      <guid>https://boseman1024.github.io/2018/java%E5%9F%BA%E7%A1%80%E6%95%B4%E7%90%86/</guid>
       <description>八大基本类型： * 字节型（byte）-8位 * 短整型（short）-16位 * 整型（int）-32位 * 长整型（long）-64位 * 字符型（char）-16位 * 浮点型（float）-32位 * 双精度型（double）-64位 * 布尔型（boolean）-1位
 基本类型都有对应的包装类型，基本类型与其对应的包装类型之间的赋值使用自动装箱与拆箱完成。
 Integer x = 2; // 装箱 int y = x; // 拆箱  new Integer(123)与Integer.valueOf(123)的区别在于，new Integer(123)每次都会新建一个对象，而Integer.valueOf(123)可能会使用缓存对象，因此多次使用Integer.valueOf(123)会取得同一个对象的引用。
@@ -94,10 +94,10 @@ Integer m = 123; Integer n = 123; System.</description>
     
     <item>
       <title>二叉树总结及代码实现</title>
-      <link>http://boseman1024.github.io/2018/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/</link>
+      <link>https://boseman1024.github.io/2018/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/</link>
       <pubDate>Sun, 27 May 2018 11:31:26 +0000</pubDate>
       
-      <guid>http://boseman1024.github.io/2018/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/</guid>
+      <guid>https://boseman1024.github.io/2018/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/</guid>
       <description>二叉树 完全二叉树： 每层右结点&amp;lt;=左结点
 性质1： 在二叉树的第i层上至多有2^(i-1)个结点（i&amp;gt;=1）。
    层数i　 每层最多结点数　     1 2^0=1   2 2^1=2   3 2^2=4   4 2^3=8    性质2： 深度为k的二叉树至多有2^k-1个结点。
@@ -110,19 +110,19 @@ Integer m = 123; Integer n = 123; System.</description>
     
     <item>
       <title>二维数组矩阵转置</title>
-      <link>http://boseman1024.github.io/2018/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9F%A9%E9%98%B5%E8%BD%AC%E7%BD%AE/</link>
+      <link>https://boseman1024.github.io/2018/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9F%A9%E9%98%B5%E8%BD%AC%E7%BD%AE/</link>
       <pubDate>Tue, 01 May 2018 21:11:44 +0000</pubDate>
       
-      <guid>http://boseman1024.github.io/2018/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9F%A9%E9%98%B5%E8%BD%AC%E7%BD%AE/</guid>
+      <guid>https://boseman1024.github.io/2018/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9F%A9%E9%98%B5%E8%BD%AC%E7%BD%AE/</guid>
       <description>对称矩阵 int symmetricTranslate(){ printf(&amp;quot;==========对称矩阵=========\n&amp;quot;); int col,row; int i,j; /**输入对称矩阵行数列数 scanf(&amp;quot;%d,%d&amp;quot;,&amp;amp;col,&amp;amp;row); int origin[row][col],result[row][col]; for(i=0;i&amp;lt;col;i++){ for(j=0;j&amp;lt;row;j++){ printf(&amp;quot;列：%d,行：%d输入值&amp;quot;,col,row); scanf(&amp;quot;%d&amp;quot;,&amp;amp;value); origin[i][j] = value; } } **/ //测试对称矩阵 col = 5; row = 5; int origin[5][5]={ 1,5,1,3,7, 3,0,8,0,0, 1,4,9,2,6, 3,0,5,5,1, 9,0,1,2,3 }; //int result[row][col]; int result[5][5]; for(i=0;i&amp;lt;row;i++){ for(j=0;j&amp;lt;col;j++){ printf(&amp;quot;%d &amp;quot;,origin[i][j]); } printf(&amp;quot;\n&amp;quot;); } printf(&amp;quot;==========对称矩阵转置=========\n&amp;quot;); for(i=0;i&amp;lt;row;i++){ for(j=0;j&amp;lt;col;j++){ result[j][i] = origin[i][j]; } } for(i=0;i&amp;lt;row;i++){ for(j=0;j&amp;lt;col;j++){ printf(&amp;quot;%d &amp;quot;,result[i][j]); } printf(&amp;quot;\n&amp;quot;); } return 1; }  稀疏矩阵 矩阵数组构成：</description>
     </item>
     
     <item>
       <title>Mybatis：一对多关联查询及批量插入（注解方式）</title>
-      <link>http://boseman1024.github.io/2018/mybatis%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E8%81%94%E6%9F%A5%E8%AF%A2%E5%8F%8A%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%B3%A8%E8%A7%A3%E6%96%B9%E5%BC%8F/</link>
+      <link>https://boseman1024.github.io/2018/mybatis%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E8%81%94%E6%9F%A5%E8%AF%A2%E5%8F%8A%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%B3%A8%E8%A7%A3%E6%96%B9%E5%BC%8F/</link>
       <pubDate>Tue, 01 May 2018 20:50:27 +0000</pubDate>
       
-      <guid>http://boseman1024.github.io/2018/mybatis%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E8%81%94%E6%9F%A5%E8%AF%A2%E5%8F%8A%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%B3%A8%E8%A7%A3%E6%96%B9%E5%BC%8F/</guid>
+      <guid>https://boseman1024.github.io/2018/mybatis%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E8%81%94%E6%9F%A5%E8%AF%A2%E5%8F%8A%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%B3%A8%E8%A7%A3%E6%96%B9%E5%BC%8F/</guid>
       <description>一对多关联查询 通过@Results构造结果映射： * javaType：返回类型 * property：指定属性 * column：将作为指定参数传递给指定方法（即例中selectMenuByRid方法）
 例：
 //角色mapper public interface SysRoleMapper { @Select(&amp;quot;select * from sys_role&amp;quot;) @Results({ @Result(property=&amp;quot;name&amp;quot;,column=&amp;quot;name&amp;quot;), @Result(property=&amp;quot;namezh&amp;quot;,column=&amp;quot;namezh&amp;quot;), @Result(property=&amp;quot;menus&amp;quot;,column=&amp;quot;id&amp;quot;,javaType=List.class,many=@Many(select=&amp;quot;com.kuma2x.xauth.mapper.SysMenuMapper.selectMenuByRid&amp;quot;)) }) List&amp;lt;SysRole&amp;gt; selectRoleByUId(int uid); } //菜单mapper public interface SysMenuMapper { //通过角色id在角色菜单关联表中查询到该角色所拥有菜单权限 @Select(&amp;quot;select * from sys_menu,sys_role_menu where sys_menu.id = sys_role_menu.mid and sys_role_menu.rid = #{rid}&amp;quot;) List&amp;lt;Integer&amp;gt; selectMenuByRid(int rid); }  批量插入 使用&amp;lt;script&amp;gt;标签可像XML语法一样书写。 通过&amp;lt;foreach&amp;gt;迭代集合进行插入，注解中参数需通过@Param指定参数。
@@ -132,20 +132,20 @@ foreach标签的属性主要有： * item：迭代时集合中每个元素的别
     
     <item>
       <title>层级关系数据转树型结构JSON</title>
-      <link>http://boseman1024.github.io/2018/%E5%B9%B3%E7%BA%A7json%E8%BD%AC%E5%B1%82%E7%BA%A7%E6%A0%91%E5%9E%8B%E7%BB%93%E6%9E%84json/</link>
+      <link>https://boseman1024.github.io/2018/%E5%B9%B3%E7%BA%A7json%E8%BD%AC%E5%B1%82%E7%BA%A7%E6%A0%91%E5%9E%8B%E7%BB%93%E6%9E%84json/</link>
       <pubDate>Tue, 01 May 2018 20:08:31 +0000</pubDate>
       
-      <guid>http://boseman1024.github.io/2018/%E5%B9%B3%E7%BA%A7json%E8%BD%AC%E5%B1%82%E7%BA%A7%E6%A0%91%E5%9E%8B%E7%BB%93%E6%9E%84json/</guid>
+      <guid>https://boseman1024.github.io/2018/%E5%B9%B3%E7%BA%A7json%E8%BD%AC%E5%B1%82%E7%BA%A7%E6%A0%91%E5%9E%8B%E7%BB%93%E6%9E%84json/</guid>
       <description>原始数据结构如下：
 [{ &amp;quot;id&amp;quot;: 0, &amp;quot;name&amp;quot;: &amp;quot;home&amp;quot;, &amp;quot;url&amp;quot;: &amp;quot;1&amp;quot;, &amp;quot;path&amp;quot;: &amp;quot;/home&amp;quot;, &amp;quot;component&amp;quot;: &amp;quot;Gate&amp;quot;, &amp;quot;iconcls&amp;quot;: &amp;quot;el-icon-menu&amp;quot; }, { &amp;quot;id&amp;quot;: 1, &amp;quot;name&amp;quot;: &amp;quot;user&amp;quot;, &amp;quot;url&amp;quot;: &amp;quot;0&amp;quot;, &amp;quot;path&amp;quot;: &amp;quot;&amp;quot;, &amp;quot;iconcls&amp;quot;: &amp;quot;el-icon-document&amp;quot; }, { &amp;quot;id&amp;quot;: 2, &amp;quot;name&amp;quot;: &amp;quot;User&amp;quot;, &amp;quot;url&amp;quot;: &amp;quot;1&amp;quot;, &amp;quot;path&amp;quot;: &amp;quot;/user/user&amp;quot;, &amp;quot;component&amp;quot;: &amp;quot;user/User&amp;quot;, &amp;quot;parentid&amp;quot;: 1 }, { &amp;quot;id&amp;quot;: 3, &amp;quot;name&amp;quot;: &amp;quot;Role&amp;quot;, &amp;quot;url&amp;quot;: &amp;quot;1&amp;quot;, &amp;quot;path&amp;quot;: &amp;quot;/user/role&amp;quot;, &amp;quot;component&amp;quot;: &amp;quot;user/Role&amp;quot;, &amp;quot;parentid&amp;quot;: 1 }, { &amp;quot;id&amp;quot;: 7, &amp;quot;name&amp;quot;: &amp;quot;Permission&amp;quot;, &amp;quot;url&amp;quot;: &amp;quot;1&amp;quot;, &amp;quot;path&amp;quot;: &amp;quot;/user/permission&amp;quot;, &amp;quot;component&amp;quot;: &amp;quot;user/Permission&amp;quot;, &amp;quot;parentid&amp;quot;: 1 }, { &amp;quot;id&amp;quot;: 8, &amp;quot;name&amp;quot;: &amp;quot;Menu&amp;quot;, &amp;quot;url&amp;quot;: &amp;quot;1&amp;quot;, &amp;quot;path&amp;quot;: &amp;quot;/user/menu&amp;quot;, &amp;quot;component&amp;quot;: &amp;quot;user/Menu&amp;quot;, &amp;quot;parentid&amp;quot;: 1 }]  通过递归的方式转换：</description>
     </item>
     
     <item>
       <title>SpringBoot整合Spring Security&#43;JWT</title>
-      <link>http://boseman1024.github.io/2018/springboot%E9%9B%86%E6%88%90spring-security-jwt/</link>
+      <link>https://boseman1024.github.io/2018/springboot%E9%9B%86%E6%88%90spring-security-jwt/</link>
       <pubDate>Mon, 16 Apr 2018 20:40:54 +0000</pubDate>
       
-      <guid>http://boseman1024.github.io/2018/springboot%E9%9B%86%E6%88%90spring-security-jwt/</guid>
+      <guid>https://boseman1024.github.io/2018/springboot%E9%9B%86%E6%88%90spring-security-jwt/</guid>
       <description>DEMO 准备 MAVEN依赖 在pom.xml引入所需依赖如下：
 &amp;lt;parent&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-parent&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.0.1.RELEASE&amp;lt;/version&amp;gt; &amp;lt;relativePath/&amp;gt; &amp;lt;!-- lookup parent from repository --&amp;gt; &amp;lt;/parent&amp;gt; &amp;lt;!--SpringBoot--&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-web&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-test&amp;lt;/artifactId&amp;gt; &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;!--Spring Security --&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-security&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.security&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-security-test&amp;lt;/artifactId&amp;gt; &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;!--JWT--&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;io.jsonwebtoken&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;jjwt&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;0.9.0&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;!--Mybatis--&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.mybatis.spring.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;mybatis-spring-boot-starter&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;1.3.2&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;!--MYSQL--&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;mysql&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;mysql-connector-java&amp;lt;/artifactId&amp;gt; &amp;lt;scope&amp;gt;runtime&amp;lt;/scope&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;!--可选：druid连接池--&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.alibaba&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;druid&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;1.1.9&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt;  基本配置 在application.yml中配置SpringBoot应用， 配置后在项目中可通过@Value(&amp;quot;${jwt.secret}&amp;quot;)的方式注入值。 application.yml配置如下：
 spring: # 数据库配置 datasource: url: jdbc:mysql://localhost/xauth?</description>
@@ -153,10 +153,10 @@ spring: # 数据库配置 datasource: url: jdbc:mysql://localhost/xauth?</descri
     
     <item>
       <title>JSON查询数据</title>
-      <link>http://boseman1024.github.io/2018/json%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/</link>
+      <link>https://boseman1024.github.io/2018/json%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/</link>
       <pubDate>Fri, 30 Mar 2018 23:04:11 +0000</pubDate>
       
-      <guid>http://boseman1024.github.io/2018/json%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/</guid>
+      <guid>https://boseman1024.github.io/2018/json%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/</guid>
       <description>若原始数据结构如下：
 var arr = [{ id:1, name:&#39;a&#39; },{ id:2, name:&#39;b&#39; }];  ①改变数据结构 可转换数据结构，把id变成key为：
 var obj = {}; arr.forEach(function (v,i) { obj[v.id] = v; }); 或 for (let i = 0; i &amp;lt; arr.length;i++){ obj[arr[i].id] = arr[i] } obj = { 1:{ id:1, name:&#39;a&#39;, }, 2:{ id:2, name:&#39;b&#39; } };  之后就可根据id获取元素数据

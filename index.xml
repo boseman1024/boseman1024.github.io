@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>KUMA2X on KUMA2X</title>
-    <link>http://boseman1024.github.io/</link>
+    <link>https://boseman1024.github.io/</link>
     <description>Recent content in KUMA2X on KUMA2X</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -11,10 +11,10 @@
     
     <item>
       <title>Array_Top Interview Questions</title>
-      <link>http://boseman1024.github.io/2018/array_top-interview-questions-easy/</link>
+      <link>https://boseman1024.github.io/2018/array_top-interview-questions-easy/</link>
       <pubDate>Mon, 17 Sep 2018 21:47:14 +0000</pubDate>
       
-      <guid>http://boseman1024.github.io/2018/array_top-interview-questions-easy/</guid>
+      <guid>https://boseman1024.github.io/2018/array_top-interview-questions-easy/</guid>
       <description>
 
 &lt;h1 id=&#34;single-number&#34;&gt;Single Number&lt;/h1&gt;
@@ -218,10 +218,10 @@ int len = removeDuplicates(nums);&lt;/p&gt;
     
     <item>
       <title>排序算法整理</title>
-      <link>http://boseman1024.github.io/2018/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/</link>
+      <link>https://boseman1024.github.io/2018/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/</link>
       <pubDate>Thu, 14 Jun 2018 13:56:22 +0000</pubDate>
       
-      <guid>http://boseman1024.github.io/2018/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/</guid>
+      <guid>https://boseman1024.github.io/2018/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/</guid>
       <description>
 
 &lt;h2 id=&#34;冒泡排序&#34;&gt;冒泡排序&lt;/h2&gt;
@@ -312,10 +312,10 @@ int len = removeDuplicates(nums);&lt;/p&gt;
     
     <item>
       <title>JAVA虚拟机笔记</title>
-      <link>http://boseman1024.github.io/2018/java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%94%E8%AE%B0/</link>
+      <link>https://boseman1024.github.io/2018/java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Thu, 07 Jun 2018 20:40:26 +0000</pubDate>
       
-      <guid>http://boseman1024.github.io/2018/java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%94%E8%AE%B0/</guid>
+      <guid>https://boseman1024.github.io/2018/java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%94%E8%AE%B0/</guid>
       <description>
 
 &lt;h1 id=&#34;java内存区域&#34;&gt;JAVA内存区域&lt;/h1&gt;
@@ -620,10 +620,10 @@ public class NotInitialization{
     
     <item>
       <title>图总结及代码实现</title>
-      <link>http://boseman1024.github.io/2018/%E5%9B%BE%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/</link>
+      <link>https://boseman1024.github.io/2018/%E5%9B%BE%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/</link>
       <pubDate>Thu, 07 Jun 2018 11:31:26 +0000</pubDate>
       
-      <guid>http://boseman1024.github.io/2018/%E5%9B%BE%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/</guid>
+      <guid>https://boseman1024.github.io/2018/%E5%9B%BE%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/</guid>
       <description>
 
 &lt;h1 id=&#34;图&#34;&gt;图&lt;/h1&gt;
@@ -768,10 +768,10 @@ public class NotInitialization{
     
     <item>
       <title>JAVA基础整理</title>
-      <link>http://boseman1024.github.io/2018/java%E5%9F%BA%E7%A1%80%E6%95%B4%E7%90%86/</link>
+      <link>https://boseman1024.github.io/2018/java%E5%9F%BA%E7%A1%80%E6%95%B4%E7%90%86/</link>
       <pubDate>Sun, 03 Jun 2018 21:47:14 +0000</pubDate>
       
-      <guid>http://boseman1024.github.io/2018/java%E5%9F%BA%E7%A1%80%E6%95%B4%E7%90%86/</guid>
+      <guid>https://boseman1024.github.io/2018/java%E5%9F%BA%E7%A1%80%E6%95%B4%E7%90%86/</guid>
       <description>
 
 &lt;p&gt;&lt;code&gt;八大基本类型&lt;/code&gt;：
@@ -1158,10 +1158,10 @@ t.start();
     
     <item>
       <title>二叉树总结及代码实现</title>
-      <link>http://boseman1024.github.io/2018/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/</link>
+      <link>https://boseman1024.github.io/2018/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/</link>
       <pubDate>Sun, 27 May 2018 11:31:26 +0000</pubDate>
       
-      <guid>http://boseman1024.github.io/2018/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/</guid>
+      <guid>https://boseman1024.github.io/2018/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/</guid>
       <description>
 
 &lt;h1 id=&#34;二叉树&#34;&gt;二叉树&lt;/h1&gt;
@@ -1356,10 +1356,10 @@ void postOrderTraverse(BiTree T){
     
     <item>
       <title>二维数组矩阵转置</title>
-      <link>http://boseman1024.github.io/2018/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9F%A9%E9%98%B5%E8%BD%AC%E7%BD%AE/</link>
+      <link>https://boseman1024.github.io/2018/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9F%A9%E9%98%B5%E8%BD%AC%E7%BD%AE/</link>
       <pubDate>Tue, 01 May 2018 21:11:44 +0000</pubDate>
       
-      <guid>http://boseman1024.github.io/2018/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9F%A9%E9%98%B5%E8%BD%AC%E7%BD%AE/</guid>
+      <guid>https://boseman1024.github.io/2018/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9F%A9%E9%98%B5%E8%BD%AC%E7%BD%AE/</guid>
       <description>
 
 &lt;h1 id=&#34;对称矩阵&#34;&gt;对称矩阵&lt;/h1&gt;
@@ -1525,10 +1525,10 @@ eleArray.notZeroNum = notZeroNum;
     
     <item>
       <title>Mybatis：一对多关联查询及批量插入（注解方式）</title>
-      <link>http://boseman1024.github.io/2018/mybatis%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E8%81%94%E6%9F%A5%E8%AF%A2%E5%8F%8A%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%B3%A8%E8%A7%A3%E6%96%B9%E5%BC%8F/</link>
+      <link>https://boseman1024.github.io/2018/mybatis%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E8%81%94%E6%9F%A5%E8%AF%A2%E5%8F%8A%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%B3%A8%E8%A7%A3%E6%96%B9%E5%BC%8F/</link>
       <pubDate>Tue, 01 May 2018 20:50:27 +0000</pubDate>
       
-      <guid>http://boseman1024.github.io/2018/mybatis%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E8%81%94%E6%9F%A5%E8%AF%A2%E5%8F%8A%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%B3%A8%E8%A7%A3%E6%96%B9%E5%BC%8F/</guid>
+      <guid>https://boseman1024.github.io/2018/mybatis%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E8%81%94%E6%9F%A5%E8%AF%A2%E5%8F%8A%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%B3%A8%E8%A7%A3%E6%96%B9%E5%BC%8F/</guid>
       <description>
 
 &lt;h1 id=&#34;一对多关联查询&#34;&gt;一对多关联查询&lt;/h1&gt;
@@ -1595,10 +1595,10 @@ int insertRoleMenu(@Param(&amp;quot;id&amp;quot;)int id,@Param(&amp;quot;menus&a
     
     <item>
       <title>层级关系数据转树型结构JSON</title>
-      <link>http://boseman1024.github.io/2018/%E5%B9%B3%E7%BA%A7json%E8%BD%AC%E5%B1%82%E7%BA%A7%E6%A0%91%E5%9E%8B%E7%BB%93%E6%9E%84json/</link>
+      <link>https://boseman1024.github.io/2018/%E5%B9%B3%E7%BA%A7json%E8%BD%AC%E5%B1%82%E7%BA%A7%E6%A0%91%E5%9E%8B%E7%BB%93%E6%9E%84json/</link>
       <pubDate>Tue, 01 May 2018 20:08:31 +0000</pubDate>
       
-      <guid>http://boseman1024.github.io/2018/%E5%B9%B3%E7%BA%A7json%E8%BD%AC%E5%B1%82%E7%BA%A7%E6%A0%91%E5%9E%8B%E7%BB%93%E6%9E%84json/</guid>
+      <guid>https://boseman1024.github.io/2018/%E5%B9%B3%E7%BA%A7json%E8%BD%AC%E5%B1%82%E7%BA%A7%E6%A0%91%E5%9E%8B%E7%BB%93%E6%9E%84json/</guid>
       <description>&lt;p&gt;原始数据结构如下：&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;[{
@@ -1746,10 +1746,10 @@ int insertRoleMenu(@Param(&amp;quot;id&amp;quot;)int id,@Param(&amp;quot;menus&a
     
     <item>
       <title>SpringBoot整合Spring Security&#43;JWT</title>
-      <link>http://boseman1024.github.io/2018/springboot%E9%9B%86%E6%88%90spring-security-jwt/</link>
+      <link>https://boseman1024.github.io/2018/springboot%E9%9B%86%E6%88%90spring-security-jwt/</link>
       <pubDate>Mon, 16 Apr 2018 20:40:54 +0000</pubDate>
       
-      <guid>http://boseman1024.github.io/2018/springboot%E9%9B%86%E6%88%90spring-security-jwt/</guid>
+      <guid>https://boseman1024.github.io/2018/springboot%E9%9B%86%E6%88%90spring-security-jwt/</guid>
       <description>
 
 &lt;h3 id=&#34;demo-https-github-com-boseman1024-springsecurity-jwt&#34;&gt;&lt;a href=&#34;https://github.com/boseman1024/SpringSecurity-JWT&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;DEMO&lt;/a&gt;&lt;/h3&gt;
@@ -2205,10 +2205,10 @@ public class UserController {
     
     <item>
       <title>JSON查询数据</title>
-      <link>http://boseman1024.github.io/2018/json%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/</link>
+      <link>https://boseman1024.github.io/2018/json%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/</link>
       <pubDate>Fri, 30 Mar 2018 23:04:11 +0000</pubDate>
       
-      <guid>http://boseman1024.github.io/2018/json%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/</guid>
+      <guid>https://boseman1024.github.io/2018/json%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/</guid>
       <description>
 
 &lt;p&gt;若原始数据结构如下：&lt;/p&gt;
@@ -2272,10 +2272,10 @@ getItem(arr,&amp;quot;name&amp;quot;,&amp;quot;123&amp;quot;).name
     
     <item>
       <title>NEW YEAR 2018</title>
-      <link>http://boseman1024.github.io/2018/new-year-2018/</link>
+      <link>https://boseman1024.github.io/2018/new-year-2018/</link>
       <pubDate>Fri, 16 Feb 2018 00:00:57 +0000</pubDate>
       
-      <guid>http://boseman1024.github.io/2018/new-year-2018/</guid>
+      <guid>https://boseman1024.github.io/2018/new-year-2018/</guid>
       <description>&lt;p&gt;&lt;center&gt;
 &lt;h1&gt;HAPPY 201&lt;del&gt;7&lt;/del&gt; 8&lt;/h1&gt;
 &lt;h2&gt;NEW YEAR. NEW YOU.&lt;/h2&gt;

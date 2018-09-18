@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>JavaScript on KUMA2X</title>
-    <link>http://boseman1024.github.io/tags/javascript/</link>
+    <link>https://boseman1024.github.io/tags/javascript/</link>
     <description>Recent content in JavaScript on KUMA2X</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 01 May 2018 20:08:31 +0000</lastBuildDate>
     
-	<atom:link href="http://boseman1024.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://boseman1024.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>层级关系数据转树型结构JSON</title>
-      <link>http://boseman1024.github.io/2018/%E5%B9%B3%E7%BA%A7json%E8%BD%AC%E5%B1%82%E7%BA%A7%E6%A0%91%E5%9E%8B%E7%BB%93%E6%9E%84json/</link>
+      <link>https://boseman1024.github.io/2018/%E5%B9%B3%E7%BA%A7json%E8%BD%AC%E5%B1%82%E7%BA%A7%E6%A0%91%E5%9E%8B%E7%BB%93%E6%9E%84json/</link>
       <pubDate>Tue, 01 May 2018 20:08:31 +0000</pubDate>
       
-      <guid>http://boseman1024.github.io/2018/%E5%B9%B3%E7%BA%A7json%E8%BD%AC%E5%B1%82%E7%BA%A7%E6%A0%91%E5%9E%8B%E7%BB%93%E6%9E%84json/</guid>
+      <guid>https://boseman1024.github.io/2018/%E5%B9%B3%E7%BA%A7json%E8%BD%AC%E5%B1%82%E7%BA%A7%E6%A0%91%E5%9E%8B%E7%BB%93%E6%9E%84json/</guid>
       <description>原始数据结构如下：
 [{ &amp;quot;id&amp;quot;: 0, &amp;quot;name&amp;quot;: &amp;quot;home&amp;quot;, &amp;quot;url&amp;quot;: &amp;quot;1&amp;quot;, &amp;quot;path&amp;quot;: &amp;quot;/home&amp;quot;, &amp;quot;component&amp;quot;: &amp;quot;Gate&amp;quot;, &amp;quot;iconcls&amp;quot;: &amp;quot;el-icon-menu&amp;quot; }, { &amp;quot;id&amp;quot;: 1, &amp;quot;name&amp;quot;: &amp;quot;user&amp;quot;, &amp;quot;url&amp;quot;: &amp;quot;0&amp;quot;, &amp;quot;path&amp;quot;: &amp;quot;&amp;quot;, &amp;quot;iconcls&amp;quot;: &amp;quot;el-icon-document&amp;quot; }, { &amp;quot;id&amp;quot;: 2, &amp;quot;name&amp;quot;: &amp;quot;User&amp;quot;, &amp;quot;url&amp;quot;: &amp;quot;1&amp;quot;, &amp;quot;path&amp;quot;: &amp;quot;/user/user&amp;quot;, &amp;quot;component&amp;quot;: &amp;quot;user/User&amp;quot;, &amp;quot;parentid&amp;quot;: 1 }, { &amp;quot;id&amp;quot;: 3, &amp;quot;name&amp;quot;: &amp;quot;Role&amp;quot;, &amp;quot;url&amp;quot;: &amp;quot;1&amp;quot;, &amp;quot;path&amp;quot;: &amp;quot;/user/role&amp;quot;, &amp;quot;component&amp;quot;: &amp;quot;user/Role&amp;quot;, &amp;quot;parentid&amp;quot;: 1 }, { &amp;quot;id&amp;quot;: 7, &amp;quot;name&amp;quot;: &amp;quot;Permission&amp;quot;, &amp;quot;url&amp;quot;: &amp;quot;1&amp;quot;, &amp;quot;path&amp;quot;: &amp;quot;/user/permission&amp;quot;, &amp;quot;component&amp;quot;: &amp;quot;user/Permission&amp;quot;, &amp;quot;parentid&amp;quot;: 1 }, { &amp;quot;id&amp;quot;: 8, &amp;quot;name&amp;quot;: &amp;quot;Menu&amp;quot;, &amp;quot;url&amp;quot;: &amp;quot;1&amp;quot;, &amp;quot;path&amp;quot;: &amp;quot;/user/menu&amp;quot;, &amp;quot;component&amp;quot;: &amp;quot;user/Menu&amp;quot;, &amp;quot;parentid&amp;quot;: 1 }]  通过递归的方式转换：</description>
     </item>
     
     <item>
       <title>JSON查询数据</title>
-      <link>http://boseman1024.github.io/2018/json%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/</link>
+      <link>https://boseman1024.github.io/2018/json%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/</link>
       <pubDate>Fri, 30 Mar 2018 23:04:11 +0000</pubDate>
       
-      <guid>http://boseman1024.github.io/2018/json%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/</guid>
+      <guid>https://boseman1024.github.io/2018/json%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/</guid>
       <description>若原始数据结构如下：
 var arr = [{ id:1, name:&#39;a&#39; },{ id:2, name:&#39;b&#39; }];  ①改变数据结构 可转换数据结构，把id变成key为：
 var obj = {}; arr.forEach(function (v,i) { obj[v.id] = v; }); 或 for (let i = 0; i &amp;lt; arr.length;i++){ obj[arr[i].id] = arr[i] } obj = { 1:{ id:1, name:&#39;a&#39;, }, 2:{ id:2, name:&#39;b&#39; } };  之后就可根据id获取元素数据
