@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kuma2x">
+  
+  
+  
+  <link rel="prev" href="http://boseman1024.github.io/2018/java%E5%9F%BA%E7%A1%80%E6%95%B4%E7%90%86/" />
+  <link rel="next" href="http://boseman1024.github.io/2018/java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%94%E8%AE%B0/" />
+  <link rel="canonical" href="http://boseman1024.github.io/2018/%E5%9B%BE%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           图总结及代码实现 | KUMA2X
+       
+  </title>
+  <meta name="title" content="图总结及代码实现 | KUMA2X">
+    
+
+  <link rel="stylesheet" href="http://boseman1024.github.io/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "http://boseman1024.github.io/"
+    },
+    "articleSection" : "posts",
+    "name" : "图总结及代码实现",
+    "headline" : "图总结及代码实现",
+    "description" : "图 数组表示法 无向图 数组矩阵表示如下： 010101101000010101101011000101101110
+有向图 数组矩阵表示如下： ∞5∞7∞∞∞∞4∞∞∞∞∞∞∞∞9∞∞5∞∞6∞∞∞5∞∞3∞∞∞1∞
+图的遍历 深度优先搜索 其过程简要来说是对每一个可能的分支路径深入到不能再深入为止，而且每个节点只能访问一次。 深度优先搜索的遍历访问顺序并不唯一。
+假设以V1为起点， V1有两个邻接点V2与V3且都未被访问，则访问V2（或访问v3开始皆可，以下皆如此）； V2有三个邻接点V1、V4、V5，V1已被访问，V4与V5都未被访问，则访问V4； V4有两个邻接点V2与V8，只有V8未被访问，则访问V8； V8有两个邻接点V4与V5，V4已被访问，则访问V5； V5有两个邻接点V2与V8，且V2、V8都已被访问，则从头搜索V1的邻接点V2、V3，V2已被访问，则访问V3； V3有三个邻接点V1、V6、V7且未被访问，则访问V6； V6有两个邻接点V3与V7，V3已被访问，则访问V7。
+则以V1为起点的深度优先搜索访问顺序为： V1-&gt;V2-&gt;V4-&gt;V8-&gt;V5-&gt;V3-&gt;V6-&gt;V7
+广度优先搜索 类似于树的按层次遍历的过程，可先将图按层划分。 广度优先搜索的遍历访问顺序并不唯一。
+假设以V1为起点，则可划分为下图： 第一层（V1）： V1有两个邻接点V2、V3，则先访问V2，再访问V3（或先访问V3，再访问V2皆可，以下皆如此）； 第二层(V2、V3)： V2有三个邻接点V1、V4、V5，V1已被访问，则访问V4、V5； V3有两个邻接点V6、V7且都未被访问，则访问V6、V7； 第三层（V4、V5、V6、V7）： V4有两个邻接点V2与V8，V2已被访问，则访问V8。
+则以V1为起点的广度优先搜索访问顺序为： V1-&gt;V2-&gt;V3-&gt;V4-&gt;V5-&gt;V6-&gt;V7-&gt;V8
+最小生成树 在连通网的所有生成树中，所有边的代价和最小的生成树，称为最小生成树。 最小生成树中不存在回路。
+可得数组矩阵： ∞615∞∞6∞5∞3∞15∞5645∞5∞∞2∞36∞∞6∞∞426∞
+普里姆（Prim）算法 此算法可以称为“加点法”，每次迭代选择代价最小的边对应的点，加入到最小生成树中。
+设： * 所有结点V={V1,V2,V3,V4,V5,V6} * 已选结点U={} * 剩余结点V-U * 代价最小的边MIN
+indexV-UUMIN(边)0{V1,V2,V3,V4,V5,V6}{}1{V2,V3,V4,V5,V6}{V1}1(V1-V3)2{V2,V4,V5,V6}{V1,V3}4(V3-V6)3{V2,V4,V5}{V1,V3,V6}2(V6-V4)4{V2,V5}{V1,V3,V6,V4}5(V3-V2)5{V5}{V1,V3,V6,V4,V2}3(V2-V5)6{}{V1,V3,V6,V4,V2,V5} 或设： * 所有结点V={V1,V2,V3,V4,V5,V6} * 已选结点U={} * 剩余结点V-U * 序列i（1,2,3,…,V的个数），每个序列下为每个结点的最小代价边。 * 选择序列k，被选择序列设为0
+每个结点的多条代价边中选最小代价边。 如： 2-1中，V2距离V-U存在6（V2-V1），5（V2-V3）两条边，则选择6（V2-V1）。
+index\i12345UV-Uk(选择序列)1V1-6V1-1V1-5{V1}{V2,V3,V4,V5,V6}22V3-50V1-5V3-6V3-4{V1,V3}{V2,V4,V5,V6}53V3-50V6-2V3-60{V1,V3,V6}{V2,V3,V4,V5}34V3-500V3-60{V1,V3,V6,V4}{V2,V5}15000V2-30{V1,V3,V6,V4,V2}{V5}4600000{V1,V3,V6,V4,V2,V5}{} 克鲁斯卡尔（Kruskal）算法 每次在剩下的所有未选取的边中，找最小边，如果和已选取的边构成回路，则放弃，选取次小边。",
+    "inLanguage" : "en-us",
+    "author" : "Kuma2x",
+    "creator" : "Kuma2x",
+    "publisher": "Kuma2x",
+    "accountablePerson" : "Kuma2x",
+    "copyrightHolder" : "Kuma2x",
+    "copyrightYear" : "2018",
+    "datePublished": "2018-06-07 11:31:26 &#43;0000 UTC",
+    "dateModified" : "2018-06-07 11:31:26 &#43;0000 UTC",
+    "url" : "http://boseman1024.github.io/2018/%E5%9B%BE%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/",
+    "wordCount" : "100",
+    "keywords" : [ "数据结构与算法","C", "KUMA2X"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://boseman1024.github.io/">KUMA2X</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://boseman1024.github.io/">KUMA2X</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">图总结及代码实现</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="http://boseman1024.github.io/" rel="author">Kuma2x</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2018-06-07 itemprop="datePublished">June 7, 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="http://boseman1024.github.io/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="图">图</h1>
+
+<h2 id="数组表示法">数组表示法</h2>
+
+<h3 id="无向图">无向图</h3>
+
+<p><img src="http://otho0rxyj.bkt.clouddn.com/image/blog/graph/wuxiang.jpg"></p>
+
+<p>数组矩阵表示如下：
+<table border="1" style="width:100%;text-align:center;margin: 0;padding: 0"><tr><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td></tr><tr><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td></tr><tr><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td></tr><tr><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td></tr><tr><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td></tr><tr><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td></tr></table></p>
+
+<hr />
+
+<h3 id="有向图">有向图</h3>
+
+<p><img src="http://otho0rxyj.bkt.clouddn.com/image/blog/graph/youxiang.jpg"></p>
+
+<p>数组矩阵表示如下：
+<table border="1" style="width:100%;text-align:center;margin: 0;padding: 0"><tr><td>∞</td><td>5</td><td>∞</td><td>7</td><td>∞</td><td>∞</td></tr><tr><td>∞</td><td>∞</td><td>4</td><td>∞</td><td>∞</td><td>∞</td></tr><tr><td>∞</td><td>∞</td><td>∞</td><td>∞</td><td>∞</td><td>9</td></tr><tr><td>∞</td><td>∞</td><td>5</td><td>∞</td><td>∞</td><td>6</td></tr><tr><td>∞</td><td>∞</td><td>∞</td><td>5</td><td>∞</td><td>∞</td></tr><tr><td>3</td><td>∞</td><td>∞</td><td>∞</td><td>1</td><td>∞</td></tr></table></p>
+
+<hr />
+
+<h1 id="图的遍历">图的遍历</h1>
+
+<p><img src="http://otho0rxyj.bkt.clouddn.com/image/blog/graph/bianli.jpg"></p>
+
+<h2 id="深度优先搜索">深度优先搜索</h2>
+
+<p>其过程简要来说是对每一个可能的分支路径深入到不能再深入为止，而且每个节点只能访问一次。
+深度优先搜索的遍历访问顺序并不唯一。</p>
+
+<p>假设以<code>V1</code>为起点，
+<code>V1</code>有两个邻接点<code>V2</code>与<code>V3</code>且都未被访问，则访问<code>V2</code>（或访问<code>v3</code>开始皆可，以下皆如此）；
+<code>V2</code>有三个邻接点<code>V1</code>、<code>V4</code>、<code>V5</code>，<code>V1</code>已被访问，<code>V4</code>与<code>V5</code>都未被访问，则访问<code>V4</code>；
+<code>V4</code>有两个邻接点<code>V2</code>与<code>V8</code>，只有<code>V8</code>未被访问，则访问<code>V8</code>；
+<code>V8</code>有两个邻接点<code>V4</code>与<code>V5</code>，<code>V4</code>已被访问，则访问<code>V5</code>；
+<code>V5</code>有两个邻接点<code>V2</code>与<code>V8</code>，且<code>V2</code>、<code>V8</code>都已被访问，则从头搜索<code>V1</code>的邻接点<code>V2</code>、<code>V3</code>，<code>V2</code>已被访问，则访问<code>V3</code>；
+<code>V3</code>有三个邻接点<code>V1</code>、<code>V6</code>、<code>V7</code>且未被访问，则访问<code>V6</code>；
+<code>V6</code>有两个邻接点<code>V3</code>与<code>V7</code>，<code>V3</code>已被访问，则访问<code>V7</code>。</p>
+
+<p>则以<code>V1</code>为起点的深度优先搜索访问顺序为：
+<code>V1-&gt;V2-&gt;V4-&gt;V8-&gt;V5-&gt;V3-&gt;V6-&gt;V7</code></p>
+
+<hr />
+
+<h2 id="广度优先搜索">广度优先搜索</h2>
+
+<p>类似于树的按层次遍历的过程，可先将图按层划分。
+广度优先搜索的遍历访问顺序并不唯一。</p>
+
+<p>假设以<code>V1</code>为起点，则可划分为下图：
+<img src="http://otho0rxyj.bkt.clouddn.com/image/blog/graph/fenceng.jpg"></p>
+
+<p>第一层（V1）：
+<code>V1</code>有两个邻接点<code>V2</code>、<code>V3</code>，则先访问<code>V2</code>，再访问<code>V3</code>（或先访问<code>V3</code>，再访问<code>V2</code>皆可，以下皆如此）；
+第二层(V2、V3)：
+<code>V2</code>有三个邻接点<code>V1</code>、<code>V4</code>、<code>V5</code>，<code>V1</code>已被访问，则访问<code>V4</code>、<code>V5</code>；
+<code>V3</code>有两个邻接点<code>V6</code>、<code>V7</code>且都未被访问，则访问<code>V6</code>、<code>V7</code>；
+第三层（V4、V5、V6、V7）：
+<code>V4</code>有两个邻接点<code>V2</code>与<code>V8</code>，<code>V2</code>已被访问，则访问<code>V8</code>。</p>
+
+<p>则以<code>V1</code>为起点的广度优先搜索访问顺序为：
+<code>V1-&gt;V2-&gt;V3-&gt;V4-&gt;V5-&gt;V6-&gt;V7-&gt;V8</code></p>
+
+<hr />
+
+<h1 id="最小生成树">最小生成树</h1>
+
+<p>在连通网的所有生成树中，所有边的代价和最小的生成树，称为最小生成树。
+最小生成树中不存在回路。</p>
+
+<p><img src="http://otho0rxyj.bkt.clouddn.com/image/blog/graph/mini.jpg"></p>
+
+<p>可得数组矩阵：
+<table border="1" style="width:100%;text-align:center;margin: 0;padding: 0"><tr><td>∞</td><td>6</td><td>1</td><td>5</td><td>∞</td><td>∞</td></tr><tr><td>6</td><td>∞</td><td>5</td><td>∞</td><td>3</td><td>∞</td></tr><tr><td>1</td><td>5</td><td>∞</td><td>5</td><td>6</td><td>4</td></tr><tr><td>5</td><td>∞</td><td>5</td><td>∞</td><td>∞</td><td>2</td></tr><tr><td>∞</td><td>3</td><td>6</td><td>∞</td><td>∞</td><td>6</td></tr><tr><td>∞</td><td>∞</td><td>4</td><td>2</td><td>6</td><td>∞</td></tr></table></p>
+
+<h2 id="普里姆-prim-算法">普里姆（Prim）算法</h2>
+
+<p>此算法可以称为“加点法”，每次迭代选择代价最小的边对应的点，加入到最小生成树中。</p>
+
+<p><img src="http://otho0rxyj.bkt.clouddn.com/image/blog/graph/prim.jpg"></p>
+
+<p>设：
+* 所有结点V={V1,V2,V3,V4,V5,V6}
+* 已选结点U={}
+* 剩余结点V-U
+* 代价最小的边MIN</p>
+
+<table border="1" style="width:100%;text-align:center;margin: 0;padding: 0">
+<thead><tr><th>index</th><th>V-U</th><th>U</th><th>MIN(边)</th></tr></thead><tr><td>0</td><td>{V1,V2,V3,V4,V5,V6}</td><td>{}</td><td></td></tr><tr><td>1</td><td>{V2,V3,V4,V5,V6}</td><td>{V1}</td><td>1(V1-V3)</td></tr><tr><td>2</td><td>{V2,V4,V5,V6}</td><td>{V1,V3}</td><td>4(V3-V6)</td></tr><tr><td>3</td><td>{V2,V4,V5}</td><td>{V1,V3,V6}</td><td>2(V6-V4)</td></tr><tr><td>4</td><td>{V2,V5}</td><td>{V1,V3,V6,V4}</td><td>5(V3-V2)</td></tr><tr><td>5</td><td>{V5}</td><td>{V1,V3,V6,V4,V2}</td><td>3(V2-V5)</td></tr><tr><td>6</td><td>{}</td><td>{V1,V3,V6,V4,V2,V5}</td><td></td></tr></table>
+
+<p>或设：
+* 所有结点V={V1,V2,V3,V4,V5,V6}
+* 已选结点U={}
+* 剩余结点V-U
+* 序列i（1,2,3,…,V的个数），每个序列下为每个结点的最小代价边。
+* 选择序列k，被选择序列设为0</p>
+
+<p>每个结点的多条代价边中选最小代价边。
+如：
+2-1中，V2距离V-U存在6（V2-V1），5（V2-V3）两条边，则选择6（V2-V1）。</p>
+
+<table border="1" style="width:100%;text-align:center;margin: 0;padding: 0">
+<thead><tr><th>index\i</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>U</th><th>V-U</th><th>k(选择序列)</th></tr></thead><tr><td>1</td><td>V1-6</td><td>V1-1</td><td>V1-5</td><td></td><td></td><td>{V1}</td><td>{V2,V3,V4,V5,V6}</td><td>2</td></tr><tr><td>2</td><td>V3-5</td><td>0</td><td>V1-5</td><td>V3-6</td><td>V3-4</td><td>{V1,V3}</td><td>{V2,V4,V5,V6}</td><td>5</td></tr><tr><td>3</td><td>V3-5</td><td>0</td><td>V6-2</td><td>V3-6</td><td>0</td><td>{V1,V3,V6}</td><td>{V2,V3,V4,V5}</td><td>3</td></tr><tr><td>4</td><td>V3-5</td><td>0</td><td>0</td><td>V3-6</td><td>0</td><td>{V1,V3,V6,V4}</td><td>{V2,V5}</td><td>1</td></tr><tr><td>5</td><td>0</td><td>0</td><td>0</td><td>V2-3</td><td>0</td><td>{V1,V3,V6,V4,V2}</td><td>{V5}</td><td>4</td></tr><tr><td>6</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>{V1,V3,V6,V4,V2,V5}</td><td>{}</td><td></td></tr></table>
+
+<hr />
+
+<h2 id="克鲁斯卡尔-kruskal-算法">克鲁斯卡尔（Kruskal）算法</h2>
+
+<p>每次在剩下的所有未选取的边中，找最小边，如果和已选取的边构成回路，则放弃，选取次小边。</p>
+
+<p><img src="http://otho0rxyj.bkt.clouddn.com/image/blog/graph/kruskal.jpg"></p>
+
+<hr />
+
+<h1 id="最短路径">最短路径</h1>
+
+<h2 id="有向带权图">有向带权图</h2>
+
+<p><img src="http://otho0rxyj.bkt.clouddn.com/image/blog/graph/directGraph.jpg"></p>
+
+<h2 id="迪杰斯特拉-dijkstra-算法">迪杰斯特拉（Dijkstra）算法</h2>
+
+<p>设：
+* 已选顶点元素集合<code>S</code>
+* 起点<code>V</code>到其余顶点i的带权长度(Distance)<code>D[]</code>，<code>D[V]</code>初始化为<code>0</code>，其他元素初始化为<code>∞</code>
+* <code>S</code>到其余顶点<code>i</code>的最短序列上顶点i的前一个顶点(Pre)<code>P[]</code>，所有元素初始化为起点<code>V</code>
+* <code>S</code>中的中间点<code>v</code></p>
+
+<p>若存在<code>D[v]+weight(v,i)&lt;D[i]</code>，则<code>P[i]=v；D[i]=D[v]+weight(v,i);</code></p>
+
+<table border="1" style="width:100%;text-align:center;margin: 0;padding: 0"><tr><td>index</td><td>S</td><td>V0</td><td>V1</td><td>V2</td><td>V3</td><td>V4</td><td>V5</td><td>CHOOSE</td></tr><tr><td>起点</td><td>{V0}</td><td style="color:#FF0000;">D[0]=0/P[0]=0</td><td>D[1]=∞/P[1]=0</td><td>D[2]=10/P[2]=0</td><td>D[3]=∞/P[3]=0</td><td>D[4]=30/P[4]=0</td><td>D[5]=100/P[5]=0</td><td>D[2]最小</td></tr><tr><td>1</td><td>{V0,V2}</td><td style="color:#FF0000;">D[0]=0/P[0]=0</td><td>D[1]=∞/P[1]=0</td><td style="color:#FF0000;">D[2]=10/P[2]=0</td><td>D[3]=60/P[3]=2</td><td>D[4]=30/P[4]=0</td><td>D[5]=100/P[5]=0</td><td>D[4]最小</td></tr><tr><td>2</td><td>{V0,V2,V4}</td><td style="color:#FF0000;">D[0]=0/P[0]=0</td><td>D[1]=∞/P[1]=0</td><td style="color:#FF0000;">D[2]=10/P[2]=0</td><td>D[3]=50/P[3]=4</td><td style="color:#FF0000;">D[4]=30/P[4]=0</td><td>D[5]=90/P[5]=4</td><td>D[3]最小</td></tr><tr><td>3</td><td>{V0,V2,V4,V3}</td><td style="color:#FF0000;">D[0]=0/P[0]=0</td><td>D[1]=∞/P[1]=0</td><td style="color:#FF0000;">D[2]=10/P[2]=0</td><td style="color:#FF0000;">D[3]=50/P[3]=4</td><td style="color:#FF0000;">D[4]=30/P[4]=0</td><td>D[5]=60/P[5]=3</td><td>只剩D[5]</td></tr><tr><td>4</td><td>{V0,V2,V4,V3,V5}</td><td style="color:#FF0000;">D[0]=0/P[0]=0</td><td>D[1]=∞/P[1]=0</td><td style="color:#FF0000;">D[2]=10/P[2]=0</td><td style="color:#FF0000;">D[3]=50/P[3]=4</td><td style="color:#FF0000;">D[4]=30/P[4]=0</td><td style="color:#FF0000;">D[5]=60/P[5]=3</td><td>结束</td></tr></table>
+
+<p>从上表中可知，
+以V0为起点至V5的最短路径为：
+<code>P[5]=3</code> -&gt; <code>P[3]=4</code> -&gt; <code>P[4]=0</code> -&gt; <code>P[0]=0</code>
+即 <code>0</code> -&gt; <code>4</code> -&gt; <code>3</code> -&gt; <code>5</code></p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kuma2x </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=http://boseman1024.github.io/2018/%E5%9B%BE%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/>http://boseman1024.github.io/2018/%E5%9B%BE%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/</span>
+            </p>
+            
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="http://boseman1024.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
+                    #数据结构与算法</a></span>
+            
+            <span class="tag"><a href="http://boseman1024.github.io/tags/c/">
+                    #C</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="http://boseman1024.github.io/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="http://boseman1024.github.io/2018/java%E5%9F%BA%E7%A1%80%E6%95%B4%E7%90%86/" class="prev" rel="prev" title="JAVA基础整理"><i class="iconfont icon-left"></i>&nbsp;JAVA基础整理</a>
+         
+        
+        <a href="http://boseman1024.github.io/2018/java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%94%E8%AE%B0/" class="next" rel="next" title="JAVA虚拟机笔记">JAVA虚拟机笔记&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2018 - 2018</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="http://boseman1024.github.io/">Kuma2x</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

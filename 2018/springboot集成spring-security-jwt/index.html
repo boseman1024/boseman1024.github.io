@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kuma2x">
+  
+  
+  
+  <link rel="prev" href="http://boseman1024.github.io/2018/json%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/" />
+  <link rel="next" href="http://boseman1024.github.io/2018/%E5%B9%B3%E7%BA%A7json%E8%BD%AC%E5%B1%82%E7%BA%A7%E6%A0%91%E5%9E%8B%E7%BB%93%E6%9E%84json/" />
+  <link rel="canonical" href="http://boseman1024.github.io/2018/springboot%E9%9B%86%E6%88%90spring-security-jwt/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           SpringBoot整合Spring Security&#43;JWT | KUMA2X
+       
+  </title>
+  <meta name="title" content="SpringBoot整合Spring Security&#43;JWT | KUMA2X">
+    
+
+  <link rel="stylesheet" href="http://boseman1024.github.io/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "http://boseman1024.github.io/"
+    },
+    "articleSection" : "posts",
+    "name" : "SpringBoot整合Spring Security&#43;JWT",
+    "headline" : "SpringBoot整合Spring Security&#43;JWT",
+    "description" : "DEMO 准备 MAVEN依赖 在pom.xml引入所需依赖如下：
+&lt;parent&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt; &lt;version&gt;2.0.1.RELEASE&lt;/version&gt; &lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt; &lt;/parent&gt; &lt;!--SpringBoot--&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt; &lt;scope&gt;test&lt;/scope&gt; &lt;/dependency&gt; &lt;!--Spring Security --&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-security&lt;/artifactId&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.security&lt;/groupId&gt; &lt;artifactId&gt;spring-security-test&lt;/artifactId&gt; &lt;scope&gt;test&lt;/scope&gt; &lt;/dependency&gt; &lt;!--JWT--&gt; &lt;dependency&gt; &lt;groupId&gt;io.jsonwebtoken&lt;/groupId&gt; &lt;artifactId&gt;jjwt&lt;/artifactId&gt; &lt;version&gt;0.9.0&lt;/version&gt; &lt;/dependency&gt; &lt;!--Mybatis--&gt; &lt;dependency&gt; &lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt; &lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt; &lt;version&gt;1.3.2&lt;/version&gt; &lt;/dependency&gt; &lt;!--MYSQL--&gt; &lt;dependency&gt; &lt;groupId&gt;mysql&lt;/groupId&gt; &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt; &lt;scope&gt;runtime&lt;/scope&gt; &lt;/dependency&gt; &lt;!--可选：druid连接池--&gt; &lt;dependency&gt; &lt;groupId&gt;com.alibaba&lt;/groupId&gt; &lt;artifactId&gt;druid&lt;/artifactId&gt; &lt;version&gt;1.1.9&lt;/version&gt; &lt;/dependency&gt;  基本配置 在application.yml中配置SpringBoot应用， 配置后在项目中可通过@Value(&quot;${jwt.secret}&quot;)的方式注入值。 application.yml配置如下：
+spring: # 数据库配置 datasource: url: jdbc:mysql://localhost/xauth?",
+    "inLanguage" : "en-us",
+    "author" : "Kuma2x",
+    "creator" : "Kuma2x",
+    "publisher": "Kuma2x",
+    "accountablePerson" : "Kuma2x",
+    "copyrightHolder" : "Kuma2x",
+    "copyrightYear" : "2018",
+    "datePublished": "2018-04-16 20:40:54 &#43;0000 UTC",
+    "dateModified" : "2018-04-16 20:40:54 &#43;0000 UTC",
+    "url" : "http://boseman1024.github.io/2018/springboot%E9%9B%86%E6%88%90spring-security-jwt/",
+    "wordCount" : "761",
+    "keywords" : [ "JAVA","JWT","Spring", "KUMA2X"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://boseman1024.github.io/">KUMA2X</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://boseman1024.github.io/">KUMA2X</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">SpringBoot整合Spring Security&#43;JWT</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="http://boseman1024.github.io/" rel="author">Kuma2x</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2018-04-16 itemprop="datePublished">April 16, 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="http://boseman1024.github.io/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h3 id="demo-https-github-com-boseman1024-springsecurity-jwt"><a href="https://github.com/boseman1024/SpringSecurity-JWT" rel="nofollow noreferrer" target="_blank">DEMO</a></h3>
+
+<h1 id="准备">准备</h1>
+
+<h2 id="maven依赖">MAVEN依赖</h2>
+
+<p>在<code>pom.xml</code>引入所需依赖如下：</p>
+
+<pre><code class="language-xml">&lt;parent&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+    &lt;version&gt;2.0.1.RELEASE&lt;/version&gt;
+    &lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;
+&lt;/parent&gt;
+
+&lt;!--SpringBoot--&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+
+&lt;!--Spring Security --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-security&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.security&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-security-test&lt;/artifactId&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+
+&lt;!--JWT--&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;io.jsonwebtoken&lt;/groupId&gt;
+    &lt;artifactId&gt;jjwt&lt;/artifactId&gt;
+    &lt;version&gt;0.9.0&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;!--Mybatis--&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt;
+    &lt;version&gt;1.3.2&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;!--MYSQL--&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;mysql&lt;/groupId&gt;
+    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+    &lt;scope&gt;runtime&lt;/scope&gt;
+&lt;/dependency&gt;
+
+&lt;!--可选：druid连接池--&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+    &lt;artifactId&gt;druid&lt;/artifactId&gt;
+    &lt;version&gt;1.1.9&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+<h2 id="基本配置">基本配置</h2>
+
+<p>在<code>application.yml</code>中配置SpringBoot应用，
+配置后在项目中可通过<code>@Value(&quot;${jwt.secret}&quot;)</code>的方式注入值。
+<code>application.yml</code>配置如下：</p>
+
+<pre><code class="language-yaml">spring:
+  # 数据库配置
+  datasource:
+    url: jdbc:mysql://localhost/xauth?useSSL=true&amp;useUnicode=true&amp;characterEncoding=UTF-8
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+
+    # 若使用druid连接池，配置如下：
+    # 设置druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    # 下面为连接池的补充设置，应用到上面所有数据源中
+    # 初始化大小，最小，最大
+    initialSize: 1
+    minIdle: 3
+    maxActive: 20
+    # 配置获取连接等待超时的时间
+    maxWait: 60000
+    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    timeBetweenEvictionRunsMillis: 60000
+    # 配置一个连接在池中最小生存的时间，单位是毫秒
+    minEvictableIdleTimeMillis: 30000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    # 打开PSCache，并且指定每个连接上PSCache的大小
+    oolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    filters: stat,wall,slf4j
+    # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    # 合并多个DruidDataSource的监控数据
+    #useGlobalDataSourceStat: true
+
+  # Spring Secutiry提供默认用户、密码及权限
+  #security:
+  #  user:
+  #    name: admin
+  #    password: admin
+  #    authorities:  #ROLE_ADMIN，ROLE_USER……
+
+# JWT 认证配置
+jwt:
+  header: Authorization #认证方式
+  secret: X-kuma2x      #加密盐
+  expiration: 604800    #过期时间，token七天不过期
+  tokenHead: &quot;Bearer &quot;  #Token前缀，用于检验是否Token
+  exceptUrl: &quot;/auth/**&quot; #允许匿名访问路径
+</code></pre>
+
+<h2 id="用户表-角色表-权限表-mapper类-略-见项目demo">用户表、角色表、权限表、Mapper类：略，见项目DEMO。</h2>
+
+<h1 id="具体实现">具体实现</h1>
+
+<p>新建一个工具类<code>JWTUtil</code>，实现常用的方法：</p>
+
+<pre><code class="language-java">@Component
+public class JWTUtil {
+
+    @Value(&quot;${jwt.secret}&quot;)
+    private String secret;
+    @Value(&quot;${jwt.expiration}&quot;)
+    private Long expiration;
+
+    /**
+     * 根据Token获取用户名Username
+     * @param token
+     * @return
+     */
+    public String getUsernameByToken(String token){
+        String username;
+        try {
+            Claims claims = Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
+            username = claims.getSubject();
+        }catch (Exception e){
+            username = null;
+        }
+        return username;
+    }
+
+    /**
+     * 检验Token是否过期
+     * @param Token
+     * @return
+     */
+    public Boolean isTokenExpired(String Token){
+        Claims claims;
+        try{
+            claims = Jwts.parser().setSigningKey(secret).parseClaimsJws(Token).getBody();
+        }catch (Exception e){
+            claims = null;
+        }
+        return claims.getExpiration().before(new Date());
+    }
+
+    /**
+     * 生成Token
+     * @param userDetails
+     * @return
+     */
+    public String initToken(UserDetails userDetails){
+        //生成数据声明claims
+        Map&lt;String,Object&gt; claims = new HashMap&lt;&gt;();
+        claims.put(&quot;sub&quot;,userDetails.getUsername());
+        claims.put(&quot;created&quot;,new Date());
+
+        String Token = Jwts.builder().setClaims(claims)
+                //设置过期时间
+                .setExpiration(new Date(System.currentTimeMillis()+expiration*1000))
+                //加密算法+盐
+                .signWith(SignatureAlgorithm.HS512,secret).compact();
+        return Token;
+    }
+
+    /**
+     * 验证Token是否正确
+     * @param Token
+     * @param userDetails
+     * @return
+     */
+    public Boolean valiadateToken(String Token,UserDetails userDetails){
+        String username = getUsernameByToken(Token);
+        Boolean result = (!isTokenExpired(Token)&amp;&amp; username.equals(userDetails.getUsername()));
+        return result;
+    }
+}
+</code></pre>
+
+<p>为控制数据源（文本、xml、数据库等），需要实现<code>UserDetailsService</code>接口，该接口提供<code>loadUserByUsername</code>方法根据用户名查找用户并返回<code>UserDetails</code>，在后续会用<code>UserDetails</code>的信息来比对请求的用户名、密码是否正确。
+在<code>UserServiceImpl</code>类中实现具体方法：</p>
+
+<pre><code class="language-java">public interface UserService extends UserDetailsService{}
+
+@Service()
+public class UserServiceImpl implements UserService {
+    //获取全局AuthenticationManagerBuilder
+    @Autowired
+    private AuthenticationManagerBuilder authenticationManagerBuilder;
+    @Autowired
+    private SysUserMapper sysUserMapper;
+    @Resource
+    private JWTUtil jwtUtil;
+
+    /***
+     * 继承UserDetailsService类重写loadUserByUsername
+     * 根据用户名查找用户并返回
+     * @param username
+     * @return
+     * @throws UsernameNotFoundException
+     */
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        System.out.println(&quot;===loadUserByUsername===&quot;);
+        SysUser user = sysUserMapper.selectByUsername(username);
+        if(user == null){
+            System.out.println(&quot;User Not Found&quot;);
+            throw new UsernameNotFoundException(&quot;User Not Found&quot;);
+        }
+        return new org.springframework.security.core.userdetails.User(user.getUsername()
+                ,user.getPassword(),user.getEnabled()==1,
+                true,true,true,mapToGrantedAuthorities(user.getRole()));
+    }
+
+    /**
+     *获取用户所有权限集合
+     * @param authorities
+     * @return List&lt;GrantedAuthority&gt;
+     */
+    private static List&lt;GrantedAuthority&gt; mapToGrantedAuthorities(List&lt;SysRole&gt; authorities) {
+        Set&lt;GrantedAuthority&gt; setAuths=new HashSet&lt;&gt;();
+        for(SysRole userRole:authorities){
+            /*
+            for(SysMenu sysMenu : userRole.getMenus()){
+                setAuths.add(new SimpleGrantedAuthority(sysMenu.getName()));
+            }
+            */
+            setAuths.add(new SimpleGrantedAuthority(userRole.getName()));
+        }
+        List&lt;GrantedAuthority&gt; result=new ArrayList&lt;&gt;(setAuths);
+        return result;
+    }
+}
+</code></pre>
+
+<p>创建Token校验过滤器<code>JWTAuthenticationFilter</code>，判断每次请求是否授权请求、是否携带Token以及Token是否正确，是否过期。</p>
+
+<pre><code class="language-java">public class JWTAuthenticationFilter extends OncePerRequestFilter {
+    @Value(&quot;${jwt.header}&quot;)
+    private String header;
+    @Value(&quot;${jwt.tokenHead}&quot;)
+    private String tokenHead;
+    @Resource
+    private JWTUtil jwtUtil;
+    @Resource
+    private UserDetailsService userDetailsService;
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
+        System.out.println(&quot;======JWTAuthenticationFilter=======&quot;);
+        String tokenHeader = request.getHeader(header);
+        if(tokenHeader!=null&amp;&amp;tokenHeader.startsWith(tokenHead)){
+            String token = tokenHeader.substring(tokenHead.length());
+            String username = jwtUtil.getUsernameByToken(token);
+            logger.info(&quot;Token CHECK:&quot;+username);
+            if(username!=null&amp;&amp; SecurityContextHolder.getContext().getAuthentication() == null){
+                UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+                if(jwtUtil.valiadateToken(token,userDetails)){
+                    UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
+                            userDetails, null, userDetails.getAuthorities());
+                    authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(
+                            request));
+                    logger.info(&quot;authenticated user &quot; + username + &quot;, setting security context&quot;);
+                    SecurityContextHolder.getContext().setAuthentication(authentication);
+                }
+            }
+        }
+        chain.doFilter(request,response);
+    }
+}
+</code></pre>
+
+<p>建立<code>WebSecurityConfig</code>类继承<code>WebSecurityConfigurerAdapter</code>来对Spring Security进行配置。
+使用<code>@EnableWebSecurity</code>注解启用Spring Security。
+使用<code>@EnableGlobalMethodSecurity</code>注解启用访问权限控制，
+例如：<code>@PreAuthorize(&quot;hasRole('ADMIN')&quot;)</code>。
+<code>WebSecurityConfig</code>类如下：</p>
+
+<pre><code class="language-java">@Configuration
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+    @Value(&quot;${jwt.exceptUrl}&quot;)
+    private String exceptUrl;
+    @Resource
+    private UserDetailsService userDetailsService;
+
+    @Bean
+    public JWTAuthenticationFilter authenticationTokenFilter() throws Exception {
+        return new JWTAuthenticationFilter();
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        // 源码：
+        // ((HttpSecurity)((HttpSecurity)((ExpressionUrlAuthorizationConfigurer.AuthorizedUrl)http.authorizeRequests().anyRequest()).authenticated().and()).formLogin().and()).httpBasic();
+
+        //启用跨域
+        http.cors().and()
+            //使用JWT，禁用csrf
+            .csrf().disable()
+            //基于token所以禁用session
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .and()
+            .authorizeRequests()
+                .antMatchers(
+                        HttpMethod.GET,
+                        &quot;/&quot;,
+                        &quot;/*.html&quot;,
+                        &quot;/favicon.ico&quot;,
+                        &quot;/**/*.html&quot;,
+                        &quot;/**/*.css&quot;,
+                        &quot;/**/*.js&quot;
+                ).permitAll()
+                //允许匿名访问
+                .antMatchers(exceptUrl).permitAll()
+                //除上以外所有请求均需授权访问
+                .anyRequest().authenticated();
+
+        //将Token校验过滤器JWTAuthenticationFilter加载于用户名密码认证过滤器UsernamePasswordAuthenticationFilter之前。
+        http.addFilterBefore(authenticationTokenFilter(),UsernamePasswordAuthenticationFilter.class);
+
+        //禁用缓存
+        http.headers().cacheControl().disable();
+    }
+
+    //AuthenticationManagerBuilder 通过 @Autowired 注解被注入到一个 @Bean 中的方法，这会导致它构造的是全局的AuthenticationManager
+    @Autowired
+    protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+                //设置userDetailsService
+                .userDetailsService(userDetailsService)
+                //加载密码编码器
+                .passwordEncoder(passwordEncoder());
+    }
+/*
+    //使用 @Override 注解会导致 AuthenticationManagerBuilder 构建的是一个局部的AuthenticationManager
+    @Override
+    public configure(AuthenticationManagerBuilder builder) {
+        auth.jdbcAuthentication().dataSource(dataSource).withUser(&quot;dave&quot;)
+                .password(&quot;secret&quot;).roles(&quot;USER&quot;);
+    }
+
+*/
+    //装载BCrypt密码编码器
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+}
+</code></pre>
+
+<p>在<code>UserServiceImpl</code>中加入登录处理login方法并生成Token返回。
+生成Token时也可使用从数据库取出携带其余信息的实体类。</p>
+
+<pre><code class="language-java">    /****
+     * 登录
+     * 生成jwtToken并返回
+     * @param user
+     * @return
+     */
+    @Override
+    public String login(String username,String password) {
+        //password = passwordEncoder.encode(password);
+        AuthenticationManager authenticationManager = authenticationManagerBuilder.getObject();
+        //绕开SS的Filter手动的完成验证并设置Authentication对象：
+        //用户名和密码获得之后组合成 UsernamePasswordAuthenticationToken 的实例
+        UsernamePasswordAuthenticationToken upToken = new UsernamePasswordAuthenticationToken(username, password);
+        if(authenticationManager==null){
+            throw new AuthenticationServiceException(&quot;no authenticationManager defined&quot;);
+        }
+        //将该令牌传递给 AuthenticationManager 实例进行验证,验证成功后，AuthenticationManager 会返回填充好的 Authentication 实例
+        Authentication authentication = authenticationManager.authenticate(upToken);
+        //通过调用 SecurityContextHolder.getContext().setAuthentication(...) 建立安全上下文的实例，传递到返回的身份认证对象上
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        //生成token并返回，多一次loadUserByUsername
+        UserDetails userDetails = loadUserByUsername(username);
+        //User user = sysUserMapper.selectByUsername(username);
+        String token = jwtUtil.initToken(userDetails);
+        return token;
+    }
+</code></pre>
+
+<p>最后在<code>UserController</code>实现Login进行登录以及其他测试路径。
+<code>@PreAuthorize</code>通过表达式<code>hasRole('ADMIN')</code>等来进行权限限制。
+<code>hasRole</code>表达式中，默认每个角色名有个前缀“<code>ROLE_</code>”，即在数据库中存储的为“<code>ROLE_ADMIN</code>”。
+<code>@PreAuthorize</code>也可修饰Controller。</p>
+
+<pre><code class="language-java">@RestController
+public class UserController {
+    @Resource
+    private UserService userService;
+
+    @RequestMapping(&quot;/index&quot;)
+    public String index(){
+        return &quot;index&quot;;
+    }
+
+    @RequestMapping(&quot;/admin&quot;)
+    // 访问需要ADMIN角色
+    @PreAuthorize(&quot;hasRole('ADMIN')&quot;)
+    public String admin(){
+        return &quot;admin&quot;;
+    }
+
+    @PostMapping(&quot;/auth/login&quot;)
+    public Map&lt;String,String&gt; Login(HttpServletRequest request){
+        String token = userService.login(request.getParameter(&quot;username&quot;),request.getParameter(&quot;password&quot;));
+        Map&lt;String,String&gt; tokenMap = new HashMap&lt;&gt;();
+        tokenMap.put(&quot;token&quot;,token);
+        return tokenMap;
+    }
+}
+</code></pre>
+
+<h1 id="验证">验证</h1>
+
+<p>未携带Token时访问<a href="http://localhost:8080/index，访问被拒绝：" rel="nofollow noreferrer" target="_blank">http://localhost:8080/index，访问被拒绝：</a>
+<img src="http://otho0rxyj.bkt.clouddn.com/image/blog/springsecurity-jwt/1.jpg">
+访问<a href="http://localhost:8080/auth/login进行登录，这里使用test用户，得到Token：" rel="nofollow noreferrer" target="_blank">http://localhost:8080/auth/login进行登录，这里使用test用户，得到Token：</a>
+<img src="http://otho0rxyj.bkt.clouddn.com/image/blog/springsecurity-jwt/2.jpg">
+携带Token访问<a href="http://localhost:8080/index，访问成功：" rel="nofollow noreferrer" target="_blank">http://localhost:8080/index，访问成功：</a>
+<img src="http://otho0rxyj.bkt.clouddn.com/image/blog/springsecurity-jwt/3.jpg">
+携带Token访问<a href="http://localhost:8080/admin，由于test用户无ROLE_ADMIN角色，访问被拒绝：" rel="nofollow noreferrer" target="_blank">http://localhost:8080/admin，由于test用户无ROLE_ADMIN角色，访问被拒绝：</a>
+<img src="http://otho0rxyj.bkt.clouddn.com/image/blog/springsecurity-jwt/4.jpg"></p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kuma2x </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=http://boseman1024.github.io/2018/springboot%E9%9B%86%E6%88%90spring-security-jwt/>http://boseman1024.github.io/2018/springboot%E9%9B%86%E6%88%90spring-security-jwt/</span>
+            </p>
+            
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="http://boseman1024.github.io/tags/java/">
+                    #JAVA</a></span>
+            
+            <span class="tag"><a href="http://boseman1024.github.io/tags/jwt/">
+                    #JWT</a></span>
+            
+            <span class="tag"><a href="http://boseman1024.github.io/tags/spring/">
+                    #Spring</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="http://boseman1024.github.io/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="http://boseman1024.github.io/2018/json%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/" class="prev" rel="prev" title="JSON查询数据"><i class="iconfont icon-left"></i>&nbsp;JSON查询数据</a>
+         
+        
+        <a href="http://boseman1024.github.io/2018/%E5%B9%B3%E7%BA%A7json%E8%BD%AC%E5%B1%82%E7%BA%A7%E6%A0%91%E5%9E%8B%E7%BB%93%E6%9E%84json/" class="next" rel="next" title="层级关系数据转树型结构JSON">层级关系数据转树型结构JSON&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2018 - 2018</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="http://boseman1024.github.io/">Kuma2x</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

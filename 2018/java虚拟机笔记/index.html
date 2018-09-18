@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kuma2x">
+  
+  
+  
+  <link rel="prev" href="http://boseman1024.github.io/2018/%E5%9B%BE%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" />
+  <link rel="next" href="http://boseman1024.github.io/2018/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/" />
+  <link rel="canonical" href="http://boseman1024.github.io/2018/java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%94%E8%AE%B0/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           JAVA虚拟机笔记 | KUMA2X
+       
+  </title>
+  <meta name="title" content="JAVA虚拟机笔记 | KUMA2X">
+    
+
+  <link rel="stylesheet" href="http://boseman1024.github.io/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "http://boseman1024.github.io/"
+    },
+    "articleSection" : "posts",
+    "name" : "JAVA虚拟机笔记",
+    "headline" : "JAVA虚拟机笔记",
+    "description" : "JAVA内存区域 程序计数器 *程序计数器（Program Counter Register）*是当前线程所执行的字节码的行号指示器，通过计数器的值选取下一条需要执行的字节码指令（java方法）。 可参考《计算机系统组成》 每个线程都需要一个独立的程序计数器，各线程间计数器互不影响，独立储存，称之为“线程私有”的内存。
+JAVA虚拟机栈 *JAVA虚拟机栈（Java Virtual Machine Stacks）*描述的是JAVA方法执行的内存模型：每个方法执行的同时会创建一个栈帧，用于存储局部变量表、操作数栈、动态链接、方法出口等信息。每个方法从调用到执行完成的过程，就对应着一个栈帧在虚拟机栈中入栈出栈的过程。 同时其也是线程私有，生命周期与线程相同。 其中局部变量表，存放了编译器可知的各种基本数据类型（boolean、byte、char、short、int、float、long、double）、对象引用类型（reference类型，可能是指向对象起始地址的引用指针，也可能是指向一个代表对象的句柄或其他与此对象相关的位置）和returnAddress类型（指向一条字节码指令的地址）。其中64位长度的long和double类型数据占用2个局部变量空间（slot），其余只占用1个。 局部变量表所需的内存空间在编译期间完成分配，当进入一个方法时，需要在帧中分配多大的局部变量空间时完全确定的，在方法执行期间不会改变局部变量表大小。
+本地方法栈 *本地方法栈（Native Method Stack）*于虚拟机栈相似，但其为虚拟机使用到的Native方法服务。在JVM规范中，并没有对本地方发展的具体实现方法以及数据结构作强制规定，虚拟机可以自由实现它。在HotSopt虚拟机中直接就把本地方法栈和Java虚拟机栈合二为一。
+JAVA堆 *JAVA堆（JAVA Heap）*被所有线程共享的一块内存区域，在虚拟机启动时创建，被用于存放对象实例，是垃圾收集器管理的主要区域。
+方法区 *方法区（Method Area）*与Java堆一样，是各个线程共享的内存区域，用于储存已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。被称为永久代，垃圾回收行为在该区域是相对较少出现的。 *运行常量池（Runtime Constant Pool）*是方法区的一部分，Class文件中除了有类的版本、字段、方法、接口等描述信息外，还有一项是常量池，用于存放编译期生成的各种字面量和符号引用。
+直接内存 直接内存（Direct Memory）并不是虚拟机运行时数据区的一部分，也不是JAVA虚拟机规范中定义的内存区域。但这部分也被频繁使用，也可能导致OutOfMemoryError异常出现。直接内存的分配不受JAVA堆大小的限制，但是还是会受到本机总内存大小以及处理器寻址空间的限制。
+对象的访问定位 使用句柄 JAVA堆中会划分出一块内存作为句柄池，reference中存储的就是对象的句柄地址，句柄中包含对象实例数据和类型数据各自的具体地址信息。 优点：稳定，对象被移动只会改变句柄中实例数据指针，而reference本身不需要修改。 直接指针 reference中存储的直接就是对象地址。 优点：速度更快，节省一次指针定位的时间开销。 垃圾收集器与内存分配策略 引用计数算法 判断对象是否存活的算法： 给对象添加一个引用计数器，每当有一个地方引用它，计数器值加1；当引用失效时，计数器值减1；任何时刻计数器为0的对象就不可能再被使用。
+但JAVA虚拟机中并未采用该算法来管理内存。 例：对象A和B都有字段instance，赋值令A.instance=B及B.instance=A，除此之外两个对象无任何引用，实际上两个对象已经不可能再被访问，但因为互相引用着对方，导致引用计数都不为0，引用计数算法无法通知GC收集器回收。但执行System.gc()时，A、B将被正常回收，说明虚拟机并未采用引用计数算法。
+可达性分析算法 通过GC Roots对象作为起始点，向下搜索节点，搜索走过的路径称为引用链，当一个对象到GC Roots没有任何引用链项链时，证明此对象不可用。 如下图，obj5、obj6、obj7虽然互相关联，但到GC Roots不可达，所以将被判定为可回收对象。 JAVA中可作为GC Roots的对象包括以下几种： * 虚拟机栈（栈帧中的本地变量表）中引用的对象 * 方法区中类静态属性引用的对象 * 方法区中常量引用的对象 * 本地方法栈中Native方法引用的对象
+引用强度 强引用 类似“Object obj = new Object()”这类的引用，只要强引用在，垃圾收集器永远不会回收掉被引用的对象。
+软引用 有用但并非必需的对象。系统将要发生内存溢出异常之前，这些对象将被列入回收范围进行第二次回收。如果这次回收没有足够内存，才会抛出内存溢出异常。提供SoftReference类实现软引用。",
+    "inLanguage" : "en-us",
+    "author" : "Kuma2x",
+    "creator" : "Kuma2x",
+    "publisher": "Kuma2x",
+    "accountablePerson" : "Kuma2x",
+    "copyrightHolder" : "Kuma2x",
+    "copyrightYear" : "2018",
+    "datePublished": "2018-06-07 20:40:26 &#43;0000 UTC",
+    "dateModified" : "2018-06-07 20:40:26 &#43;0000 UTC",
+    "url" : "http://boseman1024.github.io/2018/java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%94%E8%AE%B0/",
+    "wordCount" : "442",
+    "keywords" : [ "JAVA", "KUMA2X"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://boseman1024.github.io/">KUMA2X</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://boseman1024.github.io/">KUMA2X</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">JAVA虚拟机笔记</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="http://boseman1024.github.io/" rel="author">Kuma2x</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2018-06-07 itemprop="datePublished">June 7, 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="http://boseman1024.github.io/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="java内存区域">JAVA内存区域</h1>
+
+<p><img src="http://otho0rxyj.bkt.clouddn.com/image/blog/JVM/RuntimeDataArea.jpg"></p>
+
+<h2 id="程序计数器">程序计数器</h2>
+
+<p>*程序计数器（Program Counter Register）*是当前线程所执行的字节码的行号指示器，通过计数器的值选取下一条需要执行的字节码指令（java方法）。 <em>可参考《计算机系统组成》</em>
+每个线程都需要一个独立的程序计数器，各线程间计数器互不影响，独立储存，称之为“<code>线程私有</code>”的内存。</p>
+
+<h2 id="java虚拟机栈">JAVA虚拟机栈</h2>
+
+<p>*JAVA虚拟机栈（Java Virtual Machine Stacks）*描述的是JAVA方法执行的内存模型：每个方法执行的同时会创建一个<code>栈帧</code>，用于存储局部变量表、操作数栈、动态链接、方法出口等信息。每个方法从调用到执行完成的过程，就对应着一个栈帧在虚拟机栈中入栈出栈的过程。
+同时其也是<code>线程私有</code>，生命周期与线程相同。
+其中<code>局部变量表</code>，存放了编译器可知的各种<code>基本数据</code>类型（boolean、byte、char、short、int、float、long、double）、<code>对象引用</code>类型（reference类型，可能是指向对象起始地址的引用指针，也可能是指向一个代表对象的句柄或其他与此对象相关的位置）和<code>returnAddress</code>类型（指向一条字节码指令的地址）。其中64位长度的long和double类型数据占用2个局部变量空间（slot），其余只占用1个。
+局部变量表<code>所需的内存空间</code>在编译期间完成分配，当进入一个方法时，需要在帧中分配多大的局部变量空间时完全确定的，在方法执行期间不会改变局部变量表大小。</p>
+
+<h2 id="本地方法栈">本地方法栈</h2>
+
+<p>*本地方法栈（Native Method Stack）*于虚拟机栈相似，但其为虚拟机使用到的Native方法服务。在JVM规范中，并没有对本地方发展的具体实现方法以及数据结构作强制规定，虚拟机可以自由实现它。在HotSopt虚拟机中直接就把本地方法栈和Java虚拟机栈合二为一。</p>
+
+<h2 id="java堆">JAVA堆</h2>
+
+<p>*JAVA堆（JAVA Heap）*被所有线程共享的一块内存区域，在虚拟机启动时创建，被用于存放对象实例，是垃圾收集器管理的主要区域。</p>
+
+<h2 id="方法区">方法区</h2>
+
+<p>*方法区（Method Area）*与Java堆一样，是各个线程共享的内存区域，用于储存已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。被称为<code>永久代</code>，垃圾回收行为在该区域是相对较少出现的。
+*运行常量池（Runtime Constant Pool）*是方法区的一部分，Class文件中除了有类的版本、字段、方法、接口等描述信息外，还有一项是常量池，用于存放编译期生成的各种字面量和符号引用。</p>
+
+<h2 id="直接内存">直接内存</h2>
+
+<p>直接内存（Direct Memory）并不是虚拟机运行时数据区的一部分，也不是JAVA虚拟机规范中定义的内存区域。但这部分也被频繁使用，也可能导致OutOfMemoryError异常出现。直接内存的分配不受JAVA堆大小的限制，但是还是会受到本机总内存大小以及处理器寻址空间的限制。</p>
+
+<h2 id="对象的访问定位">对象的访问定位</h2>
+
+<h3 id="使用句柄">使用句柄</h3>
+
+<p>JAVA堆中会划分出一块内存作为句柄池，reference中存储的就是对象的句柄地址，句柄中包含对象实例数据和类型数据各自的具体地址信息。
+优点：稳定，对象被移动只会改变句柄中实例数据指针，而reference本身不需要修改。
+<img src="http://otho0rxyj.bkt.clouddn.com/image/blog/JVM/bing.jpg"></p>
+
+<h3 id="直接指针">直接指针</h3>
+
+<p>reference中存储的直接就是对象地址。
+优点：速度更快，节省一次指针定位的时间开销。
+<img src="http://otho0rxyj.bkt.clouddn.com/image/blog/JVM/direct.jpg"></p>
+
+<hr />
+
+<h1 id="垃圾收集器与内存分配策略">垃圾收集器与内存分配策略</h1>
+
+<h2 id="引用计数算法">引用计数算法</h2>
+
+<p>判断对象是否存活的算法：
+给对象添加一个引用计数器，每当有一个地方引用它，计数器值加1；当引用失效时，计数器值减1；任何时刻计数器为0的对象就不可能再被使用。</p>
+
+<p>但JAVA虚拟机中并未采用该算法来管理内存。
+例：对象<code>A</code>和<code>B</code>都有字段<code>instance</code>，赋值令<code>A.instance=B</code>及<code>B.instance=A</code>，除此之外两个对象无任何引用，实际上两个对象已经不可能再被访问，但因为互相引用着对方，导致引用计数都不为0，引用计数算法无法通知GC收集器回收。但执行<code>System.gc()</code>时，A、B将被正常回收，说明虚拟机并未采用引用计数算法。</p>
+
+<h2 id="可达性分析算法">可达性分析算法</h2>
+
+<p>通过<code>GC Roots</code>对象作为起始点，向下搜索节点，搜索走过的路径称为<code>引用链</code>，当一个对象到<code>GC Roots</code>没有任何引用链项链时，证明此对象不可用。
+如下图，obj5、obj6、obj7虽然互相关联，但到<code>GC Roots</code>不可达，所以将被判定为可回收对象。
+<img src="http://otho0rxyj.bkt.clouddn.com/image/blog/JVM/reachability.jpg">
+JAVA中可作为<code>GC Roots</code>的对象包括以下几种：
+* 虚拟机栈（栈帧中的本地变量表）中引用的对象
+* 方法区中类静态属性引用的对象
+* 方法区中常量引用的对象
+* 本地方法栈中Native方法引用的对象</p>
+
+<h2 id="引用强度">引用强度</h2>
+
+<h3 id="强引用">强引用</h3>
+
+<p>类似“Object obj = new Object()”这类的引用，只要强引用在，垃圾收集器永远不会回收掉被引用的对象。</p>
+
+<h3 id="软引用">软引用</h3>
+
+<p>有用但并非必需的对象。系统将要发生内存溢出异常之前，这些对象将被列入回收范围进行第二次回收。如果这次回收没有足够内存，才会抛出内存溢出异常。提供<code>SoftReference</code>类实现软引用。</p>
+
+<h3 id="弱引用">弱引用</h3>
+
+<p>非必需对象，强度比软引用更弱一些，弱引用关联的对象只能够生存到下一次垃圾收集发生之前。当垃圾收集器工作时，无论当前内存是否够用，都会回收掉只被弱引用关联的对象。提供<code>WeakReference</code>类实现弱引用。</p>
+
+<h3 id="虚引用">虚引用</h3>
+
+<p>也称幽灵引用、幻影引用，是最弱的引用关系。对象是否虚引用不对其生成时间有影响，也无法通过虚引用取得对象实例。唯一目的是对象被收集器回收时受到一个系统通知。提供<code>PhantomReference</code>类实现虚引用。</p>
+
+<h2 id="死亡与否">死亡与否</h2>
+
+<p>一个对象死亡要经历两次标记过程，如果一个对象没有与<code>GC Roots</code>相连接的引用链，那它将被第一次标记，并且筛选此对象有无必要执行<code>finalize()</code>方法。若该对象在<code>finalize()</code>方法中与任何引用链上的对象建立关联，则移出回收集合，否则将被回收。
+任何一个对象的<code>finalize()</code>方法只会被系统调用一次，第一次时被救回，下次回收将不再执行，回收自救将失败。
+在JAVA中并不推荐使用<code>finalize()</code>方法。</p>
+
+<h2 id="垃圾收集算法">垃圾收集算法</h2>
+
+<h3 id="标记-清除算法">标记-清除算法</h3>
+
+<p>标记出所有需要回收的对象，标记完成后统一回收所有被标记对象。
+缺点：
+* 效率问题，标记、清除两个过程效率不高
+* 空间问题，标记、清除后将会产生大量不连续的内存碎片</p>
+
+<h3 id="复制算法">复制算法</h3>
+
+<p>将内存划分为等大容量的两块，每次只使用其中一块。当一块内存用完了，将存活对象复制到另一块内存上，再将已被使用过的内存空间一次清理掉，每次都对整个半区进行内存回收。实现简单，运行高效，但代价过高，将只使用内存的一半。</p>
+
+<h3 id="标记-整理算法">标记-整理算法</h3>
+
+<p>标记出所有需要回收的对象，将所有存活的对象往一端移动，然后直接清除端边界外的内存。</p>
+
+<hr />
+
+<h1 id="类加载">类加载</h1>
+
+<h2 id="生命周期">生命周期</h2>
+
+<p>类被加载到虚拟机内存开始，到卸载出内存为止，整个生命周期包括：
+<code>加载</code>-&gt;<code>验证</code>-&gt;<code>准备</code>-&gt;<code>解析</code>-&gt;<code>初始化</code>-&gt;<code>使用</code>-&gt;<code>卸载</code></p>
+
+<h2 id="触发类初始化的五种情况">触发类初始化的五种情况</h2>
+
+<p><code>主动引用</code>：
+1. 遇到<code>new</code>、<code>getstatic</code>、<code>putstatic</code>或<code>invokestatic</code>这4条字节码指令时，如果类没有初始化，则需要先触发其初始化。
+场景：
+ 使用<code>new</code>关键字实例化对象；
+ 读取或设置一个类的静态变量（被<code>final</code>修饰、已在编译期把结果放入常量池的静态变量除外）；
+ 调用一个类的静态方法。
+2. 使用<code>java.lang.reflect</code>包的方法对类进行反射调用的时候，如果类没有进行过初始化，则需要先触发其初始化。
+3. 当初始化一个类的时候，其父类还未初始化，则先触发其父类初始化。（但一个接口初始化的时候，并不要求父类接口全部完成初始化，只有在真正使用到父接口的时候才会初始化，如引用接口中定义的常量的时候）
+4. 当虚拟机启动时，用户需要指定一个要执行的类（包含<code>main()</code>方法的那个类），虚拟机会先初始化这个主类。
+5. 当使用<code>JDK1.7</code>的动态语言支持时，如果一个<code>java.lang.invoke.MethodHandle</code>实例最后解析的结果<code>REF_getStatic</code>、<code>REF_putStatic</code>、<code>REF_invokeStatic</code>的方法句柄，并且这个方法的句柄所对应的类还未初始化过，则需要先触发其初始化。</p>
+
+<p>初次之外引用类的方式都不会触发初始化，称为<code>被动引用</code>。
+例1：</p>
+
+<pre><code class="language-java">public class SuperClass{
+    static{
+        System.out.println(&quot;init SuperClass&quot;);
+    }
+    public static int value = 123;
+}
+public class SubClass extends SuperClass{
+    static{
+        System.out.println(&quot;init SubClass&quot;);
+    }
+}
+
+System.out.println(SubClass.value);
+//结果：
+//init SuperClass
+//对于静态变量，只有直接定义这个字段的类才会被初始化
+//因此通过其子类引用父类中定义的静态变量，只会触发父类的初始化而不会触发子类的初始化。
+</code></pre>
+
+<p>例2：</p>
+
+<pre><code class="language-java">public class ConstClass{
+    static{
+        System.out.println(&quot;init ConstClass&quot;);
+    }
+    public static final String HELLOWORLD = &quot;hello world&quot;;
+}
+public class NotInitialization{
+    public static void main(String[] args) {
+        System.out.println(ConstClass.HELLOWORLD);
+    }
+}
+//结果：
+//hello world
+//ConstClass并未被初始化
+//在编译阶段HELLOWORLD的值被存储到NotInitialization类的常量池中，
+//以后NotInitialization对常量ConstClass.HELLOWORLD的引用实际都转化为NotInitialization类对自身常量池的引用。
+//实际上，NotInitialization的class文件并没有ConstClass类的符号引入入口，
+//在编译成class后两个类不存在任何联系。
+</code></pre>
+
+<h1 id="分派">分派</h1>
+
+<h2 id="静态分派">静态分派</h2>
+
+<p>编译器在编译程序时并不知道一个对象的实际类型，在重载时是通过参数的静态类型而不是实际类型作为判断依据的。
+实际类型的变化在运行期才能确定，而静态类型是编译期可知的。
+<code>Human man = new Man();</code>其中<code>Human</code>为静态类型或外观类型，而<code>Man</code>为实际类型。</p>
+
+<pre><code class="language-java">public class StaticDispatch{
+
+    static abstract class Human{}
+
+    static class Man extends Human{}
+    static class Woman extends Human{}
+
+    public void sayHello(Human guy){
+        System.out.println(&quot;hello,guy!&quot;);
+    }
+    public void sayHello(Man guy){
+        System.out.println(&quot;hello,man!&quot;);
+    }
+    public void sayHello(Woman guy){
+        System.out.println(&quot;hello,woman!&quot;);
+    }
+    public static void main(String args[]){
+        Human man = new Man();
+        Human woman = new Woman();
+        StaticDispatch sd = new StaticDispatch();
+        sd.sayHello(man);
+        sd.sayHello(woman);
+    }
+    //结果：
+    //hello,guy!
+    //hello,guy!
+    //
+    //注释public void sayHello(Human guy)后，eclipse报错：
+    //The method sayHello(StaticDispatch.Man) in the type StaticDispatch is not applicable for the arguments (StaticDispatch.Human)
+    //找不到匹配参数的方法。
+}
+</code></pre>
+
+<h3 id="重载方法匹配优先级">重载方法匹配优先级</h3>
+
+<pre><code class="language-java">public class Overload{
+    public static void sayHello(Object arg){
+        System.out.println(&quot;hello Object&quot;);
+    }
+    public static void sayHello(int arg){
+        System.out.println(&quot;hello int&quot;);
+    }
+    public static void sayHello(long arg){
+        System.out.println(&quot;hello long&quot;);
+    }
+    public static void sayHello(char arg){
+        System.out.println(&quot;hello char&quot;);
+    }
+    public static void sayHello(char... arg){
+        System.out.println(&quot;hello char...&quot;);
+    }
+    public static void sayHello(Character arg){
+        System.out.println(&quot;hello Character&quot;);
+    }
+    public static void sayHello(Serializable arg){
+        System.out.println(&quot;hello Serializable&quot;);
+    }
+    public static void main(String args[]){
+        sysHello('a');
+    }
+    //结果：
+    //hello char
+    //注释sayHello(char arg)，char将按照char-&gt;int-&gt;long-&gt;float-&gt;double顺序转型，但不会匹配到byte和short的重载，因为char到byte或short转型并不安全：
+    //hello int
+    //注释sayHello(int arg)
+    //hello long
+    //注释sayHello(long arg)，发生自动装箱：
+    //hello Character
+    //注释sayHello(Character arg)，java.lang.Serializable是java.lang.Character类实现的一个接口，自动装箱后找不到装箱类，但找到了装箱类实现的接口类型，再一次自动转型：
+    //hello Serializable
+    //注释sayHello(Serializable arg)，char装箱后转型为父类了，多个父类则从继承关系从下往上搜索，越接近上层优先级越低：
+    //hello Object
+    //注释sayHello(Object arg)，可变长参数的优先级别是最低的：
+    //hello char...
+}
+
+</code></pre>
+
+<h2 id="动态分派">动态分派</h2>
+
+<p>运行期根据实际类型确定方法执行版本的分派过程称之为<code>动态分派</code>。</p>
+
+<pre><code class="language-java">public class DynamicDispatch{
+    static abstract class Human{
+        protected abstract void sayHello();
+    }
+    static class Man extends Human{
+        @Override
+        protected void sayHello(){
+            System.out.println(&quot;man say hello&quot;);
+        }
+    }
+    static class Woman extends Human{
+        @Override
+        protected void sayHello(){
+            System.out.println(&quot;woman say hello&quot;);
+        }
+    }
+    public static void main(String[] args) {
+        Human man = new Man();
+        Human woman = new Woman();
+        man.sayHello();
+        woman.sayHello();
+        man = new Woman();
+        woman.sayHello();
+    }
+    //结果：
+    //man say hello
+    //woman say hello
+    //woman say hello
+}
+</code></pre>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kuma2x </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=http://boseman1024.github.io/2018/java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%94%E8%AE%B0/>http://boseman1024.github.io/2018/java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%94%E8%AE%B0/</span>
+            </p>
+            
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="http://boseman1024.github.io/tags/java/">
+                    #JAVA</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="http://boseman1024.github.io/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="http://boseman1024.github.io/2018/%E5%9B%BE%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" class="prev" rel="prev" title="图总结及代码实现"><i class="iconfont icon-left"></i>&nbsp;图总结及代码实现</a>
+         
+        
+        <a href="http://boseman1024.github.io/2018/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/" class="next" rel="next" title="排序算法整理">排序算法整理&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2018 - 2018</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="http://boseman1024.github.io/">Kuma2x</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kuma2x">
+  
+  
+  
+  <link rel="prev" href="http://boseman1024.github.io/2018/java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%94%E8%AE%B0/" />
+  
+  <link rel="canonical" href="http://boseman1024.github.io/2018/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           排序算法整理 | KUMA2X
+       
+  </title>
+  <meta name="title" content="排序算法整理 | KUMA2X">
+    
+
+  <link rel="stylesheet" href="http://boseman1024.github.io/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "http://boseman1024.github.io/"
+    },
+    "articleSection" : "posts",
+    "name" : "排序算法整理",
+    "headline" : "排序算法整理",
+    "description" : "冒泡排序 public static void Bubble(int num[]) { for(int i=0;i&lt;num.length-1;i++) { for(int j=0;j&lt;num.length-i-1;j++) { if(num[j]&gt;num[j+1]) { int temp = num[j+1]; num[j+1] = num[j]; num[j] = temp; } } } }  选择排序 public static void Selection(int num[]) { for(int i=0;i&lt;num.length;i++) { //最小元素的下标 int min = i; //找出最小元素 for(int j=i;j&lt;num.length;j++) { if(num[j]&lt;num[min]) { min = j; } } //交换元素 int temp = num[i]; num[i] = num[min]; num[min] = temp; } show(num); }  插入排序 直接插入排序 public static void StraightInsert(int num[]) { for(int i=1;i&lt;num.",
+    "inLanguage" : "en-us",
+    "author" : "Kuma2x",
+    "creator" : "Kuma2x",
+    "publisher": "Kuma2x",
+    "accountablePerson" : "Kuma2x",
+    "copyrightHolder" : "Kuma2x",
+    "copyrightYear" : "2018",
+    "datePublished": "2018-06-14 13:56:22 &#43;0000 UTC",
+    "dateModified" : "2018-06-14 13:56:22 &#43;0000 UTC",
+    "url" : "http://boseman1024.github.io/2018/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/",
+    "wordCount" : "153",
+    "keywords" : [ "数据结构与算法","JAVA", "KUMA2X"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://boseman1024.github.io/">KUMA2X</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://boseman1024.github.io/">KUMA2X</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">排序算法整理</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="http://boseman1024.github.io/" rel="author">Kuma2x</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2018-06-14 itemprop="datePublished">June 14, 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="http://boseman1024.github.io/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h2 id="冒泡排序">冒泡排序</h2>
+
+<pre><code class="language-java">public static void Bubble(int num[]) {
+    for(int i=0;i&lt;num.length-1;i++) {
+        for(int j=0;j&lt;num.length-i-1;j++) {
+            if(num[j]&gt;num[j+1]) {
+                int temp = num[j+1];
+                num[j+1] = num[j];
+                num[j] = temp;
+            }
+        }
+    }
+}
+</code></pre>
+
+<hr />
+
+<h2 id="选择排序">选择排序</h2>
+
+<pre><code class="language-java">public static void Selection(int num[]) {
+    for(int i=0;i&lt;num.length;i++) {
+        //最小元素的下标
+        int min = i;
+        //找出最小元素
+        for(int j=i;j&lt;num.length;j++) {
+            if(num[j]&lt;num[min]) {
+                min = j;
+            }
+        }
+        //交换元素
+        int temp = num[i];
+        num[i] = num[min];
+        num[min] = temp;
+    }
+    show(num);
+}
+</code></pre>
+
+<hr />
+
+<h2 id="插入排序">插入排序</h2>
+
+<h3 id="直接插入排序">直接插入排序</h3>
+
+<pre><code class="language-java">public static void StraightInsert(int num[]) {
+    for(int i=1;i&lt;num.length;i++) {
+        int temp = num[i];
+        int j=i;
+        while(j&gt;0&amp;&amp;temp&lt;num[j-1]) {
+            num[j] = num[j-1];
+            j--;
+        }
+        num[j]=temp;
+    }
+}
+</code></pre>
+
+<hr />
+
+<h3 id="二分插入排序">二分插入排序</h3>
+
+<pre><code class="language-java">public static void DichotomyInsert(int num[]) {
+    for(int i=1;i&lt;num.length;i++) {
+        int low = 0;
+        int high = i-1;
+        int temp = num[i];
+        while(low&lt;=high) {
+            int mid = (high+low)/2; //取中间点
+            if(temp&gt;num[mid]) {
+                low = mid+1; //插入点在右半区间
+            }else {
+                high = mid-1; //插入点在左半区间
+            }
+        }
+        //插入点在low，low到i为止的所有元素向右移动一位
+        for(int j=i-1;j&gt;=low;j--) {
+            num[j+1] = num[j];
+        }
+        //插入low位置
+        num[low] = temp;
+    }
+}
+</code></pre>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kuma2x </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=http://boseman1024.github.io/2018/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/>http://boseman1024.github.io/2018/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/</span>
+            </p>
+            
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="http://boseman1024.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
+                    #数据结构与算法</a></span>
+            
+            <span class="tag"><a href="http://boseman1024.github.io/tags/java/">
+                    #JAVA</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="http://boseman1024.github.io/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="http://boseman1024.github.io/2018/java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%94%E8%AE%B0/" class="prev" rel="prev" title="JAVA虚拟机笔记"><i class="iconfont icon-left"></i>&nbsp;JAVA虚拟机笔记</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2018 - 2018</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="http://boseman1024.github.io/">Kuma2x</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

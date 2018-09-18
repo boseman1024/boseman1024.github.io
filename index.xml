@@ -1,0 +1,2576 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>KUMA2X on KUMA2X</title>
+    <link>http://boseman1024.github.io/</link>
+    <description>Recent content in KUMA2X on KUMA2X</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 14 Jun 2018 13:56:22 +0000</lastBuildDate>
+    <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>排序算法整理</title>
+      <link>http://boseman1024.github.io/2018/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/</link>
+      <pubDate>Thu, 14 Jun 2018 13:56:22 +0000</pubDate>
+      
+      <guid>http://boseman1024.github.io/2018/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/</guid>
+      <description>
+
+&lt;h2 id=&#34;冒泡排序&#34;&gt;冒泡排序&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public static void Bubble(int num[]) {
+    for(int i=0;i&amp;lt;num.length-1;i++) {
+        for(int j=0;j&amp;lt;num.length-i-1;j++) {
+            if(num[j]&amp;gt;num[j+1]) {
+                int temp = num[j+1];
+                num[j+1] = num[j];
+                num[j] = temp;
+            }
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;选择排序&#34;&gt;选择排序&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public static void Selection(int num[]) {
+    for(int i=0;i&amp;lt;num.length;i++) {
+        //最小元素的下标
+        int min = i;
+        //找出最小元素
+        for(int j=i;j&amp;lt;num.length;j++) {
+            if(num[j]&amp;lt;num[min]) {
+                min = j;
+            }
+        }
+        //交换元素
+        int temp = num[i];
+        num[i] = num[min];
+        num[min] = temp;
+    }
+    show(num);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;插入排序&#34;&gt;插入排序&lt;/h2&gt;
+
+&lt;h3 id=&#34;直接插入排序&#34;&gt;直接插入排序&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public static void StraightInsert(int num[]) {
+    for(int i=1;i&amp;lt;num.length;i++) {
+        int temp = num[i];
+        int j=i;
+        while(j&amp;gt;0&amp;amp;&amp;amp;temp&amp;lt;num[j-1]) {
+            num[j] = num[j-1];
+            j--;
+        }
+        num[j]=temp;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;二分插入排序&#34;&gt;二分插入排序&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public static void DichotomyInsert(int num[]) {
+    for(int i=1;i&amp;lt;num.length;i++) {
+        int low = 0;
+        int high = i-1;
+        int temp = num[i];
+        while(low&amp;lt;=high) {
+            int mid = (high+low)/2; //取中间点
+            if(temp&amp;gt;num[mid]) {
+                low = mid+1; //插入点在右半区间
+            }else {
+                high = mid-1; //插入点在左半区间
+            }
+        }
+        //插入点在low，low到i为止的所有元素向右移动一位
+        for(int j=i-1;j&amp;gt;=low;j--) {
+            num[j+1] = num[j];
+        }
+        //插入low位置
+        num[low] = temp;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>JAVA虚拟机笔记</title>
+      <link>http://boseman1024.github.io/2018/java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Thu, 07 Jun 2018 20:40:26 +0000</pubDate>
+      
+      <guid>http://boseman1024.github.io/2018/java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%94%E8%AE%B0/</guid>
+      <description>
+
+&lt;h1 id=&#34;java内存区域&#34;&gt;JAVA内存区域&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/JVM/RuntimeDataArea.jpg&#34;&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;程序计数器&#34;&gt;程序计数器&lt;/h2&gt;
+
+&lt;p&gt;*程序计数器（Program Counter Register）*是当前线程所执行的字节码的行号指示器，通过计数器的值选取下一条需要执行的字节码指令（java方法）。 &lt;em&gt;可参考《计算机系统组成》&lt;/em&gt;
+每个线程都需要一个独立的程序计数器，各线程间计数器互不影响，独立储存，称之为“&lt;code&gt;线程私有&lt;/code&gt;”的内存。&lt;/p&gt;
+
+&lt;h2 id=&#34;java虚拟机栈&#34;&gt;JAVA虚拟机栈&lt;/h2&gt;
+
+&lt;p&gt;*JAVA虚拟机栈（Java Virtual Machine Stacks）*描述的是JAVA方法执行的内存模型：每个方法执行的同时会创建一个&lt;code&gt;栈帧&lt;/code&gt;，用于存储局部变量表、操作数栈、动态链接、方法出口等信息。每个方法从调用到执行完成的过程，就对应着一个栈帧在虚拟机栈中入栈出栈的过程。
+同时其也是&lt;code&gt;线程私有&lt;/code&gt;，生命周期与线程相同。
+其中&lt;code&gt;局部变量表&lt;/code&gt;，存放了编译器可知的各种&lt;code&gt;基本数据&lt;/code&gt;类型（boolean、byte、char、short、int、float、long、double）、&lt;code&gt;对象引用&lt;/code&gt;类型（reference类型，可能是指向对象起始地址的引用指针，也可能是指向一个代表对象的句柄或其他与此对象相关的位置）和&lt;code&gt;returnAddress&lt;/code&gt;类型（指向一条字节码指令的地址）。其中64位长度的long和double类型数据占用2个局部变量空间（slot），其余只占用1个。
+局部变量表&lt;code&gt;所需的内存空间&lt;/code&gt;在编译期间完成分配，当进入一个方法时，需要在帧中分配多大的局部变量空间时完全确定的，在方法执行期间不会改变局部变量表大小。&lt;/p&gt;
+
+&lt;h2 id=&#34;本地方法栈&#34;&gt;本地方法栈&lt;/h2&gt;
+
+&lt;p&gt;*本地方法栈（Native Method Stack）*于虚拟机栈相似，但其为虚拟机使用到的Native方法服务。在JVM规范中，并没有对本地方发展的具体实现方法以及数据结构作强制规定，虚拟机可以自由实现它。在HotSopt虚拟机中直接就把本地方法栈和Java虚拟机栈合二为一。&lt;/p&gt;
+
+&lt;h2 id=&#34;java堆&#34;&gt;JAVA堆&lt;/h2&gt;
+
+&lt;p&gt;*JAVA堆（JAVA Heap）*被所有线程共享的一块内存区域，在虚拟机启动时创建，被用于存放对象实例，是垃圾收集器管理的主要区域。&lt;/p&gt;
+
+&lt;h2 id=&#34;方法区&#34;&gt;方法区&lt;/h2&gt;
+
+&lt;p&gt;*方法区（Method Area）*与Java堆一样，是各个线程共享的内存区域，用于储存已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。被称为&lt;code&gt;永久代&lt;/code&gt;，垃圾回收行为在该区域是相对较少出现的。
+*运行常量池（Runtime Constant Pool）*是方法区的一部分，Class文件中除了有类的版本、字段、方法、接口等描述信息外，还有一项是常量池，用于存放编译期生成的各种字面量和符号引用。&lt;/p&gt;
+
+&lt;h2 id=&#34;直接内存&#34;&gt;直接内存&lt;/h2&gt;
+
+&lt;p&gt;直接内存（Direct Memory）并不是虚拟机运行时数据区的一部分，也不是JAVA虚拟机规范中定义的内存区域。但这部分也被频繁使用，也可能导致OutOfMemoryError异常出现。直接内存的分配不受JAVA堆大小的限制，但是还是会受到本机总内存大小以及处理器寻址空间的限制。&lt;/p&gt;
+
+&lt;h2 id=&#34;对象的访问定位&#34;&gt;对象的访问定位&lt;/h2&gt;
+
+&lt;h3 id=&#34;使用句柄&#34;&gt;使用句柄&lt;/h3&gt;
+
+&lt;p&gt;JAVA堆中会划分出一块内存作为句柄池，reference中存储的就是对象的句柄地址，句柄中包含对象实例数据和类型数据各自的具体地址信息。
+优点：稳定，对象被移动只会改变句柄中实例数据指针，而reference本身不需要修改。
+&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/JVM/bing.jpg&#34;&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;直接指针&#34;&gt;直接指针&lt;/h3&gt;
+
+&lt;p&gt;reference中存储的直接就是对象地址。
+优点：速度更快，节省一次指针定位的时间开销。
+&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/JVM/direct.jpg&#34;&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;垃圾收集器与内存分配策略&#34;&gt;垃圾收集器与内存分配策略&lt;/h1&gt;
+
+&lt;h2 id=&#34;引用计数算法&#34;&gt;引用计数算法&lt;/h2&gt;
+
+&lt;p&gt;判断对象是否存活的算法：
+给对象添加一个引用计数器，每当有一个地方引用它，计数器值加1；当引用失效时，计数器值减1；任何时刻计数器为0的对象就不可能再被使用。&lt;/p&gt;
+
+&lt;p&gt;但JAVA虚拟机中并未采用该算法来管理内存。
+例：对象&lt;code&gt;A&lt;/code&gt;和&lt;code&gt;B&lt;/code&gt;都有字段&lt;code&gt;instance&lt;/code&gt;，赋值令&lt;code&gt;A.instance=B&lt;/code&gt;及&lt;code&gt;B.instance=A&lt;/code&gt;，除此之外两个对象无任何引用，实际上两个对象已经不可能再被访问，但因为互相引用着对方，导致引用计数都不为0，引用计数算法无法通知GC收集器回收。但执行&lt;code&gt;System.gc()&lt;/code&gt;时，A、B将被正常回收，说明虚拟机并未采用引用计数算法。&lt;/p&gt;
+
+&lt;h2 id=&#34;可达性分析算法&#34;&gt;可达性分析算法&lt;/h2&gt;
+
+&lt;p&gt;通过&lt;code&gt;GC Roots&lt;/code&gt;对象作为起始点，向下搜索节点，搜索走过的路径称为&lt;code&gt;引用链&lt;/code&gt;，当一个对象到&lt;code&gt;GC Roots&lt;/code&gt;没有任何引用链项链时，证明此对象不可用。
+如下图，obj5、obj6、obj7虽然互相关联，但到&lt;code&gt;GC Roots&lt;/code&gt;不可达，所以将被判定为可回收对象。
+&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/JVM/reachability.jpg&#34;&gt;
+JAVA中可作为&lt;code&gt;GC Roots&lt;/code&gt;的对象包括以下几种：
+* 虚拟机栈（栈帧中的本地变量表）中引用的对象
+* 方法区中类静态属性引用的对象
+* 方法区中常量引用的对象
+* 本地方法栈中Native方法引用的对象&lt;/p&gt;
+
+&lt;h2 id=&#34;引用强度&#34;&gt;引用强度&lt;/h2&gt;
+
+&lt;h3 id=&#34;强引用&#34;&gt;强引用&lt;/h3&gt;
+
+&lt;p&gt;类似“Object obj = new Object()”这类的引用，只要强引用在，垃圾收集器永远不会回收掉被引用的对象。&lt;/p&gt;
+
+&lt;h3 id=&#34;软引用&#34;&gt;软引用&lt;/h3&gt;
+
+&lt;p&gt;有用但并非必需的对象。系统将要发生内存溢出异常之前，这些对象将被列入回收范围进行第二次回收。如果这次回收没有足够内存，才会抛出内存溢出异常。提供&lt;code&gt;SoftReference&lt;/code&gt;类实现软引用。&lt;/p&gt;
+
+&lt;h3 id=&#34;弱引用&#34;&gt;弱引用&lt;/h3&gt;
+
+&lt;p&gt;非必需对象，强度比软引用更弱一些，弱引用关联的对象只能够生存到下一次垃圾收集发生之前。当垃圾收集器工作时，无论当前内存是否够用，都会回收掉只被弱引用关联的对象。提供&lt;code&gt;WeakReference&lt;/code&gt;类实现弱引用。&lt;/p&gt;
+
+&lt;h3 id=&#34;虚引用&#34;&gt;虚引用&lt;/h3&gt;
+
+&lt;p&gt;也称幽灵引用、幻影引用，是最弱的引用关系。对象是否虚引用不对其生成时间有影响，也无法通过虚引用取得对象实例。唯一目的是对象被收集器回收时受到一个系统通知。提供&lt;code&gt;PhantomReference&lt;/code&gt;类实现虚引用。&lt;/p&gt;
+
+&lt;h2 id=&#34;死亡与否&#34;&gt;死亡与否&lt;/h2&gt;
+
+&lt;p&gt;一个对象死亡要经历两次标记过程，如果一个对象没有与&lt;code&gt;GC Roots&lt;/code&gt;相连接的引用链，那它将被第一次标记，并且筛选此对象有无必要执行&lt;code&gt;finalize()&lt;/code&gt;方法。若该对象在&lt;code&gt;finalize()&lt;/code&gt;方法中与任何引用链上的对象建立关联，则移出回收集合，否则将被回收。
+任何一个对象的&lt;code&gt;finalize()&lt;/code&gt;方法只会被系统调用一次，第一次时被救回，下次回收将不再执行，回收自救将失败。
+在JAVA中并不推荐使用&lt;code&gt;finalize()&lt;/code&gt;方法。&lt;/p&gt;
+
+&lt;h2 id=&#34;垃圾收集算法&#34;&gt;垃圾收集算法&lt;/h2&gt;
+
+&lt;h3 id=&#34;标记-清除算法&#34;&gt;标记-清除算法&lt;/h3&gt;
+
+&lt;p&gt;标记出所有需要回收的对象，标记完成后统一回收所有被标记对象。
+缺点：
+* 效率问题，标记、清除两个过程效率不高
+* 空间问题，标记、清除后将会产生大量不连续的内存碎片&lt;/p&gt;
+
+&lt;h3 id=&#34;复制算法&#34;&gt;复制算法&lt;/h3&gt;
+
+&lt;p&gt;将内存划分为等大容量的两块，每次只使用其中一块。当一块内存用完了，将存活对象复制到另一块内存上，再将已被使用过的内存空间一次清理掉，每次都对整个半区进行内存回收。实现简单，运行高效，但代价过高，将只使用内存的一半。&lt;/p&gt;
+
+&lt;h3 id=&#34;标记-整理算法&#34;&gt;标记-整理算法&lt;/h3&gt;
+
+&lt;p&gt;标记出所有需要回收的对象，将所有存活的对象往一端移动，然后直接清除端边界外的内存。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;类加载&#34;&gt;类加载&lt;/h1&gt;
+
+&lt;h2 id=&#34;生命周期&#34;&gt;生命周期&lt;/h2&gt;
+
+&lt;p&gt;类被加载到虚拟机内存开始，到卸载出内存为止，整个生命周期包括：
+&lt;code&gt;加载&lt;/code&gt;-&amp;gt;&lt;code&gt;验证&lt;/code&gt;-&amp;gt;&lt;code&gt;准备&lt;/code&gt;-&amp;gt;&lt;code&gt;解析&lt;/code&gt;-&amp;gt;&lt;code&gt;初始化&lt;/code&gt;-&amp;gt;&lt;code&gt;使用&lt;/code&gt;-&amp;gt;&lt;code&gt;卸载&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;触发类初始化的五种情况&#34;&gt;触发类初始化的五种情况&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;主动引用&lt;/code&gt;：
+1. 遇到&lt;code&gt;new&lt;/code&gt;、&lt;code&gt;getstatic&lt;/code&gt;、&lt;code&gt;putstatic&lt;/code&gt;或&lt;code&gt;invokestatic&lt;/code&gt;这4条字节码指令时，如果类没有初始化，则需要先触发其初始化。
+场景：
+ 使用&lt;code&gt;new&lt;/code&gt;关键字实例化对象；
+ 读取或设置一个类的静态变量（被&lt;code&gt;final&lt;/code&gt;修饰、已在编译期把结果放入常量池的静态变量除外）；
+ 调用一个类的静态方法。
+2. 使用&lt;code&gt;java.lang.reflect&lt;/code&gt;包的方法对类进行反射调用的时候，如果类没有进行过初始化，则需要先触发其初始化。
+3. 当初始化一个类的时候，其父类还未初始化，则先触发其父类初始化。（但一个接口初始化的时候，并不要求父类接口全部完成初始化，只有在真正使用到父接口的时候才会初始化，如引用接口中定义的常量的时候）
+4. 当虚拟机启动时，用户需要指定一个要执行的类（包含&lt;code&gt;main()&lt;/code&gt;方法的那个类），虚拟机会先初始化这个主类。
+5. 当使用&lt;code&gt;JDK1.7&lt;/code&gt;的动态语言支持时，如果一个&lt;code&gt;java.lang.invoke.MethodHandle&lt;/code&gt;实例最后解析的结果&lt;code&gt;REF_getStatic&lt;/code&gt;、&lt;code&gt;REF_putStatic&lt;/code&gt;、&lt;code&gt;REF_invokeStatic&lt;/code&gt;的方法句柄，并且这个方法的句柄所对应的类还未初始化过，则需要先触发其初始化。&lt;/p&gt;
+
+&lt;p&gt;初次之外引用类的方式都不会触发初始化，称为&lt;code&gt;被动引用&lt;/code&gt;。
+例1：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class SuperClass{
+    static{
+        System.out.println(&amp;quot;init SuperClass&amp;quot;);
+    }
+    public static int value = 123;
+}
+public class SubClass extends SuperClass{
+    static{
+        System.out.println(&amp;quot;init SubClass&amp;quot;);
+    }
+}
+
+System.out.println(SubClass.value);
+//结果：
+//init SuperClass
+//对于静态变量，只有直接定义这个字段的类才会被初始化
+//因此通过其子类引用父类中定义的静态变量，只会触发父类的初始化而不会触发子类的初始化。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;例2：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class ConstClass{
+    static{
+        System.out.println(&amp;quot;init ConstClass&amp;quot;);
+    }
+    public static final String HELLOWORLD = &amp;quot;hello world&amp;quot;;
+}
+public class NotInitialization{
+    public static void main(String[] args) {
+        System.out.println(ConstClass.HELLOWORLD);
+    }
+}
+//结果：
+//hello world
+//ConstClass并未被初始化
+//在编译阶段HELLOWORLD的值被存储到NotInitialization类的常量池中，
+//以后NotInitialization对常量ConstClass.HELLOWORLD的引用实际都转化为NotInitialization类对自身常量池的引用。
+//实际上，NotInitialization的class文件并没有ConstClass类的符号引入入口，
+//在编译成class后两个类不存在任何联系。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;分派&#34;&gt;分派&lt;/h1&gt;
+
+&lt;h2 id=&#34;静态分派&#34;&gt;静态分派&lt;/h2&gt;
+
+&lt;p&gt;编译器在编译程序时并不知道一个对象的实际类型，在重载时是通过参数的静态类型而不是实际类型作为判断依据的。
+实际类型的变化在运行期才能确定，而静态类型是编译期可知的。
+&lt;code&gt;Human man = new Man();&lt;/code&gt;其中&lt;code&gt;Human&lt;/code&gt;为静态类型或外观类型，而&lt;code&gt;Man&lt;/code&gt;为实际类型。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class StaticDispatch{
+
+    static abstract class Human{}
+
+    static class Man extends Human{}
+    static class Woman extends Human{}
+
+    public void sayHello(Human guy){
+        System.out.println(&amp;quot;hello,guy!&amp;quot;);
+    }
+    public void sayHello(Man guy){
+        System.out.println(&amp;quot;hello,man!&amp;quot;);
+    }
+    public void sayHello(Woman guy){
+        System.out.println(&amp;quot;hello,woman!&amp;quot;);
+    }
+    public static void main(String args[]){
+        Human man = new Man();
+        Human woman = new Woman();
+        StaticDispatch sd = new StaticDispatch();
+        sd.sayHello(man);
+        sd.sayHello(woman);
+    }
+    //结果：
+    //hello,guy!
+    //hello,guy!
+    //
+    //注释public void sayHello(Human guy)后，eclipse报错：
+    //The method sayHello(StaticDispatch.Man) in the type StaticDispatch is not applicable for the arguments (StaticDispatch.Human)
+    //找不到匹配参数的方法。
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;重载方法匹配优先级&#34;&gt;重载方法匹配优先级&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Overload{
+    public static void sayHello(Object arg){
+        System.out.println(&amp;quot;hello Object&amp;quot;);
+    }
+    public static void sayHello(int arg){
+        System.out.println(&amp;quot;hello int&amp;quot;);
+    }
+    public static void sayHello(long arg){
+        System.out.println(&amp;quot;hello long&amp;quot;);
+    }
+    public static void sayHello(char arg){
+        System.out.println(&amp;quot;hello char&amp;quot;);
+    }
+    public static void sayHello(char... arg){
+        System.out.println(&amp;quot;hello char...&amp;quot;);
+    }
+    public static void sayHello(Character arg){
+        System.out.println(&amp;quot;hello Character&amp;quot;);
+    }
+    public static void sayHello(Serializable arg){
+        System.out.println(&amp;quot;hello Serializable&amp;quot;);
+    }
+    public static void main(String args[]){
+        sysHello(&#39;a&#39;);
+    }
+    //结果：
+    //hello char
+    //注释sayHello(char arg)，char将按照char-&amp;gt;int-&amp;gt;long-&amp;gt;float-&amp;gt;double顺序转型，但不会匹配到byte和short的重载，因为char到byte或short转型并不安全：
+    //hello int
+    //注释sayHello(int arg)
+    //hello long
+    //注释sayHello(long arg)，发生自动装箱：
+    //hello Character
+    //注释sayHello(Character arg)，java.lang.Serializable是java.lang.Character类实现的一个接口，自动装箱后找不到装箱类，但找到了装箱类实现的接口类型，再一次自动转型：
+    //hello Serializable
+    //注释sayHello(Serializable arg)，char装箱后转型为父类了，多个父类则从继承关系从下往上搜索，越接近上层优先级越低：
+    //hello Object
+    //注释sayHello(Object arg)，可变长参数的优先级别是最低的：
+    //hello char...
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;动态分派&#34;&gt;动态分派&lt;/h2&gt;
+
+&lt;p&gt;运行期根据实际类型确定方法执行版本的分派过程称之为&lt;code&gt;动态分派&lt;/code&gt;。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class DynamicDispatch{
+    static abstract class Human{
+        protected abstract void sayHello();
+    }
+    static class Man extends Human{
+        @Override
+        protected void sayHello(){
+            System.out.println(&amp;quot;man say hello&amp;quot;);
+        }
+    }
+    static class Woman extends Human{
+        @Override
+        protected void sayHello(){
+            System.out.println(&amp;quot;woman say hello&amp;quot;);
+        }
+    }
+    public static void main(String[] args) {
+        Human man = new Man();
+        Human woman = new Woman();
+        man.sayHello();
+        woman.sayHello();
+        man = new Woman();
+        woman.sayHello();
+    }
+    //结果：
+    //man say hello
+    //woman say hello
+    //woman say hello
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>图总结及代码实现</title>
+      <link>http://boseman1024.github.io/2018/%E5%9B%BE%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/</link>
+      <pubDate>Thu, 07 Jun 2018 11:31:26 +0000</pubDate>
+      
+      <guid>http://boseman1024.github.io/2018/%E5%9B%BE%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/</guid>
+      <description>
+
+&lt;h1 id=&#34;图&#34;&gt;图&lt;/h1&gt;
+
+&lt;h2 id=&#34;数组表示法&#34;&gt;数组表示法&lt;/h2&gt;
+
+&lt;h3 id=&#34;无向图&#34;&gt;无向图&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/graph/wuxiang.jpg&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;数组矩阵表示如下：
+&lt;table border=&#34;1&#34; style=&#34;width:100%;text-align:center;margin: 0;padding: 0&#34;&gt;&lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;有向图&#34;&gt;有向图&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/graph/youxiang.jpg&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;数组矩阵表示如下：
+&lt;table border=&#34;1&#34; style=&#34;width:100%;text-align:center;margin: 0;padding: 0&#34;&gt;&lt;tr&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;7&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;9&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;6&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;图的遍历&#34;&gt;图的遍历&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/graph/bianli.jpg&#34;&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;深度优先搜索&#34;&gt;深度优先搜索&lt;/h2&gt;
+
+&lt;p&gt;其过程简要来说是对每一个可能的分支路径深入到不能再深入为止，而且每个节点只能访问一次。
+深度优先搜索的遍历访问顺序并不唯一。&lt;/p&gt;
+
+&lt;p&gt;假设以&lt;code&gt;V1&lt;/code&gt;为起点，
+&lt;code&gt;V1&lt;/code&gt;有两个邻接点&lt;code&gt;V2&lt;/code&gt;与&lt;code&gt;V3&lt;/code&gt;且都未被访问，则访问&lt;code&gt;V2&lt;/code&gt;（或访问&lt;code&gt;v3&lt;/code&gt;开始皆可，以下皆如此）；
+&lt;code&gt;V2&lt;/code&gt;有三个邻接点&lt;code&gt;V1&lt;/code&gt;、&lt;code&gt;V4&lt;/code&gt;、&lt;code&gt;V5&lt;/code&gt;，&lt;code&gt;V1&lt;/code&gt;已被访问，&lt;code&gt;V4&lt;/code&gt;与&lt;code&gt;V5&lt;/code&gt;都未被访问，则访问&lt;code&gt;V4&lt;/code&gt;；
+&lt;code&gt;V4&lt;/code&gt;有两个邻接点&lt;code&gt;V2&lt;/code&gt;与&lt;code&gt;V8&lt;/code&gt;，只有&lt;code&gt;V8&lt;/code&gt;未被访问，则访问&lt;code&gt;V8&lt;/code&gt;；
+&lt;code&gt;V8&lt;/code&gt;有两个邻接点&lt;code&gt;V4&lt;/code&gt;与&lt;code&gt;V5&lt;/code&gt;，&lt;code&gt;V4&lt;/code&gt;已被访问，则访问&lt;code&gt;V5&lt;/code&gt;；
+&lt;code&gt;V5&lt;/code&gt;有两个邻接点&lt;code&gt;V2&lt;/code&gt;与&lt;code&gt;V8&lt;/code&gt;，且&lt;code&gt;V2&lt;/code&gt;、&lt;code&gt;V8&lt;/code&gt;都已被访问，则从头搜索&lt;code&gt;V1&lt;/code&gt;的邻接点&lt;code&gt;V2&lt;/code&gt;、&lt;code&gt;V3&lt;/code&gt;，&lt;code&gt;V2&lt;/code&gt;已被访问，则访问&lt;code&gt;V3&lt;/code&gt;；
+&lt;code&gt;V3&lt;/code&gt;有三个邻接点&lt;code&gt;V1&lt;/code&gt;、&lt;code&gt;V6&lt;/code&gt;、&lt;code&gt;V7&lt;/code&gt;且未被访问，则访问&lt;code&gt;V6&lt;/code&gt;；
+&lt;code&gt;V6&lt;/code&gt;有两个邻接点&lt;code&gt;V3&lt;/code&gt;与&lt;code&gt;V7&lt;/code&gt;，&lt;code&gt;V3&lt;/code&gt;已被访问，则访问&lt;code&gt;V7&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;则以&lt;code&gt;V1&lt;/code&gt;为起点的深度优先搜索访问顺序为：
+&lt;code&gt;V1-&amp;gt;V2-&amp;gt;V4-&amp;gt;V8-&amp;gt;V5-&amp;gt;V3-&amp;gt;V6-&amp;gt;V7&lt;/code&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;广度优先搜索&#34;&gt;广度优先搜索&lt;/h2&gt;
+
+&lt;p&gt;类似于树的按层次遍历的过程，可先将图按层划分。
+广度优先搜索的遍历访问顺序并不唯一。&lt;/p&gt;
+
+&lt;p&gt;假设以&lt;code&gt;V1&lt;/code&gt;为起点，则可划分为下图：
+&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/graph/fenceng.jpg&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;第一层（V1）：
+&lt;code&gt;V1&lt;/code&gt;有两个邻接点&lt;code&gt;V2&lt;/code&gt;、&lt;code&gt;V3&lt;/code&gt;，则先访问&lt;code&gt;V2&lt;/code&gt;，再访问&lt;code&gt;V3&lt;/code&gt;（或先访问&lt;code&gt;V3&lt;/code&gt;，再访问&lt;code&gt;V2&lt;/code&gt;皆可，以下皆如此）；
+第二层(V2、V3)：
+&lt;code&gt;V2&lt;/code&gt;有三个邻接点&lt;code&gt;V1&lt;/code&gt;、&lt;code&gt;V4&lt;/code&gt;、&lt;code&gt;V5&lt;/code&gt;，&lt;code&gt;V1&lt;/code&gt;已被访问，则访问&lt;code&gt;V4&lt;/code&gt;、&lt;code&gt;V5&lt;/code&gt;；
+&lt;code&gt;V3&lt;/code&gt;有两个邻接点&lt;code&gt;V6&lt;/code&gt;、&lt;code&gt;V7&lt;/code&gt;且都未被访问，则访问&lt;code&gt;V6&lt;/code&gt;、&lt;code&gt;V7&lt;/code&gt;；
+第三层（V4、V5、V6、V7）：
+&lt;code&gt;V4&lt;/code&gt;有两个邻接点&lt;code&gt;V2&lt;/code&gt;与&lt;code&gt;V8&lt;/code&gt;，&lt;code&gt;V2&lt;/code&gt;已被访问，则访问&lt;code&gt;V8&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;则以&lt;code&gt;V1&lt;/code&gt;为起点的广度优先搜索访问顺序为：
+&lt;code&gt;V1-&amp;gt;V2-&amp;gt;V3-&amp;gt;V4-&amp;gt;V5-&amp;gt;V6-&amp;gt;V7-&amp;gt;V8&lt;/code&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;最小生成树&#34;&gt;最小生成树&lt;/h1&gt;
+
+&lt;p&gt;在连通网的所有生成树中，所有边的代价和最小的生成树，称为最小生成树。
+最小生成树中不存在回路。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/graph/mini.jpg&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;可得数组矩阵：
+&lt;table border=&#34;1&#34; style=&#34;width:100%;text-align:center;margin: 0;padding: 0&#34;&gt;&lt;tr&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;6&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;6&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;6&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;6&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;6&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;6&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;普里姆-prim-算法&#34;&gt;普里姆（Prim）算法&lt;/h2&gt;
+
+&lt;p&gt;此算法可以称为“加点法”，每次迭代选择代价最小的边对应的点，加入到最小生成树中。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/graph/prim.jpg&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;设：
+* 所有结点V={V1,V2,V3,V4,V5,V6}
+* 已选结点U={}
+* 剩余结点V-U
+* 代价最小的边MIN&lt;/p&gt;
+
+&lt;table border=&#34;1&#34; style=&#34;width:100%;text-align:center;margin: 0;padding: 0&#34;&gt;
+&lt;thead&gt;&lt;tr&gt;&lt;th&gt;index&lt;/th&gt;&lt;th&gt;V-U&lt;/th&gt;&lt;th&gt;U&lt;/th&gt;&lt;th&gt;MIN(边)&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;{V1,V2,V3,V4,V5,V6}&lt;/td&gt;&lt;td&gt;{}&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;{V2,V3,V4,V5,V6}&lt;/td&gt;&lt;td&gt;{V1}&lt;/td&gt;&lt;td&gt;1(V1-V3)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;{V2,V4,V5,V6}&lt;/td&gt;&lt;td&gt;{V1,V3}&lt;/td&gt;&lt;td&gt;4(V3-V6)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;{V2,V4,V5}&lt;/td&gt;&lt;td&gt;{V1,V3,V6}&lt;/td&gt;&lt;td&gt;2(V6-V4)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;4&lt;/td&gt;&lt;td&gt;{V2,V5}&lt;/td&gt;&lt;td&gt;{V1,V3,V6,V4}&lt;/td&gt;&lt;td&gt;5(V3-V2)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;{V5}&lt;/td&gt;&lt;td&gt;{V1,V3,V6,V4,V2}&lt;/td&gt;&lt;td&gt;3(V2-V5)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;6&lt;/td&gt;&lt;td&gt;{}&lt;/td&gt;&lt;td&gt;{V1,V3,V6,V4,V2,V5}&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;或设：
+* 所有结点V={V1,V2,V3,V4,V5,V6}
+* 已选结点U={}
+* 剩余结点V-U
+* 序列i（1,2,3,…,V的个数），每个序列下为每个结点的最小代价边。
+* 选择序列k，被选择序列设为0&lt;/p&gt;
+
+&lt;p&gt;每个结点的多条代价边中选最小代价边。
+如：
+2-1中，V2距离V-U存在6（V2-V1），5（V2-V3）两条边，则选择6（V2-V1）。&lt;/p&gt;
+
+&lt;table border=&#34;1&#34; style=&#34;width:100%;text-align:center;margin: 0;padding: 0&#34;&gt;
+&lt;thead&gt;&lt;tr&gt;&lt;th&gt;index\i&lt;/th&gt;&lt;th&gt;1&lt;/th&gt;&lt;th&gt;2&lt;/th&gt;&lt;th&gt;3&lt;/th&gt;&lt;th&gt;4&lt;/th&gt;&lt;th&gt;5&lt;/th&gt;&lt;th&gt;U&lt;/th&gt;&lt;th&gt;V-U&lt;/th&gt;&lt;th&gt;k(选择序列)&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;V1-6&lt;/td&gt;&lt;td&gt;V1-1&lt;/td&gt;&lt;td&gt;V1-5&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;{V1}&lt;/td&gt;&lt;td&gt;{V2,V3,V4,V5,V6}&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;V3-5&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;V1-5&lt;/td&gt;&lt;td&gt;V3-6&lt;/td&gt;&lt;td&gt;V3-4&lt;/td&gt;&lt;td&gt;{V1,V3}&lt;/td&gt;&lt;td&gt;{V2,V4,V5,V6}&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;V3-5&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;V6-2&lt;/td&gt;&lt;td&gt;V3-6&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;{V1,V3,V6}&lt;/td&gt;&lt;td&gt;{V2,V3,V4,V5}&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;4&lt;/td&gt;&lt;td&gt;V3-5&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;V3-6&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;{V1,V3,V6,V4}&lt;/td&gt;&lt;td&gt;{V2,V5}&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;V2-3&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;{V1,V3,V6,V4,V2}&lt;/td&gt;&lt;td&gt;{V5}&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;6&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;{V1,V3,V6,V4,V2,V5}&lt;/td&gt;&lt;td&gt;{}&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;克鲁斯卡尔-kruskal-算法&#34;&gt;克鲁斯卡尔（Kruskal）算法&lt;/h2&gt;
+
+&lt;p&gt;每次在剩下的所有未选取的边中，找最小边，如果和已选取的边构成回路，则放弃，选取次小边。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/graph/kruskal.jpg&#34;&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;最短路径&#34;&gt;最短路径&lt;/h1&gt;
+
+&lt;h2 id=&#34;有向带权图&#34;&gt;有向带权图&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/graph/directGraph.jpg&#34;&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;迪杰斯特拉-dijkstra-算法&#34;&gt;迪杰斯特拉（Dijkstra）算法&lt;/h2&gt;
+
+&lt;p&gt;设：
+* 已选顶点元素集合&lt;code&gt;S&lt;/code&gt;
+* 起点&lt;code&gt;V&lt;/code&gt;到其余顶点i的带权长度(Distance)&lt;code&gt;D[]&lt;/code&gt;，&lt;code&gt;D[V]&lt;/code&gt;初始化为&lt;code&gt;0&lt;/code&gt;，其他元素初始化为&lt;code&gt;∞&lt;/code&gt;
+* &lt;code&gt;S&lt;/code&gt;到其余顶点&lt;code&gt;i&lt;/code&gt;的最短序列上顶点i的前一个顶点(Pre)&lt;code&gt;P[]&lt;/code&gt;，所有元素初始化为起点&lt;code&gt;V&lt;/code&gt;
+* &lt;code&gt;S&lt;/code&gt;中的中间点&lt;code&gt;v&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;若存在&lt;code&gt;D[v]+weight(v,i)&amp;lt;D[i]&lt;/code&gt;，则&lt;code&gt;P[i]=v；D[i]=D[v]+weight(v,i);&lt;/code&gt;&lt;/p&gt;
+
+&lt;table border=&#34;1&#34; style=&#34;width:100%;text-align:center;margin: 0;padding: 0&#34;&gt;&lt;tr&gt;&lt;td&gt;index&lt;/td&gt;&lt;td&gt;S&lt;/td&gt;&lt;td&gt;V0&lt;/td&gt;&lt;td&gt;V1&lt;/td&gt;&lt;td&gt;V2&lt;/td&gt;&lt;td&gt;V3&lt;/td&gt;&lt;td&gt;V4&lt;/td&gt;&lt;td&gt;V5&lt;/td&gt;&lt;td&gt;CHOOSE&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;起点&lt;/td&gt;&lt;td&gt;{V0}&lt;/td&gt;&lt;td style=&#34;color:#FF0000;&#34;&gt;D[0]=0/P[0]=0&lt;/td&gt;&lt;td&gt;D[1]=∞/P[1]=0&lt;/td&gt;&lt;td&gt;D[2]=10/P[2]=0&lt;/td&gt;&lt;td&gt;D[3]=∞/P[3]=0&lt;/td&gt;&lt;td&gt;D[4]=30/P[4]=0&lt;/td&gt;&lt;td&gt;D[5]=100/P[5]=0&lt;/td&gt;&lt;td&gt;D[2]最小&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;{V0,V2}&lt;/td&gt;&lt;td style=&#34;color:#FF0000;&#34;&gt;D[0]=0/P[0]=0&lt;/td&gt;&lt;td&gt;D[1]=∞/P[1]=0&lt;/td&gt;&lt;td style=&#34;color:#FF0000;&#34;&gt;D[2]=10/P[2]=0&lt;/td&gt;&lt;td&gt;D[3]=60/P[3]=2&lt;/td&gt;&lt;td&gt;D[4]=30/P[4]=0&lt;/td&gt;&lt;td&gt;D[5]=100/P[5]=0&lt;/td&gt;&lt;td&gt;D[4]最小&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;{V0,V2,V4}&lt;/td&gt;&lt;td style=&#34;color:#FF0000;&#34;&gt;D[0]=0/P[0]=0&lt;/td&gt;&lt;td&gt;D[1]=∞/P[1]=0&lt;/td&gt;&lt;td style=&#34;color:#FF0000;&#34;&gt;D[2]=10/P[2]=0&lt;/td&gt;&lt;td&gt;D[3]=50/P[3]=4&lt;/td&gt;&lt;td style=&#34;color:#FF0000;&#34;&gt;D[4]=30/P[4]=0&lt;/td&gt;&lt;td&gt;D[5]=90/P[5]=4&lt;/td&gt;&lt;td&gt;D[3]最小&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;{V0,V2,V4,V3}&lt;/td&gt;&lt;td style=&#34;color:#FF0000;&#34;&gt;D[0]=0/P[0]=0&lt;/td&gt;&lt;td&gt;D[1]=∞/P[1]=0&lt;/td&gt;&lt;td style=&#34;color:#FF0000;&#34;&gt;D[2]=10/P[2]=0&lt;/td&gt;&lt;td style=&#34;color:#FF0000;&#34;&gt;D[3]=50/P[3]=4&lt;/td&gt;&lt;td style=&#34;color:#FF0000;&#34;&gt;D[4]=30/P[4]=0&lt;/td&gt;&lt;td&gt;D[5]=60/P[5]=3&lt;/td&gt;&lt;td&gt;只剩D[5]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;4&lt;/td&gt;&lt;td&gt;{V0,V2,V4,V3,V5}&lt;/td&gt;&lt;td style=&#34;color:#FF0000;&#34;&gt;D[0]=0/P[0]=0&lt;/td&gt;&lt;td&gt;D[1]=∞/P[1]=0&lt;/td&gt;&lt;td style=&#34;color:#FF0000;&#34;&gt;D[2]=10/P[2]=0&lt;/td&gt;&lt;td style=&#34;color:#FF0000;&#34;&gt;D[3]=50/P[3]=4&lt;/td&gt;&lt;td style=&#34;color:#FF0000;&#34;&gt;D[4]=30/P[4]=0&lt;/td&gt;&lt;td style=&#34;color:#FF0000;&#34;&gt;D[5]=60/P[5]=3&lt;/td&gt;&lt;td&gt;结束&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;从上表中可知，
+以V0为起点至V5的最短路径为：
+&lt;code&gt;P[5]=3&lt;/code&gt; -&amp;gt; &lt;code&gt;P[3]=4&lt;/code&gt; -&amp;gt; &lt;code&gt;P[4]=0&lt;/code&gt; -&amp;gt; &lt;code&gt;P[0]=0&lt;/code&gt;
+即 &lt;code&gt;0&lt;/code&gt; -&amp;gt; &lt;code&gt;4&lt;/code&gt; -&amp;gt; &lt;code&gt;3&lt;/code&gt; -&amp;gt; &lt;code&gt;5&lt;/code&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>JAVA基础整理</title>
+      <link>http://boseman1024.github.io/2018/java%E5%9F%BA%E7%A1%80%E6%95%B4%E7%90%86/</link>
+      <pubDate>Sun, 03 Jun 2018 21:47:14 +0000</pubDate>
+      
+      <guid>http://boseman1024.github.io/2018/java%E5%9F%BA%E7%A1%80%E6%95%B4%E7%90%86/</guid>
+      <description>
+
+&lt;p&gt;&lt;code&gt;八大基本类型&lt;/code&gt;：
+* 字节型（byte）-8位
+* 短整型（short）-16位
+* 整型（int）-32位
+* 长整型（long）-64位
+* 字符型（char）-16位
+* 浮点型（float）-32位
+* 双精度型（double）-64位
+* 布尔型（boolean）-1位&lt;/p&gt;
+
+&lt;p&gt;基本类型都有对应的包装类型，基本类型与其对应的包装类型之间的赋值使用自动装箱与拆箱完成。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;Integer x = 2;     // 装箱
+int y = x;         // 拆箱
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;new Integer(123)&lt;/code&gt;与&lt;code&gt;Integer.valueOf(123)&lt;/code&gt;的区别在于，&lt;code&gt;new Integer(123)&lt;/code&gt;每次都会新建一个对象，而&lt;code&gt;Integer.valueOf(123)&lt;/code&gt;可能会使用缓存对象，因此多次使用&lt;code&gt;Integer.valueOf(123)&lt;/code&gt;会取得同一个对象的引用。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;Integer x = new Integer(123);
+Integer y = new Integer(123);
+System.out.println(x == y);    // false
+Integer z = Integer.valueOf(123);
+Integer k = Integer.valueOf(123);
+System.out.println(z == k);   // true
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;编译器会在自动装箱过程调用&lt;code&gt;valueOf()&lt;/code&gt;方法，因此多个&lt;code&gt;Integer&lt;/code&gt;实例使用自动装箱来创建并且值相同，那么就会引用相同的对象。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;Integer m = 123;
+Integer n = 123;
+System.out.println(m == n); // true
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;JVM会在常量池中缓存-128到127之间的整数，所以任何在-128到127之间的整数的地址都是相同的。 对于引用类型的变量，==和.equals()比较的都是其地址，除非该类对.equals()方法进行了重写，例如String类和Integer类。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;Integer a = 1;
+Integer b = 2;
+Integer c = 3;
+Integer d = 3;
+Integer e = 321;
+Integer f = 321;
+Long g = 3L;
+System.out.println(c==d);//true
+System.out.println(e==f);//false
+System.out.println(c==(a+b));//true
+System.out.println(c.equals(a+b));//true
+System.out.println(g==(a+b));//true
+System.out.println(g.equals(a+b));//false
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;valueOf()&lt;/code&gt;方法的实现比较简单，就是先判断值是否在缓存池中，如果在的话就直接使用缓存池的内容。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public static Integer valueOf(int i) {
+    if (i &amp;gt;= IntegerCache.low &amp;amp;&amp;amp; i &amp;lt;= IntegerCache.high)
+        return IntegerCache.cache[i + (-IntegerCache.low)];
+    return new Integer(i);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;对象变量&lt;/code&gt;:
+一个对象变量并没有实际包含一个对象，而仅仅引用一个对象。
+即任何对象变量的值都是对存储在另一个地方的一个对象的引用。
+String为封装类，属于引用类型。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;构造器&lt;/code&gt;：
+* 构造器与类同名
+* 每个类可以有一个以上的构造器
+* 构造器可以有0个、1个或者多个参数
+* 构造器没有返回值
+* 构造器总是伴随着new操作一起调用&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;带标签的break语句&lt;/code&gt;：
+用于跳出多重嵌套的循环语句。
+标签必须放在希望跳出的最外层循环之前，并且必须紧跟一个冒号。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;label:
+while(condition){
+    for(condition){
+        if(condition){
+            break label;//跳出最外层循环，打印end
+        }
+    }
+}
+System.out.println(&amp;quot;end&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;方法参数&lt;/code&gt;：
+java总是采用按值调用，即方法得到的是所有参数值的一个拷贝，方法不能修改传递给它的任何参数变量的内容。
+* 一个方法不能修改一个基本数据类型的参数（即数值型和布尔型）
+* 一个方法可以改变一个对象参数的状态
+* 一个方法不能让对象参数引用一个新的对象&lt;/p&gt;
+
+&lt;p&gt;例：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public void add(int num){
+    num += 100;
+}
+int money = 100;
+add(money);
+/*
+num为100，是money的值拷贝。
+方法执行后money仍然为100，
+而num为200，且方法结束后被丢弃。
+*/
+Employee a = new Employee(&amp;quot;Jack&amp;quot;);
+Employee b = new Employee(&amp;quot;Bob&amp;quot;);
+
+public void raiseSalary(Employee x){
+    x.salary += 1000;
+}
+raiseSalary(a);
+/*
+x为a值的拷贝，即a的引用对象。
+所以x与a同时引用同一个对象。
+x.salary+1000即a.salary+1000。
+*/
+public void swap(Employee x,Employee y){
+    Employee temp = x;
+    x = y;
+    y = temp;
+}
+
+swap(a,b);
+/*
+a-&amp;gt;Jack
+b-&amp;gt;Bob
+x-&amp;gt;Bob
+y-&amp;gt;Jack
+即 a，b仍然引用原先的对象。
+而 a，b的拷贝x，y交换引用对象，且方法结束时被丢弃。
+*/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;初始化顺序&lt;/code&gt;：
+　&lt;code&gt;静态代码块&lt;/code&gt;：static{}，加载类时执行，仅执行一次。
+　&lt;code&gt;构造代码块&lt;/code&gt;：{}，每一次创建对象时执行，给所有对象进行统一初始化，是不同对象共同的初始化内容。
+ 　&lt;code&gt;执行优先级&lt;/code&gt;：静态代码块 &amp;gt; main()“main为static方法” &amp;gt; 构造代码块 &amp;gt; 构造方法&lt;/p&gt;
+
+&lt;p&gt;存在&lt;code&gt;继承&lt;/code&gt;的情况下，&lt;code&gt;初始化顺序&lt;/code&gt;为：
+* 父类（静态变量、静态语句块）
+* 子类（静态变量、静态语句块）
+* 父类（实例变量、普通语句块）
+* 父类（构造函数）
+* 子类（实例变量、普通语句块）
+* 子类（构造函数）&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;访问修饰符&lt;/code&gt;：&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;访问修饰符&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;同类&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;同包&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;子类&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;不同包&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;public&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;✔&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;✔&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;✔&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;✔&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;protected&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;✔&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;✔&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;✔&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;❌&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;默认没有访问控制修饰符&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;✔&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;✔&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;❌&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;❌&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;private&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;✔&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;❌&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;❌&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;❌&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;code&gt;类修饰符&lt;/code&gt;：&lt;/p&gt;
+
+&lt;p&gt;　&lt;code&gt;final&lt;/code&gt;：
+* 修饰的类不能被继承，没有子类
+* final类中的方法自动成为final方法，但不包括域&lt;/p&gt;
+
+&lt;p&gt;　&lt;code&gt;abstract&lt;/code&gt;：
+* 抽象类不能被实例化
+* 含有抽象方法的类必须被声明为抽象类，但抽象类不一定要有抽象方法
+* 抽象类必须被子类继承，抽象方法必须被重写，非抽象方法则不必
+* 抽象类可以包含具体数据和具体方法（不推荐）&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;abstract class A{
+    abstract void player();
+    public void s(){
+        System.out.println(&amp;quot;1&amp;quot;);
+    }
+}
+class B extends A{
+    @Override
+    public void player(){
+        System.out.println(&amp;quot;2&amp;quot;);
+        super.s();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;覆盖（Override）&lt;/code&gt;存在于继承体系中，指子类实现了一个与父类在方法声明上完全相同的一个方法；&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;重载（Overload）&lt;/code&gt;存在于同一个类中，指一个方法与已经存在的方法名称上相同，但是参数类型、个数、顺序至少有一个不同。应该注意的是，返回值不同，其它都相同不算是重载。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;异常&#34;&gt;异常&lt;/h1&gt;
+
+&lt;p&gt;&lt;code&gt;Throwable&lt;/code&gt;可以用来表示任何可以作为异常抛出的类，分为两种：&lt;code&gt;Error&lt;/code&gt;和 &lt;code&gt;Exception&lt;/code&gt;。
+其中&lt;code&gt;Error&lt;/code&gt;用来表示&lt;code&gt;JVM&lt;/code&gt;无法处理的错误，&lt;code&gt;Exception&lt;/code&gt;分为两种：
+* &lt;code&gt;检查异常&lt;/code&gt;：需要用&lt;code&gt;try{}catch(){}&lt;/code&gt;语句捕获并进行处理，并且可以从异常中恢复；
+* &lt;code&gt;未检查异常&lt;/code&gt;：是程序运行时错误，例如除 0 会引发 Arithmetic Exception，此时程序奔溃并且无法恢复。
+&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/javareview/Throwable.png&#34;&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.tianmaying.com/tutorial/Java-Exception&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Java 入门之异常处理&lt;/a&gt;
+&lt;a href=&#34;http://www.importnew.com/7383.html&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Java 异常的面试问题及答案 -Part 1&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&#34;反射&#34;&gt;反射&lt;/h1&gt;
+
+&lt;p&gt;每个类都有一个&lt;code&gt;Class&lt;/code&gt;对象，包含了与类有关的信息。当编译一个新类时，会产生一个同名的&lt;code&gt;.class&lt;/code&gt;文件，该文件内容保存着&lt;code&gt;Class&lt;/code&gt;对象。
+类加载相当于&lt;code&gt;Class&lt;/code&gt;对象的加载。类在第一次使用时才动态加载到 JVM 中，可以使用&lt;code&gt;Class.forName(&amp;quot;com.mysql.jdbc.Driver&amp;quot;)&lt;/code&gt;这种方式来控制类的加载，该方法会返回一个&lt;code&gt;Class&lt;/code&gt;对象。
+反射可以提供运行时的类信息，并且这个类可以在运行时才加载进来，甚至在编译时期该类的&lt;code&gt;.class&lt;/code&gt;不存在也可以加载进来。
+&lt;code&gt;Class&lt;/code&gt;和&lt;code&gt;java.lang.reflect&lt;/code&gt;一起对反射提供了支持，&lt;code&gt;java.lang.reflect&lt;/code&gt;类库主要包含了以下三个类：
+* &lt;code&gt;Field&lt;/code&gt;：可以使用&lt;code&gt;get()&lt;/code&gt;和&lt;code&gt;set()&lt;/code&gt;方法读取和修改&lt;code&gt;Field&lt;/code&gt;对象关联的字段；
+* &lt;code&gt;Method&lt;/code&gt;：可以使用&lt;code&gt;invoke()&lt;/code&gt;方法调用与&lt;code&gt;Method&lt;/code&gt;对象关联的方法；
+* &lt;code&gt;Constructor&lt;/code&gt;：可以用&lt;code&gt;Constructor&lt;/code&gt;创建新的对象。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.sczyh30.com/posts/Java/java-reflection-1/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;深入解析 Java 反射（1）- 基础&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&#34;泛型&#34;&gt;泛型&lt;/h1&gt;
+
+&lt;p&gt;泛型是通过类型擦除来实现的，编译器在编译时擦除了所有类型相关的信息，所以在运行时不存在任何类型相关的信息。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.importnew.com/24029.html&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Java 泛型详解&lt;/a&gt;
+&lt;a href=&#34;https://cloud.tencent.com/developer/article/1033693&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;10 道 Java 泛型面试题&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&#34;接口&#34;&gt;接口&lt;/h1&gt;
+
+&lt;p&gt;接口中的所有方法自动地属于public。
+接口中的域自动地设为public static final。&lt;/p&gt;
+
+&lt;h1 id=&#34;内部类&#34;&gt;内部类&lt;/h1&gt;
+
+&lt;p&gt;&lt;code&gt;双括号初始化&lt;/code&gt;：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;ArrayList&amp;lt;String&amp;gt; friends = new ArrayList&amp;lt;&amp;gt;();
+friends.add(&amp;quot;harry&amp;quot;);
+friends.add(&amp;quot;tony&amp;quot;);
+invite(friends);
+//如果不再需要friends这个数组列表，可以作为一个匿名列表并为其添加元素。
+invite(new ArrayList&amp;lt;String&amp;gt;(){{
+    add(&amp;quot;harry&amp;quot;);add(&amp;quot;tony&amp;quot;);
+    }
+});
+//外层括号建立了ArrayList的一个匿名子类，内层括号则是对象构造块。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;集合&#34;&gt;集合&lt;/h1&gt;
+
+&lt;p&gt;&lt;code&gt;Vector&lt;/code&gt;类所有方法都是同步的,可以由两个线程安全地访问一个Vector对象，但由一个线程访问Vector代码要在同步操作上耗费大量的时间。
+而&lt;code&gt;ArrayList&lt;/code&gt;方法不是同步的。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;LinkedList&lt;/code&gt;：
+java中所有链表都是双向链表——即每个结点还存放着指向前驱结点的引用。
+&lt;code&gt;LinkedList.add()&lt;/code&gt;方法将对象添加到链表尾部。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;List&amp;lt;String&amp;gt; staff = new LinkedList&amp;lt;&amp;gt;();
+staff.add(&amp;quot;Amy&amp;quot;);
+staff.add(&amp;quot;Bob&amp;quot;);
+staff.add(&amp;quot;Carl&amp;quot;);
+Iterator iter = staff.iterator();
+String first = iter.next(); //访问第一个元素
+String second = iter.next(); //访问第二个元素
+iter.remove(); //删除最后访问的元素
+/*
+iter.remove(); //错误
+iter.next();
+iter.remove(); //正确
+*/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;Iterator&lt;/code&gt;还提供&lt;code&gt;ListIterator&lt;/code&gt;子接口，有两个方法：&lt;code&gt;previous()&lt;/code&gt;和&lt;code&gt;hasPrevious()&lt;/code&gt;，可以用来反向遍历链表。
+&lt;code&gt;Add()&lt;/code&gt;方法再迭代器位置之前添加一个新对象。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//越过第一个元素，并在第二个元素之前添加“Juliet”
+List&amp;lt;String&amp;gt; staff = new LinkedList&amp;lt;&amp;gt;();
+staff.add(&amp;quot;Amy&amp;quot;);
+staff.add(&amp;quot;Bob&amp;quot;);
+staff.add(&amp;quot;Carl&amp;quot;);
+ListIterator iter = staff.listIterator();
+iter.next(); //越过链表第一个元素
+iter.add(&amp;quot;Juliet&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;散列表用链表数组实现，每个列表被称为桶(bucket)。
+散列表中对象的位置索引 = 散列码 % 桶的总数&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Set&lt;/code&gt;是没有重复元素的元素集合。
+由于散列将元素分散在表的各个位置上，所以访问它们的顺序是几乎随机的。
+&lt;code&gt;HashSet&lt;/code&gt;的元素顺序是无序的。
+&lt;code&gt;TreeSet&lt;/code&gt;是有序集合，排序由树结构（红黑树）完成。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;PriorityQueue（优先级队列）&lt;/code&gt;中的元素可按照任意顺序插入，却总是按照排序的顺序进行索引，并没有对所有元素进行排序。
+其采用的数据结构称之为&lt;code&gt;堆&lt;/code&gt;，是一个可以自我调整的二叉树，对树进行添加和删除操作，可以让最小的元素移动到根，而不必花费时间对元素进行排序。
+其迭代与&lt;code&gt;TreeSet&lt;/code&gt;的迭代不同，并不是按照元素的排列顺序访问，而删除总是删掉剩余元素中优先级数最小的那个元素。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;两个集的交集&lt;/code&gt;：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;Set&amp;lt;String&amp;gt; result = new HashSet&amp;lt;&amp;gt;(a);
+result.retainAll(b);
+//保留了在a中出现并且也在b中出现的元素。
+//removeAll()同理。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;线程&#34;&gt;线程&lt;/h1&gt;
+
+&lt;p&gt;线程的六种状态：
+* New（新创建）
+* Runnable（可运行）
+* Blocked（被阻塞）
+* Waiting（等待）
+* Timed waiting（计时等待）
+* Terminated（被终止）&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;线程优先级&lt;/code&gt;：优先级为MIN_PRIORITY(1)与MAX_PRIORITY(10)之间的任何值，NORM_PRIORITY被定义为5。
+每当调度器决定运行一个新线程时，首先会在具有高优先级的线程中选择。如果有几个高优先级的线程没有进入非活动状态，低优先级的线程可能永远也不能执行。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;守护线程&lt;/code&gt;：守护线程的唯一用途是为其他线程提供服务，如计时线程。当只剩下守护线程时，虚拟机就退出了，由于如果只剩下守护线程，就没有必要继续运行程序了。&lt;/p&gt;
+
+&lt;p&gt;一个线程执行一个任务的简单过程：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//Runnable接口
+public interface Runnable{
+    void run();
+}
+//实现线程类
+class MyRunnable implements Runnable{
+    public void run(){
+        //code
+    }
+}
+//创建线程类对象
+Runnable r = new MyRunnable();
+//由Runnable创建Thread对象
+Thread t = new Thread(r);
+//启动线程
+t.start();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;参考：
+&lt;a href=&#34;https://github.com/CyC2018/Interview-Notebook&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Interview-Notebook&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>二叉树总结及代码实现</title>
+      <link>http://boseman1024.github.io/2018/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/</link>
+      <pubDate>Sun, 27 May 2018 11:31:26 +0000</pubDate>
+      
+      <guid>http://boseman1024.github.io/2018/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/</guid>
+      <description>
+
+&lt;h1 id=&#34;二叉树&#34;&gt;二叉树&lt;/h1&gt;
+
+&lt;h3 id=&#34;完全二叉树&#34;&gt;完全二叉树：&lt;/h3&gt;
+
+&lt;p&gt;每层右结点&amp;lt;=左结点&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/tree/BinaryTree1.jpg&#34;&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;性质1&#34;&gt;性质1：&lt;/h3&gt;
+
+&lt;p&gt;在二叉树的第&lt;code&gt;i&lt;/code&gt;层上至多有&lt;code&gt;2^(i-1)&lt;/code&gt;个结点（i&amp;gt;=1）。&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;center&#34;&gt;　　　层数i　　　&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;　　　每层最多结点数　　　&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;2^0=1&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;2&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;2^1=2&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;3&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;2^2=4&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;4&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;2^3=8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;性质2&#34;&gt;性质2：&lt;/h3&gt;
+
+&lt;p&gt;深度为&lt;code&gt;k&lt;/code&gt;的二叉树至多有&lt;code&gt;2^k-1&lt;/code&gt;个结点。&lt;/p&gt;
+
+&lt;p&gt;例：
+深度&lt;code&gt;k=4&lt;/code&gt;时，由&lt;code&gt;2^k-1&lt;/code&gt;可得最大结点数为15=1+2+4+8。&lt;/p&gt;
+
+&lt;h3 id=&#34;性质3&#34;&gt;性质3：&lt;/h3&gt;
+
+&lt;p&gt;设：
+* 度为0的结点个数为&lt;code&gt;n0&lt;/code&gt;
+* 度为1的结点个数为&lt;code&gt;n1&lt;/code&gt;
+* 度为2的结点个数为&lt;code&gt;n2&lt;/code&gt;
+* 总共有多少结点为&lt;code&gt;N&lt;/code&gt;
+* 二叉树分支总数为&lt;code&gt;B&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;则
+&lt;code&gt;N&lt;/code&gt; = n0+n1+n2
+&lt;code&gt;B&lt;/code&gt; = 2*n2+n2 （2*(A+B+C)+D）
+&lt;code&gt;N&lt;/code&gt; = B+1&lt;/p&gt;
+
+&lt;h3 id=&#34;性质4&#34;&gt;性质4：&lt;/h3&gt;
+
+&lt;p&gt;具有n个结点的完全二叉树的深度为&lt;code&gt;[log2(n)]+1&lt;/code&gt;。
+&lt;code&gt;[x]&lt;/code&gt;：不大于x的整数。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/tree/BinaryTree2.jpg&#34;&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;性质5&#34;&gt;性质5：&lt;/h3&gt;
+
+&lt;p&gt;设总结点数为n，结点从左往右，从上到下编号i。
+* 若&lt;code&gt;i=1&lt;/code&gt;，则i结点是二叉树的根；若&lt;code&gt;i&amp;gt;1&lt;/code&gt;，则i的父结点为&lt;code&gt;[i/2]&lt;/code&gt;。
+* 若&lt;code&gt;2\*i&amp;gt;n&lt;/code&gt;，则结点i无左结点；否则其左结点为&lt;code&gt;2\*i&lt;/code&gt;。
+* 若&lt;code&gt;2\*i+1&amp;gt;n&lt;/code&gt;，则结点i无右结点；否则右结点为&lt;code&gt;2\*i+1&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;[x]&lt;/code&gt;：不大于x的整数。&lt;/p&gt;
+
+&lt;h3 id=&#34;二叉树创建&#34;&gt;二叉树创建&lt;/h3&gt;
+
+&lt;p&gt;根据先序遍历创建二叉树：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;typedef struct BiTnode{
+    char data;
+    struct BiTnode *lchild;
+    struct BiTnode *rchild;
+}BiTNode,* BiTree;
+
+void createBiTree(BiTree *T){
+    char ch;
+    scanf(&amp;quot;%c&amp;quot;,&amp;amp;ch);
+    if(ch == &#39; &#39;){
+        *T = NULL;
+    }else{
+        *T=(BiTNode *)malloc(sizeof(BiTNode));
+        (*T)-&amp;gt;data= ch;
+        createBiTree(&amp;amp;(*T)-&amp;gt;lchild);
+        createBiTree(&amp;amp;(*T)-&amp;gt;rchild);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;遍历&#34;&gt;遍历&lt;/h2&gt;
+
+&lt;h3 id=&#34;先序遍历&#34;&gt;先序遍历&lt;/h3&gt;
+
+&lt;p&gt;访问根节点-&amp;gt;遍历左子树-&amp;gt;遍历右子树&lt;/p&gt;
+
+&lt;h3 id=&#34;中序遍历&#34;&gt;中序遍历&lt;/h3&gt;
+
+&lt;p&gt;遍历左子树-&amp;gt;访问根节点-&amp;gt;遍历右子树&lt;/p&gt;
+
+&lt;h3 id=&#34;后序遍历&#34;&gt;后序遍历&lt;/h3&gt;
+
+&lt;p&gt;遍历左子树-&amp;gt;遍历右子树-&amp;gt;访问根节点&lt;/p&gt;
+
+&lt;p&gt;例：（ABC  DE G  F   ）
+&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/tree/BinaryTree3.png&#34;&gt;
+先序：ABCDEGF
+中序：CBEGDFA
+后序：CGEFDBA&lt;/p&gt;
+
+&lt;h3 id=&#34;代码实现&#34;&gt;代码实现&lt;/h3&gt;
+
+&lt;p&gt;递归方式：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void preOrderTraverse(BiTree T){
+    if(T){
+        printf(&amp;quot;%c&amp;quot;,T-&amp;gt;data);
+        preOrderTraverse(T-&amp;gt;lchild);
+        preOrderTraverse(T-&amp;gt;rchild);
+    }
+}
+void inOrderTraverse(BiTree T){
+    if(T){
+        inOrderTraverse(T-&amp;gt;lchild);
+        printf(&amp;quot;%c&amp;quot;,T-&amp;gt;data);
+        inOrderTraverse(T-&amp;gt;rchild);
+    }
+}
+void postOrderTraverse(BiTree T){
+    if(T){
+        postOrderTraverse(T-&amp;gt;lchild);
+        postOrderTraverse(T-&amp;gt;rchild);
+        printf(&amp;quot;%c&amp;quot;,T-&amp;gt;data);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;森林&#34;&gt;森林&lt;/h1&gt;
+
+&lt;h2 id=&#34;森林与二叉树的转换&#34;&gt;森林与二叉树的转换&lt;/h2&gt;
+
+&lt;p&gt;例1：
+&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/tree/tree2Binary1.png&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;例2：
+&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/tree/tree2Binary2.png&#34;&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;哈夫曼树&#34;&gt;哈夫曼树&lt;/h1&gt;
+
+&lt;h3 id=&#34;定义&#34;&gt;定义：&lt;/h3&gt;
+
+&lt;p&gt;带权路径长度WPL最小的二叉树称作最优二叉树或哈夫曼树。
+例：
+&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/tree/huffman.png&#34;&gt;
+(1)WPL=7*1+5*2+2*3+4*3=35
+(2)WPL=7*2+5*2+2*2+4*2=36
+则(1)为哈夫曼树。&lt;/p&gt;
+
+&lt;h3 id=&#34;构造&#34;&gt;构造：&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/tree/2huffman.png&#34;&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;哈夫曼编码&#34;&gt;哈夫曼编码：&lt;/h3&gt;
+
+&lt;p&gt;左结点为0，右结点为1。&lt;/p&gt;
+
+&lt;p&gt;例：
+&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/tree/hufumancode.png&#34;&gt;
+则编码为
+* a（0）
+* b（10）
+* c（110）
+* d（111）&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>二维数组矩阵转置</title>
+      <link>http://boseman1024.github.io/2018/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9F%A9%E9%98%B5%E8%BD%AC%E7%BD%AE/</link>
+      <pubDate>Tue, 01 May 2018 21:11:44 +0000</pubDate>
+      
+      <guid>http://boseman1024.github.io/2018/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9F%A9%E9%98%B5%E8%BD%AC%E7%BD%AE/</guid>
+      <description>
+
+&lt;h1 id=&#34;对称矩阵&#34;&gt;对称矩阵&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-C&#34;&gt;int symmetricTranslate(){
+    printf(&amp;quot;==========对称矩阵=========\n&amp;quot;); 
+    int col,row;
+    int i,j;
+    /**输入对称矩阵行数列数 
+    scanf(&amp;quot;%d,%d&amp;quot;,&amp;amp;col,&amp;amp;row);
+    int origin[row][col],result[row][col];
+    for(i=0;i&amp;lt;col;i++){
+        for(j=0;j&amp;lt;row;j++){
+            printf(&amp;quot;列：%d,行：%d输入值&amp;quot;,col,row);
+            scanf(&amp;quot;%d&amp;quot;,&amp;amp;value);
+            origin[i][j] = value;
+        }
+    }
+    **/ 
+    //测试对称矩阵 
+    col = 5;
+    row = 5;
+    int origin[5][5]={
+        1,5,1,3,7,
+        3,0,8,0,0,
+        1,4,9,2,6,
+        3,0,5,5,1,
+        9,0,1,2,3
+    };
+    //int result[row][col];
+    int result[5][5];
+    for(i=0;i&amp;lt;row;i++){
+        for(j=0;j&amp;lt;col;j++){
+            printf(&amp;quot;%d &amp;quot;,origin[i][j]);
+        }
+        printf(&amp;quot;\n&amp;quot;);
+    }
+    printf(&amp;quot;==========对称矩阵转置=========\n&amp;quot;); 
+    for(i=0;i&amp;lt;row;i++){
+        for(j=0;j&amp;lt;col;j++){
+            result[j][i] = origin[i][j];
+        }
+    }
+    for(i=0;i&amp;lt;row;i++){
+        for(j=0;j&amp;lt;col;j++){
+            printf(&amp;quot;%d &amp;quot;,result[i][j]);
+        }
+        printf(&amp;quot;\n&amp;quot;);
+    }
+    return 1;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;稀疏矩阵&#34;&gt;稀疏矩阵&lt;/h1&gt;
+
+&lt;p&gt;矩阵数组构成：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-C&#34;&gt;typedef struct{
+    int row,col;
+    int value;
+}Element;
+typedef struct{
+    Element data[MAXSIZE+1];
+    int rowNum,colNum,notZeroNum;
+}EleArray;
+
+//-----------------------
+
+EleArray eleArray,result;
+int row = 0,col = 0,notZeroNum = 0,value;
+//测试数组：6行7列 
+row = 6;
+col = 7;
+int box[6][7]={
+    0,12,9,0,0,0,0,
+    0,0,0,0,0,0,0,
+    -3,0,0,0,0,14,0,
+    0,0,24,0,0,0,0,
+    0,18,0,0,0,0,0,
+    15,0,0,-7,0,0,0
+};
+//printf(&amp;quot;输入稀疏矩阵行数，列数\n&amp;quot;);
+//scanf(&amp;quot;%d,%d&amp;quot;,&amp;amp;row,&amp;amp;col);
+eleArray.rowNum = row;
+eleArray.colNum = col;  
+int i,j;
+for(i=0;i&amp;lt;row;i++){
+    for(j=0;j&amp;lt;col;j++){
+        //printf(&amp;quot;行：%d，列：%d，请输入数值：\n&amp;quot;,i,j);
+        //scanf(&amp;quot;%d&amp;quot;,&amp;amp;value);
+        value=box[i][j]; 
+        if(value!=0){
+            eleArray.data[notZeroNum].row = i;
+            eleArray.data[notZeroNum].col = j;
+            eleArray.data[notZeroNum].value = value;
+            notZeroNum++;
+        }
+    }
+}
+eleArray.notZeroNum = notZeroNum;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;普通转置法&#34;&gt;普通转置法&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-C&#34;&gt;int translate(EleArray *eleArray,EleArray *result){
+    result-&amp;gt;rowNum = eleArray-&amp;gt;colNum;
+    result-&amp;gt;colNum = eleArray-&amp;gt;rowNum;
+    result-&amp;gt;notZeroNum = eleArray-&amp;gt;notZeroNum;
+    int n;
+    if(eleArray-&amp;gt;notZeroNum){
+        int index=0;//转置后数组个数
+        int col,notZeroIndex;//列数，非零序列 
+        for(col=0;col&amp;lt;=eleArray-&amp;gt;colNum;col++){
+            for(notZeroIndex=0;notZeroIndex&amp;lt;eleArray-&amp;gt;notZeroNum;notZeroIndex++){
+                if(eleArray-&amp;gt;data[notZeroIndex].col==col){
+                    result-&amp;gt;data[index].row = eleArray-&amp;gt;data[notZeroIndex].col;
+                    result-&amp;gt;data[index].col = eleArray-&amp;gt;data[notZeroIndex].row;
+                    result-&amp;gt;data[index].value = eleArray-&amp;gt;data[notZeroIndex].value;
+                    index++;
+                }
+            }
+        }
+    }
+    return 1;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;快速转置法&#34;&gt;快速转置法&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-C&#34;&gt;int fastTranslate(EleArray *eleArray,EleArray *result){
+    printf(&amp;quot;===========快速转置=========\n&amp;quot;);
+    result-&amp;gt;rowNum = eleArray-&amp;gt;colNum;
+    result-&amp;gt;colNum = eleArray-&amp;gt;rowNum;
+    result-&amp;gt;notZeroNum = eleArray-&amp;gt;notZeroNum;
+    if(eleArray-&amp;gt;notZeroNum){
+        int num[eleArray-&amp;gt;colNum],cpot[eleArray-&amp;gt;colNum],col;
+        for(col=0;col&amp;lt;eleArray-&amp;gt;colNum;col++){
+            num[col]=0;
+        }
+        for(col=0;col&amp;lt;eleArray-&amp;gt;notZeroNum;col++){
+            num[eleArray-&amp;gt;data[col].col]++;
+        }
+        cpot[0]=0;
+        for(col=1;col&amp;lt;eleArray-&amp;gt;colNum;col++){
+            cpot[col] = cpot[col-1]+num[col-1];
+        }
+        int index=0,notZeroIndex;
+        for(notZeroIndex=0;notZeroIndex&amp;lt;eleArray-&amp;gt;notZeroNum;notZeroIndex++){
+            col = eleArray-&amp;gt;data[notZeroIndex].col;
+            index = cpot[col];
+            result-&amp;gt;data[index].row = eleArray-&amp;gt;data[notZeroIndex].col;
+            result-&amp;gt;data[index].col = eleArray-&amp;gt;data[notZeroIndex].row;
+            result-&amp;gt;data[index].value = eleArray-&amp;gt;data[notZeroIndex].value;
+            cpot[col]++;
+            index++;
+        }
+    }
+    return 1;
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Mybatis：一对多关联查询及批量插入（注解方式）</title>
+      <link>http://boseman1024.github.io/2018/mybatis%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E8%81%94%E6%9F%A5%E8%AF%A2%E5%8F%8A%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%B3%A8%E8%A7%A3%E6%96%B9%E5%BC%8F/</link>
+      <pubDate>Tue, 01 May 2018 20:50:27 +0000</pubDate>
+      
+      <guid>http://boseman1024.github.io/2018/mybatis%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E8%81%94%E6%9F%A5%E8%AF%A2%E5%8F%8A%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%B3%A8%E8%A7%A3%E6%96%B9%E5%BC%8F/</guid>
+      <description>
+
+&lt;h1 id=&#34;一对多关联查询&#34;&gt;一对多关联查询&lt;/h1&gt;
+
+&lt;p&gt;通过&lt;code&gt;@Results&lt;/code&gt;构造结果映射：
+* &lt;code&gt;javaType&lt;/code&gt;：返回类型
+* &lt;code&gt;property&lt;/code&gt;：指定属性
+* &lt;code&gt;column&lt;/code&gt;：将作为指定参数传递给指定方法（即例中&lt;code&gt;selectMenuByRid&lt;/code&gt;方法）&lt;/p&gt;
+
+&lt;p&gt;例：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//角色mapper
+public interface SysRoleMapper {
+    @Select(&amp;quot;select * from sys_role&amp;quot;)
+    @Results({
+        @Result(property=&amp;quot;name&amp;quot;,column=&amp;quot;name&amp;quot;),
+        @Result(property=&amp;quot;namezh&amp;quot;,column=&amp;quot;namezh&amp;quot;),
+        @Result(property=&amp;quot;menus&amp;quot;,column=&amp;quot;id&amp;quot;,javaType=List.class,many=@Many(select=&amp;quot;com.kuma2x.xauth.mapper.SysMenuMapper.selectMenuByRid&amp;quot;))
+    })
+    List&amp;lt;SysRole&amp;gt; selectRoleByUId(int uid);
+}
+
+//菜单mapper
+public interface SysMenuMapper {
+    //通过角色id在角色菜单关联表中查询到该角色所拥有菜单权限
+    @Select(&amp;quot;select * from sys_menu,sys_role_menu where sys_menu.id = sys_role_menu.mid and sys_role_menu.rid = #{rid}&amp;quot;)
+    List&amp;lt;Integer&amp;gt; selectMenuByRid(int rid);
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;批量插入&#34;&gt;批量插入&lt;/h1&gt;
+
+&lt;p&gt;使用&lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt;标签可像XML语法一样书写。
+通过&lt;code&gt;&amp;lt;foreach&amp;gt;&lt;/code&gt;迭代集合进行插入，注解中参数需通过&lt;code&gt;@Param&lt;/code&gt;指定参数。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;foreach&lt;/code&gt;标签的属性主要有：
+* &lt;code&gt;item&lt;/code&gt;：迭代时集合中每个元素的别名。
+* &lt;code&gt;index&lt;/code&gt;：每个元素在集合中迭代序列。
+* &lt;code&gt;collection&lt;/code&gt;：指定集合。
+* &lt;code&gt;open&lt;/code&gt;：该语句的开始符。
+* &lt;code&gt;separator&lt;/code&gt;：每次迭代的分隔符。
+* &lt;code&gt;close&lt;/code&gt;：该语句的结束符。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;&amp;lt;foreach collection=&amp;quot;list&amp;quot; index=&amp;quot;index&amp;quot; item=&amp;quot;item&amp;quot; open=&amp;quot;(&amp;quot; separator=&amp;quot;,&amp;quot; close=&amp;quot;)&amp;quot;&amp;gt;
+    #{item}
+&amp;lt;/foreach&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;完整示例：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//向角色权限关联表中插入该角色所拥有的所有菜单权限
+@Insert({
+    &amp;quot;&amp;lt;script&amp;gt;&amp;quot;+
+    &amp;quot;insert into sys_role_menu(rid,mid) values&amp;quot; +
+    &amp;quot;&amp;lt;foreach collection=&#39;menus&#39; item=&#39;mid&#39; separator=&#39;,&#39;&amp;gt; &amp;quot;+
+        &amp;quot;(#{id},#{mid})&amp;quot;+
+    &amp;quot;&amp;lt;/foreach&amp;gt;&amp;lt;/script&amp;gt;&amp;quot;
+})
+int insertRoleMenu(@Param(&amp;quot;id&amp;quot;)int id,@Param(&amp;quot;menus&amp;quot;) List&amp;lt;Integer&amp;gt; menus);
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>层级关系数据转树型结构JSON</title>
+      <link>http://boseman1024.github.io/2018/%E5%B9%B3%E7%BA%A7json%E8%BD%AC%E5%B1%82%E7%BA%A7%E6%A0%91%E5%9E%8B%E7%BB%93%E6%9E%84json/</link>
+      <pubDate>Tue, 01 May 2018 20:08:31 +0000</pubDate>
+      
+      <guid>http://boseman1024.github.io/2018/%E5%B9%B3%E7%BA%A7json%E8%BD%AC%E5%B1%82%E7%BA%A7%E6%A0%91%E5%9E%8B%E7%BB%93%E6%9E%84json/</guid>
+      <description>&lt;p&gt;原始数据结构如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;[{
+    &amp;quot;id&amp;quot;: 0,
+    &amp;quot;name&amp;quot;: &amp;quot;home&amp;quot;,
+    &amp;quot;url&amp;quot;: &amp;quot;1&amp;quot;,
+    &amp;quot;path&amp;quot;: &amp;quot;/home&amp;quot;,
+    &amp;quot;component&amp;quot;: &amp;quot;Gate&amp;quot;,
+    &amp;quot;iconcls&amp;quot;: &amp;quot;el-icon-menu&amp;quot;
+}, {
+    &amp;quot;id&amp;quot;: 1,
+    &amp;quot;name&amp;quot;: &amp;quot;user&amp;quot;,
+    &amp;quot;url&amp;quot;: &amp;quot;0&amp;quot;,
+    &amp;quot;path&amp;quot;: &amp;quot;&amp;quot;,
+    &amp;quot;iconcls&amp;quot;: &amp;quot;el-icon-document&amp;quot;
+}, {
+    &amp;quot;id&amp;quot;: 2,
+    &amp;quot;name&amp;quot;: &amp;quot;User&amp;quot;,
+    &amp;quot;url&amp;quot;: &amp;quot;1&amp;quot;,
+    &amp;quot;path&amp;quot;: &amp;quot;/user/user&amp;quot;,
+    &amp;quot;component&amp;quot;: &amp;quot;user/User&amp;quot;,
+    &amp;quot;parentid&amp;quot;: 1
+}, {
+    &amp;quot;id&amp;quot;: 3,
+    &amp;quot;name&amp;quot;: &amp;quot;Role&amp;quot;,
+    &amp;quot;url&amp;quot;: &amp;quot;1&amp;quot;,
+    &amp;quot;path&amp;quot;: &amp;quot;/user/role&amp;quot;,
+    &amp;quot;component&amp;quot;: &amp;quot;user/Role&amp;quot;,
+    &amp;quot;parentid&amp;quot;: 1
+}, {
+    &amp;quot;id&amp;quot;: 7,
+    &amp;quot;name&amp;quot;: &amp;quot;Permission&amp;quot;,
+    &amp;quot;url&amp;quot;: &amp;quot;1&amp;quot;,
+    &amp;quot;path&amp;quot;: &amp;quot;/user/permission&amp;quot;,
+    &amp;quot;component&amp;quot;: &amp;quot;user/Permission&amp;quot;,
+    &amp;quot;parentid&amp;quot;: 1
+}, {
+    &amp;quot;id&amp;quot;: 8,
+    &amp;quot;name&amp;quot;: &amp;quot;Menu&amp;quot;,
+    &amp;quot;url&amp;quot;: &amp;quot;1&amp;quot;,
+    &amp;quot;path&amp;quot;: &amp;quot;/user/menu&amp;quot;,
+    &amp;quot;component&amp;quot;: &amp;quot;user/Menu&amp;quot;,
+    &amp;quot;parentid&amp;quot;: 1
+}]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;通过递归的方式转换：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;const getJsonTree = function(data,parentid){
+    let tree=[]
+    for(let i=0;i&amp;lt;data.length;i++){ 
+        let node=data[i]
+        if(node.parentid==parentid ){ 
+            let newNode={
+                id:node.id,
+                name:node.name,
+                path:node.path, 
+                component:node.component,
+                meta:{
+                    url:node.url,
+                    iconcls:node.iconcls,
+                    parentid:node.parentid
+                },
+                children:getJsonTree(data,node.id)
+            }
+            tree.push(newNode)             
+        }
+    }
+    return tree
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;转换后结果如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;[{
+    &amp;quot;id&amp;quot;: 0,
+    &amp;quot;name&amp;quot;: &amp;quot;home&amp;quot;,
+    &amp;quot;path&amp;quot;: &amp;quot;/home&amp;quot;,
+    &amp;quot;component&amp;quot;: &amp;quot;Gate&amp;quot;,
+    &amp;quot;meta&amp;quot;: {
+        &amp;quot;url&amp;quot;: &amp;quot;1&amp;quot;,
+        &amp;quot;iconcls&amp;quot;: &amp;quot;el-icon-menu&amp;quot;,
+        &amp;quot;parentid&amp;quot;: null
+    },
+    &amp;quot;children&amp;quot;: []
+}, {
+    &amp;quot;id&amp;quot;: 1,
+    &amp;quot;name&amp;quot;: &amp;quot;user&amp;quot;,
+    &amp;quot;path&amp;quot;: &amp;quot;&amp;quot;,
+    &amp;quot;component&amp;quot;: null,
+    &amp;quot;meta&amp;quot;: {
+        &amp;quot;url&amp;quot;: &amp;quot;0&amp;quot;,
+        &amp;quot;iconcls&amp;quot;: &amp;quot;el-icon-document&amp;quot;,
+        &amp;quot;parentid&amp;quot;: null
+    },
+    &amp;quot;children&amp;quot;: [{
+        &amp;quot;id&amp;quot;: 2,
+        &amp;quot;name&amp;quot;: &amp;quot;User&amp;quot;,
+        &amp;quot;path&amp;quot;: &amp;quot;/user/user&amp;quot;,
+        &amp;quot;component&amp;quot;: &amp;quot;user/User&amp;quot;,
+        &amp;quot;meta&amp;quot;: {
+            &amp;quot;url&amp;quot;: &amp;quot;1&amp;quot;,
+            &amp;quot;iconcls&amp;quot;: null,
+            &amp;quot;parentid&amp;quot;: 1
+        },
+        &amp;quot;children&amp;quot;: []
+    }, {
+        &amp;quot;id&amp;quot;: 3,
+        &amp;quot;name&amp;quot;: &amp;quot;Role&amp;quot;,
+        &amp;quot;path&amp;quot;: &amp;quot;/user/role&amp;quot;,
+        &amp;quot;component&amp;quot;: &amp;quot;user/Role&amp;quot;,
+        &amp;quot;meta&amp;quot;: {
+            &amp;quot;url&amp;quot;: &amp;quot;1&amp;quot;,
+            &amp;quot;iconcls&amp;quot;: null,
+            &amp;quot;parentid&amp;quot;: 1
+        },
+        &amp;quot;children&amp;quot;: []
+    }, {
+        &amp;quot;id&amp;quot;: 7,
+        &amp;quot;name&amp;quot;: &amp;quot;Permission&amp;quot;,
+        &amp;quot;path&amp;quot;: &amp;quot;/user/permission&amp;quot;,
+        &amp;quot;component&amp;quot;: &amp;quot;user/Permission&amp;quot;,
+        &amp;quot;meta&amp;quot;: {
+            &amp;quot;url&amp;quot;: &amp;quot;1&amp;quot;,
+            &amp;quot;iconcls&amp;quot;: null,
+            &amp;quot;parentid&amp;quot;: 1
+        },
+        &amp;quot;children&amp;quot;: []
+    }, {
+        &amp;quot;id&amp;quot;: 8,
+        &amp;quot;name&amp;quot;: &amp;quot;Menu&amp;quot;,
+        &amp;quot;path&amp;quot;: &amp;quot;/user/menu&amp;quot;,
+        &amp;quot;component&amp;quot;: &amp;quot;user/Menu&amp;quot;,
+        &amp;quot;meta&amp;quot;: {
+            &amp;quot;url&amp;quot;: &amp;quot;1&amp;quot;,
+            &amp;quot;iconcls&amp;quot;: null,
+            &amp;quot;parentid&amp;quot;: 1
+        },
+        &amp;quot;children&amp;quot;: []
+    }]
+}]
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>SpringBoot整合Spring Security&#43;JWT</title>
+      <link>http://boseman1024.github.io/2018/springboot%E9%9B%86%E6%88%90spring-security-jwt/</link>
+      <pubDate>Mon, 16 Apr 2018 20:40:54 +0000</pubDate>
+      
+      <guid>http://boseman1024.github.io/2018/springboot%E9%9B%86%E6%88%90spring-security-jwt/</guid>
+      <description>
+
+&lt;h3 id=&#34;demo-https-github-com-boseman1024-springsecurity-jwt&#34;&gt;&lt;a href=&#34;https://github.com/boseman1024/SpringSecurity-JWT&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;DEMO&lt;/a&gt;&lt;/h3&gt;
+
+&lt;h1 id=&#34;准备&#34;&gt;准备&lt;/h1&gt;
+
+&lt;h2 id=&#34;maven依赖&#34;&gt;MAVEN依赖&lt;/h2&gt;
+
+&lt;p&gt;在&lt;code&gt;pom.xml&lt;/code&gt;引入所需依赖如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;parent&amp;gt;
+    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;spring-boot-starter-parent&amp;lt;/artifactId&amp;gt;
+    &amp;lt;version&amp;gt;2.0.1.RELEASE&amp;lt;/version&amp;gt;
+    &amp;lt;relativePath/&amp;gt; &amp;lt;!-- lookup parent from repository --&amp;gt;
+&amp;lt;/parent&amp;gt;
+
+&amp;lt;!--SpringBoot--&amp;gt;
+&amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;spring-boot-starter-web&amp;lt;/artifactId&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;spring-boot-starter-test&amp;lt;/artifactId&amp;gt;
+    &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
+&amp;lt;/dependency&amp;gt;
+
+&amp;lt;!--Spring Security --&amp;gt;
+&amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;spring-boot-starter-security&amp;lt;/artifactId&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;org.springframework.security&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;spring-security-test&amp;lt;/artifactId&amp;gt;
+    &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
+&amp;lt;/dependency&amp;gt;
+
+&amp;lt;!--JWT--&amp;gt;
+&amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;io.jsonwebtoken&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;jjwt&amp;lt;/artifactId&amp;gt;
+    &amp;lt;version&amp;gt;0.9.0&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+
+&amp;lt;!--Mybatis--&amp;gt;
+&amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;org.mybatis.spring.boot&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;mybatis-spring-boot-starter&amp;lt;/artifactId&amp;gt;
+    &amp;lt;version&amp;gt;1.3.2&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&amp;lt;!--MYSQL--&amp;gt;
+&amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;mysql&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;mysql-connector-java&amp;lt;/artifactId&amp;gt;
+    &amp;lt;scope&amp;gt;runtime&amp;lt;/scope&amp;gt;
+&amp;lt;/dependency&amp;gt;
+
+&amp;lt;!--可选：druid连接池--&amp;gt;
+&amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;com.alibaba&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;druid&amp;lt;/artifactId&amp;gt;
+    &amp;lt;version&amp;gt;1.1.9&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;基本配置&#34;&gt;基本配置&lt;/h2&gt;
+
+&lt;p&gt;在&lt;code&gt;application.yml&lt;/code&gt;中配置SpringBoot应用，
+配置后在项目中可通过&lt;code&gt;@Value(&amp;quot;${jwt.secret}&amp;quot;)&lt;/code&gt;的方式注入值。
+&lt;code&gt;application.yml&lt;/code&gt;配置如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;spring:
+  # 数据库配置
+  datasource:
+    url: jdbc:mysql://localhost/xauth?useSSL=true&amp;amp;useUnicode=true&amp;amp;characterEncoding=UTF-8
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+
+    # 若使用druid连接池，配置如下：
+    # 设置druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    # 下面为连接池的补充设置，应用到上面所有数据源中
+    # 初始化大小，最小，最大
+    initialSize: 1
+    minIdle: 3
+    maxActive: 20
+    # 配置获取连接等待超时的时间
+    maxWait: 60000
+    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    timeBetweenEvictionRunsMillis: 60000
+    # 配置一个连接在池中最小生存的时间，单位是毫秒
+    minEvictableIdleTimeMillis: 30000
+    validationQuery: select &#39;x&#39;
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    # 打开PSCache，并且指定每个连接上PSCache的大小
+    oolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，&#39;wall&#39;用于防火墙
+    filters: stat,wall,slf4j
+    # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    # 合并多个DruidDataSource的监控数据
+    #useGlobalDataSourceStat: true
+
+  # Spring Secutiry提供默认用户、密码及权限
+  #security:
+  #  user:
+  #    name: admin
+  #    password: admin
+  #    authorities:  #ROLE_ADMIN，ROLE_USER……
+
+# JWT 认证配置
+jwt:
+  header: Authorization #认证方式
+  secret: X-kuma2x      #加密盐
+  expiration: 604800    #过期时间，token七天不过期
+  tokenHead: &amp;quot;Bearer &amp;quot;  #Token前缀，用于检验是否Token
+  exceptUrl: &amp;quot;/auth/**&amp;quot; #允许匿名访问路径
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;用户表-角色表-权限表-mapper类-略-见项目demo&#34;&gt;用户表、角色表、权限表、Mapper类：略，见项目DEMO。&lt;/h2&gt;
+
+&lt;h1 id=&#34;具体实现&#34;&gt;具体实现&lt;/h1&gt;
+
+&lt;p&gt;新建一个工具类&lt;code&gt;JWTUtil&lt;/code&gt;，实现常用的方法：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Component
+public class JWTUtil {
+
+    @Value(&amp;quot;${jwt.secret}&amp;quot;)
+    private String secret;
+    @Value(&amp;quot;${jwt.expiration}&amp;quot;)
+    private Long expiration;
+
+    /**
+     * 根据Token获取用户名Username
+     * @param token
+     * @return
+     */
+    public String getUsernameByToken(String token){
+        String username;
+        try {
+            Claims claims = Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
+            username = claims.getSubject();
+        }catch (Exception e){
+            username = null;
+        }
+        return username;
+    }
+
+    /**
+     * 检验Token是否过期
+     * @param Token
+     * @return
+     */
+    public Boolean isTokenExpired(String Token){
+        Claims claims;
+        try{
+            claims = Jwts.parser().setSigningKey(secret).parseClaimsJws(Token).getBody();
+        }catch (Exception e){
+            claims = null;
+        }
+        return claims.getExpiration().before(new Date());
+    }
+
+    /**
+     * 生成Token
+     * @param userDetails
+     * @return
+     */
+    public String initToken(UserDetails userDetails){
+        //生成数据声明claims
+        Map&amp;lt;String,Object&amp;gt; claims = new HashMap&amp;lt;&amp;gt;();
+        claims.put(&amp;quot;sub&amp;quot;,userDetails.getUsername());
+        claims.put(&amp;quot;created&amp;quot;,new Date());
+
+        String Token = Jwts.builder().setClaims(claims)
+                //设置过期时间
+                .setExpiration(new Date(System.currentTimeMillis()+expiration*1000))
+                //加密算法+盐
+                .signWith(SignatureAlgorithm.HS512,secret).compact();
+        return Token;
+    }
+
+    /**
+     * 验证Token是否正确
+     * @param Token
+     * @param userDetails
+     * @return
+     */
+    public Boolean valiadateToken(String Token,UserDetails userDetails){
+        String username = getUsernameByToken(Token);
+        Boolean result = (!isTokenExpired(Token)&amp;amp;&amp;amp; username.equals(userDetails.getUsername()));
+        return result;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;为控制数据源（文本、xml、数据库等），需要实现&lt;code&gt;UserDetailsService&lt;/code&gt;接口，该接口提供&lt;code&gt;loadUserByUsername&lt;/code&gt;方法根据用户名查找用户并返回&lt;code&gt;UserDetails&lt;/code&gt;，在后续会用&lt;code&gt;UserDetails&lt;/code&gt;的信息来比对请求的用户名、密码是否正确。
+在&lt;code&gt;UserServiceImpl&lt;/code&gt;类中实现具体方法：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public interface UserService extends UserDetailsService{}
+
+@Service()
+public class UserServiceImpl implements UserService {
+    //获取全局AuthenticationManagerBuilder
+    @Autowired
+    private AuthenticationManagerBuilder authenticationManagerBuilder;
+    @Autowired
+    private SysUserMapper sysUserMapper;
+    @Resource
+    private JWTUtil jwtUtil;
+
+    /***
+     * 继承UserDetailsService类重写loadUserByUsername
+     * 根据用户名查找用户并返回
+     * @param username
+     * @return
+     * @throws UsernameNotFoundException
+     */
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        System.out.println(&amp;quot;===loadUserByUsername===&amp;quot;);
+        SysUser user = sysUserMapper.selectByUsername(username);
+        if(user == null){
+            System.out.println(&amp;quot;User Not Found&amp;quot;);
+            throw new UsernameNotFoundException(&amp;quot;User Not Found&amp;quot;);
+        }
+        return new org.springframework.security.core.userdetails.User(user.getUsername()
+                ,user.getPassword(),user.getEnabled()==1,
+                true,true,true,mapToGrantedAuthorities(user.getRole()));
+    }
+
+    /**
+     *获取用户所有权限集合
+     * @param authorities
+     * @return List&amp;lt;GrantedAuthority&amp;gt;
+     */
+    private static List&amp;lt;GrantedAuthority&amp;gt; mapToGrantedAuthorities(List&amp;lt;SysRole&amp;gt; authorities) {
+        Set&amp;lt;GrantedAuthority&amp;gt; setAuths=new HashSet&amp;lt;&amp;gt;();
+        for(SysRole userRole:authorities){
+            /*
+            for(SysMenu sysMenu : userRole.getMenus()){
+                setAuths.add(new SimpleGrantedAuthority(sysMenu.getName()));
+            }
+            */
+            setAuths.add(new SimpleGrantedAuthority(userRole.getName()));
+        }
+        List&amp;lt;GrantedAuthority&amp;gt; result=new ArrayList&amp;lt;&amp;gt;(setAuths);
+        return result;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;创建Token校验过滤器&lt;code&gt;JWTAuthenticationFilter&lt;/code&gt;，判断每次请求是否授权请求、是否携带Token以及Token是否正确，是否过期。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class JWTAuthenticationFilter extends OncePerRequestFilter {
+    @Value(&amp;quot;${jwt.header}&amp;quot;)
+    private String header;
+    @Value(&amp;quot;${jwt.tokenHead}&amp;quot;)
+    private String tokenHead;
+    @Resource
+    private JWTUtil jwtUtil;
+    @Resource
+    private UserDetailsService userDetailsService;
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
+        System.out.println(&amp;quot;======JWTAuthenticationFilter=======&amp;quot;);
+        String tokenHeader = request.getHeader(header);
+        if(tokenHeader!=null&amp;amp;&amp;amp;tokenHeader.startsWith(tokenHead)){
+            String token = tokenHeader.substring(tokenHead.length());
+            String username = jwtUtil.getUsernameByToken(token);
+            logger.info(&amp;quot;Token CHECK:&amp;quot;+username);
+            if(username!=null&amp;amp;&amp;amp; SecurityContextHolder.getContext().getAuthentication() == null){
+                UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+                if(jwtUtil.valiadateToken(token,userDetails)){
+                    UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
+                            userDetails, null, userDetails.getAuthorities());
+                    authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(
+                            request));
+                    logger.info(&amp;quot;authenticated user &amp;quot; + username + &amp;quot;, setting security context&amp;quot;);
+                    SecurityContextHolder.getContext().setAuthentication(authentication);
+                }
+            }
+        }
+        chain.doFilter(request,response);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;建立&lt;code&gt;WebSecurityConfig&lt;/code&gt;类继承&lt;code&gt;WebSecurityConfigurerAdapter&lt;/code&gt;来对Spring Security进行配置。
+使用&lt;code&gt;@EnableWebSecurity&lt;/code&gt;注解启用Spring Security。
+使用&lt;code&gt;@EnableGlobalMethodSecurity&lt;/code&gt;注解启用访问权限控制，
+例如：&lt;code&gt;@PreAuthorize(&amp;quot;hasRole(&#39;ADMIN&#39;)&amp;quot;)&lt;/code&gt;。
+&lt;code&gt;WebSecurityConfig&lt;/code&gt;类如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Configuration
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+    @Value(&amp;quot;${jwt.exceptUrl}&amp;quot;)
+    private String exceptUrl;
+    @Resource
+    private UserDetailsService userDetailsService;
+
+    @Bean
+    public JWTAuthenticationFilter authenticationTokenFilter() throws Exception {
+        return new JWTAuthenticationFilter();
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        // 源码：
+        // ((HttpSecurity)((HttpSecurity)((ExpressionUrlAuthorizationConfigurer.AuthorizedUrl)http.authorizeRequests().anyRequest()).authenticated().and()).formLogin().and()).httpBasic();
+
+        //启用跨域
+        http.cors().and()
+            //使用JWT，禁用csrf
+            .csrf().disable()
+            //基于token所以禁用session
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .and()
+            .authorizeRequests()
+                .antMatchers(
+                        HttpMethod.GET,
+                        &amp;quot;/&amp;quot;,
+                        &amp;quot;/*.html&amp;quot;,
+                        &amp;quot;/favicon.ico&amp;quot;,
+                        &amp;quot;/**/*.html&amp;quot;,
+                        &amp;quot;/**/*.css&amp;quot;,
+                        &amp;quot;/**/*.js&amp;quot;
+                ).permitAll()
+                //允许匿名访问
+                .antMatchers(exceptUrl).permitAll()
+                //除上以外所有请求均需授权访问
+                .anyRequest().authenticated();
+
+        //将Token校验过滤器JWTAuthenticationFilter加载于用户名密码认证过滤器UsernamePasswordAuthenticationFilter之前。
+        http.addFilterBefore(authenticationTokenFilter(),UsernamePasswordAuthenticationFilter.class);
+
+        //禁用缓存
+        http.headers().cacheControl().disable();
+    }
+
+    //AuthenticationManagerBuilder 通过 @Autowired 注解被注入到一个 @Bean 中的方法，这会导致它构造的是全局的AuthenticationManager
+    @Autowired
+    protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+                //设置userDetailsService
+                .userDetailsService(userDetailsService)
+                //加载密码编码器
+                .passwordEncoder(passwordEncoder());
+    }
+/*
+    //使用 @Override 注解会导致 AuthenticationManagerBuilder 构建的是一个局部的AuthenticationManager
+    @Override
+    public configure(AuthenticationManagerBuilder builder) {
+        auth.jdbcAuthentication().dataSource(dataSource).withUser(&amp;quot;dave&amp;quot;)
+                .password(&amp;quot;secret&amp;quot;).roles(&amp;quot;USER&amp;quot;);
+    }
+
+*/
+    //装载BCrypt密码编码器
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在&lt;code&gt;UserServiceImpl&lt;/code&gt;中加入登录处理login方法并生成Token返回。
+生成Token时也可使用从数据库取出携带其余信息的实体类。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    /****
+     * 登录
+     * 生成jwtToken并返回
+     * @param user
+     * @return
+     */
+    @Override
+    public String login(String username,String password) {
+        //password = passwordEncoder.encode(password);
+        AuthenticationManager authenticationManager = authenticationManagerBuilder.getObject();
+        //绕开SS的Filter手动的完成验证并设置Authentication对象：
+        //用户名和密码获得之后组合成 UsernamePasswordAuthenticationToken 的实例
+        UsernamePasswordAuthenticationToken upToken = new UsernamePasswordAuthenticationToken(username, password);
+        if(authenticationManager==null){
+            throw new AuthenticationServiceException(&amp;quot;no authenticationManager defined&amp;quot;);
+        }
+        //将该令牌传递给 AuthenticationManager 实例进行验证,验证成功后，AuthenticationManager 会返回填充好的 Authentication 实例
+        Authentication authentication = authenticationManager.authenticate(upToken);
+        //通过调用 SecurityContextHolder.getContext().setAuthentication(...) 建立安全上下文的实例，传递到返回的身份认证对象上
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        //生成token并返回，多一次loadUserByUsername
+        UserDetails userDetails = loadUserByUsername(username);
+        //User user = sysUserMapper.selectByUsername(username);
+        String token = jwtUtil.initToken(userDetails);
+        return token;
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;最后在&lt;code&gt;UserController&lt;/code&gt;实现Login进行登录以及其他测试路径。
+&lt;code&gt;@PreAuthorize&lt;/code&gt;通过表达式&lt;code&gt;hasRole(&#39;ADMIN&#39;)&lt;/code&gt;等来进行权限限制。
+&lt;code&gt;hasRole&lt;/code&gt;表达式中，默认每个角色名有个前缀“&lt;code&gt;ROLE_&lt;/code&gt;”，即在数据库中存储的为“&lt;code&gt;ROLE_ADMIN&lt;/code&gt;”。
+&lt;code&gt;@PreAuthorize&lt;/code&gt;也可修饰Controller。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@RestController
+public class UserController {
+    @Resource
+    private UserService userService;
+
+    @RequestMapping(&amp;quot;/index&amp;quot;)
+    public String index(){
+        return &amp;quot;index&amp;quot;;
+    }
+
+    @RequestMapping(&amp;quot;/admin&amp;quot;)
+    // 访问需要ADMIN角色
+    @PreAuthorize(&amp;quot;hasRole(&#39;ADMIN&#39;)&amp;quot;)
+    public String admin(){
+        return &amp;quot;admin&amp;quot;;
+    }
+
+    @PostMapping(&amp;quot;/auth/login&amp;quot;)
+    public Map&amp;lt;String,String&amp;gt; Login(HttpServletRequest request){
+        String token = userService.login(request.getParameter(&amp;quot;username&amp;quot;),request.getParameter(&amp;quot;password&amp;quot;));
+        Map&amp;lt;String,String&amp;gt; tokenMap = new HashMap&amp;lt;&amp;gt;();
+        tokenMap.put(&amp;quot;token&amp;quot;,token);
+        return tokenMap;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;验证&#34;&gt;验证&lt;/h1&gt;
+
+&lt;p&gt;未携带Token时访问&lt;a href=&#34;http://localhost:8080/index，访问被拒绝：&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;http://localhost:8080/index，访问被拒绝：&lt;/a&gt;
+&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/springsecurity-jwt/1.jpg&#34;&gt;
+访问&lt;a href=&#34;http://localhost:8080/auth/login进行登录，这里使用test用户，得到Token：&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;http://localhost:8080/auth/login进行登录，这里使用test用户，得到Token：&lt;/a&gt;
+&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/springsecurity-jwt/2.jpg&#34;&gt;
+携带Token访问&lt;a href=&#34;http://localhost:8080/index，访问成功：&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;http://localhost:8080/index，访问成功：&lt;/a&gt;
+&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/springsecurity-jwt/3.jpg&#34;&gt;
+携带Token访问&lt;a href=&#34;http://localhost:8080/admin，由于test用户无ROLE_ADMIN角色，访问被拒绝：&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;http://localhost:8080/admin，由于test用户无ROLE_ADMIN角色，访问被拒绝：&lt;/a&gt;
+&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/springsecurity-jwt/4.jpg&#34;&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>JSON查询数据</title>
+      <link>http://boseman1024.github.io/2018/json%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/</link>
+      <pubDate>Fri, 30 Mar 2018 23:04:11 +0000</pubDate>
+      
+      <guid>http://boseman1024.github.io/2018/json%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/</guid>
+      <description>
+
+&lt;p&gt;若原始数据结构如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var arr = [{
+    id:1,
+    name:&#39;a&#39;
+},{
+    id:2,
+    name:&#39;b&#39;
+}];
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;①改变数据结构&#34;&gt;①改变数据结构&lt;/h2&gt;
+
+&lt;p&gt;可转换数据结构，把id变成key为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var obj = {};
+arr.forEach(function (v,i) {
+    obj[v.id] = v;
+});
+或
+for (let i = 0; i &amp;lt; arr.length;i++){
+    obj[arr[i].id] = arr[i]
+}
+
+obj = {
+    1:{
+        id:1,
+        name:&#39;a&#39;,
+    },
+    2:{
+        id:2,
+        name:&#39;b&#39;
+    }
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;之后就可根据id获取元素数据&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;obj[id].name
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;②根据key查询元素&#34;&gt;②根据key查询元素&lt;/h2&gt;
+
+&lt;p&gt;功能类似select name from json where id = 1&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function getItem(arr,n,v) {  
+    for (var i = 0; i &amp;lt; arr.length; i++){
+        if (arr[i][n]==v){
+            return arr[i];  
+        }
+    }
+}  
+   
+getItem(arr,&amp;quot;id&amp;quot;,&amp;quot;2&amp;quot;).name 
+getItem(arr,&amp;quot;name&amp;quot;,&amp;quot;123&amp;quot;).name 
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>NEW YEAR 2018</title>
+      <link>http://boseman1024.github.io/2018/new-year-2018/</link>
+      <pubDate>Fri, 16 Feb 2018 00:00:57 +0000</pubDate>
+      
+      <guid>http://boseman1024.github.io/2018/new-year-2018/</guid>
+      <description>&lt;p&gt;&lt;center&gt;
+&lt;h1&gt;HAPPY 201&lt;del&gt;7&lt;/del&gt; 8&lt;/h1&gt;
+&lt;h2&gt;NEW YEAR. NEW YOU.&lt;/h2&gt;
+&lt;h3&gt;Just kidding.&lt;/h3&gt;
+&lt;h4&gt;You&amp;rsquo;re still the same.&lt;/h4&gt;
+&lt;h5&gt;piece of shit you were yesterday.&lt;/h5&gt;
+&lt;/center&gt;&lt;/p&gt;
+
+&lt;p&gt;{% fold 八月 %}
+&lt;strong&gt;8月22日12点05分&lt;/strong&gt;
+N2过了。&lt;/p&gt;
+
+&lt;p&gt;{% endfold %}&lt;/p&gt;
+
+&lt;p&gt;　&lt;/p&gt;
+
+&lt;p&gt;{% fold 七月 %}
+&lt;strong&gt;7月13日17点02分&lt;/strong&gt;
+放暑假了。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;7月1日21点31分&lt;/strong&gt;
+N2结束了，听力炸了。
+天気がいいから、一緒に散歩にまび。&lt;/p&gt;
+
+&lt;p&gt;{% endfold %}&lt;/p&gt;
+
+&lt;p&gt;　&lt;/p&gt;
+
+&lt;p&gt;{% fold 六月 %}
+&lt;strong&gt;6月26日21点50分&lt;/strong&gt;
+想死的情绪是不需要理由的，
+由内向外渗透的异样感，
+被突如其来的不安笼罩，
+一时之间不知所措。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;6月21日22点42分&lt;/strong&gt;
+物欲。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;6月15日18点11分&lt;/strong&gt;
+拔了两颗智齿。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;6月12日 16点23分&lt;/strong&gt;
+今年过了一半。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;6月10日 9点58分&lt;/strong&gt;
+想成为碎片。&lt;/p&gt;
+
+&lt;p&gt;{% endfold %}&lt;/p&gt;
+
+&lt;p&gt;　&lt;/p&gt;
+
+&lt;p&gt;{% fold 五月 %}&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;5月27日 19点50分&lt;/strong&gt;
+人的高度，
+思想的限度。&lt;/p&gt;
+
+&lt;p&gt;{% endfold %}&lt;/p&gt;
+
+&lt;p&gt;　&lt;/p&gt;
+
+&lt;p&gt;{% fold 四月 %}
+&lt;strong&gt;4月30日 11点45分&lt;/strong&gt;
+又偷懒了。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4月24日 21点43分&lt;/strong&gt;
+记：
+《狂言之神》——太宰治
+「我无法生猛地活下去，因此要死。」
+「人类最悲痛的表情不是眼泪，也不是白发，更不是眉心的皱纹。最苦恼的场合，人会默默微笑。」&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4月18日 21点11分&lt;/strong&gt;
+比猪还蠢。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4月13日 19点53分&lt;/strong&gt;
+总有人比你强。&lt;/p&gt;
+
+&lt;p&gt;一如既往的Boy Meets Girl.&lt;/p&gt;
+
+&lt;p&gt;记：
+《惶然录》——费尔南多·佩索阿
+&lt;code&gt;-我游历第八大洲&lt;/code&gt;
+「我们从来不能从自己体内抽身而去。我们从来不能成为另外的人，除非运用我们对自己的想象性感觉，我们才能他变。真正的景观是我们自己创造的，因为我们是它们的上帝。它们在我们眼里实际的样子，恰恰就是它们被造就的样子。我对世界七大洲的任何地方既没有兴趣，也没有真正去看过。我游历我自己的第八大洲。」
+&lt;code&gt;-两种人&lt;/code&gt;
+「有些人把他们不能实现的生活，变成一个伟大的梦。另一些人完全没有梦，连梦一下也做不到。」
+&lt;code&gt;-雾或者烟&lt;/code&gt;
+「没有什么东西是明确的，甚至没有什么东西是不明确的。」
+&lt;code&gt;-雨&lt;/code&gt;
+「最后，光斑闪闪的一片黑色屋顶之上，温暖早晨的寒光终于划破黑暗，像启示录带来的一种震痛。已经很多次了，深广的夜晚渐渐明亮起来。已经很多次了，以同样的恐惧——我面对另一天的到来，面对生活以及它虚构的用途以及徒劳无益的活动。我生理上的个性，有形的、社会的、可用言语交流的个性毫无意义，只是在他人的思想和行动那里，才能派上点用场。
+　　我再一次是我，准确地说我不是。伴随着黑暗之光的到来，灰暗的疑惑充斥其中，窗叶子咔咔作响，我开始感到自己的抗拒无法坚守得太久。我躺在床上没有睡觉，只是有一种把睡觉的可能性持续下去的感觉，一种飘然入梦的感觉。我已经不知道什么真实或者现实的所在，睡在清爽而温暖的清洁床单之间，除了舒适之感，对自己身体的存在却浑然不觉。我自觉潮水般离我而去的是无意识的快乐，而随着这种快乐，我才能得以享乐于自己的意识，慵懒，动物般地张望，半开半合的双眼，像太阳光下的猫，还有我断断续续想象的逻辑运作。我感到半影状态的优越正从我的身上滑离而去，我不时颤动着的睫毛之树下有缓缓的河水在流淌，瀑布的低语在我耳中缓缓的脉搏声中和持续着的微弱雨声中消失。我渐渐地把自己失落在生命里。
+　　我不知道自己是睡着了，抑或仅仅是有睡觉的自我感觉。
+　　我的梦不会有这样精确的间隔节奏，但就像从一个醒着的梦里开始醒过来，我注意到城市生活的最初骚动，从楼下我不知道的什么地方，从上帝造就的街道那里浪一般汹涌而起。它们是快乐的喧响，滤入苍凉的雨声，我眼下不能听出这雨声是响在现在还是响在过去……我只能从远方零碎闪光中过量的灰暗，从依稀亮色投来络光影；辨出在清晨这一时间里不常有的黑暗，辨出眼下的时间。我听到的声音充盈着欢乐，四处飘散。它们使我心痛，就像是来召唤我与它们同行，要把我送入验明正身之后的行刑。
+　　每一天，我都躺在知觉空白的床上听到破晓。白天对于我来说似乎是生活中伟大的事件，而我缺乏勇气来面对。我感觉到的每一天都是从它幻影的床榻上升起来，把被子全都撕碎在楼下的大街小巷，意在把我传到什么地方接受审判。而每一天的破晓之时，我都被判决。我体内这个永远可恶的恶人纠缠着床榻，就像舍不下已经死去的母亲；我一次次把自己埋入枕头，就像投入保姆的怀抱，以求她在陌生人面前保护我。
+　　树荫之下惬意午休着的巨兽，高高草丛的阴凉之处疲乏不堪的街上顽童，黑人在温暖午后长久的沉沉睡意以及舒心的哈欠和迟钝的双目，还有我们大脑休息时一片宁静的安适：这一切把我们从遗忘中遥拍着慢慢送入梦乡，在梦乡莫名的抚爱之中，逼近着灵魂的窗口。
+　　睡吧，让我并不自知的走神，身体躺下来，忘记自己的躯体，欣悦于无意识状态中的自由，在遥远茂密大森林中一个被遗忘的静静湖泊那里避难。
+　　这仅仅是看来还有点呼吸的一个废物，无法醒来感觉到新鲜和活力的一个半死者，灵魂中为了留下忘却的一种千头万绪的编织。
+　　但是，像是一片不愿罢休的听众喊声再起以示抗议，我再一次听到突然的雨声喧哗，渗透着正在渐渐明亮起来的天地。
+　　我感到一阵假定的寒意彻骨，好像自己被吓着了。我蜷缩着身子，面对着苍凉和人类，面对着在微暗中留给我的一切，终于哭了。是的，我为自己的孤独、生命以及痛苦而哭，我的痛苦被抛弃在现实生活大路边，就像一辆没有轮子的破车，陷在泥粪堆里。我为万事万物而哭，为我儿时曾经就坐的膝盖现在已经不在，为曾经伸向我的手现在已经消失，为未能抓住我的手臂，为哭泣时可以依靠的肩头其实从来就不曾有过……天终于亮了，痛苦在我心头的破晓像白日的严酷真理，我梦想、思考以及忘记的一切——所有的一切，处在一种幻影、虚拟以及懊悔的混合之中，在往日世界的苏醒中一起翻滚，落入生活的一堆碎片，像一串葡萄被哪个小家伙偷到墙角里吃掉然后吐下的残渣。
+　　如同召唤人们前去祈祷的钟声响了，白日的嘈杂人声突然更为喧闹。在楼房的深处，如闻一声爆炸，我听到有人轻轻关闭了内门，然后走向今天的世界。我听到有拖鞋的声音走过古怪的走廊然后直逼我的心里。以一种仓皇的动作，像什么人最终找到了自杀的办法，我掀开被子在床上坐起来。我醒过来了。
+　　窗外什么地方的雨声已经停歇。我很高兴，已经履行了某种莫名的职责。我突然果断地起了床，走到窗前打开了通向一天的窗子，让洁净的雨雾以幽暗之光浸润着我的双眼。我打开了窗，让清凉的空气湿润着我热乎乎的皮肤。是的，还在下雨。但是，即便一切都照此原封不动地下去，到头来又有什么大不了呢！
+　　我要焕然一新，我要生活下去，我要向生活伸出脖子，承担轭套的巨大沉重。」
+&lt;code&gt;-单调与更糟的单调&lt;/code&gt;
+「人们说单调是一种病，折磨着闲散之人，或者只是伤及那些无所事事者。不管怎样，这种灵魂的折磨还是有轻重之分的：比如在一种预先安排却又很少得到怜悯的命运之下，那些工作着或者假装工作着（他们说到底是一回事）的人，比真正的闲人所受到的打击要多得多。
+　　最为糟糕的事情，莫过于让我们看到，印度人以及尚在开发过程中的民族，尚有一种内心生活的光辉，这种光辉与他们生活平淡无奇的日复一日，与他们肮脏甚至不一定真正肮脏的生活，形成了强烈的对比。看来，更为沉重的单调总是发生在它没有闲散作为借口的时候。体面和忙碌的单调，是所有单调中最为糟糕的一种。
+　　单调不是无所事事百无聊赖所带来的一种病，而是感到没有什么事情值得一做时更为麻烦的一种病。因为是故，有更多的人不得不陷入更糟的单调。
+　　我如此经常地从帐本里抬起头来，逃出自己的抄写和对于整个世界空空如也的脑袋。如果我闲着，什么也没做，没有什么可做，那可能还好一些，因为那种单调虽然货真价实，我至少可以从中取乐。在我当下的状态里，在不适的感觉里没有舒缓，没有高贵，没有安逸，只有自己造成的每个动作中的一种极度乏味，没有任何一种潜伏着乏味的行动是自己愿意所为。」&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4月11日 12点07分&lt;/strong&gt;
+厌学。&lt;/p&gt;
+
+&lt;p&gt;记：
+《维庸之妻》——太宰治
+「可俗话说，人这辈子就如同地狱，寸善尺魔，真是一点不假。一年三百六十五天，无忧无虑的日子能有一天——不，能有半天，就算是幸福的人了。」
+「我这个人吧，表面上很风光，其实特别想去死呢，我自打一出生就整天想着去死。为了其他人，我也是死了的好，这是毫无疑问的。即使这样，我怎么也死不成。一定有可怕的怪物，就是不让我死。」
+「不是人也无所谓啊，我们只要能活着就行了。」&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4月9日 22点48分&lt;/strong&gt;
+记：
+《潘多拉之匣》——太宰治
+「想到这些，我感到茫然无措。我完全不知道今后的路该怎么走，而且，像我这样不求进取的人，活着就是给人增添麻烦，没有任何意义，每想到此，我就痛苦万分，像你这样的高材生是理解不了的。“自己活着就是给别人增添麻烦，我是一个多余的人。”世间没有比这个念头更令人痛苦的了。」
+「说到底，我们的微笑，由来于那颗躺在潘多拉之匣一角的小石子。对于和死亡毗邻而居的人而言，比起生死的问题来，一朵花的微笑更能铭记于心。现在的我们仿佛是被某种幽幽的花香吸引着，乘上了一艘完全陌生的大船，沿着命运的航线随波逐流。我并不知道这艘所谓“天意”的大船，将到达哪座岛屿，但是，我们必须信赖这次航行。我甚至感觉，是死去还是活着，这些已经不再是决定一个人是幸或不幸的关键了。死者归于圆满，生者则立于航船的甲板上合掌祈祷。大船飞速驶离了岸边——“死亡是一件好事。”」&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4月8日 21点18分&lt;/strong&gt;
+记：
+《惶然录》——费尔南多·佩索阿
+&lt;code&gt;-潜在的宫殿&lt;/code&gt;
+「行动，是真正的智慧。我愿意成为我愿意成为的人。但是我必须愿望自己所愿望的东西。成功意味着已经成功，而不仅仅是潜在的成功。任何一大块土地都是宫殿的潜在可能，但是如果还没建起来，宫殿在哪里？」
+&lt;code&gt;-自我折腾&lt;/code&gt;
+「我做着有关里斯本与卡斯凯什之间旅行的白日梦。我去卡斯凯什那里为老板在那里的一所房子付税。我急切地向往着来回各一个小时的旅行，让我有机会看看总是在改变着面容的伟大河流以及它的大西洋人海口。事实上，一路上我迷失在抽象的思考里，我投出去的目光，并没有看见自己一直如此向往的河上风光。回来的一路上，我又迷失在对这种感受的分析之中。
+　　我不能描述旅行中哪怕最小的细节，以及我见过的最小片断。
+　　我的健忘和自身折腾只露下这些纸页，不知道比起自我折腾来说，它们是好一些或者是更糟一些。
+　　火车缓缓开进了车站，我已经到达里斯本，还没有任何结论。」
+&lt;code&gt;-楼上的琴声&lt;/code&gt;
+「我猜想，虽然我仅仅是这一切的一个载体，虽然我感受到的向往既不真正属于我，也未见得真有什么玄秘，但作为一段截取来的情感，它属于不可知道的第三者。对于我来说，这些情感是文学性的，就像维埃拉说的，是文学性的。我的伤害和痛苦来自自己想象的感受，它们仅仅存在于我的想象中，还有我对于他者思想或者情感性的怀旧之中。这种怀旧留给我盈目的泪水。」
+&lt;code&gt;-我是凯撒&lt;/code&gt;
+「我们把生活想象成什么样，它就是什么样。对于有一块园子的农民来说，园子就是他的一切，是他的帝国。凯撒有庞大帝国，仍嫌帝国狭窄，帝国就只是他的园子。小人物有一个帝国。大人物只有一个园子。除了我们的感受以外我们一无所有，这是他们的真实，却不能被他们领悟，而我们必须立足于自己生活的现实。
+　　但所有这些都是虚无。
+　　我做了很多梦，现在已经把梦做累了。但我并不厌倦梦。
+　　没有人厌倦梦，因为梦就是忘却，而忘却不会成为我们的负担，忘却是我们完全保持清醒时无梦的沉睡。我在梦里得到了一切。
+　　我已经醒了，那又有什么关系？我已经当过了多少次凯撒呵！
+　　这是何等精神意义上的光荣！当凯撒在一个海盗的宽宏大量下死里逃生以后，他长久和艰难地寻找这个人，逮捕他并且下令把他钉死在十字架上。当拿破仑在圣·海伦娜岛上定下最后的意愿和遗嘱，他将一大笔遗产，留给一个曾经试图行刺威灵顿的罪犯。如此灵魂的伟大，却与他们的患斜眼疾的邻居差不多同日而语！……我已经不计其数地当过凯撒并且在梦里继续当下去！
+　　不管我多少次当上了凯撒，还没有喜欢上真正的凯撒。我的真正帝国是我的梦，只因为它们最后都去烟消云散。我的军队征战南北但无关紧要，不会有人死去。也没有城头的王旗变幻。我从来没有让梦里军队的所到之处，有旗帜飘入我梦中凝定的视野。在道拉多雷斯大街上我不计数地成为凯撒。作为凯撒的我，至今生活在我的想象里，而真正的凯撒们统统早就死了，现在的道拉多雷斯大街已无迹可循。
+　　我把一个空空的火柴盒，丢入我高高窗户外的街头垃圾堆，然后坐在椅子里倾听。落下去的火柴盒送回了清晰的回声，让我知道大街的荒芜，这一事实似乎显示着某种意义。没有声音可以从整个城市的声音里分离出来。是的，整个星期天城市的声音——这么多无法破译各行其是的声音。
+　　一个人需要的现实世界，作为最为深邃思想的起点，是何等的小：吃中饭晚了一点点，用完了火柴然后把空火柴盒抛向街头，因为中饭吃得太晚以致稍感不适，除了可怜落日的许诺以外空中什么也没有得星期天，还有我既不属于这个世界也不属于其他如此形而上问题的生命。
+　　但是，我当了多少次凯撒！」
+&lt;code&gt;-旅行者本身就是旅行&lt;/code&gt;
+「你想要旅行么？要旅行的话，你只需要存在就行。在我身体的列车里，在我的命运旅行途中如同一站接一站的一日复一日里，我探出头去看见了街道和广场，看见了姿势和面容，它们总是相同，一如它们总是相异。说到底，命运是穿越所有景观的通道。
+　　如果我想象什么，我就能看见它。如果我旅行的话，我会看得到更多的什么吗？只有想象的极端贫弱，才能为意在感受的旅行提供辩解。
+　　“通向N市的任何一条道路，都会把你引向世界的终点。”
+　　但是，一旦你把世界完全看了个透，世界的终点就与你出发时的N市没有什么两样。事实上，世界的终点以及世界的起点，只不过是我们有关世界的概念。仅仅是在我们的内心里，景观才成其为景观。这就是为什么说我想象它们，它们就存在。如果它们存在，那么我看见它们就像我看见别的景观。所以干嘛要旅行呢？在马德里，在柏林，在波斯，在中国，在南极和北极，我在什么地方可以有异于内在的我？可以感受到我特别不同的感受？
+　　生活全看我们是如何把它造就。旅行者本身就是旅行。我们看到的，并不是我们所看到的，而是我们自己。」&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4月2日 22点22分&lt;/strong&gt;
+三天打鱼，两天晒网。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4月1日 19点38分&lt;/strong&gt;
+小明问小强：“你有橡皮膏吗？”
+小强挠挠脑袋，抱歉地说：“我没有橡皮膏！”
+小明哈哈大笑：“你还没有橡——皮——高！”&lt;/p&gt;
+
+&lt;p&gt;到底在些干什么啊。&lt;/p&gt;
+
+&lt;p&gt;记：
+《惶然录》——费尔南多·佩索阿
+&lt;code&gt;-自闭&lt;/code&gt;
+「最小的事情都可以如此容易地折磨我，知道了这一点以后，我总是小心翼翼地避免碰到这种情况。一片流云飘过太阳，也足以给我伤害之感，那么我生活中无边无际的满天暗云人何以堪？
+　　我的自闭不是对快乐的寻求，我无法去赢得快乐。我的自闭也不是对平静的寻求，平静的获得仅仅取决于它从来就不会失去。我寻求的是沉睡，是熄灭，是一种微不足道的放弃。
+　　对于我来说，陋室四壁即是监狱也是遥远的地平线，即是卧榻也是棺木。我最快乐的时候，使我既不思想也不向往的时候，甚至没有梦的时候，我把自己失落在某种虚有所获的麻木之中，生活的地表上青苔生长。我品尝自己什么也不是的荒诞感，预尝一种死亡和熄灭的滋味，却没有丝毫苦涩。
+　　我从来没有可以叫做“主宰”的人。没有基督为我而死、没有佛陀为我指出正信之道。在我梦幻的深处，没有太阳神阿波罗或者智慧神雅典娜在我面前出现，照亮我的灵魂。」
+&lt;code&gt;-文明是关于自然的教育&lt;/code&gt;
+「在所有人的眼里，文明意味着再生。但是，对于我或者感觉与我相同的人们来说，人造品似乎已经成为自然以及陌生的自然。不，应该这样说：人造品并没有成为自然，而自然以及完全变质变样。我憎恶汽车，我的快乐里无须汽车和其他科学的产品——电话和电报——它们使生活变得方便；我也不靠这些产品提供乐趣——留声机和收音机——热爱这些东西的人当然可以从中取乐。
+　　我对这些东西毫无兴趣，一无所求。但是我热爱塔格斯河，因为伟大的城市坐落在它的岸边。我欣赏长天，因为我能够从贝克萨区的四楼窗户里看到它。比起格雷卡或者阿尔康塔雷远望静静月光的波光闪闪，乡村或者自然里没有任何一件事情可以与之媲美。对于我来说，阳光下里斯本变幻无穷的色彩，也比任何鲜花更好看。
+　　只有穿上衣装的人，才能发现裸体的美丽。对于声色的节制，其压倒一切的价值就是可以为能量增压。人造品是人们享乐于自然性的一种方式。我之所以在广阔田野里其乐融融，是因为我并不生活在这里。一个人倘若从来没有收到过制约，也就不可能有自由的概念。文明是一种关于自然的教育。人造品提供了人们接近自然之道。然而，我们万万不可做的，是不要错把人造品当作自然。人类最高灵魂的本质，就存在于自然与人造品之间的和谐之中。」&lt;/p&gt;
+
+&lt;p&gt;{% endfold %}&lt;/p&gt;
+
+&lt;p&gt;　&lt;/p&gt;
+
+&lt;p&gt;{% fold 三月 %}
+&lt;strong&gt;3月30日 20点05分&lt;/strong&gt;
+Banana Slugs&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3月27日 16点24分&lt;/strong&gt;
+记：
+《惶然录》——费尔南多·佩索阿
+&lt;code&gt;-生活是伟大的失眠&lt;/code&gt;
+「我找到自己之日，就是失落自己之时。如果我相信，我就必然怀疑。——我紧紧抓住一些东西的时候，我的手必定空无一物。我去睡觉就如我正在出去散步。生活毕竟是一次伟大的失眠，我们做过或想过的一切，都处在清澈的半醒状态之中。」&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3月26日 22点31分&lt;/strong&gt;
+记：
+《惶然录》——费尔南多·佩索阿
+&lt;code&gt;-童心不再&lt;/code&gt;
+「不过，如果我像观察城市这样近切地观察自己，我明白自己一切希望所寄地今天，就像其他的每一天也会要完蛋。」
+「我早已看见了一切，包括看见过那些我从来没有看见以及从来无意看见的一切。即便未来景观的无聊感已经渗入我的血液，即便我痛苦地明白这一点，我还是不得不再一次怀着预先已有的乏味感，把目光投向我早已相逢的景观。」
+「依凭着阳台，欣悦于日照，我看着整个城市的千姿百态，唯有一种想法用上心头——任何牢不可破的东西都将死亡，都将消失，都不能再见到阳光倾洒街市，不能思考和感觉，都将把我遗忘，就像对待废弃的包装纸，来对待太阳的运行以及它的整个白日。它们在生命的偶尔努力中不辞而去，就像一个人将沉甸甸的外衣脱在大床跟前。」
+&lt;code&gt;-纸牌游戏&lt;/code&gt;
+「我写下这一切，只是为了给自己的感觉退退烧。我自供的东西无足轻重，因为本来就没有任何东西说得上重要。」
+&lt;code&gt;-亦同亦异&lt;/code&gt;
+「一天过去以后，留下的东西还是昨天留下的东西，也是明天将会留下的东西，我有永不满足的、不可测量的渴望，即渴望成为自己的一个同者又是自己的一个异者。」
+&lt;code&gt;-生活之奴&lt;/code&gt;
+「一切事物的单调包围着我，就像我进了监狱。而今天是我狱中岁月中的一天。不过，那种单调只是我自己的单调。其实，每一张即便是昨天与我们相逢的人面，而今天也有了完全不同之处，因为今天不是昨天。每一天都是特定的一天，世界上永远不会有另外的一天与之相似。只有在心灵中，才会有绝对的同一（尽管是一种虚假的同一），使很多事物与很多事物相类聚并且被简化。世界是由海角和尖峰组成的；我们的弱视症使我们只能看到四处弥漫的薄薄迷雾而已。
+　　我希望能够远走，逃离我的所知，逃离我的所有，逃离我的所爱。我想要出发，不是去飘渺幻境中的西印度，不是去远离其它南大陆的巨大海岛，我只是想去任何地方，不论是村庄或者荒原，只要不是在这里就行。我向往的只是不再见到这些人面，不再过这种没完没了的日子。我想做到的，是卸下我已成习惯的伪装，成为另一个我，以此得到喘息。我想要睡意临近之感，这种睡眠是生活的期许而不是生活的休息。靠着海边的一个木棚，甚至崎岖山脉边缘的一个山洞，对于我来说都够了。不幸的是，我在这些事情上从来都是事与愿违。
+　　奴役是生活的唯一法律。不会有其他的法律，因为这条法律必须被人们遵从，没有造反或者另求庇护的可能。有一些人生来就是奴隶，有一些人都来成为奴隶，还有一些人则是强制之下被迫为奴。我们所有人对自由的怯懦的爱，是无可辩驳的证据，证明我们的奴隶生活是如何与我们般配——因为一旦自由降临我们，我们全会将其当作一件太新鲜、太奇怪的东西而避之不及。甚至，我刚刚表达了我对一个木棚或山洞的愿望，希望在那里解除一切事物的单调，也就是说解除我之为我的单调，我真正有胆量动身去那个木棚或山洞么？单调一直存在于我的内心，我知道并且理解这一点，我是否因此就再也不能从中解脱？到哪里都是窒息，因么无论我在哪里都是我在哪里，当整个事情与空气无关而是肺出了毛病的时候，我的呼吸还能在生命地方得到改善？谁说我情不自禁地呼唤着纯净的太阳和空旷的田野，还有明亮的海洋和广阔的地平线，而不再会惦记我的床或者我的食品？不再会走下八段楼梯来到街上？不会再拐进街角的烟草店？不再会对身边闲得无事的理发匠问候早安？
+　　我们周围的一切成为了我们的一部分，以它的血肉和生命的一切经验渗透着我们，就像巨大蜘蛛之神布下的网，再我们轻摇于风中的地方，轻轻缚住我们。用柔弱的陷阱诱捕我们，以便我们慢慢地死去。一切就是我们，我们就是一切。但如果一切都是虚无，那么事情还有什么意义？一道阳光暗去，一抹突然间阴沉逼人的乌云移来，一阵微风轻轻吹起，寂静降临了，抹去了这些特定的面容、这些嗡嗡人语，还有谈话时的轻松微笑，然后星群在夜空中如同残缺难解的象形符号毫无意义地浮现。」
+&lt;code&gt;-一个人是群体&lt;/code&gt;
+「从天而降的倾盆大雨终于停歇，天空洁净，大地潮润而闪闪发光——世间的一切在大雨留下的凉爽中欢快地欣欣向荣，生活重新变得特别澄明。大雨给每一颗灵魂提供了蓝天，为每一个心胸提供了新鲜。
+　　无论我们喜欢或是不喜欢，我们都是这一刻所有形式和色彩的奴隶，是天空和大地的居民。我们对周围一切漫不经心也好，感怀之深也好，下雨的时候一如放晴的时候，心境都不会固持不变。只要一下雨，或者一停雨，难以察觉的变化便会发生。也许只存在于内心深处的最为抽象的情绪在这个时候才能为我们所感。我们感触到这些变化，但对此并无了解，因为我们感觉着天气的时候甚至并未察觉出自己在这样做。
+　　我们中的每一个人都比一个人更丰富，比很多人更丰富，比我们自己每一个人的无限增殖更丰富。这就是为什么一个无视周围一切的人，也可以因周围一切而高兴或者悲戚，从而有别于自己。我们的存在是一片巨大的殖民地，有很多不同类型的人，有所有各个相异的思想和感觉共处其中。今天，当工作不足带给我合法空闲从而让我记下这少许印象的时候，我是小心抄写它们的人，是刚才还在闲中得乐的人，是遥望天空即便并不能从那里真正看清什么的人，是思考这一切的人，是轻易得到生理感觉并且注意到自己双手一直有些发冷的人。像一个千差万别但紧密聚合的群体，我的整个世界由不同的人组成，只是形单影只的组合工程，其静静的身子伏在B先生高高的写字台前写作。在这里，我找到了他从我这里借走的吸墨纸。」
+&lt;code&gt;-单调产生的快乐&lt;/code&gt;
+「大多数的人以其愚笨生活在他们的生活之中，而这一回，愚笨中的智慧更使我惊讶。
+　　显而易见，智慧生活的单调是极其可怕的。我在这个普通的餐馆吃中饭，看见柜台后面的厨师，还有右边的老侍者，正在像对待这里所有的客人一样为我服务，我相信，他这样做已经有三十年了。这些人过着一种怎样的生活？即便过上四十年，那个厨师还是差不多在厨房里度过他的每一天，有一点点休息，相对来说少了点睡眠，有时候去他的村子打一转，回来时拖沓了一点但无须愧疚。」他慢慢地积攒着自己慢慢赚来的钱，不打算花掉的钱。他将要落病并且不得不放弃（永远地）他的厨房，进入他在G省买下的墓地。他在里斯本活了四十年，但他从没有去过R区，没有去过戏院，只去过一次C区（那里的马戏小丑嵌入他生活的深处历久弥新）。他结婚了，为什么结婚和怎样结的婚？我一无所知。他有四个儿子和一个女儿。当他冲着我的餐桌把身子斜靠在柜台上，他的微笑传达着一种伟大的、庄重的、充实的快乐。他并没有装模作样，没有任何理由这样做。
+　　他之所以显得快乐，是因为他确实快乐。
+　　那个刚刚给我上了咖啡的老侍者又怎么样呢？在他的一生中，他数以万次地这样上咖啡，活得与厨师无异，唯一地区别是他干活的餐厅与其他人干活的厨房有四五码之遥。这样说当然撇开了另一些小区别，诸如他有两个小孩而不是五个小孩，他更经常地去G市，他比厨师更了解里斯本（如同更了解O市，他在那里呆过四年），他同样是充实地。
+　　我带着真正的惊骇，再一次观看那些生类地全景，几乎为他们感到恐惧、悲伤以及惊乱。我发现那些没有感到恐惧、悲伤以及惊乱的人，正好是生活在他们生活中并且最有权力这样做的人。文学想象的核心错误，就是这样的观念：别人都像我们并且必定像我们一样感受。人类的幸运在于，每一个人都是他们自己，只有天才才被赋予成为别人的能力。
+　　一切事物最终来说都是相对的。街头一个小小的事故，把餐馆厨师吸引到门口，此时的他，比我寻思一个最具原创性的念头，比我阅读一本最好的书或者欣悦于一些无用的梦，有更多的娱乐。而且，如果生活本质上是单调的，那么真理就是：他比我更容易也更好地逃出了单调。真理不属于任何人，因此他并不比我更多地拥有真理，但他拥有快乐。
+　　聪明人把他的生活变得单调，以便使最小的事故都富有伟大的意义。任何历险的猎手在打了三只狮子以后都会丧失猎狮的兴致，而在我单调的厨师那里，他目击的所有街头斗殴都能令他赏心悦目，从中获益。对于从来没有离开过里斯本的人来说，驾驶电车去一趟B区就像无终无止的远游，如果有一天让他探访S市，他也许会觉得去了火星，在另一方面，遍游了全球的旅行者，走出方圆五千英里以外就再也不能发现什么新的东西。他总是看见新的东西，哪里有新奇，哪里就有见多不怪的厌倦，而后者总是毁灭了前者。真正的聪明人，都能够从他自己的躺椅里欣赏整个世界的壮景，无须同任何人说话，无需了解任何阅读的方法，他仅仅需要知道如何运用自己的五种感官，还有一颗灵魂里纯真的悲哀。
+　　一个人为了摆脱他的单调，必须使存在单调化。一个人必须使每一天都如此平常不觉，那么在最微小的事故中才有欢娱可供探测。在我日复一日的工作当中，充满着乏味、重复、不得要领的事情，幻象使我神不守舍：遥远海岛的残梦，在另一个时代的花园大道上举行的种种聚会，不同的景象，不同的感受，另一个不同的我。但是，平心而论，我意识到如果那一天我真的得到了那一切，它们就会无一例外地不再是我的了。
+　　事实是，V先生的比任何梦中国王更有价值；道拉多雷斯大街上的办公室比所有虚构花园里的宽广大道更有价值。因为正是V先生，才使我能够享乐于国王梦：正因为道拉多雷斯大街，才使我能够享乐于内心中种种不可能存在的山光水色。
+　　如果梦中的国王属于我，我还有何可梦？如果我拥有那些绝无可能的山光水色，那么还有什么东西可为幻影。
+　　我一直被这种单调护佑。相同日子的乏味雷同，我不可区分的今天和昨天，使我得以开心地享乐于迷人时间的飞逝，还有眼前世间任意的流变，还有大街下面什么地方源源送来的笑浪，夜间办公室关闭时巨大的自由感，我余生岁月的无穷无尽。
+　　因为我是无，我才能够想想我自己是一切。如果我是某个人，我就不能够进入想象中的这个人。一个会计助理可以把他自己想象成罗马国王，但英国国王不能，因为英国国王已经失去了把自己梦想成另一个国王的能力。他的现实限制了他的感受。」&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3月25日 09点52分&lt;/strong&gt;
+记：
+《假面告白》——三岛由纪夫
+「归根结蒂，只有从过分期待的东西、事前过分修饰的东西中逃脱出来，否则别无他途。」
+「他的前途只有两条，一条是走上歧途，另一条是拼命装懂。究竟走哪条路，这是由他的软弱性和勇气的气质来决定，而不是由量来决定的。因为不论走哪条路，都需要等量的勇气和等量的软弱性。而且不论走哪条路，都需要有一种对怠惰的如同诗一般的持久的渴望。」
+「正如我多次说过的，对我来说，未来是个沉重的负担。人生从一开始就以义务观念束缚着我。我明知尽义务对我来说是不可能的，但人生却以不履行义务为由来责备我，折磨我。我想，倘使以死让这种人生的期待落空，心里就一定会很轻松的吧。」&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3月24日 13点28分&lt;/strong&gt;
+任性。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3月23日 15点30分&lt;/strong&gt;
+《星期一的朋友》&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3月21日 21点04分&lt;/strong&gt;
+24岁的人本该在做些什么？
+脑袋空空。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3月20日 22点05分&lt;/strong&gt;
+傲慢。&lt;/p&gt;
+
+&lt;p&gt;记：
+《小说灯笼》——太宰治
+&lt;code&gt;-猫头鹰通信&lt;/code&gt;
+「“不，关于这件事，我倒是很放心。因为我到现在还是小孩。”大家都笑了。我并非有意逗大家笑，只是认真说出我的悲叹。」
+「生活上，我尽量过得合乎常理。因为苍白忧郁，反而显得俗气。」
+「你至今没有失败过吧？究竟行不行，要自己实际做做看，跌倒了受伤了才能说这句话。什么都没做就说自己不行，这只是怠惰。」
+&lt;code&gt;-新郎&lt;/code&gt;
+「我最近真的认为，要把一天的义务，当作一辈子的义务，严肃地努力实践，不可以敷衍了事。对于喜欢的人，也要今早不加粉饰地告诉对方。肮脏的算计就别做了。无悔地坦率行动。剩下的，只能交给天意。」
+&lt;code&gt;-永别&lt;/code&gt;
+「三井的临终之美，真是无与伦比。我不太想用“美”这种不负责任又带点敷衍搪塞的花言巧语，但无可奈何，那真的就是“美”。那时三井躺在床上，静静地和在枕边做针线活儿的母亲闲话家常，忽然不说话了。就只是这样。在清朗的晴天，完全无风的和煦春日，樱花也会禁不起自己的重量，宛如溢出般地飘落，呈现出小规模的花吹雪。桌上插在杯子里地大朵玫瑰，深夜也会如碎裂般地散落。这不是风造成的，是自己散落。与天地的叹息一起散落。碰到飞天之神的白绢衣摆而散落。我认为 人类至高的荣冠，是美丽的临终。」&lt;/p&gt;
+
+&lt;p&gt;《The Great Dictator movie》——Charles Chaplin
+《大独裁者》——查理·卓别林
+「Fight For Liberty
+为自由而战
+I&amp;rsquo;m sorry, but I don&amp;rsquo;t want to be an emperor. That&amp;rsquo;s not my business.
+很抱歉，我不想做统治者——我对此毫无兴趣。
+I don&amp;rsquo;t want to rule or conquer anyone.
+我不想统治任何人，也不想征服任何人。
+I should like to help everyone if possible; Jew, Gentile, black man, white.
+如果可以的话，我愿意帮助每一个人，不管是犹太人，非犹太人，黑人，还是白人。
+We all want to help one another. Human beings are like that.
+我们都乐意相互帮助。这是人类的天性。
+We want to live by each other&amp;rsquo;s happiness, not by each other&amp;rsquo;s misery.
+我们都乐意生活在他人的幸福之中，而不是眼看着他人痛苦。
+We don&amp;rsquo;t want to hate and despise one another.
+我们都不愿互相仇恨，互相歧视。
+In this world there is room for everyone, and the good earth is rich and can provide for everyone.
+在这个世界上，有足够的空间让每个人得以生存，而土地是丰饶的，可以使每一个人都丰衣足食。
+The way of life can be free and beautiful. But we have lost the way.
+生命可以是自由的，美好的。但我们失去了这样的生活。
+Greed has poisoned men&amp;rsquo;s souls, has barricaded the world with hate, has goose-stepped us into misery and bloodshed.
+贪婪毒害了人类的灵魂——它把世界锁在仇恨当中；它操纵的军队迈着正步，将我们领入痛苦与杀戮。
+We have developed speed, but we have shut ourselves in.
+我们发展了速度，却孤立了自己。
+Machinery that gives abundance has left us in want.
+机器为我们提供了更多可能，却给我们带来了更多欲望。
+Our knowledge as made us cynical; our cleverness, hard and unkind.
+学识把我们变得刻薄，才智把我们变得冷酷无情。
+We think too much and feel too little.
+我们思考得太多，感受得太少。
+More than machinery, we need humanity.
+然而我们需要的是人性，而不是机械性。
+More than cleverness, we need kindness and gentleness.
+是温和友善，而不是才智。
+Without these qualities, life will be violent and all will be lost.
+少了这些品质，生命将陷于暴戾，而我们将丧失一切。
+The airplane and the radio have brought us closer together.
+飞行机和收音机将我们联系得更加紧密。
+The very nature of these inventions cries out for the goodness in men; cries out for universal brotherhood; for the unity of us all.
+这类发明的性质本身就在呼唤人类的善良，呼唤全世界的友爱团结。
+Even now my voice is reaching millions throughout the world, millions of despairing men, women, and little children, victims of a system that makes men torture and imprison innocent people.
+就像现在，我的声音传向世界各地无数人们的耳中，传向无数的绝望的人们：男人，女人，孩子。所有在这个折磨和禁锢无辜者的体制下承受牺牲的人们。
+To those who can hear me, I say, do not despair.
+所有能听到我声音的人们，请听我说，不要绝望。
+The misery that is now upon us is but the passing of greed, the bitterness of men who fear the way of human progress.
+我们现在所承受的不幸，仅仅是来自一部分人的贪婪和痛苦，他们害怕的是当今人类的进步。
+The hate of men will pass, and dictators die, and the power they took from the people will return to the people.
+人们的仇恨终会消逝，独裁者也注定会死去，而他们从人民手中掳走的权利终将交还给人民。
+And so long as men die, liberty will never perish.
+只要我们不畏牺牲，自由就永远也不会消失！
+Soldiers! Don&amp;rsquo;t give yourselves to brutes, men who despise you, enslave you; who regiment your lives, tell you what to do, what to think and what to feel!
+战士们！别听命于残暴的畜生——他们蔑视你们，奴役你们；控制你们，告诉你们怎样行事，怎样思考，甚至怎样感受！
+Who drill you, diet you, treat you like cattle, use you as cannon fodder.
+他们训练你们，供养你们，像牲口似的对待你们，把你们视如炮灰。
+Don&amp;rsquo;t give yourselves to these unnatural men - machine men with machine minds and machine hearts!
+别听命于这些变态的人——这些有着机器头脑、机器心脏的机器人！
+You are not machines, you are not cattle, you are men!
+你们不是机器，不是牲口，你们是人！
+You have the love of humanity in your hearts!
+你们心里拥有的是人性之爱！
+You don&amp;rsquo;t hate! Only the unloved hate; the unloved and the unnatural.
+你们心里没有仇恨。只有得不到爱、丧失理性的人才会心怀仇恨。
+Soldiers! Don&amp;rsquo;t fight for slavery! Fight for liberty!
+战士们！不要为了奴役而战！要为自由而战！
+In the seventeenth chapter of St. Luke, it is written that the kingdom of God is within man, not one man nor a group of men, but in all men! In you!
+《路加福音》第十七章里写着，上帝的国度属于人类，它不属于某一个人，不属于某一个集团，它属于全人类！属于你！
+You, the people, have the power, the power to create machines, the power to create happiness!
+人民啊，你们拥有权力，你们能创造机器，创造幸福！
+You, the people, have the power to make this life free and beautiful, to make this life a wonderful adventure.
+人民啊，你们能活得自由活得美好，能享受生命这一场奇妙的旅程！
+Then in the name of democracy, let us use that power.
+因此，让我们以民主的名义行使这种权力。
+Let us all unite.
+让我们全体团结起来。
+Let us fight for a new world, a decent world that will give men a chance to work, that will give youth a future and old age a security.
+为一个崭新的世界而战，那是一个美好的世界，它使壮有所用，少有所求，老有所安。
+By the promise of these things, brutes have risen to power.
+正是因为许下了这样的承诺，一群野蛮人窃取了人民的权力。
+But they lie! They do not fulfill that promise. They never will! Dictators free themselves but they enslave the people.
+但他们完全是在撒谎！他们根本没能履行那些承诺！并且永远不会！独裁者只是让自己享受自由，却奴役他的人民。
+Now let us fight to fulfill that promise.
+现在就让我们自己起来战斗，来兑现承诺。
+Let us fight to free the world!
+让我们起来战斗，解放全球！
+To do away with national barriers!
+去消灭国家的界限！
+To do away with greed, with hate and intolerance!
+消灭贪欲，消灭仇恨，消灭
+Let us fight for a world of reason, a world where science and progress will lead to all men&amp;rsquo;s happiness.
+让我们为一个理性的世界而战，让科学与进步为全人类造福。
+Soldiers, in the name of democracy, let us all unite!
+战士们，让我们以民主的名义团结起来！」&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3月19日 21点58分&lt;/strong&gt;
+读再多书也是白读，
+榆木脑袋。
+暴躁。&lt;/p&gt;
+
+&lt;p&gt;记：
+《小说灯笼》——太宰治
+&lt;code&gt;-小说灯笼&lt;/code&gt;
+「人在幸福之际，通常不会留意到别人的苦楚。」
+「纵使没有“被爱的资格”，人也应该永远还有“爱人的资格”。我认为一个人真正的谦虚，是懂得爱人的喜悦。光只会追求被爱的喜悦，这才是野蛮无知的行为。」
+&lt;code&gt;-小相簿&lt;/code&gt;
+「痛苦的时候，能坦然流露痛苦的表情，是很幸福的人；紧张的时候，能直接显露紧张的姿势，是很幸福的人。但我痛苦的时候却想哈哈傻笑，真是伤脑筋。即使内心紧张得要命，也会开始说蠢话，真实伤脑筋。」
+&lt;code&gt;-漫谈服装&lt;/code&gt;
+「不只是旅行，走在人生的旅途上，拎着太多行李，无疑是阴郁的源头。行李愈少愈好。」
+「我深信若非来自懦弱的极致内省，无法发出真正庄严的光明。总之，我想试着继续活下去，亦即，本着最高的自尊与最低的生活，试着活下去。」&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3月18日 22点31分&lt;/strong&gt;
+薔薇（ばら）：玫瑰
+？？？&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3月14日 20点10分&lt;/strong&gt;
+记：
+《论世间苦难》——叔本华
+&lt;code&gt;-论存在之虚无&lt;/code&gt;
+「人的生命必是一个错误，这只需略加考察即可证明：人是各种难以满足的需求的集合体，需求的满足别无他物，只是无痛苦的状态，人被无聊所占据；无聊直接证明：存在本身没有价值，因为无聊无非是对存在之虚无的感受。如果生命，以欲求为我们本性和存在的生命，本具正面价值和真正内涵，便不会有无聊一事，存在本身即能令我们完整和满足。实际情况却是，我们从存在本身并不能获得乐趣，除非我们在追求生命，这样由于遥不可及、困难重重，我们的目标就显得似乎能够令我们满足（而一旦获得，这种假象即告破灭）；或者除非我们正从事纯智力的活动，这样实际上我们置身生活之外远观，犹如戏院里的看客。即便感官愉悦本身也存在于不断的追求之中，目标一旦实现，愉悦随即消失。我们若非从事上述这样或那样的活动，而是回到存在本身，我们便被存在的虚无和徒劳所左右，这种感觉就叫无聊。」
+&lt;code&gt;-论对生存意志的肯定与否定&lt;/code&gt;
+「否定生存意志绝不意味着物质的消亡，仅仅意味着无欲无求——先前不断欲求的不再欲求。意志如同自在之物，我们只能通过欲求行动来了解。因此，无求之后，意志为何物，会做些什么，我们既不能言说也无法觉察。因此否定生存意志对我们而言，是从有到无的转变，我们是欲求的现象。」
+「稍加深思即可发现，欲成为罪，并非因为欲望之间偶然碰撞而招致伤害和罪恶。如果欲望产生的就是这样的后果，那它必然从一开始就根本是有罪的，整个生存意志都应该摈弃。世间充斥的残忍和磨难，实际上只是生存意志以各种形式客观化的必然结果，因此只是肯定生存意志的注脚。人必有死，这证明我们的存在本身蕴含有罪。」
+「世界精神：因此，这就是你劳作和受苦的目的，是你存在的目的，也是此外种种存在的目的。
+人：但我从生存中能够获得什么？生存若是充盈的，我得到的只是悲苦；若是空虚的，我得到的只是无聊。我付出那么多幸苦，受到那么多折磨，你能给我的却少得可怜。
+世界精神：惟其贫乏，这种报酬对你的辛劳和苦恼来说才是合适的。
+人：怎么会这样！我理解不了。
+世界精神：我知道。（旁白）我是否要告诉他生活的价值正在于此，即教他停止对生活的欲求？因为应由生活亲自教会他这一重要的入门仪式。」
+&lt;code&gt;-论我们的本质存在不能被死亡摧毁&lt;/code&gt;
+「日常生活中，如果有人什么都想知道，又什么都不想学，他向你问起死后的存在，那么最恰当也许是最正确的回答是：“你死后和你生前一样。”因为这个回答暗示，要求某种存在物有开端却没有结束，这样做毫无道理。不过，这个回答也隐含着一层意思——有两种不同的有，因此必有两种不同的无。不过你也许会回答：“不管你死后会是什么样子，即便一切化为乌有，都是自然而然的，适合于你的，正像你现在的机体存在一样，因此你最应该担心的是转变的那一刻。”是的，以成熟的心态考虑这个问题，就会把我们引向这样的结论：我们这样的生命压根不存在反而更好，所以我们不再存在或一段时间不再存在，就像我们原本不曾存在过一样，从理性角度看来，并不值得我们忧虑。」
+「人死去，自在之物也化为乌有，这是不可想象的。人类凭直觉可以直接认识到：人的死亡是现象在时间——一切现象的形式——中的终止，而自在之物却不受其影响。我们都感到：我们并非某人凭空创造的存在，因此我们相信，虽然死亡能终止我们的生命，却不能终止我们的存在。」
+「越是清楚地觉察到万物脆弱、虚无和梦幻般得特点，你越会清晰地觉察到自己内部存在地不朽，因为上述特点由此映衬方显鲜明，正如要觉察轮船行驶的速度，只能去看静止的河岸，而不是看轮船本身。」
+「只要或者，我们就意识到，我们一直站在时间的中段，而绝非其终点。由此可以推知，我们每个人身上都体现着无尽时间不变的中段。恰恰是这一点给我们活着的信心，而不是始终生活在死亡的恐惧之中。」
+&lt;code&gt;-论自杀&lt;/code&gt;
+「在精神饱受摧残的人看来，自杀引起的肉体痛苦变得毫无意义。」
+&lt;code&gt;-论哲学及智力&lt;/code&gt;
+「真理不能发现，最主要的原因并非事物呈现假象而导致谬误，也非直接源于推理能力的薄弱，而是由于成见和偏见——这些伪前提挡住了通往真理的道路，就像逆风将船吹离陆地，扬帆转舵均无济于事。」
+「人们几乎相信，我们的思考有一半是不自觉地发生的。我们达成一个结论时，通常并未认真地思考引出此结论地前提。这明显体现在下列事实中：有时某事发生了，我们不可能预知其后果；它对我们自身会有什么影响，我们更不可能做出估计；但它却对我们的整个情绪造成了实实在在的影响，让我们由喜转悲，或由悲转喜，这只能是不自觉思考的结果。在下述事例中这一点体现得更加明显：我对一些理论问题或实践问题掌握了一些实际资料，我并没有再去想它，但几天以后，问题的答案不请自到，呈现在我的脑海中，然而，为什么会这样，对我来说，就像运算机一样，是个不解之谜。这又是一个不自觉思考的例子。几乎可以做到一个大胆的生理学假设：自觉思考发生在大脑表面，不自觉思考发生在大脑内部。」
+「我们对某事物已有一定之见，对与之相关的新观点就会采取防卫和否定的态度，这很自然。新观点就像一个敌人，突破进入我们自身信条的封闭体系，打破了我们由此体系而得的心灵的平静，要求我们付出额外的努力，并宣布此前的努力作废。因此，将我们从错误中拯救出来的真理就像药水，不仅味道苦涩难忍，而且不能立竿见影，须经一段时间才发挥效力。」
+&lt;code&gt;-论美学&lt;/code&gt;
+「喜足无非是痛苦的消散，其本质是否定的，痛苦则是肯定的。」
+&lt;code&gt;-论书籍与写作&lt;/code&gt;
+「思想从头脑传递到纸上，要比从纸上传递到头脑容易得多。」
+「买书是件好事，如果同时能买到读书时间的话；但人们通常误以为，买了书就等于拥有了书的内容。」&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3月12日 20点28分&lt;/strong&gt;
+根性。&lt;/p&gt;
+
+&lt;p&gt;记：
+《答汪长禄书》——胡适
+「“父母于子无恩”的话，从王充、孔融以来，也很久了。从前有人说我曾提倡这话，我实在不能承认。直到今年我自己生了一个儿子，我才想到这个问题上去。我想这个孩子自己并不曾自由主张要生在我家，我们做父的不征得他的同意，就糊里糊涂地给了他一条生命。况且我们也并不曾有意送给他这条生命。我们即无意，如何能居功？如何能自以为有恩于他？
+　　他既无意求生，我们生了他，我们对他只有抱歉，更不能“市恩”了。我们糊里糊涂地替社会上添了一个人，这个人将来一生的苦乐祸，这个人将来在社会上的功罪，我们应该负一部分的责任。说得偏激一点，我们生一个儿子，就好比替他种下了祸根，又替社会种下了祸根。他也许养成坏习惯，做一个短命浪子；他也许更堕落下去，做一个军阀派的走狗。所以我们“教他养他”，只是我们自己减轻罪过的法子，只是我们种下祸根之后自己补过弥缝的法子。这可以说是恩典吗？
+　　我所说的，是从做父母的一方面设想的，是从我个人对于我自己的儿子设想的，所以我的题目是“我的儿子”。我的意思是要我这个儿子晓得我对他只有抱歉，决不居功，决不市恩。至于我的儿子将来怎样待我，那是他自己的事。我决不期望他报答我的恩，因为我已宣言无恩于他。
+　　先生说我把一般做儿子的抬举起来，看做一个“白吃不还帐”的主顾。这是先生误会我的地方。我的意思恰同这个相反。我想把一般做父母的抬高起来，叫他们不要把自己看做一种“放高利债”的债主。
+　　先生又怪我把“孝”字驱逐出境。我要问先生，现在“孝子”两个字究竟还有什么意义？现在的人死了父母都称“孝子”。孝子就是居父母丧的儿子（古书称为“主人”），无论怎样忤逆不孝的人，一穿上麻衣，带上高粱冠，拿着哭丧棒，人家就称他作“孝子”。
+　　我的意思以为古人把一切做人的道理都包在孝字里，故战阵无勇，莅官不敬，等等都是不孝。这种学说，先生也承认他流弊百出。所以我要我的儿子做一个堂堂的人，不要他做我的孝顺儿子。我的意想以为“一个堂堂的人”决不至于做打爹骂娘的事，决不至于对他的父母毫无感情。 」&lt;/p&gt;
+
+&lt;p&gt;《给青年的十二封信》——朱光潜
+&lt;code&gt;-谈动&lt;/code&gt;
+「朋友，我们都不过是自然的奴隶，要征服自然，只得服从自然。违反自然，烦恼才乘虚而入，要排解烦闷，也须得使你的自然冲动有机会发泄。人生来好动，好发展，好创造。能动，能发展，能创造，便是顺从自然，便能享受快乐；不动，不发展，不创造，便是摧残生机，便不免感觉烦恼。」
+「愁生于郁，解愁的方法在泄；郁由于静止，求泄的方法在动。」
+&lt;code&gt;-谈静&lt;/code&gt;
+「物理上有一条定律说：两物不能同时并存于同一空间。这个定律在心理方面也可以说得通。一般人不能感受趣味，大半因为心地太忙，不空所以不灵。我所谓“静”，便是指心界的空灵，不是指物界的沉寂，物界永远不沉寂的。你的心境愈空灵，你愈不觉得物界沉寂，或者我还可以进一步说，你的心界愈空灵，你也愈不觉得物界喧嘈。所以习静并不必定要逃空谷，也不必定学佛家静坐参禅。静与闲也不同。许多闲人不必都能领略静中趣味，而能领略静中趣味的人，也不必定要闲。」
+&lt;code&gt;-谈十字街头&lt;/code&gt;
+「传说尊旧，时尚趋新，新旧虽不同，而盲从附和，不假思索，则根本无二致。社会是专制的，是压迫的，是不容自我伸张的。比方九十九个人守贞节，你一个人偏要不贞，你固然是伤风俗，大逆不道；可是如果九十九个人都是娼妓，你一个人偏要守贞节，你也会成为社会的公敌，被人唾弃的。」
+&lt;code&gt;-谈多元宇宙&lt;/code&gt;
+「我以为恋爱也是自成一个宇宙；在“恋爱的宇宙”里，我们只能问某人是否真纯，不能问某人之爱某人是否应该。其实就是只“应该不应该”的问题，恋爱也是不能打消的。从生物学观点看，生殖对于种族为重大的利益，而对于个体则为重大的牺牲。带有重大的牺牲，不能不兼有重大的引诱，所以性欲本能在诸本能中最为强烈。我们可以说，人应该生存，应该绵延种族，所以应该恋爱。但是这番话仍然是站在“道德的宇宙”中说的，在“恋爱的宇宙”中，恋爱不是这样机械的东西，它是至上的，神圣的，含有无穷奥秘的。在恋爱的状态中，两人脉搏的一起一落，两人心灵的一往一复，都恰能忻合无间。在这种境界，如果身家、财产、学业、名誉、道德等等观念渗入一分，则恋爱真纯的程度便须减少一分。真能恋爱的人只是为恋爱而恋爱，恋爱以外，不复另有宇宙。」
+「恋爱是人格的交感共鸣，所以恋爱真纯的程度以人格高下为准，一般人误解恋爱，动于一时飘忽的性欲冲动而发生婚姻关系，境过则情迁，色衰则爱弛，这虽是冒名恋爱，实则只是纵欲。」
+&lt;code&gt;-谈情与理&lt;/code&gt;
+「记得几年前有一位学生物学的朋友在《学灯》上发表一篇文章，说穷到究竟，人生只不过是吃饭与交媾。他的题目我一时记不起，仿佛是“悲”，“哀”一类的字。专从理智着想，他的话是千真万确的。但是他忘记了人是有感情的动物。有了感情，这个世界便另是一个世界，而这个人生便是另一个人生，决不是吃饭交媾就可以了事的。」
+「胡先生所以得此结论，是假定孝只是一种报酬，只是一种问理的道德。把孝当作这样解释，我也不赞成把它“列为一种信条”。但是我们要知道真孝并不是一种报酬，并不是借债还息。孝只是一种爱，而凡爱都是以心感心，以情动情，决不像生意买卖，时时抓住算盘子，计算你给我二五，我应该报酬你一十。换句话说，孝是情感，不是理智的。世间有许多慈母，不惜牺牲一切，以护养她的婴儿；世间也有许多婴儿，无论到了怎样的困穷忧戚的境遇，总可以把头埋在母亲的怀里，得那不能在别处得到的保护与安慰。这就是孝的起源，这也就是一切爱的起源。这种孝全是激于至诚的，是我所谓问心的道德。」
+&lt;code&gt;-谈摆脱&lt;/code&gt;
+「“摆脱不开”便是人生悲剧的起源。畏首畏尾，徘徊歧路，心境既多苦痛，而事业也不能成就。许多人的生命都是这样模模糊糊的过去的。要免除这种人生悲剧，第一须要“摆脱得开”。消极说是“摆脱得开”，积极说便是“提的起”，便是“抓得住”。认定一个目标，便专心致志的向那里走，其余一切都置之度外，这是成功的秘诀，也是免除烦恼的秘诀。」
+&lt;code&gt;-谈人生与我&lt;/code&gt;
+「从草木虫鱼的生活，我学得一个经验。我不在生活以外别求生活方法，不在生活以外别求生活目的。世间少我一个，多我一个，或者我时而幸运，时而受灾祸侵逼，我以为这都无伤天地之和。你如果问我，人们应该如何生活才好呢？我说，就顺着自然所给的本性生活着，像草木虫鱼一样。你如果问我，人们生活在这幻变无常得世相中究竟为着什么？我说，生活就是为着生活，别无其他目的。你如果向我埋怨天公说，人生是多么苦恼呵！我说，人们并非生在这个世界来享幸福得，所以那并不算奇怪。」&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3月11日 20点13分&lt;/strong&gt;
+没有才能。&lt;/p&gt;
+
+&lt;p&gt;记：
+《无名的裘德》——托马斯·哈代
+「人们如果选择了自己的生活方式，就会被他们每一个人看作是邪恶的，这真让我受不了！实际上就是这些看法，会把那些心底最好的人也弄得不顾一切，而真正成为了不道德的人！」
+「因为它们给我们罩上了一团阴影，虽然咱们并‘未曾亏负谁，未曾败坏谁，未曾占谁的便宜’，不过也许是我们按‘自己认为是的而行动’过吧。」&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3月8日 20点06分&lt;/strong&gt;
+会好的。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3月6日 22点58分&lt;/strong&gt;
+记：
+《悉达多》——赫尔曼·黑塞
+「一瞬间，当周围的世界在他心中溶解并退散，当他像太空的一颗恒星一般孤独地伫立，一种冰冷的绝望感吞没了他；但是，他比以往任何时候都坚定地成为他自己。」
+「在梦中醒来，他为一种巨大的悲哀地感觉所吞没。他觉得自己已经毫无价值、毫无意义地浪费了自己地生命；他没有留下任何有生命活力地东西，没有留下任何哪怕是有丝毫价值或者值得的东西。他孤零零地站在那儿，像海岸上一个遭受船难的幸存者。」
+「无常之物须臾变灭。」
+「他不再去分辨不同的音声——诸如愉悦之声与哀泣之声，童稚之声与雄浑之声；所有思慕者的哀叹，智者的欢笑，愤怒者的叫喊，濒死者的呻吟都融入彼此，互为纠结与交织，以千万种方式缠绕在一起，而所有的音声，所有的目标，所有的渴望，所有的善与恶，悲伤与欢乐，所有这一切共同构成了统一的世界，所有这一切共同交融成万物奔流不息的进程，所有这一切共同谱成了生命永恒的旋律。当他不再着意分辨哀叹与欢笑，当他的心灵不再执着于任何一种特定的音声并不再任其占据他的自我，当他倾听所有的一切，倾听圆融与统一，正当此时，那宏大的万音交响之歌只包含一个“唵”（Om）——圆满之音。」
+「每一真理的反面也同样真实。只有偏面的真理才能形诸于言辞；事实上，以语言表达或思维的一切都只能是偏面的，只是半个真理而已，它们都缺乏完备、圆融与统一。世界之所以表面如此是因为我们有一种幻觉，即认为时间是某种真实之物。时间并无实体。而如果时间并非真实，那么仿佛存在于现实与永恒，痛苦与快乐，善与恶之间的分界线也只是一种幻象。」
+「一个人可以去爱世上之物，但一个人不能去爱词句。所有教义于我毫无用处。那些教义没有软硬的感觉，没有颜色，没有尖角，没有气息和味道，它们只是一些词句而已，可能就是这一点阻碍你得到内心的宁静。而假若“物”虚幻无实，那么我自身也同样虚幻无实体，它们永远与我有着相同的本质。这正是它们可爱而可敬的原因，正因如此我才会去热爱它们。」&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3月5日 22点37分&lt;/strong&gt;
+记：
+《活出意义来》——维克多·弗兰克
+「人一旦因为看不到未来而自甘沉沦，便容易有满腹的怀旧愁思。营中人喜欢回味过去，借以忘却眼前的痛苦，现状因而变得较不真实。可是，除去现状中的真实特点，很可能伏下一个危机。当事人势必容易忽略现实中的确存在着，而且可堪运用的机会。把目前的“暂时存在”当成虚幻不实的存在——这种态度本身正是使俘虏丧失其生命力的一大重大原因。人一旦有了这种态度，任何事物看在他眼里都显得毫无意义。他忘了艰困的外在环境通常能给人一个机会，让人超越自己，成而得到精神上的成长。他不把集中营的困境看成是考验内力的试金石，他不看重自己的生命，反而轻蔑它，当它是无足轻重的玩意儿。他宁可阖上眼皮，耽溺于过去。这样的人自然会觉得人生没有意义了。」
+「在生命中的每一种情境向人提出挑战，同时提出疑难要他去解决，因此生命意义的问题事实上应该颠倒过来。人不应该去问他的生命意义是什么。他必须要认清，“他”才是被询问的人。一言以蔽之，每一个人都被生命询问，而他只有用自己的生命才能回答此问题；只有以“负责”来答复生命。」
+「所有生命中的痛苦，我们四周的死亡，有意义吗？如果没有，那么人的生命终究毫无意义。如果生命的意义只依赖一些偶发事件——可以脱逃或不能脱逃的偶发事件——那么人生终究不值得一活。」&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3月1日 18点46分&lt;/strong&gt;
+记：
+《如蕤》——沈从文
+「海边没有一株稍稍倔强的树，也无一个稍稍倔强的人。为她倾倒的人虽多，却皆在同样情形下露出蠢相，做出同样的事情，世故一些的先是借些别的原因同在一处，其次就是去了人的样子，变成一只狗了。年纪轻些的，则就只知写出那种又粗鲁又笨拙的信，爱了就谦卑谄媚，装模作样，眼看到自己所做的糊涂样子，还不能够引动女人，既不知道如何改善方法，便做出更可笑的表示，或要自杀，或说请你好好防备，如何如何。一切爱不是极其愚蠢，就是极其下流，故她把这些爱看得一钱不值。」
+「不爱既不必用口说我就明白，爱也可以无需用口说。」
+「我不知为什么，总觉得走了较好，为了我的快乐，为了不委屈我自己的感情，我就走了。莫想起一切过去所有痛苦，过去既成为过去，也值不得把感情放在那上面去受折磨。你本来就不明白我的。我所希望的，几年来为这点儿愿心经验一切痛苦，也只是要你明白我。现在你既然已明白我，而且爱了我，为了把我们生命解释得更美一些，我走了，当然比我同你住下去较好的。」&lt;/p&gt;
+
+&lt;p&gt;{% endfold %}&lt;/p&gt;
+
+&lt;p&gt;　&lt;/p&gt;
+
+&lt;p&gt;{% fold 二月 %}&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2月27日 16点54分&lt;/strong&gt;
+头发剪了。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2月26日 03点55分&lt;/strong&gt;
+Aimer《Ref:rain》&lt;/p&gt;
+
+&lt;p&gt;弱い、弱い、弱い。&lt;/p&gt;
+
+&lt;p&gt;「君のような秀才にはわかるまいが、『自分の生きていることが人に迷惑をかける。僕は余計者だ』という意識ほどつらい思いは世の中に無い。」
+「弱虫は、幸福をさえおそれるものです。綿で怪我するんです。幸福に傷つけられる事もあるんです。」&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2月25日 00点52分&lt;/strong&gt;
+成为理想的人。&lt;/p&gt;
+
+&lt;p&gt;记：
+《八骏图》——沈从文
+「一切都近于多余。因为我走到任何一处皆将为回忆所围困。新的有什么可以把我从泥淖里拉出？这世界没有“新”，连烦恼也是很旧了的东西。」
+「这世界上也有人不了解海，不知爱海。也有人了解海，不敢爱海。」&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2月24日 00点30分&lt;/strong&gt;
+幻想与无来由的期待。&lt;/p&gt;
+
+&lt;p&gt;记：
+《边城》——沈从文
+「因为我命里或只许我撑个渡船。」
+「这个人也许永远不回来了，也许“明天”回来。」&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2月22日 01点54分&lt;/strong&gt;
+想去看海。
+不要给人添麻烦了。&lt;/p&gt;
+
+&lt;p&gt;{% endfold %}&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

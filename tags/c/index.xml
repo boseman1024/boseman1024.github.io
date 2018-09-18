@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C on KUMA2X</title>
+    <link>http://boseman1024.github.io/tags/c/</link>
+    <description>Recent content in C on KUMA2X</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 07 Jun 2018 11:31:26 +0000</lastBuildDate>
+    
+	<atom:link href="http://boseman1024.github.io/tags/c/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>图总结及代码实现</title>
+      <link>http://boseman1024.github.io/2018/%E5%9B%BE%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/</link>
+      <pubDate>Thu, 07 Jun 2018 11:31:26 +0000</pubDate>
+      
+      <guid>http://boseman1024.github.io/2018/%E5%9B%BE%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/</guid>
+      <description>图 数组表示法 无向图 数组矩阵表示如下： 010101101000010101101011000101101110
+有向图 数组矩阵表示如下： ∞5∞7∞∞∞∞4∞∞∞∞∞∞∞∞9∞∞5∞∞6∞∞∞5∞∞3∞∞∞1∞
+图的遍历 深度优先搜索 其过程简要来说是对每一个可能的分支路径深入到不能再深入为止，而且每个节点只能访问一次。 深度优先搜索的遍历访问顺序并不唯一。
+假设以V1为起点， V1有两个邻接点V2与V3且都未被访问，则访问V2（或访问v3开始皆可，以下皆如此）； V2有三个邻接点V1、V4、V5，V1已被访问，V4与V5都未被访问，则访问V4； V4有两个邻接点V2与V8，只有V8未被访问，则访问V8； V8有两个邻接点V4与V5，V4已被访问，则访问V5； V5有两个邻接点V2与V8，且V2、V8都已被访问，则从头搜索V1的邻接点V2、V3，V2已被访问，则访问V3； V3有三个邻接点V1、V6、V7且未被访问，则访问V6； V6有两个邻接点V3与V7，V3已被访问，则访问V7。
+则以V1为起点的深度优先搜索访问顺序为： V1-&amp;gt;V2-&amp;gt;V4-&amp;gt;V8-&amp;gt;V5-&amp;gt;V3-&amp;gt;V6-&amp;gt;V7
+广度优先搜索 类似于树的按层次遍历的过程，可先将图按层划分。 广度优先搜索的遍历访问顺序并不唯一。
+假设以V1为起点，则可划分为下图： 第一层（V1）： V1有两个邻接点V2、V3，则先访问V2，再访问V3（或先访问V3，再访问V2皆可，以下皆如此）； 第二层(V2、V3)： V2有三个邻接点V1、V4、V5，V1已被访问，则访问V4、V5； V3有两个邻接点V6、V7且都未被访问，则访问V6、V7； 第三层（V4、V5、V6、V7）： V4有两个邻接点V2与V8，V2已被访问，则访问V8。
+则以V1为起点的广度优先搜索访问顺序为： V1-&amp;gt;V2-&amp;gt;V3-&amp;gt;V4-&amp;gt;V5-&amp;gt;V6-&amp;gt;V7-&amp;gt;V8
+最小生成树 在连通网的所有生成树中，所有边的代价和最小的生成树，称为最小生成树。 最小生成树中不存在回路。
+可得数组矩阵： ∞615∞∞6∞5∞3∞15∞5645∞5∞∞2∞36∞∞6∞∞426∞
+普里姆（Prim）算法 此算法可以称为“加点法”，每次迭代选择代价最小的边对应的点，加入到最小生成树中。
+设： * 所有结点V={V1,V2,V3,V4,V5,V6} * 已选结点U={} * 剩余结点V-U * 代价最小的边MIN
+indexV-UUMIN(边)0{V1,V2,V3,V4,V5,V6}{}1{V2,V3,V4,V5,V6}{V1}1(V1-V3)2{V2,V4,V5,V6}{V1,V3}4(V3-V6)3{V2,V4,V5}{V1,V3,V6}2(V6-V4)4{V2,V5}{V1,V3,V6,V4}5(V3-V2)5{V5}{V1,V3,V6,V4,V2}3(V2-V5)6{}{V1,V3,V6,V4,V2,V5} 或设： * 所有结点V={V1,V2,V3,V4,V5,V6} * 已选结点U={} * 剩余结点V-U * 序列i（1,2,3,…,V的个数），每个序列下为每个结点的最小代价边。 * 选择序列k，被选择序列设为0
+每个结点的多条代价边中选最小代价边。 如： 2-1中，V2距离V-U存在6（V2-V1），5（V2-V3）两条边，则选择6（V2-V1）。
+index\i12345UV-Uk(选择序列)1V1-6V1-1V1-5{V1}{V2,V3,V4,V5,V6}22V3-50V1-5V3-6V3-4{V1,V3}{V2,V4,V5,V6}53V3-50V6-2V3-60{V1,V3,V6}{V2,V3,V4,V5}34V3-500V3-60{V1,V3,V6,V4}{V2,V5}15000V2-30{V1,V3,V6,V4,V2}{V5}4600000{V1,V3,V6,V4,V2,V5}{} 克鲁斯卡尔（Kruskal）算法 每次在剩下的所有未选取的边中，找最小边，如果和已选取的边构成回路，则放弃，选取次小边。</description>
+    </item>
+    
+    <item>
+      <title>二叉树总结及代码实现</title>
+      <link>http://boseman1024.github.io/2018/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/</link>
+      <pubDate>Sun, 27 May 2018 11:31:26 +0000</pubDate>
+      
+      <guid>http://boseman1024.github.io/2018/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/</guid>
+      <description>二叉树 完全二叉树： 每层右结点&amp;lt;=左结点
+性质1： 在二叉树的第i层上至多有2^(i-1)个结点（i&amp;gt;=1）。
+   层数i　 每层最多结点数　     1 2^0=1   2 2^1=2   3 2^2=4   4 2^3=8    性质2： 深度为k的二叉树至多有2^k-1个结点。
+例： 深度k=4时，由2^k-1可得最大结点数为15=1+2+4+8。
+性质3： 设： * 度为0的结点个数为n0 * 度为1的结点个数为n1 * 度为2的结点个数为n2 * 总共有多少结点为N * 二叉树分支总数为B
+则 N = n0+n1+n2 B = 2*n2+n2 （2*(A+B+C)+D） N = B+1
+性质4： 具有n个结点的完全二叉树的深度为[log2(n)]+1。 [x]：不大于x的整数。
+性质5： 设总结点数为n，结点从左往右，从上到下编号i。 * 若i=1，则i结点是二叉树的根；若i&amp;gt;1，则i的父结点为[i/2]。 * 若2\*i&amp;gt;n，则结点i无左结点；否则其左结点为2\*i。 * 若2\*i+1&amp;gt;n，则结点i无右结点；否则右结点为2\*i+1。</description>
+    </item>
+    
+    <item>
+      <title>二维数组矩阵转置</title>
+      <link>http://boseman1024.github.io/2018/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9F%A9%E9%98%B5%E8%BD%AC%E7%BD%AE/</link>
+      <pubDate>Tue, 01 May 2018 21:11:44 +0000</pubDate>
+      
+      <guid>http://boseman1024.github.io/2018/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9F%A9%E9%98%B5%E8%BD%AC%E7%BD%AE/</guid>
+      <description>对称矩阵 int symmetricTranslate(){ printf(&amp;quot;==========对称矩阵=========\n&amp;quot;); int col,row; int i,j; /**输入对称矩阵行数列数 scanf(&amp;quot;%d,%d&amp;quot;,&amp;amp;col,&amp;amp;row); int origin[row][col],result[row][col]; for(i=0;i&amp;lt;col;i++){ for(j=0;j&amp;lt;row;j++){ printf(&amp;quot;列：%d,行：%d输入值&amp;quot;,col,row); scanf(&amp;quot;%d&amp;quot;,&amp;amp;value); origin[i][j] = value; } } **/ //测试对称矩阵 col = 5; row = 5; int origin[5][5]={ 1,5,1,3,7, 3,0,8,0,0, 1,4,9,2,6, 3,0,5,5,1, 9,0,1,2,3 }; //int result[row][col]; int result[5][5]; for(i=0;i&amp;lt;row;i++){ for(j=0;j&amp;lt;col;j++){ printf(&amp;quot;%d &amp;quot;,origin[i][j]); } printf(&amp;quot;\n&amp;quot;); } printf(&amp;quot;==========对称矩阵转置=========\n&amp;quot;); for(i=0;i&amp;lt;row;i++){ for(j=0;j&amp;lt;col;j++){ result[j][i] = origin[i][j]; } } for(i=0;i&amp;lt;row;i++){ for(j=0;j&amp;lt;col;j++){ printf(&amp;quot;%d &amp;quot;,result[i][j]); } printf(&amp;quot;\n&amp;quot;); } return 1; }  稀疏矩阵 矩阵数组构成：</description>
+    </item>
+    
+  </channel>
+</rss>

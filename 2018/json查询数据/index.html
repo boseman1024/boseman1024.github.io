@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kuma2x">
+  
+  
+  
+  <link rel="prev" href="http://boseman1024.github.io/2018/new-year-2018/" />
+  <link rel="next" href="http://boseman1024.github.io/2018/springboot%E9%9B%86%E6%88%90spring-security-jwt/" />
+  <link rel="canonical" href="http://boseman1024.github.io/2018/json%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           JSON查询数据 | KUMA2X
+       
+  </title>
+  <meta name="title" content="JSON查询数据 | KUMA2X">
+    
+
+  <link rel="stylesheet" href="http://boseman1024.github.io/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "http://boseman1024.github.io/"
+    },
+    "articleSection" : "posts",
+    "name" : "JSON查询数据",
+    "headline" : "JSON查询数据",
+    "description" : "若原始数据结构如下：
+var arr = [{ id:1, name:'a' },{ id:2, name:'b' }];  ①改变数据结构 可转换数据结构，把id变成key为：
+var obj = {}; arr.forEach(function (v,i) { obj[v.id] = v; }); 或 for (let i = 0; i &lt; arr.length;i++){ obj[arr[i].id] = arr[i] } obj = { 1:{ id:1, name:'a', }, 2:{ id:2, name:'b' } };  之后就可根据id获取元素数据
+obj[id].name  ②根据key查询元素 功能类似select name from json where id = 1
+function getItem(arr,n,v) { for (var i = 0; i &lt; arr.",
+    "inLanguage" : "en-us",
+    "author" : "Kuma2x",
+    "creator" : "Kuma2x",
+    "publisher": "Kuma2x",
+    "accountablePerson" : "Kuma2x",
+    "copyrightHolder" : "Kuma2x",
+    "copyrightYear" : "2018",
+    "datePublished": "2018-03-30 23:04:11 &#43;0000 UTC",
+    "dateModified" : "2018-03-30 23:04:11 &#43;0000 UTC",
+    "url" : "http://boseman1024.github.io/2018/json%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/",
+    "wordCount" : "81",
+    "keywords" : [ "JSON","JavaScript", "KUMA2X"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://boseman1024.github.io/">KUMA2X</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://boseman1024.github.io/">KUMA2X</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">JSON查询数据</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="http://boseman1024.github.io/" rel="author">Kuma2x</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2018-03-30 itemprop="datePublished">March 30, 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="http://boseman1024.github.io/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<p>若原始数据结构如下：</p>
+
+<pre><code class="language-javascript">var arr = [{
+    id:1,
+    name:'a'
+},{
+    id:2,
+    name:'b'
+}];
+</code></pre>
+
+<h2 id="①改变数据结构">①改变数据结构</h2>
+
+<p>可转换数据结构，把id变成key为：</p>
+
+<pre><code class="language-javascript">var obj = {};
+arr.forEach(function (v,i) {
+    obj[v.id] = v;
+});
+或
+for (let i = 0; i &lt; arr.length;i++){
+    obj[arr[i].id] = arr[i]
+}
+
+obj = {
+    1:{
+        id:1,
+        name:'a',
+    },
+    2:{
+        id:2,
+        name:'b'
+    }
+};
+</code></pre>
+
+<p>之后就可根据id获取元素数据</p>
+
+<pre><code class="language-javascript">obj[id].name
+</code></pre>
+
+<h2 id="②根据key查询元素">②根据key查询元素</h2>
+
+<p>功能类似select name from json where id = 1</p>
+
+<pre><code class="language-javascript">function getItem(arr,n,v) {  
+    for (var i = 0; i &lt; arr.length; i++){
+        if (arr[i][n]==v){
+            return arr[i];  
+        }
+    }
+}  
+   
+getItem(arr,&quot;id&quot;,&quot;2&quot;).name 
+getItem(arr,&quot;name&quot;,&quot;123&quot;).name 
+</code></pre>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kuma2x </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=http://boseman1024.github.io/2018/json%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/>http://boseman1024.github.io/2018/json%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/</span>
+            </p>
+            
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="http://boseman1024.github.io/tags/json/">
+                    #JSON</a></span>
+            
+            <span class="tag"><a href="http://boseman1024.github.io/tags/javascript/">
+                    #JavaScript</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="http://boseman1024.github.io/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="http://boseman1024.github.io/2018/new-year-2018/" class="prev" rel="prev" title="NEW YEAR 2018"><i class="iconfont icon-left"></i>&nbsp;NEW YEAR 2018</a>
+         
+        
+        <a href="http://boseman1024.github.io/2018/springboot%E9%9B%86%E6%88%90spring-security-jwt/" class="next" rel="next" title="SpringBoot整合Spring Security&#43;JWT">SpringBoot整合Spring Security&#43;JWT&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2018 - 2018</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="http://boseman1024.github.io/">Kuma2x</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

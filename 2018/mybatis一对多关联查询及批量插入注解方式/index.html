@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kuma2x">
+  
+  
+  
+  <link rel="prev" href="http://boseman1024.github.io/2018/%E5%B9%B3%E7%BA%A7json%E8%BD%AC%E5%B1%82%E7%BA%A7%E6%A0%91%E5%9E%8B%E7%BB%93%E6%9E%84json/" />
+  <link rel="next" href="http://boseman1024.github.io/2018/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9F%A9%E9%98%B5%E8%BD%AC%E7%BD%AE/" />
+  <link rel="canonical" href="http://boseman1024.github.io/2018/mybatis%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E8%81%94%E6%9F%A5%E8%AF%A2%E5%8F%8A%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%B3%A8%E8%A7%A3%E6%96%B9%E5%BC%8F/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Mybatis：一对多关联查询及批量插入（注解方式） | KUMA2X
+       
+  </title>
+  <meta name="title" content="Mybatis：一对多关联查询及批量插入（注解方式） | KUMA2X">
+    
+
+  <link rel="stylesheet" href="http://boseman1024.github.io/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "http://boseman1024.github.io/"
+    },
+    "articleSection" : "posts",
+    "name" : "Mybatis：一对多关联查询及批量插入（注解方式）",
+    "headline" : "Mybatis：一对多关联查询及批量插入（注解方式）",
+    "description" : "一对多关联查询 通过@Results构造结果映射： * javaType：返回类型 * property：指定属性 * column：将作为指定参数传递给指定方法（即例中selectMenuByRid方法）
+例：
+//角色mapper public interface SysRoleMapper { @Select(&quot;select * from sys_role&quot;) @Results({ @Result(property=&quot;name&quot;,column=&quot;name&quot;), @Result(property=&quot;namezh&quot;,column=&quot;namezh&quot;), @Result(property=&quot;menus&quot;,column=&quot;id&quot;,javaType=List.class,many=@Many(select=&quot;com.kuma2x.xauth.mapper.SysMenuMapper.selectMenuByRid&quot;)) }) List&lt;SysRole&gt; selectRoleByUId(int uid); } //菜单mapper public interface SysMenuMapper { //通过角色id在角色菜单关联表中查询到该角色所拥有菜单权限 @Select(&quot;select * from sys_menu,sys_role_menu where sys_menu.id = sys_role_menu.mid and sys_role_menu.rid = #{rid}&quot;) List&lt;Integer&gt; selectMenuByRid(int rid); }  批量插入 使用&lt;script&gt;标签可像XML语法一样书写。 通过&lt;foreach&gt;迭代集合进行插入，注解中参数需通过@Param指定参数。
+foreach标签的属性主要有： * item：迭代时集合中每个元素的别名。 * index：每个元素在集合中迭代序列。 * collection：指定集合。 * open：该语句的开始符。 * separator：每次迭代的分隔符。 * close：该语句的结束符。
+&lt;foreach collection=&quot;list&quot; index=&quot;index&quot; item=&quot;item&quot; open=&quot;(&quot; separator=&quot;,&quot; close=&quot;)&quot;&gt; #{item} &lt;/foreach&gt;  完整示例：",
+    "inLanguage" : "en-us",
+    "author" : "Kuma2x",
+    "creator" : "Kuma2x",
+    "publisher": "Kuma2x",
+    "accountablePerson" : "Kuma2x",
+    "copyrightHolder" : "Kuma2x",
+    "copyrightYear" : "2018",
+    "datePublished": "2018-05-01 20:50:27 &#43;0000 UTC",
+    "dateModified" : "2018-05-01 20:50:27 &#43;0000 UTC",
+    "url" : "http://boseman1024.github.io/2018/mybatis%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E8%81%94%E6%9F%A5%E8%AF%A2%E5%8F%8A%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%B3%A8%E8%A7%A3%E6%96%B9%E5%BC%8F/",
+    "wordCount" : "96",
+    "keywords" : [ "JAVA","Mybatis", "KUMA2X"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://boseman1024.github.io/">KUMA2X</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://boseman1024.github.io/">KUMA2X</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Mybatis：一对多关联查询及批量插入（注解方式）</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="http://boseman1024.github.io/" rel="author">Kuma2x</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2018-05-01 itemprop="datePublished">May 1, 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="http://boseman1024.github.io/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="一对多关联查询">一对多关联查询</h1>
+
+<p>通过<code>@Results</code>构造结果映射：
+* <code>javaType</code>：返回类型
+* <code>property</code>：指定属性
+* <code>column</code>：将作为指定参数传递给指定方法（即例中<code>selectMenuByRid</code>方法）</p>
+
+<p>例：</p>
+
+<pre><code class="language-java">//角色mapper
+public interface SysRoleMapper {
+    @Select(&quot;select * from sys_role&quot;)
+    @Results({
+        @Result(property=&quot;name&quot;,column=&quot;name&quot;),
+        @Result(property=&quot;namezh&quot;,column=&quot;namezh&quot;),
+        @Result(property=&quot;menus&quot;,column=&quot;id&quot;,javaType=List.class,many=@Many(select=&quot;com.kuma2x.xauth.mapper.SysMenuMapper.selectMenuByRid&quot;))
+    })
+    List&lt;SysRole&gt; selectRoleByUId(int uid);
+}
+
+//菜单mapper
+public interface SysMenuMapper {
+    //通过角色id在角色菜单关联表中查询到该角色所拥有菜单权限
+    @Select(&quot;select * from sys_menu,sys_role_menu where sys_menu.id = sys_role_menu.mid and sys_role_menu.rid = #{rid}&quot;)
+    List&lt;Integer&gt; selectMenuByRid(int rid);
+}
+
+</code></pre>
+
+<h1 id="批量插入">批量插入</h1>
+
+<p>使用<code>&lt;script&gt;</code>标签可像XML语法一样书写。
+通过<code>&lt;foreach&gt;</code>迭代集合进行插入，注解中参数需通过<code>@Param</code>指定参数。</p>
+
+<p><code>foreach</code>标签的属性主要有：
+* <code>item</code>：迭代时集合中每个元素的别名。
+* <code>index</code>：每个元素在集合中迭代序列。
+* <code>collection</code>：指定集合。
+* <code>open</code>：该语句的开始符。
+* <code>separator</code>：每次迭代的分隔符。
+* <code>close</code>：该语句的结束符。</p>
+
+<pre><code class="language-java">&lt;foreach collection=&quot;list&quot; index=&quot;index&quot; item=&quot;item&quot; open=&quot;(&quot; separator=&quot;,&quot; close=&quot;)&quot;&gt;
+    #{item}
+&lt;/foreach&gt;
+</code></pre>
+
+<p>完整示例：</p>
+
+<pre><code class="language-java">//向角色权限关联表中插入该角色所拥有的所有菜单权限
+@Insert({
+    &quot;&lt;script&gt;&quot;+
+    &quot;insert into sys_role_menu(rid,mid) values&quot; +
+    &quot;&lt;foreach collection='menus' item='mid' separator=','&gt; &quot;+
+        &quot;(#{id},#{mid})&quot;+
+    &quot;&lt;/foreach&gt;&lt;/script&gt;&quot;
+})
+int insertRoleMenu(@Param(&quot;id&quot;)int id,@Param(&quot;menus&quot;) List&lt;Integer&gt; menus);
+</code></pre>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kuma2x </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=http://boseman1024.github.io/2018/mybatis%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E8%81%94%E6%9F%A5%E8%AF%A2%E5%8F%8A%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%B3%A8%E8%A7%A3%E6%96%B9%E5%BC%8F/>http://boseman1024.github.io/2018/mybatis%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E8%81%94%E6%9F%A5%E8%AF%A2%E5%8F%8A%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%B3%A8%E8%A7%A3%E6%96%B9%E5%BC%8F/</span>
+            </p>
+            
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="http://boseman1024.github.io/tags/java/">
+                    #JAVA</a></span>
+            
+            <span class="tag"><a href="http://boseman1024.github.io/tags/mybatis/">
+                    #Mybatis</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="http://boseman1024.github.io/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="http://boseman1024.github.io/2018/%E5%B9%B3%E7%BA%A7json%E8%BD%AC%E5%B1%82%E7%BA%A7%E6%A0%91%E5%9E%8B%E7%BB%93%E6%9E%84json/" class="prev" rel="prev" title="层级关系数据转树型结构JSON"><i class="iconfont icon-left"></i>&nbsp;层级关系数据转树型结构JSON</a>
+         
+        
+        <a href="http://boseman1024.github.io/2018/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9F%A9%E9%98%B5%E8%BD%AC%E7%BD%AE/" class="next" rel="next" title="二维数组矩阵转置">二维数组矩阵转置&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2018 - 2018</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="http://boseman1024.github.io/">Kuma2x</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

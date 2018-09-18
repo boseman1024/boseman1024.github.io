@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kuma2x">
+  
+  
+  
+  <link rel="prev" href="http://boseman1024.github.io/2018/springboot%E9%9B%86%E6%88%90spring-security-jwt/" />
+  <link rel="next" href="http://boseman1024.github.io/2018/mybatis%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E8%81%94%E6%9F%A5%E8%AF%A2%E5%8F%8A%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%B3%A8%E8%A7%A3%E6%96%B9%E5%BC%8F/" />
+  <link rel="canonical" href="http://boseman1024.github.io/2018/%E5%B9%B3%E7%BA%A7json%E8%BD%AC%E5%B1%82%E7%BA%A7%E6%A0%91%E5%9E%8B%E7%BB%93%E6%9E%84json/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           层级关系数据转树型结构JSON | KUMA2X
+       
+  </title>
+  <meta name="title" content="层级关系数据转树型结构JSON | KUMA2X">
+    
+
+  <link rel="stylesheet" href="http://boseman1024.github.io/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "http://boseman1024.github.io/"
+    },
+    "articleSection" : "posts",
+    "name" : "层级关系数据转树型结构JSON",
+    "headline" : "层级关系数据转树型结构JSON",
+    "description" : "原始数据结构如下：
+[{ &quot;id&quot;: 0, &quot;name&quot;: &quot;home&quot;, &quot;url&quot;: &quot;1&quot;, &quot;path&quot;: &quot;/home&quot;, &quot;component&quot;: &quot;Gate&quot;, &quot;iconcls&quot;: &quot;el-icon-menu&quot; }, { &quot;id&quot;: 1, &quot;name&quot;: &quot;user&quot;, &quot;url&quot;: &quot;0&quot;, &quot;path&quot;: &quot;&quot;, &quot;iconcls&quot;: &quot;el-icon-document&quot; }, { &quot;id&quot;: 2, &quot;name&quot;: &quot;User&quot;, &quot;url&quot;: &quot;1&quot;, &quot;path&quot;: &quot;/user/user&quot;, &quot;component&quot;: &quot;user/User&quot;, &quot;parentid&quot;: 1 }, { &quot;id&quot;: 3, &quot;name&quot;: &quot;Role&quot;, &quot;url&quot;: &quot;1&quot;, &quot;path&quot;: &quot;/user/role&quot;, &quot;component&quot;: &quot;user/Role&quot;, &quot;parentid&quot;: 1 }, { &quot;id&quot;: 7, &quot;name&quot;: &quot;Permission&quot;, &quot;url&quot;: &quot;1&quot;, &quot;path&quot;: &quot;/user/permission&quot;, &quot;component&quot;: &quot;user/Permission&quot;, &quot;parentid&quot;: 1 }, { &quot;id&quot;: 8, &quot;name&quot;: &quot;Menu&quot;, &quot;url&quot;: &quot;1&quot;, &quot;path&quot;: &quot;/user/menu&quot;, &quot;component&quot;: &quot;user/Menu&quot;, &quot;parentid&quot;: 1 }]  通过递归的方式转换：",
+    "inLanguage" : "en-us",
+    "author" : "Kuma2x",
+    "creator" : "Kuma2x",
+    "publisher": "Kuma2x",
+    "accountablePerson" : "Kuma2x",
+    "copyrightHolder" : "Kuma2x",
+    "copyrightYear" : "2018",
+    "datePublished": "2018-05-01 20:08:31 &#43;0000 UTC",
+    "dateModified" : "2018-05-01 20:08:31 &#43;0000 UTC",
+    "url" : "http://boseman1024.github.io/2018/%E5%B9%B3%E7%BA%A7json%E8%BD%AC%E5%B1%82%E7%BA%A7%E6%A0%91%E5%9E%8B%E7%BB%93%E6%9E%84json/",
+    "wordCount" : "241",
+    "keywords" : [ "JSON","JavaScript", "KUMA2X"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://boseman1024.github.io/">KUMA2X</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://boseman1024.github.io/">KUMA2X</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">层级关系数据转树型结构JSON</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="http://boseman1024.github.io/" rel="author">Kuma2x</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2018-05-01 itemprop="datePublished">May 1, 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="http://boseman1024.github.io/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>原始数据结构如下：</p>
+
+<pre><code class="language-javascript">[{
+    &quot;id&quot;: 0,
+    &quot;name&quot;: &quot;home&quot;,
+    &quot;url&quot;: &quot;1&quot;,
+    &quot;path&quot;: &quot;/home&quot;,
+    &quot;component&quot;: &quot;Gate&quot;,
+    &quot;iconcls&quot;: &quot;el-icon-menu&quot;
+}, {
+    &quot;id&quot;: 1,
+    &quot;name&quot;: &quot;user&quot;,
+    &quot;url&quot;: &quot;0&quot;,
+    &quot;path&quot;: &quot;&quot;,
+    &quot;iconcls&quot;: &quot;el-icon-document&quot;
+}, {
+    &quot;id&quot;: 2,
+    &quot;name&quot;: &quot;User&quot;,
+    &quot;url&quot;: &quot;1&quot;,
+    &quot;path&quot;: &quot;/user/user&quot;,
+    &quot;component&quot;: &quot;user/User&quot;,
+    &quot;parentid&quot;: 1
+}, {
+    &quot;id&quot;: 3,
+    &quot;name&quot;: &quot;Role&quot;,
+    &quot;url&quot;: &quot;1&quot;,
+    &quot;path&quot;: &quot;/user/role&quot;,
+    &quot;component&quot;: &quot;user/Role&quot;,
+    &quot;parentid&quot;: 1
+}, {
+    &quot;id&quot;: 7,
+    &quot;name&quot;: &quot;Permission&quot;,
+    &quot;url&quot;: &quot;1&quot;,
+    &quot;path&quot;: &quot;/user/permission&quot;,
+    &quot;component&quot;: &quot;user/Permission&quot;,
+    &quot;parentid&quot;: 1
+}, {
+    &quot;id&quot;: 8,
+    &quot;name&quot;: &quot;Menu&quot;,
+    &quot;url&quot;: &quot;1&quot;,
+    &quot;path&quot;: &quot;/user/menu&quot;,
+    &quot;component&quot;: &quot;user/Menu&quot;,
+    &quot;parentid&quot;: 1
+}]
+</code></pre>
+
+<p>通过递归的方式转换：</p>
+
+<pre><code class="language-javascript">const getJsonTree = function(data,parentid){
+    let tree=[]
+    for(let i=0;i&lt;data.length;i++){ 
+        let node=data[i]
+        if(node.parentid==parentid ){ 
+            let newNode={
+                id:node.id,
+                name:node.name,
+                path:node.path, 
+                component:node.component,
+                meta:{
+                    url:node.url,
+                    iconcls:node.iconcls,
+                    parentid:node.parentid
+                },
+                children:getJsonTree(data,node.id)
+            }
+            tree.push(newNode)             
+        }
+    }
+    return tree
+}
+</code></pre>
+
+<p>转换后结果如下：</p>
+
+<pre><code class="language-javascript">[{
+    &quot;id&quot;: 0,
+    &quot;name&quot;: &quot;home&quot;,
+    &quot;path&quot;: &quot;/home&quot;,
+    &quot;component&quot;: &quot;Gate&quot;,
+    &quot;meta&quot;: {
+        &quot;url&quot;: &quot;1&quot;,
+        &quot;iconcls&quot;: &quot;el-icon-menu&quot;,
+        &quot;parentid&quot;: null
+    },
+    &quot;children&quot;: []
+}, {
+    &quot;id&quot;: 1,
+    &quot;name&quot;: &quot;user&quot;,
+    &quot;path&quot;: &quot;&quot;,
+    &quot;component&quot;: null,
+    &quot;meta&quot;: {
+        &quot;url&quot;: &quot;0&quot;,
+        &quot;iconcls&quot;: &quot;el-icon-document&quot;,
+        &quot;parentid&quot;: null
+    },
+    &quot;children&quot;: [{
+        &quot;id&quot;: 2,
+        &quot;name&quot;: &quot;User&quot;,
+        &quot;path&quot;: &quot;/user/user&quot;,
+        &quot;component&quot;: &quot;user/User&quot;,
+        &quot;meta&quot;: {
+            &quot;url&quot;: &quot;1&quot;,
+            &quot;iconcls&quot;: null,
+            &quot;parentid&quot;: 1
+        },
+        &quot;children&quot;: []
+    }, {
+        &quot;id&quot;: 3,
+        &quot;name&quot;: &quot;Role&quot;,
+        &quot;path&quot;: &quot;/user/role&quot;,
+        &quot;component&quot;: &quot;user/Role&quot;,
+        &quot;meta&quot;: {
+            &quot;url&quot;: &quot;1&quot;,
+            &quot;iconcls&quot;: null,
+            &quot;parentid&quot;: 1
+        },
+        &quot;children&quot;: []
+    }, {
+        &quot;id&quot;: 7,
+        &quot;name&quot;: &quot;Permission&quot;,
+        &quot;path&quot;: &quot;/user/permission&quot;,
+        &quot;component&quot;: &quot;user/Permission&quot;,
+        &quot;meta&quot;: {
+            &quot;url&quot;: &quot;1&quot;,
+            &quot;iconcls&quot;: null,
+            &quot;parentid&quot;: 1
+        },
+        &quot;children&quot;: []
+    }, {
+        &quot;id&quot;: 8,
+        &quot;name&quot;: &quot;Menu&quot;,
+        &quot;path&quot;: &quot;/user/menu&quot;,
+        &quot;component&quot;: &quot;user/Menu&quot;,
+        &quot;meta&quot;: {
+            &quot;url&quot;: &quot;1&quot;,
+            &quot;iconcls&quot;: null,
+            &quot;parentid&quot;: 1
+        },
+        &quot;children&quot;: []
+    }]
+}]
+</code></pre>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kuma2x </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=http://boseman1024.github.io/2018/%E5%B9%B3%E7%BA%A7json%E8%BD%AC%E5%B1%82%E7%BA%A7%E6%A0%91%E5%9E%8B%E7%BB%93%E6%9E%84json/>http://boseman1024.github.io/2018/%E5%B9%B3%E7%BA%A7json%E8%BD%AC%E5%B1%82%E7%BA%A7%E6%A0%91%E5%9E%8B%E7%BB%93%E6%9E%84json/</span>
+            </p>
+            
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="http://boseman1024.github.io/tags/json/">
+                    #JSON</a></span>
+            
+            <span class="tag"><a href="http://boseman1024.github.io/tags/javascript/">
+                    #JavaScript</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="http://boseman1024.github.io/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="http://boseman1024.github.io/2018/springboot%E9%9B%86%E6%88%90spring-security-jwt/" class="prev" rel="prev" title="SpringBoot整合Spring Security&#43;JWT"><i class="iconfont icon-left"></i>&nbsp;SpringBoot整合Spring Security&#43;JWT</a>
+         
+        
+        <a href="http://boseman1024.github.io/2018/mybatis%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E8%81%94%E6%9F%A5%E8%AF%A2%E5%8F%8A%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%B3%A8%E8%A7%A3%E6%96%B9%E5%BC%8F/" class="next" rel="next" title="Mybatis：一对多关联查询及批量插入（注解方式）">Mybatis：一对多关联查询及批量插入（注解方式）&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2018 - 2018</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="http://boseman1024.github.io/">Kuma2x</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

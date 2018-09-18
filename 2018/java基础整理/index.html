@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kuma2x">
+  
+  
+  
+  <link rel="prev" href="http://boseman1024.github.io/2018/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" />
+  <link rel="next" href="http://boseman1024.github.io/2018/%E5%9B%BE%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" />
+  <link rel="canonical" href="http://boseman1024.github.io/2018/java%E5%9F%BA%E7%A1%80%E6%95%B4%E7%90%86/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           JAVA基础整理 | KUMA2X
+       
+  </title>
+  <meta name="title" content="JAVA基础整理 | KUMA2X">
+    
+
+  <link rel="stylesheet" href="http://boseman1024.github.io/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "http://boseman1024.github.io/"
+    },
+    "articleSection" : "posts",
+    "name" : "JAVA基础整理",
+    "headline" : "JAVA基础整理",
+    "description" : "八大基本类型： * 字节型（byte）-8位 * 短整型（short）-16位 * 整型（int）-32位 * 长整型（long）-64位 * 字符型（char）-16位 * 浮点型（float）-32位 * 双精度型（double）-64位 * 布尔型（boolean）-1位
+基本类型都有对应的包装类型，基本类型与其对应的包装类型之间的赋值使用自动装箱与拆箱完成。
+Integer x = 2; // 装箱 int y = x; // 拆箱  new Integer(123)与Integer.valueOf(123)的区别在于，new Integer(123)每次都会新建一个对象，而Integer.valueOf(123)可能会使用缓存对象，因此多次使用Integer.valueOf(123)会取得同一个对象的引用。
+Integer x = new Integer(123); Integer y = new Integer(123); System.out.println(x == y); // false Integer z = Integer.valueOf(123); Integer k = Integer.valueOf(123); System.out.println(z == k); // true  编译器会在自动装箱过程调用valueOf()方法，因此多个Integer实例使用自动装箱来创建并且值相同，那么就会引用相同的对象。
+Integer m = 123; Integer n = 123; System.",
+    "inLanguage" : "en-us",
+    "author" : "Kuma2x",
+    "creator" : "Kuma2x",
+    "publisher": "Kuma2x",
+    "accountablePerson" : "Kuma2x",
+    "copyrightHolder" : "Kuma2x",
+    "copyrightYear" : "2018",
+    "datePublished": "2018-06-03 21:47:14 &#43;0000 UTC",
+    "dateModified" : "2018-06-03 21:47:14 &#43;0000 UTC",
+    "url" : "http://boseman1024.github.io/2018/java%E5%9F%BA%E7%A1%80%E6%95%B4%E7%90%86/",
+    "wordCount" : "525",
+    "keywords" : [ "JAVA", "KUMA2X"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://boseman1024.github.io/">KUMA2X</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://boseman1024.github.io/">KUMA2X</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">JAVA基础整理</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="http://boseman1024.github.io/" rel="author">Kuma2x</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2018-06-03 itemprop="datePublished">June 3, 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="http://boseman1024.github.io/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<p><code>八大基本类型</code>：
+* 字节型（byte）-8位
+* 短整型（short）-16位
+* 整型（int）-32位
+* 长整型（long）-64位
+* 字符型（char）-16位
+* 浮点型（float）-32位
+* 双精度型（double）-64位
+* 布尔型（boolean）-1位</p>
+
+<p>基本类型都有对应的包装类型，基本类型与其对应的包装类型之间的赋值使用自动装箱与拆箱完成。</p>
+
+<pre><code class="language-java">Integer x = 2;     // 装箱
+int y = x;         // 拆箱
+</code></pre>
+
+<p><code>new Integer(123)</code>与<code>Integer.valueOf(123)</code>的区别在于，<code>new Integer(123)</code>每次都会新建一个对象，而<code>Integer.valueOf(123)</code>可能会使用缓存对象，因此多次使用<code>Integer.valueOf(123)</code>会取得同一个对象的引用。</p>
+
+<pre><code class="language-java">Integer x = new Integer(123);
+Integer y = new Integer(123);
+System.out.println(x == y);    // false
+Integer z = Integer.valueOf(123);
+Integer k = Integer.valueOf(123);
+System.out.println(z == k);   // true
+</code></pre>
+
+<p>编译器会在自动装箱过程调用<code>valueOf()</code>方法，因此多个<code>Integer</code>实例使用自动装箱来创建并且值相同，那么就会引用相同的对象。</p>
+
+<pre><code class="language-java">Integer m = 123;
+Integer n = 123;
+System.out.println(m == n); // true
+</code></pre>
+
+<p>JVM会在常量池中缓存-128到127之间的整数，所以任何在-128到127之间的整数的地址都是相同的。 对于引用类型的变量，==和.equals()比较的都是其地址，除非该类对.equals()方法进行了重写，例如String类和Integer类。</p>
+
+<pre><code class="language-java">Integer a = 1;
+Integer b = 2;
+Integer c = 3;
+Integer d = 3;
+Integer e = 321;
+Integer f = 321;
+Long g = 3L;
+System.out.println(c==d);//true
+System.out.println(e==f);//false
+System.out.println(c==(a+b));//true
+System.out.println(c.equals(a+b));//true
+System.out.println(g==(a+b));//true
+System.out.println(g.equals(a+b));//false
+</code></pre>
+
+<p><code>valueOf()</code>方法的实现比较简单，就是先判断值是否在缓存池中，如果在的话就直接使用缓存池的内容。</p>
+
+<pre><code class="language-java">public static Integer valueOf(int i) {
+    if (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)
+        return IntegerCache.cache[i + (-IntegerCache.low)];
+    return new Integer(i);
+}
+</code></pre>
+
+<p><code>对象变量</code>:
+一个对象变量并没有实际包含一个对象，而仅仅引用一个对象。
+即任何对象变量的值都是对存储在另一个地方的一个对象的引用。
+String为封装类，属于引用类型。</p>
+
+<p><code>构造器</code>：
+* 构造器与类同名
+* 每个类可以有一个以上的构造器
+* 构造器可以有0个、1个或者多个参数
+* 构造器没有返回值
+* 构造器总是伴随着new操作一起调用</p>
+
+<p><code>带标签的break语句</code>：
+用于跳出多重嵌套的循环语句。
+标签必须放在希望跳出的最外层循环之前，并且必须紧跟一个冒号。</p>
+
+<pre><code class="language-java">label:
+while(condition){
+    for(condition){
+        if(condition){
+            break label;//跳出最外层循环，打印end
+        }
+    }
+}
+System.out.println(&quot;end&quot;);
+</code></pre>
+
+<p><code>方法参数</code>：
+java总是采用按值调用，即方法得到的是所有参数值的一个拷贝，方法不能修改传递给它的任何参数变量的内容。
+* 一个方法不能修改一个基本数据类型的参数（即数值型和布尔型）
+* 一个方法可以改变一个对象参数的状态
+* 一个方法不能让对象参数引用一个新的对象</p>
+
+<p>例：</p>
+
+<pre><code class="language-java">public void add(int num){
+    num += 100;
+}
+int money = 100;
+add(money);
+/*
+num为100，是money的值拷贝。
+方法执行后money仍然为100，
+而num为200，且方法结束后被丢弃。
+*/
+Employee a = new Employee(&quot;Jack&quot;);
+Employee b = new Employee(&quot;Bob&quot;);
+
+public void raiseSalary(Employee x){
+    x.salary += 1000;
+}
+raiseSalary(a);
+/*
+x为a值的拷贝，即a的引用对象。
+所以x与a同时引用同一个对象。
+x.salary+1000即a.salary+1000。
+*/
+public void swap(Employee x,Employee y){
+    Employee temp = x;
+    x = y;
+    y = temp;
+}
+
+swap(a,b);
+/*
+a-&gt;Jack
+b-&gt;Bob
+x-&gt;Bob
+y-&gt;Jack
+即 a，b仍然引用原先的对象。
+而 a，b的拷贝x，y交换引用对象，且方法结束时被丢弃。
+*/
+</code></pre>
+
+<p><code>初始化顺序</code>：
+　<code>静态代码块</code>：static{}，加载类时执行，仅执行一次。
+　<code>构造代码块</code>：{}，每一次创建对象时执行，给所有对象进行统一初始化，是不同对象共同的初始化内容。
+ 　<code>执行优先级</code>：静态代码块 &gt; main()“main为static方法” &gt; 构造代码块 &gt; 构造方法</p>
+
+<p>存在<code>继承</code>的情况下，<code>初始化顺序</code>为：
+* 父类（静态变量、静态语句块）
+* 子类（静态变量、静态语句块）
+* 父类（实例变量、普通语句块）
+* 父类（构造函数）
+* 子类（实例变量、普通语句块）
+* 子类（构造函数）</p>
+
+<p><code>访问修饰符</code>：</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">访问修饰符</th>
+<th align="center">同类</th>
+<th align="center">同包</th>
+<th align="center">子类</th>
+<th align="center">不同包</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">public</td>
+<td align="center">✔</td>
+<td align="center">✔</td>
+<td align="center">✔</td>
+<td align="center">✔</td>
+</tr>
+
+<tr>
+<td align="left">protected</td>
+<td align="center">✔</td>
+<td align="center">✔</td>
+<td align="center">✔</td>
+<td align="center">❌</td>
+</tr>
+
+<tr>
+<td align="left">默认没有访问控制修饰符</td>
+<td align="center">✔</td>
+<td align="center">✔</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+</tr>
+
+<tr>
+<td align="left">private</td>
+<td align="center">✔</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+</tr>
+</tbody>
+</table>
+
+<p><code>类修饰符</code>：</p>
+
+<p>　<code>final</code>：
+* 修饰的类不能被继承，没有子类
+* final类中的方法自动成为final方法，但不包括域</p>
+
+<p>　<code>abstract</code>：
+* 抽象类不能被实例化
+* 含有抽象方法的类必须被声明为抽象类，但抽象类不一定要有抽象方法
+* 抽象类必须被子类继承，抽象方法必须被重写，非抽象方法则不必
+* 抽象类可以包含具体数据和具体方法（不推荐）</p>
+
+<pre><code class="language-java">abstract class A{
+    abstract void player();
+    public void s(){
+        System.out.println(&quot;1&quot;);
+    }
+}
+class B extends A{
+    @Override
+    public void player(){
+        System.out.println(&quot;2&quot;);
+        super.s();
+    }
+}
+</code></pre>
+
+<ul>
+<li><code>覆盖（Override）</code>存在于继承体系中，指子类实现了一个与父类在方法声明上完全相同的一个方法；</li>
+<li><code>重载（Overload）</code>存在于同一个类中，指一个方法与已经存在的方法名称上相同，但是参数类型、个数、顺序至少有一个不同。应该注意的是，返回值不同，其它都相同不算是重载。</li>
+</ul>
+
+<h1 id="异常">异常</h1>
+
+<p><code>Throwable</code>可以用来表示任何可以作为异常抛出的类，分为两种：<code>Error</code>和 <code>Exception</code>。
+其中<code>Error</code>用来表示<code>JVM</code>无法处理的错误，<code>Exception</code>分为两种：
+* <code>检查异常</code>：需要用<code>try{}catch(){}</code>语句捕获并进行处理，并且可以从异常中恢复；
+* <code>未检查异常</code>：是程序运行时错误，例如除 0 会引发 Arithmetic Exception，此时程序奔溃并且无法恢复。
+<img src="http://otho0rxyj.bkt.clouddn.com/image/blog/javareview/Throwable.png"></p>
+
+<blockquote>
+<p><a href="https://www.tianmaying.com/tutorial/Java-Exception" rel="nofollow noreferrer" target="_blank">Java 入门之异常处理</a>
+<a href="http://www.importnew.com/7383.html" rel="nofollow noreferrer" target="_blank">Java 异常的面试问题及答案 -Part 1</a></p>
+</blockquote>
+
+<h1 id="反射">反射</h1>
+
+<p>每个类都有一个<code>Class</code>对象，包含了与类有关的信息。当编译一个新类时，会产生一个同名的<code>.class</code>文件，该文件内容保存着<code>Class</code>对象。
+类加载相当于<code>Class</code>对象的加载。类在第一次使用时才动态加载到 JVM 中，可以使用<code>Class.forName(&quot;com.mysql.jdbc.Driver&quot;)</code>这种方式来控制类的加载，该方法会返回一个<code>Class</code>对象。
+反射可以提供运行时的类信息，并且这个类可以在运行时才加载进来，甚至在编译时期该类的<code>.class</code>不存在也可以加载进来。
+<code>Class</code>和<code>java.lang.reflect</code>一起对反射提供了支持，<code>java.lang.reflect</code>类库主要包含了以下三个类：
+* <code>Field</code>：可以使用<code>get()</code>和<code>set()</code>方法读取和修改<code>Field</code>对象关联的字段；
+* <code>Method</code>：可以使用<code>invoke()</code>方法调用与<code>Method</code>对象关联的方法；
+* <code>Constructor</code>：可以用<code>Constructor</code>创建新的对象。</p>
+
+<blockquote>
+<p><a href="http://www.sczyh30.com/posts/Java/java-reflection-1/" rel="nofollow noreferrer" target="_blank">深入解析 Java 反射（1）- 基础</a></p>
+</blockquote>
+
+<h1 id="泛型">泛型</h1>
+
+<p>泛型是通过类型擦除来实现的，编译器在编译时擦除了所有类型相关的信息，所以在运行时不存在任何类型相关的信息。</p>
+
+<blockquote>
+<p><a href="http://www.importnew.com/24029.html" rel="nofollow noreferrer" target="_blank">Java 泛型详解</a>
+<a href="https://cloud.tencent.com/developer/article/1033693" rel="nofollow noreferrer" target="_blank">10 道 Java 泛型面试题</a></p>
+</blockquote>
+
+<h1 id="接口">接口</h1>
+
+<p>接口中的所有方法自动地属于public。
+接口中的域自动地设为public static final。</p>
+
+<h1 id="内部类">内部类</h1>
+
+<p><code>双括号初始化</code>：</p>
+
+<pre><code class="language-java">ArrayList&lt;String&gt; friends = new ArrayList&lt;&gt;();
+friends.add(&quot;harry&quot;);
+friends.add(&quot;tony&quot;);
+invite(friends);
+//如果不再需要friends这个数组列表，可以作为一个匿名列表并为其添加元素。
+invite(new ArrayList&lt;String&gt;(){{
+    add(&quot;harry&quot;);add(&quot;tony&quot;);
+    }
+});
+//外层括号建立了ArrayList的一个匿名子类，内层括号则是对象构造块。
+</code></pre>
+
+<h1 id="集合">集合</h1>
+
+<p><code>Vector</code>类所有方法都是同步的,可以由两个线程安全地访问一个Vector对象，但由一个线程访问Vector代码要在同步操作上耗费大量的时间。
+而<code>ArrayList</code>方法不是同步的。</p>
+
+<p><code>LinkedList</code>：
+java中所有链表都是双向链表——即每个结点还存放着指向前驱结点的引用。
+<code>LinkedList.add()</code>方法将对象添加到链表尾部。</p>
+
+<pre><code class="language-java">List&lt;String&gt; staff = new LinkedList&lt;&gt;();
+staff.add(&quot;Amy&quot;);
+staff.add(&quot;Bob&quot;);
+staff.add(&quot;Carl&quot;);
+Iterator iter = staff.iterator();
+String first = iter.next(); //访问第一个元素
+String second = iter.next(); //访问第二个元素
+iter.remove(); //删除最后访问的元素
+/*
+iter.remove(); //错误
+iter.next();
+iter.remove(); //正确
+*/
+</code></pre>
+
+<p><code>Iterator</code>还提供<code>ListIterator</code>子接口，有两个方法：<code>previous()</code>和<code>hasPrevious()</code>，可以用来反向遍历链表。
+<code>Add()</code>方法再迭代器位置之前添加一个新对象。</p>
+
+<pre><code class="language-java">//越过第一个元素，并在第二个元素之前添加“Juliet”
+List&lt;String&gt; staff = new LinkedList&lt;&gt;();
+staff.add(&quot;Amy&quot;);
+staff.add(&quot;Bob&quot;);
+staff.add(&quot;Carl&quot;);
+ListIterator iter = staff.listIterator();
+iter.next(); //越过链表第一个元素
+iter.add(&quot;Juliet&quot;);
+</code></pre>
+
+<p>散列表用链表数组实现，每个列表被称为桶(bucket)。
+散列表中对象的位置索引 = 散列码 % 桶的总数</p>
+
+<p><code>Set</code>是没有重复元素的元素集合。
+由于散列将元素分散在表的各个位置上，所以访问它们的顺序是几乎随机的。
+<code>HashSet</code>的元素顺序是无序的。
+<code>TreeSet</code>是有序集合，排序由树结构（红黑树）完成。</p>
+
+<p><code>PriorityQueue（优先级队列）</code>中的元素可按照任意顺序插入，却总是按照排序的顺序进行索引，并没有对所有元素进行排序。
+其采用的数据结构称之为<code>堆</code>，是一个可以自我调整的二叉树，对树进行添加和删除操作，可以让最小的元素移动到根，而不必花费时间对元素进行排序。
+其迭代与<code>TreeSet</code>的迭代不同，并不是按照元素的排列顺序访问，而删除总是删掉剩余元素中优先级数最小的那个元素。</p>
+
+<p><code>两个集的交集</code>：</p>
+
+<pre><code class="language-java">Set&lt;String&gt; result = new HashSet&lt;&gt;(a);
+result.retainAll(b);
+//保留了在a中出现并且也在b中出现的元素。
+//removeAll()同理。
+</code></pre>
+
+<h1 id="线程">线程</h1>
+
+<p>线程的六种状态：
+* New（新创建）
+* Runnable（可运行）
+* Blocked（被阻塞）
+* Waiting（等待）
+* Timed waiting（计时等待）
+* Terminated（被终止）</p>
+
+<p><code>线程优先级</code>：优先级为MIN_PRIORITY(1)与MAX_PRIORITY(10)之间的任何值，NORM_PRIORITY被定义为5。
+每当调度器决定运行一个新线程时，首先会在具有高优先级的线程中选择。如果有几个高优先级的线程没有进入非活动状态，低优先级的线程可能永远也不能执行。</p>
+
+<p><code>守护线程</code>：守护线程的唯一用途是为其他线程提供服务，如计时线程。当只剩下守护线程时，虚拟机就退出了，由于如果只剩下守护线程，就没有必要继续运行程序了。</p>
+
+<p>一个线程执行一个任务的简单过程：</p>
+
+<pre><code class="language-java">//Runnable接口
+public interface Runnable{
+    void run();
+}
+//实现线程类
+class MyRunnable implements Runnable{
+    public void run(){
+        //code
+    }
+}
+//创建线程类对象
+Runnable r = new MyRunnable();
+//由Runnable创建Thread对象
+Thread t = new Thread(r);
+//启动线程
+t.start();
+</code></pre>
+
+<blockquote>
+<p>参考：
+<a href="https://github.com/CyC2018/Interview-Notebook" rel="nofollow noreferrer" target="_blank">Interview-Notebook</a></p>
+</blockquote>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kuma2x </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=http://boseman1024.github.io/2018/java%E5%9F%BA%E7%A1%80%E6%95%B4%E7%90%86/>http://boseman1024.github.io/2018/java%E5%9F%BA%E7%A1%80%E6%95%B4%E7%90%86/</span>
+            </p>
+            
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="http://boseman1024.github.io/tags/java/">
+                    #JAVA</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="http://boseman1024.github.io/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="http://boseman1024.github.io/2018/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" class="prev" rel="prev" title="二叉树总结及代码实现"><i class="iconfont icon-left"></i>&nbsp;二叉树总结及代码实现</a>
+         
+        
+        <a href="http://boseman1024.github.io/2018/%E5%9B%BE%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" class="next" rel="next" title="图总结及代码实现">图总结及代码实现&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2018 - 2018</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="http://boseman1024.github.io/">Kuma2x</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

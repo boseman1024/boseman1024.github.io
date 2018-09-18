@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kuma2x">
+  
+  
+  
+  <link rel="prev" href="http://boseman1024.github.io/2018/mybatis%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E8%81%94%E6%9F%A5%E8%AF%A2%E5%8F%8A%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%B3%A8%E8%A7%A3%E6%96%B9%E5%BC%8F/" />
+  <link rel="next" href="http://boseman1024.github.io/2018/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" />
+  <link rel="canonical" href="http://boseman1024.github.io/2018/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9F%A9%E9%98%B5%E8%BD%AC%E7%BD%AE/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           二维数组矩阵转置 | KUMA2X
+       
+  </title>
+  <meta name="title" content="二维数组矩阵转置 | KUMA2X">
+    
+
+  <link rel="stylesheet" href="http://boseman1024.github.io/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "http://boseman1024.github.io/"
+    },
+    "articleSection" : "posts",
+    "name" : "二维数组矩阵转置",
+    "headline" : "二维数组矩阵转置",
+    "description" : "对称矩阵 int symmetricTranslate(){ printf(&quot;==========对称矩阵=========\n&quot;); int col,row; int i,j; /**输入对称矩阵行数列数 scanf(&quot;%d,%d&quot;,&amp;col,&amp;row); int origin[row][col],result[row][col]; for(i=0;i&lt;col;i++){ for(j=0;j&lt;row;j++){ printf(&quot;列：%d,行：%d输入值&quot;,col,row); scanf(&quot;%d&quot;,&amp;value); origin[i][j] = value; } } **/ //测试对称矩阵 col = 5; row = 5; int origin[5][5]={ 1,5,1,3,7, 3,0,8,0,0, 1,4,9,2,6, 3,0,5,5,1, 9,0,1,2,3 }; //int result[row][col]; int result[5][5]; for(i=0;i&lt;row;i++){ for(j=0;j&lt;col;j++){ printf(&quot;%d &quot;,origin[i][j]); } printf(&quot;\n&quot;); } printf(&quot;==========对称矩阵转置=========\n&quot;); for(i=0;i&lt;row;i++){ for(j=0;j&lt;col;j++){ result[j][i] = origin[i][j]; } } for(i=0;i&lt;row;i++){ for(j=0;j&lt;col;j++){ printf(&quot;%d &quot;,result[i][j]); } printf(&quot;\n&quot;); } return 1; }  稀疏矩阵 矩阵数组构成：",
+    "inLanguage" : "en-us",
+    "author" : "Kuma2x",
+    "creator" : "Kuma2x",
+    "publisher": "Kuma2x",
+    "accountablePerson" : "Kuma2x",
+    "copyrightHolder" : "Kuma2x",
+    "copyrightYear" : "2018",
+    "datePublished": "2018-05-01 21:11:44 &#43;0000 UTC",
+    "dateModified" : "2018-05-01 21:11:44 &#43;0000 UTC",
+    "url" : "http://boseman1024.github.io/2018/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9F%A9%E9%98%B5%E8%BD%AC%E7%BD%AE/",
+    "wordCount" : "237",
+    "keywords" : [ "数据结构与算法","C", "KUMA2X"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://boseman1024.github.io/">KUMA2X</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://boseman1024.github.io/">KUMA2X</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">二维数组矩阵转置</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="http://boseman1024.github.io/" rel="author">Kuma2x</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2018-05-01 itemprop="datePublished">May 1, 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="http://boseman1024.github.io/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="对称矩阵">对称矩阵</h1>
+
+<pre><code class="language-C">int symmetricTranslate(){
+    printf(&quot;==========对称矩阵=========\n&quot;); 
+    int col,row;
+    int i,j;
+    /**输入对称矩阵行数列数 
+    scanf(&quot;%d,%d&quot;,&amp;col,&amp;row);
+    int origin[row][col],result[row][col];
+    for(i=0;i&lt;col;i++){
+        for(j=0;j&lt;row;j++){
+            printf(&quot;列：%d,行：%d输入值&quot;,col,row);
+            scanf(&quot;%d&quot;,&amp;value);
+            origin[i][j] = value;
+        }
+    }
+    **/ 
+    //测试对称矩阵 
+    col = 5;
+    row = 5;
+    int origin[5][5]={
+        1,5,1,3,7,
+        3,0,8,0,0,
+        1,4,9,2,6,
+        3,0,5,5,1,
+        9,0,1,2,3
+    };
+    //int result[row][col];
+    int result[5][5];
+    for(i=0;i&lt;row;i++){
+        for(j=0;j&lt;col;j++){
+            printf(&quot;%d &quot;,origin[i][j]);
+        }
+        printf(&quot;\n&quot;);
+    }
+    printf(&quot;==========对称矩阵转置=========\n&quot;); 
+    for(i=0;i&lt;row;i++){
+        for(j=0;j&lt;col;j++){
+            result[j][i] = origin[i][j];
+        }
+    }
+    for(i=0;i&lt;row;i++){
+        for(j=0;j&lt;col;j++){
+            printf(&quot;%d &quot;,result[i][j]);
+        }
+        printf(&quot;\n&quot;);
+    }
+    return 1;
+}
+</code></pre>
+
+<h1 id="稀疏矩阵">稀疏矩阵</h1>
+
+<p>矩阵数组构成：</p>
+
+<pre><code class="language-C">typedef struct{
+    int row,col;
+    int value;
+}Element;
+typedef struct{
+    Element data[MAXSIZE+1];
+    int rowNum,colNum,notZeroNum;
+}EleArray;
+
+//-----------------------
+
+EleArray eleArray,result;
+int row = 0,col = 0,notZeroNum = 0,value;
+//测试数组：6行7列 
+row = 6;
+col = 7;
+int box[6][7]={
+    0,12,9,0,0,0,0,
+    0,0,0,0,0,0,0,
+    -3,0,0,0,0,14,0,
+    0,0,24,0,0,0,0,
+    0,18,0,0,0,0,0,
+    15,0,0,-7,0,0,0
+};
+//printf(&quot;输入稀疏矩阵行数，列数\n&quot;);
+//scanf(&quot;%d,%d&quot;,&amp;row,&amp;col);
+eleArray.rowNum = row;
+eleArray.colNum = col;  
+int i,j;
+for(i=0;i&lt;row;i++){
+    for(j=0;j&lt;col;j++){
+        //printf(&quot;行：%d，列：%d，请输入数值：\n&quot;,i,j);
+        //scanf(&quot;%d&quot;,&amp;value);
+        value=box[i][j]; 
+        if(value!=0){
+            eleArray.data[notZeroNum].row = i;
+            eleArray.data[notZeroNum].col = j;
+            eleArray.data[notZeroNum].value = value;
+            notZeroNum++;
+        }
+    }
+}
+eleArray.notZeroNum = notZeroNum;
+</code></pre>
+
+<h2 id="普通转置法">普通转置法</h2>
+
+<pre><code class="language-C">int translate(EleArray *eleArray,EleArray *result){
+    result-&gt;rowNum = eleArray-&gt;colNum;
+    result-&gt;colNum = eleArray-&gt;rowNum;
+    result-&gt;notZeroNum = eleArray-&gt;notZeroNum;
+    int n;
+    if(eleArray-&gt;notZeroNum){
+        int index=0;//转置后数组个数
+        int col,notZeroIndex;//列数，非零序列 
+        for(col=0;col&lt;=eleArray-&gt;colNum;col++){
+            for(notZeroIndex=0;notZeroIndex&lt;eleArray-&gt;notZeroNum;notZeroIndex++){
+                if(eleArray-&gt;data[notZeroIndex].col==col){
+                    result-&gt;data[index].row = eleArray-&gt;data[notZeroIndex].col;
+                    result-&gt;data[index].col = eleArray-&gt;data[notZeroIndex].row;
+                    result-&gt;data[index].value = eleArray-&gt;data[notZeroIndex].value;
+                    index++;
+                }
+            }
+        }
+    }
+    return 1;
+}
+</code></pre>
+
+<h2 id="快速转置法">快速转置法</h2>
+
+<pre><code class="language-C">int fastTranslate(EleArray *eleArray,EleArray *result){
+    printf(&quot;===========快速转置=========\n&quot;);
+    result-&gt;rowNum = eleArray-&gt;colNum;
+    result-&gt;colNum = eleArray-&gt;rowNum;
+    result-&gt;notZeroNum = eleArray-&gt;notZeroNum;
+    if(eleArray-&gt;notZeroNum){
+        int num[eleArray-&gt;colNum],cpot[eleArray-&gt;colNum],col;
+        for(col=0;col&lt;eleArray-&gt;colNum;col++){
+            num[col]=0;
+        }
+        for(col=0;col&lt;eleArray-&gt;notZeroNum;col++){
+            num[eleArray-&gt;data[col].col]++;
+        }
+        cpot[0]=0;
+        for(col=1;col&lt;eleArray-&gt;colNum;col++){
+            cpot[col] = cpot[col-1]+num[col-1];
+        }
+        int index=0,notZeroIndex;
+        for(notZeroIndex=0;notZeroIndex&lt;eleArray-&gt;notZeroNum;notZeroIndex++){
+            col = eleArray-&gt;data[notZeroIndex].col;
+            index = cpot[col];
+            result-&gt;data[index].row = eleArray-&gt;data[notZeroIndex].col;
+            result-&gt;data[index].col = eleArray-&gt;data[notZeroIndex].row;
+            result-&gt;data[index].value = eleArray-&gt;data[notZeroIndex].value;
+            cpot[col]++;
+            index++;
+        }
+    }
+    return 1;
+}
+</code></pre>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kuma2x </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=http://boseman1024.github.io/2018/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9F%A9%E9%98%B5%E8%BD%AC%E7%BD%AE/>http://boseman1024.github.io/2018/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9F%A9%E9%98%B5%E8%BD%AC%E7%BD%AE/</span>
+            </p>
+            
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="http://boseman1024.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
+                    #数据结构与算法</a></span>
+            
+            <span class="tag"><a href="http://boseman1024.github.io/tags/c/">
+                    #C</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="http://boseman1024.github.io/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="http://boseman1024.github.io/2018/mybatis%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E8%81%94%E6%9F%A5%E8%AF%A2%E5%8F%8A%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%B3%A8%E8%A7%A3%E6%96%B9%E5%BC%8F/" class="prev" rel="prev" title="Mybatis：一对多关联查询及批量插入（注解方式）"><i class="iconfont icon-left"></i>&nbsp;Mybatis：一对多关联查询及批量插入（注解方式）</a>
+         
+        
+        <a href="http://boseman1024.github.io/2018/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" class="next" rel="next" title="二叉树总结及代码实现">二叉树总结及代码实现&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2018 - 2018</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="http://boseman1024.github.io/">Kuma2x</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
