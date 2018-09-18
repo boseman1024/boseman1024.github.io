@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kuma2x">
+  
+  
+  
+  <link rel="prev" href="https://boseman1024.github.io/2018/top-interview-questions-easy-string/" />
+  
+  <link rel="canonical" href="https://boseman1024.github.io/2018/top-interview-questions-easy-array/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Top Interview Questions-Easy-Array | KUMA2X
+       
+  </title>
+  <meta name="title" content="Top Interview Questions-Easy-Array | KUMA2X">
+    
+
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https://boseman1024.github.io/"
+    },
+    "articleSection" : "posts",
+    "name" : "Top Interview Questions-Easy-Array",
+    "headline" : "Top Interview Questions-Easy-Array",
+    "description" : "Plus One Given a non-empty array of digits representing a non-negative integer, plus one to the integer.
+The digits are stored such that the most significant digit is at the head of the list, and each element in the array contain a single digit.
+You may assume the integer does not contain any leading zero, except the number 0 itself.
+Example 1:
+ Input: [1,2,3]
+Output: [1,2,4]
+Explanation: The array represents the integer 123.",
+    "inLanguage" : "en-us",
+    "author" : "Kuma2x",
+    "creator" : "Kuma2x",
+    "publisher": "Kuma2x",
+    "accountablePerson" : "Kuma2x",
+    "copyrightHolder" : "Kuma2x",
+    "copyrightYear" : "2018",
+    "datePublished": "2018-09-17 21:47:14 &#43;0000 UTC",
+    "dateModified" : "2018-09-17 21:47:14 &#43;0000 UTC",
+    "url" : "https://boseman1024.github.io/2018/top-interview-questions-easy-array/",
+    "wordCount" : "734",
+    "keywords" : [ "数据结构与算法","LeetCode","JAVA", "KUMA2X"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://boseman1024.github.io/">KUMA2X</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://boseman1024.github.io/">KUMA2X</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Top Interview Questions-Easy-Array</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://boseman1024.github.io/" rel="author">Kuma2x</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2018-09-17 itemprop="datePublished">September 17, 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://boseman1024.github.io/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="plus-one">Plus One</h1>
+
+<p>Given a non-empty array of digits representing a non-negative integer, plus one to the integer.</p>
+
+<p>The digits are stored such that the most significant digit is at the head of the list, and each element in the array contain a single digit.</p>
+
+<p>You may assume the integer does not contain any leading zero, except the number 0 itself.</p>
+
+<p><em>Example 1:</em></p>
+
+<blockquote>
+<p>Input: [1,2,3]</p>
+
+<p>Output: [1,2,4]</p>
+
+<p>Explanation: The array represents the integer 123.</p>
+</blockquote>
+
+<p><em>Example 2:</em></p>
+
+<blockquote>
+<p>Input: [4,3,2,1]</p>
+
+<p>Output: [4,3,2,2]</p>
+
+<p>Explanation: The array represents the integer 4321.</p>
+</blockquote>
+
+<h3 id="解答">解答：</h3>
+
+<pre><code class="language-java">public int[] plusOne(int[] digits) {
+    for(int i=digits.length-1;i&gt;=0;i--) {
+        if(digits[i]==9) {
+            digits[i]=0;    
+        }else {
+            digits[i] += 1;
+            return digits;
+        }
+    }
+    int nums[] = new int[digits.length+1];
+    nums[0] = 1;
+    return nums;
+}
+</code></pre>
+
+<h1 id="contains-duplicate">Contains Duplicate</h1>
+
+<p>Given an array of integers, find if the array contains any duplicates.</p>
+
+<p>Your function should return true if any value appears at least twice in the array, and it should return false if every element is distinct.</p>
+
+<p><em>Example 1:</em></p>
+
+<blockquote>
+<p>Input: [1,2,3,1]</p>
+
+<p>Output: true</p>
+</blockquote>
+
+<p><em>Example 2:</em></p>
+
+<blockquote>
+<p>Input: [1,2,3,4]</p>
+
+<p>Output: false</p>
+</blockquote>
+
+<p><em>Example 3:</em></p>
+
+<blockquote>
+<p>Input: [1,1,1,3,3,4,3,2,4,2]
+Output: true</p>
+</blockquote>
+
+<h3 id="解答-1">解答：</h3>
+
+<pre><code class="language-java">//排序后前后比对，重复则返回true。
+public boolean containsDuplicate(int[] nums) {
+    Arrays.sort(nums);
+    for(int i=0;i&lt;nums.length-1;i++) {
+        if(nums[i]==nums[i+1]) {
+            return true;
+        }
+    }
+    return false;
+}
+</code></pre>
+
+<h1 id="single-number">Single Number</h1>
+
+<p>Given a non-empty array of integers, every element appears twice except for one. Find that single one.</p>
+
+<p><em>Note:</em></p>
+
+<ul>
+<li>Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?</li>
+</ul>
+
+<p><em>Example 1:</em></p>
+
+<blockquote>
+<p>Input: [2,2,1]</p>
+
+<p>Output: 1</p>
+</blockquote>
+
+<p><em>Example 2:</em></p>
+
+<blockquote>
+<p>Input: [4,1,2,1,2]</p>
+
+<p>Output: 4</p>
+</blockquote>
+
+<h3 id="解答-2">解答：</h3>
+
+<pre><code class="language-java">public int singleNumber(int[] nums) {
+    List&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;();
+    for(int i=0;i&lt;nums.length;i++){
+        if(list.contains(nums[i])){
+            list.remove(Integer.valueOf(nums[i]));
+        }else{
+            list.add(nums[i]);
+        }
+    }
+    return list.get(0);
+}
+</code></pre>
+
+<h1 id="remove-duplicates-from-sorted-array">Remove Duplicates from Sorted Array</h1>
+
+<p>Given an array, rotate the array to the right by k steps, where k is non-negative.</p>
+
+<p><em>Example 1:</em></p>
+
+<blockquote>
+<p>Input: [1,2,3,4,5,6,7] and k = 3</p>
+
+<p>Output: [5,6,7,1,2,3,4]</p>
+
+<p>Explanation:</p>
+
+<p>rotate 1 steps to the right: [7,1,2,3,4,5,6]</p>
+
+<p>rotate 2 steps to the right: [6,7,1,2,3,4,5]</p>
+
+<p>rotate 3 steps to the right: [5,6,7,1,2,3,4]</p>
+</blockquote>
+
+<p><em>Example 2:</em></p>
+
+<blockquote>
+<p>Input: [-1,-100,3,99] and k = 2</p>
+
+<p>Output: [3,99,-1,-100]</p>
+
+<p>Explanation:</p>
+
+<p>rotate 1 steps to the right: [99,-1,-100,3]</p>
+
+<p>rotate 2 steps to the right: [3,99,-1,-100]</p>
+</blockquote>
+
+<p><em>Note:</em></p>
+
+<ul>
+<li><p>Try to come up as many solutions as you can, there are at least 3 different ways to solve this problem.</p></li>
+
+<li><p>Could you do it in-place with O(1) extra space?</p></li>
+</ul>
+
+<h3 id="解答-3">解答：</h3>
+
+<pre><code class="language-java">public class RotateArray {
+    public void rotate(int[] nums, int k) {
+        /***
+         *数组右移k轮
+         * Time Limit Exceeded
+         */
+        int temp;
+        for(int i=0;i&lt;k;i++){
+            temp = nums[nums.length-1];
+            for(int j=nums.length-2;j&gt;=0;j--){
+                nums[j+1] = nums[j];
+            }
+            nums[0] = temp;
+        }
+
+        /***
+         * 三次倒置数组元素
+         * 倒置整个数组-倒置前（右移位数）个元素-倒置后（剩下）个元素
+         * 例（右移3位）
+         * 原：[1,2,3,4,5,6,7]
+         * 1：[7,6,5,4,3,2,1]
+         * 2：[5,6,7,4,3,2,1]
+         * 3：[5,6,7,1,2,3,4]
+         */
+        int temp;
+        int length = nums.length;
+        for(int i = 0;i&lt;length/2;i++){
+            temp = nums[i];
+            nums[i] = nums[length-1-i];
+            nums[length-1-i] = temp;
+        }
+        while(k&gt;nums.length){
+            k -=nums.length;
+        }
+        for(int i = 0;i&lt;k/2;i++){
+            temp = nums[i];
+            nums[i] = nums[k-1-i];
+            nums[k-1-i] = temp;
+        }
+        for(int i = k,times=0;times&lt;(length-k)/2;i++,times++){
+            temp = nums[i];
+            nums[i] = nums[length-1-times];
+            nums[length-1-times] = temp;
+        }
+    }
+}
+</code></pre>
+
+<h1 id="remove-duplicates-from-sorted-array-1">Remove Duplicates from Sorted Array</h1>
+
+<p>Given a sorted array nums, remove the duplicates in-place such that each element appear only once and return the new length.</p>
+
+<p>Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.</p>
+
+<p><em>Example 1:</em></p>
+
+<blockquote>
+<p>Given nums = [1,1,2],</p>
+
+<p>Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively.</p>
+
+<p>It doesn&rsquo;t matter what you leave beyond the returned length.</p>
+</blockquote>
+
+<p><em>Example 2:</em></p>
+
+<blockquote>
+<p>Given nums = [0,0,1,1,1,2,2,3,3,4],</p>
+
+<p>Your function should return length = 5, with the first five elements of nums being modified to 0, 1, 2, 3, and 4 respectively.</p>
+
+<p>It doesn&rsquo;t matter what values are set beyond the returned length.</p>
+</blockquote>
+
+<p><em>Clarification:</em></p>
+
+<p>Confused why the returned value is an integer but your answer is an array?</p>
+
+<p>Note that the input array is passed in by reference, which means modification to the input array will be known to the caller as well.</p>
+
+<p>Internally you can think of this:</p>
+
+<blockquote>
+<p>// nums is passed in by reference. (i.e., without making a copy)
+int len = removeDuplicates(nums);</p>
+
+<p>// any modification to nums in your function would be known by the caller.</p>
+
+<p>// using the length returned by your function, it prints the first len elements.</p>
+
+<p>for (int i = 0; i &lt; len; i++) {
+    print(nums[i]);
+}</p>
+</blockquote>
+
+<h3 id="解答-4">解答：</h3>
+
+<pre><code class="language-java">public class RemoveDuplicatesFromSortedArray {
+    public int removeDuplicates(int[] nums) {
+        if(nums.length==0){return 0;}
+        int length = 0;
+        for(int i =1;i&lt;nums.length;i++){
+            if(nums[i]!=nums[length]){
+                nums[length+1]=nums[i];
+                length++;
+            }
+        }
+        return length+1;
+    }
+}
+</code></pre>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kuma2x </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://boseman1024.github.io/2018/top-interview-questions-easy-array/>https://boseman1024.github.io/2018/top-interview-questions-easy-array/</span>
+            </p>
+            
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://boseman1024.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
+                    #数据结构与算法</a></span>
+            
+            <span class="tag"><a href="https://boseman1024.github.io/tags/leetcode/">
+                    #LeetCode</a></span>
+            
+            <span class="tag"><a href="https://boseman1024.github.io/tags/java/">
+                    #JAVA</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://boseman1024.github.io/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://boseman1024.github.io/2018/top-interview-questions-easy-string/" class="prev" rel="prev" title="Top Interview Questions-Easy-String"><i class="iconfont icon-left"></i>&nbsp;Top Interview Questions-Easy-String</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2018 - 2018</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://boseman1024.github.io/">Kuma2x</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

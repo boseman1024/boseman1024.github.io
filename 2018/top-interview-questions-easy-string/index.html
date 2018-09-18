@@ -9,9 +9,9 @@
   
   
   
-  <link rel="prev" href="https://boseman1024.github.io/2018/java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%94%E8%AE%B0/" />
-  <link rel="next" href="https://boseman1024.github.io/2018/top-interview-questions-easy-string/" />
-  <link rel="canonical" href="https://boseman1024.github.io/2018/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/" />
+  <link rel="prev" href="https://boseman1024.github.io/2018/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/" />
+  <link rel="next" href="https://boseman1024.github.io/2018/top-interview-questions-easy-array/" />
+  <link rel="canonical" href="https://boseman1024.github.io/2018/top-interview-questions-easy-string/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -22,10 +22,10 @@
   <title>
        
        
-           排序算法整理 | KUMA2X
+           Top Interview Questions-Easy-String | KUMA2X
        
   </title>
-  <meta name="title" content="排序算法整理 | KUMA2X">
+  <meta name="title" content="Top Interview Questions-Easy-String | KUMA2X">
     
 
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -44,9 +44,9 @@
          "@id": "https://boseman1024.github.io/"
     },
     "articleSection" : "posts",
-    "name" : "排序算法整理",
-    "headline" : "排序算法整理",
-    "description" : "冒泡排序 public static void Bubble(int num[]) { for(int i=0;i&lt;num.length-1;i++) { for(int j=0;j&lt;num.length-i-1;j++) { if(num[j]&gt;num[j+1]) { int temp = num[j+1]; num[j+1] = num[j]; num[j] = temp; } } } }  选择排序 public static void Selection(int num[]) { for(int i=0;i&lt;num.length;i++) { //最小元素的下标 int min = i; //找出最小元素 for(int j=i;j&lt;num.length;j++) { if(num[j]&lt;num[min]) { min = j; } } //交换元素 int temp = num[i]; num[i] = num[min]; num[min] = temp; } show(num); }  插入排序 直接插入排序 public static void StraightInsert(int num[]) { for(int i=1;i&lt;num.",
+    "name" : "Top Interview Questions-Easy-String",
+    "headline" : "Top Interview Questions-Easy-String",
+    "description" : " Reverse String 反转字符串 解答： public String reverseString(String s) { return new StringBuffer(s).reverse().toString(); }  ",
     "inLanguage" : "en-us",
     "author" : "Kuma2x",
     "creator" : "Kuma2x",
@@ -54,11 +54,11 @@
     "accountablePerson" : "Kuma2x",
     "copyrightHolder" : "Kuma2x",
     "copyrightYear" : "2018",
-    "datePublished": "2018-06-14 13:56:22 &#43;0000 UTC",
-    "dateModified" : "2018-06-14 13:56:22 &#43;0000 UTC",
-    "url" : "https://boseman1024.github.io/2018/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/",
-    "wordCount" : "153",
-    "keywords" : [ "数据结构与算法","JAVA", "KUMA2X"]
+    "datePublished": "2018-09-17 21:47:14 &#43;0000 UTC",
+    "dateModified" : "2018-09-17 21:47:14 &#43;0000 UTC",
+    "url" : "https://boseman1024.github.io/2018/top-interview-questions-easy-string/",
+    "wordCount" : "13",
+    "keywords" : [ "数据结构与算法","LeetCode","JAVA", "KUMA2X"]
 }
 </script>
 
@@ -112,11 +112,11 @@
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">排序算法整理</h1>
+        <h1 class="post-title" itemprop="name headline">Top Interview Questions-Easy-String</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://boseman1024.github.io/" rel="author">Kuma2x</a> with ♥ 
                 <span class="post-time">
-                on <time datetime=2018-06-14 itemprop="datePublished">June 14, 2018</time>
+                on <time datetime=2018-09-17 itemprop="datePublished">September 17, 2018</time>
                 </span>
                 in
                 <i class="iconfont icon-folder"></i>
@@ -144,87 +144,14 @@
 
           
 
-<h2 id="冒泡排序">冒泡排序</h2>
+<h1 id="reverse-string">Reverse String</h1>
 
-<pre><code class="language-java">public static void Bubble(int num[]) {
-    for(int i=0;i&lt;num.length-1;i++) {
-        for(int j=0;j&lt;num.length-i-1;j++) {
-            if(num[j]&gt;num[j+1]) {
-                int temp = num[j+1];
-                num[j+1] = num[j];
-                num[j] = temp;
-            }
-        }
-    }
-}
-</code></pre>
+<h1 id="反转字符串">反转字符串</h1>
 
-<hr />
+<h3 id="解答">解答：</h3>
 
-<h2 id="选择排序">选择排序</h2>
-
-<pre><code class="language-java">public static void Selection(int num[]) {
-    for(int i=0;i&lt;num.length;i++) {
-        //最小元素的下标
-        int min = i;
-        //找出最小元素
-        for(int j=i;j&lt;num.length;j++) {
-            if(num[j]&lt;num[min]) {
-                min = j;
-            }
-        }
-        //交换元素
-        int temp = num[i];
-        num[i] = num[min];
-        num[min] = temp;
-    }
-    show(num);
-}
-</code></pre>
-
-<hr />
-
-<h2 id="插入排序">插入排序</h2>
-
-<h3 id="直接插入排序">直接插入排序</h3>
-
-<pre><code class="language-java">public static void StraightInsert(int num[]) {
-    for(int i=1;i&lt;num.length;i++) {
-        int temp = num[i];
-        int j=i;
-        while(j&gt;0&amp;&amp;temp&lt;num[j-1]) {
-            num[j] = num[j-1];
-            j--;
-        }
-        num[j]=temp;
-    }
-}
-</code></pre>
-
-<hr />
-
-<h3 id="二分插入排序">二分插入排序</h3>
-
-<pre><code class="language-java">public static void DichotomyInsert(int num[]) {
-    for(int i=1;i&lt;num.length;i++) {
-        int low = 0;
-        int high = i-1;
-        int temp = num[i];
-        while(low&lt;=high) {
-            int mid = (high+low)/2; //取中间点
-            if(temp&gt;num[mid]) {
-                low = mid+1; //插入点在右半区间
-            }else {
-                high = mid-1; //插入点在左半区间
-            }
-        }
-        //插入点在low，low到i为止的所有元素向右移动一位
-        for(int j=i-1;j&gt;=low;j--) {
-            num[j+1] = num[j];
-        }
-        //插入low位置
-        num[low] = temp;
-    }
+<pre><code class="language-java">public String reverseString(String s) {
+    return new StringBuffer(s).reverse().toString();
 }
 </code></pre>
 
@@ -241,7 +168,7 @@
              
             <p class="copyright-item">
                     <span>Link:</span>
-                    <a href=https://boseman1024.github.io/2018/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/>https://boseman1024.github.io/2018/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/</span>
+                    <a href=https://boseman1024.github.io/2018/top-interview-questions-easy-string/>https://boseman1024.github.io/2018/top-interview-questions-easy-string/</span>
             </p>
             
             
@@ -256,6 +183,9 @@
             <span class="tag"><a href="https://boseman1024.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
                     #数据结构与算法</a></span>
             
+            <span class="tag"><a href="https://boseman1024.github.io/tags/leetcode/">
+                    #LeetCode</a></span>
+            
             <span class="tag"><a href="https://boseman1024.github.io/tags/java/">
                     #JAVA</a></span>
             
@@ -269,10 +199,10 @@
 
     <div class="post-nav">
         
-        <a href="https://boseman1024.github.io/2018/java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%AC%94%E8%AE%B0/" class="prev" rel="prev" title="JAVA虚拟机笔记"><i class="iconfont icon-left"></i>&nbsp;JAVA虚拟机笔记</a>
+        <a href="https://boseman1024.github.io/2018/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/" class="prev" rel="prev" title="排序算法整理"><i class="iconfont icon-left"></i>&nbsp;排序算法整理</a>
          
         
-        <a href="https://boseman1024.github.io/2018/top-interview-questions-easy-string/" class="next" rel="next" title="Top Interview Questions-Easy-String">Top Interview Questions-Easy-String&nbsp;<i class="iconfont icon-right"></i></a>
+        <a href="https://boseman1024.github.io/2018/top-interview-questions-easy-array/" class="next" rel="next" title="Top Interview Questions-Easy-Array">Top Interview Questions-Easy-Array&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 

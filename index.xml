@@ -10,12 +10,100 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Array_Top Interview Questions</title>
-      <link>https://boseman1024.github.io/2018/array_top-interview-questions-easy/</link>
+      <title>Top Interview Questions-Easy-Array</title>
+      <link>https://boseman1024.github.io/2018/top-interview-questions-easy-array/</link>
       <pubDate>Mon, 17 Sep 2018 21:47:14 +0000</pubDate>
       
-      <guid>https://boseman1024.github.io/2018/array_top-interview-questions-easy/</guid>
+      <guid>https://boseman1024.github.io/2018/top-interview-questions-easy-array/</guid>
       <description>
+
+&lt;h1 id=&#34;plus-one&#34;&gt;Plus One&lt;/h1&gt;
+
+&lt;p&gt;Given a non-empty array of digits representing a non-negative integer, plus one to the integer.&lt;/p&gt;
+
+&lt;p&gt;The digits are stored such that the most significant digit is at the head of the list, and each element in the array contain a single digit.&lt;/p&gt;
+
+&lt;p&gt;You may assume the integer does not contain any leading zero, except the number 0 itself.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [1,2,3]&lt;/p&gt;
+
+&lt;p&gt;Output: [1,2,4]&lt;/p&gt;
+
+&lt;p&gt;Explanation: The array represents the integer 123.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [4,3,2,1]&lt;/p&gt;
+
+&lt;p&gt;Output: [4,3,2,2]&lt;/p&gt;
+
+&lt;p&gt;Explanation: The array represents the integer 4321.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public int[] plusOne(int[] digits) {
+    for(int i=digits.length-1;i&amp;gt;=0;i--) {
+        if(digits[i]==9) {
+            digits[i]=0;    
+        }else {
+            digits[i] += 1;
+            return digits;
+        }
+    }
+    int nums[] = new int[digits.length+1];
+    nums[0] = 1;
+    return nums;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;contains-duplicate&#34;&gt;Contains Duplicate&lt;/h1&gt;
+
+&lt;p&gt;Given an array of integers, find if the array contains any duplicates.&lt;/p&gt;
+
+&lt;p&gt;Your function should return true if any value appears at least twice in the array, and it should return false if every element is distinct.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [1,2,3,1]&lt;/p&gt;
+
+&lt;p&gt;Output: true&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [1,2,3,4]&lt;/p&gt;
+
+&lt;p&gt;Output: false&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 3:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [1,1,1,3,3,4,3,2,4,2]
+Output: true&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-1&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//排序后前后比对，重复则返回true。
+public boolean containsDuplicate(int[] nums) {
+    Arrays.sort(nums);
+    for(int i=0;i&amp;lt;nums.length-1;i++) {
+        if(nums[i]==nums[i+1]) {
+            return true;
+        }
+    }
+    return false;
+}
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h1 id=&#34;single-number&#34;&gt;Single Number&lt;/h1&gt;
 
@@ -43,7 +131,7 @@
 &lt;p&gt;Output: 4&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-2&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public int singleNumber(int[] nums) {
     List&amp;lt;Integer&amp;gt; list = new ArrayList&amp;lt;Integer&amp;gt;();
@@ -100,7 +188,7 @@
 &lt;li&gt;&lt;p&gt;Could you do it in-place with O(1) extra space?&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;解答-1&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-3&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class RotateArray {
     public void rotate(int[] nums, int k) {
@@ -197,7 +285,7 @@ int len = removeDuplicates(nums);&lt;/p&gt;
 }&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-2&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-4&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class RemoveDuplicatesFromSortedArray {
     public int removeDuplicates(int[] nums) {
@@ -211,6 +299,27 @@ int len = removeDuplicates(nums);&lt;/p&gt;
         }
         return length+1;
     }
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Top Interview Questions-Easy-String</title>
+      <link>https://boseman1024.github.io/2018/top-interview-questions-easy-string/</link>
+      <pubDate>Mon, 17 Sep 2018 21:47:14 +0000</pubDate>
+      
+      <guid>https://boseman1024.github.io/2018/top-interview-questions-easy-string/</guid>
+      <description>
+
+&lt;h1 id=&#34;reverse-string&#34;&gt;Reverse String&lt;/h1&gt;
+
+&lt;h1 id=&#34;反转字符串&#34;&gt;反转字符串&lt;/h1&gt;
+
+&lt;h3 id=&#34;解答&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public String reverseString(String s) {
+    return new StringBuffer(s).reverse().toString();
 }
 &lt;/code&gt;&lt;/pre&gt;
 </description>
