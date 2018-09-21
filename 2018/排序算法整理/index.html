@@ -211,7 +211,7 @@
         int high = i-1;
         int temp = num[i];
         while(low&lt;=high) {
-            int mid = (high+low)/2; //取中间点
+            int mid = low+(high-low)/2; //取中间点
             if(temp&gt;num[mid]) {
                 low = mid+1; //插入点在右半区间
             }else {
