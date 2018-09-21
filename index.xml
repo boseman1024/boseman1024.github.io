@@ -6,20 +6,209 @@
     <description>Recent content in KUMA2X on KUMA2X</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 17 Sep 2018 21:47:14 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 20 Sep 2018 21:47:14 +0000</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Top Interview Questions-Easy-Array</title>
       <link>https://boseman1024.github.io/2018/top-interview-questions-easy-array/</link>
-      <pubDate>Mon, 17 Sep 2018 21:47:14 +0000</pubDate>
+      <pubDate>Thu, 20 Sep 2018 21:47:14 +0000</pubDate>
       
       <guid>https://boseman1024.github.io/2018/top-interview-questions-easy-array/</guid>
       <description>
 
+&lt;h1 id=&#34;design&#34;&gt;Design&lt;/h1&gt;
+
+&lt;h2 id=&#34;shuffle-an-array&#34;&gt;Shuffle an Array&lt;/h2&gt;
+
+&lt;p&gt;Shuffle a set of numbers without duplicates.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;// Init an array with set 1, 2, and 3.&lt;/p&gt;
+
+&lt;p&gt;int[] nums = {1,2,3};&lt;/p&gt;
+
+&lt;p&gt;Solution solution = new Solution(nums);&lt;/p&gt;
+
+&lt;p&gt;// Shuffle the array [1,2,3] and return its result. Any permutation of [1,2,3] must equally likely to be returned.&lt;/p&gt;
+
+&lt;p&gt;solution.shuffle();&lt;/p&gt;
+
+&lt;p&gt;// Resets the array back to its original configuration [1,2,3].&lt;/p&gt;
+
+&lt;p&gt;solution.reset();&lt;/p&gt;
+
+&lt;p&gt;// Returns the random shuffling of array [1,2,3].&lt;/p&gt;
+
+&lt;p&gt;solution.shuffle();&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    int nums[];
+    public Solution(int[] nums) {
+        this.nums = nums;
+    }
+    /** Resets the array to its original configuration and return it. */
+    public int[] reset() {
+        return nums;
+    }
+    /** Returns a random shuffling of the array. */
+    public int[] shuffle() {
+        int arr[] = new int[nums.length];
+        for(int i=0;i&amp;lt;nums.length;i++){
+            int rand = (int)(Math.random()*(i+1));
+            arr[i] = arr[rand];
+            arr[rand] = nums[i];
+        }
+        return arr;
+    }
+}
+/**
+ * Your Solution object will be instantiated and called as such:
+ * Solution obj = new Solution(nums);
+ * int[] param_1 = obj.reset();
+ * int[] param_2 = obj.shuffle();
+ */
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;min-stack&#34;&gt;Min Stack&lt;/h2&gt;
+
+&lt;p&gt;Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;push(x) &amp;ndash; Push element x onto stack.&lt;/li&gt;
+&lt;li&gt;pop() &amp;ndash; Removes the element on top of the stack.&lt;/li&gt;
+&lt;li&gt;top() &amp;ndash; Get the top element.&lt;/li&gt;
+&lt;li&gt;getMin() &amp;ndash; Retrieve the minimum element in the stack.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;MinStack minStack = new MinStack();&lt;/p&gt;
+
+&lt;p&gt;minStack.push(-2);&lt;/p&gt;
+
+&lt;p&gt;minStack.push(0);&lt;/p&gt;
+
+&lt;p&gt;minStack.push(-3);&lt;/p&gt;
+
+&lt;p&gt;minStack.getMin();   &amp;ndash;&amp;gt; Returns -3.&lt;/p&gt;
+
+&lt;p&gt;minStack.pop();&lt;/p&gt;
+
+&lt;p&gt;minStack.top();      &amp;ndash;&amp;gt; Returns 0.&lt;/p&gt;
+
+&lt;p&gt;minStack.getMin();   &amp;ndash;&amp;gt; Returns -2.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-1&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class MinStack {
+    //71 ms
+    //使用两个Stack，保持stack、minStack数量一致
+    //minStack仅存放当前最小值
+    Stack&amp;lt;Integer&amp;gt; stack;
+    Stack&amp;lt;Integer&amp;gt; minStack;
+    public MinStack() {
+        stack = new Stack&amp;lt;&amp;gt;();
+        minStack = new Stack&amp;lt;&amp;gt;();
+    }
+    public void push(int x) {
+        if(minStack.empty()||x&amp;lt;minStack.peek()){
+            minStack.push(x);
+        }else{
+            minStack.push(minStack.peek());
+        }
+        stack.push(x);
+    }
+    public void pop() {
+        stack.pop();
+        minStack.pop();
+    }
+    public int top() {return stack.peek();}
+    public int getMin() {return minStack.peek();}
+}
+//使用List，700ms+
+class MinStack {
+    List&amp;lt;Integer&amp;gt; stack;
+    public MinStack() {stack = new ArrayList();}
+    public void push(int x) {stack.add(x);}
+    public void pop() {stack.remove(stack.size()-1);}
+    public int top() {return stack.get(stack.size()-1);}
+    public int getMin() {
+        int min=stack.get(0);
+        for(int i=0;i&amp;lt;stack.size();i++) {
+            if(min&amp;gt;stack.get(i)) {
+                min = stack.get(i);
+            }
+        }
+        return min;
+    }
+}
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack obj = new MinStack();
+ * obj.push(x);
+ * obj.pop();
+ * int param_3 = obj.top();
+ * int param_4 = obj.getMin();
+ */
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;hr /&gt;
 
-&lt;p&gt;#Linked List&lt;/p&gt;
+&lt;h1 id=&#34;linked-list&#34;&gt;Linked List&lt;/h1&gt;
+
+&lt;h2 id=&#34;merge-two-sorted-lists&#34;&gt;Merge Two Sorted Lists&lt;/h2&gt;
+
+&lt;p&gt;Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: 1-&amp;gt;2-&amp;gt;4, 1-&amp;gt;3-&amp;gt;4&lt;/p&gt;
+
+&lt;p&gt;Output: 1-&amp;gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;4&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-2&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        ListNode newList = new ListNode(0);
+        ListNode head = newList;
+        while(l1!=null&amp;amp;&amp;amp;l2!=null){
+            if(l1.val&amp;gt;l2.val){
+                newList.next = l2;
+                l2 = l2.next;
+            }else{
+                newList.next = l1;
+                l1 = l1.next;
+            }
+            newList = newList.next;
+        }
+        if (l1 == null) {
+            newList.next = l2;
+        }else{
+            newList.next = l1;
+        }
+        return head.next;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;delete-node-in-a-linked-list&#34;&gt;Delete Node in a Linked List&lt;/h2&gt;
 
@@ -45,7 +234,7 @@
              should become 4 -&amp;gt; 5 -&amp;gt; 9 after calling your function.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-3&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for singly-linked list.
@@ -75,7 +264,7 @@ class Solution {
 &lt;p&gt;After removing the second node from the end, the linked list becomes 1-&amp;gt;2-&amp;gt;3-&amp;gt;5.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-1&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-4&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;
 /**
@@ -87,7 +276,23 @@ class Solution {
  * }  
  */
 class Solution {
-
+    //11ms
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        ListNode indexNode = head;
+        int sum=0;
+        while(indexNode!=null){
+            indexNode = indexNode.next;
+            sum++;
+        }
+        ListNode newNode = new ListNode(0);
+        newNode.next = head;
+        indexNode = newNode;
+        for(int i=0;i&amp;lt;(sum-n);i++){
+            indexNode = indexNode.next;
+        }
+        indexNode.next = indexNode.next.next;
+        return newNode.next;
+    }
     //递归计数，18 ms
     int Num;
     public ListNode removeNthFromEnd(ListNode head, int n) {
@@ -128,7 +333,7 @@ class Solution {
 &lt;p&gt;Then 4 is the first bad version.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-2&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-5&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/* The isBadVersion API is defined in the parent class VersionControl.
       boolean isBadVersion(int version); */
@@ -174,7 +379,7 @@ public class Solution extends VersionControl {
 &lt;p&gt;Output: [1,2,2,3,5,6]&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-3&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-6&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public void merge(int[] nums1, int m, int[] nums2, int n) {
     //①
@@ -226,7 +431,7 @@ public class Solution extends VersionControl {
 return [0, 1].&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-4&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-7&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public int[] twoSum(int[] nums, int target) {
@@ -272,7 +477,7 @@ return [0, 1].&lt;/p&gt;
 &lt;p&gt;Explanation: The array represents the integer 4321.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-5&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-8&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public int[] plusOne(int[] digits) {
     for(int i=digits.length-1;i&amp;gt;=0;i--) {
@@ -318,7 +523,7 @@ return [0, 1].&lt;/p&gt;
 Output: true&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-6&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-9&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//排序后前后比对，重复则返回true。
 public boolean containsDuplicate(int[] nums) {
@@ -358,7 +563,7 @@ public boolean containsDuplicate(int[] nums) {
 &lt;p&gt;Output: 4&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-7&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-10&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public int singleNumber(int[] nums) {
     List&amp;lt;Integer&amp;gt; list = new ArrayList&amp;lt;Integer&amp;gt;();
@@ -415,7 +620,7 @@ public boolean containsDuplicate(int[] nums) {
 &lt;li&gt;&lt;p&gt;Could you do it in-place with O(1) extra space?&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;解答-8&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-11&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class RotateArray {
     public void rotate(int[] nums, int k) {
@@ -512,7 +717,7 @@ int len = removeDuplicates(nums);&lt;/p&gt;
 }&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-9&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-12&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class RemoveDuplicatesFromSortedArray {
     public int removeDuplicates(int[] nums) {
@@ -539,11 +744,45 @@ int len = removeDuplicates(nums);&lt;/p&gt;
       <guid>https://boseman1024.github.io/2018/top-interview-questions-easy-string/</guid>
       <description>
 
-&lt;h1 id=&#34;valid-palindrome&#34;&gt;Valid Palindrome&lt;/h1&gt;
+&lt;h1 id=&#34;string&#34;&gt;String&lt;/h1&gt;
 
-&lt;h1 id=&#34;回文&#34;&gt;回文&lt;/h1&gt;
+&lt;h2 id=&#34;first-unique-character-in-a-string&#34;&gt;First Unique Character in a String&lt;/h2&gt;
+
+&lt;p&gt;Given a string, find the first non-repeating character in it and return it&amp;rsquo;s index. If it doesn&amp;rsquo;t exist, return -1.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; You may assume the string contain only lowercase letters.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Examples:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;s = &amp;ldquo;leetcode&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;return 0.&lt;/p&gt;
+
+&lt;p&gt;s = &amp;ldquo;loveleetcode&amp;rdquo;,&lt;/p&gt;
+
+&lt;p&gt;return 2.&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;h3 id=&#34;解答&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public int firstUniqChar(String s) {
+        for(int i=0;i&amp;lt;s.length();i++) {
+            if(s.indexOf(s.charAt(i))==s.lastIndexOf(s.charAt(i))) {
+                return i;
+            }
+        }
+        return -1;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;valid-palindrome&#34;&gt;Valid Palindrome&lt;/h2&gt;
+
+&lt;h2 id=&#34;回文&#34;&gt;回文&lt;/h2&gt;
+
+&lt;h3 id=&#34;解答-1&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public boolean isPalindrome(String s) {
     char[] str = s.toLowerCase().toCharArray();
@@ -569,11 +808,55 @@ public boolean isChar(char c) {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;reverse-string&#34;&gt;Reverse String&lt;/h1&gt;
+&lt;h2 id=&#34;reverse-integer&#34;&gt;Reverse Integer&lt;/h2&gt;
 
-&lt;h1 id=&#34;反转字符串&#34;&gt;反转字符串&lt;/h1&gt;
+&lt;p&gt;Given a 32-bit signed integer, reverse digits of an integer.&lt;/p&gt;
 
-&lt;h3 id=&#34;解答-1&#34;&gt;解答：&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt;
+Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−2^31,  2^31 − 1]. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.&lt;/p&gt;
+
+&lt;h3 id=&#34;解答-2&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public int reverse(int x) {
+        //数值
+        if(x&amp;gt;Integer.MAX_VALUE||x&amp;lt;Integer.MIN_VALUE){
+            return 0;
+        }
+        long num = 0;
+        while(x!=0) {
+            num*=10;
+            num += x%10;
+            x /= 10;
+        }
+        if(num&amp;lt;=Integer.MAX_VALUE&amp;amp;&amp;amp;num&amp;gt;=Integer.MIN_VALUE){
+            return (int)num;
+        }
+        return 0;
+        //转换字符串
+        boolean flag = false;
+        long num = x;
+        if(num&amp;lt;0) {
+            num *=-1;
+            flag = true;
+        }
+        String str = new StringBuffer(String.valueOf(num)).reverse().toString();
+        num = Long.parseLong(str);
+        if(num&amp;gt;Integer.MAX_VALUE ||num&amp;lt;Integer.MIN_VALUE ){
+            return 0;
+        }else if(flag) {
+            num*=-1;
+        }
+        return (int)num;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;reverse-string&#34;&gt;Reverse String&lt;/h2&gt;
+
+&lt;h2 id=&#34;反转字符串&#34;&gt;反转字符串&lt;/h2&gt;
+
+&lt;h3 id=&#34;解答-3&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public String reverseString(String s) {
     return new StringBuffer(s).reverse().toString();

@@ -46,15 +46,16 @@
     "articleSection" : "posts",
     "name" : "Top Interview Questions-Easy-Array",
     "headline" : "Top Interview Questions-Easy-Array",
-    "description" : "#Linked List
-Delete Node in a Linked List Example 1:
- Input: head = [4,5,1,9], node = 5
-Output: [4,1,9]
-Explanation: You are given the second node with value 5, the linked list should become 4 -&gt; 1 -&gt; 9 after calling your function.
- Example 2:
- Input: head = [4,5,1,9], node = 1
-Output: [4,5,9]
-Explanation: You are given the third node with value 1, the linked list should become 4 -&gt; 5 -&gt; 9 after calling your function.",
+    "description" : "Design Shuffle an Array Shuffle a set of numbers without duplicates.
+Example:
+ // Init an array with set 1, 2, and 3.
+int[] nums = {1,2,3};
+Solution solution = new Solution(nums);
+// Shuffle the array [1,2,3] and return its result. Any permutation of [1,2,3] must equally likely to be returned.
+solution.shuffle();
+// Resets the array back to its original configuration [1,2,3].
+solution.reset();
+// Returns the random shuffling of array [1,2,3].",
     "inLanguage" : "en-us",
     "author" : "Kuma2x",
     "creator" : "Kuma2x",
@@ -62,10 +63,10 @@ Explanation: You are given the third node with value 1, the linked list should b
     "accountablePerson" : "Kuma2x",
     "copyrightHolder" : "Kuma2x",
     "copyrightYear" : "2018",
-    "datePublished": "2018-09-17 21:47:14 &#43;0000 UTC",
-    "dateModified" : "2018-09-17 21:47:14 &#43;0000 UTC",
+    "datePublished": "2018-09-20 21:47:14 &#43;0000 UTC",
+    "dateModified" : "2018-09-20 21:47:14 &#43;0000 UTC",
     "url" : "https://boseman1024.github.io/2018/top-interview-questions-easy-array/",
-    "wordCount" : "1406",
+    "wordCount" : "1945",
     "keywords" : [ "数据结构与算法","LeetCode","JAVA", "KUMA2X"]
 }
 </script>
@@ -124,12 +125,12 @@ Explanation: You are given the third node with value 1, the linked list should b
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://boseman1024.github.io/" rel="author">Kuma2x</a> with ♥ 
                 <span class="post-time">
-                on <time datetime=2018-09-17 itemprop="datePublished">September 17, 2018</time>
+                on <time datetime=2018-09-20 itemprop="datePublished">September 20, 2018</time>
                 </span>
                 in
                 <i class="iconfont icon-folder"></i>
                 <span class="post-category">
-                        <a href="https://boseman1024.github.io/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+                        <a href="https://boseman1024.github.io/categories/%E7%9D%81%E7%9C%BC%E7%9E%8E/"> 睁眼瞎 </a>
                         
                 </span>
         </div>
@@ -152,9 +153,198 @@ Explanation: You are given the third node with value 1, the linked list should b
 
           
 
+<h1 id="design">Design</h1>
+
+<h2 id="shuffle-an-array">Shuffle an Array</h2>
+
+<p>Shuffle a set of numbers without duplicates.</p>
+
+<p><em>Example:</em></p>
+
+<blockquote>
+<p>// Init an array with set 1, 2, and 3.</p>
+
+<p>int[] nums = {1,2,3};</p>
+
+<p>Solution solution = new Solution(nums);</p>
+
+<p>// Shuffle the array [1,2,3] and return its result. Any permutation of [1,2,3] must equally likely to be returned.</p>
+
+<p>solution.shuffle();</p>
+
+<p>// Resets the array back to its original configuration [1,2,3].</p>
+
+<p>solution.reset();</p>
+
+<p>// Returns the random shuffling of array [1,2,3].</p>
+
+<p>solution.shuffle();</p>
+</blockquote>
+
+<h3 id="解答">解答：</h3>
+
+<pre><code class="language-java">class Solution {
+    int nums[];
+    public Solution(int[] nums) {
+        this.nums = nums;
+    }
+    /** Resets the array to its original configuration and return it. */
+    public int[] reset() {
+        return nums;
+    }
+    /** Returns a random shuffling of the array. */
+    public int[] shuffle() {
+        int arr[] = new int[nums.length];
+        for(int i=0;i&lt;nums.length;i++){
+            int rand = (int)(Math.random()*(i+1));
+            arr[i] = arr[rand];
+            arr[rand] = nums[i];
+        }
+        return arr;
+    }
+}
+/**
+ * Your Solution object will be instantiated and called as such:
+ * Solution obj = new Solution(nums);
+ * int[] param_1 = obj.reset();
+ * int[] param_2 = obj.shuffle();
+ */
+</code></pre>
+
+<h2 id="min-stack">Min Stack</h2>
+
+<p>Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.</p>
+
+<ul>
+<li>push(x) &ndash; Push element x onto stack.</li>
+<li>pop() &ndash; Removes the element on top of the stack.</li>
+<li>top() &ndash; Get the top element.</li>
+<li>getMin() &ndash; Retrieve the minimum element in the stack.</li>
+</ul>
+
+<p><em>Example:</em></p>
+
+<blockquote>
+<p>MinStack minStack = new MinStack();</p>
+
+<p>minStack.push(-2);</p>
+
+<p>minStack.push(0);</p>
+
+<p>minStack.push(-3);</p>
+
+<p>minStack.getMin();   &ndash;&gt; Returns -3.</p>
+
+<p>minStack.pop();</p>
+
+<p>minStack.top();      &ndash;&gt; Returns 0.</p>
+
+<p>minStack.getMin();   &ndash;&gt; Returns -2.</p>
+</blockquote>
+
+<h3 id="解答-1">解答：</h3>
+
+<pre><code class="language-java">class MinStack {
+    //71 ms
+    //使用两个Stack，保持stack、minStack数量一致
+    //minStack仅存放当前最小值
+    Stack&lt;Integer&gt; stack;
+    Stack&lt;Integer&gt; minStack;
+    public MinStack() {
+        stack = new Stack&lt;&gt;();
+        minStack = new Stack&lt;&gt;();
+    }
+    public void push(int x) {
+        if(minStack.empty()||x&lt;minStack.peek()){
+            minStack.push(x);
+        }else{
+            minStack.push(minStack.peek());
+        }
+        stack.push(x);
+    }
+    public void pop() {
+        stack.pop();
+        minStack.pop();
+    }
+    public int top() {return stack.peek();}
+    public int getMin() {return minStack.peek();}
+}
+//使用List，700ms+
+class MinStack {
+    List&lt;Integer&gt; stack;
+    public MinStack() {stack = new ArrayList();}
+    public void push(int x) {stack.add(x);}
+    public void pop() {stack.remove(stack.size()-1);}
+    public int top() {return stack.get(stack.size()-1);}
+    public int getMin() {
+        int min=stack.get(0);
+        for(int i=0;i&lt;stack.size();i++) {
+            if(min&gt;stack.get(i)) {
+                min = stack.get(i);
+            }
+        }
+        return min;
+    }
+}
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack obj = new MinStack();
+ * obj.push(x);
+ * obj.pop();
+ * int param_3 = obj.top();
+ * int param_4 = obj.getMin();
+ */
+</code></pre>
+
 <hr />
 
-<p>#Linked List</p>
+<h1 id="linked-list">Linked List</h1>
+
+<h2 id="merge-two-sorted-lists">Merge Two Sorted Lists</h2>
+
+<p>Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.</p>
+
+<p><em>Example:</em></p>
+
+<blockquote>
+<p>Input: 1-&gt;2-&gt;4, 1-&gt;3-&gt;4</p>
+
+<p>Output: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</p>
+</blockquote>
+
+<h3 id="解答-2">解答：</h3>
+
+<pre><code class="language-java">/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        ListNode newList = new ListNode(0);
+        ListNode head = newList;
+        while(l1!=null&amp;&amp;l2!=null){
+            if(l1.val&gt;l2.val){
+                newList.next = l2;
+                l2 = l2.next;
+            }else{
+                newList.next = l1;
+                l1 = l1.next;
+            }
+            newList = newList.next;
+        }
+        if (l1 == null) {
+            newList.next = l2;
+        }else{
+            newList.next = l1;
+        }
+        return head.next;
+    }
+}
+</code></pre>
 
 <h2 id="delete-node-in-a-linked-list">Delete Node in a Linked List</h2>
 
@@ -180,7 +370,7 @@ Explanation: You are given the third node with value 1, the linked list should b
              should become 4 -&gt; 5 -&gt; 9 after calling your function.</p>
 </blockquote>
 
-<h3 id="解答">解答：</h3>
+<h3 id="解答-3">解答：</h3>
 
 <pre><code class="language-java">/**
  * Definition for singly-linked list.
@@ -210,7 +400,7 @@ class Solution {
 <p>After removing the second node from the end, the linked list becomes 1-&gt;2-&gt;3-&gt;5.</p>
 </blockquote>
 
-<h3 id="解答-1">解答：</h3>
+<h3 id="解答-4">解答：</h3>
 
 <pre><code class="language-java">
 /**
@@ -222,7 +412,23 @@ class Solution {
  * }  
  */
 class Solution {
-
+    //11ms
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        ListNode indexNode = head;
+        int sum=0;
+        while(indexNode!=null){
+            indexNode = indexNode.next;
+            sum++;
+        }
+        ListNode newNode = new ListNode(0);
+        newNode.next = head;
+        indexNode = newNode;
+        for(int i=0;i&lt;(sum-n);i++){
+            indexNode = indexNode.next;
+        }
+        indexNode.next = indexNode.next.next;
+        return newNode.next;
+    }
     //递归计数，18 ms
     int Num;
     public ListNode removeNthFromEnd(ListNode head, int n) {
@@ -263,7 +469,7 @@ class Solution {
 <p>Then 4 is the first bad version.</p>
 </blockquote>
 
-<h3 id="解答-2">解答：</h3>
+<h3 id="解答-5">解答：</h3>
 
 <pre><code class="language-java">/* The isBadVersion API is defined in the parent class VersionControl.
       boolean isBadVersion(int version); */
@@ -309,7 +515,7 @@ public class Solution extends VersionControl {
 <p>Output: [1,2,2,3,5,6]</p>
 </blockquote>
 
-<h3 id="解答-3">解答：</h3>
+<h3 id="解答-6">解答：</h3>
 
 <pre><code class="language-java">public void merge(int[] nums1, int m, int[] nums2, int n) {
     //①
@@ -361,7 +567,7 @@ public class Solution extends VersionControl {
 return [0, 1].</p>
 </blockquote>
 
-<h3 id="解答-4">解答：</h3>
+<h3 id="解答-7">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public int[] twoSum(int[] nums, int target) {
@@ -407,7 +613,7 @@ return [0, 1].</p>
 <p>Explanation: The array represents the integer 4321.</p>
 </blockquote>
 
-<h3 id="解答-5">解答：</h3>
+<h3 id="解答-8">解答：</h3>
 
 <pre><code class="language-java">public int[] plusOne(int[] digits) {
     for(int i=digits.length-1;i&gt;=0;i--) {
@@ -453,7 +659,7 @@ return [0, 1].</p>
 Output: true</p>
 </blockquote>
 
-<h3 id="解答-6">解答：</h3>
+<h3 id="解答-9">解答：</h3>
 
 <pre><code class="language-java">//排序后前后比对，重复则返回true。
 public boolean containsDuplicate(int[] nums) {
@@ -493,7 +699,7 @@ public boolean containsDuplicate(int[] nums) {
 <p>Output: 4</p>
 </blockquote>
 
-<h3 id="解答-7">解答：</h3>
+<h3 id="解答-10">解答：</h3>
 
 <pre><code class="language-java">public int singleNumber(int[] nums) {
     List&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;();
@@ -550,7 +756,7 @@ public boolean containsDuplicate(int[] nums) {
 <li><p>Could you do it in-place with O(1) extra space?</p></li>
 </ul>
 
-<h3 id="解答-8">解答：</h3>
+<h3 id="解答-11">解答：</h3>
 
 <pre><code class="language-java">public class RotateArray {
     public void rotate(int[] nums, int k) {
@@ -647,7 +853,7 @@ int len = removeDuplicates(nums);</p>
 }</p>
 </blockquote>
 
-<h3 id="解答-9">解答：</h3>
+<h3 id="解答-12">解答：</h3>
 
 <pre><code class="language-java">public class RemoveDuplicatesFromSortedArray {
     public int removeDuplicates(int[] nums) {

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on KUMA2X</title>
-    <link>https://boseman1024.github.io/posts/</link>
-    <description>Recent content in Posts on KUMA2X</description>
+    <title>睁眼瞎 on KUMA2X</title>
+    <link>https://boseman1024.github.io/categories/%E7%9D%81%E7%9C%BC%E7%9E%8E/</link>
+    <description>Recent content in 睁眼瞎 on KUMA2X</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 20 Sep 2018 21:47:14 +0000</lastBuildDate>
     
-	<atom:link href="https://boseman1024.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://boseman1024.github.io/categories/%E7%9D%81%E7%9C%BC%E7%9E%8E/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -179,42 +179,6 @@ var arr = [{ id:1, name:&#39;a&#39; },{ id:2, name:&#39;b&#39; }];  ①改变数
 var obj = {}; arr.forEach(function (v,i) { obj[v.id] = v; }); 或 for (let i = 0; i &amp;lt; arr.length;i++){ obj[arr[i].id] = arr[i] } obj = { 1:{ id:1, name:&#39;a&#39;, }, 2:{ id:2, name:&#39;b&#39; } };  之后就可根据id获取元素数据
 obj[id].name  ②根据key查询元素 功能类似select name from json where id = 1
 function getItem(arr,n,v) { for (var i = 0; i &amp;lt; arr.</description>
-    </item>
-    
-    <item>
-      <title>NEW YEAR 2018</title>
-      <link>https://boseman1024.github.io/2018/new-year-2018/</link>
-      <pubDate>Fri, 16 Feb 2018 00:00:57 +0000</pubDate>
-      
-      <guid>https://boseman1024.github.io/2018/new-year-2018/</guid>
-      <description>HAPPY 2017 8 NEW YEAR. NEW YOU. Just kidding. You&amp;rsquo;re still the same. piece of shit you were yesterday. 
-{% fold 八月 %}
-8月22日12点05分
-N2过了。
-{% endfold %}
-　{% fold 七月 %}
-7月13日17点02分
-放暑假了。
-7月1日21点31分
-N2结束了，听力炸了。
-天気がいいから、一緒に散歩にまび。
-{% endfold %}
-　{% fold 六月 %}
-6月26日21点50分
-想死的情绪是不需要理由的，
-由内向外渗透的异样感，
-被突如其来的不安笼罩，
-一时之间不知所措。
-6月21日22点42分
-物欲。
-6月15日18点11分
-拔了两颗智齿。
-6月12日 16点23分
-今年过了一半。
-6月10日 9点58分
-想成为碎片。
-{% endfold %}
-　{% fold 五月 %}</description>
     </item>
     
   </channel>
