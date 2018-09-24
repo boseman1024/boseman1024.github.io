@@ -6,10 +6,26 @@
     <description>Recent content in Posts on KUMA2X</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 20 Sep 2018 21:47:14 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 21 Sep 2018 15:08:22 +0000</lastBuildDate>
     
 	<atom:link href="https://boseman1024.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Top Interview Questions-Easy-String</title>
+      <link>https://boseman1024.github.io/2018/top-interview-questions-easy-string/</link>
+      <pubDate>Fri, 21 Sep 2018 15:08:22 +0000</pubDate>
+      
+      <guid>https://boseman1024.github.io/2018/top-interview-questions-easy-string/</guid>
+      <description>Others Missing Number Given an array containing n distinct numbers taken from 0, 1, 2, &amp;hellip;, n, find the one that is missing from the array.
+Example 1:
+ Input: [3,0,1]
+Output: 2
+ Example 2:
+ Input: [9,6,4,2,3,5,7,0,1]
+Output: 8
+ 解答： class Solution { //0+1+2+……+n = n*(n+1)/2 public int missingNumber(int[] nums) { int sum = nums.length*(nums.length+1)/2; for(int i=0;i&amp;lt;nums.length;i++){sum-=nums[i];} return sum; } }  Reverse Bits Reverse bits of a given 32 bits unsigned integer.</description>
+    </item>
     
     <item>
       <title>Top Interview Questions-Easy-Array</title>
@@ -27,22 +43,6 @@ solution.shuffle();
 // Resets the array back to its original configuration [1,2,3].
 solution.reset();
 // Returns the random shuffling of array [1,2,3].</description>
-    </item>
-    
-    <item>
-      <title>Top Interview Questions-Easy-String</title>
-      <link>https://boseman1024.github.io/2018/top-interview-questions-easy-string/</link>
-      <pubDate>Mon, 17 Sep 2018 21:47:14 +0000</pubDate>
-      
-      <guid>https://boseman1024.github.io/2018/top-interview-questions-easy-string/</guid>
-      <description>String First Unique Character in a String Given a string, find the first non-repeating character in it and return it&amp;rsquo;s index. If it doesn&amp;rsquo;t exist, return -1.
-Note: You may assume the string contain only lowercase letters.
-Examples:
- s = &amp;ldquo;leetcode&amp;rdquo;
-return 0.
-s = &amp;ldquo;loveleetcode&amp;rdquo;,
-return 2.
- 解答： class Solution { public int firstUniqChar(String s) { for(int i=0;i&amp;lt;s.length();i++) { if(s.indexOf(s.charAt(i))==s.lastIndexOf(s.charAt(i))) { return i; } } return -1; } }  Valid Palindrome 回文 解答： public boolean isPalindrome(String s) { char[] str = s.</description>
     </item>
     
     <item>
@@ -188,19 +188,16 @@ function getItem(arr,n,v) { for (var i = 0; i &amp;lt; arr.</description>
       
       <guid>https://boseman1024.github.io/2018/new-year-2018/</guid>
       <description>HAPPY 2017 8 NEW YEAR. NEW YOU. Just kidding. You&amp;rsquo;re still the same. piece of shit you were yesterday. 
-{% fold 八月 %}
-8月22日12点05分
+九月 9月22日21点49分
+脑壳炸裂。
+八月 8月22日12点05分
 N2过了。
-{% endfold %}
-　{% fold 七月 %}
-7月13日17点02分
+七月 7月13日17点02分
 放暑假了。
 7月1日21点31分
 N2结束了，听力炸了。
 天気がいいから、一緒に散歩にまび。
-{% endfold %}
-　{% fold 六月 %}
-6月26日21点50分
+六月 6月26日21点50分
 想死的情绪是不需要理由的，
 由内向外渗透的异样感，
 被突如其来的不安笼罩，
@@ -213,8 +210,19 @@ N2结束了，听力炸了。
 今年过了一半。
 6月10日 9点58分
 想成为碎片。
-{% endfold %}
-　{% fold 五月 %}</description>
+五月 5月27日 19点50分
+人的高度，
+思想的限度。
+四月 4月30日 11点45分
+又偷懒了。
+4月24日 21点43分
+记：
+《狂言之神》——太宰治
+「我无法生猛地活下去，因此要死。」
+「人类最悲痛的表情不是眼泪，也不是白发，更不是眉心的皱纹。最苦恼的场合，人会默默微笑。」
+4月18日 21点11分
+比猪还蠢。
+4月13日 19点53分</description>
     </item>
     
   </channel>
