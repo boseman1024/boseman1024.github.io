@@ -17,6 +17,97 @@
       <guid>https://boseman1024.github.io/2018/top-interview-questions-easy-string/</guid>
       <description>
 
+&lt;h1 id=&#34;dynamic-programming&#34;&gt;Dynamic Programming&lt;/h1&gt;
+
+&lt;h2 id=&#34;maximum-subarray&#34;&gt;Maximum Subarray&lt;/h2&gt;
+
+&lt;p&gt;Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [-2,1,-3,4,-1,2,1,-5,4],&lt;/p&gt;
+
+&lt;p&gt;Output: 6&lt;/p&gt;
+
+&lt;p&gt;Explanation: [4,-1,2,1] has the largest sum = 6.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public int maxSubArray(int[] nums) {
+        if(nums.length&amp;lt;1||nums==null) {return 0;}
+        int sum = nums[0];
+        int temp = 0;
+        for(int i:nums){
+            temp+=i;
+            sum = Math.max(sum,temp);
+            temp = temp&amp;lt;0?0:temp;
+        }
+        return sum;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;best-time-to-buy-and-sell-stock&#34;&gt;Best Time to Buy and Sell Stock&lt;/h2&gt;
+
+&lt;p&gt;Say you have an array for which the ith element is the price of a given stock on day i.&lt;/p&gt;
+
+&lt;p&gt;If you were only permitted to complete at most one transaction (i.e., buy one and sell one share of the stock), design an algorithm to find the maximum profit.&lt;/p&gt;
+
+&lt;p&gt;Note that you cannot sell a stock before you buy one.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [7,1,5,3,6,4]&lt;/p&gt;
+
+&lt;p&gt;Output: 5&lt;/p&gt;
+
+&lt;p&gt;Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.&lt;/p&gt;
+
+&lt;p&gt;Not 7-1 = 6, as selling price needs to be larger than buying price.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [7,6,4,3,1]&lt;/p&gt;
+
+&lt;p&gt;Output: 0&lt;/p&gt;
+
+&lt;p&gt;Explanation: In this case, no transaction is done, i.e. max profit = 0.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-1&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    //2ms
+    public int maxProfit(int[] prices) {
+        int max = 0;
+        int minPrice = Integer.MAX_VALUE;
+        for(int i:prices){
+            minPrice = Math.min(i,minPrice);
+            max = Math.max(max,i-minPrice);
+        }
+        return max;
+    }
+    //400ms+
+    public int maxProfit(int[] prices) {
+        int max = 0;
+        for(int i=0;i&amp;lt;prices.length;i++){
+            for(int j=i+1;j&amp;lt;prices.length;j++){
+                if(prices[i]&amp;lt;prices[j]){
+                    max = Math.max(max,prices[j]-prices[i]);
+                }
+            }
+        }
+        return max;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h1 id=&#34;others&#34;&gt;Others&lt;/h1&gt;
 
 &lt;h2 id=&#34;missing-number&#34;&gt;Missing Number&lt;/h2&gt;
@@ -39,7 +130,7 @@
 &lt;p&gt;Output: 8&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-2&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //0+1+2+……+n = n*(n+1)/2
@@ -69,7 +160,7 @@
 &lt;p&gt;return 964176192 represented in binary as 00111001011110000010100101000000.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-1&#34;&gt;解答&lt;/h3&gt;
+&lt;h3 id=&#34;解答-3&#34;&gt;解答&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Solution {
     //位运算？不会
@@ -89,6 +180,154 @@
 
 &lt;h1 id=&#34;tree&#34;&gt;Tree&lt;/h1&gt;
 
+&lt;h2 id=&#34;binary-tree-level-order-traversal&#34;&gt;Binary Tree Level Order Traversal&lt;/h2&gt;
+
+&lt;p&gt;Given a binary tree, return the level order traversal of its nodes&amp;rsquo; values. (ie, from left to right, level by level).&lt;/p&gt;
+
+&lt;p&gt;For example:
+Given binary tree &lt;code&gt;[3,9,20,null,null,15,7]&lt;/code&gt;,&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;3&lt;/p&gt;
+
+&lt;p&gt;9        20&lt;/p&gt;
+
+&lt;p&gt;null null  15   7&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;return its level order traversal as:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;[[3],&lt;/p&gt;
+
+&lt;p&gt;[9,20],&lt;/p&gt;
+
+&lt;p&gt;[15,7]]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-4&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;convert-sorted-array-to-binary-search-tree&#34;&gt;Convert Sorted Array to Binary Search Tree&lt;/h2&gt;
+
+&lt;p&gt;Given an array where elements are sorted in ascending order, convert it to a height balanced BST.&lt;/p&gt;
+
+&lt;p&gt;For this problem, a height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Given the sorted array: [-10,-3,0,5,9],&lt;/p&gt;
+
+&lt;p&gt;One possible answer is: [0,-3,9,-10,null,5], which represents the following height balanced BST&lt;/p&gt;
+
+&lt;p&gt;[0,-10,5,null,-3,null,9]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-5&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public TreeNode sortedArrayToBST(int[] nums) {
+        return toBST(nums,0,nums.length-1);
+    }
+    public TreeNode toBST(int[] nums,int low,int high){
+        if(low&amp;gt;high){return null;}
+        int mid = low+(high-low)/2;
+        TreeNode node = new TreeNode(nums[mid]);
+        node.left = toBST(nums,low,mid-1);
+        node.right = toBST(nums,mid+1,high);
+        return node;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;validate-binary-search-tree&#34;&gt;Validate Binary Search Tree&lt;/h2&gt;
+
+&lt;p&gt;Given a binary tree, determine if it is a valid binary search tree (BST).&lt;/p&gt;
+
+&lt;p&gt;Assume a BST is defined as follows:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;The left subtree of a node contains only nodes with keys less than the node&amp;rsquo;s key.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The right subtree of a node contains only nodes with keys greater than the node&amp;rsquo;s key.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Both the left and right subtrees must also be binary search trees.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [2,1,3]&lt;/p&gt;
+
+&lt;p&gt;Output: true&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [5,1,4,null,null,3,6]&lt;/p&gt;
+
+&lt;p&gt;Output: false&lt;/p&gt;
+
+&lt;p&gt;Explanation: The input is: [5,1,4,null,null,3,6]. The root node&amp;rsquo;s value is 5 but its right child&amp;rsquo;s value is 4.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-6&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    //0ms
+    public boolean isValidBST(TreeNode root) {
+        return helper(root, null, null);
+    }
+    public boolean helper(TreeNode node,Integer upper,Integer lower) {
+        if(node == null){return true;}
+        if(upper != null &amp;amp;&amp;amp; node.val &amp;gt;= upper){return false;}
+        if(lower != null &amp;amp;&amp;amp; node.val &amp;lt;= lower){return false;}
+        return helper(node.left,node.val,lower) &amp;amp;&amp;amp; helper(node.right, upper,node.val);
+    } 
+    //使用堆栈，6ms
+    Stack&amp;lt;Integer&amp;gt; stack;
+    public boolean isValidBST(TreeNode root) {
+        if(root==null){return true;}
+        stack = new Stack&amp;lt;&amp;gt;();
+        get(root);
+        while(!stack.isEmpty()){
+            int pop = stack.pop();
+            if(!stack.isEmpty()&amp;amp;&amp;amp;pop&amp;lt;=stack.peek()){return false;}
+        }
+        return true;
+    }
+    public void get(TreeNode node){
+        if(node!=null){
+            get(node.left);
+            stack.add(node.val);
+            get(node.right);
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h2 id=&#34;maximum-depth-of-binary-tree&#34;&gt;Maximum Depth of Binary Tree&lt;/h2&gt;
 
 &lt;p&gt;Given a binary tree, find its maximum depth.&lt;/p&gt;
@@ -105,7 +344,7 @@
 &lt;p&gt;return its depth = 3.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-2&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-7&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for a binary tree node.
@@ -128,6 +367,97 @@ class Solution {
 
 &lt;h1 id=&#34;math&#34;&gt;Math&lt;/h1&gt;
 
+&lt;h2 id=&#34;roman-to-integer&#34;&gt;Roman to Integer&lt;/h2&gt;
+
+&lt;p&gt;Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.&lt;/p&gt;
+
+&lt;p&gt;I=1,V=5,X=10,L=50,C=100,D=500,M=1000&lt;/p&gt;
+
+&lt;p&gt;For example, two is written as II in Roman numeral, just two one&amp;rsquo;s added together. Twelve is written as, XII, which is simply X + II. The number twenty seven is written as XXVII, which is XX + V + II.&lt;/p&gt;
+
+&lt;p&gt;Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not IIII. Instead, the number four is written as IV. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as IX. There are six instances where subtraction is used:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;I can be placed before V (5) and X (10) to make 4 and 9.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;X can be placed before L (50) and C (100) to make 40 and 90.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;C can be placed before D (500) and M (1000) to make 400 and 900.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Given a roman numeral, convert it to an integer. Input is guaranteed to be within the range from 1 to 3999.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: &amp;ldquo;III&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Output: 3&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: &amp;ldquo;IV&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Output: 4&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 3:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: &amp;ldquo;IX&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Output: 9&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 4:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: &amp;ldquo;LVIII&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Output: 58&lt;/p&gt;
+
+&lt;p&gt;Explanation: L = 50, V= 5, III = 3.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 5:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: &amp;ldquo;MCMXCIV&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Output: 1994&lt;/p&gt;
+
+&lt;p&gt;Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-8&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public int romanToInt(String s) {
+        Map&amp;lt;Character,Integer&amp;gt; map = new HashMap&amp;lt;&amp;gt;();
+        map.put(&#39;I&#39;,1);
+        map.put(&#39;V&#39;,5);
+        map.put(&#39;X&#39;,10);
+        map.put(&#39;L&#39;,50);
+        map.put(&#39;C&#39;,100);
+        map.put(&#39;D&#39;,500);
+        map.put(&#39;M&#39;,1000);
+        int sum =0;
+        int pre = 0;
+        char[] chs = s.toCharArray();
+        for(char c:chs){
+            int num = map.get(c);
+            if(num&amp;gt;pre){sum = sum-2*pre+num;
+            //num-pre再减去前一轮加上的pre = num-2*pre
+            }else{sum+=num;}
+            pre = num;
+        }
+        return sum;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h2 id=&#34;fizz-buzz&#34;&gt;Fizz Buzz&lt;/h2&gt;
 
 &lt;p&gt;Write a program that outputs the string representation of numbers from 1 to n.&lt;/p&gt;
@@ -142,7 +472,7 @@ class Solution {
 &lt;p&gt;Return:[&amp;ldquo;1&amp;rdquo;,&amp;ldquo;2&amp;rdquo;,&amp;ldquo;Fizz&amp;rdquo;,&amp;ldquo;4&amp;rdquo;,&amp;ldquo;Buzz&amp;rdquo;,&amp;ldquo;Fizz&amp;rdquo;,&amp;ldquo;7&amp;rdquo;,&amp;ldquo;8&amp;rdquo;,&amp;ldquo;Fizz&amp;rdquo;,&amp;ldquo;Buzz&amp;rdquo;,&amp;ldquo;11&amp;rdquo;,&amp;ldquo;Fizz&amp;rdquo;,&amp;ldquo;13&amp;rdquo;,&amp;ldquo;14&amp;rdquo;,&amp;ldquo;FizzBuzz&amp;rdquo;]&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-3&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-9&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public List&amp;lt;String&amp;gt; fizzBuzz(int n) {
@@ -175,7 +505,7 @@ class Solution {
 &lt;p&gt;Explanation: There are 4 prime numbers less than 10, they are 2, 3, 5, 7.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-4&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-10&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //筛法求素数：若已知一个数为素数，则该数的倍数均非素数。
@@ -244,7 +574,7 @@ class Solution {
 &lt;p&gt;Output: false&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-5&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-11&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public boolean isPowerOfThree(int n) {
@@ -336,7 +666,7 @@ class Solution {
 &lt;p&gt;Thefore INT_MIN (−231) is returned.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-6&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-12&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public int myAtoi(String str) {
@@ -406,7 +736,7 @@ class Solution {
 
 &lt;p&gt;*Note:*All given inputs are in lowercase letters a-z.&lt;/p&gt;
 
-&lt;h3 id=&#34;解答-7&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-13&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //排序后比较头尾
@@ -457,7 +787,7 @@ class Solution {
 &lt;p&gt;Output: -1&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-8&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-14&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //java API
@@ -489,7 +819,7 @@ class Solution {
 
 &lt;p&gt;*Note:*You may assume the string contains only lowercase alphabets.&lt;/p&gt;
 
-&lt;h3 id=&#34;解答-9&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-15&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //存入字母表，判断字母表个数，1ms
@@ -535,7 +865,7 @@ class Solution {
 &lt;p&gt;return 2.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-10&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-16&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public int firstUniqChar(String s) {
@@ -553,7 +883,7 @@ class Solution {
 
 &lt;h2 id=&#34;回文&#34;&gt;回文&lt;/h2&gt;
 
-&lt;h3 id=&#34;解答-11&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-17&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public boolean isPalindrome(String s) {
     char[] str = s.toLowerCase().toCharArray();
@@ -586,7 +916,7 @@ public boolean isChar(char c) {
 &lt;p&gt;&lt;em&gt;Note:&lt;/em&gt;
 Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−2^31,  2^31 − 1]. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.&lt;/p&gt;
 
-&lt;h3 id=&#34;解答-12&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-18&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public int reverse(int x) {
@@ -627,7 +957,7 @@ Assume we are dealing with an environment which could only store integers within
 
 &lt;h2 id=&#34;反转字符串&#34;&gt;反转字符串&lt;/h2&gt;
 
-&lt;h3 id=&#34;解答-13&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-19&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public String reverseString(String s) {
     return new StringBuffer(s).reverse().toString();
@@ -3770,6 +4100,10 @@ getItem(arr,&amp;quot;name&amp;quot;,&amp;quot;123&amp;quot;).name
 &lt;/center&gt;&lt;/p&gt;
 
 &lt;h1 id=&#34;九月&#34;&gt;九月&lt;/h1&gt;
+
+&lt;p&gt;&lt;strong&gt;9月25日18点56分&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;什么也记不住。&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;9月22日21点49分&lt;/strong&gt;&lt;/p&gt;
 

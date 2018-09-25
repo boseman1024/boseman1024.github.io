@@ -46,14 +46,12 @@
     "articleSection" : "posts",
     "name" : "Top Interview Questions-Easy-String",
     "headline" : "Top Interview Questions-Easy-String",
-    "description" : "Others Missing Number Given an array containing n distinct numbers taken from 0, 1, 2, &hellip;, n, find the one that is missing from the array.
-Example 1:
- Input: [3,0,1]
-Output: 2
- Example 2:
- Input: [9,6,4,2,3,5,7,0,1]
-Output: 8
- 解答： class Solution { //0+1+2+……+n = n*(n+1)/2 public int missingNumber(int[] nums) { int sum = nums.length*(nums.length+1)/2; for(int i=0;i&lt;nums.length;i++){sum-=nums[i];} return sum; } }  Reverse Bits Reverse bits of a given 32 bits unsigned integer.",
+    "description" : "Dynamic Programming Maximum Subarray Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
+Example:
+ Input: [-2,1,-3,4,-1,2,1,-5,4],
+Output: 6
+Explanation: [4,-1,2,1] has the largest sum = 6.
+ 解答： class Solution { public int maxSubArray(int[] nums) { if(nums.length&lt;1||nums==null) {return 0;} int sum = nums[0]; int temp = 0; for(int i:nums){ temp+=i; sum = Math.max(sum,temp); temp = temp&lt;0?",
     "inLanguage" : "en-us",
     "author" : "Kuma2x",
     "creator" : "Kuma2x",
@@ -64,7 +62,7 @@ Output: 8
     "datePublished": "2018-09-21 15:08:22 &#43;0000 UTC",
     "dateModified" : "2018-09-21 15:08:22 &#43;0000 UTC",
     "url" : "https://boseman1024.github.io/2018/top-interview-questions-easy-string/",
-    "wordCount" : "1442",
+    "wordCount" : "2403",
     "keywords" : [ "数据结构与算法","LeetCode","JAVA", "KUMA2X"]
 }
 </script>
@@ -151,6 +149,97 @@ Output: 8
 
           
 
+<h1 id="dynamic-programming">Dynamic Programming</h1>
+
+<h2 id="maximum-subarray">Maximum Subarray</h2>
+
+<p>Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.</p>
+
+<p><em>Example:</em></p>
+
+<blockquote>
+<p>Input: [-2,1,-3,4,-1,2,1,-5,4],</p>
+
+<p>Output: 6</p>
+
+<p>Explanation: [4,-1,2,1] has the largest sum = 6.</p>
+</blockquote>
+
+<h3 id="解答">解答：</h3>
+
+<pre><code class="language-java">class Solution {
+    public int maxSubArray(int[] nums) {
+        if(nums.length&lt;1||nums==null) {return 0;}
+        int sum = nums[0];
+        int temp = 0;
+        for(int i:nums){
+            temp+=i;
+            sum = Math.max(sum,temp);
+            temp = temp&lt;0?0:temp;
+        }
+        return sum;
+    }
+}
+</code></pre>
+
+<h2 id="best-time-to-buy-and-sell-stock">Best Time to Buy and Sell Stock</h2>
+
+<p>Say you have an array for which the ith element is the price of a given stock on day i.</p>
+
+<p>If you were only permitted to complete at most one transaction (i.e., buy one and sell one share of the stock), design an algorithm to find the maximum profit.</p>
+
+<p>Note that you cannot sell a stock before you buy one.</p>
+
+<p><em>Example 1:</em></p>
+
+<blockquote>
+<p>Input: [7,1,5,3,6,4]</p>
+
+<p>Output: 5</p>
+
+<p>Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.</p>
+
+<p>Not 7-1 = 6, as selling price needs to be larger than buying price.</p>
+</blockquote>
+
+<p><em>Example 2:</em></p>
+
+<blockquote>
+<p>Input: [7,6,4,3,1]</p>
+
+<p>Output: 0</p>
+
+<p>Explanation: In this case, no transaction is done, i.e. max profit = 0.</p>
+</blockquote>
+
+<h3 id="解答-1">解答：</h3>
+
+<pre><code class="language-java">class Solution {
+    //2ms
+    public int maxProfit(int[] prices) {
+        int max = 0;
+        int minPrice = Integer.MAX_VALUE;
+        for(int i:prices){
+            minPrice = Math.min(i,minPrice);
+            max = Math.max(max,i-minPrice);
+        }
+        return max;
+    }
+    //400ms+
+    public int maxProfit(int[] prices) {
+        int max = 0;
+        for(int i=0;i&lt;prices.length;i++){
+            for(int j=i+1;j&lt;prices.length;j++){
+                if(prices[i]&lt;prices[j]){
+                    max = Math.max(max,prices[j]-prices[i]);
+                }
+            }
+        }
+        return max;
+    }
+}
+</code></pre>
+
 <h1 id="others">Others</h1>
 
 <h2 id="missing-number">Missing Number</h2>
@@ -173,7 +262,7 @@ Output: 8
 <p>Output: 8</p>
 </blockquote>
 
-<h3 id="解答">解答：</h3>
+<h3 id="解答-2">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     //0+1+2+……+n = n*(n+1)/2
@@ -203,7 +292,7 @@ Output: 8
 <p>return 964176192 represented in binary as 00111001011110000010100101000000.</p>
 </blockquote>
 
-<h3 id="解答-1">解答</h3>
+<h3 id="解答-3">解答</h3>
 
 <pre><code class="language-java">public class Solution {
     //位运算？不会
@@ -223,6 +312,154 @@ Output: 8
 
 <h1 id="tree">Tree</h1>
 
+<h2 id="binary-tree-level-order-traversal">Binary Tree Level Order Traversal</h2>
+
+<p>Given a binary tree, return the level order traversal of its nodes&rsquo; values. (ie, from left to right, level by level).</p>
+
+<p>For example:
+Given binary tree <code>[3,9,20,null,null,15,7]</code>,</p>
+
+<blockquote>
+<p>3</p>
+
+<p>9        20</p>
+
+<p>null null  15   7</p>
+</blockquote>
+
+<p>return its level order traversal as:</p>
+
+<blockquote>
+<p>[[3],</p>
+
+<p>[9,20],</p>
+
+<p>[15,7]]</p>
+</blockquote>
+
+<h3 id="解答-4">解答：</h3>
+
+<pre><code class="language-java">
+</code></pre>
+
+<h2 id="convert-sorted-array-to-binary-search-tree">Convert Sorted Array to Binary Search Tree</h2>
+
+<p>Given an array where elements are sorted in ascending order, convert it to a height balanced BST.</p>
+
+<p>For this problem, a height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1.</p>
+
+<p><em>Example:</em></p>
+
+<blockquote>
+<p>Given the sorted array: [-10,-3,0,5,9],</p>
+
+<p>One possible answer is: [0,-3,9,-10,null,5], which represents the following height balanced BST</p>
+
+<p>[0,-10,5,null,-3,null,9]</p>
+</blockquote>
+
+<h3 id="解答-5">解答：</h3>
+
+<pre><code class="language-java">/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public TreeNode sortedArrayToBST(int[] nums) {
+        return toBST(nums,0,nums.length-1);
+    }
+    public TreeNode toBST(int[] nums,int low,int high){
+        if(low&gt;high){return null;}
+        int mid = low+(high-low)/2;
+        TreeNode node = new TreeNode(nums[mid]);
+        node.left = toBST(nums,low,mid-1);
+        node.right = toBST(nums,mid+1,high);
+        return node;
+    }
+}
+</code></pre>
+
+<h2 id="validate-binary-search-tree">Validate Binary Search Tree</h2>
+
+<p>Given a binary tree, determine if it is a valid binary search tree (BST).</p>
+
+<p>Assume a BST is defined as follows:</p>
+
+<ul>
+<li><p>The left subtree of a node contains only nodes with keys less than the node&rsquo;s key.</p></li>
+
+<li><p>The right subtree of a node contains only nodes with keys greater than the node&rsquo;s key.</p></li>
+
+<li><p>Both the left and right subtrees must also be binary search trees.</p></li>
+</ul>
+
+<p><em>Example 1:</em></p>
+
+<blockquote>
+<p>Input: [2,1,3]</p>
+
+<p>Output: true</p>
+</blockquote>
+
+<p><em>Example 2:</em></p>
+
+<blockquote>
+<p>Input: [5,1,4,null,null,3,6]</p>
+
+<p>Output: false</p>
+
+<p>Explanation: The input is: [5,1,4,null,null,3,6]. The root node&rsquo;s value is 5 but its right child&rsquo;s value is 4.</p>
+</blockquote>
+
+<h3 id="解答-6">解答：</h3>
+
+<pre><code class="language-java">/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    //0ms
+    public boolean isValidBST(TreeNode root) {
+        return helper(root, null, null);
+    }
+    public boolean helper(TreeNode node,Integer upper,Integer lower) {
+        if(node == null){return true;}
+        if(upper != null &amp;&amp; node.val &gt;= upper){return false;}
+        if(lower != null &amp;&amp; node.val &lt;= lower){return false;}
+        return helper(node.left,node.val,lower) &amp;&amp; helper(node.right, upper,node.val);
+    } 
+    //使用堆栈，6ms
+    Stack&lt;Integer&gt; stack;
+    public boolean isValidBST(TreeNode root) {
+        if(root==null){return true;}
+        stack = new Stack&lt;&gt;();
+        get(root);
+        while(!stack.isEmpty()){
+            int pop = stack.pop();
+            if(!stack.isEmpty()&amp;&amp;pop&lt;=stack.peek()){return false;}
+        }
+        return true;
+    }
+    public void get(TreeNode node){
+        if(node!=null){
+            get(node.left);
+            stack.add(node.val);
+            get(node.right);
+        }
+    }
+}
+</code></pre>
+
 <h2 id="maximum-depth-of-binary-tree">Maximum Depth of Binary Tree</h2>
 
 <p>Given a binary tree, find its maximum depth.</p>
@@ -239,7 +476,7 @@ Output: 8
 <p>return its depth = 3.</p>
 </blockquote>
 
-<h3 id="解答-2">解答：</h3>
+<h3 id="解答-7">解答：</h3>
 
 <pre><code class="language-java">/**
  * Definition for a binary tree node.
@@ -262,6 +499,97 @@ class Solution {
 
 <h1 id="math">Math</h1>
 
+<h2 id="roman-to-integer">Roman to Integer</h2>
+
+<p>Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.</p>
+
+<p>I=1,V=5,X=10,L=50,C=100,D=500,M=1000</p>
+
+<p>For example, two is written as II in Roman numeral, just two one&rsquo;s added together. Twelve is written as, XII, which is simply X + II. The number twenty seven is written as XXVII, which is XX + V + II.</p>
+
+<p>Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not IIII. Instead, the number four is written as IV. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as IX. There are six instances where subtraction is used:</p>
+
+<ul>
+<li><p>I can be placed before V (5) and X (10) to make 4 and 9.</p></li>
+
+<li><p>X can be placed before L (50) and C (100) to make 40 and 90.</p></li>
+
+<li><p>C can be placed before D (500) and M (1000) to make 400 and 900.</p></li>
+</ul>
+
+<p>Given a roman numeral, convert it to an integer. Input is guaranteed to be within the range from 1 to 3999.</p>
+
+<p><em>Example 1:</em></p>
+
+<blockquote>
+<p>Input: &ldquo;III&rdquo;</p>
+
+<p>Output: 3</p>
+</blockquote>
+
+<p><em>Example 2:</em></p>
+
+<blockquote>
+<p>Input: &ldquo;IV&rdquo;</p>
+
+<p>Output: 4</p>
+</blockquote>
+
+<p><em>Example 3:</em></p>
+
+<blockquote>
+<p>Input: &ldquo;IX&rdquo;</p>
+
+<p>Output: 9</p>
+</blockquote>
+
+<p><em>Example 4:</em></p>
+
+<blockquote>
+<p>Input: &ldquo;LVIII&rdquo;</p>
+
+<p>Output: 58</p>
+
+<p>Explanation: L = 50, V= 5, III = 3.</p>
+</blockquote>
+
+<p><em>Example 5:</em></p>
+
+<blockquote>
+<p>Input: &ldquo;MCMXCIV&rdquo;</p>
+
+<p>Output: 1994</p>
+
+<p>Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.</p>
+</blockquote>
+
+<h3 id="解答-8">解答：</h3>
+
+<pre><code class="language-java">class Solution {
+    public int romanToInt(String s) {
+        Map&lt;Character,Integer&gt; map = new HashMap&lt;&gt;();
+        map.put('I',1);
+        map.put('V',5);
+        map.put('X',10);
+        map.put('L',50);
+        map.put('C',100);
+        map.put('D',500);
+        map.put('M',1000);
+        int sum =0;
+        int pre = 0;
+        char[] chs = s.toCharArray();
+        for(char c:chs){
+            int num = map.get(c);
+            if(num&gt;pre){sum = sum-2*pre+num;
+            //num-pre再减去前一轮加上的pre = num-2*pre
+            }else{sum+=num;}
+            pre = num;
+        }
+        return sum;
+    }
+}
+</code></pre>
+
 <h2 id="fizz-buzz">Fizz Buzz</h2>
 
 <p>Write a program that outputs the string representation of numbers from 1 to n.</p>
@@ -276,7 +604,7 @@ class Solution {
 <p>Return:[&ldquo;1&rdquo;,&ldquo;2&rdquo;,&ldquo;Fizz&rdquo;,&ldquo;4&rdquo;,&ldquo;Buzz&rdquo;,&ldquo;Fizz&rdquo;,&ldquo;7&rdquo;,&ldquo;8&rdquo;,&ldquo;Fizz&rdquo;,&ldquo;Buzz&rdquo;,&ldquo;11&rdquo;,&ldquo;Fizz&rdquo;,&ldquo;13&rdquo;,&ldquo;14&rdquo;,&ldquo;FizzBuzz&rdquo;]</p>
 </blockquote>
 
-<h3 id="解答-3">解答：</h3>
+<h3 id="解答-9">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public List&lt;String&gt; fizzBuzz(int n) {
@@ -309,7 +637,7 @@ class Solution {
 <p>Explanation: There are 4 prime numbers less than 10, they are 2, 3, 5, 7.</p>
 </blockquote>
 
-<h3 id="解答-4">解答：</h3>
+<h3 id="解答-10">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     //筛法求素数：若已知一个数为素数，则该数的倍数均非素数。
@@ -378,7 +706,7 @@ class Solution {
 <p>Output: false</p>
 </blockquote>
 
-<h3 id="解答-5">解答：</h3>
+<h3 id="解答-11">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public boolean isPowerOfThree(int n) {
@@ -470,7 +798,7 @@ class Solution {
 <p>Thefore INT_MIN (−231) is returned.</p>
 </blockquote>
 
-<h3 id="解答-6">解答：</h3>
+<h3 id="解答-12">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public int myAtoi(String str) {
@@ -540,7 +868,7 @@ class Solution {
 
 <p>*Note:*All given inputs are in lowercase letters a-z.</p>
 
-<h3 id="解答-7">解答：</h3>
+<h3 id="解答-13">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     //排序后比较头尾
@@ -591,7 +919,7 @@ class Solution {
 <p>Output: -1</p>
 </blockquote>
 
-<h3 id="解答-8">解答：</h3>
+<h3 id="解答-14">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     //java API
@@ -623,7 +951,7 @@ class Solution {
 
 <p>*Note:*You may assume the string contains only lowercase alphabets.</p>
 
-<h3 id="解答-9">解答：</h3>
+<h3 id="解答-15">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     //存入字母表，判断字母表个数，1ms
@@ -669,7 +997,7 @@ class Solution {
 <p>return 2.</p>
 </blockquote>
 
-<h3 id="解答-10">解答：</h3>
+<h3 id="解答-16">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public int firstUniqChar(String s) {
@@ -687,7 +1015,7 @@ class Solution {
 
 <h2 id="回文">回文</h2>
 
-<h3 id="解答-11">解答：</h3>
+<h3 id="解答-17">解答：</h3>
 
 <pre><code class="language-java">public boolean isPalindrome(String s) {
     char[] str = s.toLowerCase().toCharArray();
@@ -720,7 +1048,7 @@ public boolean isChar(char c) {
 <p><em>Note:</em>
 Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−2^31,  2^31 − 1]. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.</p>
 
-<h3 id="解答-12">解答：</h3>
+<h3 id="解答-18">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public int reverse(int x) {
@@ -761,7 +1089,7 @@ Assume we are dealing with an environment which could only store integers within
 
 <h2 id="反转字符串">反转字符串</h2>
 
-<h3 id="解答-13">解答：</h3>
+<h3 id="解答-19">解答：</h3>
 
 <pre><code class="language-java">public String reverseString(String s) {
     return new StringBuffer(s).reverse().toString();
