@@ -10,11 +10,11 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Top Interview Questions-Easy-String</title>
-      <link>https://boseman1024.github.io/2018/top-interview-questions-easy-string/</link>
+      <title>Top Interview Questions-Easy-②</title>
+      <link>https://boseman1024.github.io/2018/top-interview-questions-easy-2/</link>
       <pubDate>Fri, 21 Sep 2018 15:08:22 +0000</pubDate>
       
-      <guid>https://boseman1024.github.io/2018/top-interview-questions-easy-string/</guid>
+      <guid>https://boseman1024.github.io/2018/top-interview-questions-easy-2/</guid>
       <description>
 
 &lt;h1 id=&#34;dynamic-programming&#34;&gt;Dynamic Programming&lt;/h1&gt;
@@ -110,6 +110,260 @@
 
 &lt;h1 id=&#34;others&#34;&gt;Others&lt;/h1&gt;
 
+&lt;h2 id=&#34;valid-parentheses&#34;&gt;Valid Parentheses&lt;/h2&gt;
+
+&lt;p&gt;Given a string containing just the characters &amp;lsquo;(&amp;rsquo;, &amp;lsquo;)&amp;rsquo;, &amp;lsquo;{&amp;rsquo;, &amp;lsquo;}&amp;rsquo;, &amp;lsquo;[&amp;rsquo; and &amp;lsquo;]&amp;rsquo;, determine if the input string is valid.&lt;/p&gt;
+
+&lt;p&gt;An input string is valid if:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Open brackets must be closed by the same type of brackets.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Open brackets must be closed in the correct order.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Note that an empty string is also considered valid.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: &amp;ldquo;()&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Output: true&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: &amp;ldquo;()[]{}&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Output: true&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 3:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: &amp;ldquo;(]&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Output: false&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 4:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: &amp;ldquo;([)]&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Output: false&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 5:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: &amp;ldquo;{[]}&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Output: true&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-2&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public boolean isValid(String s) {
+        char[] chs =  s.toCharArray();
+        //使用堆栈，栈中仅存&#39;)、}、]&#39;,出栈时核验是否匹配
+        Stack&amp;lt;Character&amp;gt; stack = new Stack&amp;lt;&amp;gt;();
+        for (char c : s.toCharArray()) {
+            if (c == &#39;(&#39;) {stack.push(&#39;)&#39;);
+            } else if (c ==&#39;{&#39;) {stack.push(&#39;}&#39;);
+            } else if (c ==&#39;[&#39;) {stack.push(&#39;]&#39;);
+            } else if (stack.isEmpty() || stack.pop() != c) {
+                return false;
+            }
+        }
+        return stack.isEmpty();
+        //使用Deque双向队列
+        Deque&amp;lt;Character&amp;gt; box = new ArrayDeque&amp;lt;&amp;gt;();
+        Map&amp;lt;Character,Character&amp;gt; map = new HashMap&amp;lt;&amp;gt;();
+        map.put(&#39;)&#39;,&#39;(&#39;);
+        map.put(&#39;}&#39;,&#39;{&#39;);
+        map.put(&#39;]&#39;,&#39;[&#39;);
+        for(char c:chs) {
+            if(c==&#39;(&#39;||c==&#39;{&#39;||c==&#39;[&#39;) {
+                box.addFirst(c);
+            }else {
+                char first = box.size()&amp;gt;0?box.peekFirst():&#39; &#39;;
+                if(first==&#39;]&#39;||first==&#39;}&#39;||first==&#39;)&#39;) {
+                    return false;
+                }else if(first==map.get(c)) {
+                    box.removeFirst();
+                }else {
+                    box.addLast(c);
+                }
+            }
+        }
+        return box.size()==0;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;pascal-s-triangle&#34;&gt;Pascal&amp;rsquo;s Triangle&lt;/h2&gt;
+
+&lt;p&gt;Given a non-negative integer numRows, generate the first numRows of Pascal&amp;rsquo;s triangle.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://upload.wikimedia.org/wikipedia/commons/0/0d/PascalTriangleAnimated2.gif&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;In Pascal&amp;rsquo;s triangle, each number is the sum of the two numbers directly above it.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: 5&lt;/p&gt;
+
+&lt;p&gt;Output:[&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;[1],&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;[1,1],&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;[1,2,1],&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;[1,3,3,1],&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;[1,4,6,4,1]]&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-3&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public List&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; generate(int numRows) {
+        List&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; all = new ArrayList&amp;lt;&amp;gt;();
+        if(numRows&amp;lt;=0){return all;}
+        all.add(new ArrayList&amp;lt;&amp;gt;());
+        all.get(0).add(1);
+        if(numRows==1){return all;}
+        all.add(new ArrayList&amp;lt;&amp;gt;());
+        all.get(1).add(1);
+        all.get(1).add(1);
+        if(numRows==2){return all;}
+        for(int i=3;i&amp;lt;=numRows;i++){
+            all.add(new ArrayList&amp;lt;&amp;gt;());
+            List&amp;lt;Integer&amp;gt; now = all.get(i-1);
+            now.add(1);
+            List&amp;lt;Integer&amp;gt; pre = all.get(i-2);
+            for(int j=1;j&amp;lt;i-1;j++){
+                now.add(pre.get(j-1)+pre.get(j));
+            }
+            now.add(1);
+        }
+        return all;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;hamming-distance&#34;&gt;Hamming Distance&lt;/h2&gt;
+
+&lt;p&gt;The Hamming distance between two integers is the number of positions at which the corresponding bits are different.&lt;/p&gt;
+
+&lt;p&gt;Given two integers x and y, calculate the Hamming distance.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; 0 ≤ x, y &amp;lt; 2^31.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: x = 1, y = 4&lt;/p&gt;
+
+&lt;p&gt;Output: 2&lt;/p&gt;
+
+&lt;p&gt;Explanation:&lt;/p&gt;
+
+&lt;p&gt;1   (0 0 0 1)&lt;/p&gt;
+
+&lt;p&gt;4   (0 1 0 0)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;↑   ↑&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The above arrows point to positions where the corresponding bits are different.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-4&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public int hammingDistance(int x, int y) {
+        //得到x,y的异或值
+        int val = x^y;
+        //计算1的个数，方法同Number of 1 Bits
+        return Integer.bitCount(val);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;number-of-1-bits&#34;&gt;Number of 1 Bits&lt;/h2&gt;
+
+&lt;p&gt;Write a function that takes an unsigned integer and returns the number of &amp;lsquo;1&amp;rsquo; bits it has (also known as the Hamming weight).&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: 11&lt;/p&gt;
+
+&lt;p&gt;Output: 3&lt;/p&gt;
+
+&lt;p&gt;Explanation: Integer 11 has binary representation 00000000000000000000000000001011&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: 128
+Output: 1
+Explanation: Integer 128 has binary representation 00000000000000000000000010000000&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-5&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Solution {
+    public int hammingWeight(int n) {
+        /**与运算
+        *1：0000 0001
+        *2：0000 0010
+        *3：0000 0011
+        *4：0000 0100
+        *5：0000 0101
+        *6：0000 0110
+        *7：0000 0111
+        *8：0000 1000
+        *9：0000 1001
+        *10：0000 1010
+        *11：0000 1011
+        *------------
+        *0000 1010  = 10 = 11&amp;amp;10
+        *0000 1000  =  8 = 10&amp;amp;9
+        *0000 0000  =  0 = 8&amp;amp;7
+        */ 
+        int sum = 0;
+        while(n!=0){
+            sum++;
+            n&amp;amp;=n-1;
+        }
+        return sum;
+        //java API，返回1的个数
+        return Integer.bitCount(n);
+        // 转换为String判断每一位是否为1
+        if (n==0) {return 0;}
+        char[] chs = Integer.toBinaryString(n).toCharArray();
+        int count = 0;
+        for (int i=0; i &amp;lt; chs.length; i++) {
+            if (chs[i]==&#39;1&#39;){count++;}
+        }
+        return count;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h2 id=&#34;missing-number&#34;&gt;Missing Number&lt;/h2&gt;
 
 &lt;p&gt;Given an array containing n distinct numbers taken from 0, 1, 2, &amp;hellip;, n, find the one that is missing from the array.&lt;/p&gt;
@@ -130,7 +384,7 @@
 &lt;p&gt;Output: 8&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-2&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-6&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //0+1+2+……+n = n*(n+1)/2
@@ -160,7 +414,7 @@
 &lt;p&gt;return 964176192 represented in binary as 00111001011110000010100101000000.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-3&#34;&gt;解答&lt;/h3&gt;
+&lt;h3 id=&#34;解答-7&#34;&gt;解答&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Solution {
     //位运算？不会
@@ -180,20 +434,62 @@
 
 &lt;h1 id=&#34;tree&#34;&gt;Tree&lt;/h1&gt;
 
+&lt;h2 id=&#34;symmetric-tree&#34;&gt;Symmetric Tree&lt;/h2&gt;
+
+&lt;p&gt;Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).&lt;/p&gt;
+
+&lt;p&gt;For example, this binary tree &lt;code&gt;[1,2,2,3,4,4,3]&lt;/code&gt; is symmetric&lt;/p&gt;
+
+&lt;p&gt;But the following &lt;code&gt;[1,2,2,null,3,null,3]&lt;/code&gt; is not&lt;/p&gt;
+
+&lt;h3 id=&#34;解答-8&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    //先将二叉树化为按层划分的集合，再做镜像校验
+    List&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; all;
+    public boolean isSymmetric(TreeNode root) {
+        if(root==null){return true;}
+        all = new ArrayList&amp;lt;&amp;gt;();
+        get(root,0);
+        //检验镜像
+        for(List&amp;lt;Integer&amp;gt; list:all){
+            int i=0;
+            while(list.size()&amp;gt;1&amp;amp;&amp;amp;i&amp;lt;list.size()/2){
+                if(list.get(i)!=list.get(list.size()-1-i)){
+                    return false;
+                }
+                i++;
+            }
+        }
+        return true;
+    }
+    //同Binary Tree Level Order Traversal，但node为空则向集合添加null
+    public void get(TreeNode node,int depth){
+        if(all.size()&amp;lt;=depth){all.add(new ArrayList&amp;lt;&amp;gt;());}
+        if(node==null){all.get(depth).add(null);return;
+        }else{all.get(depth).add(node.val);}        
+        depth++;
+        get(node.left,depth);
+        get(node.right,depth);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h2 id=&#34;binary-tree-level-order-traversal&#34;&gt;Binary Tree Level Order Traversal&lt;/h2&gt;
 
 &lt;p&gt;Given a binary tree, return the level order traversal of its nodes&amp;rsquo; values. (ie, from left to right, level by level).&lt;/p&gt;
 
 &lt;p&gt;For example:
 Given binary tree &lt;code&gt;[3,9,20,null,null,15,7]&lt;/code&gt;,&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;3&lt;/p&gt;
-
-&lt;p&gt;9        20&lt;/p&gt;
-
-&lt;p&gt;null null  15   7&lt;/p&gt;
-&lt;/blockquote&gt;
 
 &lt;p&gt;return its level order traversal as:&lt;/p&gt;
 
@@ -205,9 +501,35 @@ Given binary tree &lt;code&gt;[3,9,20,null,null,15,7]&lt;/code&gt;,&lt;/p&gt;
 &lt;p&gt;[15,7]]&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-4&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-9&#34;&gt;解答：&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    List&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; all;
+    public List&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; levelOrder(TreeNode root) {
+        all = new ArrayList&amp;lt;&amp;gt;();
+        if(root==null){return all;}
+        get(root,0);
+        return all;
+    }
+    public void get(TreeNode node,int depth){
+        if(node==null){return;}
+        //深度depth的all不存在，则向all内添加List
+        if(all.size()&amp;lt;=depth){all.add(new ArrayList&amp;lt;&amp;gt;());}
+        all.get(depth).add(node.val);
+        depth++;
+        get(node.left,depth);
+        get(node.right,depth);
+    }
+}
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;convert-sorted-array-to-binary-search-tree&#34;&gt;Convert Sorted Array to Binary Search Tree&lt;/h2&gt;
@@ -226,7 +548,7 @@ Given binary tree &lt;code&gt;[3,9,20,null,null,15,7]&lt;/code&gt;,&lt;/p&gt;
 &lt;p&gt;[0,-10,5,null,-3,null,9]&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-5&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-10&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for a binary tree node.
@@ -284,7 +606,7 @@ class Solution {
 &lt;p&gt;Explanation: The input is: [5,1,4,null,null,3,6]. The root node&amp;rsquo;s value is 5 but its right child&amp;rsquo;s value is 4.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-6&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-11&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for a binary tree node.
@@ -344,7 +666,7 @@ class Solution {
 &lt;p&gt;return its depth = 3.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-7&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-12&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for a binary tree node.
@@ -431,7 +753,7 @@ class Solution {
 &lt;p&gt;Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-8&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-13&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public int romanToInt(String s) {
@@ -472,7 +794,7 @@ class Solution {
 &lt;p&gt;Return:[&amp;ldquo;1&amp;rdquo;,&amp;ldquo;2&amp;rdquo;,&amp;ldquo;Fizz&amp;rdquo;,&amp;ldquo;4&amp;rdquo;,&amp;ldquo;Buzz&amp;rdquo;,&amp;ldquo;Fizz&amp;rdquo;,&amp;ldquo;7&amp;rdquo;,&amp;ldquo;8&amp;rdquo;,&amp;ldquo;Fizz&amp;rdquo;,&amp;ldquo;Buzz&amp;rdquo;,&amp;ldquo;11&amp;rdquo;,&amp;ldquo;Fizz&amp;rdquo;,&amp;ldquo;13&amp;rdquo;,&amp;ldquo;14&amp;rdquo;,&amp;ldquo;FizzBuzz&amp;rdquo;]&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-9&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-14&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public List&amp;lt;String&amp;gt; fizzBuzz(int n) {
@@ -505,7 +827,7 @@ class Solution {
 &lt;p&gt;Explanation: There are 4 prime numbers less than 10, they are 2, 3, 5, 7.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-10&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-15&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //筛法求素数：若已知一个数为素数，则该数的倍数均非素数。
@@ -574,7 +896,7 @@ class Solution {
 &lt;p&gt;Output: false&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-11&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-16&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public boolean isPowerOfThree(int n) {
@@ -666,7 +988,7 @@ class Solution {
 &lt;p&gt;Thefore INT_MIN (−231) is returned.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-12&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-17&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public int myAtoi(String str) {
@@ -736,7 +1058,7 @@ class Solution {
 
 &lt;p&gt;*Note:*All given inputs are in lowercase letters a-z.&lt;/p&gt;
 
-&lt;h3 id=&#34;解答-13&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-18&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //排序后比较头尾
@@ -787,7 +1109,7 @@ class Solution {
 &lt;p&gt;Output: -1&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-14&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-19&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //java API
@@ -819,7 +1141,7 @@ class Solution {
 
 &lt;p&gt;*Note:*You may assume the string contains only lowercase alphabets.&lt;/p&gt;
 
-&lt;h3 id=&#34;解答-15&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-20&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //存入字母表，判断字母表个数，1ms
@@ -865,7 +1187,7 @@ class Solution {
 &lt;p&gt;return 2.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-16&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-21&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public int firstUniqChar(String s) {
@@ -883,7 +1205,7 @@ class Solution {
 
 &lt;h2 id=&#34;回文&#34;&gt;回文&lt;/h2&gt;
 
-&lt;h3 id=&#34;解答-17&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-22&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public boolean isPalindrome(String s) {
     char[] str = s.toLowerCase().toCharArray();
@@ -916,7 +1238,7 @@ public boolean isChar(char c) {
 &lt;p&gt;&lt;em&gt;Note:&lt;/em&gt;
 Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−2^31,  2^31 − 1]. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.&lt;/p&gt;
 
-&lt;h3 id=&#34;解答-18&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-23&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public int reverse(int x) {
@@ -957,7 +1279,7 @@ Assume we are dealing with an environment which could only store integers within
 
 &lt;h2 id=&#34;反转字符串&#34;&gt;反转字符串&lt;/h2&gt;
 
-&lt;h3 id=&#34;解答-19&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-24&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public String reverseString(String s) {
     return new StringBuffer(s).reverse().toString();
@@ -967,11 +1289,11 @@ Assume we are dealing with an environment which could only store integers within
     </item>
     
     <item>
-      <title>Top Interview Questions-Easy-Array</title>
-      <link>https://boseman1024.github.io/2018/top-interview-questions-easy-array/</link>
+      <title>Top Interview Questions-Easy-①</title>
+      <link>https://boseman1024.github.io/2018/top-interview-questions-easy-1/</link>
       <pubDate>Thu, 20 Sep 2018 21:47:14 +0000</pubDate>
       
-      <guid>https://boseman1024.github.io/2018/top-interview-questions-easy-array/</guid>
+      <guid>https://boseman1024.github.io/2018/top-interview-questions-easy-1/</guid>
       <description>
 
 &lt;h1 id=&#34;design&#34;&gt;Design&lt;/h1&gt;
@@ -1485,6 +1807,139 @@ public class Solution extends VersionControl {
 
 &lt;h1 id=&#34;array&#34;&gt;Array&lt;/h1&gt;
 
+&lt;h2 id=&#34;rotate-image&#34;&gt;Rotate Image&lt;/h2&gt;
+
+&lt;p&gt;You are given an n x n 2D matrix representing an image.&lt;/p&gt;
+
+&lt;p&gt;Rotate the image by 90 degrees (clockwise).&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Given input matrix =&lt;/p&gt;
+
+&lt;p&gt;[[1,2,3],&lt;/p&gt;
+
+&lt;p&gt;[4,5,6],&lt;/p&gt;
+
+&lt;p&gt;[7,8,9]]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;rotate the input matrix in-place such that it becomes:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;[[7,4,1],&lt;/p&gt;
+
+&lt;p&gt;[8,5,2],&lt;/p&gt;
+
+&lt;p&gt;[9,6,3]]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Given input matrix =&lt;/p&gt;
+
+&lt;p&gt;[[ 5, 1, 9,11],&lt;/p&gt;
+
+&lt;p&gt;[ 2, 4, 8,10],&lt;/p&gt;
+
+&lt;p&gt;[13, 3, 6, 7],&lt;/p&gt;
+
+&lt;p&gt;[15,14,12,16]],&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;rotate the input matrix in-place such that it becomes:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;[[15,13, 2, 5],
+[14, 3, 4, 1],
+[12, 6, 8, 9],
+[16, 7,10,11]]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-10&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public void rotate(int[][] matrix) {
+        int n = matrix.length;
+        int[][] rotate = new int[n][n];
+        int index = n-1;
+        for(int i=0;i&amp;lt;n;i++) {
+            //一层转一排
+            for(int j=0;j&amp;lt;n;j++) {rotate[j][index] = matrix[i][j];}
+            index--;
+        }
+        for(int i=0;i&amp;lt;n;i++){
+            for(int j=0;j&amp;lt;n;j++){matrix[i][j] = rotate[i][j];}
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;best-time-to-buy-and-sell-stock-ii&#34;&gt;Best Time to Buy and Sell Stock II&lt;/h2&gt;
+
+&lt;p&gt;Say you have an array for which the i^th element is the price of a given stock on day i.&lt;/p&gt;
+
+&lt;p&gt;Design an algorithm to find the maximum profit. You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times).&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; You may not engage in multiple transactions at the same time (i.e., you must sell the stock before you buy again).&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [7,1,5,3,6,4]&lt;/p&gt;
+
+&lt;p&gt;Output: 7&lt;/p&gt;
+
+&lt;p&gt;Explanation: Buy on day 2 (price = 1) and sell on day 3 (price = 5), profit = 5-1 = 4.&lt;/p&gt;
+
+&lt;p&gt;Then buy on day 4 (price = 3) and sell on day 5 (price = 6), profit = 6-3 = 3.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [1,2,3,4,5]&lt;/p&gt;
+
+&lt;p&gt;Output: 4&lt;/p&gt;
+
+&lt;p&gt;Explanation: Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4.&lt;/p&gt;
+
+&lt;p&gt;Note that you cannot buy on day 1, buy on day 2 and sell them later, as you are engaging multiple transactions at the same time. You must sell before buying again.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 3:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [7,6,4,3,1]&lt;/p&gt;
+
+&lt;p&gt;Output: 0&lt;/p&gt;
+
+&lt;p&gt;Explanation: In this case, no transaction is done, i.e. max profit = 0.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-11&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public int maxProfit(int[] prices) {
+        if(prices.length==0){return 0;}
+        int max = 0;
+        int pre = prices[0];
+        for(int i =1;i&amp;lt;prices.length;i++){
+            //遇到高价就出售
+            if(prices[i]&amp;gt;pre){max += prices[i] - pre;}
+            pre = prices[i];   
+        }
+        return max;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h2 id=&#34;valid-sudoku&#34;&gt;Valid Sudoku&lt;/h2&gt;
 
 &lt;p&gt;Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:&lt;/p&gt;
@@ -1567,7 +2022,7 @@ public class Solution extends VersionControl {
 &lt;li&gt;&lt;p&gt;The given board size is always 9x9.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;解答-10&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-12&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public boolean isValidSudoku(char[][] board) {
@@ -1623,7 +2078,7 @@ public class Solution extends VersionControl {
 &lt;li&gt;&lt;p&gt;The result can be in any order.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;解答-11&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-13&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //2ms
@@ -1684,7 +2139,7 @@ public class Solution extends VersionControl {
 return [0, 1].&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-12&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-14&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public int[] twoSum(int[] nums, int target) {
@@ -1730,7 +2185,7 @@ return [0, 1].&lt;/p&gt;
 &lt;p&gt;Explanation: The array represents the integer 4321.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-13&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-15&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public int[] plusOne(int[] digits) {
     for(int i=digits.length-1;i&amp;gt;=0;i--) {
@@ -1776,7 +2231,7 @@ return [0, 1].&lt;/p&gt;
 Output: true&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-14&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-16&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//排序后前后比对，重复则返回true。
 public boolean containsDuplicate(int[] nums) {
@@ -1810,7 +2265,7 @@ public boolean containsDuplicate(int[] nums) {
 &lt;li&gt;&lt;p&gt;Minimize the total number of operations.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;解答-15&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-17&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //74ms
@@ -1856,7 +2311,7 @@ public boolean containsDuplicate(int[] nums) {
 &lt;p&gt;Output: 4&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-16&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-18&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public int singleNumber(int[] nums) {
     List&amp;lt;Integer&amp;gt; list = new ArrayList&amp;lt;Integer&amp;gt;();
@@ -1913,7 +2368,7 @@ public boolean containsDuplicate(int[] nums) {
 &lt;li&gt;&lt;p&gt;Could you do it in-place with O(1) extra space?&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;解答-17&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-19&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class RotateArray {
     public void rotate(int[] nums, int k) {
@@ -2010,7 +2465,7 @@ int len = removeDuplicates(nums);&lt;/p&gt;
 }&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-18&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-20&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class RemoveDuplicatesFromSortedArray {
     public int removeDuplicates(int[] nums) {
@@ -2023,6 +2478,262 @@ int len = removeDuplicates(nums);&lt;/p&gt;
             }
         }
         return length+1;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Top Interview Questions-Medium-①</title>
+      <link>https://boseman1024.github.io/2018/top-interview-questions-medium-1/</link>
+      <pubDate>Thu, 20 Sep 2018 21:47:14 +0000</pubDate>
+      
+      <guid>https://boseman1024.github.io/2018/top-interview-questions-medium-1/</guid>
+      <description>
+
+&lt;h1 id=&#34;array-and-strings&#34;&gt;Array and Strings&lt;/h1&gt;
+
+&lt;h2 id=&#34;group-anagrams&#34;&gt;Group Anagrams&lt;/h2&gt;
+
+&lt;p&gt;Given an array of strings, group anagrams together.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [&amp;ldquo;eat&amp;rdquo;, &amp;ldquo;tea&amp;rdquo;, &amp;ldquo;tan&amp;rdquo;, &amp;ldquo;ate&amp;rdquo;, &amp;ldquo;nat&amp;rdquo;, &amp;ldquo;bat&amp;rdquo;],&lt;/p&gt;
+
+&lt;p&gt;Output:[[&amp;ldquo;ate&amp;rdquo;,&amp;ldquo;eat&amp;rdquo;,&amp;ldquo;tea&amp;rdquo;],&lt;/p&gt;
+
+&lt;p&gt;[&amp;ldquo;nat&amp;rdquo;,&amp;ldquo;tan&amp;rdquo;],&lt;/p&gt;
+
+&lt;p&gt;[&amp;ldquo;bat&amp;rdquo;]]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;All inputs will be in lowercase.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The order of your output does not matter.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;解答&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    //16ms，key为字母排序后的字符串，检验map中是否存在key
+    public List&amp;lt;List&amp;lt;String&amp;gt;&amp;gt; groupAnagrams(String[] strs) {
+        if(strs==null || strs.length==0) return null;
+        HashMap&amp;lt;String,List&amp;lt;String&amp;gt;&amp;gt; map = new HashMap&amp;lt;&amp;gt;();
+        for(String s : strs){
+            char[] key=s.toCharArray();
+            Arrays.sort(key);
+            String st=String.valueOf(key);
+            if(!map.containsKey(st)) map.put(st,new ArrayList());
+            map.get(st).add(s);
+        }
+        return new ArrayList(map.values());        
+    }
+    //775 ms，每个字符串排序字母后比较每个List&amp;lt;String&amp;gt;的排序字母后的字符串
+    public List&amp;lt;List&amp;lt;String&amp;gt;&amp;gt; groupAnagrams(String[] strs) {
+        List&amp;lt;List&amp;lt;String&amp;gt;&amp;gt; group = new ArrayList&amp;lt;&amp;gt;();
+            for(String s:strs){
+                char[] temp = s.toCharArray();
+                Arrays.sort(temp);
+                String sortS = String.valueOf(temp);
+                boolean have = false;
+                for(List&amp;lt;String&amp;gt; list:group){
+                    if(s.length()!=list.get(0).length()){continue;}
+                    char[] chs = list.get(0).toCharArray();
+                    Arrays.sort(chs);
+                    String sortChs = String.valueOf(chs);
+                    if(sortChs.equals(sortS)) {
+                        have = true;
+                        list.add(s);
+                        break;
+                    }
+                }
+                if(!have) {
+                    List&amp;lt;String&amp;gt; newList = new ArrayList&amp;lt;&amp;gt;();
+                    newList.add(s);
+                    group.add(newList);
+                }
+          }
+        return group;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;linked-list&#34;&gt;Linked List&lt;/h1&gt;
+
+&lt;h2 id=&#34;odd-even-linked-list&#34;&gt;Odd Even Linked List&lt;/h2&gt;
+
+&lt;p&gt;Given a singly linked list, group all odd nodes together followed by the even nodes. Please note here we are talking about the node number and not the value in the nodes.&lt;/p&gt;
+
+&lt;p&gt;You should try to do it in place. The program should run in O(1) space complexity and O(nodes) time complexity.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5-&amp;gt;NULL&lt;/p&gt;
+
+&lt;p&gt;Output: 1-&amp;gt;3-&amp;gt;5-&amp;gt;2-&amp;gt;4-&amp;gt;NULL&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: 2-&amp;gt;1-&amp;gt;3-&amp;gt;5-&amp;gt;6-&amp;gt;4-&amp;gt;7-&amp;gt;NULL&lt;/p&gt;
+
+&lt;p&gt;Output: 2-&amp;gt;3-&amp;gt;6-&amp;gt;7-&amp;gt;1-&amp;gt;5-&amp;gt;4-&amp;gt;NULL&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-1&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public ListNode oddEvenList(ListNode head) {
+        if (head!=null){
+            ListNode odd=head,even=head.next,evenHead=even;
+            while(even!=null&amp;amp;&amp;amp;even.next!=null){
+                odd.next = odd.next.next; 
+                even.next = even.next.next; 
+                odd = odd.next;
+                even = even.next;
+            }
+            odd.next = evenHead; 
+        }
+        return head;
+    }
+    public ListNode oddEvenList(ListNode head) {
+        if(head==null||head.next==null||head.next.next==null){return head;}
+        ListNode odd = new ListNode(head.val);
+        ListNode startOdd = odd;
+        ListNode even = new ListNode(head.val);
+        ListNode startEven = even;
+        int count=1;
+        while(head!=null){
+            if(count%2==1){
+                odd.next = new ListNode(head.val);
+                odd = odd.next;
+            }else{
+                even.next = new ListNode(head.val);
+                even = even.next;
+            }
+            head=head.next;
+            count++;
+        }
+        odd.next = startEven.next;
+        return startOdd.next;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;add-two-numbers&#34;&gt;Add Two Numbers&lt;/h2&gt;
+
+&lt;p&gt;You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.&lt;/p&gt;
+
+&lt;p&gt;You may assume the two numbers do not contain any leading zero, except the number 0 itself.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: (2 -&amp;gt; 4 -&amp;gt; 3) + (5 -&amp;gt; 6 -&amp;gt; 4)&lt;/p&gt;
+
+&lt;p&gt;Output: 7 -&amp;gt; 0 -&amp;gt; 8&lt;/p&gt;
+
+&lt;p&gt;Explanation: 342 + 465 = 807.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-2&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode node = new ListNode(0);
+        ListNode pre = node;
+        int sum = 0;
+        //l1=[6 7],l2=[6 7]
+        while(l1!=null||l2!=null){
+            if(l1!=null){
+                sum+=l1.val;
+                l1=l1.next;
+            }
+            if(l2!=null){
+                sum+=l2.val;
+                l2=l2.next;
+            }
+            /**
+             *sum=12/pre.next=2
+             *sum=1
+             *sum=15/pre.next=5
+             *sum=1
+             */
+            pre.next = new ListNode(sum%10);
+            pre = pre.next;
+            sum/=10;
+        }
+        //pre.next=sum=1
+        if(sum==1){pre.next=new ListNode(1);}
+        return node.next;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;math&#34;&gt;Math&lt;/h1&gt;
+
+&lt;h2 id=&#34;happy-number&#34;&gt;Happy Number&lt;/h2&gt;
+
+&lt;p&gt;Write an algorithm to determine if a number is &amp;ldquo;happy&amp;rdquo;.&lt;/p&gt;
+
+&lt;p&gt;A happy number is a number defined by the following process: Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1. Those numbers for which this process ends in 1 are happy numbers.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: 19&lt;/p&gt;
+
+&lt;p&gt;Output: true&lt;/p&gt;
+
+&lt;p&gt;Explanation:&lt;/p&gt;
+
+&lt;p&gt;1^2 + 9^2 = 82&lt;/p&gt;
+
+&lt;p&gt;8^2 + 2^2 = 68&lt;/p&gt;
+
+&lt;p&gt;6^2 + 8^2 = 100&lt;/p&gt;
+
+&lt;p&gt;1^2 + 0^2 + 0^2 = 1&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-3&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public boolean isHappy(int n) {
+        List&amp;lt;String&amp;gt; list = new ArrayList&amp;lt;&amp;gt;();
+        while(n!=1){
+            String s = String.valueOf(n);
+            list.add(s);
+            char[] chs = s.toCharArray();
+            n=0;
+            for(char c:chs){n+=Math.pow(Integer.parseInt(c+&amp;quot;&amp;quot;),2);}
+            if(list.contains(String.valueOf(n))){return false;}
+        }
+        return true;
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
@@ -4100,6 +4811,10 @@ getItem(arr,&amp;quot;name&amp;quot;,&amp;quot;123&amp;quot;).name
 &lt;/center&gt;&lt;/p&gt;
 
 &lt;h1 id=&#34;九月&#34;&gt;九月&lt;/h1&gt;
+
+&lt;p&gt;&lt;strong&gt;9月28日21点04分&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;恶&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;9月25日18点56分&lt;/strong&gt;&lt;/p&gt;
 

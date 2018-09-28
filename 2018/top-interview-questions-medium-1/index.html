@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kuma2x">
+  
+  
+  
+  <link rel="prev" href="https://boseman1024.github.io/2018/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/" />
+  <link rel="next" href="https://boseman1024.github.io/2018/top-interview-questions-easy-1/" />
+  <link rel="canonical" href="https://boseman1024.github.io/2018/top-interview-questions-medium-1/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Top Interview Questions-Medium-① | KUMA2X
+       
+  </title>
+  <meta name="title" content="Top Interview Questions-Medium-① | KUMA2X">
+    
+
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https://boseman1024.github.io/"
+    },
+    "articleSection" : "posts",
+    "name" : "Top Interview Questions-Medium-①",
+    "headline" : "Top Interview Questions-Medium-①",
+    "description" : "Array and Strings Group Anagrams Given an array of strings, group anagrams together.
+Example:
+ Input: [&ldquo;eat&rdquo;, &ldquo;tea&rdquo;, &ldquo;tan&rdquo;, &ldquo;ate&rdquo;, &ldquo;nat&rdquo;, &ldquo;bat&rdquo;],
+Output:[[&ldquo;ate&rdquo;,&ldquo;eat&rdquo;,&ldquo;tea&rdquo;],
+[&ldquo;nat&rdquo;,&ldquo;tan&rdquo;],
+[&ldquo;bat&rdquo;]]
+ Note:
+ All inputs will be in lowercase.
+ The order of your output does not matter.
+  解答： class Solution { //16ms，key为字母排序后的字符串，检验map中是否存在key public List&lt;List&lt;String&gt;&gt; groupAnagrams(String[] strs) { if(strs==null || strs.length==0) return null; HashMap&lt;String,List&lt;String&gt;&gt; map = new HashMap&lt;&gt;(); for(String s : strs){ char[] key=s.",
+    "inLanguage" : "en-us",
+    "author" : "Kuma2x",
+    "creator" : "Kuma2x",
+    "publisher": "Kuma2x",
+    "accountablePerson" : "Kuma2x",
+    "copyrightHolder" : "Kuma2x",
+    "copyrightYear" : "2018",
+    "datePublished": "2018-09-20 21:47:14 &#43;0000 UTC",
+    "dateModified" : "2018-09-20 21:47:14 &#43;0000 UTC",
+    "url" : "https://boseman1024.github.io/2018/top-interview-questions-medium-1/",
+    "wordCount" : "636",
+    "keywords" : [ "数据结构与算法","LeetCode","JAVA", "KUMA2X"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://boseman1024.github.io/">KUMA2X</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://boseman1024.github.io/">KUMA2X</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Top Interview Questions-Medium-①</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://boseman1024.github.io/" rel="author">Kuma2x</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2018-09-20 itemprop="datePublished">September 20, 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://boseman1024.github.io/categories/%E7%9D%81%E7%9C%BC%E7%9E%8E/"> 睁眼瞎 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="array-and-strings">Array and Strings</h1>
+
+<h2 id="group-anagrams">Group Anagrams</h2>
+
+<p>Given an array of strings, group anagrams together.</p>
+
+<p><em>Example:</em></p>
+
+<blockquote>
+<p>Input: [&ldquo;eat&rdquo;, &ldquo;tea&rdquo;, &ldquo;tan&rdquo;, &ldquo;ate&rdquo;, &ldquo;nat&rdquo;, &ldquo;bat&rdquo;],</p>
+
+<p>Output:[[&ldquo;ate&rdquo;,&ldquo;eat&rdquo;,&ldquo;tea&rdquo;],</p>
+
+<p>[&ldquo;nat&rdquo;,&ldquo;tan&rdquo;],</p>
+
+<p>[&ldquo;bat&rdquo;]]</p>
+</blockquote>
+
+<p><em>Note:</em></p>
+
+<ul>
+<li><p>All inputs will be in lowercase.</p></li>
+
+<li><p>The order of your output does not matter.</p></li>
+</ul>
+
+<h3 id="解答">解答：</h3>
+
+<pre><code class="language-java">class Solution {
+    //16ms，key为字母排序后的字符串，检验map中是否存在key
+    public List&lt;List&lt;String&gt;&gt; groupAnagrams(String[] strs) {
+        if(strs==null || strs.length==0) return null;
+        HashMap&lt;String,List&lt;String&gt;&gt; map = new HashMap&lt;&gt;();
+        for(String s : strs){
+            char[] key=s.toCharArray();
+            Arrays.sort(key);
+            String st=String.valueOf(key);
+            if(!map.containsKey(st)) map.put(st,new ArrayList());
+            map.get(st).add(s);
+        }
+        return new ArrayList(map.values());        
+    }
+    //775 ms，每个字符串排序字母后比较每个List&lt;String&gt;的排序字母后的字符串
+    public List&lt;List&lt;String&gt;&gt; groupAnagrams(String[] strs) {
+        List&lt;List&lt;String&gt;&gt; group = new ArrayList&lt;&gt;();
+            for(String s:strs){
+                char[] temp = s.toCharArray();
+                Arrays.sort(temp);
+                String sortS = String.valueOf(temp);
+                boolean have = false;
+                for(List&lt;String&gt; list:group){
+                    if(s.length()!=list.get(0).length()){continue;}
+                    char[] chs = list.get(0).toCharArray();
+                    Arrays.sort(chs);
+                    String sortChs = String.valueOf(chs);
+                    if(sortChs.equals(sortS)) {
+                        have = true;
+                        list.add(s);
+                        break;
+                    }
+                }
+                if(!have) {
+                    List&lt;String&gt; newList = new ArrayList&lt;&gt;();
+                    newList.add(s);
+                    group.add(newList);
+                }
+          }
+        return group;
+    }
+}
+</code></pre>
+
+<h1 id="linked-list">Linked List</h1>
+
+<h2 id="odd-even-linked-list">Odd Even Linked List</h2>
+
+<p>Given a singly linked list, group all odd nodes together followed by the even nodes. Please note here we are talking about the node number and not the value in the nodes.</p>
+
+<p>You should try to do it in place. The program should run in O(1) space complexity and O(nodes) time complexity.</p>
+
+<p><em>Example 1:</em></p>
+
+<blockquote>
+<p>Input: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL</p>
+
+<p>Output: 1-&gt;3-&gt;5-&gt;2-&gt;4-&gt;NULL</p>
+</blockquote>
+
+<p><em>Example 2:</em></p>
+
+<blockquote>
+<p>Input: 2-&gt;1-&gt;3-&gt;5-&gt;6-&gt;4-&gt;7-&gt;NULL</p>
+
+<p>Output: 2-&gt;3-&gt;6-&gt;7-&gt;1-&gt;5-&gt;4-&gt;NULL</p>
+</blockquote>
+
+<h3 id="解答-1">解答：</h3>
+
+<pre><code class="language-java">/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public ListNode oddEvenList(ListNode head) {
+        if (head!=null){
+            ListNode odd=head,even=head.next,evenHead=even;
+            while(even!=null&amp;&amp;even.next!=null){
+                odd.next = odd.next.next; 
+                even.next = even.next.next; 
+                odd = odd.next;
+                even = even.next;
+            }
+            odd.next = evenHead; 
+        }
+        return head;
+    }
+    public ListNode oddEvenList(ListNode head) {
+        if(head==null||head.next==null||head.next.next==null){return head;}
+        ListNode odd = new ListNode(head.val);
+        ListNode startOdd = odd;
+        ListNode even = new ListNode(head.val);
+        ListNode startEven = even;
+        int count=1;
+        while(head!=null){
+            if(count%2==1){
+                odd.next = new ListNode(head.val);
+                odd = odd.next;
+            }else{
+                even.next = new ListNode(head.val);
+                even = even.next;
+            }
+            head=head.next;
+            count++;
+        }
+        odd.next = startEven.next;
+        return startOdd.next;
+    }
+}
+</code></pre>
+
+<h2 id="add-two-numbers">Add Two Numbers</h2>
+
+<p>You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
+
+<p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
+
+<p><em>Example:</em></p>
+
+<blockquote>
+<p>Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)</p>
+
+<p>Output: 7 -&gt; 0 -&gt; 8</p>
+
+<p>Explanation: 342 + 465 = 807.</p>
+</blockquote>
+
+<h3 id="解答-2">解答：</h3>
+
+<pre><code class="language-java">/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode node = new ListNode(0);
+        ListNode pre = node;
+        int sum = 0;
+        //l1=[6 7],l2=[6 7]
+        while(l1!=null||l2!=null){
+            if(l1!=null){
+                sum+=l1.val;
+                l1=l1.next;
+            }
+            if(l2!=null){
+                sum+=l2.val;
+                l2=l2.next;
+            }
+            /**
+             *sum=12/pre.next=2
+             *sum=1
+             *sum=15/pre.next=5
+             *sum=1
+             */
+            pre.next = new ListNode(sum%10);
+            pre = pre.next;
+            sum/=10;
+        }
+        //pre.next=sum=1
+        if(sum==1){pre.next=new ListNode(1);}
+        return node.next;
+    }
+}
+</code></pre>
+
+<h1 id="math">Math</h1>
+
+<h2 id="happy-number">Happy Number</h2>
+
+<p>Write an algorithm to determine if a number is &ldquo;happy&rdquo;.</p>
+
+<p>A happy number is a number defined by the following process: Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1. Those numbers for which this process ends in 1 are happy numbers.</p>
+
+<p><em>Example:</em></p>
+
+<blockquote>
+<p>Input: 19</p>
+
+<p>Output: true</p>
+
+<p>Explanation:</p>
+
+<p>1^2 + 9^2 = 82</p>
+
+<p>8^2 + 2^2 = 68</p>
+
+<p>6^2 + 8^2 = 100</p>
+
+<p>1^2 + 0^2 + 0^2 = 1</p>
+</blockquote>
+
+<h3 id="解答-3">解答：</h3>
+
+<pre><code class="language-java">class Solution {
+    public boolean isHappy(int n) {
+        List&lt;String&gt; list = new ArrayList&lt;&gt;();
+        while(n!=1){
+            String s = String.valueOf(n);
+            list.add(s);
+            char[] chs = s.toCharArray();
+            n=0;
+            for(char c:chs){n+=Math.pow(Integer.parseInt(c+&quot;&quot;),2);}
+            if(list.contains(String.valueOf(n))){return false;}
+        }
+        return true;
+    }
+}
+</code></pre>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kuma2x </span>
+                </p>
+            
+           
+           
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://boseman1024.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
+                    #数据结构与算法</a></span>
+            
+            <span class="tag"><a href="https://boseman1024.github.io/tags/leetcode/">
+                    #LeetCode</a></span>
+            
+            <span class="tag"><a href="https://boseman1024.github.io/tags/java/">
+                    #JAVA</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://boseman1024.github.io/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://boseman1024.github.io/2018/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/" class="prev" rel="prev" title="排序算法整理"><i class="iconfont icon-left"></i>&nbsp;排序算法整理</a>
+         
+        
+        <a href="https://boseman1024.github.io/2018/top-interview-questions-easy-1/" class="next" rel="next" title="Top Interview Questions-Easy-①">Top Interview Questions-Easy-①&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2018 - 2018</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://boseman1024.github.io/">Kuma2x</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
