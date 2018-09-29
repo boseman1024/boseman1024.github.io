@@ -6,1292 +6,13 @@
     <description>Recent content in KUMA2X on KUMA2X</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 21 Sep 2018 15:08:22 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 28 Sep 2018 21:47:14 +0000</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
-    
-    <item>
-      <title>Top Interview Questions-Easy-②</title>
-      <link>https://boseman1024.github.io/2018/top-interview-questions-easy-2/</link>
-      <pubDate>Fri, 21 Sep 2018 15:08:22 +0000</pubDate>
-      
-      <guid>https://boseman1024.github.io/2018/top-interview-questions-easy-2/</guid>
-      <description>
-
-&lt;h1 id=&#34;dynamic-programming&#34;&gt;Dynamic Programming&lt;/h1&gt;
-
-&lt;h2 id=&#34;maximum-subarray&#34;&gt;Maximum Subarray&lt;/h2&gt;
-
-&lt;p&gt;Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Input: [-2,1,-3,4,-1,2,1,-5,4],&lt;/p&gt;
-
-&lt;p&gt;Output: 6&lt;/p&gt;
-
-&lt;p&gt;Explanation: [4,-1,2,1] has the largest sum = 6.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;解答&#34;&gt;解答：&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-    public int maxSubArray(int[] nums) {
-        if(nums.length&amp;lt;1||nums==null) {return 0;}
-        int sum = nums[0];
-        int temp = 0;
-        for(int i:nums){
-            temp+=i;
-            sum = Math.max(sum,temp);
-            temp = temp&amp;lt;0?0:temp;
-        }
-        return sum;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;best-time-to-buy-and-sell-stock&#34;&gt;Best Time to Buy and Sell Stock&lt;/h2&gt;
-
-&lt;p&gt;Say you have an array for which the ith element is the price of a given stock on day i.&lt;/p&gt;
-
-&lt;p&gt;If you were only permitted to complete at most one transaction (i.e., buy one and sell one share of the stock), design an algorithm to find the maximum profit.&lt;/p&gt;
-
-&lt;p&gt;Note that you cannot sell a stock before you buy one.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Input: [7,1,5,3,6,4]&lt;/p&gt;
-
-&lt;p&gt;Output: 5&lt;/p&gt;
-
-&lt;p&gt;Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.&lt;/p&gt;
-
-&lt;p&gt;Not 7-1 = 6, as selling price needs to be larger than buying price.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Input: [7,6,4,3,1]&lt;/p&gt;
-
-&lt;p&gt;Output: 0&lt;/p&gt;
-
-&lt;p&gt;Explanation: In this case, no transaction is done, i.e. max profit = 0.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;解答-1&#34;&gt;解答：&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-    //2ms
-    public int maxProfit(int[] prices) {
-        int max = 0;
-        int minPrice = Integer.MAX_VALUE;
-        for(int i:prices){
-            minPrice = Math.min(i,minPrice);
-            max = Math.max(max,i-minPrice);
-        }
-        return max;
-    }
-    //400ms+
-    public int maxProfit(int[] prices) {
-        int max = 0;
-        for(int i=0;i&amp;lt;prices.length;i++){
-            for(int j=i+1;j&amp;lt;prices.length;j++){
-                if(prices[i]&amp;lt;prices[j]){
-                    max = Math.max(max,prices[j]-prices[i]);
-                }
-            }
-        }
-        return max;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;others&#34;&gt;Others&lt;/h1&gt;
-
-&lt;h2 id=&#34;valid-parentheses&#34;&gt;Valid Parentheses&lt;/h2&gt;
-
-&lt;p&gt;Given a string containing just the characters &amp;lsquo;(&amp;rsquo;, &amp;lsquo;)&amp;rsquo;, &amp;lsquo;{&amp;rsquo;, &amp;lsquo;}&amp;rsquo;, &amp;lsquo;[&amp;rsquo; and &amp;lsquo;]&amp;rsquo;, determine if the input string is valid.&lt;/p&gt;
-
-&lt;p&gt;An input string is valid if:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Open brackets must be closed by the same type of brackets.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Open brackets must be closed in the correct order.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Note that an empty string is also considered valid.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Input: &amp;ldquo;()&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;Output: true&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Input: &amp;ldquo;()[]{}&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;Output: true&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;em&gt;Example 3:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Input: &amp;ldquo;(]&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;Output: false&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;em&gt;Example 4:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Input: &amp;ldquo;([)]&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;Output: false&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;em&gt;Example 5:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Input: &amp;ldquo;{[]}&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;Output: true&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;解答-2&#34;&gt;解答：&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-    public boolean isValid(String s) {
-        char[] chs =  s.toCharArray();
-        //使用堆栈，栈中仅存&#39;)、}、]&#39;,出栈时核验是否匹配
-        Stack&amp;lt;Character&amp;gt; stack = new Stack&amp;lt;&amp;gt;();
-        for (char c : s.toCharArray()) {
-            if (c == &#39;(&#39;) {stack.push(&#39;)&#39;);
-            } else if (c ==&#39;{&#39;) {stack.push(&#39;}&#39;);
-            } else if (c ==&#39;[&#39;) {stack.push(&#39;]&#39;);
-            } else if (stack.isEmpty() || stack.pop() != c) {
-                return false;
-            }
-        }
-        return stack.isEmpty();
-        //使用Deque双向队列
-        Deque&amp;lt;Character&amp;gt; box = new ArrayDeque&amp;lt;&amp;gt;();
-        Map&amp;lt;Character,Character&amp;gt; map = new HashMap&amp;lt;&amp;gt;();
-        map.put(&#39;)&#39;,&#39;(&#39;);
-        map.put(&#39;}&#39;,&#39;{&#39;);
-        map.put(&#39;]&#39;,&#39;[&#39;);
-        for(char c:chs) {
-            if(c==&#39;(&#39;||c==&#39;{&#39;||c==&#39;[&#39;) {
-                box.addFirst(c);
-            }else {
-                char first = box.size()&amp;gt;0?box.peekFirst():&#39; &#39;;
-                if(first==&#39;]&#39;||first==&#39;}&#39;||first==&#39;)&#39;) {
-                    return false;
-                }else if(first==map.get(c)) {
-                    box.removeFirst();
-                }else {
-                    box.addLast(c);
-                }
-            }
-        }
-        return box.size()==0;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;pascal-s-triangle&#34;&gt;Pascal&amp;rsquo;s Triangle&lt;/h2&gt;
-
-&lt;p&gt;Given a non-negative integer numRows, generate the first numRows of Pascal&amp;rsquo;s triangle.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://upload.wikimedia.org/wikipedia/commons/0/0d/PascalTriangleAnimated2.gif&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;In Pascal&amp;rsquo;s triangle, each number is the sum of the two numbers directly above it.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Input: 5&lt;/p&gt;
-
-&lt;p&gt;Output:[&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;[1],&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;[1,1],&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;[1,2,1],&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;[1,3,3,1],&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;[1,4,6,4,1]]&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;解答-3&#34;&gt;解答：&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-    public List&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; generate(int numRows) {
-        List&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; all = new ArrayList&amp;lt;&amp;gt;();
-        if(numRows&amp;lt;=0){return all;}
-        all.add(new ArrayList&amp;lt;&amp;gt;());
-        all.get(0).add(1);
-        if(numRows==1){return all;}
-        all.add(new ArrayList&amp;lt;&amp;gt;());
-        all.get(1).add(1);
-        all.get(1).add(1);
-        if(numRows==2){return all;}
-        for(int i=3;i&amp;lt;=numRows;i++){
-            all.add(new ArrayList&amp;lt;&amp;gt;());
-            List&amp;lt;Integer&amp;gt; now = all.get(i-1);
-            now.add(1);
-            List&amp;lt;Integer&amp;gt; pre = all.get(i-2);
-            for(int j=1;j&amp;lt;i-1;j++){
-                now.add(pre.get(j-1)+pre.get(j));
-            }
-            now.add(1);
-        }
-        return all;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;hamming-distance&#34;&gt;Hamming Distance&lt;/h2&gt;
-
-&lt;p&gt;The Hamming distance between two integers is the number of positions at which the corresponding bits are different.&lt;/p&gt;
-
-&lt;p&gt;Given two integers x and y, calculate the Hamming distance.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; 0 ≤ x, y &amp;lt; 2^31.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Input: x = 1, y = 4&lt;/p&gt;
-
-&lt;p&gt;Output: 2&lt;/p&gt;
-
-&lt;p&gt;Explanation:&lt;/p&gt;
-
-&lt;p&gt;1   (0 0 0 1)&lt;/p&gt;
-
-&lt;p&gt;4   (0 1 0 0)&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;↑   ↑&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The above arrows point to positions where the corresponding bits are different.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;解答-4&#34;&gt;解答：&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-    public int hammingDistance(int x, int y) {
-        //得到x,y的异或值
-        int val = x^y;
-        //计算1的个数，方法同Number of 1 Bits
-        return Integer.bitCount(val);
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;number-of-1-bits&#34;&gt;Number of 1 Bits&lt;/h2&gt;
-
-&lt;p&gt;Write a function that takes an unsigned integer and returns the number of &amp;lsquo;1&amp;rsquo; bits it has (also known as the Hamming weight).&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Input: 11&lt;/p&gt;
-
-&lt;p&gt;Output: 3&lt;/p&gt;
-
-&lt;p&gt;Explanation: Integer 11 has binary representation 00000000000000000000000000001011&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Input: 128
-Output: 1
-Explanation: Integer 128 has binary representation 00000000000000000000000010000000&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;解答-5&#34;&gt;解答：&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Solution {
-    public int hammingWeight(int n) {
-        /**与运算
-        *1：0000 0001
-        *2：0000 0010
-        *3：0000 0011
-        *4：0000 0100
-        *5：0000 0101
-        *6：0000 0110
-        *7：0000 0111
-        *8：0000 1000
-        *9：0000 1001
-        *10：0000 1010
-        *11：0000 1011
-        *------------
-        *0000 1010  = 10 = 11&amp;amp;10
-        *0000 1000  =  8 = 10&amp;amp;9
-        *0000 0000  =  0 = 8&amp;amp;7
-        */ 
-        int sum = 0;
-        while(n!=0){
-            sum++;
-            n&amp;amp;=n-1;
-        }
-        return sum;
-        //java API，返回1的个数
-        return Integer.bitCount(n);
-        // 转换为String判断每一位是否为1
-        if (n==0) {return 0;}
-        char[] chs = Integer.toBinaryString(n).toCharArray();
-        int count = 0;
-        for (int i=0; i &amp;lt; chs.length; i++) {
-            if (chs[i]==&#39;1&#39;){count++;}
-        }
-        return count;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;missing-number&#34;&gt;Missing Number&lt;/h2&gt;
-
-&lt;p&gt;Given an array containing n distinct numbers taken from 0, 1, 2, &amp;hellip;, n, find the one that is missing from the array.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Input: [3,0,1]&lt;/p&gt;
-
-&lt;p&gt;Output: 2&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Input: [9,6,4,2,3,5,7,0,1]&lt;/p&gt;
-
-&lt;p&gt;Output: 8&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;解答-6&#34;&gt;解答：&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-    //0+1+2+……+n = n*(n+1)/2
-    public int missingNumber(int[] nums) {
-        int sum = nums.length*(nums.length+1)/2;
-        for(int i=0;i&amp;lt;nums.length;i++){sum-=nums[i];}
-        return sum;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;reverse-bits&#34;&gt;Reverse Bits&lt;/h2&gt;
-
-&lt;p&gt;Reverse bits of a given 32 bits unsigned integer.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Input: 43261596&lt;/p&gt;
-
-&lt;p&gt;Output: 964176192&lt;/p&gt;
-
-&lt;p&gt;Explanation:&lt;/p&gt;
-
-&lt;p&gt;43261596 represented in binary as 00000010100101000001111010011100,&lt;/p&gt;
-
-&lt;p&gt;return 964176192 represented in binary as 00111001011110000010100101000000.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;解答-7&#34;&gt;解答&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Solution {
-    //位运算？不会
-    // you need treat n as an unsigned value
-    //转换为二进制字符串，不足位数前补0，反转字符串
-    public int reverseBits(int n) {
-        String s = Integer.toBinaryString(n);
-        int length = s.length();
-        for(int i=0;i&amp;lt;(32-length);i++) {s=&#39;0&#39;+s;}
-        String sb = new StringBuilder(s).reverse().toString();
-        return (int)Long.parseLong(sb,2);
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&#34;tree&#34;&gt;Tree&lt;/h1&gt;
-
-&lt;h2 id=&#34;symmetric-tree&#34;&gt;Symmetric Tree&lt;/h2&gt;
-
-&lt;p&gt;Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).&lt;/p&gt;
-
-&lt;p&gt;For example, this binary tree &lt;code&gt;[1,2,2,3,4,4,3]&lt;/code&gt; is symmetric&lt;/p&gt;
-
-&lt;p&gt;But the following &lt;code&gt;[1,2,2,null,3,null,3]&lt;/code&gt; is not&lt;/p&gt;
-
-&lt;h3 id=&#34;解答-8&#34;&gt;解答：&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
-class Solution {
-    //先将二叉树化为按层划分的集合，再做镜像校验
-    List&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; all;
-    public boolean isSymmetric(TreeNode root) {
-        if(root==null){return true;}
-        all = new ArrayList&amp;lt;&amp;gt;();
-        get(root,0);
-        //检验镜像
-        for(List&amp;lt;Integer&amp;gt; list:all){
-            int i=0;
-            while(list.size()&amp;gt;1&amp;amp;&amp;amp;i&amp;lt;list.size()/2){
-                if(list.get(i)!=list.get(list.size()-1-i)){
-                    return false;
-                }
-                i++;
-            }
-        }
-        return true;
-    }
-    //同Binary Tree Level Order Traversal，但node为空则向集合添加null
-    public void get(TreeNode node,int depth){
-        if(all.size()&amp;lt;=depth){all.add(new ArrayList&amp;lt;&amp;gt;());}
-        if(node==null){all.get(depth).add(null);return;
-        }else{all.get(depth).add(node.val);}        
-        depth++;
-        get(node.left,depth);
-        get(node.right,depth);
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;binary-tree-level-order-traversal&#34;&gt;Binary Tree Level Order Traversal&lt;/h2&gt;
-
-&lt;p&gt;Given a binary tree, return the level order traversal of its nodes&amp;rsquo; values. (ie, from left to right, level by level).&lt;/p&gt;
-
-&lt;p&gt;For example:
-Given binary tree &lt;code&gt;[3,9,20,null,null,15,7]&lt;/code&gt;,&lt;/p&gt;
-
-&lt;p&gt;return its level order traversal as:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;[[3],&lt;/p&gt;
-
-&lt;p&gt;[9,20],&lt;/p&gt;
-
-&lt;p&gt;[15,7]]&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;解答-9&#34;&gt;解答：&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
-class Solution {
-    List&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; all;
-    public List&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; levelOrder(TreeNode root) {
-        all = new ArrayList&amp;lt;&amp;gt;();
-        if(root==null){return all;}
-        get(root,0);
-        return all;
-    }
-    public void get(TreeNode node,int depth){
-        if(node==null){return;}
-        //深度depth的all不存在，则向all内添加List
-        if(all.size()&amp;lt;=depth){all.add(new ArrayList&amp;lt;&amp;gt;());}
-        all.get(depth).add(node.val);
-        depth++;
-        get(node.left,depth);
-        get(node.right,depth);
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;convert-sorted-array-to-binary-search-tree&#34;&gt;Convert Sorted Array to Binary Search Tree&lt;/h2&gt;
-
-&lt;p&gt;Given an array where elements are sorted in ascending order, convert it to a height balanced BST.&lt;/p&gt;
-
-&lt;p&gt;For this problem, a height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Given the sorted array: [-10,-3,0,5,9],&lt;/p&gt;
-
-&lt;p&gt;One possible answer is: [0,-3,9,-10,null,5], which represents the following height balanced BST&lt;/p&gt;
-
-&lt;p&gt;[0,-10,5,null,-3,null,9]&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;解答-10&#34;&gt;解答：&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
-class Solution {
-    public TreeNode sortedArrayToBST(int[] nums) {
-        return toBST(nums,0,nums.length-1);
-    }
-    public TreeNode toBST(int[] nums,int low,int high){
-        if(low&amp;gt;high){return null;}
-        int mid = low+(high-low)/2;
-        TreeNode node = new TreeNode(nums[mid]);
-        node.left = toBST(nums,low,mid-1);
-        node.right = toBST(nums,mid+1,high);
-        return node;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;validate-binary-search-tree&#34;&gt;Validate Binary Search Tree&lt;/h2&gt;
-
-&lt;p&gt;Given a binary tree, determine if it is a valid binary search tree (BST).&lt;/p&gt;
-
-&lt;p&gt;Assume a BST is defined as follows:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;The left subtree of a node contains only nodes with keys less than the node&amp;rsquo;s key.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;The right subtree of a node contains only nodes with keys greater than the node&amp;rsquo;s key.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Both the left and right subtrees must also be binary search trees.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Input: [2,1,3]&lt;/p&gt;
-
-&lt;p&gt;Output: true&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Input: [5,1,4,null,null,3,6]&lt;/p&gt;
-
-&lt;p&gt;Output: false&lt;/p&gt;
-
-&lt;p&gt;Explanation: The input is: [5,1,4,null,null,3,6]. The root node&amp;rsquo;s value is 5 but its right child&amp;rsquo;s value is 4.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;解答-11&#34;&gt;解答：&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
-class Solution {
-    //0ms
-    public boolean isValidBST(TreeNode root) {
-        return helper(root, null, null);
-    }
-    public boolean helper(TreeNode node,Integer upper,Integer lower) {
-        if(node == null){return true;}
-        if(upper != null &amp;amp;&amp;amp; node.val &amp;gt;= upper){return false;}
-        if(lower != null &amp;amp;&amp;amp; node.val &amp;lt;= lower){return false;}
-        return helper(node.left,node.val,lower) &amp;amp;&amp;amp; helper(node.right, upper,node.val);
-    } 
-    //使用堆栈，6ms
-    Stack&amp;lt;Integer&amp;gt; stack;
-    public boolean isValidBST(TreeNode root) {
-        if(root==null){return true;}
-        stack = new Stack&amp;lt;&amp;gt;();
-        get(root);
-        while(!stack.isEmpty()){
-            int pop = stack.pop();
-            if(!stack.isEmpty()&amp;amp;&amp;amp;pop&amp;lt;=stack.peek()){return false;}
-        }
-        return true;
-    }
-    public void get(TreeNode node){
-        if(node!=null){
-            get(node.left);
-            stack.add(node.val);
-            get(node.right);
-        }
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;maximum-depth-of-binary-tree&#34;&gt;Maximum Depth of Binary Tree&lt;/h2&gt;
-
-&lt;p&gt;Given a binary tree, find its maximum depth.&lt;/p&gt;
-
-&lt;p&gt;The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; A leaf is a node with no children.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Given binary tree [3,9,20,null,null,15,7],&lt;/p&gt;
-
-&lt;p&gt;return its depth = 3.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;解答-12&#34;&gt;解答：&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
-class Solution {
-    public int maxDepth(TreeNode root) {
-        if(root==null){return 0;}
-        return Math.max(maxDepth(root.left),maxDepth(root.right))+1;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&#34;math&#34;&gt;Math&lt;/h1&gt;
-
-&lt;h2 id=&#34;roman-to-integer&#34;&gt;Roman to Integer&lt;/h2&gt;
-
-&lt;p&gt;Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.&lt;/p&gt;
-
-&lt;p&gt;I=1,V=5,X=10,L=50,C=100,D=500,M=1000&lt;/p&gt;
-
-&lt;p&gt;For example, two is written as II in Roman numeral, just two one&amp;rsquo;s added together. Twelve is written as, XII, which is simply X + II. The number twenty seven is written as XXVII, which is XX + V + II.&lt;/p&gt;
-
-&lt;p&gt;Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not IIII. Instead, the number four is written as IV. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as IX. There are six instances where subtraction is used:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;I can be placed before V (5) and X (10) to make 4 and 9.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;X can be placed before L (50) and C (100) to make 40 and 90.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;C can be placed before D (500) and M (1000) to make 400 and 900.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Given a roman numeral, convert it to an integer. Input is guaranteed to be within the range from 1 to 3999.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Input: &amp;ldquo;III&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;Output: 3&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Input: &amp;ldquo;IV&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;Output: 4&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;em&gt;Example 3:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Input: &amp;ldquo;IX&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;Output: 9&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;em&gt;Example 4:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Input: &amp;ldquo;LVIII&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;Output: 58&lt;/p&gt;
-
-&lt;p&gt;Explanation: L = 50, V= 5, III = 3.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;em&gt;Example 5:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Input: &amp;ldquo;MCMXCIV&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;Output: 1994&lt;/p&gt;
-
-&lt;p&gt;Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;解答-13&#34;&gt;解答：&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-    public int romanToInt(String s) {
-        Map&amp;lt;Character,Integer&amp;gt; map = new HashMap&amp;lt;&amp;gt;();
-        map.put(&#39;I&#39;,1);
-        map.put(&#39;V&#39;,5);
-        map.put(&#39;X&#39;,10);
-        map.put(&#39;L&#39;,50);
-        map.put(&#39;C&#39;,100);
-        map.put(&#39;D&#39;,500);
-        map.put(&#39;M&#39;,1000);
-        int sum =0;
-        int pre = 0;
-        char[] chs = s.toCharArray();
-        for(char c:chs){
-            int num = map.get(c);
-            if(num&amp;gt;pre){sum = sum-2*pre+num;
-            //num-pre再减去前一轮加上的pre = num-2*pre
-            }else{sum+=num;}
-            pre = num;
-        }
-        return sum;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;fizz-buzz&#34;&gt;Fizz Buzz&lt;/h2&gt;
-
-&lt;p&gt;Write a program that outputs the string representation of numbers from 1 to n.&lt;/p&gt;
-
-&lt;p&gt;But for multiples of three it should output “Fizz” instead of the number and for the multiples of five output “Buzz”. For numbers which are multiples of both three and five output “FizzBuzz”.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;n = 15,&lt;/p&gt;
-
-&lt;p&gt;Return:[&amp;ldquo;1&amp;rdquo;,&amp;ldquo;2&amp;rdquo;,&amp;ldquo;Fizz&amp;rdquo;,&amp;ldquo;4&amp;rdquo;,&amp;ldquo;Buzz&amp;rdquo;,&amp;ldquo;Fizz&amp;rdquo;,&amp;ldquo;7&amp;rdquo;,&amp;ldquo;8&amp;rdquo;,&amp;ldquo;Fizz&amp;rdquo;,&amp;ldquo;Buzz&amp;rdquo;,&amp;ldquo;11&amp;rdquo;,&amp;ldquo;Fizz&amp;rdquo;,&amp;ldquo;13&amp;rdquo;,&amp;ldquo;14&amp;rdquo;,&amp;ldquo;FizzBuzz&amp;rdquo;]&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;解答-14&#34;&gt;解答：&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-    public List&amp;lt;String&amp;gt; fizzBuzz(int n) {
-        List&amp;lt;String&amp;gt; list = new ArrayList&amp;lt;&amp;gt;();
-        for(int i=1;i&amp;lt;=n;i++){
-            boolean isThree = i%3==0;
-            boolean isFive = i%5==0
-            if(isThree&amp;amp;&amp;amp;isFive){list.add(&amp;quot;FizzBuzz&amp;quot;);
-            }else if(isThree){list.add(&amp;quot;Fizz&amp;quot;);
-            }else if(isFive){list.add(&amp;quot;Buzz&amp;quot;);
-            }else{list.add(String.valueOf(i));
-            }
-        }
-        return list;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;count-primes&#34;&gt;Count Primes&lt;/h2&gt;
-
-&lt;p&gt;Count the number of prime numbers &lt;em&gt;less than&lt;/em&gt; a non-negative number, n.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Input: 10&lt;/p&gt;
-
-&lt;p&gt;Output: 4&lt;/p&gt;
-
-&lt;p&gt;Explanation: There are 4 prime numbers less than 10, they are 2, 3, 5, 7.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;解答-15&#34;&gt;解答：&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-    //筛法求素数：若已知一个数为素数，则该数的倍数均非素数。
-    //21ms，筛法求素数
-    public int countPrimes(int n) {
-        boolean[] isPrime = new boolean[n];
-        int count = 0;
-        for(int i=2;i&amp;lt;n;i++){
-            if(isPrime[i]==false){
-                count++;
-                for(int j=2;j*i&amp;lt;n;j++){isPrime[j*i]=true;}
-            }
-        }
-        return count;
-    }
-    //120ms，筛法求素数
-    public int countPrimes(int n) {
-        if(n==0||n==1){return 0;}
-        int[] num = new int[n];
-        int[] result = new int[n];
-        int count = 0;
-        for(int i=2;i&amp;lt;n;i++){
-            //是素数，存入result
-            if(num[i]==0){result[count++]=i;}
-            //将所求素数的倍数设为1，均非素数
-            for(int j=2*i;j&amp;lt;n;j+=i){num[j]=1;}
-        }
-        return count;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;power-of-three&#34;&gt;Power of Three&lt;/h2&gt;
-
-&lt;p&gt;Given an integer, write a function to determine if it is a power of three.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Input: 27&lt;/p&gt;
-
-&lt;p&gt;Output: true&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Input: 0&lt;/p&gt;
-
-&lt;p&gt;Output: false&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;em&gt;Example 3:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Input: 9&lt;/p&gt;
-
-&lt;p&gt;Output: true&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;em&gt;Example 4:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Input: 45&lt;/p&gt;
-
-&lt;p&gt;Output: false&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;解答-16&#34;&gt;解答：&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-    public boolean isPowerOfThree(int n) {
-        while(n&amp;gt;0){
-            if(n==1){return true;
-            }else if(n%3==0){n /=3;
-            }else{return false;}
-        }
-        return false;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&#34;string&#34;&gt;String&lt;/h1&gt;
-
-&lt;h2 id=&#34;string-to-integer-atoi&#34;&gt;String to Integer (atoi)&lt;/h2&gt;
-
-&lt;p&gt;Implement atoi which converts a string to an integer.&lt;/p&gt;
-
-&lt;p&gt;The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from this character, takes an optional initial plus or minus sign followed by as many numerical digits as possible, and interprets them as a numerical value.&lt;/p&gt;
-
-&lt;p&gt;The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function.&lt;/p&gt;
-
-&lt;p&gt;If the first sequence of non-whitespace characters in str is not a valid integral number, or if no such sequence exists because either str is empty or it contains only whitespace characters, no conversion is performed.&lt;/p&gt;
-
-&lt;p&gt;If no valid conversion could be performed, a zero value is returned.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Only the space character &amp;lsquo; &amp;rsquo; is considered as whitespace character.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−2^31,  2^31 − 1]. If the numerical value is out of the range of representable values, INT_MAX (2^31 − 1) or INT_MIN (−2^31) is returned.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Input: &amp;ldquo;42&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;Output: 42&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Input: &amp;ldquo;   -42&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;Output: -42&lt;/p&gt;
-
-&lt;p&gt;Explanation: The first non-whitespace character is &amp;lsquo;-&amp;rsquo;, which is the minus sign.&lt;/p&gt;
-
-&lt;p&gt;Then take as many numerical digits as possible, which gets 42.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;em&gt;Example 3:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Input: &amp;ldquo;4193 with words&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;Output: 4193&lt;/p&gt;
-
-&lt;p&gt;Explanation: Conversion stops at digit &amp;lsquo;3&amp;rsquo; as the next character is not a numerical digit.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;em&gt;Example 4:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Input: &amp;ldquo;words and 987&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;Output: 0&lt;/p&gt;
-
-&lt;p&gt;Explanation: The first non-whitespace character is &amp;lsquo;w&amp;rsquo;, which is not a numerical&lt;/p&gt;
-
-&lt;p&gt;digit or a +/- sign. Therefore no valid conversion could be performed.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;em&gt;Example 5:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Input: &amp;ldquo;-91283472332&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;Output: -2147483648&lt;/p&gt;
-
-&lt;p&gt;Explanation: The number &amp;ldquo;-91283472332&amp;rdquo; is out of the range of a 32-bit signed integer.&lt;/p&gt;
-
-&lt;p&gt;Thefore INT_MIN (−231) is returned.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;解答-17&#34;&gt;解答：&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-    public int myAtoi(String str) {
-        if(str.trim().length()&amp;lt;1||str==null){return 0;}
-        str = str.trim();
-        char c = str.charAt(0);
-        boolean flag = false;
-        if(c==&#39;-&#39;) {
-            flag = true;
-            str = str.substring(1,str.length());
-        }else if(c==&#39;+&#39;){str = str.substring(1,str.length());
-        }else if(c&amp;lt;&#39;0&#39;||c&amp;gt;&#39;9&#39;){return 0;}
-        //&amp;quot;-+2&amp;quot;
-        if(str.length()&amp;lt;1||str.charAt(0)&amp;lt;&#39;0&#39;||str.charAt(0)&amp;gt;&#39;9&#39;){return 0;}
-        //&amp;quot; 0000000123&amp;quot;
-        boolean isZero = true;
-        int zeroNum = 0;
-        for(int i=0;i&amp;lt;str.length();i++) {
-            char num = str.charAt(i);
-            if(isZero&amp;amp;&amp;amp;num==&#39;0&#39;) {zeroNum++;
-            }else {isZero = false;}
-            if(num&amp;lt;&#39;0&#39;||num&amp;gt;&#39;9&#39;){
-                str = str.substring(0,i);
-                break;
-            }
-        }
-        str = str.substring(zeroNum, str.length());
-        //&amp;quot;000000000&amp;quot;
-        if(str.length()&amp;lt;1) {return 0;}
-        //&amp;quot;200000000000000000000&amp;quot;，防止溢出
-        String MAX = String.valueOf(Integer.MAX_VALUE);
-        String MIN = String.valueOf(Integer.MIN_VALUE);
-        if(!flag&amp;amp;&amp;amp;str.length()&amp;gt;MAX.length()) {return Integer.MAX_VALUE;
-        }else if(flag&amp;amp;&amp;amp;str.length()&amp;gt;MIN.length()-1){return Integer.MIN_VALUE;
-        }
-        long result = flag?-1*Long.parseLong(str):Long.parseLong(str);
-        result = result&amp;gt;Integer.MAX_VALUE?Integer.MAX_VALUE:result;
-        result = result&amp;lt;Integer.MIN_VALUE?Integer.MIN_VALUE:result;
-        return (int)result;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;longest-common-prefix&#34;&gt;Longest Common Prefix&lt;/h2&gt;
-
-&lt;p&gt;Write a function to find the longest common prefix string amongst an array of strings.&lt;/p&gt;
-
-&lt;p&gt;If there is no common prefix, return an empty string &amp;ldquo;&amp;rdquo;.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Input: [&amp;ldquo;flower&amp;rdquo;,&amp;ldquo;flow&amp;rdquo;,&amp;ldquo;flight&amp;rdquo;]&lt;/p&gt;
-
-&lt;p&gt;Output: &amp;ldquo;fl&amp;rdquo;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Input: [&amp;ldquo;dog&amp;rdquo;,&amp;ldquo;racecar&amp;rdquo;,&amp;ldquo;car&amp;rdquo;]&lt;/p&gt;
-
-&lt;p&gt;Output: &amp;ldquo;&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;Explanation: There is no common prefix among the input strings.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;*Note:*All given inputs are in lowercase letters a-z.&lt;/p&gt;
-
-&lt;h3 id=&#34;解答-18&#34;&gt;解答：&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-    //排序后比较头尾
-    public String longestCommonPrefix(String[] strs) {
-        if(strs.length==0||strs==null){return &amp;quot;&amp;quot;;}
-        Arrays.sort(strs);
-        String pre = &amp;quot;&amp;quot;;
-        for(int i=0;i&amp;lt;strs[0].length();i++){
-            if(strs[0].charAt(i)==strs[strs.length-1].charAt(i)){
-                pre += strs[0].charAt(i);
-            }else{return pre;}
-        }
-        return pre;
-    }
-    //不断截取长度-1的字符串，直至符合
-    public String longestCommonPrefix(String[] strs) {
-        if(strs.length==0||strs==null){return &amp;quot;&amp;quot;;}
-        String pre=strs[0];
-        for(int i =0;i&amp;lt;strs.length;i++){
-            while(strs[i].indexOf(pre)!=0){
-                pre = pre.substring(0,pre.length()-1);
-            }
-        }
-        return pre;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;implement-strstr&#34;&gt;Implement strStr()&lt;/h2&gt;
-
-&lt;p&gt;Implement strStr().&lt;/p&gt;
-
-&lt;p&gt;Return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Input: haystack = &amp;ldquo;hello&amp;rdquo;, needle = &amp;ldquo;ll&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;Output: 2&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Input: haystack = &amp;ldquo;aaaaa&amp;rdquo;, needle = &amp;ldquo;bba&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;Output: -1&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;解答-19&#34;&gt;解答：&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-    //java API
-    public int strStr(String haystack, String needle) {
-        return haystack.indexOf(needle);
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;valid-anagram&#34;&gt;Valid Anagram&lt;/h2&gt;
-
-&lt;p&gt;Given two strings s and t , write a function to determine if t is an anagram of s.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Input: s = &amp;ldquo;anagram&amp;rdquo;, t = &amp;ldquo;nagaram&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;Output: true&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Input: s = &amp;ldquo;rat&amp;rdquo;, t = &amp;ldquo;car&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;Output: false&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;*Note:*You may assume the string contains only lowercase alphabets.&lt;/p&gt;
-
-&lt;h3 id=&#34;解答-20&#34;&gt;解答：&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-    //存入字母表，判断字母表个数，1ms
-    public boolean isAnagram(String s, String t) {
-        if(s.length()!=t.length()){return false;}
-        int[] charMap = new int[26];
-        char[] sc = s.toCharArray();
-        char[] tc  = t.toCharArray();
-        for(char csc:sc){charMap[csc-&#39;a&#39;]++;}
-        for(char ctc:tc){charMap[ctc-&#39;a&#39;]--;}
-        for(int i:charMap){
-            if(i!=0){return false;}
-        }
-        return true;
-    }
-    //转数组并排序比较是否匹配
-    public boolean isAnagram(String s, String t) {
-        if(s.length()!=t.length()){return false;}
-        char[] sc = s.toCharArray();
-        char[] tc  = t.toCharArray();
-        Arrays.sort(sc);
-        Arrays.sort(tc);
-        return Arrays.equals(sc,tc);
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;first-unique-character-in-a-string&#34;&gt;First Unique Character in a String&lt;/h2&gt;
-
-&lt;p&gt;Given a string, find the first non-repeating character in it and return it&amp;rsquo;s index. If it doesn&amp;rsquo;t exist, return -1.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; You may assume the string contain only lowercase letters.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Examples:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;s = &amp;ldquo;leetcode&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;return 0.&lt;/p&gt;
-
-&lt;p&gt;s = &amp;ldquo;loveleetcode&amp;rdquo;,&lt;/p&gt;
-
-&lt;p&gt;return 2.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;解答-21&#34;&gt;解答：&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-    public int firstUniqChar(String s) {
-        for(int i=0;i&amp;lt;s.length();i++) {
-            if(s.indexOf(s.charAt(i))==s.lastIndexOf(s.charAt(i))) {
-                return i;
-            }
-        }
-        return -1;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;valid-palindrome&#34;&gt;Valid Palindrome&lt;/h2&gt;
-
-&lt;h2 id=&#34;回文&#34;&gt;回文&lt;/h2&gt;
-
-&lt;h3 id=&#34;解答-22&#34;&gt;解答：&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public boolean isPalindrome(String s) {
-    char[] str = s.toLowerCase().toCharArray();
-    int i=0;
-    int j=str.length-1;
-    while(i&amp;lt;j) {
-        while(i&amp;lt;str.length&amp;amp;&amp;amp;!isChar(str[i])) {
-            i++;
-        }
-        while(j&amp;gt;=0&amp;amp;&amp;amp;!isChar(str[j])) {
-            j--;
-        }
-        if(i&amp;lt;j&amp;amp;&amp;amp;str[i]!=str[j]) {
-            return false;
-        }
-        i++;
-        j--;
-    }
-    return true;
-}
-public boolean isChar(char c) {
-    return (&#39;a&#39;&amp;lt;=c&amp;amp;&amp;amp;c&amp;lt;=&#39;z&#39;)||(&#39;A&#39;&amp;lt;=c&amp;amp;&amp;amp;c&amp;lt;=&#39;Z&#39;)||(c&amp;gt;=&#39;0&#39;&amp;amp;&amp;amp;c&amp;lt;=&#39;9&#39;);
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;reverse-integer&#34;&gt;Reverse Integer&lt;/h2&gt;
-
-&lt;p&gt;Given a 32-bit signed integer, reverse digits of an integer.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt;
-Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−2^31,  2^31 − 1]. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.&lt;/p&gt;
-
-&lt;h3 id=&#34;解答-23&#34;&gt;解答：&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-    public int reverse(int x) {
-        //数值
-        if(x&amp;gt;Integer.MAX_VALUE||x&amp;lt;Integer.MIN_VALUE){
-            return 0;
-        }
-        long num = 0;
-        while(x!=0) {
-            num*=10;
-            num += x%10;
-            x /= 10;
-        }
-        if(num&amp;lt;=Integer.MAX_VALUE&amp;amp;&amp;amp;num&amp;gt;=Integer.MIN_VALUE){
-            return (int)num;
-        }
-        return 0;
-        //转换字符串
-        boolean flag = false;
-        long num = x;
-        if(num&amp;lt;0) {
-            num *=-1;
-            flag = true;
-        }
-        String str = new StringBuffer(String.valueOf(num)).reverse().toString();
-        num = Long.parseLong(str);
-        if(num&amp;gt;Integer.MAX_VALUE ||num&amp;lt;Integer.MIN_VALUE ){
-            return 0;
-        }else if(flag) {
-            num*=-1;
-        }
-        return (int)num;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;reverse-string&#34;&gt;Reverse String&lt;/h2&gt;
-
-&lt;h2 id=&#34;反转字符串&#34;&gt;反转字符串&lt;/h2&gt;
-
-&lt;h3 id=&#34;解答-24&#34;&gt;解答：&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public String reverseString(String s) {
-    return new StringBuffer(s).reverse().toString();
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
     
     <item>
       <title>Top Interview Questions-Easy-①</title>
       <link>https://boseman1024.github.io/2018/top-interview-questions-easy-1/</link>
-      <pubDate>Thu, 20 Sep 2018 21:47:14 +0000</pubDate>
+      <pubDate>Fri, 28 Sep 2018 21:47:14 +0000</pubDate>
       
       <guid>https://boseman1024.github.io/2018/top-interview-questions-easy-1/</guid>
       <description>
@@ -2485,256 +1206,1281 @@ int len = removeDuplicates(nums);&lt;/p&gt;
     </item>
     
     <item>
-      <title>Top Interview Questions-Medium-①</title>
-      <link>https://boseman1024.github.io/2018/top-interview-questions-medium-1/</link>
-      <pubDate>Thu, 20 Sep 2018 21:47:14 +0000</pubDate>
+      <title>Top Interview Questions-Easy-②</title>
+      <link>https://boseman1024.github.io/2018/top-interview-questions-easy-2/</link>
+      <pubDate>Thu, 27 Sep 2018 15:08:22 +0000</pubDate>
       
-      <guid>https://boseman1024.github.io/2018/top-interview-questions-medium-1/</guid>
+      <guid>https://boseman1024.github.io/2018/top-interview-questions-easy-2/</guid>
       <description>
 
-&lt;h1 id=&#34;array-and-strings&#34;&gt;Array and Strings&lt;/h1&gt;
+&lt;h1 id=&#34;dynamic-programming&#34;&gt;Dynamic Programming&lt;/h1&gt;
 
-&lt;h2 id=&#34;group-anagrams&#34;&gt;Group Anagrams&lt;/h2&gt;
+&lt;h2 id=&#34;maximum-subarray&#34;&gt;Maximum Subarray&lt;/h2&gt;
 
-&lt;p&gt;Given an array of strings, group anagrams together.&lt;/p&gt;
+&lt;p&gt;Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;Input: [&amp;ldquo;eat&amp;rdquo;, &amp;ldquo;tea&amp;rdquo;, &amp;ldquo;tan&amp;rdquo;, &amp;ldquo;ate&amp;rdquo;, &amp;ldquo;nat&amp;rdquo;, &amp;ldquo;bat&amp;rdquo;],&lt;/p&gt;
+&lt;p&gt;Input: [-2,1,-3,4,-1,2,1,-5,4],&lt;/p&gt;
 
-&lt;p&gt;Output:[[&amp;ldquo;ate&amp;rdquo;,&amp;ldquo;eat&amp;rdquo;,&amp;ldquo;tea&amp;rdquo;],&lt;/p&gt;
+&lt;p&gt;Output: 6&lt;/p&gt;
 
-&lt;p&gt;[&amp;ldquo;nat&amp;rdquo;,&amp;ldquo;tan&amp;rdquo;],&lt;/p&gt;
-
-&lt;p&gt;[&amp;ldquo;bat&amp;rdquo;]]&lt;/p&gt;
+&lt;p&gt;Explanation: [4,-1,2,1] has the largest sum = 6.&lt;/p&gt;
 &lt;/blockquote&gt;
-
-&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;All inputs will be in lowercase.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;The order of your output does not matter.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
 
 &lt;h3 id=&#34;解答&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-    //16ms，key为字母排序后的字符串，检验map中是否存在key
-    public List&amp;lt;List&amp;lt;String&amp;gt;&amp;gt; groupAnagrams(String[] strs) {
-        if(strs==null || strs.length==0) return null;
-        HashMap&amp;lt;String,List&amp;lt;String&amp;gt;&amp;gt; map = new HashMap&amp;lt;&amp;gt;();
-        for(String s : strs){
-            char[] key=s.toCharArray();
-            Arrays.sort(key);
-            String st=String.valueOf(key);
-            if(!map.containsKey(st)) map.put(st,new ArrayList());
-            map.get(st).add(s);
+    public int maxSubArray(int[] nums) {
+        if(nums.length&amp;lt;1||nums==null) {return 0;}
+        int sum = nums[0];
+        int temp = 0;
+        for(int i:nums){
+            temp+=i;
+            sum = Math.max(sum,temp);
+            temp = temp&amp;lt;0?0:temp;
         }
-        return new ArrayList(map.values());        
-    }
-    //775 ms，每个字符串排序字母后比较每个List&amp;lt;String&amp;gt;的排序字母后的字符串
-    public List&amp;lt;List&amp;lt;String&amp;gt;&amp;gt; groupAnagrams(String[] strs) {
-        List&amp;lt;List&amp;lt;String&amp;gt;&amp;gt; group = new ArrayList&amp;lt;&amp;gt;();
-            for(String s:strs){
-                char[] temp = s.toCharArray();
-                Arrays.sort(temp);
-                String sortS = String.valueOf(temp);
-                boolean have = false;
-                for(List&amp;lt;String&amp;gt; list:group){
-                    if(s.length()!=list.get(0).length()){continue;}
-                    char[] chs = list.get(0).toCharArray();
-                    Arrays.sort(chs);
-                    String sortChs = String.valueOf(chs);
-                    if(sortChs.equals(sortS)) {
-                        have = true;
-                        list.add(s);
-                        break;
-                    }
-                }
-                if(!have) {
-                    List&amp;lt;String&amp;gt; newList = new ArrayList&amp;lt;&amp;gt;();
-                    newList.add(s);
-                    group.add(newList);
-                }
-          }
-        return group;
+        return sum;
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;linked-list&#34;&gt;Linked List&lt;/h1&gt;
+&lt;h2 id=&#34;best-time-to-buy-and-sell-stock&#34;&gt;Best Time to Buy and Sell Stock&lt;/h2&gt;
 
-&lt;h2 id=&#34;odd-even-linked-list&#34;&gt;Odd Even Linked List&lt;/h2&gt;
+&lt;p&gt;Say you have an array for which the ith element is the price of a given stock on day i.&lt;/p&gt;
 
-&lt;p&gt;Given a singly linked list, group all odd nodes together followed by the even nodes. Please note here we are talking about the node number and not the value in the nodes.&lt;/p&gt;
+&lt;p&gt;If you were only permitted to complete at most one transaction (i.e., buy one and sell one share of the stock), design an algorithm to find the maximum profit.&lt;/p&gt;
 
-&lt;p&gt;You should try to do it in place. The program should run in O(1) space complexity and O(nodes) time complexity.&lt;/p&gt;
+&lt;p&gt;Note that you cannot sell a stock before you buy one.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;Input: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5-&amp;gt;NULL&lt;/p&gt;
+&lt;p&gt;Input: [7,1,5,3,6,4]&lt;/p&gt;
 
-&lt;p&gt;Output: 1-&amp;gt;3-&amp;gt;5-&amp;gt;2-&amp;gt;4-&amp;gt;NULL&lt;/p&gt;
+&lt;p&gt;Output: 5&lt;/p&gt;
+
+&lt;p&gt;Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.&lt;/p&gt;
+
+&lt;p&gt;Not 7-1 = 6, as selling price needs to be larger than buying price.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;Input: 2-&amp;gt;1-&amp;gt;3-&amp;gt;5-&amp;gt;6-&amp;gt;4-&amp;gt;7-&amp;gt;NULL&lt;/p&gt;
+&lt;p&gt;Input: [7,6,4,3,1]&lt;/p&gt;
 
-&lt;p&gt;Output: 2-&amp;gt;3-&amp;gt;6-&amp;gt;7-&amp;gt;1-&amp;gt;5-&amp;gt;4-&amp;gt;NULL&lt;/p&gt;
+&lt;p&gt;Output: 0&lt;/p&gt;
+
+&lt;p&gt;Explanation: In this case, no transaction is done, i.e. max profit = 0.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&#34;解答-1&#34;&gt;解答：&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
- * }
- */
-class Solution {
-    public ListNode oddEvenList(ListNode head) {
-        if (head!=null){
-            ListNode odd=head,even=head.next,evenHead=even;
-            while(even!=null&amp;amp;&amp;amp;even.next!=null){
-                odd.next = odd.next.next; 
-                even.next = even.next.next; 
-                odd = odd.next;
-                even = even.next;
-            }
-            odd.next = evenHead; 
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    //2ms
+    public int maxProfit(int[] prices) {
+        int max = 0;
+        int minPrice = Integer.MAX_VALUE;
+        for(int i:prices){
+            minPrice = Math.min(i,minPrice);
+            max = Math.max(max,i-minPrice);
         }
-        return head;
+        return max;
     }
-    public ListNode oddEvenList(ListNode head) {
-        if(head==null||head.next==null||head.next.next==null){return head;}
-        ListNode odd = new ListNode(head.val);
-        ListNode startOdd = odd;
-        ListNode even = new ListNode(head.val);
-        ListNode startEven = even;
-        int count=1;
-        while(head!=null){
-            if(count%2==1){
-                odd.next = new ListNode(head.val);
-                odd = odd.next;
-            }else{
-                even.next = new ListNode(head.val);
-                even = even.next;
+    //400ms+
+    public int maxProfit(int[] prices) {
+        int max = 0;
+        for(int i=0;i&amp;lt;prices.length;i++){
+            for(int j=i+1;j&amp;lt;prices.length;j++){
+                if(prices[i]&amp;lt;prices[j]){
+                    max = Math.max(max,prices[j]-prices[i]);
+                }
             }
-            head=head.next;
-            count++;
         }
-        odd.next = startEven.next;
-        return startOdd.next;
+        return max;
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;add-two-numbers&#34;&gt;Add Two Numbers&lt;/h2&gt;
+&lt;hr /&gt;
 
-&lt;p&gt;You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.&lt;/p&gt;
+&lt;h1 id=&#34;others&#34;&gt;Others&lt;/h1&gt;
 
-&lt;p&gt;You may assume the two numbers do not contain any leading zero, except the number 0 itself.&lt;/p&gt;
+&lt;h2 id=&#34;valid-parentheses&#34;&gt;Valid Parentheses&lt;/h2&gt;
 
-&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Given a string containing just the characters &amp;lsquo;(&amp;rsquo;, &amp;lsquo;)&amp;rsquo;, &amp;lsquo;{&amp;rsquo;, &amp;lsquo;}&amp;rsquo;, &amp;lsquo;[&amp;rsquo; and &amp;lsquo;]&amp;rsquo;, determine if the input string is valid.&lt;/p&gt;
+
+&lt;p&gt;An input string is valid if:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Open brackets must be closed by the same type of brackets.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Open brackets must be closed in the correct order.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Note that an empty string is also considered valid.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;Input: (2 -&amp;gt; 4 -&amp;gt; 3) + (5 -&amp;gt; 6 -&amp;gt; 4)&lt;/p&gt;
+&lt;p&gt;Input: &amp;ldquo;()&amp;rdquo;&lt;/p&gt;
 
-&lt;p&gt;Output: 7 -&amp;gt; 0 -&amp;gt; 8&lt;/p&gt;
+&lt;p&gt;Output: true&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;p&gt;Explanation: 342 + 465 = 807.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: &amp;ldquo;()[]{}&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Output: true&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 3:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: &amp;ldquo;(]&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Output: false&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 4:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: &amp;ldquo;([)]&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Output: false&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 5:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: &amp;ldquo;{[]}&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Output: true&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&#34;解答-2&#34;&gt;解答：&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
- * }
- */
-class Solution {
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode node = new ListNode(0);
-        ListNode pre = node;
-        int sum = 0;
-        //l1=[6 7],l2=[6 7]
-        while(l1!=null||l2!=null){
-            if(l1!=null){
-                sum+=l1.val;
-                l1=l1.next;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public boolean isValid(String s) {
+        char[] chs =  s.toCharArray();
+        //使用堆栈，栈中仅存&#39;)、}、]&#39;,出栈时核验是否匹配
+        Stack&amp;lt;Character&amp;gt; stack = new Stack&amp;lt;&amp;gt;();
+        for (char c : s.toCharArray()) {
+            if (c == &#39;(&#39;) {stack.push(&#39;)&#39;);
+            } else if (c ==&#39;{&#39;) {stack.push(&#39;}&#39;);
+            } else if (c ==&#39;[&#39;) {stack.push(&#39;]&#39;);
+            } else if (stack.isEmpty() || stack.pop() != c) {
+                return false;
             }
-            if(l2!=null){
-                sum+=l2.val;
-                l2=l2.next;
-            }
-            /**
-             *sum=12/pre.next=2
-             *sum=1
-             *sum=15/pre.next=5
-             *sum=1
-             */
-            pre.next = new ListNode(sum%10);
-            pre = pre.next;
-            sum/=10;
         }
-        //pre.next=sum=1
-        if(sum==1){pre.next=new ListNode(1);}
-        return node.next;
+        return stack.isEmpty();
+        //使用Deque双向队列
+        Deque&amp;lt;Character&amp;gt; box = new ArrayDeque&amp;lt;&amp;gt;();
+        Map&amp;lt;Character,Character&amp;gt; map = new HashMap&amp;lt;&amp;gt;();
+        map.put(&#39;)&#39;,&#39;(&#39;);
+        map.put(&#39;}&#39;,&#39;{&#39;);
+        map.put(&#39;]&#39;,&#39;[&#39;);
+        for(char c:chs) {
+            if(c==&#39;(&#39;||c==&#39;{&#39;||c==&#39;[&#39;) {
+                box.addFirst(c);
+            }else {
+                char first = box.size()&amp;gt;0?box.peekFirst():&#39; &#39;;
+                if(first==&#39;]&#39;||first==&#39;}&#39;||first==&#39;)&#39;) {
+                    return false;
+                }else if(first==map.get(c)) {
+                    box.removeFirst();
+                }else {
+                    box.addLast(c);
+                }
+            }
+        }
+        return box.size()==0;
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;math&#34;&gt;Math&lt;/h1&gt;
+&lt;h2 id=&#34;pascal-s-triangle&#34;&gt;Pascal&amp;rsquo;s Triangle&lt;/h2&gt;
 
-&lt;h2 id=&#34;happy-number&#34;&gt;Happy Number&lt;/h2&gt;
+&lt;p&gt;Given a non-negative integer numRows, generate the first numRows of Pascal&amp;rsquo;s triangle.&lt;/p&gt;
 
-&lt;p&gt;Write an algorithm to determine if a number is &amp;ldquo;happy&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://upload.wikimedia.org/wikipedia/commons/0/0d/PascalTriangleAnimated2.gif&#34;&gt;&lt;/p&gt;
 
-&lt;p&gt;A happy number is a number defined by the following process: Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1. Those numbers for which this process ends in 1 are happy numbers.&lt;/p&gt;
+&lt;p&gt;In Pascal&amp;rsquo;s triangle, each number is the sum of the two numbers directly above it.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;Input: 19&lt;/p&gt;
+&lt;p&gt;Input: 5&lt;/p&gt;
 
-&lt;p&gt;Output: true&lt;/p&gt;
+&lt;p&gt;Output:[&lt;/p&gt;
 
-&lt;p&gt;Explanation:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;[1],&lt;/p&gt;&lt;/li&gt;
 
-&lt;p&gt;1^2 + 9^2 = 82&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;[1,1],&lt;/p&gt;&lt;/li&gt;
 
-&lt;p&gt;8^2 + 2^2 = 68&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;[1,2,1],&lt;/p&gt;&lt;/li&gt;
 
-&lt;p&gt;6^2 + 8^2 = 100&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;[1,3,3,1],&lt;/p&gt;&lt;/li&gt;
 
-&lt;p&gt;1^2 + 0^2 + 0^2 = 1&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;[1,4,6,4,1]]&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&#34;解答-3&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-    public boolean isHappy(int n) {
-        List&amp;lt;String&amp;gt; list = new ArrayList&amp;lt;&amp;gt;();
-        while(n!=1){
-            String s = String.valueOf(n);
-            list.add(s);
-            char[] chs = s.toCharArray();
-            n=0;
-            for(char c:chs){n+=Math.pow(Integer.parseInt(c+&amp;quot;&amp;quot;),2);}
-            if(list.contains(String.valueOf(n))){return false;}
+    public List&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; generate(int numRows) {
+        List&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; all = new ArrayList&amp;lt;&amp;gt;();
+        if(numRows&amp;lt;=0){return all;}
+        all.add(new ArrayList&amp;lt;&amp;gt;());
+        all.get(0).add(1);
+        if(numRows==1){return all;}
+        all.add(new ArrayList&amp;lt;&amp;gt;());
+        all.get(1).add(1);
+        all.get(1).add(1);
+        if(numRows==2){return all;}
+        for(int i=3;i&amp;lt;=numRows;i++){
+            all.add(new ArrayList&amp;lt;&amp;gt;());
+            List&amp;lt;Integer&amp;gt; now = all.get(i-1);
+            now.add(1);
+            List&amp;lt;Integer&amp;gt; pre = all.get(i-2);
+            for(int j=1;j&amp;lt;i-1;j++){
+                now.add(pre.get(j-1)+pre.get(j));
+            }
+            now.add(1);
+        }
+        return all;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;hamming-distance&#34;&gt;Hamming Distance&lt;/h2&gt;
+
+&lt;p&gt;The Hamming distance between two integers is the number of positions at which the corresponding bits are different.&lt;/p&gt;
+
+&lt;p&gt;Given two integers x and y, calculate the Hamming distance.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; 0 ≤ x, y &amp;lt; 2^31.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: x = 1, y = 4&lt;/p&gt;
+
+&lt;p&gt;Output: 2&lt;/p&gt;
+
+&lt;p&gt;Explanation:&lt;/p&gt;
+
+&lt;p&gt;1   (0 0 0 1)&lt;/p&gt;
+
+&lt;p&gt;4   (0 1 0 0)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;↑   ↑&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The above arrows point to positions where the corresponding bits are different.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-4&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public int hammingDistance(int x, int y) {
+        //得到x,y的异或值
+        int val = x^y;
+        //计算1的个数，方法同Number of 1 Bits
+        return Integer.bitCount(val);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;number-of-1-bits&#34;&gt;Number of 1 Bits&lt;/h2&gt;
+
+&lt;p&gt;Write a function that takes an unsigned integer and returns the number of &amp;lsquo;1&amp;rsquo; bits it has (also known as the Hamming weight).&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: 11&lt;/p&gt;
+
+&lt;p&gt;Output: 3&lt;/p&gt;
+
+&lt;p&gt;Explanation: Integer 11 has binary representation 00000000000000000000000000001011&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: 128
+Output: 1
+Explanation: Integer 128 has binary representation 00000000000000000000000010000000&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-5&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Solution {
+    public int hammingWeight(int n) {
+        /**与运算
+        *1：0000 0001
+        *2：0000 0010
+        *3：0000 0011
+        *4：0000 0100
+        *5：0000 0101
+        *6：0000 0110
+        *7：0000 0111
+        *8：0000 1000
+        *9：0000 1001
+        *10：0000 1010
+        *11：0000 1011
+        *------------
+        *0000 1010  = 10 = 11&amp;amp;10
+        *0000 1000  =  8 = 10&amp;amp;9
+        *0000 0000  =  0 = 8&amp;amp;7
+        */ 
+        int sum = 0;
+        while(n!=0){
+            sum++;
+            n&amp;amp;=n-1;
+        }
+        return sum;
+        //java API，返回1的个数
+        return Integer.bitCount(n);
+        // 转换为String判断每一位是否为1
+        if (n==0) {return 0;}
+        char[] chs = Integer.toBinaryString(n).toCharArray();
+        int count = 0;
+        for (int i=0; i &amp;lt; chs.length; i++) {
+            if (chs[i]==&#39;1&#39;){count++;}
+        }
+        return count;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;missing-number&#34;&gt;Missing Number&lt;/h2&gt;
+
+&lt;p&gt;Given an array containing n distinct numbers taken from 0, 1, 2, &amp;hellip;, n, find the one that is missing from the array.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [3,0,1]&lt;/p&gt;
+
+&lt;p&gt;Output: 2&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [9,6,4,2,3,5,7,0,1]&lt;/p&gt;
+
+&lt;p&gt;Output: 8&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-6&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    //0+1+2+……+n = n*(n+1)/2
+    public int missingNumber(int[] nums) {
+        int sum = nums.length*(nums.length+1)/2;
+        for(int i=0;i&amp;lt;nums.length;i++){sum-=nums[i];}
+        return sum;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;reverse-bits&#34;&gt;Reverse Bits&lt;/h2&gt;
+
+&lt;p&gt;Reverse bits of a given 32 bits unsigned integer.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: 43261596&lt;/p&gt;
+
+&lt;p&gt;Output: 964176192&lt;/p&gt;
+
+&lt;p&gt;Explanation:&lt;/p&gt;
+
+&lt;p&gt;43261596 represented in binary as 00000010100101000001111010011100,&lt;/p&gt;
+
+&lt;p&gt;return 964176192 represented in binary as 00111001011110000010100101000000.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-7&#34;&gt;解答&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Solution {
+    //位运算？不会
+    // you need treat n as an unsigned value
+    //转换为二进制字符串，不足位数前补0，反转字符串
+    public int reverseBits(int n) {
+        String s = Integer.toBinaryString(n);
+        int length = s.length();
+        for(int i=0;i&amp;lt;(32-length);i++) {s=&#39;0&#39;+s;}
+        String sb = new StringBuilder(s).reverse().toString();
+        return (int)Long.parseLong(sb,2);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;tree&#34;&gt;Tree&lt;/h1&gt;
+
+&lt;h2 id=&#34;symmetric-tree&#34;&gt;Symmetric Tree&lt;/h2&gt;
+
+&lt;p&gt;Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).&lt;/p&gt;
+
+&lt;p&gt;For example, this binary tree &lt;code&gt;[1,2,2,3,4,4,3]&lt;/code&gt; is symmetric&lt;/p&gt;
+
+&lt;p&gt;But the following &lt;code&gt;[1,2,2,null,3,null,3]&lt;/code&gt; is not&lt;/p&gt;
+
+&lt;h3 id=&#34;解答-8&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    //先将二叉树化为按层划分的集合，再做镜像校验
+    List&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; all;
+    public boolean isSymmetric(TreeNode root) {
+        if(root==null){return true;}
+        all = new ArrayList&amp;lt;&amp;gt;();
+        get(root,0);
+        //检验镜像
+        for(List&amp;lt;Integer&amp;gt; list:all){
+            int i=0;
+            while(list.size()&amp;gt;1&amp;amp;&amp;amp;i&amp;lt;list.size()/2){
+                if(list.get(i)!=list.get(list.size()-1-i)){
+                    return false;
+                }
+                i++;
+            }
         }
         return true;
     }
+    //同Binary Tree Level Order Traversal，但node为空则向集合添加null
+    public void get(TreeNode node,int depth){
+        if(all.size()&amp;lt;=depth){all.add(new ArrayList&amp;lt;&amp;gt;());}
+        if(node==null){all.get(depth).add(null);return;
+        }else{all.get(depth).add(node.val);}        
+        depth++;
+        get(node.left,depth);
+        get(node.right,depth);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;binary-tree-level-order-traversal&#34;&gt;Binary Tree Level Order Traversal&lt;/h2&gt;
+
+&lt;p&gt;Given a binary tree, return the level order traversal of its nodes&amp;rsquo; values. (ie, from left to right, level by level).&lt;/p&gt;
+
+&lt;p&gt;For example:
+Given binary tree &lt;code&gt;[3,9,20,null,null,15,7]&lt;/code&gt;,&lt;/p&gt;
+
+&lt;p&gt;return its level order traversal as:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;[[3],&lt;/p&gt;
+
+&lt;p&gt;[9,20],&lt;/p&gt;
+
+&lt;p&gt;[15,7]]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-9&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    List&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; all;
+    public List&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; levelOrder(TreeNode root) {
+        all = new ArrayList&amp;lt;&amp;gt;();
+        if(root==null){return all;}
+        get(root,0);
+        return all;
+    }
+    public void get(TreeNode node,int depth){
+        if(node==null){return;}
+        //深度depth的all不存在，则向all内添加List
+        if(all.size()&amp;lt;=depth){all.add(new ArrayList&amp;lt;&amp;gt;());}
+        all.get(depth).add(node.val);
+        depth++;
+        get(node.left,depth);
+        get(node.right,depth);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;convert-sorted-array-to-binary-search-tree&#34;&gt;Convert Sorted Array to Binary Search Tree&lt;/h2&gt;
+
+&lt;p&gt;Given an array where elements are sorted in ascending order, convert it to a height balanced BST.&lt;/p&gt;
+
+&lt;p&gt;For this problem, a height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Given the sorted array: [-10,-3,0,5,9],&lt;/p&gt;
+
+&lt;p&gt;One possible answer is: [0,-3,9,-10,null,5], which represents the following height balanced BST&lt;/p&gt;
+
+&lt;p&gt;[0,-10,5,null,-3,null,9]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-10&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public TreeNode sortedArrayToBST(int[] nums) {
+        return toBST(nums,0,nums.length-1);
+    }
+    public TreeNode toBST(int[] nums,int low,int high){
+        if(low&amp;gt;high){return null;}
+        int mid = low+(high-low)/2;
+        TreeNode node = new TreeNode(nums[mid]);
+        node.left = toBST(nums,low,mid-1);
+        node.right = toBST(nums,mid+1,high);
+        return node;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;validate-binary-search-tree&#34;&gt;Validate Binary Search Tree&lt;/h2&gt;
+
+&lt;p&gt;Given a binary tree, determine if it is a valid binary search tree (BST).&lt;/p&gt;
+
+&lt;p&gt;Assume a BST is defined as follows:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;The left subtree of a node contains only nodes with keys less than the node&amp;rsquo;s key.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The right subtree of a node contains only nodes with keys greater than the node&amp;rsquo;s key.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Both the left and right subtrees must also be binary search trees.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [2,1,3]&lt;/p&gt;
+
+&lt;p&gt;Output: true&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [5,1,4,null,null,3,6]&lt;/p&gt;
+
+&lt;p&gt;Output: false&lt;/p&gt;
+
+&lt;p&gt;Explanation: The input is: [5,1,4,null,null,3,6]. The root node&amp;rsquo;s value is 5 but its right child&amp;rsquo;s value is 4.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-11&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    //0ms
+    public boolean isValidBST(TreeNode root) {
+        return helper(root, null, null);
+    }
+    public boolean helper(TreeNode node,Integer upper,Integer lower) {
+        if(node == null){return true;}
+        if(upper != null &amp;amp;&amp;amp; node.val &amp;gt;= upper){return false;}
+        if(lower != null &amp;amp;&amp;amp; node.val &amp;lt;= lower){return false;}
+        return helper(node.left,node.val,lower) &amp;amp;&amp;amp; helper(node.right, upper,node.val);
+    } 
+    //使用堆栈，6ms
+    Stack&amp;lt;Integer&amp;gt; stack;
+    public boolean isValidBST(TreeNode root) {
+        if(root==null){return true;}
+        stack = new Stack&amp;lt;&amp;gt;();
+        get(root);
+        while(!stack.isEmpty()){
+            int pop = stack.pop();
+            if(!stack.isEmpty()&amp;amp;&amp;amp;pop&amp;lt;=stack.peek()){return false;}
+        }
+        return true;
+    }
+    public void get(TreeNode node){
+        if(node!=null){
+            get(node.left);
+            stack.add(node.val);
+            get(node.right);
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;maximum-depth-of-binary-tree&#34;&gt;Maximum Depth of Binary Tree&lt;/h2&gt;
+
+&lt;p&gt;Given a binary tree, find its maximum depth.&lt;/p&gt;
+
+&lt;p&gt;The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; A leaf is a node with no children.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Given binary tree [3,9,20,null,null,15,7],&lt;/p&gt;
+
+&lt;p&gt;return its depth = 3.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-12&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public int maxDepth(TreeNode root) {
+        if(root==null){return 0;}
+        return Math.max(maxDepth(root.left),maxDepth(root.right))+1;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;math&#34;&gt;Math&lt;/h1&gt;
+
+&lt;h2 id=&#34;roman-to-integer&#34;&gt;Roman to Integer&lt;/h2&gt;
+
+&lt;p&gt;Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.&lt;/p&gt;
+
+&lt;p&gt;I=1,V=5,X=10,L=50,C=100,D=500,M=1000&lt;/p&gt;
+
+&lt;p&gt;For example, two is written as II in Roman numeral, just two one&amp;rsquo;s added together. Twelve is written as, XII, which is simply X + II. The number twenty seven is written as XXVII, which is XX + V + II.&lt;/p&gt;
+
+&lt;p&gt;Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not IIII. Instead, the number four is written as IV. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as IX. There are six instances where subtraction is used:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;I can be placed before V (5) and X (10) to make 4 and 9.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;X can be placed before L (50) and C (100) to make 40 and 90.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;C can be placed before D (500) and M (1000) to make 400 and 900.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Given a roman numeral, convert it to an integer. Input is guaranteed to be within the range from 1 to 3999.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: &amp;ldquo;III&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Output: 3&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: &amp;ldquo;IV&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Output: 4&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 3:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: &amp;ldquo;IX&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Output: 9&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 4:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: &amp;ldquo;LVIII&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Output: 58&lt;/p&gt;
+
+&lt;p&gt;Explanation: L = 50, V= 5, III = 3.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 5:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: &amp;ldquo;MCMXCIV&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Output: 1994&lt;/p&gt;
+
+&lt;p&gt;Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-13&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public int romanToInt(String s) {
+        Map&amp;lt;Character,Integer&amp;gt; map = new HashMap&amp;lt;&amp;gt;();
+        map.put(&#39;I&#39;,1);
+        map.put(&#39;V&#39;,5);
+        map.put(&#39;X&#39;,10);
+        map.put(&#39;L&#39;,50);
+        map.put(&#39;C&#39;,100);
+        map.put(&#39;D&#39;,500);
+        map.put(&#39;M&#39;,1000);
+        int sum =0;
+        int pre = 0;
+        char[] chs = s.toCharArray();
+        for(char c:chs){
+            int num = map.get(c);
+            if(num&amp;gt;pre){sum = sum-2*pre+num;
+            //num-pre再减去前一轮加上的pre = num-2*pre
+            }else{sum+=num;}
+            pre = num;
+        }
+        return sum;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;fizz-buzz&#34;&gt;Fizz Buzz&lt;/h2&gt;
+
+&lt;p&gt;Write a program that outputs the string representation of numbers from 1 to n.&lt;/p&gt;
+
+&lt;p&gt;But for multiples of three it should output “Fizz” instead of the number and for the multiples of five output “Buzz”. For numbers which are multiples of both three and five output “FizzBuzz”.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;n = 15,&lt;/p&gt;
+
+&lt;p&gt;Return:[&amp;ldquo;1&amp;rdquo;,&amp;ldquo;2&amp;rdquo;,&amp;ldquo;Fizz&amp;rdquo;,&amp;ldquo;4&amp;rdquo;,&amp;ldquo;Buzz&amp;rdquo;,&amp;ldquo;Fizz&amp;rdquo;,&amp;ldquo;7&amp;rdquo;,&amp;ldquo;8&amp;rdquo;,&amp;ldquo;Fizz&amp;rdquo;,&amp;ldquo;Buzz&amp;rdquo;,&amp;ldquo;11&amp;rdquo;,&amp;ldquo;Fizz&amp;rdquo;,&amp;ldquo;13&amp;rdquo;,&amp;ldquo;14&amp;rdquo;,&amp;ldquo;FizzBuzz&amp;rdquo;]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-14&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public List&amp;lt;String&amp;gt; fizzBuzz(int n) {
+        List&amp;lt;String&amp;gt; list = new ArrayList&amp;lt;&amp;gt;();
+        for(int i=1;i&amp;lt;=n;i++){
+            boolean isThree = i%3==0;
+            boolean isFive = i%5==0
+            if(isThree&amp;amp;&amp;amp;isFive){list.add(&amp;quot;FizzBuzz&amp;quot;);
+            }else if(isThree){list.add(&amp;quot;Fizz&amp;quot;);
+            }else if(isFive){list.add(&amp;quot;Buzz&amp;quot;);
+            }else{list.add(String.valueOf(i));
+            }
+        }
+        return list;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;count-primes&#34;&gt;Count Primes&lt;/h2&gt;
+
+&lt;p&gt;Count the number of prime numbers &lt;em&gt;less than&lt;/em&gt; a non-negative number, n.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: 10&lt;/p&gt;
+
+&lt;p&gt;Output: 4&lt;/p&gt;
+
+&lt;p&gt;Explanation: There are 4 prime numbers less than 10, they are 2, 3, 5, 7.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-15&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    //筛法求素数：若已知一个数为素数，则该数的倍数均非素数。
+    //21ms，筛法求素数
+    public int countPrimes(int n) {
+        boolean[] isPrime = new boolean[n];
+        int count = 0;
+        for(int i=2;i&amp;lt;n;i++){
+            if(isPrime[i]==false){
+                count++;
+                for(int j=2;j*i&amp;lt;n;j++){isPrime[j*i]=true;}
+            }
+        }
+        return count;
+    }
+    //120ms，筛法求素数
+    public int countPrimes(int n) {
+        if(n==0||n==1){return 0;}
+        int[] num = new int[n];
+        int[] result = new int[n];
+        int count = 0;
+        for(int i=2;i&amp;lt;n;i++){
+            //是素数，存入result
+            if(num[i]==0){result[count++]=i;}
+            //将所求素数的倍数设为1，均非素数
+            for(int j=2*i;j&amp;lt;n;j+=i){num[j]=1;}
+        }
+        return count;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;power-of-three&#34;&gt;Power of Three&lt;/h2&gt;
+
+&lt;p&gt;Given an integer, write a function to determine if it is a power of three.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: 27&lt;/p&gt;
+
+&lt;p&gt;Output: true&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: 0&lt;/p&gt;
+
+&lt;p&gt;Output: false&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 3:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: 9&lt;/p&gt;
+
+&lt;p&gt;Output: true&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 4:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: 45&lt;/p&gt;
+
+&lt;p&gt;Output: false&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-16&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public boolean isPowerOfThree(int n) {
+        while(n&amp;gt;0){
+            if(n==1){return true;
+            }else if(n%3==0){n /=3;
+            }else{return false;}
+        }
+        return false;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;string&#34;&gt;String&lt;/h1&gt;
+
+&lt;h2 id=&#34;string-to-integer-atoi&#34;&gt;String to Integer (atoi)&lt;/h2&gt;
+
+&lt;p&gt;Implement atoi which converts a string to an integer.&lt;/p&gt;
+
+&lt;p&gt;The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from this character, takes an optional initial plus or minus sign followed by as many numerical digits as possible, and interprets them as a numerical value.&lt;/p&gt;
+
+&lt;p&gt;The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function.&lt;/p&gt;
+
+&lt;p&gt;If the first sequence of non-whitespace characters in str is not a valid integral number, or if no such sequence exists because either str is empty or it contains only whitespace characters, no conversion is performed.&lt;/p&gt;
+
+&lt;p&gt;If no valid conversion could be performed, a zero value is returned.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Only the space character &amp;lsquo; &amp;rsquo; is considered as whitespace character.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−2^31,  2^31 − 1]. If the numerical value is out of the range of representable values, INT_MAX (2^31 − 1) or INT_MIN (−2^31) is returned.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: &amp;ldquo;42&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Output: 42&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: &amp;ldquo;   -42&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Output: -42&lt;/p&gt;
+
+&lt;p&gt;Explanation: The first non-whitespace character is &amp;lsquo;-&amp;rsquo;, which is the minus sign.&lt;/p&gt;
+
+&lt;p&gt;Then take as many numerical digits as possible, which gets 42.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 3:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: &amp;ldquo;4193 with words&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Output: 4193&lt;/p&gt;
+
+&lt;p&gt;Explanation: Conversion stops at digit &amp;lsquo;3&amp;rsquo; as the next character is not a numerical digit.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 4:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: &amp;ldquo;words and 987&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Output: 0&lt;/p&gt;
+
+&lt;p&gt;Explanation: The first non-whitespace character is &amp;lsquo;w&amp;rsquo;, which is not a numerical&lt;/p&gt;
+
+&lt;p&gt;digit or a +/- sign. Therefore no valid conversion could be performed.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 5:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: &amp;ldquo;-91283472332&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Output: -2147483648&lt;/p&gt;
+
+&lt;p&gt;Explanation: The number &amp;ldquo;-91283472332&amp;rdquo; is out of the range of a 32-bit signed integer.&lt;/p&gt;
+
+&lt;p&gt;Thefore INT_MIN (−231) is returned.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-17&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public int myAtoi(String str) {
+        if(str.trim().length()&amp;lt;1||str==null){return 0;}
+        str = str.trim();
+        char c = str.charAt(0);
+        boolean flag = false;
+        if(c==&#39;-&#39;) {
+            flag = true;
+            str = str.substring(1,str.length());
+        }else if(c==&#39;+&#39;){str = str.substring(1,str.length());
+        }else if(c&amp;lt;&#39;0&#39;||c&amp;gt;&#39;9&#39;){return 0;}
+        //&amp;quot;-+2&amp;quot;
+        if(str.length()&amp;lt;1||str.charAt(0)&amp;lt;&#39;0&#39;||str.charAt(0)&amp;gt;&#39;9&#39;){return 0;}
+        //&amp;quot; 0000000123&amp;quot;
+        boolean isZero = true;
+        int zeroNum = 0;
+        for(int i=0;i&amp;lt;str.length();i++) {
+            char num = str.charAt(i);
+            if(isZero&amp;amp;&amp;amp;num==&#39;0&#39;) {zeroNum++;
+            }else {isZero = false;}
+            if(num&amp;lt;&#39;0&#39;||num&amp;gt;&#39;9&#39;){
+                str = str.substring(0,i);
+                break;
+            }
+        }
+        str = str.substring(zeroNum, str.length());
+        //&amp;quot;000000000&amp;quot;
+        if(str.length()&amp;lt;1) {return 0;}
+        //&amp;quot;200000000000000000000&amp;quot;，防止溢出
+        String MAX = String.valueOf(Integer.MAX_VALUE);
+        String MIN = String.valueOf(Integer.MIN_VALUE);
+        if(!flag&amp;amp;&amp;amp;str.length()&amp;gt;MAX.length()) {return Integer.MAX_VALUE;
+        }else if(flag&amp;amp;&amp;amp;str.length()&amp;gt;MIN.length()-1){return Integer.MIN_VALUE;
+        }
+        long result = flag?-1*Long.parseLong(str):Long.parseLong(str);
+        result = result&amp;gt;Integer.MAX_VALUE?Integer.MAX_VALUE:result;
+        result = result&amp;lt;Integer.MIN_VALUE?Integer.MIN_VALUE:result;
+        return (int)result;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;longest-common-prefix&#34;&gt;Longest Common Prefix&lt;/h2&gt;
+
+&lt;p&gt;Write a function to find the longest common prefix string amongst an array of strings.&lt;/p&gt;
+
+&lt;p&gt;If there is no common prefix, return an empty string &amp;ldquo;&amp;rdquo;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [&amp;ldquo;flower&amp;rdquo;,&amp;ldquo;flow&amp;rdquo;,&amp;ldquo;flight&amp;rdquo;]&lt;/p&gt;
+
+&lt;p&gt;Output: &amp;ldquo;fl&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [&amp;ldquo;dog&amp;rdquo;,&amp;ldquo;racecar&amp;rdquo;,&amp;ldquo;car&amp;rdquo;]&lt;/p&gt;
+
+&lt;p&gt;Output: &amp;ldquo;&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Explanation: There is no common prefix among the input strings.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;*Note:*All given inputs are in lowercase letters a-z.&lt;/p&gt;
+
+&lt;h3 id=&#34;解答-18&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    //排序后比较头尾
+    public String longestCommonPrefix(String[] strs) {
+        if(strs.length==0||strs==null){return &amp;quot;&amp;quot;;}
+        Arrays.sort(strs);
+        String pre = &amp;quot;&amp;quot;;
+        for(int i=0;i&amp;lt;strs[0].length();i++){
+            if(strs[0].charAt(i)==strs[strs.length-1].charAt(i)){
+                pre += strs[0].charAt(i);
+            }else{return pre;}
+        }
+        return pre;
+    }
+    //不断截取长度-1的字符串，直至符合
+    public String longestCommonPrefix(String[] strs) {
+        if(strs.length==0||strs==null){return &amp;quot;&amp;quot;;}
+        String pre=strs[0];
+        for(int i =0;i&amp;lt;strs.length;i++){
+            while(strs[i].indexOf(pre)!=0){
+                pre = pre.substring(0,pre.length()-1);
+            }
+        }
+        return pre;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;implement-strstr&#34;&gt;Implement strStr()&lt;/h2&gt;
+
+&lt;p&gt;Implement strStr().&lt;/p&gt;
+
+&lt;p&gt;Return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: haystack = &amp;ldquo;hello&amp;rdquo;, needle = &amp;ldquo;ll&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Output: 2&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: haystack = &amp;ldquo;aaaaa&amp;rdquo;, needle = &amp;ldquo;bba&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Output: -1&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-19&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    //java API
+    public int strStr(String haystack, String needle) {
+        return haystack.indexOf(needle);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;valid-anagram&#34;&gt;Valid Anagram&lt;/h2&gt;
+
+&lt;p&gt;Given two strings s and t , write a function to determine if t is an anagram of s.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: s = &amp;ldquo;anagram&amp;rdquo;, t = &amp;ldquo;nagaram&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Output: true&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: s = &amp;ldquo;rat&amp;rdquo;, t = &amp;ldquo;car&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Output: false&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;*Note:*You may assume the string contains only lowercase alphabets.&lt;/p&gt;
+
+&lt;h3 id=&#34;解答-20&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    //存入字母表，判断字母表个数，1ms
+    public boolean isAnagram(String s, String t) {
+        if(s.length()!=t.length()){return false;}
+        int[] charMap = new int[26];
+        char[] sc = s.toCharArray();
+        char[] tc  = t.toCharArray();
+        for(char csc:sc){charMap[csc-&#39;a&#39;]++;}
+        for(char ctc:tc){charMap[ctc-&#39;a&#39;]--;}
+        for(int i:charMap){
+            if(i!=0){return false;}
+        }
+        return true;
+    }
+    //转数组并排序比较是否匹配
+    public boolean isAnagram(String s, String t) {
+        if(s.length()!=t.length()){return false;}
+        char[] sc = s.toCharArray();
+        char[] tc  = t.toCharArray();
+        Arrays.sort(sc);
+        Arrays.sort(tc);
+        return Arrays.equals(sc,tc);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;first-unique-character-in-a-string&#34;&gt;First Unique Character in a String&lt;/h2&gt;
+
+&lt;p&gt;Given a string, find the first non-repeating character in it and return it&amp;rsquo;s index. If it doesn&amp;rsquo;t exist, return -1.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; You may assume the string contain only lowercase letters.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Examples:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;s = &amp;ldquo;leetcode&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;return 0.&lt;/p&gt;
+
+&lt;p&gt;s = &amp;ldquo;loveleetcode&amp;rdquo;,&lt;/p&gt;
+
+&lt;p&gt;return 2.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-21&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public int firstUniqChar(String s) {
+        for(int i=0;i&amp;lt;s.length();i++) {
+            if(s.indexOf(s.charAt(i))==s.lastIndexOf(s.charAt(i))) {
+                return i;
+            }
+        }
+        return -1;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;valid-palindrome&#34;&gt;Valid Palindrome&lt;/h2&gt;
+
+&lt;h2 id=&#34;回文&#34;&gt;回文&lt;/h2&gt;
+
+&lt;h3 id=&#34;解答-22&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public boolean isPalindrome(String s) {
+    char[] str = s.toLowerCase().toCharArray();
+    int i=0;
+    int j=str.length-1;
+    while(i&amp;lt;j) {
+        while(i&amp;lt;str.length&amp;amp;&amp;amp;!isChar(str[i])) {
+            i++;
+        }
+        while(j&amp;gt;=0&amp;amp;&amp;amp;!isChar(str[j])) {
+            j--;
+        }
+        if(i&amp;lt;j&amp;amp;&amp;amp;str[i]!=str[j]) {
+            return false;
+        }
+        i++;
+        j--;
+    }
+    return true;
+}
+public boolean isChar(char c) {
+    return (&#39;a&#39;&amp;lt;=c&amp;amp;&amp;amp;c&amp;lt;=&#39;z&#39;)||(&#39;A&#39;&amp;lt;=c&amp;amp;&amp;amp;c&amp;lt;=&#39;Z&#39;)||(c&amp;gt;=&#39;0&#39;&amp;amp;&amp;amp;c&amp;lt;=&#39;9&#39;);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;reverse-integer&#34;&gt;Reverse Integer&lt;/h2&gt;
+
+&lt;p&gt;Given a 32-bit signed integer, reverse digits of an integer.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt;
+Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−2^31,  2^31 − 1]. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.&lt;/p&gt;
+
+&lt;h3 id=&#34;解答-23&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public int reverse(int x) {
+        //数值
+        if(x&amp;gt;Integer.MAX_VALUE||x&amp;lt;Integer.MIN_VALUE){
+            return 0;
+        }
+        long num = 0;
+        while(x!=0) {
+            num*=10;
+            num += x%10;
+            x /= 10;
+        }
+        if(num&amp;lt;=Integer.MAX_VALUE&amp;amp;&amp;amp;num&amp;gt;=Integer.MIN_VALUE){
+            return (int)num;
+        }
+        return 0;
+        //转换字符串
+        boolean flag = false;
+        long num = x;
+        if(num&amp;lt;0) {
+            num *=-1;
+            flag = true;
+        }
+        String str = new StringBuffer(String.valueOf(num)).reverse().toString();
+        num = Long.parseLong(str);
+        if(num&amp;gt;Integer.MAX_VALUE ||num&amp;lt;Integer.MIN_VALUE ){
+            return 0;
+        }else if(flag) {
+            num*=-1;
+        }
+        return (int)num;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;reverse-string&#34;&gt;Reverse String&lt;/h2&gt;
+
+&lt;h2 id=&#34;反转字符串&#34;&gt;反转字符串&lt;/h2&gt;
+
+&lt;h3 id=&#34;解答-24&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public String reverseString(String s) {
+    return new StringBuffer(s).reverse().toString();
 }
 &lt;/code&gt;&lt;/pre&gt;
 </description>
