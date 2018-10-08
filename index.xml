@@ -6,8 +6,776 @@
     <description>Recent content in KUMA2X on KUMA2X</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 28 Sep 2018 21:47:14 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 29 Sep 2018 22:59:34 +0000</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Top Interview Questions-Medium-①</title>
+      <link>https://boseman1024.github.io/2018/top-interview-questions-medium-1/</link>
+      <pubDate>Sat, 29 Sep 2018 22:59:34 +0000</pubDate>
+      
+      <guid>https://boseman1024.github.io/2018/top-interview-questions-medium-1/</guid>
+      <description>
+
+&lt;h1 id=&#34;trees-and-graphs&#34;&gt;Trees and Graphs&lt;/h1&gt;
+
+&lt;h2 id=&#34;number-of-islands&#34;&gt;Number of Islands&lt;/h2&gt;
+
+&lt;h2 id=&#34;求出岛屿个数&#34;&gt;求出岛屿个数&lt;/h2&gt;
+
+&lt;p&gt;Given a 2d grid map of *&amp;lsquo;1&amp;rsquo;*s (land) and &lt;em&gt;&amp;lsquo;0&amp;rsquo;s&lt;/em&gt; (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.&lt;/p&gt;
+
+&lt;p&gt;无向图遍历，1为可移动区域&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input:&lt;/p&gt;
+
+&lt;p&gt;11110&lt;/p&gt;
+
+&lt;p&gt;11010&lt;/p&gt;
+
+&lt;p&gt;11000&lt;/p&gt;
+
+&lt;p&gt;00000&lt;/p&gt;
+
+&lt;p&gt;Output: 1&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input:&lt;/p&gt;
+
+&lt;p&gt;11000&lt;/p&gt;
+
+&lt;p&gt;11000&lt;/p&gt;
+
+&lt;p&gt;00100&lt;/p&gt;
+
+&lt;p&gt;00011&lt;/p&gt;
+
+&lt;p&gt;Output: 3&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public int numIslands(char[][] grid) {
+        int rows = grid.length;
+        if(rows==0){return 0;}
+        int cols = grid[0].length;
+        int count=0;
+        for(int i=0;i&amp;lt;rows;i++){
+            for(int j=0;j&amp;lt;cols;j++){
+                if(grid[i][j]==&#39;1&#39;){
+                    dfs(grid,i,j,rows,cols);
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+    //深度搜索
+    public void dfs(char[][] grid,int i,int j,int rows,int cols){
+        if(i&amp;lt;0||j&amp;lt;0||i&amp;gt;=rows||j&amp;gt;=cols||grid[i][j]==&#39;0&#39;){return;}
+        //剩下的grid[i][j]都为1
+        //将已访问点设为0
+        grid[i][j]=&#39;0&#39;;
+        dfs(grid,i,j+1,rows,cols);
+        dfs(grid,i,j-1,rows,cols);
+        dfs(grid,i+1,j,rows,cols);
+        dfs(grid,i-1,j,rows,cols);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;kth-smallest-element-in-a-bst&#34;&gt;Kth Smallest Element in a BST&lt;/h2&gt;
+
+&lt;h2 id=&#34;找出第k小的数&#34;&gt;找出第K小的数&lt;/h2&gt;
+
+&lt;p&gt;Given a binary search tree, write a function &lt;em&gt;kthSmallest&lt;/em&gt; to find the kth smallest element in it.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;You may assume k is always valid, 1 ≤ k ≤ BST&amp;rsquo;s total elements.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: root = [3,1,4,null,2], k = 1&lt;/p&gt;
+
+&lt;p&gt;Output: 1&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: root = [5,3,6,2,4,null,null,1], k = 3&lt;/p&gt;
+
+&lt;p&gt;Output: 3&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-1&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    //中序遍历找出第K小的数
+    public int kthSmallest(TreeNode root, int k) {
+        Stack&amp;lt;TreeNode&amp;gt; stack = new Stack&amp;lt;&amp;gt;();
+        stack.push(root);
+        TreeNode node = root;
+        while(node!=null||!stack.empty()){
+            while(node!=null){
+                stack.push(node);
+                node = node.left;
+            }
+            if(!stack.empty()){
+                node = stack.pop();
+                k--;
+                if(k==0){
+                    return node.val;
+                }
+                node = node.right;
+            }
+        }
+        return root.val;
+        
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;binary-tree-inorder-traversal&#34;&gt;Binary Tree Inorder Traversal&lt;/h2&gt;
+
+&lt;h2 id=&#34;二叉树非递归中序遍历&#34;&gt;二叉树非递归中序遍历&lt;/h2&gt;
+
+&lt;p&gt;Given a binary tree, return the inorder traversal of its nodes&amp;rsquo; values.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [1,null,2,3]&lt;/p&gt;
+
+&lt;p&gt;Output: [1,3,2]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Follow up:&lt;/em&gt; Recursive solution is trivial, could you do it iteratively?&lt;/p&gt;
+
+&lt;h3 id=&#34;解答-2&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public List&amp;lt;Integer&amp;gt; inorderTraversal(TreeNode root) {
+        List&amp;lt;Integer&amp;gt; list = new ArrayList&amp;lt;&amp;gt;();
+        Stack&amp;lt;TreeNode&amp;gt; stack = new Stack&amp;lt;&amp;gt;();
+        TreeNode node=root;
+        while(node!=null||!stack.empty()){
+            while(node!=null){
+                stack.push(node);
+                node = node.left;
+            }
+            if(!stack.empty()){
+                node = stack.pop();
+                list.add(node.val);
+                node = node.right;
+            }
+        }
+        return list;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;sorting-and-searching&#34;&gt;Sorting and Searching&lt;/h1&gt;
+
+&lt;h2 id=&#34;search-in-rotated-sorted-array&#34;&gt;Search in Rotated Sorted Array&lt;/h2&gt;
+
+&lt;h2 id=&#34;找出一个数在旋转有序数组中的索引&#34;&gt;找出一个数在旋转有序数组中的索引&lt;/h2&gt;
+
+&lt;p&gt;Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.&lt;/p&gt;
+
+&lt;p&gt;(i.e., [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]).&lt;/p&gt;
+
+&lt;p&gt;You are given a target value to search. If found in the array return its index, otherwise return -1.&lt;/p&gt;
+
+&lt;p&gt;You may assume no duplicate exists in the array.&lt;/p&gt;
+
+&lt;p&gt;Your algorithm&amp;rsquo;s runtime complexity must be in the order of O(log n).&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: nums = [4,5,6,7,0,1,2], target = 0&lt;/p&gt;
+
+&lt;p&gt;Output: 4&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: nums = [4,5,6,7,0,1,2], target = 3&lt;/p&gt;
+
+&lt;p&gt;Output: -1&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-3&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public int search(int[] nums, int target) {
+        //找出旋转轴，判断旋转轴与目标的大小，决定目标处于旋转轴哪个区间
+        //二分查找
+        if(nums.length==0){return -1;}
+        int rotatedIndex = binarySearchRotatedIndex(nums);
+        int index=-1;
+        if(nums[0]&amp;lt;=target&amp;amp;&amp;amp;nums[rotatedIndex]&amp;gt;=target){
+            index = binarySearch(0,rotatedIndex,nums,target);
+        }else{
+            index = binarySearch(rotatedIndex+1,nums.length-1,nums,target);
+        }
+        return index;
+    }
+    public int binarySearchRotatedIndex(int[] nums){
+        int low = 0;
+        int high = nums.length-1;
+        while(low&amp;lt;=high){
+            int mid = low+(high-low)/2;
+            if(mid==nums.length-1){return mid;}
+            if(nums[mid]&amp;gt;nums[mid+1]){
+                return mid;
+            }
+            if(nums[mid]&amp;gt;=nums[low]){
+                low = mid+1;
+            }else{
+                high = mid-1;
+            }
+        }
+        return low;
+    }
+    public int binarySearch(int low,int high,int[] nums,int target){
+        while(low&amp;lt;=high){
+            int mid = low+(high-low)/2;
+            if(nums[mid]&amp;gt;target){
+                high = mid - 1;
+            }else if(nums[mid]&amp;lt;target){
+                low = mid + 1;
+            }else{
+                return mid;
+            }
+        }
+        return -1;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;top-k-frequent-elements&#34;&gt;Top K Frequent Elements&lt;/h2&gt;
+
+&lt;h2 id=&#34;找出最频繁出现的k个数&#34;&gt;找出最频繁出现的K个数&lt;/h2&gt;
+
+&lt;p&gt;Given a non-empty array of integers, return the k most frequent elements.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: nums = [1,1,1,2,2,3], k = 2&lt;/p&gt;
+
+&lt;p&gt;Output: [1,2]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: nums = [1], k = 1&lt;/p&gt;
+
+&lt;p&gt;Output: [1]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;You may assume k is always valid, 1 ≤ k ≤ number of unique elements.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Your algorithm&amp;rsquo;s time complexity must be better than O(n log n), where n is the array&amp;rsquo;s size.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;解答-4&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    //24ms
+    public List&amp;lt;Integer&amp;gt; topKFrequent(int[] nums, int k) {
+        List&amp;lt;Integer&amp;gt; list = new ArrayList&amp;lt;&amp;gt;();
+        //若nums长度等于k，直接返回
+        if(nums.length==k){
+            for(int i:nums){
+                list.add(i);
+            }
+            return list;
+        }
+        Map&amp;lt;Integer,Integer&amp;gt; map = new HashMap&amp;lt;&amp;gt;();
+        //修改TreeMap为降序，默认为升序
+        Map&amp;lt;Integer,List&amp;lt;Integer&amp;gt;&amp;gt; mapTree = new TreeMap&amp;lt;&amp;gt;(new Comparator&amp;lt;Integer&amp;gt;() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o2-o1;
+            }
+             
+        });
+        //将每个数及对应个数放入map中
+        for(int i:nums){
+            map.put(i,map.getOrDefault(i,0)+1);
+        }
+        //map键值对换，其值为mapTree的键，其键加入mapTree的值
+        for(int i:map.keySet()){
+            List&amp;lt;Integer&amp;gt; keyList=mapTree.containsKey(map.get(i)) ? mapTree.get(map.get(i)) : new ArrayList&amp;lt;&amp;gt;();
+            keyList.add(i);
+            mapTree.put(map.get(i),keyList);
+        }
+        //遍历mapTree的值，取k个数返回
+        for(List&amp;lt;Integer&amp;gt; keyList:mapTree.values()){
+            for(int i=0;i&amp;lt;keyList.size();i++){
+                list.add(keyList.get(i));
+                k--;
+                if(k==0){return list;}
+            }
+        }
+        return list;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;sort-colors&#34;&gt;Sort Colors&lt;/h2&gt;
+
+&lt;h2 id=&#34;一次循环排序0-1-2&#34;&gt;一次循环排序0、1、2&lt;/h2&gt;
+
+&lt;p&gt;Given an array with n objects colored red, white or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white and blue.&lt;/p&gt;
+
+&lt;p&gt;Here, we will use the integers 0, 1, and 2 to represent the color red, white, and blue respectively.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; You are not suppose to use the library&amp;rsquo;s sort function for this problem.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [2,0,2,1,1,0]&lt;/p&gt;
+
+&lt;p&gt;Output: [0,0,1,1,2,2]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Follow up:&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;A rather straight forward solution is a two-pass algorithm using counting sort.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;First, iterate the array counting number of 0&amp;rsquo;s, 1&amp;rsquo;s, and 2&amp;rsquo;s, then overwrite array with total number of 0&amp;rsquo;s, then 1&amp;rsquo;s and followed by 2&amp;rsquo;s.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Could you come up with a one-pass algorithm using only constant space?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;解答-5&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public void sortColors(int[] nums) {
+        int low = 0;
+        int high = nums.length-1;
+        int i=0;
+        while(i&amp;lt;=high){
+            //nums[i]=0|1,i进位
+            if(nums[i]==0){
+                //若nums[low]=1,交换后nums[low]=0,nums[i]=1,之后则i进位跳过1，若有0再交换使0永远再1之前
+                nums[i]=nums[low];
+                nums[low]=0;
+                low++;
+            }else if(nums[i]==2){
+                //nums[i]==2,i不进位
+                nums[i]=nums[high];
+                nums[high]=2;
+                high--;
+                i--;
+            }
+            i++;
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;array-and-strings&#34;&gt;Array and Strings&lt;/h1&gt;
+
+&lt;h2 id=&#34;increasing-triplet-subsequence&#34;&gt;Increasing Triplet Subsequence&lt;/h2&gt;
+
+&lt;p&gt;Given an unsorted array return whether an increasing subsequence of length 3 exists or not in the array.&lt;/p&gt;
+
+&lt;p&gt;Formally the function should:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Return true if there exists i, j, k&lt;/p&gt;
+
+&lt;p&gt;such that arr[i] &amp;lt; arr[j] &amp;lt; arr[k] given 0 ≤ i &amp;lt; j &amp;lt; k ≤ n-1 else return false.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; Your algorithm should run in O(n) time complexity and O(1) space complexity.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [1,2,3,4,5]&lt;/p&gt;
+
+&lt;p&gt;Output: true&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [5,4,3,2,1]&lt;/p&gt;
+
+&lt;p&gt;Output: false&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-6&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public boolean increasingTriplet(int[] nums) {
+        /* 适用于多个下标，不只ijk三个下标
+        if(nums.length&amp;lt;3){return false;}
+        int[] ijk = new int[3];
+        Arrays.fill(ijk,Integer.MAX_VALUE);
+        for(int num:nums){
+            for(int j=0;j&amp;lt;3;j++){
+                //比较k时，num已大于ij
+                if(j==2){return true;}
+                if(num&amp;lt;=ijk[j]){
+                    ijk[j]=num;
+                    break;
+                }
+            }
+        }
+        return false;
+        */
+        int i = Integer.MAX_VALUE,j = Integer.MAX_VALUE;
+        for(int num:nums){
+            if(num&amp;lt;=i){
+                i=num;
+            }else if(num&amp;lt;=j){
+                j=num;
+            }else{
+                return true;
+            }
+        }
+        return false;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;group-anagrams&#34;&gt;Group Anagrams&lt;/h2&gt;
+
+&lt;p&gt;Given an array of strings, group anagrams together.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [&amp;ldquo;eat&amp;rdquo;, &amp;ldquo;tea&amp;rdquo;, &amp;ldquo;tan&amp;rdquo;, &amp;ldquo;ate&amp;rdquo;, &amp;ldquo;nat&amp;rdquo;, &amp;ldquo;bat&amp;rdquo;],&lt;/p&gt;
+
+&lt;p&gt;Output:[[&amp;ldquo;ate&amp;rdquo;,&amp;ldquo;eat&amp;rdquo;,&amp;ldquo;tea&amp;rdquo;],&lt;/p&gt;
+
+&lt;p&gt;[&amp;ldquo;nat&amp;rdquo;,&amp;ldquo;tan&amp;rdquo;],&lt;/p&gt;
+
+&lt;p&gt;[&amp;ldquo;bat&amp;rdquo;]]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;All inputs will be in lowercase.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The order of your output does not matter.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;解答-7&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    //16ms，key为字母排序后的字符串，检验map中是否存在key
+    public List&amp;lt;List&amp;lt;String&amp;gt;&amp;gt; groupAnagrams(String[] strs) {
+        if(strs==null || strs.length==0) return null;
+        HashMap&amp;lt;String,List&amp;lt;String&amp;gt;&amp;gt; map = new HashMap&amp;lt;&amp;gt;();
+        for(String s : strs){
+            char[] key=s.toCharArray();
+            Arrays.sort(key);
+            String st=String.valueOf(key);
+            if(!map.containsKey(st)) map.put(st,new ArrayList());
+            map.get(st).add(s);
+        }
+        return new ArrayList(map.values());        
+    }
+    //775 ms，每个字符串排序字母后比较每个List&amp;lt;String&amp;gt;的排序字母后的字符串
+    public List&amp;lt;List&amp;lt;String&amp;gt;&amp;gt; groupAnagrams(String[] strs) {
+        List&amp;lt;List&amp;lt;String&amp;gt;&amp;gt; group = new ArrayList&amp;lt;&amp;gt;();
+            for(String s:strs){
+                char[] temp = s.toCharArray();
+                Arrays.sort(temp);
+                String sortS = String.valueOf(temp);
+                boolean have = false;
+                for(List&amp;lt;String&amp;gt; list:group){
+                    if(s.length()!=list.get(0).length()){continue;}
+                    char[] chs = list.get(0).toCharArray();
+                    Arrays.sort(chs);
+                    String sortChs = String.valueOf(chs);
+                    if(sortChs.equals(sortS)) {
+                        have = true;
+                        list.add(s);
+                        break;
+                    }
+                }
+                if(!have) {
+                    List&amp;lt;String&amp;gt; newList = new ArrayList&amp;lt;&amp;gt;();
+                    newList.add(s);
+                    group.add(newList);
+                }
+          }
+        return group;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;linked-list&#34;&gt;Linked List&lt;/h1&gt;
+
+&lt;h2 id=&#34;odd-even-linked-list&#34;&gt;Odd Even Linked List&lt;/h2&gt;
+
+&lt;p&gt;Given a singly linked list, group all odd nodes together followed by the even nodes. Please note here we are talking about the node number and not the value in the nodes.&lt;/p&gt;
+
+&lt;p&gt;You should try to do it in place. The program should run in O(1) space complexity and O(nodes) time complexity.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5-&amp;gt;NULL&lt;/p&gt;
+
+&lt;p&gt;Output: 1-&amp;gt;3-&amp;gt;5-&amp;gt;2-&amp;gt;4-&amp;gt;NULL&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: 2-&amp;gt;1-&amp;gt;3-&amp;gt;5-&amp;gt;6-&amp;gt;4-&amp;gt;7-&amp;gt;NULL&lt;/p&gt;
+
+&lt;p&gt;Output: 2-&amp;gt;3-&amp;gt;6-&amp;gt;7-&amp;gt;1-&amp;gt;5-&amp;gt;4-&amp;gt;NULL&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-8&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public ListNode oddEvenList(ListNode head) {
+        if (head!=null){
+            ListNode odd=head,even=head.next,evenHead=even;
+            while(even!=null&amp;amp;&amp;amp;even.next!=null){
+                odd.next = odd.next.next; 
+                even.next = even.next.next; 
+                odd = odd.next;
+                even = even.next;
+            }
+            odd.next = evenHead; 
+        }
+        return head;
+    }
+    public ListNode oddEvenList(ListNode head) {
+        if(head==null||head.next==null||head.next.next==null){return head;}
+        ListNode odd = new ListNode(head.val);
+        ListNode startOdd = odd;
+        ListNode even = new ListNode(head.val);
+        ListNode startEven = even;
+        int count=1;
+        while(head!=null){
+            if(count%2==1){
+                odd.next = new ListNode(head.val);
+                odd = odd.next;
+            }else{
+                even.next = new ListNode(head.val);
+                even = even.next;
+            }
+            head=head.next;
+            count++;
+        }
+        odd.next = startEven.next;
+        return startOdd.next;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;add-two-numbers&#34;&gt;Add Two Numbers&lt;/h2&gt;
+
+&lt;p&gt;You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.&lt;/p&gt;
+
+&lt;p&gt;You may assume the two numbers do not contain any leading zero, except the number 0 itself.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: (2 -&amp;gt; 4 -&amp;gt; 3) + (5 -&amp;gt; 6 -&amp;gt; 4)&lt;/p&gt;
+
+&lt;p&gt;Output: 7 -&amp;gt; 0 -&amp;gt; 8&lt;/p&gt;
+
+&lt;p&gt;Explanation: 342 + 465 = 807.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-9&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode node = new ListNode(0);
+        ListNode pre = node;
+        int sum = 0;
+        //l1=[6 7],l2=[6 7]
+        while(l1!=null||l2!=null){
+            if(l1!=null){
+                sum+=l1.val;
+                l1=l1.next;
+            }
+            if(l2!=null){
+                sum+=l2.val;
+                l2=l2.next;
+            }
+            /**
+             *sum=12/pre.next=2
+             *sum=1
+             *sum=15/pre.next=5
+             *sum=1
+             */
+            pre.next = new ListNode(sum%10);
+            pre = pre.next;
+            sum/=10;
+        }
+        //pre.next=sum=1
+        if(sum==1){pre.next=new ListNode(1);}
+        return node.next;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;math&#34;&gt;Math&lt;/h1&gt;
+
+&lt;h2 id=&#34;factorial-trailing-zeroes&#34;&gt;Factorial Trailing Zeroes&lt;/h2&gt;
+
+&lt;p&gt;Given an integer n, return the number of trailing zeroes in n!.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: 3&lt;/p&gt;
+
+&lt;p&gt;Output: 0&lt;/p&gt;
+
+&lt;p&gt;Explanation: 3! = 6, no trailing zero.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: 5&lt;/p&gt;
+
+&lt;p&gt;Output: 1&lt;/p&gt;
+
+&lt;p&gt;Explanation: 5! = 120, one trailing zero.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; Your solution should be in logarithmic time complexity.&lt;/p&gt;
+
+&lt;h3 id=&#34;解答-10&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    /**
+    * 1*2*3*…*n=1*2*3*(2*2)*5*(2*3)*(2*2*2)*(3*3)*(2*5)*…
+    * 只有2*5所得结果尾部为0
+    * 2的个数比5多
+    * 可得0的个数 = n由多少个5的乘积组成
+    */
+    public int trailingZeroes(int n) {
+        if(n==0){return 0;}
+        return n/5+trailingZeroes(n/5);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;happy-number&#34;&gt;Happy Number&lt;/h2&gt;
+
+&lt;p&gt;Write an algorithm to determine if a number is &amp;ldquo;happy&amp;rdquo;.&lt;/p&gt;
+
+&lt;p&gt;A happy number is a number defined by the following process: Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1. Those numbers for which this process ends in 1 are happy numbers.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: 19&lt;/p&gt;
+
+&lt;p&gt;Output: true&lt;/p&gt;
+
+&lt;p&gt;Explanation:&lt;/p&gt;
+
+&lt;p&gt;1^2 + 9^2 = 82&lt;/p&gt;
+
+&lt;p&gt;8^2 + 2^2 = 68&lt;/p&gt;
+
+&lt;p&gt;6^2 + 8^2 = 100&lt;/p&gt;
+
+&lt;p&gt;1^2 + 0^2 + 0^2 = 1&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-11&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public boolean isHappy(int n) {
+        List&amp;lt;String&amp;gt; list = new ArrayList&amp;lt;&amp;gt;();
+        while(n!=1){
+            String s = String.valueOf(n);
+            list.add(s);
+            char[] chs = s.toCharArray();
+            n=0;
+            for(char c:chs){n+=Math.pow(Integer.parseInt(c+&amp;quot;&amp;quot;),2);}
+            //若list中存在该数，则将陷入循环
+            if(list.contains(String.valueOf(n))){return false;}
+        }
+        return true;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>Top Interview Questions-Easy-①</title>
@@ -1989,7 +2757,9 @@ class Solution {
 &lt;blockquote&gt;
 &lt;p&gt;n = 15,&lt;/p&gt;
 
-&lt;p&gt;Return:[&amp;ldquo;1&amp;rdquo;,&amp;ldquo;2&amp;rdquo;,&amp;ldquo;Fizz&amp;rdquo;,&amp;ldquo;4&amp;rdquo;,&amp;ldquo;Buzz&amp;rdquo;,&amp;ldquo;Fizz&amp;rdquo;,&amp;ldquo;7&amp;rdquo;,&amp;ldquo;8&amp;rdquo;,&amp;ldquo;Fizz&amp;rdquo;,&amp;ldquo;Buzz&amp;rdquo;,&amp;ldquo;11&amp;rdquo;,&amp;ldquo;Fizz&amp;rdquo;,&amp;ldquo;13&amp;rdquo;,&amp;ldquo;14&amp;rdquo;,&amp;ldquo;FizzBuzz&amp;rdquo;]&lt;/p&gt;
+&lt;p&gt;Return:&lt;/p&gt;
+
+&lt;p&gt;[&amp;ldquo;1&amp;rdquo;,&amp;ldquo;2&amp;rdquo;,&amp;ldquo;Fizz&amp;rdquo;,&amp;ldquo;4&amp;rdquo;,&amp;ldquo;Buzz&amp;rdquo;,&amp;ldquo;Fizz&amp;rdquo;,&amp;ldquo;7&amp;rdquo;,&amp;ldquo;8&amp;rdquo;,&amp;ldquo;Fizz&amp;rdquo;,&amp;ldquo;Buzz&amp;rdquo;,&amp;ldquo;11&amp;rdquo;,&amp;ldquo;Fizz&amp;rdquo;,&amp;ldquo;13&amp;rdquo;,&amp;ldquo;14&amp;rdquo;,&amp;ldquo;FizzBuzz&amp;rdquo;]&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&#34;解答-14&#34;&gt;解答：&lt;/h3&gt;
@@ -2939,6 +3709,18 @@ public class NotInitialization{
 &lt;p&gt;则以&lt;code&gt;V1&lt;/code&gt;为起点的深度优先搜索访问顺序为：
 &lt;code&gt;V1-&amp;gt;V2-&amp;gt;V4-&amp;gt;V8-&amp;gt;V5-&amp;gt;V3-&amp;gt;V6-&amp;gt;V7&lt;/code&gt;&lt;/p&gt;
 
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public void dfs(int[][] grid,int i,int j,int rows,int cols){
+    if(i&amp;lt;0||j&amp;lt;0||i&amp;gt;=rows||j&amp;gt;=cols||grid[i][j]==-1){return;}
+    System.out.println(grid[i][j]);
+    //标记已访问点
+    grid[i][j]=-1;
+    dfs(grid,i,j+1,rows,cols);
+    dfs(grid,i,j-1,rows,cols);
+    dfs(grid,i+1,j,rows,cols);
+    dfs(grid,i-1,j,rows,cols);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;hr /&gt;
 
 &lt;h2 id=&#34;广度优先搜索&#34;&gt;广度优先搜索&lt;/h2&gt;
@@ -3581,6 +4363,62 @@ void postOrderTraverse(BiTree T){
         postOrderTraverse(T-&amp;gt;lchild);
         postOrderTraverse(T-&amp;gt;rchild);
         printf(&amp;quot;%c&amp;quot;,T-&amp;gt;data);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;非递归方式：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+public void preOrderTraversal(TreeNode root) {
+    Stack&amp;lt;TreeNode&amp;gt; stack = new Stack&amp;lt;&amp;gt;();
+    stack.push(root);
+    TreeNode node;
+    while(!stack.empty()){
+        node = stack.pop();
+        if(node!=null){
+            System.out.println(node.val);
+            stack.push(node.right);
+            stack.push(node.left);
+        }
+    }
+}
+public void inorderTraversal(TreeNode root) {
+    Stack&amp;lt;TreeNode&amp;gt; stack = new Stack&amp;lt;&amp;gt;();
+    TreeNode node=root;
+    while(node!=null||!stack.empty()){
+        while(node!=null){
+            stack.push(node);
+            node = node.left;
+        }
+        if(!stack.empty()){
+            node = stack.pop();
+            System.out.println(node.val);
+            node = node.right;
+        }
+    }
+}
+public void levelTraversal(TreeNode root) {
+    //层级遍历
+    Queue&amp;lt;TreeNode&amp;gt; queue = new LinkedList&amp;lt;&amp;gt;();
+    queue.offer(root);
+    while(!queue.isEmpty()){
+        TreeNode node = queue.poll();
+        System.out.println(node.val);
+        if(node.left!=null){
+            queue.offer(node.left);
+        }
+        if(node.right!=null){
+            queue.offer(node.right);
+        } 
     }
 }
 &lt;/code&gt;&lt;/pre&gt;

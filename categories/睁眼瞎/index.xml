@@ -6,10 +6,29 @@
     <description>Recent content in 睁眼瞎 on KUMA2X</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 28 Sep 2018 21:47:14 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 29 Sep 2018 22:59:34 +0000</lastBuildDate>
     
 	<atom:link href="https://boseman1024.github.io/categories/%E7%9D%81%E7%9C%BC%E7%9E%8E/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Top Interview Questions-Medium-①</title>
+      <link>https://boseman1024.github.io/2018/top-interview-questions-medium-1/</link>
+      <pubDate>Sat, 29 Sep 2018 22:59:34 +0000</pubDate>
+      
+      <guid>https://boseman1024.github.io/2018/top-interview-questions-medium-1/</guid>
+      <description>Trees and Graphs Number of Islands 求出岛屿个数 Given a 2d grid map of *&amp;lsquo;1&amp;rsquo;*s (land) and &amp;lsquo;0&amp;rsquo;s (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
+无向图遍历，1为可移动区域
+Example 1:
+ Input:
+11110
+11010
+11000
+00000
+Output: 1
+ Example 2:
+ Input:</description>
+    </item>
     
     <item>
       <title>Top Interview Questions-Easy-①</title>
@@ -82,16 +101,13 @@ JAVA堆 *JAVA堆（JAVA Heap）*被所有线程共享的一块内存区域，在
 图的遍历 深度优先搜索 其过程简要来说是对每一个可能的分支路径深入到不能再深入为止，而且每个节点只能访问一次。 深度优先搜索的遍历访问顺序并不唯一。
 假设以V1为起点， V1有两个邻接点V2与V3且都未被访问，则访问V2（或访问v3开始皆可，以下皆如此）； V2有三个邻接点V1、V4、V5，V1已被访问，V4与V5都未被访问，则访问V4； V4有两个邻接点V2与V8，只有V8未被访问，则访问V8； V8有两个邻接点V4与V5，V4已被访问，则访问V5； V5有两个邻接点V2与V8，且V2、V8都已被访问，则从头搜索V1的邻接点V2、V3，V2已被访问，则访问V3； V3有三个邻接点V1、V6、V7且未被访问，则访问V6； V6有两个邻接点V3与V7，V3已被访问，则访问V7。
 则以V1为起点的深度优先搜索访问顺序为： V1-&amp;gt;V2-&amp;gt;V4-&amp;gt;V8-&amp;gt;V5-&amp;gt;V3-&amp;gt;V6-&amp;gt;V7
-广度优先搜索 类似于树的按层次遍历的过程，可先将图按层划分。 广度优先搜索的遍历访问顺序并不唯一。
+public void dfs(int[][] grid,int i,int j,int rows,int cols){ if(i&amp;lt;0||j&amp;lt;0||i&amp;gt;=rows||j&amp;gt;=cols||grid[i][j]==-1){return;} System.out.println(grid[i][j]); //标记已访问点 grid[i][j]=-1; dfs(grid,i,j+1,rows,cols); dfs(grid,i,j-1,rows,cols); dfs(grid,i+1,j,rows,cols); dfs(grid,i-1,j,rows,cols); }  广度优先搜索 类似于树的按层次遍历的过程，可先将图按层划分。 广度优先搜索的遍历访问顺序并不唯一。
 假设以V1为起点，则可划分为下图： 第一层（V1）： V1有两个邻接点V2、V3，则先访问V2，再访问V3（或先访问V3，再访问V2皆可，以下皆如此）； 第二层(V2、V3)： V2有三个邻接点V1、V4、V5，V1已被访问，则访问V4、V5； V3有两个邻接点V6、V7且都未被访问，则访问V6、V7； 第三层（V4、V5、V6、V7）： V4有两个邻接点V2与V8，V2已被访问，则访问V8。
 则以V1为起点的广度优先搜索访问顺序为： V1-&amp;gt;V2-&amp;gt;V3-&amp;gt;V4-&amp;gt;V5-&amp;gt;V6-&amp;gt;V7-&amp;gt;V8
 最小生成树 在连通网的所有生成树中，所有边的代价和最小的生成树，称为最小生成树。 最小生成树中不存在回路。
 可得数组矩阵： ∞615∞∞6∞5∞3∞15∞5645∞5∞∞2∞36∞∞6∞∞426∞
 普里姆（Prim）算法 此算法可以称为“加点法”，每次迭代选择代价最小的边对应的点，加入到最小生成树中。
-设： * 所有结点V={V1,V2,V3,V4,V5,V6} * 已选结点U={} * 剩余结点V-U * 代价最小的边MIN
-indexV-UUMIN(边)0{V1,V2,V3,V4,V5,V6}{}1{V2,V3,V4,V5,V6}{V1}1(V1-V3)2{V2,V4,V5,V6}{V1,V3}4(V3-V6)3{V2,V4,V5}{V1,V3,V6}2(V6-V4)4{V2,V5}{V1,V3,V6,V4}5(V3-V2)5{V5}{V1,V3,V6,V4,V2}3(V2-V5)6{}{V1,V3,V6,V4,V2,V5} 或设： * 所有结点V={V1,V2,V3,V4,V5,V6} * 已选结点U={} * 剩余结点V-U * 序列i（1,2,3,…,V的个数），每个序列下为每个结点的最小代价边。 * 选择序列k，被选择序列设为0
-每个结点的多条代价边中选最小代价边。 如： 2-1中，V2距离V-U存在6（V2-V1），5（V2-V3）两条边，则选择6（V2-V1）。
-index\i12345UV-Uk(选择序列)1V1-6V1-1V1-5{V1}{V2,V3,V4,V5,V6}22V3-50V1-5V3-6V3-4{V1,V3}{V2,V4,V5,V6}53V3-50V6-2V3-60{V1,V3,V6}{V2,V3,V4,V5}34V3-500V3-60{V1,V3,V6,V4}{V2,V5}15000V2-30{V1,V3,V6,V4,V2}{V5}4600000{V1,V3,V6,V4,V2,V5}{} 克鲁斯卡尔（Kruskal）算法 每次在剩下的所有未选取的边中，找最小边，如果和已选取的边构成回路，则放弃，选取次小边。</description>
+设： * 所有结点V={V1,V2,V3,V4,V5,V6} * 已选结点U={} * 剩余结点V-U * 代价最小的边MIN</description>
     </item>
     
     <item>
