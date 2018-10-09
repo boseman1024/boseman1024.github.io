@@ -204,6 +204,94 @@ class Solution {
 
 &lt;h1 id=&#34;sorting-and-searching&#34;&gt;Sorting and Searching&lt;/h1&gt;
 
+&lt;h2 id=&#34;find-peak-element&#34;&gt;Find Peak Element&lt;/h2&gt;
+
+&lt;h2 id=&#34;找出一个大于前后的数&#34;&gt;找出一个大于前后的数&lt;/h2&gt;
+
+&lt;p&gt;A peak element is an element that is greater than its neighbors.&lt;/p&gt;
+
+&lt;p&gt;Given an input array nums, where nums[i] ≠ nums[i+1], find a peak element and return its index.&lt;/p&gt;
+
+&lt;p&gt;The array may contain multiple peaks, in that case return the index to any one of the peaks is fine.&lt;/p&gt;
+
+&lt;p&gt;You may imagine that nums[-1] = nums[n] = -∞.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: nums = [1,2,3,1]&lt;/p&gt;
+
+&lt;p&gt;Output: 2&lt;/p&gt;
+
+&lt;p&gt;Explanation: 3 is a peak element and your function should return the index number 2.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: nums = [1,2,1,3,5,6,4]&lt;/p&gt;
+
+&lt;p&gt;Output: 1 or 5&lt;/p&gt;
+
+&lt;p&gt;Explanation: Your function can return either index number 1 where the peak element is 2, or index number 5 where the peak element is 6.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-3&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    //二分查找，时间O(logN)
+    
+    //时间O(N)
+    public int findPeakElement(int[] nums) {
+        if(nums.length==1){return 0;}
+        //从nums[1]开始，与前一位比较，若小于前一位，则nums[i-1]为峰顶。
+        //返回遇到的第一个顶峰。
+        for(int i=1;i&amp;lt;nums.length;i++){
+            if(nums[i]&amp;lt;nums[i-1]){return i-1;}
+        }
+        //最后只剩下数组最后一位数
+        return nums.length-1;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;kth-largest-element-in-an-array&#34;&gt;Kth Largest Element in an Array&lt;/h2&gt;
+
+&lt;h2 id=&#34;找出数组中第k大的数&#34;&gt;找出数组中第k大的数&lt;/h2&gt;
+
+&lt;p&gt;Find the *k*th largest element in an unsorted array. Note that it is the kth largest element in the sorted order, not the kth distinct element.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [3,2,1,5,6,4] and k = 2&lt;/p&gt;
+
+&lt;p&gt;Output: 5&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [3,2,3,1,2,4,5,5,6] and k = 4&lt;/p&gt;
+
+&lt;p&gt;Output: 4&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; You may assume k is always valid, 1 ≤ k ≤ array&amp;rsquo;s length.&lt;/p&gt;
+
+&lt;h3 id=&#34;解答-4&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public int findKthLargest(int[] nums, int k) {
+        Arrays.sort(nums);
+        return nums[nums.length-k];
+        //Quick Select is the fastest
+        //快速选择
+        
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h2 id=&#34;search-in-rotated-sorted-array&#34;&gt;Search in Rotated Sorted Array&lt;/h2&gt;
 
 &lt;h2 id=&#34;找出一个数在旋转有序数组中的索引&#34;&gt;找出一个数在旋转有序数组中的索引&lt;/h2&gt;
@@ -234,7 +322,7 @@ class Solution {
 &lt;p&gt;Output: -1&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-3&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-5&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public int search(int[] nums, int target) {
@@ -313,7 +401,7 @@ class Solution {
 &lt;li&gt;&lt;p&gt;Your algorithm&amp;rsquo;s time complexity must be better than O(n log n), where n is the array&amp;rsquo;s size.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;解答-4&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-6&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //24ms
@@ -388,7 +476,7 @@ class Solution {
 &lt;li&gt;Could you come up with a one-pass algorithm using only constant space?&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;解答-5&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-7&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public void sortColors(int[] nums) {
@@ -418,6 +506,51 @@ class Solution {
 &lt;hr /&gt;
 
 &lt;h1 id=&#34;array-and-strings&#34;&gt;Array and Strings&lt;/h1&gt;
+
+&lt;h2 id=&#34;3sum&#34;&gt;3Sum&lt;/h2&gt;
+
+&lt;h2 id=&#34;找出三个和为0的数&#34;&gt;找出三个和为0的数&lt;/h2&gt;
+
+&lt;p&gt;Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.&lt;/p&gt;
+
+&lt;p&gt;*Note:*The solution set must not contain duplicate triplets.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Given array nums = [-1, 0, 1, 2, -1, -4],&lt;/p&gt;
+
+&lt;p&gt;A solution set is:
+[[-1, 0, 1],[-1, -1, 2]]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-8&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    //TLE超时
+    public List&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; threeSum(int[] nums) {
+        Set&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; set = new HashSet&amp;lt;&amp;gt;();
+        Arrays.sort(nums);
+        for(int i=0;i&amp;lt;nums.length;i++){
+            for(int j=i+1;j&amp;lt;nums.length;j++){
+                if(nums[i]+nums[j]&amp;gt;0){break;}
+                for(int k=j+1;k&amp;lt;nums.length;k++){
+                    if(nums[i]+nums[j]+nums[k]&amp;gt;0){break;}
+                    if(nums[i]+nums[j]+nums[k]==0){
+                        List&amp;lt;Integer&amp;gt; item = new ArrayList&amp;lt;&amp;gt;();
+                        item.add(nums[i]);
+                        item.add(nums[j]);
+                        item.add(nums[k]);
+                        Collections.sort(item);
+                        set.add(item);
+                    }
+                }
+            }
+        }
+        return new ArrayList(set);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;increasing-triplet-subsequence&#34;&gt;Increasing Triplet Subsequence&lt;/h2&gt;
 
@@ -449,7 +582,7 @@ class Solution {
 &lt;p&gt;Output: false&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-6&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-9&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public boolean increasingTriplet(int[] nums) {
@@ -508,7 +641,7 @@ class Solution {
 &lt;li&gt;&lt;p&gt;The order of your output does not matter.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;解答-7&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-10&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //16ms，key为字母排序后的字符串，检验map中是否存在key
@@ -580,7 +713,7 @@ class Solution {
 &lt;p&gt;Output: 2-&amp;gt;3-&amp;gt;6-&amp;gt;7-&amp;gt;1-&amp;gt;5-&amp;gt;4-&amp;gt;NULL&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-8&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-11&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for singly-linked list.
@@ -644,7 +777,7 @@ class Solution {
 &lt;p&gt;Explanation: 342 + 465 = 807.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-9&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-12&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for singly-linked list.
@@ -716,7 +849,7 @@ class Solution {
 
 &lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; Your solution should be in logarithmic time complexity.&lt;/p&gt;
 
-&lt;h3 id=&#34;解答-10&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-13&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     /**
@@ -756,7 +889,7 @@ class Solution {
 &lt;p&gt;1^2 + 0^2 + 0^2 = 1&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-11&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-14&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public boolean isHappy(int n) {
@@ -5430,8 +5563,6 @@ getItem(arr,&amp;quot;name&amp;quot;,&amp;quot;123&amp;quot;).name
 
 &lt;p&gt;&lt;strong&gt;6月26日21点50分&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;想死的情绪是不需要理由的，&lt;/p&gt;
-
 &lt;p&gt;由内向外渗透的异样感，&lt;/p&gt;
 
 &lt;p&gt;被突如其来的不安笼罩，&lt;/p&gt;
@@ -5999,8 +6130,9 @@ You are not machines, you are not cattle, you are men!&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;-漫谈服装&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;「不只是旅行，走在人生的旅途上，拎着太多行李，无疑是阴郁的源头。行李愈少愈好。」
-「我深信若非来自懦弱的极致内省，无法发出真正庄严的光明。总之，我想试着继续活下去，亦即，本着最高的自尊与最低的生活，试着活下去。」&lt;/p&gt;
+&lt;p&gt;「不只是旅行，走在人生的旅途上，拎着太多行李，无疑是阴郁的源头。行李愈少愈好。」&lt;/p&gt;
+
+&lt;p&gt;「我深信若非来自懦弱的极致内省，无法发出真正庄严的光明。总之，我想试着继续活下去，亦即，本着最高的自尊与最低的生活，试着活下去。」&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;3月18日 22点31分&lt;/strong&gt;&lt;/p&gt;
 

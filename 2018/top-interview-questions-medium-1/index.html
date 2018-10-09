@@ -67,7 +67,7 @@ Output: 1
     "datePublished": "2018-09-29 22:59:34 &#43;0000 UTC",
     "dateModified" : "2018-09-29 22:59:34 &#43;0000 UTC",
     "url" : "https://boseman1024.github.io/2018/top-interview-questions-medium-1/",
-    "wordCount" : "1737",
+    "wordCount" : "2082",
     "keywords" : [ "数据结构与算法","LeetCode","JAVA", "KUMA2X"]
 }
 </script>
@@ -341,6 +341,94 @@ class Solution {
 
 <h1 id="sorting-and-searching">Sorting and Searching</h1>
 
+<h2 id="find-peak-element">Find Peak Element</h2>
+
+<h2 id="找出一个大于前后的数">找出一个大于前后的数</h2>
+
+<p>A peak element is an element that is greater than its neighbors.</p>
+
+<p>Given an input array nums, where nums[i] ≠ nums[i+1], find a peak element and return its index.</p>
+
+<p>The array may contain multiple peaks, in that case return the index to any one of the peaks is fine.</p>
+
+<p>You may imagine that nums[-1] = nums[n] = -∞.</p>
+
+<p><em>Example 1:</em></p>
+
+<blockquote>
+<p>Input: nums = [1,2,3,1]</p>
+
+<p>Output: 2</p>
+
+<p>Explanation: 3 is a peak element and your function should return the index number 2.</p>
+</blockquote>
+
+<p><em>Example 2:</em></p>
+
+<blockquote>
+<p>Input: nums = [1,2,1,3,5,6,4]</p>
+
+<p>Output: 1 or 5</p>
+
+<p>Explanation: Your function can return either index number 1 where the peak element is 2, or index number 5 where the peak element is 6.</p>
+</blockquote>
+
+<h3 id="解答-3">解答：</h3>
+
+<pre><code class="language-java">class Solution {
+    //二分查找，时间O(logN)
+    
+    //时间O(N)
+    public int findPeakElement(int[] nums) {
+        if(nums.length==1){return 0;}
+        //从nums[1]开始，与前一位比较，若小于前一位，则nums[i-1]为峰顶。
+        //返回遇到的第一个顶峰。
+        for(int i=1;i&lt;nums.length;i++){
+            if(nums[i]&lt;nums[i-1]){return i-1;}
+        }
+        //最后只剩下数组最后一位数
+        return nums.length-1;
+    }
+}
+</code></pre>
+
+<h2 id="kth-largest-element-in-an-array">Kth Largest Element in an Array</h2>
+
+<h2 id="找出数组中第k大的数">找出数组中第k大的数</h2>
+
+<p>Find the *k*th largest element in an unsorted array. Note that it is the kth largest element in the sorted order, not the kth distinct element.</p>
+
+<p><em>Example 1:</em></p>
+
+<blockquote>
+<p>Input: [3,2,1,5,6,4] and k = 2</p>
+
+<p>Output: 5</p>
+</blockquote>
+
+<p><em>Example 2:</em></p>
+
+<blockquote>
+<p>Input: [3,2,3,1,2,4,5,5,6] and k = 4</p>
+
+<p>Output: 4</p>
+</blockquote>
+
+<p><em>Note:</em> You may assume k is always valid, 1 ≤ k ≤ array&rsquo;s length.</p>
+
+<h3 id="解答-4">解答：</h3>
+
+<pre><code class="language-java">class Solution {
+    public int findKthLargest(int[] nums, int k) {
+        Arrays.sort(nums);
+        return nums[nums.length-k];
+        //Quick Select is the fastest
+        //快速选择
+        
+    }
+}
+</code></pre>
+
 <h2 id="search-in-rotated-sorted-array">Search in Rotated Sorted Array</h2>
 
 <h2 id="找出一个数在旋转有序数组中的索引">找出一个数在旋转有序数组中的索引</h2>
@@ -371,7 +459,7 @@ class Solution {
 <p>Output: -1</p>
 </blockquote>
 
-<h3 id="解答-3">解答：</h3>
+<h3 id="解答-5">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public int search(int[] nums, int target) {
@@ -450,7 +538,7 @@ class Solution {
 <li><p>Your algorithm&rsquo;s time complexity must be better than O(n log n), where n is the array&rsquo;s size.</p></li>
 </ul>
 
-<h3 id="解答-4">解答：</h3>
+<h3 id="解答-6">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     //24ms
@@ -525,7 +613,7 @@ class Solution {
 <li>Could you come up with a one-pass algorithm using only constant space?</li>
 </ul>
 
-<h3 id="解答-5">解答：</h3>
+<h3 id="解答-7">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public void sortColors(int[] nums) {
@@ -555,6 +643,51 @@ class Solution {
 <hr />
 
 <h1 id="array-and-strings">Array and Strings</h1>
+
+<h2 id="3sum">3Sum</h2>
+
+<h2 id="找出三个和为0的数">找出三个和为0的数</h2>
+
+<p>Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.</p>
+
+<p>*Note:*The solution set must not contain duplicate triplets.</p>
+
+<p><em>Example:</em></p>
+
+<blockquote>
+<p>Given array nums = [-1, 0, 1, 2, -1, -4],</p>
+
+<p>A solution set is:
+[[-1, 0, 1],[-1, -1, 2]]</p>
+</blockquote>
+
+<h3 id="解答-8">解答：</h3>
+
+<pre><code class="language-java">class Solution {
+    //TLE超时
+    public List&lt;List&lt;Integer&gt;&gt; threeSum(int[] nums) {
+        Set&lt;List&lt;Integer&gt;&gt; set = new HashSet&lt;&gt;();
+        Arrays.sort(nums);
+        for(int i=0;i&lt;nums.length;i++){
+            for(int j=i+1;j&lt;nums.length;j++){
+                if(nums[i]+nums[j]&gt;0){break;}
+                for(int k=j+1;k&lt;nums.length;k++){
+                    if(nums[i]+nums[j]+nums[k]&gt;0){break;}
+                    if(nums[i]+nums[j]+nums[k]==0){
+                        List&lt;Integer&gt; item = new ArrayList&lt;&gt;();
+                        item.add(nums[i]);
+                        item.add(nums[j]);
+                        item.add(nums[k]);
+                        Collections.sort(item);
+                        set.add(item);
+                    }
+                }
+            }
+        }
+        return new ArrayList(set);
+    }
+}
+</code></pre>
 
 <h2 id="increasing-triplet-subsequence">Increasing Triplet Subsequence</h2>
 
@@ -586,7 +719,7 @@ class Solution {
 <p>Output: false</p>
 </blockquote>
 
-<h3 id="解答-6">解答：</h3>
+<h3 id="解答-9">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public boolean increasingTriplet(int[] nums) {
@@ -645,7 +778,7 @@ class Solution {
 <li><p>The order of your output does not matter.</p></li>
 </ul>
 
-<h3 id="解答-7">解答：</h3>
+<h3 id="解答-10">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     //16ms，key为字母排序后的字符串，检验map中是否存在key
@@ -717,7 +850,7 @@ class Solution {
 <p>Output: 2-&gt;3-&gt;6-&gt;7-&gt;1-&gt;5-&gt;4-&gt;NULL</p>
 </blockquote>
 
-<h3 id="解答-8">解答：</h3>
+<h3 id="解答-11">解答：</h3>
 
 <pre><code class="language-java">/**
  * Definition for singly-linked list.
@@ -781,7 +914,7 @@ class Solution {
 <p>Explanation: 342 + 465 = 807.</p>
 </blockquote>
 
-<h3 id="解答-9">解答：</h3>
+<h3 id="解答-12">解答：</h3>
 
 <pre><code class="language-java">/**
  * Definition for singly-linked list.
@@ -853,7 +986,7 @@ class Solution {
 
 <p><em>Note:</em> Your solution should be in logarithmic time complexity.</p>
 
-<h3 id="解答-10">解答：</h3>
+<h3 id="解答-13">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     /**
@@ -893,7 +1026,7 @@ class Solution {
 <p>1^2 + 0^2 + 0^2 = 1</p>
 </blockquote>
 
-<h3 id="解答-11">解答：</h3>
+<h3 id="解答-14">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public boolean isHappy(int n) {
