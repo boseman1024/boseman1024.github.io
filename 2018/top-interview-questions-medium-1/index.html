@@ -67,7 +67,7 @@ Output: 1
     "datePublished": "2018-09-29 22:59:34 &#43;0000 UTC",
     "dateModified" : "2018-09-29 22:59:34 &#43;0000 UTC",
     "url" : "https://boseman1024.github.io/2018/top-interview-questions-medium-1/",
-    "wordCount" : "2082",
+    "wordCount" : "2268",
     "keywords" : [ "数据结构与算法","LeetCode","JAVA", "KUMA2X"]
 }
 </script>
@@ -828,7 +828,78 @@ class Solution {
 
 <h1 id="linked-list">Linked List</h1>
 
+<h2 id="intersection-of-two-linked-lists">Intersection of Two Linked Lists</h2>
+
+<h2 id="找出两个链表最早的交集元素">找出两个链表最早的交集元素</h2>
+
+<p>Write a program to find the node at which the intersection of two singly linked lists begins.</p>
+
+<p>For example, the following two linked lists:</p>
+
+<blockquote>
+<p>A:&nbsp;a1 → a2</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↘</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c1 → c2 → c3</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↗</p>
+
+<p>B:&nbsp;b1 → b2 → b3</p>
+
+<p>begin to intersect at node c1.</p>
+</blockquote>
+
+<p><em>Notes:</em></p>
+
+<ul>
+<li><p>If the two linked lists have no intersection at all, return null.</p></li>
+
+<li><p>The linked lists must retain their original structure after the function returns.</p></li>
+
+<li><p>You may assume there are no cycles anywhere in the entire linked structure.</p></li>
+
+<li><p>Your code should preferably run in O(n) time and use only O(1) memory.</p></li>
+</ul>
+
+<h3 id="解答-11">解答：</h3>
+
+<pre><code class="language-java">/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    //双指针法
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+
+    }
+    //利用哈希表，时间复杂度O(lengthA+lengthB)
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        if(headA == null || headB == null){return null;}
+        Set&lt;ListNode&gt; set = new HashSet&lt;&gt;(); 
+        while(headA!=null){
+            set.add(headA);
+            headA=headA.next;
+        }
+        while(headB!=null){
+            if(set.contains(headB)){return headB;}
+            headB=headB.next;
+        }
+        return null;
+    }
+}
+</code></pre>
+
 <h2 id="odd-even-linked-list">Odd Even Linked List</h2>
+
+<h2 id="偶数下标链表-奇数下表列表">偶数下标链表+奇数下表列表</h2>
 
 <p>Given a singly linked list, group all odd nodes together followed by the even nodes. Please note here we are talking about the node number and not the value in the nodes.</p>
 
@@ -850,7 +921,7 @@ class Solution {
 <p>Output: 2-&gt;3-&gt;6-&gt;7-&gt;1-&gt;5-&gt;4-&gt;NULL</p>
 </blockquote>
 
-<h3 id="解答-11">解答：</h3>
+<h3 id="解答-12">解答：</h3>
 
 <pre><code class="language-java">/**
  * Definition for singly-linked list.
@@ -914,7 +985,7 @@ class Solution {
 <p>Explanation: 342 + 465 = 807.</p>
 </blockquote>
 
-<h3 id="解答-12">解答：</h3>
+<h3 id="解答-13">解答：</h3>
 
 <pre><code class="language-java">/**
  * Definition for singly-linked list.
@@ -962,6 +1033,8 @@ class Solution {
 
 <h2 id="factorial-trailing-zeroes">Factorial Trailing Zeroes</h2>
 
+<h2 id="找出一个数末尾有几个0">找出一个数末尾有几个0</h2>
+
 <p>Given an integer n, return the number of trailing zeroes in n!.</p>
 
 <p><em>Example 1:</em></p>
@@ -986,7 +1059,7 @@ class Solution {
 
 <p><em>Note:</em> Your solution should be in logarithmic time complexity.</p>
 
-<h3 id="解答-13">解答：</h3>
+<h3 id="解答-14">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     /**
@@ -1026,7 +1099,7 @@ class Solution {
 <p>1^2 + 0^2 + 0^2 = 1</p>
 </blockquote>
 
-<h3 id="解答-14">解答：</h3>
+<h3 id="解答-15">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public boolean isHappy(int n) {

@@ -691,7 +691,78 @@ class Solution {
 
 &lt;h1 id=&#34;linked-list&#34;&gt;Linked List&lt;/h1&gt;
 
+&lt;h2 id=&#34;intersection-of-two-linked-lists&#34;&gt;Intersection of Two Linked Lists&lt;/h2&gt;
+
+&lt;h2 id=&#34;找出两个链表最早的交集元素&#34;&gt;找出两个链表最早的交集元素&lt;/h2&gt;
+
+&lt;p&gt;Write a program to find the node at which the intersection of two singly linked lists begins.&lt;/p&gt;
+
+&lt;p&gt;For example, the following two linked lists:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;A:&amp;nbsp;a1 → a2&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;↘&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;c1 → c2 → c3&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;↗&lt;/p&gt;
+
+&lt;p&gt;B:&amp;nbsp;b1 → b2 → b3&lt;/p&gt;
+
+&lt;p&gt;begin to intersect at node c1.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Notes:&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;If the two linked lists have no intersection at all, return null.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The linked lists must retain their original structure after the function returns.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;You may assume there are no cycles anywhere in the entire linked structure.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Your code should preferably run in O(n) time and use only O(1) memory.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;解答-11&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    //双指针法
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+
+    }
+    //利用哈希表，时间复杂度O(lengthA+lengthB)
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        if(headA == null || headB == null){return null;}
+        Set&amp;lt;ListNode&amp;gt; set = new HashSet&amp;lt;&amp;gt;(); 
+        while(headA!=null){
+            set.add(headA);
+            headA=headA.next;
+        }
+        while(headB!=null){
+            if(set.contains(headB)){return headB;}
+            headB=headB.next;
+        }
+        return null;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h2 id=&#34;odd-even-linked-list&#34;&gt;Odd Even Linked List&lt;/h2&gt;
+
+&lt;h2 id=&#34;偶数下标链表-奇数下表列表&#34;&gt;偶数下标链表+奇数下表列表&lt;/h2&gt;
 
 &lt;p&gt;Given a singly linked list, group all odd nodes together followed by the even nodes. Please note here we are talking about the node number and not the value in the nodes.&lt;/p&gt;
 
@@ -713,7 +784,7 @@ class Solution {
 &lt;p&gt;Output: 2-&amp;gt;3-&amp;gt;6-&amp;gt;7-&amp;gt;1-&amp;gt;5-&amp;gt;4-&amp;gt;NULL&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-11&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-12&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for singly-linked list.
@@ -777,7 +848,7 @@ class Solution {
 &lt;p&gt;Explanation: 342 + 465 = 807.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-12&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-13&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for singly-linked list.
@@ -825,6 +896,8 @@ class Solution {
 
 &lt;h2 id=&#34;factorial-trailing-zeroes&#34;&gt;Factorial Trailing Zeroes&lt;/h2&gt;
 
+&lt;h2 id=&#34;找出一个数末尾有几个0&#34;&gt;找出一个数末尾有几个0&lt;/h2&gt;
+
 &lt;p&gt;Given an integer n, return the number of trailing zeroes in n!.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
@@ -849,7 +922,7 @@ class Solution {
 
 &lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; Your solution should be in logarithmic time complexity.&lt;/p&gt;
 
-&lt;h3 id=&#34;解答-13&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-14&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     /**
@@ -889,7 +962,7 @@ class Solution {
 &lt;p&gt;1^2 + 0^2 + 0^2 = 1&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-14&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-15&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public boolean isHappy(int n) {
@@ -5527,6 +5600,48 @@ getItem(arr,&amp;quot;name&amp;quot;,&amp;quot;123&amp;quot;).name
 &lt;h5&gt;piece of shit you were yesterday.&lt;/h5&gt;
 &lt;/center&gt;&lt;/p&gt;
 
+&lt;h1 id=&#34;十月&#34;&gt;十月&lt;/h1&gt;
+
+&lt;p&gt;&lt;strong&gt;10月10日23点13分&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;拎不清。&lt;/p&gt;
+
+&lt;p&gt;记：&lt;/p&gt;
+
+&lt;p&gt;《惶然录》——费尔南多·佩索阿&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;-嫉妒&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;「我嫉妒每一个人，因为他们不是我。与之有关的一切不可能性，是这件事看起来总是至关重要。这一点造成了我每天忧郁的主体部分，让沮丧填满了每一个黯淡的时刻。」&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;-写作治病&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;「从今以后，我会碰到一些事情。当这些事情照常突如其来的时候，生活将一种极度的烦闷强加给我的情感，对着一种如此剧烈的烦闷，任何疗救都于事无补。自杀看来使过于不当和过时了，即便有人假定这种办法可以确保遗忘，但也没有什么意义。这种烦闷渴求的并不是简单的停止生命——这也许是可能或者不可能的——而是比这更可怕，更深重的东西，是想要从来彻底的不曾存在，而这一点当然无法做到。」&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;-我是书中的人物&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;「我会一直不知不觉地见证自己生命地逐渐耗竭，还有一切我向往之物的缓缓破灭。我可以说，真实不需要花环来提醒自己已经死亡，据此而言，这世界上没有一件东西是我愿意得到的，我也无法在任何一件事情中，把我的瞬时梦想安顿片刻——这种梦想还没有坠落和破碎在我的窗下，还没有像一块成团的泥土从街上高高的阳台上的一个花钵里倾落，然后散落成地上的残土。事情甚至是这样的，命运总是最先和最早地试图使我热爱和愿望某一件事物，在紧接下来的第二天，我就在命运的圣谕之下看得十分清楚，自己不曾亦不会那样去做。&lt;/p&gt;
+
+&lt;p&gt;　　尽管这样，如同是自己的一个冷嘲的旁观者，我从来没有失去观察生活的兴趣。眼下，即使事先知道每一个尝试的希望都会破灭，我还是领受着特别的愉悦，同时享乐于幻灭和痛苦，还有一种苦涩的甜蜜，而其中的甜蜜更为突出。我是一个忧郁的战略家，每战皆失，在眼下一次次新的交战前夕，勾画出命运退却的诸多细节，欣赏着他自己做出的计划。&lt;/p&gt;
+
+&lt;p&gt;　　我的期望将会落空，我不能够在对此无知的的情况下来伸展期望。这种命运像邪恶的造物纠缠着我。无论什么时候，我在街上看见一个少女的身影，在惊异然而无聊的瞬间，会觉得她是多么像是我的人儿。然而，每一次，她都使我的白日梦破灭，让我活活地看见她遇见另一个男人，明显是她的丈夫或者情侣。&lt;/p&gt;
+
+&lt;p&gt;　　一种罗曼蒂克，就会造成这样的惨剧，而一个局外人却可以把这件事当作一出喜剧。然而，我身兼两职，因为对自己来说，我既是一个罗曼蒂克情种又是一个局外人，只是把书页向下翻，享乐于一个又一个冷嘲热讽的故事。&lt;/p&gt;
+
+&lt;p&gt;　　有些人说，生活中不能没有希望；另一些说，正是希望使生活丧失了意义。而对于我来说，希望和失望都不存在，生活仅仅是一张把我自己包含在内的画，但是在我的观看下，更像是一出没有情节的戏剧，纯粹是为了悦目而演出——生活是一场支离破碎的芭蕾舞，是一棵树上狂乱翻飞的树叶，是随着阳光变化颜色的云彩，是城市奇特地段那混乱无序地网状老街。&lt;/p&gt;
+
+&lt;p&gt;　　在很大程度上，我是自己写下的散文。我用辞藻和段落使自己成形，给自己加上标点，而且用一连串意象使自己成为一个国王；就像孩子们做的那样，给自己戴上一顶报纸叠成地王冠。用一连串词语寻找韵律以便让自己华丽炫目；就像疯子们做的那样，把梦中依然盛开的干枯花朵披戴在自己身上。&lt;/p&gt;
+
+&lt;p&gt;　　更进一步地说，我成为意识本身，像一个注满锯屑的玩偶那样沉静，无论什么时候推它一下，它那顶缝在突出帽子顶端的铃铛就会摇晃：生活叮叮当当响在一个死者的头上，对命运构成小小的警告。&lt;/p&gt;
+
+&lt;p&gt;　　事情经常是这样，即便我正处于平静的不满，但我仍然不会有空虚和单调之感，不会有这种思想慢慢潜入自己意识情绪的方式！事情经常是这样，像从其他混杂噪音中听出了某种声音，我没有感到与人类生活如此相异的生活有什么苦涩，倒是感到在这种生活里，唯一发生的事情只是对生活有所意识。事情经常是这样，我从自己身上苏醒过来，不曾把放逐的我回看一眼。我多么想成为终极的空无之人：这个幸运者至少可以感受到真实的苦涩；我多么想成为生活充实的人，他感受到疲劳而不是单调，受害而不仅仅是想象受害，是真正地给自己一刀而不是慢慢地死去。&lt;/p&gt;
+
+&lt;p&gt;　　我已经成了一本书里的人物，一段已经被阅读的生活。&lt;/p&gt;
+
+&lt;p&gt;　　与我的意愿完全相反，我的所感是为了自己能将其记录下来的感受，我的所思是后来出现在词语中的思想，而且混杂着只会彻底毁坏这些思想的意象，并且在意味着外物介入的韵律中展开。在这所有的重写中，我毁灭了自己。在这所有的思想中，我现在的思想不仅仅属于我，不是我自己。我探测自己的深度，但弄丢了自己的准绳；我毕其一生想知道自己深还是浅，但只能用自己的肉眼来目测，而展示于眼前的一切，在一口巨井的幽黑水面上清清楚楚，不过是这个人看见了在对视自己的一张脸。&lt;/p&gt;
+
+&lt;p&gt;　　我像一张扑克，属于古代未知的某一套牌，是失落了的某一盒牌中仅存的残余。我没有意义，不知道自己的价值，没有什么东西可以用来比较自己从而对自己加以寻找，在生活中也没有可以赖以辨识自己的目标。于是，在我用来描述自己的一连串意象里——既不真实亦非不真实——我更像意象而不是我。我在实在之外谈论自己，把自己的心灵用如墨水，其意图仅仅是写作。但是，反应渐渐微弱，我重新屈从于自己，返回到原样的我，即便这个我什么也不是。一种类似枯泪的东西在我大睁的眼睛里燃烧，一种从来没有感受过的焦虑扼住了我干涩的喉头。然而，如果大哭一场的话，我并不知道自己是为什么而哭，也不知道为什么我还没有哭出来，也不知道为什么我还没有哭出来。幻境就像影子一样紧紧粘着我。我所向往的一切就是入眠。」&lt;/p&gt;
+
 &lt;h1 id=&#34;九月&#34;&gt;九月&lt;/h1&gt;
 
 &lt;p&gt;&lt;strong&gt;9月28日21点04分&lt;/strong&gt;&lt;/p&gt;
@@ -5617,7 +5732,7 @@ getItem(arr,&amp;quot;name&amp;quot;,&amp;quot;123&amp;quot;).name
 
 &lt;p&gt;总有人比你强。&lt;/p&gt;
 
-&lt;p&gt;一如既往的Boy Meets Girl.&lt;/p&gt;
+&lt;p&gt;Boy Meets Girl.&lt;/p&gt;
 
 &lt;p&gt;记：&lt;/p&gt;
 
@@ -6171,7 +6286,7 @@ You are not machines, you are not cattle, you are men!&lt;/p&gt;
 &lt;p&gt;「人死去，自在之物也化为乌有，这是不可想象的。人类凭直觉可以直接认识到：人的死亡是现象在时间——一切现象的形式——中的终止，而自在之物却不受其影响。我们都感到：我们并非某人凭空创造的存在，因此我们相信，虽然死亡能终止我们的生命，却不能终止我们的存在。」
 「越是清楚地觉察到万物脆弱、虚无和梦幻般得特点，你越会清晰地觉察到自己内部存在地不朽，因为上述特点由此映衬方显鲜明，正如要觉察轮船行驶的速度，只能去看静止的河岸，而不是看轮船本身。」&lt;/p&gt;
 
-&lt;p&gt;「只要或者，我们就意识到，我们一直站在时间的中段，而绝非其终点。由此可以推知，我们每个人身上都体现着无尽时间不变的中段。恰恰是这一点给我们活着的信心，而不是始终生活在死亡的恐惧之中。」&lt;/p&gt;
+&lt;p&gt;「只要活着，我们就意识到，我们一直站在时间的中段，而绝非其终点。由此可以推知，我们每个人身上都体现着无尽时间不变的中段。恰恰是这一点给我们活着的信心，而不是始终生活在死亡的恐惧之中。」&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;-论自杀&lt;/code&gt;&lt;/p&gt;
 
