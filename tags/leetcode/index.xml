@@ -17,17 +17,12 @@
       <pubDate>Sat, 29 Sep 2018 22:59:34 +0000</pubDate>
       
       <guid>https://boseman1024.github.io/2018/top-interview-questions-medium-1/</guid>
-      <description>Trees and Graphs Number of Islands 求出岛屿个数 Given a 2d grid map of *&amp;lsquo;1&amp;rsquo;*s (land) and &amp;lsquo;0&amp;rsquo;s (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
-无向图遍历，1为可移动区域
-Example 1:
- Input:
-11110
-11010
-11000
-00000
-Output: 1
- Example 2:
- Input:</description>
+      <description>Trees and Graphs Populating Next Right Pointers in Each Node 将二叉树每层最右节点指向null Given a binary tree
+Populate each next pointer to point to its next right node. If there is no next right node, the next pointer should be set to NULL.
+Initially, all next pointers are set to NULL.
+Note:
+ You may only use constant extra space.
+ Recursive approach is fine, implicit stack space does not count as extra space for this problem.</description>
     </item>
     
     <item>

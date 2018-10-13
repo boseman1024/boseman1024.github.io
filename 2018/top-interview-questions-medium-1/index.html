@@ -46,17 +46,12 @@
     "articleSection" : "posts",
     "name" : "Top Interview Questions-Medium-①",
     "headline" : "Top Interview Questions-Medium-①",
-    "description" : "Trees and Graphs Number of Islands 求出岛屿个数 Given a 2d grid map of *&lsquo;1&rsquo;*s (land) and &lsquo;0&rsquo;s (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
-无向图遍历，1为可移动区域
-Example 1:
- Input:
-11110
-11010
-11000
-00000
-Output: 1
- Example 2:
- Input:",
+    "description" : "Trees and Graphs Populating Next Right Pointers in Each Node 将二叉树每层最右节点指向null Given a binary tree
+Populate each next pointer to point to its next right node. If there is no next right node, the next pointer should be set to NULL.
+Initially, all next pointers are set to NULL.
+Note:
+ You may only use constant extra space.
+ Recursive approach is fine, implicit stack space does not count as extra space for this problem.",
     "inLanguage" : "en-us",
     "author" : "Kuma2x",
     "creator" : "Kuma2x",
@@ -67,7 +62,7 @@ Output: 1
     "datePublished": "2018-09-29 22:59:34 &#43;0000 UTC",
     "dateModified" : "2018-09-29 22:59:34 &#43;0000 UTC",
     "url" : "https://boseman1024.github.io/2018/top-interview-questions-medium-1/",
-    "wordCount" : "2268",
+    "wordCount" : "2970",
     "keywords" : [ "数据结构与算法","LeetCode","JAVA", "KUMA2X"]
 }
 </script>
@@ -156,6 +151,92 @@ Output: 1
 
 <h1 id="trees-and-graphs">Trees and Graphs</h1>
 
+<h2 id="populating-next-right-pointers-in-each-node">Populating Next Right Pointers in Each Node</h2>
+
+<h2 id="将二叉树每层最右节点指向null">将二叉树每层最右节点指向null</h2>
+
+<p>Given a binary tree</p>
+
+<p>Populate each next pointer to point to its next right node. If there is no next right node, the next pointer should be set to <em>NULL</em>.</p>
+
+<p>Initially, all next pointers are set to <em>NULL</em>.</p>
+
+<p><em>Note:</em></p>
+
+<ul>
+<li><p>You may only use constant extra space.</p></li>
+
+<li><p>Recursive approach is fine, implicit stack space does not count as extra space for this problem.</p></li>
+
+<li><p>You may assume that it is a perfect binary tree (ie, all leaves are at the same level, and every parent has two children).</p></li>
+</ul>
+
+<p><em>Example:</em></p>
+
+<p>Given the following perfect binary tree,</p>
+
+<blockquote>
+<p>　　1</p>
+
+<p>　2　　3</p>
+
+<p>4　5　6　7</p>
+</blockquote>
+
+<p>After calling your function, the tree should look like:</p>
+
+<blockquote>
+<p>　　1 -&gt; NULL</p>
+
+<p>　2　-&gt;　3 -&gt; NULL</p>
+
+<p>4 -&gt; 5 -&gt; 6 -&gt; 7 -&gt; NULL</p>
+</blockquote>
+
+<h3 id="解答">解答：</h3>
+
+<pre><code class="language-java">/**
+ * Definition for binary tree with next pointer.
+ * public class TreeLinkNode {
+ *     int val;
+ *     TreeLinkNode left, right, next;
+ *     TreeLinkNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    /**
+    * 满二叉树深度为k的二叉树至多有2^k-1个结点。
+    * 通过层序遍历，对遍历个数进行计数，达到最大结点个数则该结点指向null
+    */
+    public void connect(TreeLinkNode root) {
+        if(root==null){return;}
+        Queue&lt;TreeLinkNode&gt; queue = new LinkedList&lt;&gt;();
+        queue.offer(root);
+        TreeLinkNode pre = root;
+        int count =0;
+        int level = 1;
+        while(!queue.isEmpty()){
+            TreeLinkNode node = queue.poll();
+            count++;
+            if(count==Math.pow(2,level-1)){
+                pre.next = null;
+                pre = node;
+                level++;
+            }else{
+                pre.next = node;
+                pre = pre.next;
+            }
+            if(node.left!=null){
+                queue.offer(node.left);
+            }
+            if(node.right!=null){
+                queue.offer(node.right);
+            }
+        }
+    }
+}
+</code></pre>
+
 <h2 id="number-of-islands">Number of Islands</h2>
 
 <h2 id="求出岛屿个数">求出岛屿个数</h2>
@@ -196,7 +277,7 @@ Output: 1
 <p>Output: 3</p>
 </blockquote>
 
-<h3 id="解答">解答：</h3>
+<h3 id="解答-1">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public int numIslands(char[][] grid) {
@@ -254,7 +335,7 @@ Output: 1
 <p>Output: 3</p>
 </blockquote>
 
-<h3 id="解答-1">解答：</h3>
+<h3 id="解答-2">解答：</h3>
 
 <pre><code class="language-java">/**
  * Definition for a binary tree node.
@@ -307,7 +388,7 @@ class Solution {
 
 <p><em>Follow up:</em> Recursive solution is trivial, could you do it iteratively?</p>
 
-<h3 id="解答-2">解答：</h3>
+<h3 id="解答-3">解答：</h3>
 
 <pre><code class="language-java">/**
  * Definition for a binary tree node.
@@ -341,6 +422,196 @@ class Solution {
 
 <h1 id="sorting-and-searching">Sorting and Searching</h1>
 
+<h2 id="word-search">Word Search</h2>
+
+<h2 id="矩阵中找单词">矩阵中找单词</h2>
+
+<p>Given a 2D board and a word, find if the word exists in the grid.</p>
+
+<p>The word can be constructed from letters of sequentially adjacent cell, where &ldquo;adjacent&rdquo; cells are those horizontally or vertically neighboring. The same letter cell may not be used more than once.</p>
+
+<p><em>Example:</em></p>
+
+<blockquote>
+<p>board =[</p>
+
+<p>[&lsquo;A&rsquo;,&lsquo;B&rsquo;,&lsquo;C&rsquo;,&lsquo;E&rsquo;],</p>
+
+<p>[&rsquo;S&rsquo;,&lsquo;F&rsquo;,&lsquo;C&rsquo;,&rsquo;S&rsquo;],</p>
+
+<p>[&lsquo;A&rsquo;,&rsquo;D&rsquo;,&lsquo;E&rsquo;,&lsquo;E&rsquo;]]</p>
+
+<p>Given word = &ldquo;ABCCED&rdquo;, return true.</p>
+
+<p>Given word = &ldquo;SEE&rdquo;, return true.</p>
+
+<p>Given word = &ldquo;ABCB&rdquo;, return false.</p>
+</blockquote>
+
+<h3 id="解答-4">解答：</h3>
+
+<pre><code class="language-java">class Solution {
+    //深度搜索
+    public boolean exist(char[][] board, String word) {
+        //word.charAt(i)耗时大于words[i]
+        char[] words = word.toCharArray();
+        for(int i=0;i&lt;board.length;i++){
+            for(int j=0;j&lt;board[0].length;j++){
+                if(DFS(board,i,j,words,0)){return true;}
+            }
+        }
+        return false;
+    }
+    public boolean DFS(char[][] board,int y,int x,char[] words,int count){
+        if(count==words.length){return true;}
+        if(x&lt;0||y&lt;0||x&gt;=board[0].length||y&gt;=board.length){return false;}
+        char c = board[y][x];
+        if(c!=words[count]||c=='0'){return false;}
+        //挖坑，标记已搜索坐标
+        board[y][x]='0';
+        boolean result = DFS(board,y+1,x,words,count+1)
+        ||DFS(board,y-1,x,words,count+1)
+        ||DFS(board,y,x+1,words,count+1)
+        ||DFS(board,y,x-1,words,count+1);
+        board[y][x]=c;
+        return result;
+    }
+}
+</code></pre>
+
+<h2 id="search-a-2d-matrix-ii">Search a 2D Matrix II</h2>
+
+<h2 id="矩阵中寻找一个数">矩阵中寻找一个数</h2>
+
+<p>Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:</p>
+
+<ul>
+<li><p>Integers in each row are sorted in ascending from left to right.</p></li>
+
+<li><p>Integers in each column are sorted in ascending from top to bottom.</p></li>
+</ul>
+
+<p><em>Example:</em></p>
+
+<p>Consider the following matrix:</p>
+
+<blockquote>
+<p>[[1,   4,  7, 11, 15],</p>
+
+<p>[2,   5,  8, 12, 19],</p>
+
+<p>[3,   6,  9, 16, 22],</p>
+
+<p>[10, 13, 14, 17, 24],</p>
+
+<p>[18, 21, 23, 26, 30]]</p>
+</blockquote>
+
+<p>Given target = 5, return true.</p>
+
+<p>Given target = 20, return false.</p>
+
+<h3 id="解答-5">解答：</h3>
+
+<pre><code class="language-java">class Solution {
+    //从矩阵下方开始，若大于目标则向上移动，若小于目标则向右移动，7ms。
+    public boolean searchMatrix(int[][] matrix, int target) {
+        if(matrix==null||matrix.length==0||matrix[0].length==0){
+            return false;
+        }
+        int y = matrix.length-1;
+        int x = 0;
+        while(y&gt;=0 &amp;&amp; x&lt;matrix[0].length){
+            if(matrix[y][x] == target){return true;}
+            else if(matrix[y][x] &gt; target){y--;}
+            else{x++;}
+        }
+        return false;
+    }
+    //对每行进行二分查找，16ms
+    public boolean searchMatrix(int[][] matrix, int target) {
+        for(int i=0;i&lt;matrix.length;i++){
+            int low = 0,high = matrix[0].length-1;
+            while(low&lt;=high){
+                int mid = low+(high-low)/2;
+                if(matrix[i][mid]&gt;target){
+                    high = mid-1;
+                }else if(matrix[i][mid]&lt;target){
+                    low = mid+1;
+                }else{
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}
+</code></pre>
+
+<h2 id="find-first-and-last-position-of-element-in-sorted-array">Find First and Last Position of Element in Sorted Array</h2>
+
+<h2 id="二分查找范围">二分查找范围</h2>
+
+<p>Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.</p>
+
+<p>Your algorithm&rsquo;s runtime complexity must be in the order of O(log n).</p>
+
+<p>If the target is not found in the array, return [-1, -1].</p>
+
+<p><em>Example 1:</em></p>
+
+<blockquote>
+<p>Input: nums = [5,7,7,8,8,10], target = 8</p>
+
+<p>Output: [3,4]</p>
+</blockquote>
+
+<p><em>Example 2:</em></p>
+
+<blockquote>
+<p>Input: nums = [5,7,7,8,8,10], target = 6</p>
+
+<p>Output: [-1,-1]</p>
+</blockquote>
+
+<h3 id="解答-6">解答：</h3>
+
+<pre><code class="language-java">class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        int[] array = new int[2];
+        array[0] = findFirstIndex(nums,target);
+        array[1] = findLastIndex(nums,target);
+        return array;
+    }
+    public int findFirstIndex(int[] nums,int target){
+        int low =0;
+        int high = nums.length-1;
+        while(low&lt;=high){
+            int mid = low+(high-low)/2;
+            if(nums[mid]&lt;target){
+                low = mid+1;
+            }else{
+                high = mid-1;
+            }
+        }
+        return (low&lt;nums.length)&amp;&amp;(nums[low]==target)?low:-1;
+    }
+    public int findLastIndex(int[] nums,int target){
+        int low =0;
+        int high = nums.length-1;
+        while(low&lt;=high){
+            int mid = low+(high-low)/2;
+            if(nums[mid]&lt;=target){
+                low = mid+1;
+            }else{
+                high = mid-1;
+            }
+        }
+        return (low-1&gt;=0)&amp;&amp;(nums[low-1]==target)?low-1:-1;
+    }
+}
+</code></pre>
+
 <h2 id="find-peak-element">Find Peak Element</h2>
 
 <h2 id="找出一个大于前后的数">找出一个大于前后的数</h2>
@@ -373,7 +644,7 @@ class Solution {
 <p>Explanation: Your function can return either index number 1 where the peak element is 2, or index number 5 where the peak element is 6.</p>
 </blockquote>
 
-<h3 id="解答-3">解答：</h3>
+<h3 id="解答-7">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     //二分查找，时间O(logN)
@@ -416,7 +687,7 @@ class Solution {
 
 <p><em>Note:</em> You may assume k is always valid, 1 ≤ k ≤ array&rsquo;s length.</p>
 
-<h3 id="解答-4">解答：</h3>
+<h3 id="解答-8">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public int findKthLargest(int[] nums, int k) {
@@ -459,7 +730,7 @@ class Solution {
 <p>Output: -1</p>
 </blockquote>
 
-<h3 id="解答-5">解答：</h3>
+<h3 id="解答-9">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public int search(int[] nums, int target) {
@@ -538,7 +809,7 @@ class Solution {
 <li><p>Your algorithm&rsquo;s time complexity must be better than O(n log n), where n is the array&rsquo;s size.</p></li>
 </ul>
 
-<h3 id="解答-6">解答：</h3>
+<h3 id="解答-10">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     //24ms
@@ -613,7 +884,7 @@ class Solution {
 <li>Could you come up with a one-pass algorithm using only constant space?</li>
 </ul>
 
-<h3 id="解答-7">解答：</h3>
+<h3 id="解答-11">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public void sortColors(int[] nums) {
@@ -661,7 +932,7 @@ class Solution {
 [[-1, 0, 1],[-1, -1, 2]]</p>
 </blockquote>
 
-<h3 id="解答-8">解答：</h3>
+<h3 id="解答-12">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     //TLE超时
@@ -719,7 +990,7 @@ class Solution {
 <p>Output: false</p>
 </blockquote>
 
-<h3 id="解答-9">解答：</h3>
+<h3 id="解答-13">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public boolean increasingTriplet(int[] nums) {
@@ -778,7 +1049,7 @@ class Solution {
 <li><p>The order of your output does not matter.</p></li>
 </ul>
 
-<h3 id="解答-10">解答：</h3>
+<h3 id="解答-14">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     //16ms，key为字母排序后的字符串，检验map中是否存在key
@@ -862,7 +1133,7 @@ class Solution {
 <li><p>Your code should preferably run in O(n) time and use only O(1) memory.</p></li>
 </ul>
 
-<h3 id="解答-11">解答：</h3>
+<h3 id="解答-15">解答：</h3>
 
 <pre><code class="language-java">/**
  * Definition for singly-linked list.
@@ -921,7 +1192,7 @@ public class Solution {
 <p>Output: 2-&gt;3-&gt;6-&gt;7-&gt;1-&gt;5-&gt;4-&gt;NULL</p>
 </blockquote>
 
-<h3 id="解答-12">解答：</h3>
+<h3 id="解答-16">解答：</h3>
 
 <pre><code class="language-java">/**
  * Definition for singly-linked list.
@@ -985,7 +1256,7 @@ class Solution {
 <p>Explanation: 342 + 465 = 807.</p>
 </blockquote>
 
-<h3 id="解答-13">解答：</h3>
+<h3 id="解答-17">解答：</h3>
 
 <pre><code class="language-java">/**
  * Definition for singly-linked list.
@@ -1059,7 +1330,7 @@ class Solution {
 
 <p><em>Note:</em> Your solution should be in logarithmic time complexity.</p>
 
-<h3 id="解答-14">解答：</h3>
+<h3 id="解答-18">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     /**
@@ -1099,7 +1370,7 @@ class Solution {
 <p>1^2 + 0^2 + 0^2 = 1</p>
 </blockquote>
 
-<h3 id="解答-15">解答：</h3>
+<h3 id="解答-19">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public boolean isHappy(int n) {

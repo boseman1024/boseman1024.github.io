@@ -19,6 +19,92 @@
 
 &lt;h1 id=&#34;trees-and-graphs&#34;&gt;Trees and Graphs&lt;/h1&gt;
 
+&lt;h2 id=&#34;populating-next-right-pointers-in-each-node&#34;&gt;Populating Next Right Pointers in Each Node&lt;/h2&gt;
+
+&lt;h2 id=&#34;将二叉树每层最右节点指向null&#34;&gt;将二叉树每层最右节点指向null&lt;/h2&gt;
+
+&lt;p&gt;Given a binary tree&lt;/p&gt;
+
+&lt;p&gt;Populate each next pointer to point to its next right node. If there is no next right node, the next pointer should be set to &lt;em&gt;NULL&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Initially, all next pointers are set to &lt;em&gt;NULL&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;You may only use constant extra space.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Recursive approach is fine, implicit stack space does not count as extra space for this problem.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;You may assume that it is a perfect binary tree (ie, all leaves are at the same level, and every parent has two children).&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Given the following perfect binary tree,&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;　　1&lt;/p&gt;
+
+&lt;p&gt;　2　　3&lt;/p&gt;
+
+&lt;p&gt;4　5　6　7&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;After calling your function, the tree should look like:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;　　1 -&amp;gt; NULL&lt;/p&gt;
+
+&lt;p&gt;　2　-&amp;gt;　3 -&amp;gt; NULL&lt;/p&gt;
+
+&lt;p&gt;4 -&amp;gt; 5 -&amp;gt; 6 -&amp;gt; 7 -&amp;gt; NULL&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * Definition for binary tree with next pointer.
+ * public class TreeLinkNode {
+ *     int val;
+ *     TreeLinkNode left, right, next;
+ *     TreeLinkNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    /**
+    * 满二叉树深度为k的二叉树至多有2^k-1个结点。
+    * 通过层序遍历，对遍历个数进行计数，达到最大结点个数则该结点指向null
+    */
+    public void connect(TreeLinkNode root) {
+        if(root==null){return;}
+        Queue&amp;lt;TreeLinkNode&amp;gt; queue = new LinkedList&amp;lt;&amp;gt;();
+        queue.offer(root);
+        TreeLinkNode pre = root;
+        int count =0;
+        int level = 1;
+        while(!queue.isEmpty()){
+            TreeLinkNode node = queue.poll();
+            count++;
+            if(count==Math.pow(2,level-1)){
+                pre.next = null;
+                pre = node;
+                level++;
+            }else{
+                pre.next = node;
+                pre = pre.next;
+            }
+            if(node.left!=null){
+                queue.offer(node.left);
+            }
+            if(node.right!=null){
+                queue.offer(node.right);
+            }
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h2 id=&#34;number-of-islands&#34;&gt;Number of Islands&lt;/h2&gt;
 
 &lt;h2 id=&#34;求出岛屿个数&#34;&gt;求出岛屿个数&lt;/h2&gt;
@@ -59,7 +145,7 @@
 &lt;p&gt;Output: 3&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-1&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public int numIslands(char[][] grid) {
@@ -117,7 +203,7 @@
 &lt;p&gt;Output: 3&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-1&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-2&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for a binary tree node.
@@ -170,7 +256,7 @@ class Solution {
 
 &lt;p&gt;&lt;em&gt;Follow up:&lt;/em&gt; Recursive solution is trivial, could you do it iteratively?&lt;/p&gt;
 
-&lt;h3 id=&#34;解答-2&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-3&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for a binary tree node.
@@ -204,6 +290,196 @@ class Solution {
 
 &lt;h1 id=&#34;sorting-and-searching&#34;&gt;Sorting and Searching&lt;/h1&gt;
 
+&lt;h2 id=&#34;word-search&#34;&gt;Word Search&lt;/h2&gt;
+
+&lt;h2 id=&#34;矩阵中找单词&#34;&gt;矩阵中找单词&lt;/h2&gt;
+
+&lt;p&gt;Given a 2D board and a word, find if the word exists in the grid.&lt;/p&gt;
+
+&lt;p&gt;The word can be constructed from letters of sequentially adjacent cell, where &amp;ldquo;adjacent&amp;rdquo; cells are those horizontally or vertically neighboring. The same letter cell may not be used more than once.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;board =[&lt;/p&gt;
+
+&lt;p&gt;[&amp;lsquo;A&amp;rsquo;,&amp;lsquo;B&amp;rsquo;,&amp;lsquo;C&amp;rsquo;,&amp;lsquo;E&amp;rsquo;],&lt;/p&gt;
+
+&lt;p&gt;[&amp;rsquo;S&amp;rsquo;,&amp;lsquo;F&amp;rsquo;,&amp;lsquo;C&amp;rsquo;,&amp;rsquo;S&amp;rsquo;],&lt;/p&gt;
+
+&lt;p&gt;[&amp;lsquo;A&amp;rsquo;,&amp;rsquo;D&amp;rsquo;,&amp;lsquo;E&amp;rsquo;,&amp;lsquo;E&amp;rsquo;]]&lt;/p&gt;
+
+&lt;p&gt;Given word = &amp;ldquo;ABCCED&amp;rdquo;, return true.&lt;/p&gt;
+
+&lt;p&gt;Given word = &amp;ldquo;SEE&amp;rdquo;, return true.&lt;/p&gt;
+
+&lt;p&gt;Given word = &amp;ldquo;ABCB&amp;rdquo;, return false.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-4&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    //深度搜索
+    public boolean exist(char[][] board, String word) {
+        //word.charAt(i)耗时大于words[i]
+        char[] words = word.toCharArray();
+        for(int i=0;i&amp;lt;board.length;i++){
+            for(int j=0;j&amp;lt;board[0].length;j++){
+                if(DFS(board,i,j,words,0)){return true;}
+            }
+        }
+        return false;
+    }
+    public boolean DFS(char[][] board,int y,int x,char[] words,int count){
+        if(count==words.length){return true;}
+        if(x&amp;lt;0||y&amp;lt;0||x&amp;gt;=board[0].length||y&amp;gt;=board.length){return false;}
+        char c = board[y][x];
+        if(c!=words[count]||c==&#39;0&#39;){return false;}
+        //挖坑，标记已搜索坐标
+        board[y][x]=&#39;0&#39;;
+        boolean result = DFS(board,y+1,x,words,count+1)
+        ||DFS(board,y-1,x,words,count+1)
+        ||DFS(board,y,x+1,words,count+1)
+        ||DFS(board,y,x-1,words,count+1);
+        board[y][x]=c;
+        return result;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;search-a-2d-matrix-ii&#34;&gt;Search a 2D Matrix II&lt;/h2&gt;
+
+&lt;h2 id=&#34;矩阵中寻找一个数&#34;&gt;矩阵中寻找一个数&lt;/h2&gt;
+
+&lt;p&gt;Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Integers in each row are sorted in ascending from left to right.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Integers in each column are sorted in ascending from top to bottom.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Consider the following matrix:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;[[1,   4,  7, 11, 15],&lt;/p&gt;
+
+&lt;p&gt;[2,   5,  8, 12, 19],&lt;/p&gt;
+
+&lt;p&gt;[3,   6,  9, 16, 22],&lt;/p&gt;
+
+&lt;p&gt;[10, 13, 14, 17, 24],&lt;/p&gt;
+
+&lt;p&gt;[18, 21, 23, 26, 30]]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Given target = 5, return true.&lt;/p&gt;
+
+&lt;p&gt;Given target = 20, return false.&lt;/p&gt;
+
+&lt;h3 id=&#34;解答-5&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    //从矩阵下方开始，若大于目标则向上移动，若小于目标则向右移动，7ms。
+    public boolean searchMatrix(int[][] matrix, int target) {
+        if(matrix==null||matrix.length==0||matrix[0].length==0){
+            return false;
+        }
+        int y = matrix.length-1;
+        int x = 0;
+        while(y&amp;gt;=0 &amp;amp;&amp;amp; x&amp;lt;matrix[0].length){
+            if(matrix[y][x] == target){return true;}
+            else if(matrix[y][x] &amp;gt; target){y--;}
+            else{x++;}
+        }
+        return false;
+    }
+    //对每行进行二分查找，16ms
+    public boolean searchMatrix(int[][] matrix, int target) {
+        for(int i=0;i&amp;lt;matrix.length;i++){
+            int low = 0,high = matrix[0].length-1;
+            while(low&amp;lt;=high){
+                int mid = low+(high-low)/2;
+                if(matrix[i][mid]&amp;gt;target){
+                    high = mid-1;
+                }else if(matrix[i][mid]&amp;lt;target){
+                    low = mid+1;
+                }else{
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;find-first-and-last-position-of-element-in-sorted-array&#34;&gt;Find First and Last Position of Element in Sorted Array&lt;/h2&gt;
+
+&lt;h2 id=&#34;二分查找范围&#34;&gt;二分查找范围&lt;/h2&gt;
+
+&lt;p&gt;Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.&lt;/p&gt;
+
+&lt;p&gt;Your algorithm&amp;rsquo;s runtime complexity must be in the order of O(log n).&lt;/p&gt;
+
+&lt;p&gt;If the target is not found in the array, return [-1, -1].&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: nums = [5,7,7,8,8,10], target = 8&lt;/p&gt;
+
+&lt;p&gt;Output: [3,4]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: nums = [5,7,7,8,8,10], target = 6&lt;/p&gt;
+
+&lt;p&gt;Output: [-1,-1]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-6&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        int[] array = new int[2];
+        array[0] = findFirstIndex(nums,target);
+        array[1] = findLastIndex(nums,target);
+        return array;
+    }
+    public int findFirstIndex(int[] nums,int target){
+        int low =0;
+        int high = nums.length-1;
+        while(low&amp;lt;=high){
+            int mid = low+(high-low)/2;
+            if(nums[mid]&amp;lt;target){
+                low = mid+1;
+            }else{
+                high = mid-1;
+            }
+        }
+        return (low&amp;lt;nums.length)&amp;amp;&amp;amp;(nums[low]==target)?low:-1;
+    }
+    public int findLastIndex(int[] nums,int target){
+        int low =0;
+        int high = nums.length-1;
+        while(low&amp;lt;=high){
+            int mid = low+(high-low)/2;
+            if(nums[mid]&amp;lt;=target){
+                low = mid+1;
+            }else{
+                high = mid-1;
+            }
+        }
+        return (low-1&amp;gt;=0)&amp;amp;&amp;amp;(nums[low-1]==target)?low-1:-1;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h2 id=&#34;find-peak-element&#34;&gt;Find Peak Element&lt;/h2&gt;
 
 &lt;h2 id=&#34;找出一个大于前后的数&#34;&gt;找出一个大于前后的数&lt;/h2&gt;
@@ -236,7 +512,7 @@ class Solution {
 &lt;p&gt;Explanation: Your function can return either index number 1 where the peak element is 2, or index number 5 where the peak element is 6.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-3&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-7&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //二分查找，时间O(logN)
@@ -279,7 +555,7 @@ class Solution {
 
 &lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; You may assume k is always valid, 1 ≤ k ≤ array&amp;rsquo;s length.&lt;/p&gt;
 
-&lt;h3 id=&#34;解答-4&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-8&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public int findKthLargest(int[] nums, int k) {
@@ -322,7 +598,7 @@ class Solution {
 &lt;p&gt;Output: -1&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-5&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-9&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public int search(int[] nums, int target) {
@@ -401,7 +677,7 @@ class Solution {
 &lt;li&gt;&lt;p&gt;Your algorithm&amp;rsquo;s time complexity must be better than O(n log n), where n is the array&amp;rsquo;s size.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;解答-6&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-10&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //24ms
@@ -476,7 +752,7 @@ class Solution {
 &lt;li&gt;Could you come up with a one-pass algorithm using only constant space?&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;解答-7&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-11&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public void sortColors(int[] nums) {
@@ -524,7 +800,7 @@ class Solution {
 [[-1, 0, 1],[-1, -1, 2]]&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-8&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-12&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //TLE超时
@@ -582,7 +858,7 @@ class Solution {
 &lt;p&gt;Output: false&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-9&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-13&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public boolean increasingTriplet(int[] nums) {
@@ -641,7 +917,7 @@ class Solution {
 &lt;li&gt;&lt;p&gt;The order of your output does not matter.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;解答-10&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-14&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //16ms，key为字母排序后的字符串，检验map中是否存在key
@@ -725,7 +1001,7 @@ class Solution {
 &lt;li&gt;&lt;p&gt;Your code should preferably run in O(n) time and use only O(1) memory.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;解答-11&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-15&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for singly-linked list.
@@ -784,7 +1060,7 @@ public class Solution {
 &lt;p&gt;Output: 2-&amp;gt;3-&amp;gt;6-&amp;gt;7-&amp;gt;1-&amp;gt;5-&amp;gt;4-&amp;gt;NULL&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-12&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-16&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for singly-linked list.
@@ -848,7 +1124,7 @@ class Solution {
 &lt;p&gt;Explanation: 342 + 465 = 807.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-13&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-17&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for singly-linked list.
@@ -922,7 +1198,7 @@ class Solution {
 
 &lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; Your solution should be in logarithmic time complexity.&lt;/p&gt;
 
-&lt;h3 id=&#34;解答-14&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-18&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     /**
@@ -962,7 +1238,7 @@ class Solution {
 &lt;p&gt;1^2 + 0^2 + 0^2 = 1&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-15&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-19&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public boolean isHappy(int n) {
@@ -4597,10 +4873,11 @@ public void preOrderTraversal(TreeNode root) {
         }
     }
 }
-public void inorderTraversal(TreeNode root) {
+public void inOrderTraversal(TreeNode root) {
     Stack&amp;lt;TreeNode&amp;gt; stack = new Stack&amp;lt;&amp;gt;();
     TreeNode node=root;
     while(node!=null||!stack.empty()){
+        //所有左节点压入栈
         while(node!=null){
             stack.push(node);
             node = node.left;
@@ -4608,12 +4885,44 @@ public void inorderTraversal(TreeNode root) {
         if(!stack.empty()){
             node = stack.pop();
             System.out.println(node.val);
+            //若有右右结点，将其压入栈
             node = node.right;
         }
     }
 }
+public void postOrderTraversal(TreeNode root) {
+    Stack&amp;lt;TreeNode&amp;gt; stack = new Stack&amp;lt;TreeNode&amp;gt;();
+    TreeNode node = root;
+    TreeNode pre = null;
+    while(node!=null||!stack.isEmpty()) {
+        while(node!=null) {
+            //将所有左节点压入栈
+            stack.push(node);
+            node = node.left;
+        }
+        if(!stack.isEmpty()){
+            node = stack.pop();
+            //若无右结点或右结点已被访问
+            if(node.right==null||node.right==pre){
+                //打印该节点
+                System.out.println(node.val);
+                //标记该已访问节点
+                pre = node;
+                node = null;
+            }else{
+                //将当前结点压入栈
+                stack.push(node);
+                node = node.right;
+                //将当前节点的右结点压入栈
+                stack.push(node);
+                //访问当前节点的左节点
+                node = node.left;
+            }
+        }
+    }
+}
+//层级遍历
 public void levelTraversal(TreeNode root) {
-    //层级遍历
     Queue&amp;lt;TreeNode&amp;gt; queue = new LinkedList&amp;lt;&amp;gt;();
     queue.offer(root);
     while(!queue.isEmpty()){
@@ -5601,6 +5910,10 @@ getItem(arr,&amp;quot;name&amp;quot;,&amp;quot;123&amp;quot;).name
 &lt;/center&gt;&lt;/p&gt;
 
 &lt;h1 id=&#34;十月&#34;&gt;十月&lt;/h1&gt;
+
+&lt;p&gt;&lt;strong&gt;10月11日13点38分&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;拿到N2证书了，反而不明白是为了什么。&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;10月10日23点13分&lt;/strong&gt;&lt;/p&gt;
 

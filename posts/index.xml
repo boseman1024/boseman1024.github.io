@@ -17,17 +17,12 @@
       <pubDate>Sat, 29 Sep 2018 22:59:34 +0000</pubDate>
       
       <guid>https://boseman1024.github.io/2018/top-interview-questions-medium-1/</guid>
-      <description>Trees and Graphs Number of Islands 求出岛屿个数 Given a 2d grid map of *&amp;lsquo;1&amp;rsquo;*s (land) and &amp;lsquo;0&amp;rsquo;s (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
-无向图遍历，1为可移动区域
-Example 1:
- Input:
-11110
-11010
-11000
-00000
-Output: 1
- Example 2:
- Input:</description>
+      <description>Trees and Graphs Populating Next Right Pointers in Each Node 将二叉树每层最右节点指向null Given a binary tree
+Populate each next pointer to point to its next right node. If there is no next right node, the next pointer should be set to NULL.
+Initially, all next pointers are set to NULL.
+Note:
+ You may only use constant extra space.
+ Recursive approach is fine, implicit stack space does not count as extra space for this problem.</description>
     </item>
     
     <item>
@@ -202,7 +197,9 @@ function getItem(arr,n,v) { for (var i = 0; i &amp;lt; arr.</description>
       
       <guid>https://boseman1024.github.io/2018/new-year-2018/</guid>
       <description>HAPPY 2017 8 NEW YEAR. NEW YOU. Just kidding. You&amp;rsquo;re still the same. piece of shit you were yesterday. 
-十月 10月10日23点13分
+十月 10月11日13点38分
+拿到N2证书了，反而不明白是为了什么。
+10月10日23点13分
 拎不清。
 记：
 《惶然录》——费尔南多·佩索阿
@@ -233,9 +230,7 @@ N2过了。
 七月 7月13日17点02分
 放暑假了。
 7月1日21点31分
-N2结束了，听力炸了。
-天気がいいから、一緒に散歩にまび。
-六月 6月26日21点50分</description>
+N2结束了，听力炸了。</description>
     </item>
     
   </channel>
