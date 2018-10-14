@@ -288,6 +288,8 @@ class Solution {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;hr /&gt;
+
 &lt;h1 id=&#34;sorting-and-searching&#34;&gt;Sorting and Searching&lt;/h1&gt;
 
 &lt;h2 id=&#34;word-search&#34;&gt;Word Search&lt;/h2&gt;
@@ -785,6 +787,137 @@ class Solution {
 
 &lt;h2 id=&#34;3sum&#34;&gt;3Sum&lt;/h2&gt;
 
+&lt;p&gt;Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.&lt;/p&gt;
+
+&lt;p&gt;*Note:*The solution set must not contain duplicate triplets.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Given array nums = [-1, 0, 1, 2, -1, -4],&lt;/p&gt;
+
+&lt;p&gt;A solution set is:&lt;/p&gt;
+
+&lt;p&gt;[[-1, 0, 1],[-1, -1, 2]]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-12&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public List&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; threeSum(int[] nums) {
+        List&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; list = new ArrayList&amp;lt;&amp;gt;();
+        Arrays.sort(nums);
+        //nums.length-2,一共求3个数
+        for(int i=0;i&amp;lt;nums.length-2;i++){
+            //若与前一个元素相同，则后移
+            if(i==0||nums[i]!=nums[i-1]){
+                int sum = 0-nums[i];
+                int low = i+1;
+                int high = nums.length-1;
+                while(low&amp;lt;high){
+                    if(nums[low]+nums[high]==sum){
+                        list.add(Arrays.asList(nums[i],nums[low],nums[high]));
+                        //去重，移动坐标
+                        while(low&amp;lt;high&amp;amp;&amp;amp;nums[low]==nums[low+1]){low++;}
+                        while(low&amp;lt;high&amp;amp;&amp;amp;nums[high]==nums[high-1]){high--;}
+                        high--;
+                        low++;
+                    }else if(nums[low]+nums[high]&amp;gt;sum){
+                        high--;
+                    }else{
+                        low++;
+                    }
+                }
+            }
+        }
+        return list;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;set-matrix-zeroes&#34;&gt;Set Matrix Zeroes&lt;/h2&gt;
+
+&lt;h2 id=&#34;将出现0的行列都赋值0&#34;&gt;将出现0的行列都赋值0&lt;/h2&gt;
+
+&lt;p&gt;Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in-place.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input:&lt;/p&gt;
+
+&lt;p&gt;[[1,1,1],&lt;/p&gt;
+
+&lt;p&gt;[1,0,1],&lt;/p&gt;
+
+&lt;p&gt;[1,1,1]]&lt;/p&gt;
+
+&lt;p&gt;Output:&lt;/p&gt;
+
+&lt;p&gt;[[1,0,1],&lt;/p&gt;
+
+&lt;p&gt;[0,0,0],&lt;/p&gt;
+
+&lt;p&gt;[1,0,1]]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input:&lt;/p&gt;
+
+&lt;p&gt;[[0,1,2,0],&lt;/p&gt;
+
+&lt;p&gt;[3,4,5,2],&lt;/p&gt;
+
+&lt;p&gt;[1,3,1,5]]&lt;/p&gt;
+
+&lt;p&gt;Output:&lt;/p&gt;
+
+&lt;p&gt;[[0,0,0,0],&lt;/p&gt;
+
+&lt;p&gt;[0,4,5,0],&lt;/p&gt;
+
+&lt;p&gt;[0,3,1,0]]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Follow up:&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;A straight forward solution using O(mn) space is probably a bad idea.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;A simple improvement uses O(m + n) space, but still not the best solution.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Could you devise a constant space solution?&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;解答-13&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public void setZeroes(int[][] matrix) {
+        boolean[] rows = new boolean[matrix.length];
+        boolean[] cols = new boolean[matrix[0].length];
+        //找出所有为0的行、列
+        for(int i=0;i&amp;lt;matrix.length;i++){
+            for(int j=0;j&amp;lt;matrix[0].length;j++){
+                if(matrix[i][j]==0){
+                    rows[i] = true;
+                    cols[j] = true;
+                }
+            }
+        }
+        //将所有标记行、列赋值0
+        for(int i=0;i&amp;lt;matrix.length;i++){
+            for(int j=0;j&amp;lt;matrix[0].length;j++){
+                if(rows[i]||cols[j]){matrix[i][j]=0;}
+            }
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;3sum-1&#34;&gt;3Sum&lt;/h2&gt;
+
 &lt;h2 id=&#34;找出三个和为0的数&#34;&gt;找出三个和为0的数&lt;/h2&gt;
 
 &lt;p&gt;Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.&lt;/p&gt;
@@ -800,7 +933,7 @@ class Solution {
 [[-1, 0, 1],[-1, -1, 2]]&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-12&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-14&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //TLE超时
@@ -858,7 +991,7 @@ class Solution {
 &lt;p&gt;Output: false&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-13&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-15&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public boolean increasingTriplet(int[] nums) {
@@ -917,7 +1050,7 @@ class Solution {
 &lt;li&gt;&lt;p&gt;The order of your output does not matter.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;解答-14&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-16&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //16ms，key为字母排序后的字符串，检验map中是否存在key
@@ -1001,7 +1134,7 @@ class Solution {
 &lt;li&gt;&lt;p&gt;Your code should preferably run in O(n) time and use only O(1) memory.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;解答-15&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-17&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for singly-linked list.
@@ -1060,7 +1193,7 @@ public class Solution {
 &lt;p&gt;Output: 2-&amp;gt;3-&amp;gt;6-&amp;gt;7-&amp;gt;1-&amp;gt;5-&amp;gt;4-&amp;gt;NULL&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-16&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-18&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for singly-linked list.
@@ -1124,7 +1257,7 @@ class Solution {
 &lt;p&gt;Explanation: 342 + 465 = 807.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-17&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-19&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for singly-linked list.
@@ -1170,6 +1303,73 @@ class Solution {
 
 &lt;h1 id=&#34;math&#34;&gt;Math&lt;/h1&gt;
 
+&lt;h2 id=&#34;excel-sheet-column-number&#34;&gt;Excel Sheet Column Number&lt;/h2&gt;
+
+&lt;h2 id=&#34;英文字母计数-26进制&#34;&gt;英文字母计数（26进制）&lt;/h2&gt;
+
+&lt;p&gt;Given a column title as appear in an Excel sheet, return its corresponding column number.&lt;/p&gt;
+
+&lt;p&gt;For example:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;A -&amp;gt; 1&lt;/p&gt;
+
+&lt;p&gt;B -&amp;gt; 2&lt;/p&gt;
+
+&lt;p&gt;C -&amp;gt; 3&lt;/p&gt;
+
+&lt;p&gt;&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;Z -&amp;gt; 26&lt;/p&gt;
+
+&lt;p&gt;AA -&amp;gt; 27&lt;/p&gt;
+
+&lt;p&gt;AB -&amp;gt; 28&lt;/p&gt;
+
+&lt;p&gt;&amp;hellip;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: &amp;ldquo;A&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Output: 1&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: &amp;ldquo;AB&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Output: 28&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 3:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: &amp;ldquo;ZY&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Output: 701&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-20&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    //&amp;quot;AAA&amp;quot;=703
+    public int titleToNumber(String s) {
+        char[] str = s.toCharArray();
+        int sum = 0;
+        for(int i=0;i&amp;lt;str.length;i++){
+            //处于第几位=Math.pow(26,str.length-i-1)
+            //当前数=str[i]-&#39;A&#39;+1
+            sum += (int)Math.pow(26,str.length-i-1)*(str[i]-&#39;A&#39;+1);
+        }
+        return sum;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h2 id=&#34;factorial-trailing-zeroes&#34;&gt;Factorial Trailing Zeroes&lt;/h2&gt;
 
 &lt;h2 id=&#34;找出一个数末尾有几个0&#34;&gt;找出一个数末尾有几个0&lt;/h2&gt;
@@ -1198,7 +1398,7 @@ class Solution {
 
 &lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; Your solution should be in logarithmic time complexity.&lt;/p&gt;
 
-&lt;h3 id=&#34;解答-18&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-21&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     /**
@@ -1238,7 +1438,7 @@ class Solution {
 &lt;p&gt;1^2 + 0^2 + 0^2 = 1&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-19&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-22&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public boolean isHappy(int n) {
@@ -1253,6 +1453,82 @@ class Solution {
             if(list.contains(String.valueOf(n))){return false;}
         }
         return true;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;other&#34;&gt;Other&lt;/h1&gt;
+
+&lt;h2 id=&#34;majority-element&#34;&gt;Majority Element&lt;/h2&gt;
+
+&lt;h2 id=&#34;找出现次数最多的元素&#34;&gt;找出现次数最多的元素&lt;/h2&gt;
+
+&lt;p&gt;Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times.&lt;/p&gt;
+
+&lt;p&gt;You may assume that the array is non-empty and the majority element always exist in the array.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [3,2,3]&lt;/p&gt;
+
+&lt;p&gt;Output: 3&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [2,2,1,1,1,2,2]&lt;/p&gt;
+
+&lt;p&gt;Output: 2&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-23&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    //The majority element is the element that appears more than ⌊ n/2 ⌋ times.
+    public int majorityElement(int[] nums) {
+        Arrays.sort(nums);
+        return nums[nums.length / 2];
+    }
+    //3ms
+    //原理：如果majority元素存在（majority元素个数大于n/2,个数超过数组长度一半），那么无论它的各个元素位置是如何分布的，其count经过抵消和增加后，最后一定是大于等于1的。 如果不能保证majority存在，需要检验。 复杂度：O(N)
+    public int majorityElement(int[] nums) {
+        int majority = nums[0];
+        int count = 0;
+        for(int i=0;i&amp;lt;nums.length;i++){
+            if(count==0){
+                count++;
+                majority = nums[i];
+            }else if(majority==nums[i]){
+                count++;
+            }else{
+                count--;
+            }
+        }
+        return majority;
+    }
+    //先排序后找出现次数最多的数，6ms
+    public int majorityElement(int[] nums) {
+        if(nums.length&amp;lt;=2){return nums[0];}
+        Arrays.sort(nums);
+        int max = 1;
+        int record = 1;
+        int majority = nums[0];
+        for(int i=0;i&amp;lt;nums.length-1;i++){
+            if(nums[i]==nums[i+1]){
+                record++;
+            }else{
+                record = 1;
+            }
+            if(max&amp;lt;record){
+                    max = record;
+                    majority = nums[i];
+            }
+        }
+        return majority;
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
@@ -5910,6 +6186,12 @@ getItem(arr,&amp;quot;name&amp;quot;,&amp;quot;123&amp;quot;).name
 &lt;/center&gt;&lt;/p&gt;
 
 &lt;h1 id=&#34;十月&#34;&gt;十月&lt;/h1&gt;
+
+&lt;p&gt;&lt;strong&gt;10月14日9点33分&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;想学架子鼓。&lt;/p&gt;
+
+&lt;p&gt;Nobody is normal.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;10月11日13点38分&lt;/strong&gt;&lt;/p&gt;
 
