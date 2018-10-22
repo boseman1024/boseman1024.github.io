@@ -46,12 +46,16 @@
     "articleSection" : "posts",
     "name" : "Top Interview Questions-Medium-①",
     "headline" : "Top Interview Questions-Medium-①",
-    "description" : "Trees and Graphs Populating Next Right Pointers in Each Node 将二叉树每层最右节点指向null Given a binary tree
-Populate each next pointer to point to its next right node. If there is no next right node, the next pointer should be set to NULL.
-Initially, all next pointers are set to NULL.
-Note:
- You may only use constant extra space.
- Recursive approach is fine, implicit stack space does not count as extra space for this problem.",
+    "description" : "Trees and Graphs Construct Binary Tree from Preorder and Inorder Traversal 根据先序、中序遍历生存二叉树 Given preorder and inorder traversal of a tree, construct the binary tree.
+Note: You may assume that duplicates do not exist in the tree.
+For example, given
+ preorder = [3,9,20,15,7]
+inorder = [9,3,15,20,7]
+ Return the following binary tree:
+ 　3
+　9　20
+　15　7
+ 解答： /** * Definition for a binary tree node.",
     "inLanguage" : "en-us",
     "author" : "Kuma2x",
     "creator" : "Kuma2x",
@@ -62,7 +66,7 @@ Note:
     "datePublished": "2018-09-29 22:59:34 &#43;0000 UTC",
     "dateModified" : "2018-09-29 22:59:34 &#43;0000 UTC",
     "url" : "https://boseman1024.github.io/2018/top-interview-questions-medium-1/",
-    "wordCount" : "3467",
+    "wordCount" : "3618",
     "keywords" : [ "数据结构与算法","LeetCode","JAVA", "KUMA2X"]
 }
 </script>
@@ -151,6 +155,75 @@ Note:
 
 <h1 id="trees-and-graphs">Trees and Graphs</h1>
 
+<h2 id="construct-binary-tree-from-preorder-and-inorder-traversal">Construct Binary Tree from Preorder and Inorder Traversal</h2>
+
+<h2 id="根据先序-中序遍历生存二叉树">根据先序、中序遍历生存二叉树</h2>
+
+<p>Given preorder and inorder traversal of a tree, construct the binary tree.</p>
+
+<p><em>Note:</em> You may assume that duplicates do not exist in the tree.</p>
+
+<p>For example, given</p>
+
+<blockquote>
+<p>preorder = [3,9,20,15,7]</p>
+
+<p>inorder = [9,3,15,20,7]</p>
+</blockquote>
+
+<p>Return the following binary tree:</p>
+
+<blockquote>
+<p>　　　3</p>
+
+<p>　　9　20</p>
+
+<p>　　　15　7</p>
+</blockquote>
+
+<h3 id="解答">解答：</h3>
+
+<pre><code class="language-java">/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    Map&lt;Integer,Integer&gt; inorderMap;
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+        inorderMap = new HashMap&lt;&gt;();
+        for(int i=0;i&lt;inorder.length;i++){
+            inorderMap.put(inorder[i],i);
+        }
+        return build(preorder,0,preorder.length-1,inorder,0,inorder.length-1);
+    }
+    public TreeNode build(int[] preorder,int preStart,int preEnd,int[] inorder,int inStart,int inEnd){
+        if(preStart&gt;preEnd||inStart&gt;inEnd){return null;}
+        TreeNode node = new TreeNode(preorder[preStart]);
+        int nodeIndex = inorderMap.get(node.val);
+        /*找出该结点在中序中的位置nodeIndex
+        *该节点在先序中的位置preStart
+        *则先序中preStart至[preStart+nodeIndex-inStart]为该结点的左子树
+        *即中序中inStart至[preStart+nodeIndex-inStart]为该结点的左子树
+        *在中序中从nodeIndex开始不断收缩
+        **/
+        node.left = build(preorder,preStart+1,preStart+nodeIndex-inStart,inorder,inStart,nodeIndex-1);
+        /*找出该结点在中序中的位置nodeIndex
+        *该节点在先序中的位置preStart
+        *则先序中[preStart+nodeIndex-inStart+1]开始至preEnd为该结点的右子树
+        *即中序中nodeIndex+1至inEnd为该结点的右子树
+        *在中序中从nodeIndex开始不断拓展
+        **/
+        node.right = build(preorder,preStart+nodeIndex-inStart+1,preEnd,inorder,nodeIndex+1,inEnd);
+        return node;
+    }
+}
+</code></pre>
+
 <h2 id="populating-next-right-pointers-in-each-node">Populating Next Right Pointers in Each Node</h2>
 
 <h2 id="将二叉树每层最右节点指向null">将二叉树每层最右节点指向null</h2>
@@ -193,7 +266,7 @@ Note:
 <p>4 -&gt; 5 -&gt; 6 -&gt; 7 -&gt; NULL</p>
 </blockquote>
 
-<h3 id="解答">解答：</h3>
+<h3 id="解答-1">解答：</h3>
 
 <pre><code class="language-java">/**
  * Definition for binary tree with next pointer.
@@ -277,7 +350,7 @@ public class Solution {
 <p>Output: 3</p>
 </blockquote>
 
-<h3 id="解答-1">解答：</h3>
+<h3 id="解答-2">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public int numIslands(char[][] grid) {
@@ -335,7 +408,7 @@ public class Solution {
 <p>Output: 3</p>
 </blockquote>
 
-<h3 id="解答-2">解答：</h3>
+<h3 id="解答-3">解答：</h3>
 
 <pre><code class="language-java">/**
  * Definition for a binary tree node.
@@ -388,7 +461,7 @@ class Solution {
 
 <p><em>Follow up:</em> Recursive solution is trivial, could you do it iteratively?</p>
 
-<h3 id="解答-3">解答：</h3>
+<h3 id="解答-4">解答：</h3>
 
 <pre><code class="language-java">/**
  * Definition for a binary tree node.
@@ -450,7 +523,7 @@ class Solution {
 <p>Given word = &ldquo;ABCB&rdquo;, return false.</p>
 </blockquote>
 
-<h3 id="解答-4">解答：</h3>
+<h3 id="解答-5">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     //深度搜索
@@ -513,7 +586,7 @@ class Solution {
 
 <p>Given target = 20, return false.</p>
 
-<h3 id="解答-5">解答：</h3>
+<h3 id="解答-6">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     //从矩阵下方开始，若大于目标则向上移动，若小于目标则向右移动，7ms。
@@ -576,7 +649,7 @@ class Solution {
 <p>Output: [-1,-1]</p>
 </blockquote>
 
-<h3 id="解答-6">解答：</h3>
+<h3 id="解答-7">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public int[] searchRange(int[] nums, int target) {
@@ -646,7 +719,7 @@ class Solution {
 <p>Explanation: Your function can return either index number 1 where the peak element is 2, or index number 5 where the peak element is 6.</p>
 </blockquote>
 
-<h3 id="解答-7">解答：</h3>
+<h3 id="解答-8">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     //二分查找，时间O(logN)
@@ -689,7 +762,7 @@ class Solution {
 
 <p><em>Note:</em> You may assume k is always valid, 1 ≤ k ≤ array&rsquo;s length.</p>
 
-<h3 id="解答-8">解答：</h3>
+<h3 id="解答-9">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public int findKthLargest(int[] nums, int k) {
@@ -732,7 +805,7 @@ class Solution {
 <p>Output: -1</p>
 </blockquote>
 
-<h3 id="解答-9">解答：</h3>
+<h3 id="解答-10">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public int search(int[] nums, int target) {
@@ -811,7 +884,7 @@ class Solution {
 <li><p>Your algorithm&rsquo;s time complexity must be better than O(n log n), where n is the array&rsquo;s size.</p></li>
 </ul>
 
-<h3 id="解答-10">解答：</h3>
+<h3 id="解答-11">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     //24ms
@@ -886,7 +959,7 @@ class Solution {
 <li>Could you come up with a one-pass algorithm using only constant space?</li>
 </ul>
 
-<h3 id="解答-11">解答：</h3>
+<h3 id="解答-12">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public void sortColors(int[] nums) {
@@ -933,7 +1006,7 @@ class Solution {
 <p>[[-1, 0, 1],[-1, -1, 2]]</p>
 </blockquote>
 
-<h3 id="解答-12">解答：</h3>
+<h3 id="解答-13">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public List&lt;List&lt;Integer&gt;&gt; threeSum(int[] nums) {
@@ -1023,7 +1096,7 @@ class Solution {
 <li><p>Could you devise a constant space solution?</p></li>
 </ul>
 
-<h3 id="解答-13">解答：</h3>
+<h3 id="解答-14">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public void setZeroes(int[][] matrix) {
@@ -1065,7 +1138,7 @@ class Solution {
 [[-1, 0, 1],[-1, -1, 2]]</p>
 </blockquote>
 
-<h3 id="解答-14">解答：</h3>
+<h3 id="解答-15">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     //TLE超时
@@ -1123,7 +1196,7 @@ class Solution {
 <p>Output: false</p>
 </blockquote>
 
-<h3 id="解答-15">解答：</h3>
+<h3 id="解答-16">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public boolean increasingTriplet(int[] nums) {
@@ -1182,7 +1255,7 @@ class Solution {
 <li><p>The order of your output does not matter.</p></li>
 </ul>
 
-<h3 id="解答-16">解答：</h3>
+<h3 id="解答-17">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     //16ms，key为字母排序后的字符串，检验map中是否存在key
@@ -1266,7 +1339,7 @@ class Solution {
 <li><p>Your code should preferably run in O(n) time and use only O(1) memory.</p></li>
 </ul>
 
-<h3 id="解答-17">解答：</h3>
+<h3 id="解答-18">解答：</h3>
 
 <pre><code class="language-java">/**
  * Definition for singly-linked list.
@@ -1325,7 +1398,7 @@ public class Solution {
 <p>Output: 2-&gt;3-&gt;6-&gt;7-&gt;1-&gt;5-&gt;4-&gt;NULL</p>
 </blockquote>
 
-<h3 id="解答-18">解答：</h3>
+<h3 id="解答-19">解答：</h3>
 
 <pre><code class="language-java">/**
  * Definition for singly-linked list.
@@ -1389,7 +1462,7 @@ class Solution {
 <p>Explanation: 342 + 465 = 807.</p>
 </blockquote>
 
-<h3 id="解答-19">解答：</h3>
+<h3 id="解答-20">解答：</h3>
 
 <pre><code class="language-java">/**
  * Definition for singly-linked list.
@@ -1485,7 +1558,7 @@ class Solution {
 <p>Output: 701</p>
 </blockquote>
 
-<h3 id="解答-20">解答：</h3>
+<h3 id="解答-21">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     //&quot;AAA&quot;=703
@@ -1530,7 +1603,7 @@ class Solution {
 
 <p><em>Note:</em> Your solution should be in logarithmic time complexity.</p>
 
-<h3 id="解答-21">解答：</h3>
+<h3 id="解答-22">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     /**
@@ -1570,7 +1643,7 @@ class Solution {
 <p>1^2 + 0^2 + 0^2 = 1</p>
 </blockquote>
 
-<h3 id="解答-22">解答：</h3>
+<h3 id="解答-23">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public boolean isHappy(int n) {
@@ -1617,7 +1690,7 @@ class Solution {
 <p>Output: 2</p>
 </blockquote>
 
-<h3 id="解答-23">解答：</h3>
+<h3 id="解答-24">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     //The majority element is the element that appears more than ⌊ n/2 ⌋ times.

@@ -19,6 +19,75 @@
 
 &lt;h1 id=&#34;trees-and-graphs&#34;&gt;Trees and Graphs&lt;/h1&gt;
 
+&lt;h2 id=&#34;construct-binary-tree-from-preorder-and-inorder-traversal&#34;&gt;Construct Binary Tree from Preorder and Inorder Traversal&lt;/h2&gt;
+
+&lt;h2 id=&#34;根据先序-中序遍历生存二叉树&#34;&gt;根据先序、中序遍历生存二叉树&lt;/h2&gt;
+
+&lt;p&gt;Given preorder and inorder traversal of a tree, construct the binary tree.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; You may assume that duplicates do not exist in the tree.&lt;/p&gt;
+
+&lt;p&gt;For example, given&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;preorder = [3,9,20,15,7]&lt;/p&gt;
+
+&lt;p&gt;inorder = [9,3,15,20,7]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Return the following binary tree:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;　　　3&lt;/p&gt;
+
+&lt;p&gt;　　9　20&lt;/p&gt;
+
+&lt;p&gt;　　　15　7&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    Map&amp;lt;Integer,Integer&amp;gt; inorderMap;
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+        inorderMap = new HashMap&amp;lt;&amp;gt;();
+        for(int i=0;i&amp;lt;inorder.length;i++){
+            inorderMap.put(inorder[i],i);
+        }
+        return build(preorder,0,preorder.length-1,inorder,0,inorder.length-1);
+    }
+    public TreeNode build(int[] preorder,int preStart,int preEnd,int[] inorder,int inStart,int inEnd){
+        if(preStart&amp;gt;preEnd||inStart&amp;gt;inEnd){return null;}
+        TreeNode node = new TreeNode(preorder[preStart]);
+        int nodeIndex = inorderMap.get(node.val);
+        /*找出该结点在中序中的位置nodeIndex
+        *该节点在先序中的位置preStart
+        *则先序中preStart至[preStart+nodeIndex-inStart]为该结点的左子树
+        *即中序中inStart至[preStart+nodeIndex-inStart]为该结点的左子树
+        *在中序中从nodeIndex开始不断收缩
+        **/
+        node.left = build(preorder,preStart+1,preStart+nodeIndex-inStart,inorder,inStart,nodeIndex-1);
+        /*找出该结点在中序中的位置nodeIndex
+        *该节点在先序中的位置preStart
+        *则先序中[preStart+nodeIndex-inStart+1]开始至preEnd为该结点的右子树
+        *即中序中nodeIndex+1至inEnd为该结点的右子树
+        *在中序中从nodeIndex开始不断拓展
+        **/
+        node.right = build(preorder,preStart+nodeIndex-inStart+1,preEnd,inorder,nodeIndex+1,inEnd);
+        return node;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h2 id=&#34;populating-next-right-pointers-in-each-node&#34;&gt;Populating Next Right Pointers in Each Node&lt;/h2&gt;
 
 &lt;h2 id=&#34;将二叉树每层最右节点指向null&#34;&gt;将二叉树每层最右节点指向null&lt;/h2&gt;
@@ -61,7 +130,7 @@
 &lt;p&gt;4 -&amp;gt; 5 -&amp;gt; 6 -&amp;gt; 7 -&amp;gt; NULL&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-1&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for binary tree with next pointer.
@@ -145,7 +214,7 @@ public class Solution {
 &lt;p&gt;Output: 3&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-1&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-2&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public int numIslands(char[][] grid) {
@@ -203,7 +272,7 @@ public class Solution {
 &lt;p&gt;Output: 3&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-2&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-3&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for a binary tree node.
@@ -256,7 +325,7 @@ class Solution {
 
 &lt;p&gt;&lt;em&gt;Follow up:&lt;/em&gt; Recursive solution is trivial, could you do it iteratively?&lt;/p&gt;
 
-&lt;h3 id=&#34;解答-3&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-4&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for a binary tree node.
@@ -318,7 +387,7 @@ class Solution {
 &lt;p&gt;Given word = &amp;ldquo;ABCB&amp;rdquo;, return false.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-4&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-5&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //深度搜索
@@ -381,7 +450,7 @@ class Solution {
 
 &lt;p&gt;Given target = 20, return false.&lt;/p&gt;
 
-&lt;h3 id=&#34;解答-5&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-6&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //从矩阵下方开始，若大于目标则向上移动，若小于目标则向右移动，7ms。
@@ -444,7 +513,7 @@ class Solution {
 &lt;p&gt;Output: [-1,-1]&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-6&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-7&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public int[] searchRange(int[] nums, int target) {
@@ -514,7 +583,7 @@ class Solution {
 &lt;p&gt;Explanation: Your function can return either index number 1 where the peak element is 2, or index number 5 where the peak element is 6.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-7&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-8&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //二分查找，时间O(logN)
@@ -557,7 +626,7 @@ class Solution {
 
 &lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; You may assume k is always valid, 1 ≤ k ≤ array&amp;rsquo;s length.&lt;/p&gt;
 
-&lt;h3 id=&#34;解答-8&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-9&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public int findKthLargest(int[] nums, int k) {
@@ -600,7 +669,7 @@ class Solution {
 &lt;p&gt;Output: -1&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-9&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-10&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public int search(int[] nums, int target) {
@@ -679,7 +748,7 @@ class Solution {
 &lt;li&gt;&lt;p&gt;Your algorithm&amp;rsquo;s time complexity must be better than O(n log n), where n is the array&amp;rsquo;s size.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;解答-10&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-11&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //24ms
@@ -754,7 +823,7 @@ class Solution {
 &lt;li&gt;Could you come up with a one-pass algorithm using only constant space?&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;解答-11&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-12&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public void sortColors(int[] nums) {
@@ -801,7 +870,7 @@ class Solution {
 &lt;p&gt;[[-1, 0, 1],[-1, -1, 2]]&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-12&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-13&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public List&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; threeSum(int[] nums) {
@@ -891,7 +960,7 @@ class Solution {
 &lt;li&gt;&lt;p&gt;Could you devise a constant space solution?&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;解答-13&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-14&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public void setZeroes(int[][] matrix) {
@@ -933,7 +1002,7 @@ class Solution {
 [[-1, 0, 1],[-1, -1, 2]]&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-14&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-15&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //TLE超时
@@ -991,7 +1060,7 @@ class Solution {
 &lt;p&gt;Output: false&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-15&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-16&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public boolean increasingTriplet(int[] nums) {
@@ -1050,7 +1119,7 @@ class Solution {
 &lt;li&gt;&lt;p&gt;The order of your output does not matter.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;解答-16&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-17&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //16ms，key为字母排序后的字符串，检验map中是否存在key
@@ -1134,7 +1203,7 @@ class Solution {
 &lt;li&gt;&lt;p&gt;Your code should preferably run in O(n) time and use only O(1) memory.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;解答-17&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-18&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for singly-linked list.
@@ -1193,7 +1262,7 @@ public class Solution {
 &lt;p&gt;Output: 2-&amp;gt;3-&amp;gt;6-&amp;gt;7-&amp;gt;1-&amp;gt;5-&amp;gt;4-&amp;gt;NULL&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-18&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-19&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for singly-linked list.
@@ -1257,7 +1326,7 @@ class Solution {
 &lt;p&gt;Explanation: 342 + 465 = 807.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-19&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-20&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for singly-linked list.
@@ -1353,7 +1422,7 @@ class Solution {
 &lt;p&gt;Output: 701&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-20&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-21&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //&amp;quot;AAA&amp;quot;=703
@@ -1398,7 +1467,7 @@ class Solution {
 
 &lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; Your solution should be in logarithmic time complexity.&lt;/p&gt;
 
-&lt;h3 id=&#34;解答-21&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-22&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     /**
@@ -1438,7 +1507,7 @@ class Solution {
 &lt;p&gt;1^2 + 0^2 + 0^2 = 1&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-22&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-23&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public boolean isHappy(int n) {
@@ -1485,7 +1554,7 @@ class Solution {
 &lt;p&gt;Output: 2&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-23&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-24&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //The majority element is the element that appears more than ⌊ n/2 ⌋ times.
@@ -2741,6 +2810,75 @@ int len = removeDuplicates(nums);&lt;/p&gt;
 
 &lt;h1 id=&#34;dynamic-programming&#34;&gt;Dynamic Programming&lt;/h1&gt;
 
+&lt;h2 id=&#34;climbing-stairs&#34;&gt;Climbing Stairs&lt;/h2&gt;
+
+&lt;h2 id=&#34;实质为斐波那契数列&#34;&gt;实质为斐波那契数列&lt;/h2&gt;
+
+&lt;p&gt;You are climbing a stair case. It takes n steps to reach to the top.&lt;/p&gt;
+
+&lt;p&gt;Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; Given n will be a positive integer.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: 2&lt;/p&gt;
+
+&lt;p&gt;Output: 2&lt;/p&gt;
+
+&lt;p&gt;Explanation: There are two ways to climb to the top.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;1 step + 1 step&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;2 steps&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: 3&lt;/p&gt;
+
+&lt;p&gt;Output: 3&lt;/p&gt;
+
+&lt;p&gt;Explanation: There are three ways to climb to the top.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;1 step + 1 step + 1 step&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;1 step + 2 steps&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;2 steps + 1 step&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    /*斐波那契数列：
+    * f(0)=1
+    * f(1)=2
+    * f(n)=f(n-1)+f(n-2)  n&amp;gt;1
+    *
+    * 若一次可爬1、2、…、n级台阶，则爬上一个n级台阶一共有f(n)=2^(n-1)种跳法
+    */
+    public int climbStairs(int n) {
+        if(n&amp;lt;=1){return n;}
+        int one = 1;
+        int two = 2;
+        int ways  = 2;
+        for(int i=2;i&amp;lt;n;i++){
+            ways = one+two;
+            one = two;
+            two = ways;
+        }
+        return ways;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h2 id=&#34;maximum-subarray&#34;&gt;Maximum Subarray&lt;/h2&gt;
 
 &lt;p&gt;Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.&lt;/p&gt;
@@ -2755,7 +2893,7 @@ int len = removeDuplicates(nums);&lt;/p&gt;
 &lt;p&gt;Explanation: [4,-1,2,1] has the largest sum = 6.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-1&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public int maxSubArray(int[] nums) {
@@ -2802,7 +2940,7 @@ int len = removeDuplicates(nums);&lt;/p&gt;
 &lt;p&gt;Explanation: In this case, no transaction is done, i.e. max profit = 0.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-1&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-2&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //2ms
@@ -2888,7 +3026,7 @@ int len = removeDuplicates(nums);&lt;/p&gt;
 &lt;p&gt;Output: true&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-2&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-3&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public boolean isValid(String s) {
@@ -2957,7 +3095,7 @@ int len = removeDuplicates(nums);&lt;/p&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-3&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-4&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public List&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; generate(int numRows) {
@@ -3013,7 +3151,7 @@ int len = removeDuplicates(nums);&lt;/p&gt;
 &lt;p&gt;The above arrows point to positions where the corresponding bits are different.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-4&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-5&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public int hammingDistance(int x, int y) {
@@ -3047,7 +3185,7 @@ Output: 1
 Explanation: Integer 128 has binary representation 00000000000000000000000010000000&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-5&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-6&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Solution {
     public int hammingWeight(int n) {
@@ -3108,7 +3246,7 @@ Explanation: Integer 128 has binary representation 00000000000000000000000010000
 &lt;p&gt;Output: 8&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-6&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-7&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //0+1+2+……+n = n*(n+1)/2
@@ -3138,7 +3276,7 @@ Explanation: Integer 128 has binary representation 00000000000000000000000010000
 &lt;p&gt;return 964176192 represented in binary as 00111001011110000010100101000000.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-7&#34;&gt;解答&lt;/h3&gt;
+&lt;h3 id=&#34;解答-8&#34;&gt;解答&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Solution {
     //位运算？不会
@@ -3166,7 +3304,7 @@ Explanation: Integer 128 has binary representation 00000000000000000000000010000
 
 &lt;p&gt;But the following &lt;code&gt;[1,2,2,null,3,null,3]&lt;/code&gt; is not&lt;/p&gt;
 
-&lt;h3 id=&#34;解答-8&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-9&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for a binary tree node.
@@ -3225,7 +3363,7 @@ Given binary tree &lt;code&gt;[3,9,20,null,null,15,7]&lt;/code&gt;,&lt;/p&gt;
 &lt;p&gt;[15,7]]&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-9&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-10&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for a binary tree node.
@@ -3272,7 +3410,7 @@ class Solution {
 &lt;p&gt;[0,-10,5,null,-3,null,9]&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-10&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-11&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for a binary tree node.
@@ -3330,7 +3468,7 @@ class Solution {
 &lt;p&gt;Explanation: The input is: [5,1,4,null,null,3,6]. The root node&amp;rsquo;s value is 5 but its right child&amp;rsquo;s value is 4.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-11&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-12&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for a binary tree node.
@@ -3390,7 +3528,7 @@ class Solution {
 &lt;p&gt;return its depth = 3.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-12&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-13&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for a binary tree node.
@@ -3477,7 +3615,7 @@ class Solution {
 &lt;p&gt;Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-13&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-14&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public int romanToInt(String s) {
@@ -3520,7 +3658,7 @@ class Solution {
 &lt;p&gt;[&amp;ldquo;1&amp;rdquo;,&amp;ldquo;2&amp;rdquo;,&amp;ldquo;Fizz&amp;rdquo;,&amp;ldquo;4&amp;rdquo;,&amp;ldquo;Buzz&amp;rdquo;,&amp;ldquo;Fizz&amp;rdquo;,&amp;ldquo;7&amp;rdquo;,&amp;ldquo;8&amp;rdquo;,&amp;ldquo;Fizz&amp;rdquo;,&amp;ldquo;Buzz&amp;rdquo;,&amp;ldquo;11&amp;rdquo;,&amp;ldquo;Fizz&amp;rdquo;,&amp;ldquo;13&amp;rdquo;,&amp;ldquo;14&amp;rdquo;,&amp;ldquo;FizzBuzz&amp;rdquo;]&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-14&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-15&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public List&amp;lt;String&amp;gt; fizzBuzz(int n) {
@@ -3553,7 +3691,7 @@ class Solution {
 &lt;p&gt;Explanation: There are 4 prime numbers less than 10, they are 2, 3, 5, 7.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-15&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-16&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //筛法求素数：若已知一个数为素数，则该数的倍数均非素数。
@@ -3622,7 +3760,7 @@ class Solution {
 &lt;p&gt;Output: false&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-16&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-17&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public boolean isPowerOfThree(int n) {
@@ -3714,7 +3852,7 @@ class Solution {
 &lt;p&gt;Thefore INT_MIN (−231) is returned.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-17&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-18&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public int myAtoi(String str) {
@@ -3784,7 +3922,7 @@ class Solution {
 
 &lt;p&gt;*Note:*All given inputs are in lowercase letters a-z.&lt;/p&gt;
 
-&lt;h3 id=&#34;解答-18&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-19&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //排序后比较头尾
@@ -3835,7 +3973,7 @@ class Solution {
 &lt;p&gt;Output: -1&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-19&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-20&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //java API
@@ -3867,7 +4005,7 @@ class Solution {
 
 &lt;p&gt;*Note:*You may assume the string contains only lowercase alphabets.&lt;/p&gt;
 
-&lt;h3 id=&#34;解答-20&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-21&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //存入字母表，判断字母表个数，1ms
@@ -3913,7 +4051,7 @@ class Solution {
 &lt;p&gt;return 2.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-21&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-22&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public int firstUniqChar(String s) {
@@ -3931,7 +4069,7 @@ class Solution {
 
 &lt;h2 id=&#34;回文&#34;&gt;回文&lt;/h2&gt;
 
-&lt;h3 id=&#34;解答-22&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-23&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public boolean isPalindrome(String s) {
     char[] str = s.toLowerCase().toCharArray();
@@ -3964,7 +4102,7 @@ public boolean isChar(char c) {
 &lt;p&gt;&lt;em&gt;Note:&lt;/em&gt;
 Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−2^31,  2^31 − 1]. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.&lt;/p&gt;
 
-&lt;h3 id=&#34;解答-23&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-24&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public int reverse(int x) {
@@ -4005,7 +4143,7 @@ Assume we are dealing with an environment which could only store integers within
 
 &lt;h2 id=&#34;反转字符串&#34;&gt;反转字符串&lt;/h2&gt;
 
-&lt;h3 id=&#34;解答-24&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-25&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public String reverseString(String s) {
     return new StringBuffer(s).reverse().toString();
@@ -6186,6 +6324,58 @@ getItem(arr,&amp;quot;name&amp;quot;,&amp;quot;123&amp;quot;).name
 &lt;/center&gt;&lt;/p&gt;
 
 &lt;h1 id=&#34;十月&#34;&gt;十月&lt;/h1&gt;
+
+&lt;p&gt;&lt;strong&gt;10月22日22点16分&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;记：&lt;/p&gt;
+
+&lt;p&gt;《道德的谱系》——弗里德里希·尼采&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;-第一章 “善与恶”、“好与坏”&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;「一定量的力就意味着同等量的欲求、意志和作为——更确切地说，力无非就是这些欲求、意志和作为本身而已。」&lt;/p&gt;
+
+&lt;p&gt;《惶然录》——费尔南多·佩索阿&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;-爱情是习惯套语&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;「我们从来没有爱过什么人。我们只是爱着我们自己关于何许人可爱的观念。我们爱自己的观念，简言之，我们爱的是自己。&lt;/p&gt;
+
+&lt;p&gt;　　这是任何一类爱的真理。在性爱中，我们通过另一个人的身体媒介，寻找自己的愉悦。在非性爱中，我们通过自己已有观念的媒介，寻找自己的愉悦。手淫者也许是一个可怜的造物，但就实而论，他是表现合乎逻辑的自爱者。只有他才是既不伪饰也不自欺的人。&lt;/p&gt;
+
+&lt;p&gt;　　一个灵魂和另一个灵魂之间的关系，通过交流语言和打手势这样不确定以及歧义的事物来表达。这种特别的方式，使素昧平生的我们相互了解。当两个人说“我爱你”的时候（或者想，或者交流情感），每一个人都意含着不同的什么，意含着不同的生活，甚至可能是抽象的总体印象中一点不同的色彩和芳香——这种印象构成了灵魂的活动。&lt;/p&gt;
+
+&lt;p&gt;　　我今天头脑清醒，好像我已经完全死去。我的思想裸露如一个骷髅，脱除了对交际幻象的情欲包装。这些我起先构想然后放弃的考虑，没有什么报由，完全没有什么根由，至少与我意识深处存在的任何东西不相干。也许，我们职员与一个姑娘外出以后体验到的失望爱情，无非是一些来自爱情事务报道的习惯套语，来自本地报纸对外国报纸的照搬重印；无非是我体内一种隐隐的恶心而我尚未设法给予生理排除。&lt;/p&gt;
+
+&lt;p&gt;　　关于维吉尔的评论家错了。完全可以理解的是，我们上述所有的感受都使人疲惫。生活意味着不要思考。」&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;-动物的快乐&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;「我从来没有大声宣布过自己信赖动物们的快乐，除非有时候我将其用作一种套路，来言说对这种假定性感受的支持。成为快乐者，必须知道自己是快乐的。一个人从无梦的一场好睡之中得到的唯一快乐，是醒来以后知道自己无梦地睡过了。快乐存在于快乐之外。&lt;/p&gt;
+
+&lt;p&gt;　　没有知觉就没有快乐。但是，对快乐的知觉带来不快乐，因为知觉一个人的快乐，就是知觉这个人已经度过了快乐，随之而来的是无奈曲终人散。深处快乐之中，就如同深处任何事局当中，知觉毁灭着一切。然而，没有知觉又不能存在。&lt;/p&gt;
+
+&lt;p&gt;　　只有黑格尔不惜笔墨要设法让两方面绝对同一。在感受或者生命的动能当中，存在与非存在之物从来不会混淆或者被混淆；通过一些相互转化的综合过程，两件事依然保留着相互的排斥。&lt;/p&gt;
+
+&lt;p&gt;　　那么，一个人该怎么办？在疏离的时刻，如同自己是一个生物体并且快乐一时，在这一刻感受着快乐，甚至对自己的感受毫无所知，完全不知此身何身今夕何夕。用自己的感受封锁思想。&lt;/p&gt;
+
+&lt;p&gt;　　这就是我在今天下午相信的东西。到明天早上事情可能又会有变，因为到明天早上将会有另一个不同的我。明天我将会成为哪一类的信奉者？我不知道。因为我如果要知道那一点，我就需要已经深处彼时彼地。关于明天或今天的事，甚至我眼下信奉的永恒上帝也无法预知，因为我在今天是我，而到明天也许就不再存在。」&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;-无法兼得&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;「我们在生活的前景，是我们更多地诚服于两种矛盾的真理。&lt;/p&gt;
+
+&lt;p&gt;　　第一件是，面对着生活的现实，所有的文学虚构和艺术相形见绌，哪怕它们确实能够给我们提供高于生活的愉悦，但也毫无意义。事实上，它们像一些梦幻，使我们得以体验到生活中从来没有的感受，魔变出生活中从来没有的图景；但它们只是梦幻而已，一个人从中苏醒之后，不会有记忆或者怀旧的愿望，更不会奢望从今往后据此过上一种高级生活。&lt;/p&gt;
+
+&lt;p&gt;　　第二件是，所有高尚心灵都希望过上一种充实的生活，希望体验一切事物和一切感受，包括知道地球的每一个角落。由于不可能做到这一点，因此生活只能有主观性的满足，只能放弃什么都占全的大胃口。&lt;/p&gt;
+
+&lt;p&gt;　　这两个真理互相不可化约。聪明人将会竭力避免去调和它们的尝试，也竭力避免它们之间厚此薄彼。然而，他将不得不在他们二者之间择一而从，并且对于不能同时选择另一项而深感懊丧，或者懊丧于不能把这两项都给予干脆的拒绝，从而使自己像某种个人的涅槃圣境高高升华。&lt;/p&gt;
+
+&lt;p&gt;　　快乐的人，在生活对他的自然给予之外别无奢求，几乎循着一种猫的直觉，有太阳的时候就寻找太阳，没有太阳的时候就找个暖和的去处将就。快乐的人，在想象的趣味中放弃他的生活，在对别人生活的冥想中寻找乐趣，不是体验对他们的印象，而是体验这些印象的外在状貌。快乐的人，已经放弃了自己的一切，于是不再有所失落或者有所减少。&lt;/p&gt;
+
+&lt;p&gt;　　乡下人，小说读者，清教苦行主义者：他们是真正快乐的人，因为他们完全放弃了个我——首先是因为他们靠直觉生存，而直觉是非个别化的；其次是因为他们通过想象来生活，而想象是转瞬即逝的；再次是因为他们虽生犹殁，也就没有死亡，没有休眠。&lt;/p&gt;
+
+&lt;p&gt;　　没有什么东西能够满足我，没有什么东西能够抚慰我，一切——不论存在还是不存在——都使我深感厌腻。我既不需求自己的灵魂也不希望将它放弃。我欲望自己并不欲望的东西，放弃自己没有放弃的东西。我既不能成为一切无也不能成为一切有：我只是一座桥，架设在我之所无与我之所愿之间。」&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;10月21日21点27分&lt;/strong&gt;&lt;/p&gt;
 

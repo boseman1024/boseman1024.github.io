@@ -46,12 +46,14 @@
     "articleSection" : "posts",
     "name" : "Top Interview Questions-Easy-②",
     "headline" : "Top Interview Questions-Easy-②",
-    "description" : "Dynamic Programming Maximum Subarray Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
-Example:
- Input: [-2,1,-3,4,-1,2,1,-5,4],
-Output: 6
-Explanation: [4,-1,2,1] has the largest sum = 6.
- 解答： class Solution { public int maxSubArray(int[] nums) { if(nums.length&lt;1||nums==null) {return 0;} int sum = nums[0]; int temp = 0; for(int i:nums){ temp+=i; sum = Math.max(sum,temp); temp = temp&lt;0?",
+    "description" : "Dynamic Programming Climbing Stairs 实质为斐波那契数列 You are climbing a stair case. It takes n steps to reach to the top.
+Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
+Note: Given n will be a positive integer.
+Example 1:
+ Input: 2
+Output: 2
+Explanation: There are two ways to climb to the top.
+ 1 step + 1 step",
     "inLanguage" : "en-us",
     "author" : "Kuma2x",
     "creator" : "Kuma2x",
@@ -62,7 +64,7 @@ Explanation: [4,-1,2,1] has the largest sum = 6.
     "datePublished": "2018-09-27 15:08:22 &#43;0000 UTC",
     "dateModified" : "2018-09-27 15:08:22 &#43;0000 UTC",
     "url" : "https://boseman1024.github.io/2018/top-interview-questions-easy-2/",
-    "wordCount" : "3108",
+    "wordCount" : "3263",
     "keywords" : [ "数据结构与算法","LeetCode","JAVA", "KUMA2X"]
 }
 </script>
@@ -153,6 +155,75 @@ Explanation: [4,-1,2,1] has the largest sum = 6.
 
 <h1 id="dynamic-programming">Dynamic Programming</h1>
 
+<h2 id="climbing-stairs">Climbing Stairs</h2>
+
+<h2 id="实质为斐波那契数列">实质为斐波那契数列</h2>
+
+<p>You are climbing a stair case. It takes n steps to reach to the top.</p>
+
+<p>Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?</p>
+
+<p><em>Note:</em> Given n will be a positive integer.</p>
+
+<p><em>Example 1:</em></p>
+
+<blockquote>
+<p>Input: 2</p>
+
+<p>Output: 2</p>
+
+<p>Explanation: There are two ways to climb to the top.</p>
+
+<ol>
+<li><p>1 step + 1 step</p></li>
+
+<li><p>2 steps</p></li>
+</ol>
+</blockquote>
+
+<p><em>Example 2:</em></p>
+
+<blockquote>
+<p>Input: 3</p>
+
+<p>Output: 3</p>
+
+<p>Explanation: There are three ways to climb to the top.</p>
+
+<ol>
+<li><p>1 step + 1 step + 1 step</p></li>
+
+<li><p>1 step + 2 steps</p></li>
+
+<li><p>2 steps + 1 step</p></li>
+</ol>
+</blockquote>
+
+<h3 id="解答">解答：</h3>
+
+<pre><code class="language-java">class Solution {
+    /*斐波那契数列：
+    * f(0)=1
+    * f(1)=2
+    * f(n)=f(n-1)+f(n-2)  n&gt;1
+    *
+    * 若一次可爬1、2、…、n级台阶，则爬上一个n级台阶一共有f(n)=2^(n-1)种跳法
+    */
+    public int climbStairs(int n) {
+        if(n&lt;=1){return n;}
+        int one = 1;
+        int two = 2;
+        int ways  = 2;
+        for(int i=2;i&lt;n;i++){
+            ways = one+two;
+            one = two;
+            two = ways;
+        }
+        return ways;
+    }
+}
+</code></pre>
+
 <h2 id="maximum-subarray">Maximum Subarray</h2>
 
 <p>Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.</p>
@@ -167,7 +238,7 @@ Explanation: [4,-1,2,1] has the largest sum = 6.
 <p>Explanation: [4,-1,2,1] has the largest sum = 6.</p>
 </blockquote>
 
-<h3 id="解答">解答：</h3>
+<h3 id="解答-1">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public int maxSubArray(int[] nums) {
@@ -214,7 +285,7 @@ Explanation: [4,-1,2,1] has the largest sum = 6.
 <p>Explanation: In this case, no transaction is done, i.e. max profit = 0.</p>
 </blockquote>
 
-<h3 id="解答-1">解答：</h3>
+<h3 id="解答-2">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     //2ms
@@ -300,7 +371,7 @@ Explanation: [4,-1,2,1] has the largest sum = 6.
 <p>Output: true</p>
 </blockquote>
 
-<h3 id="解答-2">解答：</h3>
+<h3 id="解答-3">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public boolean isValid(String s) {
@@ -369,7 +440,7 @@ Explanation: [4,-1,2,1] has the largest sum = 6.
 </ul>
 </blockquote>
 
-<h3 id="解答-3">解答：</h3>
+<h3 id="解答-4">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public List&lt;List&lt;Integer&gt;&gt; generate(int numRows) {
@@ -425,7 +496,7 @@ Explanation: [4,-1,2,1] has the largest sum = 6.
 <p>The above arrows point to positions where the corresponding bits are different.</p>
 </blockquote>
 
-<h3 id="解答-4">解答：</h3>
+<h3 id="解答-5">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public int hammingDistance(int x, int y) {
@@ -459,7 +530,7 @@ Output: 1
 Explanation: Integer 128 has binary representation 00000000000000000000000010000000</p>
 </blockquote>
 
-<h3 id="解答-5">解答：</h3>
+<h3 id="解答-6">解答：</h3>
 
 <pre><code class="language-java">public class Solution {
     public int hammingWeight(int n) {
@@ -520,7 +591,7 @@ Explanation: Integer 128 has binary representation 00000000000000000000000010000
 <p>Output: 8</p>
 </blockquote>
 
-<h3 id="解答-6">解答：</h3>
+<h3 id="解答-7">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     //0+1+2+……+n = n*(n+1)/2
@@ -550,7 +621,7 @@ Explanation: Integer 128 has binary representation 00000000000000000000000010000
 <p>return 964176192 represented in binary as 00111001011110000010100101000000.</p>
 </blockquote>
 
-<h3 id="解答-7">解答</h3>
+<h3 id="解答-8">解答</h3>
 
 <pre><code class="language-java">public class Solution {
     //位运算？不会
@@ -578,7 +649,7 @@ Explanation: Integer 128 has binary representation 00000000000000000000000010000
 
 <p>But the following <code>[1,2,2,null,3,null,3]</code> is not</p>
 
-<h3 id="解答-8">解答：</h3>
+<h3 id="解答-9">解答：</h3>
 
 <pre><code class="language-java">/**
  * Definition for a binary tree node.
@@ -637,7 +708,7 @@ Given binary tree <code>[3,9,20,null,null,15,7]</code>,</p>
 <p>[15,7]]</p>
 </blockquote>
 
-<h3 id="解答-9">解答：</h3>
+<h3 id="解答-10">解答：</h3>
 
 <pre><code class="language-java">/**
  * Definition for a binary tree node.
@@ -684,7 +755,7 @@ class Solution {
 <p>[0,-10,5,null,-3,null,9]</p>
 </blockquote>
 
-<h3 id="解答-10">解答：</h3>
+<h3 id="解答-11">解答：</h3>
 
 <pre><code class="language-java">/**
  * Definition for a binary tree node.
@@ -742,7 +813,7 @@ class Solution {
 <p>Explanation: The input is: [5,1,4,null,null,3,6]. The root node&rsquo;s value is 5 but its right child&rsquo;s value is 4.</p>
 </blockquote>
 
-<h3 id="解答-11">解答：</h3>
+<h3 id="解答-12">解答：</h3>
 
 <pre><code class="language-java">/**
  * Definition for a binary tree node.
@@ -802,7 +873,7 @@ class Solution {
 <p>return its depth = 3.</p>
 </blockquote>
 
-<h3 id="解答-12">解答：</h3>
+<h3 id="解答-13">解答：</h3>
 
 <pre><code class="language-java">/**
  * Definition for a binary tree node.
@@ -889,7 +960,7 @@ class Solution {
 <p>Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.</p>
 </blockquote>
 
-<h3 id="解答-13">解答：</h3>
+<h3 id="解答-14">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public int romanToInt(String s) {
@@ -932,7 +1003,7 @@ class Solution {
 <p>[&ldquo;1&rdquo;,&ldquo;2&rdquo;,&ldquo;Fizz&rdquo;,&ldquo;4&rdquo;,&ldquo;Buzz&rdquo;,&ldquo;Fizz&rdquo;,&ldquo;7&rdquo;,&ldquo;8&rdquo;,&ldquo;Fizz&rdquo;,&ldquo;Buzz&rdquo;,&ldquo;11&rdquo;,&ldquo;Fizz&rdquo;,&ldquo;13&rdquo;,&ldquo;14&rdquo;,&ldquo;FizzBuzz&rdquo;]</p>
 </blockquote>
 
-<h3 id="解答-14">解答：</h3>
+<h3 id="解答-15">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public List&lt;String&gt; fizzBuzz(int n) {
@@ -965,7 +1036,7 @@ class Solution {
 <p>Explanation: There are 4 prime numbers less than 10, they are 2, 3, 5, 7.</p>
 </blockquote>
 
-<h3 id="解答-15">解答：</h3>
+<h3 id="解答-16">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     //筛法求素数：若已知一个数为素数，则该数的倍数均非素数。
@@ -1034,7 +1105,7 @@ class Solution {
 <p>Output: false</p>
 </blockquote>
 
-<h3 id="解答-16">解答：</h3>
+<h3 id="解答-17">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public boolean isPowerOfThree(int n) {
@@ -1126,7 +1197,7 @@ class Solution {
 <p>Thefore INT_MIN (−231) is returned.</p>
 </blockquote>
 
-<h3 id="解答-17">解答：</h3>
+<h3 id="解答-18">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public int myAtoi(String str) {
@@ -1196,7 +1267,7 @@ class Solution {
 
 <p>*Note:*All given inputs are in lowercase letters a-z.</p>
 
-<h3 id="解答-18">解答：</h3>
+<h3 id="解答-19">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     //排序后比较头尾
@@ -1247,7 +1318,7 @@ class Solution {
 <p>Output: -1</p>
 </blockquote>
 
-<h3 id="解答-19">解答：</h3>
+<h3 id="解答-20">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     //java API
@@ -1279,7 +1350,7 @@ class Solution {
 
 <p>*Note:*You may assume the string contains only lowercase alphabets.</p>
 
-<h3 id="解答-20">解答：</h3>
+<h3 id="解答-21">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     //存入字母表，判断字母表个数，1ms
@@ -1325,7 +1396,7 @@ class Solution {
 <p>return 2.</p>
 </blockquote>
 
-<h3 id="解答-21">解答：</h3>
+<h3 id="解答-22">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public int firstUniqChar(String s) {
@@ -1343,7 +1414,7 @@ class Solution {
 
 <h2 id="回文">回文</h2>
 
-<h3 id="解答-22">解答：</h3>
+<h3 id="解答-23">解答：</h3>
 
 <pre><code class="language-java">public boolean isPalindrome(String s) {
     char[] str = s.toLowerCase().toCharArray();
@@ -1376,7 +1447,7 @@ public boolean isChar(char c) {
 <p><em>Note:</em>
 Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−2^31,  2^31 − 1]. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.</p>
 
-<h3 id="解答-23">解答：</h3>
+<h3 id="解答-24">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public int reverse(int x) {
@@ -1417,7 +1488,7 @@ Assume we are dealing with an environment which could only store integers within
 
 <h2 id="反转字符串">反转字符串</h2>
 
-<h3 id="解答-24">解答：</h3>
+<h3 id="解答-25">解答：</h3>
 
 <pre><code class="language-java">public String reverseString(String s) {
     return new StringBuffer(s).reverse().toString();
