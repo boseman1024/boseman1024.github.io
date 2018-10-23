@@ -1372,6 +1372,122 @@ class Solution {
 
 &lt;h1 id=&#34;math&#34;&gt;Math&lt;/h1&gt;
 
+&lt;h2 id=&#34;sqrt-x&#34;&gt;Sqrt(x)&lt;/h2&gt;
+
+&lt;h2 id=&#34;实现平方根&#34;&gt;实现平方根&lt;/h2&gt;
+
+&lt;p&gt;Implement int sqrt(int x).&lt;/p&gt;
+
+&lt;p&gt;Compute and return the square root of x, where x is guaranteed to be a non-negative integer.&lt;/p&gt;
+
+&lt;p&gt;Since the return type is an integer, the decimal digits are truncated and only the integer part of the result is returned.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: 4&lt;/p&gt;
+
+&lt;p&gt;Output: 2&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: 8&lt;/p&gt;
+
+&lt;p&gt;Output: 2&lt;/p&gt;
+
+&lt;p&gt;Explanation: The square root of 8 is 2.82842&amp;hellip;, and since the decimal part is truncated, 2 is returned.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-21&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public int mySqrt(int x) {
+        //二分查找
+        if(x&amp;lt;1){return 0;}
+        int low = 1;
+        int high = x;
+        while(low&amp;lt;=high){
+            int mid = low+(high-low)/2;
+            if(x/mid==mid){return mid;}
+            if(x/mid&amp;gt;mid){low = mid+1;}
+            if(x/mid&amp;lt;mid){high = mid-1;}
+        }
+        return high;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;pow-x-n&#34;&gt;Pow(x, n)&lt;/h2&gt;
+
+&lt;h2 id=&#34;实现一个数的次方运算&#34;&gt;实现一个数的次方运算&lt;/h2&gt;
+
+&lt;p&gt;Implement pow(x, n), which calculates x raised to the power n (x^n).&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: 2.00000, 10&lt;/p&gt;
+
+&lt;p&gt;Output: 1024.00000&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: 2.10000, 3&lt;/p&gt;
+
+&lt;p&gt;Output: 9.26100&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 3:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: 2.00000, -2&lt;/p&gt;
+
+&lt;p&gt;Output: 0.25000&lt;/p&gt;
+
+&lt;p&gt;Explanation: 2-2 = &lt;sup&gt;1&lt;/sup&gt;&amp;frasl;&lt;sub&gt;22&lt;/sub&gt; = &lt;sup&gt;1&lt;/sup&gt;&amp;frasl;&lt;sub&gt;4&lt;/sub&gt; = 0.25&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;-100.0 &amp;lt; x &amp;lt; 100.0&lt;/li&gt;
+&lt;li&gt;n is a 32-bit signed integer, within the range [−231, 231 − 1]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;解答-22&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    /**
+    *实质为斐波那契数列
+    *x^n=
+    *   [x^(n/2)]*[x^(n/2)]; n为偶数
+    *   {x[(n-1)/2]}*{x[(n-1)/2]}*x; n为奇数
+    */
+    public double myPow(double x,int n) {
+        if(n==0){return 1;}
+        if(n&amp;lt;0){
+            x = 1/x;
+            n = -n;
+        }
+        return fastPow(x, n);
+    }
+    
+    public double fastPow(double x,int n){
+        if(n==0){return 1;}
+        double half = fastPow(x,n/2);
+        if(n%2==0){
+            return half*half;
+        }else{
+            return half*half*x;
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h2 id=&#34;excel-sheet-column-number&#34;&gt;Excel Sheet Column Number&lt;/h2&gt;
 
 &lt;h2 id=&#34;英文字母计数-26进制&#34;&gt;英文字母计数（26进制）&lt;/h2&gt;
@@ -1422,7 +1538,7 @@ class Solution {
 &lt;p&gt;Output: 701&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-21&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-23&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //&amp;quot;AAA&amp;quot;=703
@@ -1467,7 +1583,7 @@ class Solution {
 
 &lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; Your solution should be in logarithmic time complexity.&lt;/p&gt;
 
-&lt;h3 id=&#34;解答-22&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-24&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     /**
@@ -1507,7 +1623,7 @@ class Solution {
 &lt;p&gt;1^2 + 0^2 + 0^2 = 1&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-23&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-25&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public boolean isHappy(int n) {
@@ -1554,7 +1670,7 @@ class Solution {
 &lt;p&gt;Output: 2&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-24&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-26&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //The majority element is the element that appears more than ⌊ n/2 ⌋ times.
@@ -6324,6 +6440,74 @@ getItem(arr,&amp;quot;name&amp;quot;,&amp;quot;123&amp;quot;).name
 &lt;/center&gt;&lt;/p&gt;
 
 &lt;h1 id=&#34;十月&#34;&gt;十月&lt;/h1&gt;
+
+&lt;p&gt;&lt;strong&gt;10月23日22点33分&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;我存在我。&lt;/p&gt;
+
+&lt;p&gt;记：&lt;/p&gt;
+
+&lt;p&gt;《惶然录》——费尔南多·佩索阿&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;-重读自己&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;「人类心灵的全部生活，只是在依稀微光中的一种运动。我们生活在意识的晨曦中，无法确定我们自己是什么，或者确定我们以为自己是什么。即便是我们当中的佼佼者，也存在着对某些事物诸多自以为是的感觉，存在着一些我们无法测定的谬以千里。我们碰巧处于一出戏剧的幕间休息，有时候，透过特定的门洞，我们得以窥探到台上的场景是何模样。整个世界如夜晚声音一样混沌不清。&lt;/p&gt;
+
+&lt;p&gt;　　我刚刚重读了这些纸页，上面是我清清楚楚写下的文字，将要存在到它可能存在到的时限。我问自己：这些是什么？这些是为了什么？我感受自己的时候我是谁？我是自己的时候又有什么东西在我心身中死去？&lt;/p&gt;
+
+&lt;p&gt;　　像一个高高立于山巅的人，试图弄明白山谷里的人们及其一切纷纭驳杂的生活，我俯瞰自己，像遥看一片模糊不清的风景。&lt;/p&gt;
+
+&lt;p&gt;　　在这样的时刻，当我的灵魂陷入地狱，以至一个最小的细节都可以像一纸悼词，使我惊悸不宁。&lt;/p&gt;
+
+&lt;p&gt;　　我要叫喊，似乎觉得任何人都能听到我的声音。但是，我所有的感受只是极度的疲惫，像流云一样一阵又一阵地袭来，像阳光将尽之时的形状，像辽阔牧场上的绿草若明若暗。&lt;/p&gt;
+
+&lt;p&gt;　　我一个人抓瞎式地忙于寻找一件东西，而这件东西从来没有人向我描述过。我们跟自己玩捉迷藏的游戏。我相信在某个地方有这一切的超验理性，一些可耳闻而无法目击的流动的神力。&lt;/p&gt;
+
+&lt;p&gt;　　是的，我重读这些纸页，它们代表着空虚的时光，安定或者幻觉的瞬间，化入风景的伟大希望，房间从无人迹般的恐怖，一点声音，一种极度的困乏，以及尚未写就的真理。&lt;/p&gt;
+
+&lt;p&gt;　　在有些事情上，任何人都是虚妄的。我们每个人的虚妄，包括着我们忘记了别人也像我们一样有灵魂。我的虚妄包含在零星纸片里，零星短章里，特定的怀疑之中……&lt;/p&gt;
+
+&lt;p&gt;　　我说过我重读着这些纸页么？我在说谎。我根本不敢去读它，不能去读它。我该怎么办？这些纸页简直就是另外一个人，我再也无法理解……」&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;-语言政治&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;「在一种外化的白日梦里，让词语把我当作一个坐在它们膝头的小姑娘抚慰。它们仅仅是无意义的句子，是水流的缓缓漂移，如同一缕细流忘我地混同和消失于波涛，又一次次再生，永无止境地后浪推着前浪。观念和意象，表达地颤抖，就是这样从我身上流过，一束丝绸瑟瑟作响飘逝的过程，月光中一片闪烁不定的观念碎片，斑驳而微弱。」&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;-御座与皇冠&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;「清净无为是我们面对万事万物的安慰，而有为并不是我们的伟大供养者。想象的能力从来就是一切，永远不会把我们导向行动。除非在梦里，没有一个人可以成为世界之王。然而，如果我们说句实话，我们每一个人都有号令世界的欲望。&lt;/p&gt;
+
+&lt;p&gt;　　不能成为什么，但能想像什么，这是真正的御座。不能要求什么，但能欲望什么，这是真正的皇冠。任何由我们放弃的东西，都会由我们完整无缺地保留在自己梦中。」&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;-格言几则&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;「明确的占有，固定的看法，直觉，激情以及定型和可辨认的性格，所有这些都有助于我们的灵魂造就成一件可怕的事实，造就成它的物化和外化。生活是一件甜蜜的事情，是对一切东西和我们自己采取视而不见顺其自然（这是保证生活能切合明智态度的唯一道路）的态度。&lt;/p&gt;
+
+&lt;p&gt;　　人们在自己和他物之间自动调节的一种常备能力，显示出最高等级的知识和洞明。&lt;/p&gt;
+
+&lt;p&gt;　　对于我们自己来说，我们的个性甚至都是无法看透的：这就是为什么我们的职责就是不断梦想，包括梦想我们自己，不可能对自己持有什么定见。&lt;/p&gt;
+
+&lt;p&gt;　　我们特别要避开别人对我们个性的侵犯。任何他者对我们的兴趣，都是一种无可比拟的粗俗。谨防每天的招呼语“你好吗”成为一种不可饶恕的侵凌，唯一的事情就是应当看出，一般来说，这句话事实上完全空洞而且缺乏诚意。&lt;/p&gt;
+
+&lt;p&gt;　　爱仅仅是对独处的逐渐厌倦：于是，爱就是我们对自己的怯懦，再加上我们对自己的背叛（我们不再施爱这一点真是至关重要的）。&lt;/p&gt;
+
+&lt;p&gt;　　给别人一个好建议，是对这个人犯错误的能力，表现出一种毫不尊重的态度，而这种能力是上帝赐予的。更进一步来说，他人与我们应当保留在行动上各行其是的优越。向他人索取建议，唯一可能的理由，使我们随后干起来的时候恰好可以与他人的建议南辕北辙。在这个时候，我们才知道自己确实是自己，在行动上与属于他者的一切格格不入。」&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;-万物无灵&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;「气象构成了事物的灵魂。每一样东西都有自己的表现模式，而所谓表现其实均为外来之物。&lt;/p&gt;
+
+&lt;p&gt;　　每一件东西都有三大要素，这三大要素集中起来便可以显示出这个东西的外形：一种材料的量；我们了解它的方式；还有它存在的气象。我现在写作用的这张桌子是一些木头，是这间房子里家具中的一件。我对这张桌子的印象，如果要得到转述，就必须加上各种各样的概念：它是用木头做的，我把它叫作桌子，特定的用途和目的使它获得属性，这一切反映或者插入事物之中，从而使其呈现获得外在的精神。事物就是利用这一切，实现了自己的转换。色彩是被给予的，色彩有消退的方式，木结疤和裂缝犹在，所有这一切你都会注意到，都是从外部而不是它内在的木质着眼，都是从外部而不是从它内在的木质着眼，这些就是赋予它某种精神的东西。而精神的内核，它之所以是一张桌子，它的个别性，同样是外加而生的。&lt;/p&gt;
+
+&lt;p&gt;　　这样，我以为这不仅仅是一个人类或者一个文学的错误，不仅仅是我们把具有一颗灵魂的属性，赋予了那些我们称其为非生命体的东西。成为一件东西，就是成为了一种属性。说树在感受，说河在奔走，说一片落霞令人肝肠寸断，或者说宁静的海（并非生来就蓝得像天空一样）在灿烂微笑（因为太阳在上面照耀），也许都是荒唐。但是同样荒唐的，是给一个事物加上美，加上色彩、形式、也许甚至还有它的存在。海是一些咸水。&lt;/p&gt;
+
+&lt;p&gt;　　落霞不过是阳光从特定经度和纬度的消失。在我面前玩耍的小孩，则是一些细胞的智能团体，但他也是一个由亚原子运动所组成的限时之物，是一个在显微镜观测之下如太阳系万千星体般的奇异的电子球体。&lt;/p&gt;
+
+&lt;p&gt;　　一切事物都由外而生，甚至人类的灵魂，也可能不过是闪闪阳光对粪堆的表面投照，而那粪堆才是人之躯体。&lt;/p&gt;
+
+&lt;p&gt;　　对于那些强大得足以从中得出结论的人来说，这些思考里含有一整套哲学的种子。而我不是那样的人。关于逻辑哲学专注然而朦胧的想法，于我飘忽而过，消失于一道金色阳光的景象之中。阳光闪烁在一片石头墙那边的一个粪堆，那个粪堆似乎是一些暗黑、潮湿、杂乱的草料。&lt;/p&gt;
+
+&lt;p&gt;　　这就是我的状况。当我想要思索，我却观看。当我想要走出自己的灵魂，我会突然失魂落魄地止步，在陡峭的螺旋阶梯上刚走出第一步，就远望顶楼的窗子，看见金褐色的阳光在楼顶弥漫消散。」&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;10月22日22点16分&lt;/strong&gt;&lt;/p&gt;
 

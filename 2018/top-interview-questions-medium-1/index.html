@@ -66,7 +66,7 @@ inorder = [9,3,15,20,7]
     "datePublished": "2018-09-29 22:59:34 &#43;0000 UTC",
     "dateModified" : "2018-09-29 22:59:34 &#43;0000 UTC",
     "url" : "https://boseman1024.github.io/2018/top-interview-questions-medium-1/",
-    "wordCount" : "3618",
+    "wordCount" : "3848",
     "keywords" : [ "数据结构与算法","LeetCode","JAVA", "KUMA2X"]
 }
 </script>
@@ -1508,6 +1508,122 @@ class Solution {
 
 <h1 id="math">Math</h1>
 
+<h2 id="sqrt-x">Sqrt(x)</h2>
+
+<h2 id="实现平方根">实现平方根</h2>
+
+<p>Implement int sqrt(int x).</p>
+
+<p>Compute and return the square root of x, where x is guaranteed to be a non-negative integer.</p>
+
+<p>Since the return type is an integer, the decimal digits are truncated and only the integer part of the result is returned.</p>
+
+<p><em>Example 1:</em></p>
+
+<blockquote>
+<p>Input: 4</p>
+
+<p>Output: 2</p>
+</blockquote>
+
+<p><em>Example 2:</em></p>
+
+<blockquote>
+<p>Input: 8</p>
+
+<p>Output: 2</p>
+
+<p>Explanation: The square root of 8 is 2.82842&hellip;, and since the decimal part is truncated, 2 is returned.</p>
+</blockquote>
+
+<h3 id="解答-21">解答：</h3>
+
+<pre><code class="language-java">class Solution {
+    public int mySqrt(int x) {
+        //二分查找
+        if(x&lt;1){return 0;}
+        int low = 1;
+        int high = x;
+        while(low&lt;=high){
+            int mid = low+(high-low)/2;
+            if(x/mid==mid){return mid;}
+            if(x/mid&gt;mid){low = mid+1;}
+            if(x/mid&lt;mid){high = mid-1;}
+        }
+        return high;
+    }
+}
+</code></pre>
+
+<h2 id="pow-x-n">Pow(x, n)</h2>
+
+<h2 id="实现一个数的次方运算">实现一个数的次方运算</h2>
+
+<p>Implement pow(x, n), which calculates x raised to the power n (x^n).</p>
+
+<p><em>Example 1:</em></p>
+
+<blockquote>
+<p>Input: 2.00000, 10</p>
+
+<p>Output: 1024.00000</p>
+</blockquote>
+
+<p><em>Example 2:</em></p>
+
+<blockquote>
+<p>Input: 2.10000, 3</p>
+
+<p>Output: 9.26100</p>
+</blockquote>
+
+<p><em>Example 3:</em></p>
+
+<blockquote>
+<p>Input: 2.00000, -2</p>
+
+<p>Output: 0.25000</p>
+
+<p>Explanation: 2-2 = <sup>1</sup>&frasl;<sub>22</sub> = <sup>1</sup>&frasl;<sub>4</sub> = 0.25</p>
+</blockquote>
+
+<p><em>Note:</em></p>
+
+<ul>
+<li>-100.0 &lt; x &lt; 100.0</li>
+<li>n is a 32-bit signed integer, within the range [−231, 231 − 1]</li>
+</ul>
+
+<h3 id="解答-22">解答：</h3>
+
+<pre><code class="language-java">class Solution {
+    /**
+    *实质为斐波那契数列
+    *x^n=
+    *   [x^(n/2)]*[x^(n/2)]; n为偶数
+    *   {x[(n-1)/2]}*{x[(n-1)/2]}*x; n为奇数
+    */
+    public double myPow(double x,int n) {
+        if(n==0){return 1;}
+        if(n&lt;0){
+            x = 1/x;
+            n = -n;
+        }
+        return fastPow(x, n);
+    }
+    
+    public double fastPow(double x,int n){
+        if(n==0){return 1;}
+        double half = fastPow(x,n/2);
+        if(n%2==0){
+            return half*half;
+        }else{
+            return half*half*x;
+        }
+    }
+}
+</code></pre>
+
 <h2 id="excel-sheet-column-number">Excel Sheet Column Number</h2>
 
 <h2 id="英文字母计数-26进制">英文字母计数（26进制）</h2>
@@ -1558,7 +1674,7 @@ class Solution {
 <p>Output: 701</p>
 </blockquote>
 
-<h3 id="解答-21">解答：</h3>
+<h3 id="解答-23">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     //&quot;AAA&quot;=703
@@ -1603,7 +1719,7 @@ class Solution {
 
 <p><em>Note:</em> Your solution should be in logarithmic time complexity.</p>
 
-<h3 id="解答-22">解答：</h3>
+<h3 id="解答-24">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     /**
@@ -1643,7 +1759,7 @@ class Solution {
 <p>1^2 + 0^2 + 0^2 = 1</p>
 </blockquote>
 
-<h3 id="解答-23">解答：</h3>
+<h3 id="解答-25">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public boolean isHappy(int n) {
@@ -1690,7 +1806,7 @@ class Solution {
 <p>Output: 2</p>
 </blockquote>
 
-<h3 id="解答-24">解答：</h3>
+<h3 id="解答-26">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     //The majority element is the element that appears more than ⌊ n/2 ⌋ times.
