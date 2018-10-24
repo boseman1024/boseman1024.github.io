@@ -46,7 +46,7 @@
     "articleSection" : "posts",
     "name" : "Top Interview Questions-Easy-①",
     "headline" : "Top Interview Questions-Easy-①",
-    "description" : "Design Shuffle an Array Shuffle a set of numbers without duplicates.
+    "description" : "Design Shuffle an Array 打乱数组 Shuffle a set of numbers without duplicates.
 Example:
  // Init an array with set 1, 2, and 3.
 int[] nums = {1,2,3};
@@ -66,7 +66,7 @@ solution.reset();
     "datePublished": "2018-09-28 21:47:14 &#43;0000 UTC",
     "dateModified" : "2018-09-28 21:47:14 &#43;0000 UTC",
     "url" : "https://boseman1024.github.io/2018/top-interview-questions-easy-1/",
-    "wordCount" : "3064",
+    "wordCount" : "3082",
     "keywords" : [ "数据结构与算法","LeetCode","JAVA", "KUMA2X"]
 }
 </script>
@@ -157,6 +157,8 @@ solution.reset();
 
 <h2 id="shuffle-an-array">Shuffle an Array</h2>
 
+<h2 id="打乱数组">打乱数组</h2>
+
 <p>Shuffle a set of numbers without duplicates.</p>
 
 <p><em>Example:</em></p>
@@ -212,6 +214,8 @@ solution.reset();
 </code></pre>
 
 <h2 id="min-stack">Min Stack</h2>
+
+<h2 id="栈取最小值">栈取最小值</h2>
 
 <p>Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.</p>
 
@@ -302,6 +306,8 @@ class MinStack {
 
 <h2 id="reverse-linked-list">Reverse Linked List</h2>
 
+<h2 id="反转链表">反转链表</h2>
+
 <p>Reverse a singly linked list.</p>
 
 <p><em>Example:</em></p>
@@ -341,6 +347,8 @@ class Solution {
 
 <h2 id="linked-list-cycle">Linked List Cycle</h2>
 
+<h2 id="检验链表是否有环">检验链表是否有环</h2>
+
 <p>Given a linked list, determine if it has a cycle in it.</p>
 
 <h3 id="解答-3">解答：</h3>
@@ -370,6 +378,8 @@ public class Solution {
 </code></pre>
 
 <h2 id="palindrome-linked-list">Palindrome Linked List</h2>
+
+<h2 id="检验链表是否回文">检验链表是否回文</h2>
 
 <p>Given a singly linked list, determine if it is a palindrome.</p>
 
@@ -413,6 +423,8 @@ class Solution {
 </code></pre>
 
 <h2 id="merge-two-sorted-lists">Merge Two Sorted Lists</h2>
+
+<h2 id="合并链表">合并链表</h2>
 
 <p>Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.</p>
 
@@ -460,6 +472,8 @@ class Solution {
 
 <h2 id="delete-node-in-a-linked-list">Delete Node in a Linked List</h2>
 
+<h2 id="从链表中删除元素">从链表中删除元素</h2>
+
 <p><em>Example 1:</em></p>
 
 <blockquote>
@@ -467,8 +481,7 @@ class Solution {
 
 <p>Output: [4,1,9]</p>
 
-<p>Explanation: You are given the second node with value 5, the linked list
-             should become 4 -&gt; 1 -&gt; 9 after calling your function.</p>
+<p>Explanation: You are given the second node with value 5, the linked list should become 4 -&gt; 1 -&gt; 9 after calling your function.</p>
 </blockquote>
 
 <p><em>Example 2:</em></p>
@@ -478,8 +491,7 @@ class Solution {
 
 <p>Output: [4,5,9]</p>
 
-<p>Explanation: You are given the third node with value 1, the linked list
-             should become 4 -&gt; 5 -&gt; 9 after calling your function.</p>
+<p>Explanation: You are given the third node with value 1, the linked list should become 4 -&gt; 5 -&gt; 9 after calling your function.</p>
 </blockquote>
 
 <h3 id="解答-6">解答：</h3>
@@ -501,6 +513,8 @@ class Solution {
 </code></pre>
 
 <h2 id="remove-nth-node-from-end-of-list">Remove Nth Node From End of List</h2>
+
+<h2 id="删除链表中倒数第n个元素">删除链表中倒数第N个元素</h2>
 
 <p>Given a linked list, remove the n-th node from the end of list and return its head.</p>
 
@@ -561,6 +575,8 @@ class Solution {
 
 <h2 id="first-bad-version">First Bad Version</h2>
 
+<h2 id="第一个坏版本">第一个坏版本</h2>
+
 <p>You are a product manager and currently leading a team to develop a new product. Unfortunately, the latest version of your product fails the quality check. Since each version is developed based on the previous version, all the versions after a bad version are also bad.</p>
 
 <p>Suppose you have n versions [1, 2, &hellip;, n] and you want to find out the first bad one, which causes all the following ones to be bad.</p>
@@ -605,6 +621,8 @@ public class Solution extends VersionControl {
 </code></pre>
 
 <h2 id="merge-sorted-array">Merge Sorted Array</h2>
+
+<h2 id="合并排序数组">合并排序数组</h2>
 
 <p>Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.</p>
 
@@ -665,6 +683,8 @@ public class Solution extends VersionControl {
 <h1 id="array">Array</h1>
 
 <h2 id="rotate-image">Rotate Image</h2>
+
+<h2 id="矩阵旋转">矩阵旋转</h2>
 
 <p>You are given an n x n 2D matrix representing an image.</p>
 
@@ -727,7 +747,7 @@ public class Solution extends VersionControl {
         int[][] rotate = new int[n][n];
         int index = n-1;
         for(int i=0;i&lt;n;i++) {
-            //一层转一排
+            //rotate从右到左每一排存放matrix从上到下每一层
             for(int j=0;j&lt;n;j++) {rotate[j][index] = matrix[i][j];}
             index--;
         }
@@ -739,6 +759,8 @@ public class Solution extends VersionControl {
 </code></pre>
 
 <h2 id="best-time-to-buy-and-sell-stock-ii">Best Time to Buy and Sell Stock II</h2>
+
+<h2 id="买卖股票的最佳时间">买卖股票的最佳时间</h2>
 
 <p>Say you have an array for which the i^th element is the price of a given stock on day i.</p>
 
@@ -798,6 +820,8 @@ public class Solution extends VersionControl {
 </code></pre>
 
 <h2 id="valid-sudoku">Valid Sudoku</h2>
+
+<h2 id="验证数独是否成立">验证数独是否成立</h2>
 
 <p>Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:</p>
 
@@ -909,6 +933,8 @@ public class Solution extends VersionControl {
 
 <h2 id="intersection-of-two-arrays-ii">Intersection of Two Arrays II</h2>
 
+<h2 id="数组求交集">数组求交集</h2>
+
 <p>Given two arrays, write a function to compute their intersection.</p>
 
 <p><em>Example 1:</em></p>
@@ -983,6 +1009,8 @@ public class Solution extends VersionControl {
 
 <h2 id="two-sum">Two Sum</h2>
 
+<h2 id="数组中两个数之和等于目标数">数组中两个数之和等于目标数</h2>
+
 <p>Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
 
 <p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
@@ -1015,6 +1043,8 @@ return [0, 1].</p>
 </code></pre>
 
 <h2 id="plus-one">Plus One</h2>
+
+<h2 id="数组每个元素所得数加一">数组每个元素所得数加一</h2>
 
 <p>Given a non-empty array of digits representing a non-negative integer, plus one to the integer.</p>
 
@@ -1061,6 +1091,8 @@ return [0, 1].</p>
 
 <h2 id="contains-duplicate">Contains Duplicate</h2>
 
+<h2 id="数组中是否有重复数">数组中是否有重复数</h2>
+
 <p>Given an array of integers, find if the array contains any duplicates.</p>
 
 <p>Your function should return true if any value appears at least twice in the array, and it should return false if every element is distinct.</p>
@@ -1104,6 +1136,8 @@ public boolean containsDuplicate(int[] nums) {
 
 <h2 id="move-zeroes">Move Zeroes</h2>
 
+<h2 id="将所有0后移">将所有0后移</h2>
+
 <p>Given an array nums, write a function to move all 0&rsquo;s to the end of it while maintaining the relative order of the non-zero elements.</p>
 
 <p><em>Example:</em></p>
@@ -1144,6 +1178,8 @@ public boolean containsDuplicate(int[] nums) {
 
 <h2 id="single-number">Single Number</h2>
 
+<h2 id="找出只出现一次的数">找出只出现一次的数</h2>
+
 <p>Given a non-empty array of integers, every element appears twice except for one. Find that single one.</p>
 
 <p><em>Note:</em></p>
@@ -1183,7 +1219,9 @@ public boolean containsDuplicate(int[] nums) {
 }
 </code></pre>
 
-<h2 id="remove-duplicates-from-sorted-array">Remove Duplicates from Sorted Array</h2>
+<h2 id="rotate-array">Rotate Array</h2>
+
+<h2 id="按k位旋转数组">按k位旋转数组</h2>
 
 <p>Given an array, rotate the array to the right by k steps, where k is non-negative.</p>
 
@@ -1275,7 +1313,9 @@ public boolean containsDuplicate(int[] nums) {
 }
 </code></pre>
 
-<h2 id="remove-duplicates-from-sorted-array-1">Remove Duplicates from Sorted Array</h2>
+<h2 id="remove-duplicates-from-sorted-array">Remove Duplicates from Sorted Array</h2>
+
+<h2 id="删除排序数组中重复数字-每个重复数字只保留一个">删除排序数组中重复数字，每个重复数字只保留一个</h2>
 
 <p>Given a sorted array nums, remove the duplicates in-place such that each element appear only once and return the new length.</p>
 

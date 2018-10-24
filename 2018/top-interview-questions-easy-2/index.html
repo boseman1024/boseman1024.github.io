@@ -46,7 +46,7 @@
     "articleSection" : "posts",
     "name" : "Top Interview Questions-Easy-②",
     "headline" : "Top Interview Questions-Easy-②",
-    "description" : "Dynamic Programming Climbing Stairs 实质为斐波那契数列 You are climbing a stair case. It takes n steps to reach to the top.
+    "description" : "Dynamic Programming Climbing Stairs 爬楼梯，实质为斐波那契数列 You are climbing a stair case. It takes n steps to reach to the top.
 Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
 Note: Given n will be a positive integer.
 Example 1:
@@ -64,7 +64,7 @@ Explanation: There are two ways to climb to the top.
     "datePublished": "2018-09-27 15:08:22 &#43;0000 UTC",
     "dateModified" : "2018-09-27 15:08:22 &#43;0000 UTC",
     "url" : "https://boseman1024.github.io/2018/top-interview-questions-easy-2/",
-    "wordCount" : "3263",
+    "wordCount" : "3312",
     "keywords" : [ "数据结构与算法","LeetCode","JAVA", "KUMA2X"]
 }
 </script>
@@ -157,7 +157,7 @@ Explanation: There are two ways to climb to the top.
 
 <h2 id="climbing-stairs">Climbing Stairs</h2>
 
-<h2 id="实质为斐波那契数列">实质为斐波那契数列</h2>
+<h2 id="爬楼梯-实质为斐波那契数列">爬楼梯，实质为斐波那契数列</h2>
 
 <p>You are climbing a stair case. It takes n steps to reach to the top.</p>
 
@@ -226,6 +226,8 @@ Explanation: There are two ways to climb to the top.
 
 <h2 id="maximum-subarray">Maximum Subarray</h2>
 
+<h2 id="数组中连续数的最大和">数组中连续数的最大和</h2>
+
 <p>Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.</p>
 
 <p><em>Example:</em></p>
@@ -256,6 +258,8 @@ Explanation: There are two ways to climb to the top.
 </code></pre>
 
 <h2 id="best-time-to-buy-and-sell-stock">Best Time to Buy and Sell Stock</h2>
+
+<h2 id="买卖股票的最佳时间">买卖股票的最佳时间</h2>
 
 <p>Say you have an array for which the ith element is the price of a given stock on day i.</p>
 
@@ -318,6 +322,8 @@ Explanation: There are two ways to climb to the top.
 <h1 id="others">Others</h1>
 
 <h2 id="valid-parentheses">Valid Parentheses</h2>
+
+<h2 id="检验优先级">检验优先级</h2>
 
 <p>Given a string containing just the characters &lsquo;(&rsquo;, &lsquo;)&rsquo;, &lsquo;{&rsquo;, &lsquo;}&rsquo;, &lsquo;[&rsquo; and &lsquo;]&rsquo;, determine if the input string is valid.</p>
 
@@ -414,6 +420,8 @@ Explanation: There are two ways to climb to the top.
 
 <h2 id="pascal-s-triangle">Pascal&rsquo;s Triangle</h2>
 
+<h2 id="杨辉三角形-帕斯卡三角形">杨辉三角形、帕斯卡三角形</h2>
+
 <p>Given a non-negative integer numRows, generate the first numRows of Pascal&rsquo;s triangle.</p>
 
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/PascalTriangleAnimated2.gif"></p>
@@ -470,6 +478,8 @@ Explanation: There are two ways to climb to the top.
 
 <h2 id="hamming-distance">Hamming Distance</h2>
 
+<h2 id="汉明距离">汉明距离</h2>
+
 <p>The Hamming distance between two integers is the number of positions at which the corresponding bits are different.</p>
 
 <p>Given two integers x and y, calculate the Hamming distance.</p>
@@ -509,6 +519,8 @@ Explanation: There are two ways to climb to the top.
 </code></pre>
 
 <h2 id="number-of-1-bits">Number of 1 Bits</h2>
+
+<h2 id="二进制数中1的个数">二进制数中1的个数</h2>
 
 <p>Write a function that takes an unsigned integer and returns the number of &lsquo;1&rsquo; bits it has (also known as the Hamming weight).</p>
 
@@ -605,6 +617,8 @@ Explanation: Integer 128 has binary representation 00000000000000000000000010000
 
 <h2 id="reverse-bits">Reverse Bits</h2>
 
+<h2 id="反转二进制">反转二进制</h2>
+
 <p>Reverse bits of a given 32 bits unsigned integer.</p>
 
 <p><em>Example:</em></p>
@@ -643,6 +657,8 @@ Explanation: Integer 128 has binary representation 00000000000000000000000010000
 
 <h2 id="symmetric-tree">Symmetric Tree</h2>
 
+<h2 id="镜像二叉树树">镜像二叉树树</h2>
+
 <p>Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).</p>
 
 <p>For example, this binary tree <code>[1,2,2,3,4,4,3]</code> is symmetric</p>
@@ -661,6 +677,17 @@ Explanation: Integer 128 has binary representation 00000000000000000000000010000
  * }
  */
 class Solution {
+    //8ms
+    public boolean isSymmetric(TreeNode root) {
+        return isSymmetric(root,root);
+    }
+    public boolean isSymmetric(TreeNode left,TreeNode right){
+        if(left==null&amp;&amp;right==null){return true;}
+        if(left==null||right==null){return false;}
+        if(left.val!=right.val){return false;}
+        return isSymmetric(left.left,right.right)&amp;&amp;isSymmetric(left.right,right.left);
+    }
+    //-----------------------------------------------
     //先将二叉树化为按层划分的集合，再做镜像校验
     List&lt;List&lt;Integer&gt;&gt; all;
     public boolean isSymmetric(TreeNode root) {
@@ -692,6 +719,8 @@ class Solution {
 </code></pre>
 
 <h2 id="binary-tree-level-order-traversal">Binary Tree Level Order Traversal</h2>
+
+<h2 id="二叉树分层遍历">二叉树分层遍历</h2>
 
 <p>Given a binary tree, return the level order traversal of its nodes&rsquo; values. (ie, from left to right, level by level).</p>
 
@@ -741,6 +770,8 @@ class Solution {
 
 <h2 id="convert-sorted-array-to-binary-search-tree">Convert Sorted Array to Binary Search Tree</h2>
 
+<h2 id="将排序后的数组构成二叉搜索树">将排序后的数组构成二叉搜索树</h2>
+
 <p>Given an array where elements are sorted in ascending order, convert it to a height balanced BST.</p>
 
 <p>For this problem, a height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1.</p>
@@ -782,6 +813,8 @@ class Solution {
 </code></pre>
 
 <h2 id="validate-binary-search-tree">Validate Binary Search Tree</h2>
+
+<h2 id="检验是否为二叉搜索树">检验是否为二叉搜索树</h2>
 
 <p>Given a binary tree, determine if it is a valid binary search tree (BST).</p>
 
@@ -859,6 +892,8 @@ class Solution {
 
 <h2 id="maximum-depth-of-binary-tree">Maximum Depth of Binary Tree</h2>
 
+<h2 id="二叉树的最大深度">二叉树的最大深度</h2>
+
 <p>Given a binary tree, find its maximum depth.</p>
 
 <p>The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.</p>
@@ -897,6 +932,8 @@ class Solution {
 <h1 id="math">Math</h1>
 
 <h2 id="roman-to-integer">Roman to Integer</h2>
+
+<h2 id="罗马数字转换">罗马数字转换</h2>
 
 <p>Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.</p>
 
@@ -989,6 +1026,8 @@ class Solution {
 
 <h2 id="fizz-buzz">Fizz Buzz</h2>
 
+<h2 id="fizz-替代3的倍数-buzz-替代5的倍数">“Fizz”替代3的倍数，“Buzz”替代5的倍数</h2>
+
 <p>Write a program that outputs the string representation of numbers from 1 to n.</p>
 
 <p>But for multiples of three it should output “Fizz” instead of the number and for the multiples of five output “Buzz”. For numbers which are multiples of both three and five output “FizzBuzz”.</p>
@@ -1000,7 +1039,13 @@ class Solution {
 
 <p>Return:</p>
 
-<p>[&ldquo;1&rdquo;,&ldquo;2&rdquo;,&ldquo;Fizz&rdquo;,&ldquo;4&rdquo;,&ldquo;Buzz&rdquo;,&ldquo;Fizz&rdquo;,&ldquo;7&rdquo;,&ldquo;8&rdquo;,&ldquo;Fizz&rdquo;,&ldquo;Buzz&rdquo;,&ldquo;11&rdquo;,&ldquo;Fizz&rdquo;,&ldquo;13&rdquo;,&ldquo;14&rdquo;,&ldquo;FizzBuzz&rdquo;]</p>
+<p>[&ldquo;1&rdquo;,&ldquo;2&rdquo;,&ldquo;Fizz&rdquo;,&ldquo;4&rdquo;,</p>
+
+<p>&ldquo;Buzz&rdquo;,&ldquo;Fizz&rdquo;,&ldquo;7&rdquo;,&ldquo;8&rdquo;,</p>
+
+<p>&ldquo;Fizz&rdquo;,&ldquo;Buzz&rdquo;,&ldquo;11&rdquo;,&ldquo;Fizz&rdquo;,</p>
+
+<p>&ldquo;13&rdquo;,&ldquo;14&rdquo;,&ldquo;FizzBuzz&rdquo;]</p>
 </blockquote>
 
 <h3 id="解答-15">解答：</h3>
@@ -1023,6 +1068,8 @@ class Solution {
 </code></pre>
 
 <h2 id="count-primes">Count Primes</h2>
+
+<h2 id="质数的个数">质数的个数</h2>
 
 <p>Count the number of prime numbers <em>less than</em> a non-negative number, n.</p>
 
@@ -1070,6 +1117,8 @@ class Solution {
 </code></pre>
 
 <h2 id="power-of-three">Power of Three</h2>
+
+<h2 id="是否为3的多次方数">是否为3的多次方数</h2>
 
 <p>Given an integer, write a function to determine if it is a power of three.</p>
 
@@ -1124,6 +1173,8 @@ class Solution {
 <h1 id="string">String</h1>
 
 <h2 id="string-to-integer-atoi">String to Integer (atoi)</h2>
+
+<h2 id="字符串转整型数">字符串转整型数</h2>
 
 <p>Implement atoi which converts a string to an integer.</p>
 
@@ -1243,6 +1294,8 @@ class Solution {
 
 <h2 id="longest-common-prefix">Longest Common Prefix</h2>
 
+<h2 id="求最长共同的前缀">求最长共同的前缀</h2>
+
 <p>Write a function to find the longest common prefix string amongst an array of strings.</p>
 
 <p>If there is no common prefix, return an empty string &ldquo;&rdquo;.</p>
@@ -1298,6 +1351,8 @@ class Solution {
 
 <h2 id="implement-strstr">Implement strStr()</h2>
 
+<h2 id="若字符串needle是haystack的子串-求其在haystack的索引">若字符串needle是haystack的子串，求其在haystack的索引</h2>
+
 <p>Implement strStr().</p>
 
 <p>Return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.</p>
@@ -1329,6 +1384,8 @@ class Solution {
 </code></pre>
 
 <h2 id="valid-anagram">Valid Anagram</h2>
+
+<h2 id="检验s-t是否由颠倒字母顺序而构成">检验s、t是否由颠倒字母顺序而构成</h2>
 
 <p>Given two strings s and t , write a function to determine if t is an anagram of s.</p>
 
@@ -1379,6 +1436,8 @@ class Solution {
 </code></pre>
 
 <h2 id="first-unique-character-in-a-string">First Unique Character in a String</h2>
+
+<h2 id="找出字符串中仅出现1次的字母">找出字符串中仅出现1次的字母</h2>
 
 <p>Given a string, find the first non-repeating character in it and return it&rsquo;s index. If it doesn&rsquo;t exist, return -1.</p>
 
@@ -1441,6 +1500,8 @@ public boolean isChar(char c) {
 </code></pre>
 
 <h2 id="reverse-integer">Reverse Integer</h2>
+
+<h2 id="反转整型">反转整型</h2>
 
 <p>Given a 32-bit signed integer, reverse digits of an integer.</p>
 

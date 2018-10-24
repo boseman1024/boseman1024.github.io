@@ -19,6 +19,70 @@
 
 &lt;h1 id=&#34;trees-and-graphs&#34;&gt;Trees and Graphs&lt;/h1&gt;
 
+&lt;h2 id=&#34;binary-tree-zigzag-level-order-traversal&#34;&gt;Binary Tree Zigzag Level Order Traversal&lt;/h2&gt;
+
+&lt;h2 id=&#34;之字形打印二叉树&#34;&gt;之字形打印二叉树&lt;/h2&gt;
+
+&lt;p&gt;Given a binary tree, return the zigzag level order traversal of its nodes&amp;rsquo; values. (ie, from left to right, then right to left for the next level and alternate between).&lt;/p&gt;
+
+&lt;p&gt;For example:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Given binary tree &lt;code&gt;[3,9,20,null,null,15,7]&lt;/code&gt;,&lt;/p&gt;
+
+&lt;p&gt;return its zigzag level order traversal as:
+[[3],&lt;/p&gt;
+
+&lt;p&gt;[20,9],&lt;/p&gt;
+
+&lt;p&gt;[15,7]]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public List&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; zigzagLevelOrder(TreeNode root) {
+        List&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; list = new ArrayList&amp;lt;&amp;gt;();
+        if(root==null){return list;}
+        list.add(new ArrayList());
+        //使用两个栈分别存放正序层和倒序层
+        Stack&amp;lt;TreeNode&amp;gt; stack1 = new Stack&amp;lt;&amp;gt;();
+        Stack&amp;lt;TreeNode&amp;gt; stack2 = new Stack&amp;lt;&amp;gt;();
+        stack1.push(root);
+        int level = 0;
+        while(!stack1.empty()||!stack2.empty()){
+            //根据层数从对应栈里出栈
+            TreeNode node = level%2==0?stack1.pop():stack2.pop();
+            list.get(level).add(node.val);
+            if(level%2==0){
+                if(node.left!=null){stack2.push(node.left);}
+                if(node.right!=null){stack2.push(node.right);}
+            }else{
+                if(node.right!=null){stack1.push(node.right);}
+                if(node.left!=null){stack1.push(node.left);}
+            }
+            //偶数层、倒序栈不为空且正序栈为空
+            //奇数层、正序栈不为空且倒序栈为空
+            //进入下一层
+            if((level%2==0&amp;amp;&amp;amp;!stack2.empty()&amp;amp;&amp;amp;stack1.empty())||(level%2==1&amp;amp;&amp;amp;!stack1.empty()&amp;amp;&amp;amp;stack2.empty())){
+                level++;
+                list.add(new ArrayList());
+            }
+        }
+        return list;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h2 id=&#34;construct-binary-tree-from-preorder-and-inorder-traversal&#34;&gt;Construct Binary Tree from Preorder and Inorder Traversal&lt;/h2&gt;
 
 &lt;h2 id=&#34;根据先序-中序遍历生存二叉树&#34;&gt;根据先序、中序遍历生存二叉树&lt;/h2&gt;
@@ -45,7 +109,7 @@
 &lt;p&gt;　　　15　7&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-1&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for a binary tree node.
@@ -130,7 +194,7 @@ class Solution {
 &lt;p&gt;4 -&amp;gt; 5 -&amp;gt; 6 -&amp;gt; 7 -&amp;gt; NULL&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-1&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-2&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for binary tree with next pointer.
@@ -214,7 +278,7 @@ public class Solution {
 &lt;p&gt;Output: 3&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-2&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-3&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public int numIslands(char[][] grid) {
@@ -272,7 +336,7 @@ public class Solution {
 &lt;p&gt;Output: 3&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-3&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-4&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for a binary tree node.
@@ -325,7 +389,7 @@ class Solution {
 
 &lt;p&gt;&lt;em&gt;Follow up:&lt;/em&gt; Recursive solution is trivial, could you do it iteratively?&lt;/p&gt;
 
-&lt;h3 id=&#34;解答-4&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-5&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for a binary tree node.
@@ -387,7 +451,7 @@ class Solution {
 &lt;p&gt;Given word = &amp;ldquo;ABCB&amp;rdquo;, return false.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-5&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-6&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //深度搜索
@@ -450,7 +514,7 @@ class Solution {
 
 &lt;p&gt;Given target = 20, return false.&lt;/p&gt;
 
-&lt;h3 id=&#34;解答-6&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-7&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //从矩阵下方开始，若大于目标则向上移动，若小于目标则向右移动，7ms。
@@ -513,7 +577,7 @@ class Solution {
 &lt;p&gt;Output: [-1,-1]&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-7&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-8&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public int[] searchRange(int[] nums, int target) {
@@ -583,7 +647,7 @@ class Solution {
 &lt;p&gt;Explanation: Your function can return either index number 1 where the peak element is 2, or index number 5 where the peak element is 6.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-8&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-9&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //二分查找，时间O(logN)
@@ -626,7 +690,7 @@ class Solution {
 
 &lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; You may assume k is always valid, 1 ≤ k ≤ array&amp;rsquo;s length.&lt;/p&gt;
 
-&lt;h3 id=&#34;解答-9&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-10&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public int findKthLargest(int[] nums, int k) {
@@ -669,7 +733,7 @@ class Solution {
 &lt;p&gt;Output: -1&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-10&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-11&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public int search(int[] nums, int target) {
@@ -748,7 +812,7 @@ class Solution {
 &lt;li&gt;&lt;p&gt;Your algorithm&amp;rsquo;s time complexity must be better than O(n log n), where n is the array&amp;rsquo;s size.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;解答-11&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-12&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //24ms
@@ -823,7 +887,7 @@ class Solution {
 &lt;li&gt;Could you come up with a one-pass algorithm using only constant space?&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;解答-12&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-13&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public void sortColors(int[] nums) {
@@ -856,6 +920,8 @@ class Solution {
 
 &lt;h2 id=&#34;3sum&#34;&gt;3Sum&lt;/h2&gt;
 
+&lt;h2 id=&#34;从数组中寻找三个和为0的数&#34;&gt;从数组中寻找三个和为0的数&lt;/h2&gt;
+
 &lt;p&gt;Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.&lt;/p&gt;
 
 &lt;p&gt;*Note:*The solution set must not contain duplicate triplets.&lt;/p&gt;
@@ -870,7 +936,7 @@ class Solution {
 &lt;p&gt;[[-1, 0, 1],[-1, -1, 2]]&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-13&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-14&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public List&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; threeSum(int[] nums) {
@@ -960,7 +1026,7 @@ class Solution {
 &lt;li&gt;&lt;p&gt;Could you devise a constant space solution?&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;解答-14&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-15&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public void setZeroes(int[][] matrix) {
@@ -985,52 +1051,9 @@ class Solution {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;3sum-1&#34;&gt;3Sum&lt;/h2&gt;
-
-&lt;h2 id=&#34;找出三个和为0的数&#34;&gt;找出三个和为0的数&lt;/h2&gt;
-
-&lt;p&gt;Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.&lt;/p&gt;
-
-&lt;p&gt;*Note:*The solution set must not contain duplicate triplets.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Given array nums = [-1, 0, 1, 2, -1, -4],&lt;/p&gt;
-
-&lt;p&gt;A solution set is:
-[[-1, 0, 1],[-1, -1, 2]]&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&#34;解答-15&#34;&gt;解答：&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
-    //TLE超时
-    public List&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; threeSum(int[] nums) {
-        Set&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; set = new HashSet&amp;lt;&amp;gt;();
-        Arrays.sort(nums);
-        for(int i=0;i&amp;lt;nums.length;i++){
-            for(int j=i+1;j&amp;lt;nums.length;j++){
-                if(nums[i]+nums[j]&amp;gt;0){break;}
-                for(int k=j+1;k&amp;lt;nums.length;k++){
-                    if(nums[i]+nums[j]+nums[k]&amp;gt;0){break;}
-                    if(nums[i]+nums[j]+nums[k]==0){
-                        List&amp;lt;Integer&amp;gt; item = new ArrayList&amp;lt;&amp;gt;();
-                        item.add(nums[i]);
-                        item.add(nums[j]);
-                        item.add(nums[k]);
-                        Collections.sort(item);
-                        set.add(item);
-                    }
-                }
-            }
-        }
-        return new ArrayList(set);
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
 &lt;h2 id=&#34;increasing-triplet-subsequence&#34;&gt;Increasing Triplet Subsequence&lt;/h2&gt;
+
+&lt;h2 id=&#34;是否存在i-j-k满足条件0-i-j-k-n-1且arr-i-arr-j-arr-k&#34;&gt;是否存在i、j、k满足条件0≤i&amp;lt;j&amp;lt;k≤n-1且arr[i]&amp;lt;arr[j]&amp;lt;arr[k]&lt;/h2&gt;
 
 &lt;p&gt;Given an unsorted array return whether an increasing subsequence of length 3 exists or not in the array.&lt;/p&gt;
 
@@ -1096,6 +1119,8 @@ class Solution {
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;group-anagrams&#34;&gt;Group Anagrams&lt;/h2&gt;
+
+&lt;h2 id=&#34;按条件-单词长度一致且出现字母相同-分组&#34;&gt;按条件 单词长度一致且出现字母相同 分组&lt;/h2&gt;
 
 &lt;p&gt;Given an array of strings, group anagrams together.&lt;/p&gt;
 
@@ -1311,6 +1336,8 @@ class Solution {
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;add-two-numbers&#34;&gt;Add Two Numbers&lt;/h2&gt;
+
+&lt;h2 id=&#34;两个链表倒序输出所得数之和-按倒序构造新的链表&#34;&gt;两个链表倒序输出所得数之和 按倒序构造新的链表&lt;/h2&gt;
 
 &lt;p&gt;You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.&lt;/p&gt;
 
@@ -1601,6 +1628,8 @@ class Solution {
 
 &lt;h2 id=&#34;happy-number&#34;&gt;Happy Number&lt;/h2&gt;
 
+&lt;h2 id=&#34;求一个数所有数位的平方和-直至和为0&#34;&gt;求一个数所有数位的平方和，直至和为0&lt;/h2&gt;
+
 &lt;p&gt;Write an algorithm to determine if a number is &amp;ldquo;happy&amp;rdquo;.&lt;/p&gt;
 
 &lt;p&gt;A happy number is a number defined by the following process: Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1. Those numbers for which this process ends in 1 are happy numbers.&lt;/p&gt;
@@ -1732,6 +1761,8 @@ class Solution {
 
 &lt;h2 id=&#34;shuffle-an-array&#34;&gt;Shuffle an Array&lt;/h2&gt;
 
+&lt;h2 id=&#34;打乱数组&#34;&gt;打乱数组&lt;/h2&gt;
+
 &lt;p&gt;Shuffle a set of numbers without duplicates.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
@@ -1787,6 +1818,8 @@ class Solution {
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;min-stack&#34;&gt;Min Stack&lt;/h2&gt;
+
+&lt;h2 id=&#34;栈取最小值&#34;&gt;栈取最小值&lt;/h2&gt;
 
 &lt;p&gt;Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.&lt;/p&gt;
 
@@ -1877,6 +1910,8 @@ class MinStack {
 
 &lt;h2 id=&#34;reverse-linked-list&#34;&gt;Reverse Linked List&lt;/h2&gt;
 
+&lt;h2 id=&#34;反转链表&#34;&gt;反转链表&lt;/h2&gt;
+
 &lt;p&gt;Reverse a singly linked list.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
@@ -1916,6 +1951,8 @@ class Solution {
 
 &lt;h2 id=&#34;linked-list-cycle&#34;&gt;Linked List Cycle&lt;/h2&gt;
 
+&lt;h2 id=&#34;检验链表是否有环&#34;&gt;检验链表是否有环&lt;/h2&gt;
+
 &lt;p&gt;Given a linked list, determine if it has a cycle in it.&lt;/p&gt;
 
 &lt;h3 id=&#34;解答-3&#34;&gt;解答：&lt;/h3&gt;
@@ -1945,6 +1982,8 @@ public class Solution {
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;palindrome-linked-list&#34;&gt;Palindrome Linked List&lt;/h2&gt;
+
+&lt;h2 id=&#34;检验链表是否回文&#34;&gt;检验链表是否回文&lt;/h2&gt;
 
 &lt;p&gt;Given a singly linked list, determine if it is a palindrome.&lt;/p&gt;
 
@@ -1988,6 +2027,8 @@ class Solution {
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;merge-two-sorted-lists&#34;&gt;Merge Two Sorted Lists&lt;/h2&gt;
+
+&lt;h2 id=&#34;合并链表&#34;&gt;合并链表&lt;/h2&gt;
 
 &lt;p&gt;Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.&lt;/p&gt;
 
@@ -2035,6 +2076,8 @@ class Solution {
 
 &lt;h2 id=&#34;delete-node-in-a-linked-list&#34;&gt;Delete Node in a Linked List&lt;/h2&gt;
 
+&lt;h2 id=&#34;从链表中删除元素&#34;&gt;从链表中删除元素&lt;/h2&gt;
+
 &lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
@@ -2042,8 +2085,7 @@ class Solution {
 
 &lt;p&gt;Output: [4,1,9]&lt;/p&gt;
 
-&lt;p&gt;Explanation: You are given the second node with value 5, the linked list
-             should become 4 -&amp;gt; 1 -&amp;gt; 9 after calling your function.&lt;/p&gt;
+&lt;p&gt;Explanation: You are given the second node with value 5, the linked list should become 4 -&amp;gt; 1 -&amp;gt; 9 after calling your function.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
@@ -2053,8 +2095,7 @@ class Solution {
 
 &lt;p&gt;Output: [4,5,9]&lt;/p&gt;
 
-&lt;p&gt;Explanation: You are given the third node with value 1, the linked list
-             should become 4 -&amp;gt; 5 -&amp;gt; 9 after calling your function.&lt;/p&gt;
+&lt;p&gt;Explanation: You are given the third node with value 1, the linked list should become 4 -&amp;gt; 5 -&amp;gt; 9 after calling your function.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&#34;解答-6&#34;&gt;解答：&lt;/h3&gt;
@@ -2076,6 +2117,8 @@ class Solution {
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;remove-nth-node-from-end-of-list&#34;&gt;Remove Nth Node From End of List&lt;/h2&gt;
+
+&lt;h2 id=&#34;删除链表中倒数第n个元素&#34;&gt;删除链表中倒数第N个元素&lt;/h2&gt;
 
 &lt;p&gt;Given a linked list, remove the n-th node from the end of list and return its head.&lt;/p&gt;
 
@@ -2136,6 +2179,8 @@ class Solution {
 
 &lt;h2 id=&#34;first-bad-version&#34;&gt;First Bad Version&lt;/h2&gt;
 
+&lt;h2 id=&#34;第一个坏版本&#34;&gt;第一个坏版本&lt;/h2&gt;
+
 &lt;p&gt;You are a product manager and currently leading a team to develop a new product. Unfortunately, the latest version of your product fails the quality check. Since each version is developed based on the previous version, all the versions after a bad version are also bad.&lt;/p&gt;
 
 &lt;p&gt;Suppose you have n versions [1, 2, &amp;hellip;, n] and you want to find out the first bad one, which causes all the following ones to be bad.&lt;/p&gt;
@@ -2180,6 +2225,8 @@ public class Solution extends VersionControl {
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;merge-sorted-array&#34;&gt;Merge Sorted Array&lt;/h2&gt;
+
+&lt;h2 id=&#34;合并排序数组&#34;&gt;合并排序数组&lt;/h2&gt;
 
 &lt;p&gt;Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.&lt;/p&gt;
 
@@ -2240,6 +2287,8 @@ public class Solution extends VersionControl {
 &lt;h1 id=&#34;array&#34;&gt;Array&lt;/h1&gt;
 
 &lt;h2 id=&#34;rotate-image&#34;&gt;Rotate Image&lt;/h2&gt;
+
+&lt;h2 id=&#34;矩阵旋转&#34;&gt;矩阵旋转&lt;/h2&gt;
 
 &lt;p&gt;You are given an n x n 2D matrix representing an image.&lt;/p&gt;
 
@@ -2302,7 +2351,7 @@ public class Solution extends VersionControl {
         int[][] rotate = new int[n][n];
         int index = n-1;
         for(int i=0;i&amp;lt;n;i++) {
-            //一层转一排
+            //rotate从右到左每一排存放matrix从上到下每一层
             for(int j=0;j&amp;lt;n;j++) {rotate[j][index] = matrix[i][j];}
             index--;
         }
@@ -2314,6 +2363,8 @@ public class Solution extends VersionControl {
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;best-time-to-buy-and-sell-stock-ii&#34;&gt;Best Time to Buy and Sell Stock II&lt;/h2&gt;
+
+&lt;h2 id=&#34;买卖股票的最佳时间&#34;&gt;买卖股票的最佳时间&lt;/h2&gt;
 
 &lt;p&gt;Say you have an array for which the i^th element is the price of a given stock on day i.&lt;/p&gt;
 
@@ -2373,6 +2424,8 @@ public class Solution extends VersionControl {
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;valid-sudoku&#34;&gt;Valid Sudoku&lt;/h2&gt;
+
+&lt;h2 id=&#34;验证数独是否成立&#34;&gt;验证数独是否成立&lt;/h2&gt;
 
 &lt;p&gt;Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:&lt;/p&gt;
 
@@ -2484,6 +2537,8 @@ public class Solution extends VersionControl {
 
 &lt;h2 id=&#34;intersection-of-two-arrays-ii&#34;&gt;Intersection of Two Arrays II&lt;/h2&gt;
 
+&lt;h2 id=&#34;数组求交集&#34;&gt;数组求交集&lt;/h2&gt;
+
 &lt;p&gt;Given two arrays, write a function to compute their intersection.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
@@ -2558,6 +2613,8 @@ public class Solution extends VersionControl {
 
 &lt;h2 id=&#34;two-sum&#34;&gt;Two Sum&lt;/h2&gt;
 
+&lt;h2 id=&#34;数组中两个数之和等于目标数&#34;&gt;数组中两个数之和等于目标数&lt;/h2&gt;
+
 &lt;p&gt;Given an array of integers, return indices of the two numbers such that they add up to a specific target.&lt;/p&gt;
 
 &lt;p&gt;You may assume that each input would have exactly one solution, and you may not use the same element twice.&lt;/p&gt;
@@ -2590,6 +2647,8 @@ return [0, 1].&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;plus-one&#34;&gt;Plus One&lt;/h2&gt;
+
+&lt;h2 id=&#34;数组每个元素所得数加一&#34;&gt;数组每个元素所得数加一&lt;/h2&gt;
 
 &lt;p&gt;Given a non-empty array of digits representing a non-negative integer, plus one to the integer.&lt;/p&gt;
 
@@ -2636,6 +2695,8 @@ return [0, 1].&lt;/p&gt;
 
 &lt;h2 id=&#34;contains-duplicate&#34;&gt;Contains Duplicate&lt;/h2&gt;
 
+&lt;h2 id=&#34;数组中是否有重复数&#34;&gt;数组中是否有重复数&lt;/h2&gt;
+
 &lt;p&gt;Given an array of integers, find if the array contains any duplicates.&lt;/p&gt;
 
 &lt;p&gt;Your function should return true if any value appears at least twice in the array, and it should return false if every element is distinct.&lt;/p&gt;
@@ -2679,6 +2740,8 @@ public boolean containsDuplicate(int[] nums) {
 
 &lt;h2 id=&#34;move-zeroes&#34;&gt;Move Zeroes&lt;/h2&gt;
 
+&lt;h2 id=&#34;将所有0后移&#34;&gt;将所有0后移&lt;/h2&gt;
+
 &lt;p&gt;Given an array nums, write a function to move all 0&amp;rsquo;s to the end of it while maintaining the relative order of the non-zero elements.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
@@ -2719,6 +2782,8 @@ public boolean containsDuplicate(int[] nums) {
 
 &lt;h2 id=&#34;single-number&#34;&gt;Single Number&lt;/h2&gt;
 
+&lt;h2 id=&#34;找出只出现一次的数&#34;&gt;找出只出现一次的数&lt;/h2&gt;
+
 &lt;p&gt;Given a non-empty array of integers, every element appears twice except for one. Find that single one.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/p&gt;
@@ -2758,7 +2823,9 @@ public boolean containsDuplicate(int[] nums) {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;remove-duplicates-from-sorted-array&#34;&gt;Remove Duplicates from Sorted Array&lt;/h2&gt;
+&lt;h2 id=&#34;rotate-array&#34;&gt;Rotate Array&lt;/h2&gt;
+
+&lt;h2 id=&#34;按k位旋转数组&#34;&gt;按k位旋转数组&lt;/h2&gt;
 
 &lt;p&gt;Given an array, rotate the array to the right by k steps, where k is non-negative.&lt;/p&gt;
 
@@ -2850,7 +2917,9 @@ public boolean containsDuplicate(int[] nums) {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;remove-duplicates-from-sorted-array-1&#34;&gt;Remove Duplicates from Sorted Array&lt;/h2&gt;
+&lt;h2 id=&#34;remove-duplicates-from-sorted-array&#34;&gt;Remove Duplicates from Sorted Array&lt;/h2&gt;
+
+&lt;h2 id=&#34;删除排序数组中重复数字-每个重复数字只保留一个&#34;&gt;删除排序数组中重复数字，每个重复数字只保留一个&lt;/h2&gt;
 
 &lt;p&gt;Given a sorted array nums, remove the duplicates in-place such that each element appear only once and return the new length.&lt;/p&gt;
 
@@ -2928,7 +2997,7 @@ int len = removeDuplicates(nums);&lt;/p&gt;
 
 &lt;h2 id=&#34;climbing-stairs&#34;&gt;Climbing Stairs&lt;/h2&gt;
 
-&lt;h2 id=&#34;实质为斐波那契数列&#34;&gt;实质为斐波那契数列&lt;/h2&gt;
+&lt;h2 id=&#34;爬楼梯-实质为斐波那契数列&#34;&gt;爬楼梯，实质为斐波那契数列&lt;/h2&gt;
 
 &lt;p&gt;You are climbing a stair case. It takes n steps to reach to the top.&lt;/p&gt;
 
@@ -2997,6 +3066,8 @@ int len = removeDuplicates(nums);&lt;/p&gt;
 
 &lt;h2 id=&#34;maximum-subarray&#34;&gt;Maximum Subarray&lt;/h2&gt;
 
+&lt;h2 id=&#34;数组中连续数的最大和&#34;&gt;数组中连续数的最大和&lt;/h2&gt;
+
 &lt;p&gt;Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
@@ -3027,6 +3098,8 @@ int len = removeDuplicates(nums);&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;best-time-to-buy-and-sell-stock&#34;&gt;Best Time to Buy and Sell Stock&lt;/h2&gt;
+
+&lt;h2 id=&#34;买卖股票的最佳时间&#34;&gt;买卖股票的最佳时间&lt;/h2&gt;
 
 &lt;p&gt;Say you have an array for which the ith element is the price of a given stock on day i.&lt;/p&gt;
 
@@ -3089,6 +3162,8 @@ int len = removeDuplicates(nums);&lt;/p&gt;
 &lt;h1 id=&#34;others&#34;&gt;Others&lt;/h1&gt;
 
 &lt;h2 id=&#34;valid-parentheses&#34;&gt;Valid Parentheses&lt;/h2&gt;
+
+&lt;h2 id=&#34;检验优先级&#34;&gt;检验优先级&lt;/h2&gt;
 
 &lt;p&gt;Given a string containing just the characters &amp;lsquo;(&amp;rsquo;, &amp;lsquo;)&amp;rsquo;, &amp;lsquo;{&amp;rsquo;, &amp;lsquo;}&amp;rsquo;, &amp;lsquo;[&amp;rsquo; and &amp;lsquo;]&amp;rsquo;, determine if the input string is valid.&lt;/p&gt;
 
@@ -3185,6 +3260,8 @@ int len = removeDuplicates(nums);&lt;/p&gt;
 
 &lt;h2 id=&#34;pascal-s-triangle&#34;&gt;Pascal&amp;rsquo;s Triangle&lt;/h2&gt;
 
+&lt;h2 id=&#34;杨辉三角形-帕斯卡三角形&#34;&gt;杨辉三角形、帕斯卡三角形&lt;/h2&gt;
+
 &lt;p&gt;Given a non-negative integer numRows, generate the first numRows of Pascal&amp;rsquo;s triangle.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://upload.wikimedia.org/wikipedia/commons/0/0d/PascalTriangleAnimated2.gif&#34;&gt;&lt;/p&gt;
@@ -3241,6 +3318,8 @@ int len = removeDuplicates(nums);&lt;/p&gt;
 
 &lt;h2 id=&#34;hamming-distance&#34;&gt;Hamming Distance&lt;/h2&gt;
 
+&lt;h2 id=&#34;汉明距离&#34;&gt;汉明距离&lt;/h2&gt;
+
 &lt;p&gt;The Hamming distance between two integers is the number of positions at which the corresponding bits are different.&lt;/p&gt;
 
 &lt;p&gt;Given two integers x and y, calculate the Hamming distance.&lt;/p&gt;
@@ -3280,6 +3359,8 @@ int len = removeDuplicates(nums);&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;number-of-1-bits&#34;&gt;Number of 1 Bits&lt;/h2&gt;
+
+&lt;h2 id=&#34;二进制数中1的个数&#34;&gt;二进制数中1的个数&lt;/h2&gt;
 
 &lt;p&gt;Write a function that takes an unsigned integer and returns the number of &amp;lsquo;1&amp;rsquo; bits it has (also known as the Hamming weight).&lt;/p&gt;
 
@@ -3376,6 +3457,8 @@ Explanation: Integer 128 has binary representation 00000000000000000000000010000
 
 &lt;h2 id=&#34;reverse-bits&#34;&gt;Reverse Bits&lt;/h2&gt;
 
+&lt;h2 id=&#34;反转二进制&#34;&gt;反转二进制&lt;/h2&gt;
+
 &lt;p&gt;Reverse bits of a given 32 bits unsigned integer.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
@@ -3414,6 +3497,8 @@ Explanation: Integer 128 has binary representation 00000000000000000000000010000
 
 &lt;h2 id=&#34;symmetric-tree&#34;&gt;Symmetric Tree&lt;/h2&gt;
 
+&lt;h2 id=&#34;镜像二叉树树&#34;&gt;镜像二叉树树&lt;/h2&gt;
+
 &lt;p&gt;Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).&lt;/p&gt;
 
 &lt;p&gt;For example, this binary tree &lt;code&gt;[1,2,2,3,4,4,3]&lt;/code&gt; is symmetric&lt;/p&gt;
@@ -3432,6 +3517,17 @@ Explanation: Integer 128 has binary representation 00000000000000000000000010000
  * }
  */
 class Solution {
+    //8ms
+    public boolean isSymmetric(TreeNode root) {
+        return isSymmetric(root,root);
+    }
+    public boolean isSymmetric(TreeNode left,TreeNode right){
+        if(left==null&amp;amp;&amp;amp;right==null){return true;}
+        if(left==null||right==null){return false;}
+        if(left.val!=right.val){return false;}
+        return isSymmetric(left.left,right.right)&amp;amp;&amp;amp;isSymmetric(left.right,right.left);
+    }
+    //-----------------------------------------------
     //先将二叉树化为按层划分的集合，再做镜像校验
     List&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; all;
     public boolean isSymmetric(TreeNode root) {
@@ -3463,6 +3559,8 @@ class Solution {
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;binary-tree-level-order-traversal&#34;&gt;Binary Tree Level Order Traversal&lt;/h2&gt;
+
+&lt;h2 id=&#34;二叉树分层遍历&#34;&gt;二叉树分层遍历&lt;/h2&gt;
 
 &lt;p&gt;Given a binary tree, return the level order traversal of its nodes&amp;rsquo; values. (ie, from left to right, level by level).&lt;/p&gt;
 
@@ -3512,6 +3610,8 @@ class Solution {
 
 &lt;h2 id=&#34;convert-sorted-array-to-binary-search-tree&#34;&gt;Convert Sorted Array to Binary Search Tree&lt;/h2&gt;
 
+&lt;h2 id=&#34;将排序后的数组构成二叉搜索树&#34;&gt;将排序后的数组构成二叉搜索树&lt;/h2&gt;
+
 &lt;p&gt;Given an array where elements are sorted in ascending order, convert it to a height balanced BST.&lt;/p&gt;
 
 &lt;p&gt;For this problem, a height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1.&lt;/p&gt;
@@ -3553,6 +3653,8 @@ class Solution {
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;validate-binary-search-tree&#34;&gt;Validate Binary Search Tree&lt;/h2&gt;
+
+&lt;h2 id=&#34;检验是否为二叉搜索树&#34;&gt;检验是否为二叉搜索树&lt;/h2&gt;
 
 &lt;p&gt;Given a binary tree, determine if it is a valid binary search tree (BST).&lt;/p&gt;
 
@@ -3630,6 +3732,8 @@ class Solution {
 
 &lt;h2 id=&#34;maximum-depth-of-binary-tree&#34;&gt;Maximum Depth of Binary Tree&lt;/h2&gt;
 
+&lt;h2 id=&#34;二叉树的最大深度&#34;&gt;二叉树的最大深度&lt;/h2&gt;
+
 &lt;p&gt;Given a binary tree, find its maximum depth.&lt;/p&gt;
 
 &lt;p&gt;The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.&lt;/p&gt;
@@ -3668,6 +3772,8 @@ class Solution {
 &lt;h1 id=&#34;math&#34;&gt;Math&lt;/h1&gt;
 
 &lt;h2 id=&#34;roman-to-integer&#34;&gt;Roman to Integer&lt;/h2&gt;
+
+&lt;h2 id=&#34;罗马数字转换&#34;&gt;罗马数字转换&lt;/h2&gt;
 
 &lt;p&gt;Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.&lt;/p&gt;
 
@@ -3760,6 +3866,8 @@ class Solution {
 
 &lt;h2 id=&#34;fizz-buzz&#34;&gt;Fizz Buzz&lt;/h2&gt;
 
+&lt;h2 id=&#34;fizz-替代3的倍数-buzz-替代5的倍数&#34;&gt;“Fizz”替代3的倍数，“Buzz”替代5的倍数&lt;/h2&gt;
+
 &lt;p&gt;Write a program that outputs the string representation of numbers from 1 to n.&lt;/p&gt;
 
 &lt;p&gt;But for multiples of three it should output “Fizz” instead of the number and for the multiples of five output “Buzz”. For numbers which are multiples of both three and five output “FizzBuzz”.&lt;/p&gt;
@@ -3771,7 +3879,13 @@ class Solution {
 
 &lt;p&gt;Return:&lt;/p&gt;
 
-&lt;p&gt;[&amp;ldquo;1&amp;rdquo;,&amp;ldquo;2&amp;rdquo;,&amp;ldquo;Fizz&amp;rdquo;,&amp;ldquo;4&amp;rdquo;,&amp;ldquo;Buzz&amp;rdquo;,&amp;ldquo;Fizz&amp;rdquo;,&amp;ldquo;7&amp;rdquo;,&amp;ldquo;8&amp;rdquo;,&amp;ldquo;Fizz&amp;rdquo;,&amp;ldquo;Buzz&amp;rdquo;,&amp;ldquo;11&amp;rdquo;,&amp;ldquo;Fizz&amp;rdquo;,&amp;ldquo;13&amp;rdquo;,&amp;ldquo;14&amp;rdquo;,&amp;ldquo;FizzBuzz&amp;rdquo;]&lt;/p&gt;
+&lt;p&gt;[&amp;ldquo;1&amp;rdquo;,&amp;ldquo;2&amp;rdquo;,&amp;ldquo;Fizz&amp;rdquo;,&amp;ldquo;4&amp;rdquo;,&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;Buzz&amp;rdquo;,&amp;ldquo;Fizz&amp;rdquo;,&amp;ldquo;7&amp;rdquo;,&amp;ldquo;8&amp;rdquo;,&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;Fizz&amp;rdquo;,&amp;ldquo;Buzz&amp;rdquo;,&amp;ldquo;11&amp;rdquo;,&amp;ldquo;Fizz&amp;rdquo;,&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;13&amp;rdquo;,&amp;ldquo;14&amp;rdquo;,&amp;ldquo;FizzBuzz&amp;rdquo;]&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&#34;解答-15&#34;&gt;解答：&lt;/h3&gt;
@@ -3794,6 +3908,8 @@ class Solution {
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;count-primes&#34;&gt;Count Primes&lt;/h2&gt;
+
+&lt;h2 id=&#34;质数的个数&#34;&gt;质数的个数&lt;/h2&gt;
 
 &lt;p&gt;Count the number of prime numbers &lt;em&gt;less than&lt;/em&gt; a non-negative number, n.&lt;/p&gt;
 
@@ -3841,6 +3957,8 @@ class Solution {
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;power-of-three&#34;&gt;Power of Three&lt;/h2&gt;
+
+&lt;h2 id=&#34;是否为3的多次方数&#34;&gt;是否为3的多次方数&lt;/h2&gt;
 
 &lt;p&gt;Given an integer, write a function to determine if it is a power of three.&lt;/p&gt;
 
@@ -3895,6 +4013,8 @@ class Solution {
 &lt;h1 id=&#34;string&#34;&gt;String&lt;/h1&gt;
 
 &lt;h2 id=&#34;string-to-integer-atoi&#34;&gt;String to Integer (atoi)&lt;/h2&gt;
+
+&lt;h2 id=&#34;字符串转整型数&#34;&gt;字符串转整型数&lt;/h2&gt;
 
 &lt;p&gt;Implement atoi which converts a string to an integer.&lt;/p&gt;
 
@@ -4014,6 +4134,8 @@ class Solution {
 
 &lt;h2 id=&#34;longest-common-prefix&#34;&gt;Longest Common Prefix&lt;/h2&gt;
 
+&lt;h2 id=&#34;求最长共同的前缀&#34;&gt;求最长共同的前缀&lt;/h2&gt;
+
 &lt;p&gt;Write a function to find the longest common prefix string amongst an array of strings.&lt;/p&gt;
 
 &lt;p&gt;If there is no common prefix, return an empty string &amp;ldquo;&amp;rdquo;.&lt;/p&gt;
@@ -4069,6 +4191,8 @@ class Solution {
 
 &lt;h2 id=&#34;implement-strstr&#34;&gt;Implement strStr()&lt;/h2&gt;
 
+&lt;h2 id=&#34;若字符串needle是haystack的子串-求其在haystack的索引&#34;&gt;若字符串needle是haystack的子串，求其在haystack的索引&lt;/h2&gt;
+
 &lt;p&gt;Implement strStr().&lt;/p&gt;
 
 &lt;p&gt;Return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.&lt;/p&gt;
@@ -4100,6 +4224,8 @@ class Solution {
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;valid-anagram&#34;&gt;Valid Anagram&lt;/h2&gt;
+
+&lt;h2 id=&#34;检验s-t是否由颠倒字母顺序而构成&#34;&gt;检验s、t是否由颠倒字母顺序而构成&lt;/h2&gt;
 
 &lt;p&gt;Given two strings s and t , write a function to determine if t is an anagram of s.&lt;/p&gt;
 
@@ -4150,6 +4276,8 @@ class Solution {
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;first-unique-character-in-a-string&#34;&gt;First Unique Character in a String&lt;/h2&gt;
+
+&lt;h2 id=&#34;找出字符串中仅出现1次的字母&#34;&gt;找出字符串中仅出现1次的字母&lt;/h2&gt;
 
 &lt;p&gt;Given a string, find the first non-repeating character in it and return it&amp;rsquo;s index. If it doesn&amp;rsquo;t exist, return -1.&lt;/p&gt;
 
@@ -4212,6 +4340,8 @@ public boolean isChar(char c) {
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;reverse-integer&#34;&gt;Reverse Integer&lt;/h2&gt;
+
+&lt;h2 id=&#34;反转整型&#34;&gt;反转整型&lt;/h2&gt;
 
 &lt;p&gt;Given a 32-bit signed integer, reverse digits of an integer.&lt;/p&gt;
 

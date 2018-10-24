@@ -17,16 +17,13 @@
       <pubDate>Sat, 29 Sep 2018 22:59:34 +0000</pubDate>
       
       <guid>https://boseman1024.github.io/2018/top-interview-questions-medium-1/</guid>
-      <description>Trees and Graphs Construct Binary Tree from Preorder and Inorder Traversal 根据先序、中序遍历生存二叉树 Given preorder and inorder traversal of a tree, construct the binary tree.
-Note: You may assume that duplicates do not exist in the tree.
-For example, given
- preorder = [3,9,20,15,7]
-inorder = [9,3,15,20,7]
- Return the following binary tree:
- 　3
-　9　20
-　15　7
- 解答： /** * Definition for a binary tree node.</description>
+      <description>Trees and Graphs Binary Tree Zigzag Level Order Traversal 之字形打印二叉树 Given a binary tree, return the zigzag level order traversal of its nodes&amp;rsquo; values. (ie, from left to right, then right to left for the next level and alternate between).
+For example:
+ Given binary tree [3,9,20,null,null,15,7],
+return its zigzag level order traversal as: [[3],
+[20,9],
+[15,7]]
+ 解答： /** * Definition for a binary tree node. * public class TreeNode { * int val; * TreeNode left; * TreeNode right; * TreeNode(int x) { val = x; } * } */ class Solution { public List&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; zigzagLevelOrder(TreeNode root) { List&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; list = new ArrayList&amp;lt;&amp;gt;(); if(root==null){return list;} list.</description>
     </item>
     
     <item>
@@ -35,7 +32,7 @@ inorder = [9,3,15,20,7]
       <pubDate>Fri, 28 Sep 2018 21:47:14 +0000</pubDate>
       
       <guid>https://boseman1024.github.io/2018/top-interview-questions-easy-1/</guid>
-      <description>Design Shuffle an Array Shuffle a set of numbers without duplicates.
+      <description>Design Shuffle an Array 打乱数组 Shuffle a set of numbers without duplicates.
 Example:
  // Init an array with set 1, 2, and 3.
 int[] nums = {1,2,3};
@@ -53,7 +50,7 @@ solution.reset();
       <pubDate>Thu, 27 Sep 2018 15:08:22 +0000</pubDate>
       
       <guid>https://boseman1024.github.io/2018/top-interview-questions-easy-2/</guid>
-      <description>Dynamic Programming Climbing Stairs 实质为斐波那契数列 You are climbing a stair case. It takes n steps to reach to the top.
+      <description>Dynamic Programming Climbing Stairs 爬楼梯，实质为斐波那契数列 You are climbing a stair case. It takes n steps to reach to the top.
 Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
 Note: Given n will be a positive integer.
 Example 1:
