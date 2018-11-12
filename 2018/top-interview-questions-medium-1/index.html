@@ -10,7 +10,7 @@
   
   
   <link rel="prev" href="https://boseman1024.github.io/2018/top-interview-questions-easy-1/" />
-  
+  <link rel="next" href="https://boseman1024.github.io/2018/%E6%9D%82%E9%A2%98/" />
   <link rel="canonical" href="https://boseman1024.github.io/2018/top-interview-questions-medium-1/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -46,13 +46,12 @@
     "articleSection" : "posts",
     "name" : "Top Interview Questions-Medium-①",
     "headline" : "Top Interview Questions-Medium-①",
-    "description" : "Trees and Graphs Binary Tree Zigzag Level Order Traversal 之字形打印二叉树 Given a binary tree, return the zigzag level order traversal of its nodes&rsquo; values. (ie, from left to right, then right to left for the next level and alternate between).
-For example:
- Given binary tree [3,9,20,null,null,15,7],
-return its zigzag level order traversal as: [[3],
-[20,9],
-[15,7]]
- 解答： /** * Definition for a binary tree node. * public class TreeNode { * int val; * TreeNode left; * TreeNode right; * TreeNode(int x) { val = x; } * } */ class Solution { public List&lt;List&lt;Integer&gt;&gt; zigzagLevelOrder(TreeNode root) { List&lt;List&lt;Integer&gt;&gt; list = new ArrayList&lt;&gt;(); if(root==null){return list;} list.",
+    "description" : "Design Insert Delete GetRandom O(1) 设计数据结构实现时间复杂度为O(1)的插入、删除、获取随机数 Design a data structure that supports all following operations in average O(1) time.
+ insert(val): Inserts an item val to the set if not already present.
+ remove(val): Removes an item val from the set if present.
+ getRandom: Returns a random element from current set of elements. Each element must have the same probability of being returned.
+  Example:
+ // Init an empty set.",
     "inLanguage" : "en-us",
     "author" : "Kuma2x",
     "creator" : "Kuma2x",
@@ -63,7 +62,7 @@ return its zigzag level order traversal as: [[3],
     "datePublished": "2018-09-29 22:59:34 &#43;0000 UTC",
     "dateModified" : "2018-09-29 22:59:34 &#43;0000 UTC",
     "url" : "https://boseman1024.github.io/2018/top-interview-questions-medium-1/",
-    "wordCount" : "3892",
+    "wordCount" : "4430",
     "keywords" : [ "数据结构与算法","LeetCode","JAVA", "KUMA2X"]
 }
 </script>
@@ -150,6 +149,106 @@ return its zigzag level order traversal as: [[3],
 
           
 
+<h1 id="design">Design</h1>
+
+<h2 id="insert-delete-getrandom-o-1">Insert Delete GetRandom O(1)</h2>
+
+<h2 id="设计数据结构实现时间复杂度为o-1-的插入-删除-获取随机数">设计数据结构实现时间复杂度为O(1)的插入、删除、获取随机数</h2>
+
+<p>Design a data structure that supports all following operations in average O(1) time.</p>
+
+<ul>
+<li><p>insert(val): Inserts an item val to the set if not already present.</p></li>
+
+<li><p>remove(val): Removes an item val from the set if present.</p></li>
+
+<li><p>getRandom: Returns a random element from current set of elements. Each element must have the same probability of being returned.</p></li>
+</ul>
+
+<p><em>Example:</em></p>
+
+<blockquote>
+<p>// Init an empty set.</p>
+
+<p>RandomizedSet randomSet = new RandomizedSet();</p>
+
+<p>// Inserts 1 to the set. Returns true as 1 was inserted successfully.</p>
+
+<p>randomSet.insert(1);</p>
+
+<p>// Returns false as 2 does not exist in the set.</p>
+
+<p>randomSet.remove(2);</p>
+
+<p>// Inserts 2 to the set, returns true. Set now contains [1,2].</p>
+
+<p>randomSet.insert(2);</p>
+
+<p>// getRandom should return either 1 or 2 randomly.</p>
+
+<p>randomSet.getRandom();</p>
+
+<p>// Removes 1 from the set, returns true. Set now contains [2].</p>
+
+<p>randomSet.remove(1);</p>
+
+<p>// 2 was already in the set, so return false.</p>
+
+<p>randomSet.insert(2);</p>
+
+<p>// Since 2 is the only number in the set, getRandom always return 2.</p>
+
+<p>randomSet.getRandom();</p>
+</blockquote>
+
+<h3 id="解答">解答：</h3>
+
+<pre><code>class RandomizedSet {
+    Map&lt;Integer,Integer&gt; map; //存放元素及其在list中的下标
+    List&lt;Integer&gt; list;//存放元素
+    int size = 0;
+    /** Initialize your data structure here. */
+    public RandomizedSet() {
+        map = new HashMap&lt;&gt;();
+        list = new ArrayList&lt;&gt;();
+    }
+    /** Inserts a value to the set. Returns true if the set did not already contain the specified element. */
+    public boolean insert(int val) {
+        if(map.containsKey(val)){return false;}
+        map.put(val,size);
+        list.add(val);
+        size++;
+        return true;
+    }
+    /** Removes a value from the set. Returns true if the set contained the specified element. */
+    public boolean remove(int val) {
+        if(map.containsKey(val)){
+            int last = list.get(size-1);
+            list.set(map.get(val),last);//将数组尾元素赋值给val所在下标元素
+            list.remove(size-1);//移除数组尾元素
+            map.put(last,map.get(val));//数组尾元素重新定位为val所在下标
+            map.remove(val);//移除val
+            size--;
+            return true;
+        }
+        return false;
+    }
+    /** Get a random element from the set. */
+    public int getRandom() {
+        return list.get(new Random().nextInt(size));
+    }
+}
+/**
+ * Your RandomizedSet object will be instantiated and called as such:
+ * RandomizedSet obj = new RandomizedSet();
+ * boolean param_1 = obj.insert(val);
+ * boolean param_2 = obj.remove(val);
+ * int param_3 = obj.getRandom();
+ */
+</code></pre>
+
+<hr />
+
 <h1 id="trees-and-graphs">Trees and Graphs</h1>
 
 <h2 id="binary-tree-zigzag-level-order-traversal">Binary Tree Zigzag Level Order Traversal</h2>
@@ -171,7 +270,7 @@ return its zigzag level order traversal as: [[3],
 <p>[15,7]]</p>
 </blockquote>
 
-<h3 id="解答">解答：</h3>
+<h3 id="解答-1">解答：</h3>
 
 <pre><code class="language-java">/**
  * Definition for a binary tree node.
@@ -242,7 +341,7 @@ class Solution {
 <p>　　　15　7</p>
 </blockquote>
 
-<h3 id="解答-1">解答：</h3>
+<h3 id="解答-2">解答：</h3>
 
 <pre><code class="language-java">/**
  * Definition for a binary tree node.
@@ -327,7 +426,7 @@ class Solution {
 <p>4 -&gt; 5 -&gt; 6 -&gt; 7 -&gt; NULL</p>
 </blockquote>
 
-<h3 id="解答-2">解答：</h3>
+<h3 id="解答-3">解答：</h3>
 
 <pre><code class="language-java">/**
  * Definition for binary tree with next pointer.
@@ -411,7 +510,7 @@ public class Solution {
 <p>Output: 3</p>
 </blockquote>
 
-<h3 id="解答-3">解答：</h3>
+<h3 id="解答-4">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public int numIslands(char[][] grid) {
@@ -469,7 +568,7 @@ public class Solution {
 <p>Output: 3</p>
 </blockquote>
 
-<h3 id="解答-4">解答：</h3>
+<h3 id="解答-5">解答：</h3>
 
 <pre><code class="language-java">/**
  * Definition for a binary tree node.
@@ -522,7 +621,7 @@ class Solution {
 
 <p><em>Follow up:</em> Recursive solution is trivial, could you do it iteratively?</p>
 
-<h3 id="解答-5">解答：</h3>
+<h3 id="解答-6">解答：</h3>
 
 <pre><code class="language-java">/**
  * Definition for a binary tree node.
@@ -556,7 +655,62 @@ class Solution {
 
 <hr />
 
-<h1 id="sorting-and-searching">Sorting and Searching</h1>
+<h1 id="backtracking">Backtracking</h1>
+
+<h2 id="permutations">Permutations</h2>
+
+<h2 id="找出所有排序数列">找出所有排序数列</h2>
+
+<p>Given a collection of distinct integers, return all possible permutations.</p>
+
+<p><em>Example:</em></p>
+
+<blockquote>
+<p>Input: [1,2,3]</p>
+
+<p>Output:[</p>
+
+<p>[1,2,3],</p>
+
+<p>[1,3,2],</p>
+
+<p>[2,1,3],</p>
+
+<p>[2,3,1],</p>
+
+<p>[3,1,2],</p>
+
+<p>[3,2,1]]</p>
+</blockquote>
+
+<h3 id="解答-7">解答：</h3>
+
+<pre><code class="language-java">class Solution {
+    List&lt;List&lt;Integer&gt;&gt; list;
+    public List&lt;List&lt;Integer&gt;&gt; permute(int[] nums) {
+        list = new ArrayList&lt;&gt;();
+        permutation(nums,0);
+        return list;
+    }
+    public void permutation(int[] nums,int begin){
+        if(begin==nums.length){
+            List&lt;Integer&gt; temp = new ArrayList&lt;&gt;();
+            for(int i:nums){temp.add(i);}
+            list.add(temp);
+        }else{
+            for(int i=begin;i&lt;nums.length;i++){
+                int temp = nums[i];
+                nums[i] = nums[begin];
+                nums[begin] = temp;
+                permutation(nums,begin+1);
+                temp = nums[i];
+                nums[i] = nums[begin];
+                nums[begin] = temp;
+            }
+        }
+    }
+}
+</code></pre>
 
 <h2 id="word-search">Word Search</h2>
 
@@ -584,7 +738,7 @@ class Solution {
 <p>Given word = &ldquo;ABCB&rdquo;, return false.</p>
 </blockquote>
 
-<h3 id="解答-6">解答：</h3>
+<h3 id="解答-8">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     //深度搜索
@@ -614,6 +768,10 @@ class Solution {
     }
 }
 </code></pre>
+
+<hr />
+
+<h1 id="sorting-and-searching">Sorting and Searching</h1>
 
 <h2 id="search-a-2d-matrix-ii">Search a 2D Matrix II</h2>
 
@@ -647,7 +805,7 @@ class Solution {
 
 <p>Given target = 20, return false.</p>
 
-<h3 id="解答-7">解答：</h3>
+<h3 id="解答-9">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     //从矩阵下方开始，若大于目标则向上移动，若小于目标则向右移动，7ms。
@@ -710,7 +868,7 @@ class Solution {
 <p>Output: [-1,-1]</p>
 </blockquote>
 
-<h3 id="解答-8">解答：</h3>
+<h3 id="解答-10">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public int[] searchRange(int[] nums, int target) {
@@ -780,7 +938,7 @@ class Solution {
 <p>Explanation: Your function can return either index number 1 where the peak element is 2, or index number 5 where the peak element is 6.</p>
 </blockquote>
 
-<h3 id="解答-9">解答：</h3>
+<h3 id="解答-11">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     //二分查找，时间O(logN)
@@ -823,7 +981,7 @@ class Solution {
 
 <p><em>Note:</em> You may assume k is always valid, 1 ≤ k ≤ array&rsquo;s length.</p>
 
-<h3 id="解答-10">解答：</h3>
+<h3 id="解答-12">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public int findKthLargest(int[] nums, int k) {
@@ -866,7 +1024,7 @@ class Solution {
 <p>Output: -1</p>
 </blockquote>
 
-<h3 id="解答-11">解答：</h3>
+<h3 id="解答-13">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public int search(int[] nums, int target) {
@@ -945,7 +1103,7 @@ class Solution {
 <li><p>Your algorithm&rsquo;s time complexity must be better than O(n log n), where n is the array&rsquo;s size.</p></li>
 </ul>
 
-<h3 id="解答-12">解答：</h3>
+<h3 id="解答-14">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     //24ms
@@ -1020,7 +1178,7 @@ class Solution {
 <li>Could you come up with a one-pass algorithm using only constant space?</li>
 </ul>
 
-<h3 id="解答-13">解答：</h3>
+<h3 id="解答-15">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public void sortColors(int[] nums) {
@@ -1051,6 +1209,69 @@ class Solution {
 
 <h1 id="array-and-strings">Array and Strings</h1>
 
+<h2 id="longest-substring-without-repeating-characters">Longest Substring Without Repeating Characters</h2>
+
+<h2 id="最长且字母不重复的子串">最长且字母不重复的子串</h2>
+
+<p>Given a string, find the length of the longest substring without repeating characters.</p>
+
+<p><em>Example 1:</em></p>
+
+<blockquote>
+<p>Input: &ldquo;abcabcbb&rdquo;</p>
+
+<p>Output: 3</p>
+
+<p>Explanation: The answer is &ldquo;abc&rdquo;, with the length of 3.</p>
+</blockquote>
+
+<p><em>Example 2:</em></p>
+
+<blockquote>
+<p>Input: &ldquo;bbbbb&rdquo;</p>
+
+<p>Output: 1</p>
+
+<p>Explanation: The answer is &ldquo;b&rdquo;, with the length of 1.</p>
+</blockquote>
+
+<p><em>Example 3:</em></p>
+
+<blockquote>
+<p>Input: &ldquo;pwwkew&rdquo;</p>
+
+<p>Output: 3</p>
+
+<p>Explanation: The answer is &ldquo;wke&rdquo;, with the length of 3. Note that the answer must be a substring, &ldquo;pwke&rdquo; is a subsequence and not a substring.</p>
+</blockquote>
+
+<h3 id="解答-16">解答：</h3>
+
+<pre><code class="language-java">class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        //初始化positions数组存放所有出现过字母的位置下标
+        int[] positions = new int[127];
+        Arrays.fill(positions,-1);
+        char[] str = s.toCharArray();
+        int longest = 0;
+        int cur = 0;
+        for(int i=0;i&lt;str.length;i++){
+            char c = str[i];
+            int index = positions[c];
+            if(index&lt;0||(i-index)&gt;cur){
+                 cur++;
+            }else{
+                longest =  cur&lt;longest?longest:cur;
+                cur = i-index;
+            }
+            positions[c]=i;
+        }
+        longest =  cur&lt;longest?longest:cur;
+        return longest;
+    }
+}
+</code></pre>
+
 <h2 id="3sum">3Sum</h2>
 
 <h2 id="从数组中寻找三个和为0的数">从数组中寻找三个和为0的数</h2>
@@ -1069,7 +1290,7 @@ class Solution {
 <p>[[-1, 0, 1],[-1, -1, 2]]</p>
 </blockquote>
 
-<h3 id="解答-14">解答：</h3>
+<h3 id="解答-17">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public List&lt;List&lt;Integer&gt;&gt; threeSum(int[] nums) {
@@ -1159,7 +1380,7 @@ class Solution {
 <li><p>Could you devise a constant space solution?</p></li>
 </ul>
 
-<h3 id="解答-15">解答：</h3>
+<h3 id="解答-18">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public void setZeroes(int[][] matrix) {
@@ -1216,7 +1437,7 @@ class Solution {
 <p>Output: false</p>
 </blockquote>
 
-<h3 id="解答-16">解答：</h3>
+<h3 id="解答-19">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public boolean increasingTriplet(int[] nums) {
@@ -1277,7 +1498,7 @@ class Solution {
 <li><p>The order of your output does not matter.</p></li>
 </ul>
 
-<h3 id="解答-17">解答：</h3>
+<h3 id="解答-20">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     //16ms，key为字母排序后的字符串，检验map中是否存在key
@@ -1361,7 +1582,7 @@ class Solution {
 <li><p>Your code should preferably run in O(n) time and use only O(1) memory.</p></li>
 </ul>
 
-<h3 id="解答-18">解答：</h3>
+<h3 id="解答-21">解答：</h3>
 
 <pre><code class="language-java">/**
  * Definition for singly-linked list.
@@ -1420,7 +1641,7 @@ public class Solution {
 <p>Output: 2-&gt;3-&gt;6-&gt;7-&gt;1-&gt;5-&gt;4-&gt;NULL</p>
 </blockquote>
 
-<h3 id="解答-19">解答：</h3>
+<h3 id="解答-22">解答：</h3>
 
 <pre><code class="language-java">/**
  * Definition for singly-linked list.
@@ -1486,7 +1707,7 @@ class Solution {
 <p>Explanation: 342 + 465 = 807.</p>
 </blockquote>
 
-<h3 id="解答-20">解答：</h3>
+<h3 id="解答-23">解答：</h3>
 
 <pre><code class="language-java">/**
  * Definition for singly-linked list.
@@ -1560,7 +1781,7 @@ class Solution {
 <p>Explanation: The square root of 8 is 2.82842&hellip;, and since the decimal part is truncated, 2 is returned.</p>
 </blockquote>
 
-<h3 id="解答-21">解答：</h3>
+<h3 id="解答-24">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public int mySqrt(int x) {
@@ -1618,7 +1839,7 @@ class Solution {
 <li>n is a 32-bit signed integer, within the range [−231, 231 − 1]</li>
 </ul>
 
-<h3 id="解答-22">解答：</h3>
+<h3 id="解答-25">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     /**
@@ -1698,7 +1919,7 @@ class Solution {
 <p>Output: 701</p>
 </blockquote>
 
-<h3 id="解答-23">解答：</h3>
+<h3 id="解答-26">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     //&quot;AAA&quot;=703
@@ -1743,7 +1964,7 @@ class Solution {
 
 <p><em>Note:</em> Your solution should be in logarithmic time complexity.</p>
 
-<h3 id="解答-24">解答：</h3>
+<h3 id="解答-27">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     /**
@@ -1785,7 +2006,7 @@ class Solution {
 <p>1^2 + 0^2 + 0^2 = 1</p>
 </blockquote>
 
-<h3 id="解答-25">解答：</h3>
+<h3 id="解答-28">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     public boolean isHappy(int n) {
@@ -1832,7 +2053,7 @@ class Solution {
 <p>Output: 2</p>
 </blockquote>
 
-<h3 id="解答-26">解答：</h3>
+<h3 id="解答-29">解答：</h3>
 
 <pre><code class="language-java">class Solution {
     //The majority element is the element that appears more than ⌊ n/2 ⌋ times.
@@ -1920,6 +2141,8 @@ class Solution {
         
         <a href="https://boseman1024.github.io/2018/top-interview-questions-easy-1/" class="prev" rel="prev" title="Top Interview Questions-Easy-①"><i class="iconfont icon-left"></i>&nbsp;Top Interview Questions-Easy-①</a>
          
+        
+        <a href="https://boseman1024.github.io/2018/%E6%9D%82%E9%A2%98/" class="next" rel="next" title="杂题">杂题&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 

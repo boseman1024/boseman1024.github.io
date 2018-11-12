@@ -6,8 +6,48 @@
     <description>Recent content in KUMA2X on KUMA2X</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 29 Sep 2018 22:59:34 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 07 Nov 2018 20:21:33 +0000</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>杂题</title>
+      <link>https://boseman1024.github.io/2018/%E6%9D%82%E9%A2%98/</link>
+      <pubDate>Wed, 07 Nov 2018 20:21:33 +0000</pubDate>
+      
+      <guid>https://boseman1024.github.io/2018/%E6%9D%82%E9%A2%98/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;题目：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;题目：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;1000 瓶无色无味的药水，其中有一瓶毒药，10只小白鼠拿过来做实验。喝了无毒的药水第二天没事儿，喝了有毒的药水后第二天会死亡。如何在一天之内(第二天)找出这瓶有毒的药水？&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;解：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;1000个瓶子可以用10位二进制数表示(0-1023)&lt;/p&gt;
+
+&lt;p&gt;那么10个老鼠可以分别代表一个二进制位&lt;/p&gt;
+
+&lt;p&gt;也就是说是为了找到这个10位二进制数每一位是0或者是1&lt;/p&gt;
+
+&lt;p&gt;为了方便我还是假设有1024个瓶子吧&lt;/p&gt;
+
+&lt;p&gt;老鼠1-10分别从低位到高位编码，那么：&lt;/p&gt;
+
+&lt;p&gt;老鼠01：选择第1, 3, 5&amp;hellip;1023瓶共512瓶药混在一块，给它喝&lt;/p&gt;
+
+&lt;p&gt;老鼠02：选择第1-2, 5-6, 9-10&amp;hellip;1021-1022瓶共512瓶药混在一块，给它喝&lt;/p&gt;
+
+&lt;p&gt;老鼠03：选择第1-4, 9-12, 17-20&amp;hellip;1017-1020瓶共512瓶药混在一块，给它喝&lt;/p&gt;
+
+&lt;p&gt;&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;老鼠10：选择第1-512瓶共512瓶药混在一块，给它喝&lt;/p&gt;
+
+&lt;p&gt;这样第二天10个老鼠有些会死，有些不会死，死代表1，活代表0，这样把10个老鼠排在一块就能有一个二进制数，就是毒药的序号&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Top Interview Questions-Medium-①</title>
@@ -16,6 +56,106 @@
       
       <guid>https://boseman1024.github.io/2018/top-interview-questions-medium-1/</guid>
       <description>
+
+&lt;h1 id=&#34;design&#34;&gt;Design&lt;/h1&gt;
+
+&lt;h2 id=&#34;insert-delete-getrandom-o-1&#34;&gt;Insert Delete GetRandom O(1)&lt;/h2&gt;
+
+&lt;h2 id=&#34;设计数据结构实现时间复杂度为o-1-的插入-删除-获取随机数&#34;&gt;设计数据结构实现时间复杂度为O(1)的插入、删除、获取随机数&lt;/h2&gt;
+
+&lt;p&gt;Design a data structure that supports all following operations in average O(1) time.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;insert(val): Inserts an item val to the set if not already present.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;remove(val): Removes an item val from the set if present.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;getRandom: Returns a random element from current set of elements. Each element must have the same probability of being returned.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;// Init an empty set.&lt;/p&gt;
+
+&lt;p&gt;RandomizedSet randomSet = new RandomizedSet();&lt;/p&gt;
+
+&lt;p&gt;// Inserts 1 to the set. Returns true as 1 was inserted successfully.&lt;/p&gt;
+
+&lt;p&gt;randomSet.insert(1);&lt;/p&gt;
+
+&lt;p&gt;// Returns false as 2 does not exist in the set.&lt;/p&gt;
+
+&lt;p&gt;randomSet.remove(2);&lt;/p&gt;
+
+&lt;p&gt;// Inserts 2 to the set, returns true. Set now contains [1,2].&lt;/p&gt;
+
+&lt;p&gt;randomSet.insert(2);&lt;/p&gt;
+
+&lt;p&gt;// getRandom should return either 1 or 2 randomly.&lt;/p&gt;
+
+&lt;p&gt;randomSet.getRandom();&lt;/p&gt;
+
+&lt;p&gt;// Removes 1 from the set, returns true. Set now contains [2].&lt;/p&gt;
+
+&lt;p&gt;randomSet.remove(1);&lt;/p&gt;
+
+&lt;p&gt;// 2 was already in the set, so return false.&lt;/p&gt;
+
+&lt;p&gt;randomSet.insert(2);&lt;/p&gt;
+
+&lt;p&gt;// Since 2 is the only number in the set, getRandom always return 2.&lt;/p&gt;
+
+&lt;p&gt;randomSet.getRandom();&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;class RandomizedSet {
+    Map&amp;lt;Integer,Integer&amp;gt; map; //存放元素及其在list中的下标
+    List&amp;lt;Integer&amp;gt; list;//存放元素
+    int size = 0;
+    /** Initialize your data structure here. */
+    public RandomizedSet() {
+        map = new HashMap&amp;lt;&amp;gt;();
+        list = new ArrayList&amp;lt;&amp;gt;();
+    }
+    /** Inserts a value to the set. Returns true if the set did not already contain the specified element. */
+    public boolean insert(int val) {
+        if(map.containsKey(val)){return false;}
+        map.put(val,size);
+        list.add(val);
+        size++;
+        return true;
+    }
+    /** Removes a value from the set. Returns true if the set contained the specified element. */
+    public boolean remove(int val) {
+        if(map.containsKey(val)){
+            int last = list.get(size-1);
+            list.set(map.get(val),last);//将数组尾元素赋值给val所在下标元素
+            list.remove(size-1);//移除数组尾元素
+            map.put(last,map.get(val));//数组尾元素重新定位为val所在下标
+            map.remove(val);//移除val
+            size--;
+            return true;
+        }
+        return false;
+    }
+    /** Get a random element from the set. */
+    public int getRandom() {
+        return list.get(new Random().nextInt(size));
+    }
+}
+/**
+ * Your RandomizedSet object will be instantiated and called as such:
+ * RandomizedSet obj = new RandomizedSet();
+ * boolean param_1 = obj.insert(val);
+ * boolean param_2 = obj.remove(val);
+ * int param_3 = obj.getRandom();
+ */
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
 
 &lt;h1 id=&#34;trees-and-graphs&#34;&gt;Trees and Graphs&lt;/h1&gt;
 
@@ -38,7 +178,7 @@
 &lt;p&gt;[15,7]]&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-1&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for a binary tree node.
@@ -109,7 +249,7 @@ class Solution {
 &lt;p&gt;　　　15　7&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-1&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-2&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for a binary tree node.
@@ -194,7 +334,7 @@ class Solution {
 &lt;p&gt;4 -&amp;gt; 5 -&amp;gt; 6 -&amp;gt; 7 -&amp;gt; NULL&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-2&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-3&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for binary tree with next pointer.
@@ -278,7 +418,7 @@ public class Solution {
 &lt;p&gt;Output: 3&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-3&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-4&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public int numIslands(char[][] grid) {
@@ -336,7 +476,7 @@ public class Solution {
 &lt;p&gt;Output: 3&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-4&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-5&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for a binary tree node.
@@ -389,7 +529,7 @@ class Solution {
 
 &lt;p&gt;&lt;em&gt;Follow up:&lt;/em&gt; Recursive solution is trivial, could you do it iteratively?&lt;/p&gt;
 
-&lt;h3 id=&#34;解答-5&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-6&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for a binary tree node.
@@ -423,7 +563,62 @@ class Solution {
 
 &lt;hr /&gt;
 
-&lt;h1 id=&#34;sorting-and-searching&#34;&gt;Sorting and Searching&lt;/h1&gt;
+&lt;h1 id=&#34;backtracking&#34;&gt;Backtracking&lt;/h1&gt;
+
+&lt;h2 id=&#34;permutations&#34;&gt;Permutations&lt;/h2&gt;
+
+&lt;h2 id=&#34;找出所有排序数列&#34;&gt;找出所有排序数列&lt;/h2&gt;
+
+&lt;p&gt;Given a collection of distinct integers, return all possible permutations.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [1,2,3]&lt;/p&gt;
+
+&lt;p&gt;Output:[&lt;/p&gt;
+
+&lt;p&gt;[1,2,3],&lt;/p&gt;
+
+&lt;p&gt;[1,3,2],&lt;/p&gt;
+
+&lt;p&gt;[2,1,3],&lt;/p&gt;
+
+&lt;p&gt;[2,3,1],&lt;/p&gt;
+
+&lt;p&gt;[3,1,2],&lt;/p&gt;
+
+&lt;p&gt;[3,2,1]]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-7&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    List&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; list;
+    public List&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; permute(int[] nums) {
+        list = new ArrayList&amp;lt;&amp;gt;();
+        permutation(nums,0);
+        return list;
+    }
+    public void permutation(int[] nums,int begin){
+        if(begin==nums.length){
+            List&amp;lt;Integer&amp;gt; temp = new ArrayList&amp;lt;&amp;gt;();
+            for(int i:nums){temp.add(i);}
+            list.add(temp);
+        }else{
+            for(int i=begin;i&amp;lt;nums.length;i++){
+                int temp = nums[i];
+                nums[i] = nums[begin];
+                nums[begin] = temp;
+                permutation(nums,begin+1);
+                temp = nums[i];
+                nums[i] = nums[begin];
+                nums[begin] = temp;
+            }
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;word-search&#34;&gt;Word Search&lt;/h2&gt;
 
@@ -451,7 +646,7 @@ class Solution {
 &lt;p&gt;Given word = &amp;ldquo;ABCB&amp;rdquo;, return false.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-6&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-8&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //深度搜索
@@ -481,6 +676,10 @@ class Solution {
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;sorting-and-searching&#34;&gt;Sorting and Searching&lt;/h1&gt;
 
 &lt;h2 id=&#34;search-a-2d-matrix-ii&#34;&gt;Search a 2D Matrix II&lt;/h2&gt;
 
@@ -514,7 +713,7 @@ class Solution {
 
 &lt;p&gt;Given target = 20, return false.&lt;/p&gt;
 
-&lt;h3 id=&#34;解答-7&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-9&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //从矩阵下方开始，若大于目标则向上移动，若小于目标则向右移动，7ms。
@@ -577,7 +776,7 @@ class Solution {
 &lt;p&gt;Output: [-1,-1]&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-8&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-10&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public int[] searchRange(int[] nums, int target) {
@@ -647,7 +846,7 @@ class Solution {
 &lt;p&gt;Explanation: Your function can return either index number 1 where the peak element is 2, or index number 5 where the peak element is 6.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-9&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-11&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //二分查找，时间O(logN)
@@ -690,7 +889,7 @@ class Solution {
 
 &lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; You may assume k is always valid, 1 ≤ k ≤ array&amp;rsquo;s length.&lt;/p&gt;
 
-&lt;h3 id=&#34;解答-10&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-12&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public int findKthLargest(int[] nums, int k) {
@@ -733,7 +932,7 @@ class Solution {
 &lt;p&gt;Output: -1&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-11&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-13&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public int search(int[] nums, int target) {
@@ -812,7 +1011,7 @@ class Solution {
 &lt;li&gt;&lt;p&gt;Your algorithm&amp;rsquo;s time complexity must be better than O(n log n), where n is the array&amp;rsquo;s size.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;解答-12&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-14&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //24ms
@@ -887,7 +1086,7 @@ class Solution {
 &lt;li&gt;Could you come up with a one-pass algorithm using only constant space?&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;解答-13&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-15&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public void sortColors(int[] nums) {
@@ -918,6 +1117,69 @@ class Solution {
 
 &lt;h1 id=&#34;array-and-strings&#34;&gt;Array and Strings&lt;/h1&gt;
 
+&lt;h2 id=&#34;longest-substring-without-repeating-characters&#34;&gt;Longest Substring Without Repeating Characters&lt;/h2&gt;
+
+&lt;h2 id=&#34;最长且字母不重复的子串&#34;&gt;最长且字母不重复的子串&lt;/h2&gt;
+
+&lt;p&gt;Given a string, find the length of the longest substring without repeating characters.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Example 1:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: &amp;ldquo;abcabcbb&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Output: 3&lt;/p&gt;
+
+&lt;p&gt;Explanation: The answer is &amp;ldquo;abc&amp;rdquo;, with the length of 3.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 2:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: &amp;ldquo;bbbbb&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Output: 1&lt;/p&gt;
+
+&lt;p&gt;Explanation: The answer is &amp;ldquo;b&amp;rdquo;, with the length of 1.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Example 3:&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: &amp;ldquo;pwwkew&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Output: 3&lt;/p&gt;
+
+&lt;p&gt;Explanation: The answer is &amp;ldquo;wke&amp;rdquo;, with the length of 3. Note that the answer must be a substring, &amp;ldquo;pwke&amp;rdquo; is a subsequence and not a substring.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;解答-16&#34;&gt;解答：&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        //初始化positions数组存放所有出现过字母的位置下标
+        int[] positions = new int[127];
+        Arrays.fill(positions,-1);
+        char[] str = s.toCharArray();
+        int longest = 0;
+        int cur = 0;
+        for(int i=0;i&amp;lt;str.length;i++){
+            char c = str[i];
+            int index = positions[c];
+            if(index&amp;lt;0||(i-index)&amp;gt;cur){
+                 cur++;
+            }else{
+                longest =  cur&amp;lt;longest?longest:cur;
+                cur = i-index;
+            }
+            positions[c]=i;
+        }
+        longest =  cur&amp;lt;longest?longest:cur;
+        return longest;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h2 id=&#34;3sum&#34;&gt;3Sum&lt;/h2&gt;
 
 &lt;h2 id=&#34;从数组中寻找三个和为0的数&#34;&gt;从数组中寻找三个和为0的数&lt;/h2&gt;
@@ -936,7 +1198,7 @@ class Solution {
 &lt;p&gt;[[-1, 0, 1],[-1, -1, 2]]&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-14&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-17&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public List&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; threeSum(int[] nums) {
@@ -1026,7 +1288,7 @@ class Solution {
 &lt;li&gt;&lt;p&gt;Could you devise a constant space solution?&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;解答-15&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-18&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public void setZeroes(int[][] matrix) {
@@ -1083,7 +1345,7 @@ class Solution {
 &lt;p&gt;Output: false&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-16&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-19&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public boolean increasingTriplet(int[] nums) {
@@ -1144,7 +1406,7 @@ class Solution {
 &lt;li&gt;&lt;p&gt;The order of your output does not matter.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;解答-17&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-20&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //16ms，key为字母排序后的字符串，检验map中是否存在key
@@ -1228,7 +1490,7 @@ class Solution {
 &lt;li&gt;&lt;p&gt;Your code should preferably run in O(n) time and use only O(1) memory.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;解答-18&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-21&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for singly-linked list.
@@ -1287,7 +1549,7 @@ public class Solution {
 &lt;p&gt;Output: 2-&amp;gt;3-&amp;gt;6-&amp;gt;7-&amp;gt;1-&amp;gt;5-&amp;gt;4-&amp;gt;NULL&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-19&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-22&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for singly-linked list.
@@ -1353,7 +1615,7 @@ class Solution {
 &lt;p&gt;Explanation: 342 + 465 = 807.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-20&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-23&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
  * Definition for singly-linked list.
@@ -1427,7 +1689,7 @@ class Solution {
 &lt;p&gt;Explanation: The square root of 8 is 2.82842&amp;hellip;, and since the decimal part is truncated, 2 is returned.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-21&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-24&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public int mySqrt(int x) {
@@ -1485,7 +1747,7 @@ class Solution {
 &lt;li&gt;n is a 32-bit signed integer, within the range [−231, 231 − 1]&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;解答-22&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-25&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     /**
@@ -1565,7 +1827,7 @@ class Solution {
 &lt;p&gt;Output: 701&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-23&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-26&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //&amp;quot;AAA&amp;quot;=703
@@ -1610,7 +1872,7 @@ class Solution {
 
 &lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; Your solution should be in logarithmic time complexity.&lt;/p&gt;
 
-&lt;h3 id=&#34;解答-24&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-27&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     /**
@@ -1652,7 +1914,7 @@ class Solution {
 &lt;p&gt;1^2 + 0^2 + 0^2 = 1&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-25&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-28&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     public boolean isHappy(int n) {
@@ -1699,7 +1961,7 @@ class Solution {
 &lt;p&gt;Output: 2&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&#34;解答-26&#34;&gt;解答：&lt;/h3&gt;
+&lt;h3 id=&#34;解答-29&#34;&gt;解答：&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
     //The majority element is the element that appears more than ⌊ n/2 ⌋ times.
@@ -6571,6 +6833,130 @@ getItem(arr,&amp;quot;name&amp;quot;,&amp;quot;123&amp;quot;).name
 
 &lt;h1 id=&#34;十一月&#34;&gt;十一月&lt;/h1&gt;
 
+&lt;p&gt;&lt;strong&gt;11月12日12点15分&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;记忆是靠不住的。&lt;/p&gt;
+
+&lt;p&gt;人本心向死亡。&lt;/p&gt;
+
+&lt;p&gt;记：&lt;/p&gt;
+
+&lt;p&gt;《自卑与超越》——阿尔弗雷德·阿德勒&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;-前言&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;「正是由于人类会有自卑感，才会有不断取得发展和进步的不竭动力。」&lt;/p&gt;
+
+&lt;p&gt;「人的潜力是没有局限的，更不是天注定的，只要肯去挖掘，每个人都有成功和飞跃的机会。这也是阿德勒个体心理学的一个重要原则。」&lt;/p&gt;
+
+&lt;p&gt;「他认为，人们总是追寻生命的意义，然而，很多人想略了一点，那就是个人意义没有任何价值，真正的生命意义存在于个体与他人的交互作用中。」&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;-生活于你的意义&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;「真实是对人类的真实，对于人类目的的真实。除此之外，毫无真实可言。」&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;-生命中的三大问题&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;「我们生存于他人的联系中，如果我们选择孤独，便等于选择了死亡。」&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;-真正的生命意义&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;「生命的意义在于乐于关注他人，渴望成为社会大家庭的一员，梦想着为人类和社会贡献自己的力量。」&lt;/p&gt;
+
+&lt;p&gt;「所有真正“生命意义”的真正标志是：可以与他人分享，且得到绝大多数人认可。」&lt;/p&gt;
+
+&lt;p&gt;「如果一个人的理想和行为都想着为他人贡献的方向，并为之奴隶，他的人生自然会朝着最能体现生命价值的方向发展。」&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;-童年对人生的影响&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;「经验并非成功或失败之母。我们的生活经验对我们没有太大用处，起决定作用的是我们赋予经验的认知和意义。」&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;-合作的重要性&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;「如果找到了人性曲解的初始端，并配以有效的治疗方法，那人性是可以改变的。这里所谓的有效方法即培养个体与人合作的勇气和精神。」&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;-情感影响发展&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;「我们只要留心观察个人的行为举止就能了解这个人。行为举止是永远受到人生意义的制约的。」&lt;/p&gt;
+
+&lt;p&gt;「只有渴望将自己融入社会整体而不是至关注自己的人，才能成功学会如何补偿自己的缺憾。只是想逃避困难的人，必然会落后于他人。」&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;-身型、性格与心智&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;「精神是一个整体，一个人的人生态度、生活模式会影响他的一生。一个人的精神思想也会和人生态度相一致。如果我们发现某种情绪很明显地出现了问题，与自身的利益不一致，只摆脱这种情绪是没有用的，必须从人生态度上进行转变，因为这种情绪也是人生态度和生活模式的表现。」&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;-自卑情结&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;「自卑情结是指一个人在意识到他要面对一个他无法解决的问题时，表现出的无所适从。」&lt;/p&gt;
+
+&lt;p&gt;「由于安全感的缺失，他从来不把自己的兴趣扩展到熟悉的几个人之外。因为他已经能很熟练地掌控这一范围内的人，如果接触新的人，他害怕不能按他习惯的方式来控制局势。」&lt;/p&gt;
+
+&lt;p&gt;「生活的不确定性正是我们希望的来源。」&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;-追求优越感&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;「人人都在追求属于自己独有的一种优越感。它取决于人们赋予生命的意义。」&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;11月11日09点38分&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;心不静。&lt;/p&gt;
+
+&lt;p&gt;别当真。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;11月10日00点20分&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;拖后腿的。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;11月7日20点41分&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;畏惧承担责任的人是为懦夫，&lt;/p&gt;
+
+&lt;p&gt;连责任都意识不到的人不配为人。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;11月6日22点11分&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;经济不独立，人格不独立，无关男女。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;11月5日14点35分&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;思想贫乏，文笔稀烂，&lt;/p&gt;
+
+&lt;p&gt;字也写得一团乱七八糟，&lt;/p&gt;
+
+&lt;p&gt;字如其人，果真如是。&lt;/p&gt;
+
+&lt;p&gt;瘦了，头发重两斤？&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;11月4日22点37分&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;记：&lt;/p&gt;
+
+&lt;p&gt;《伤逝——涓生的手记》——鲁迅&lt;/p&gt;
+
+&lt;p&gt;「我是我自己的，他们谁也没有干涉我的权利！」&lt;/p&gt;
+
+&lt;p&gt;「她早已什么书也不看，已不知道人的生活的第一着是求生，向着这求生的道路，是必须携手同行，或奋身孤往的了，倘使只知道捶着一个人的衣角，那便是虽战士也难于战斗，只得一同灭亡。」&lt;/p&gt;
+
+&lt;p&gt;「依然是这样的破屋，这样的板床，这样的半枯的槐树和紫藤，但那时使我希望，欢欣，爱，生活的，却全都逝去了。只有一个虚空。我用真实去换来的虚空存在。&lt;/p&gt;
+
+&lt;p&gt;　　新的生路还很多，我必须跨进去，因为我还活着。但我还不知道怎样跨出那第一步。有时，仿佛看见那生路就像一条灰白的长蛇，自己蜿蜒地向我奔来，我等着，等着，看看临近，但忽然便消失在黑暗里了。」&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;11月3日18点20分&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;论运动的必要性。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;11月2日21点23分&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;记：&lt;/p&gt;
+
+&lt;p&gt;《朝花夕拾》——鲁迅&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;-狗·猫·鼠&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;「人们的各种礼式，局外人可以不见不闻，我就满不管，但如果当我正要看书或睡觉的时候，有人来勒令朗诵情书，奉陪作揖，那是为自卫起见，还要用长竹竿来抵御的。还有，平素不大交往的人，忽而寄给我一个红帖子，上面印着“为舍妹出阁”，“小儿完姻”，“敬请观礼”或“阖第光临”这些含有“阴险的暗示”的句子，使我不化钱便总觉得有些过意不去的，我也不十分高兴。」&lt;/p&gt;
+
+&lt;p&gt;「经验既多，一旦大悟，知道猫的偷鱼肉，拖小鸡，深夜大叫，人们自然十之九是憎恶的，而这憎恶是在猫身上。假如我出而为人们驱除这憎恶，打伤或杀害了它，它便立刻变为可怜，那憎恶倒移在我身上了。所以，目下的办法，是凡遇猫们捣乱，至于有人讨厌时，我便站出去，在门口大声叱曰：“嘘！滚！”小小平静，即回书房，这样，就长保着御侮保家的资格。其实这方法，中国的官兵就常在实做的，他们总不肯扫清土匪或扑灭敌人，因为这么一来，就要不被重视，甚至于因失其用处而被裁汰。」&lt;/p&gt;
+
 &lt;p&gt;&lt;strong&gt;11月1日22点22分&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;如果是？的话，一定能做得很好。&lt;/p&gt;
@@ -6754,13 +7140,9 @@ getItem(arr,&amp;quot;name&amp;quot;,&amp;quot;123&amp;quot;).name
 
 &lt;p&gt;&lt;strong&gt;10月20日14点34分&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;解决问题或许是获得成就感最轻易的方式，&lt;/p&gt;
+&lt;p&gt;自欺欺人的优越感。&lt;/p&gt;
 
-&lt;p&gt;即使其只存在于那一瞬间。&lt;/p&gt;
-
-&lt;p&gt;想要肯定自己，&lt;/p&gt;
-
-&lt;p&gt;但始终逃不过本质上的不上不下。&lt;/p&gt;
+&lt;p&gt;想要肯定自己。&lt;/p&gt;
 
 &lt;p&gt;记：&lt;/p&gt;
 
@@ -7310,7 +7692,7 @@ getItem(arr,&amp;quot;name&amp;quot;,&amp;quot;123&amp;quot;).name
 
 &lt;p&gt;&lt;strong&gt;3月21日 21点04分&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;24岁的人该在做些什么？&lt;/p&gt;
+&lt;p&gt;该在哪里？该做些什么？&lt;/p&gt;
 
 &lt;p&gt;脑袋空空。&lt;/p&gt;
 
@@ -7523,7 +7905,7 @@ You are not machines, you are not cattle, you are men!&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;3月19日 21点58分&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;读再多书也是白读，&lt;/p&gt;
+&lt;p&gt;读再多的书眼前也是空空如也，&lt;/p&gt;
 
 &lt;p&gt;榆木脑袋。&lt;/p&gt;
 

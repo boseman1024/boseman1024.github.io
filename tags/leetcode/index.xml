@@ -17,13 +17,12 @@
       <pubDate>Sat, 29 Sep 2018 22:59:34 +0000</pubDate>
       
       <guid>https://boseman1024.github.io/2018/top-interview-questions-medium-1/</guid>
-      <description>Trees and Graphs Binary Tree Zigzag Level Order Traversal 之字形打印二叉树 Given a binary tree, return the zigzag level order traversal of its nodes&amp;rsquo; values. (ie, from left to right, then right to left for the next level and alternate between).
-For example:
- Given binary tree [3,9,20,null,null,15,7],
-return its zigzag level order traversal as: [[3],
-[20,9],
-[15,7]]
- 解答： /** * Definition for a binary tree node. * public class TreeNode { * int val; * TreeNode left; * TreeNode right; * TreeNode(int x) { val = x; } * } */ class Solution { public List&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; zigzagLevelOrder(TreeNode root) { List&amp;lt;List&amp;lt;Integer&amp;gt;&amp;gt; list = new ArrayList&amp;lt;&amp;gt;(); if(root==null){return list;} list.</description>
+      <description>Design Insert Delete GetRandom O(1) 设计数据结构实现时间复杂度为O(1)的插入、删除、获取随机数 Design a data structure that supports all following operations in average O(1) time.
+ insert(val): Inserts an item val to the set if not already present.
+ remove(val): Removes an item val from the set if present.
+ getRandom: Returns a random element from current set of elements. Each element must have the same probability of being returned.
+  Example:
+ // Init an empty set.</description>
     </item>
     
     <item>
