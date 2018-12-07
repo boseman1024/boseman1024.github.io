@@ -155,7 +155,247 @@
 
 &lt;h2 id=&#34;数据通信系统的模型&#34;&gt;数据通信系统的模型&lt;/h2&gt;
 
-&lt;p&gt;（输入汉字）—&lt;strong&gt;PC&lt;/strong&gt;—（数字比特流）—&lt;strong&gt;调制解调器&lt;/strong&gt;—（模拟信号）—&lt;strong&gt;公用电话网&lt;/strong&gt;—（模拟信号）—&lt;strong&gt;调制解调器&lt;/strong&gt;—（数字比特流）—&lt;strong&gt;PC&lt;/strong&gt;—（显示汉字）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://jpjtrg.bn.files.1drv.com/y4mUYJxKCTijL06-OuCllUQoZqPviVjZYFyU6zU5Pze3DewVoSDyRZeZAzZgVIzQjkSqofnu-95Ipkz3ZOw2v_OLEXaoTyAOL4VTdQqC0s9vewv6zvOD7lp5MyWkMESXlLdb6Cs1ZO1aCcnKfpaLhijpQRPp2BFoj19rOBWIlml4ngS-KJSeMmFxDS2Ymisxo_m2ch_1WMR1Lau856nNWzO5A/data-communication-systems.png&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;模拟信号&lt;/code&gt;：信号电平是连续变化的；时间上连续，包含无穷多个值。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;数字信号&lt;/code&gt;：用两种不同的电平去表示0、1比特序列的电压脉冲信号表示；时间上离散，仅包含有限数目的预定值。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;信道&lt;/code&gt;：向某一个方向传输信息的媒体。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;模拟信道&lt;/code&gt;：用来传输连续的模拟信号(如正弦波信号)的信道。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;数字信道&lt;/code&gt;：用来传输离散的数字信号(如脉冲信号)的信道。&lt;/p&gt;
+
+&lt;h2 id=&#34;数据通信系统的指标&#34;&gt;数据通信系统的指标&lt;/h2&gt;
+
+&lt;p&gt;为了衡量数据传输的&lt;strong&gt;有效性&lt;/strong&gt;和&lt;strong&gt;可靠性&lt;/strong&gt;，数据通信系统的性能指标主要有以下几项 ：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;波特率：码元的传输速率。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;比特率：信息的传输速率。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;信道容量：信道能达到的最大传输能力。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;误码率：数据通信系统的传输可靠性的指标。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;码元&lt;/code&gt;：承载信息量的基本信号单位，一码元就是一个单位电脉冲。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;一码元所承载的信息量&lt;/code&gt;：一个码元（脉冲）可取&lt;strong&gt;M&lt;/strong&gt;个有效值时，则该码元能携带&lt;strong&gt;log₂M(bit)&lt;/strong&gt;二进制信息。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;波特率(RB)&lt;/code&gt;：又称为码元传输速率、码元速率或传码率。每秒传输信号码元的个数，单位为“波特”,常用符号“Baud”表示，简写为“B”。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;比特率(Rb)&lt;/code&gt;：又称数据传输速率。比特的传输速率，单位为比特/秒（bit/s）、位/秒，简记为b/s或bps；表示为&lt;strong&gt;实际的数据传输速率&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;信道容量&lt;/code&gt;：一个信道传输数据的能力,单位也用位/秒(bps)，表示&lt;strong&gt;信道的最大数据传输速率&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;　&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;数据速率 = 码元速率 * log₂Ｍ （M为一码元所承载的信息量）。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;题①&lt;/strong&gt;：&lt;/p&gt;
+
+&lt;p&gt;假设某信道的最大码元传输速率为2400baud，采用四电平的编码方式，该信道的最高数据传输速率是多少？&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;解&lt;/strong&gt;：&lt;/p&gt;
+
+&lt;p&gt;数据速率 = 2400 * log₂4 = 4800 bps&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;题②&lt;/strong&gt;：&lt;/p&gt;
+
+&lt;p&gt;设数据信号码元长度为833×10ˉ⁶秒，如采用16电平传输，试求数据传信速率和调制速率？&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;解&lt;/strong&gt;：&lt;/p&gt;
+
+&lt;p&gt;调制速率 = 1 / (833 * 10ˉ⁶) = 1200B&lt;/p&gt;
+
+&lt;p&gt;数据速率 = 1200 * log₂4 = 4800bps&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;code&gt;信道带宽&lt;/code&gt;：网络信号可使用的最高频率与最低频率之差，或者说是“频带的宽度” ，单位是赫（Hz）。&lt;/p&gt;
+
+&lt;p&gt;计算机网络中&lt;code&gt;带宽&lt;/code&gt;是数字信道所能传送的“&lt;strong&gt;最高数据率&lt;/strong&gt;”的同义语，单位是b/s (bit/s)。&lt;/p&gt;
+
+&lt;p&gt;常用的带宽单位：&lt;/p&gt;
+
+&lt;p&gt;千比每秒，即 kb/s （10³b/s）&lt;/p&gt;
+
+&lt;p&gt;兆比每秒，即 Mb/s（10⁶b/s）&lt;/p&gt;
+
+&lt;p&gt;吉比每秒，即 Gb/s（10⁹b/s）&lt;/p&gt;
+
+&lt;p&gt;太比每秒，即 Tb/s（10¹²b/s）&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;题&lt;/strong&gt;：&lt;/p&gt;
+
+&lt;p&gt;有600MB的数据，要甲地传送到乙地。设信息传送的速率是56Kb/s，则从甲到乙要多长时间？如果信息传送的速率是10Mb/s呢？&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;解&lt;/strong&gt;：&lt;/p&gt;
+
+&lt;p&gt;1B=8bit&lt;/p&gt;
+
+&lt;p&gt;600MB = 600 * 1024 * 1024 * 8 = 5033164800 bit&lt;/p&gt;
+
+&lt;p&gt;① 600MB / (56 * 10³) ≈ 89878s&lt;/p&gt;
+
+&lt;p&gt;② 600MB / (10 * 10⁶) ≈ 503s&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;时延&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;发送时延（传输时延 ）：发送数据时，数据块从结点进入到传输媒体所需要的时间。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;信道带宽：数据在信道上的发送速率。常称为数据在信道上的传输速率。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;　&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;发送时延 = 数据块长度（比特）/ 信道带宽（比特/秒）&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;传播时延：电磁波在信道中需要传播一定的距离而花费的时间。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;　&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;传播时延 = 信道长度（米）/ 信号在信道上的传播速率（米/秒）&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;处理时延：交换结点为存储转发而进行一些必要的处理所花费的时间，处理时延的长短往往取决于网络中当时的通信量。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;　&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;总时延 = 发送时延 + 传播时延 + 处理时延&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;题&lt;/strong&gt;：&lt;/p&gt;
+
+&lt;p&gt;收发两端之间的传输距离为1000km，信号在媒体上的传播速率为2×10⁸m/s。试计算以下两种情况的发送时延和传播时延：&lt;/p&gt;
+
+&lt;p&gt;①数据长度为10⁷bit，数据发送速率为100kb/s。&lt;/p&gt;
+
+&lt;p&gt;②数据长度为10³bit，数据发送速率为1Gb/s。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;解&lt;/strong&gt;：&lt;/p&gt;
+
+&lt;p&gt;传播时延 = 1000km / 2×10⁸m/s = 0.005s&lt;/p&gt;
+
+&lt;p&gt;① 发送时延 = 10⁷ / (100 * 10³) = 100s&lt;/p&gt;
+
+&lt;p&gt;② 发送时延 = 10³ / (1 * 10⁹) = 10ˉ⁶s&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;链路的时延带宽积：以比特为单位的链路长度。 表示发送端连续发送数据时，发送的第一个比特即将到达终点时，发送端就已经发送了“时延带宽积 ”个比特&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;时延带宽积 = 传播时延 * 带宽&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;题&lt;/strong&gt;：&lt;/p&gt;
+
+&lt;p&gt;假设信号在媒体上的传播速率为2.3×10⁸m/s。媒体长度l分别为：①10cm（网卡）②100m（局域网）③100km（城域网）④5000km（广域网），试计算当带宽为1Mb/s和10Gb/s时在以上媒体中正在传输的比特数。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;解&lt;/strong&gt;：&lt;/p&gt;
+
+&lt;p&gt;传播时延 = ①4.35*10ˉ¹⁰ ②4.35*10ˉ⁷③4.35*10ˉ⁴④0.0217 s&lt;/p&gt;
+
+&lt;p&gt;1Mb/s=10⁶b/s：&lt;/p&gt;
+
+&lt;p&gt;①4.35*10ˉ¹⁰*10⁶=4.35*10ˉ⁴s&lt;/p&gt;
+
+&lt;p&gt;②4.35*10ˉ⁷*10⁶=0.435s&lt;/p&gt;
+
+&lt;p&gt;③4.35*10ˉ⁴*10⁶=4.35*10²s&lt;/p&gt;
+
+&lt;p&gt;④0.0217*10⁶=2.17*10⁴s&lt;/p&gt;
+
+&lt;p&gt;10Gb/s=10¹⁰b/s：&lt;/p&gt;
+
+&lt;p&gt;①4.35*10ˉ¹⁰*10¹⁰=4.35&lt;/p&gt;
+
+&lt;p&gt;②4.35*10ˉ⁷*10¹⁰=4.35*10³&lt;/p&gt;
+
+&lt;p&gt;③4.35*10ˉ⁴*10¹⁰=4.35*10⁶s&lt;/p&gt;
+
+&lt;p&gt;④0.0217*10¹⁰=2.17*10⁸s&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;code&gt;利用率&lt;/code&gt;：有&lt;strong&gt;信道利用率&lt;/strong&gt;和&lt;strong&gt;网络利用率&lt;/strong&gt;两种。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;误码率&lt;/code&gt;：指二进制数据位传输时出错的概率，是衡量数据通信系统在正常工作情况下的传输可靠性的指标。&lt;/p&gt;
+
+&lt;p&gt;　&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;误码率Pe  = 传错码元数(Ne) / 码元总数(N)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;题&lt;/strong&gt;：&lt;/p&gt;
+
+&lt;p&gt;一个二进制数字信号码元时间长度为0.1μs，在传输过程中平均2.5秒产生1个错码，求其平均误码率。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;解&lt;/strong&gt;：&lt;/p&gt;
+
+&lt;p&gt;1μs = 10ˉ⁶s&lt;/p&gt;
+
+&lt;p&gt;2.5秒传输码元数 = 2.5 / 0.1 * 10ˉ⁶ = 2.5 * 10⁷&lt;/p&gt;
+
+&lt;p&gt;平均误码率 = 1 / (2.5 * 10⁷ ) = 4×10ˉ⁸&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;code&gt;奈氏(Nyquist)准则&lt;/code&gt;：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;理想低通信道的最高码元传输速率 = 2W Baud，W是理想低通信道的带宽，单位为赫(Hz)。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;每赫带宽的理想低通信道的最高码元传输速率是每秒2个码元。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;奈奎斯特公式&lt;/code&gt;：信道最大的数据传输速率( C )=2*W*log₂M(bps)，M表示一码元所承载的信息量。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;理想带通特性信道的最高码元传输速率 = W Baud，W是理想带通信道的带宽，单位为赫(Hz)。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;每赫带宽的理想带通信道的最高码元传输速率是每秒1个码元。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;香农(Shannon)定理&lt;/code&gt;：信道的极限信息传输速率( C )=W*log₂(1+S/N) (b/s)，S为信道内所传信号的平均功率，N为信道内部的高斯噪声功率。&lt;/p&gt;
+
+&lt;p&gt;由于实际使用的信道的信噪比都要足够大，故常表示成&lt;strong&gt;10×log₁₀(S/N)&lt;/strong&gt;，以&lt;strong&gt;分贝(dB)&lt;/strong&gt;为单位来计量，在使用时要特别注意。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;题①&lt;/strong&gt;：&lt;/p&gt;
+
+&lt;p&gt;信噪比为30dB,带宽为3kHZ的信道的最大数据传输速率为？&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;解&lt;/strong&gt;：&lt;/p&gt;
+
+&lt;p&gt;信噪比=30dB，且10×log₁₀(S/N)=30成立，可得S/N=1000。&lt;/p&gt;
+
+&lt;p&gt;由香农定理可得 C=3000×log₂(1+1000)≈30kbps。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;题②&lt;/strong&gt;：&lt;/p&gt;
+
+&lt;p&gt;某一待传输的图片约含2.25×10⁶个象元。为了很好的重现图片需要16个亮度电平。假若所有这些亮度电平等概率出现，试计算用3分钟传送一张图片时所需要的信道带宽（设信道中信噪功率比30dB）。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;解&lt;/strong&gt;：&lt;/p&gt;
+
+&lt;p&gt;比特率R = (2.25*10⁶*log₂16) / (3*60) = 5×10⁴b/s&lt;/p&gt;
+
+&lt;p&gt;信噪比=30dB，且10×log₁₀(S/N)=30成立，可得S/N=1000。&lt;/p&gt;
+
+&lt;p&gt;由于最大比特率C&amp;gt;=R，即W*log₂(1+S/N)&amp;gt;=5×10⁴b/s，则W&amp;gt;=5×10³Hz。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;题③&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;在一个带宽为3kHz、没有噪声的信道，传输二进制信号时能够达到的极限数据传输率为（&lt;strong&gt;6Kbps&lt;/strong&gt;）。一个带宽为3kHz、信噪比为30dB的信道，能够达到的极限数据传输率为（&lt;strong&gt;30Kbps&lt;/strong&gt;）。上述结果表明，（&lt;strong&gt;条件不同，不能进行直接的比较&lt;/strong&gt;）。根据Nyquist定理，为了保证传输质量，达到3Kbps的数据传输率需要的带宽为（&lt;strong&gt;6kHz&lt;/strong&gt;）。在一个无限带宽的无噪声信道上，传输二进制信号，当信号的带宽为3kHz时，能达到的极限数据传输率为（&lt;strong&gt;6&lt;/strong&gt;）Kbps。&lt;/p&gt;
 </description>
     </item>
     
