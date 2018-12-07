@@ -6,8 +6,158 @@
     <description>Recent content in KUMA2X on KUMA2X</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 07 Nov 2018 20:21:33 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 06 Dec 2018 13:46:33 +0000</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>计算机网络笔记</title>
+      <link>https://boseman1024.github.io/2018/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Thu, 06 Dec 2018 13:46:33 +0000</pubDate>
+      
+      <guid>https://boseman1024.github.io/2018/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/</guid>
+      <description>
+
+&lt;h1 id=&#34;概论&#34;&gt;概论&lt;/h1&gt;
+
+&lt;h2 id=&#34;计算机网络的功能&#34;&gt;计算机网络的功能&lt;/h2&gt;
+
+&lt;p&gt;实现网络中资源共享和数据交换。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;数据通信&lt;/code&gt;：数据通信是计算机网络最基本的功能。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;资源共享&lt;/code&gt;：软、硬件资源共享、数据共享。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;实现分布式处理&lt;/code&gt;：
+   均衡各计算机的负载 、充分利用网络资源 、并构成高性能的计算机体系。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;集中管理&lt;/code&gt;：通过MIS系统、OA等系统可以实现日常工作的集中管理，提高工作效率，增加经济效益。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;提高可靠性&lt;/code&gt;：重要的资源可以通过网络在多个地点互做备份，并使用用户可以通过几条路由来访问网内的资源，从而可以有效地避免单个部件、计算机等的故障影响用户的使用。&lt;/p&gt;
+
+&lt;h2 id=&#34;计算机网络的组成&#34;&gt;计算机网络的组成&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;通信子网&lt;/code&gt;：传输介质（电缆、光纤、无线电波等）、通信设备（交换机等），承担全网的数据传输、转接、加工和变换等通信处理工作。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;资源子网&lt;/code&gt;：硬件资源（主机、终端、I/O设备等）、软件资源、数据资源等，负责全网数据处理业务，向网络用户提供各种网络资源和网络服务。&lt;/p&gt;
+
+&lt;h2 id=&#34;计算机网络的分类&#34;&gt;计算机网络的分类&lt;/h2&gt;
+
+&lt;h3 id=&#34;按网络覆盖范围分类&#34;&gt;按网络覆盖范围分类&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;局域网（LAN）&lt;/code&gt;：通常是由地理范围在几公里以内的、采用单一或有限的传输介质、按照某种网络结构相互连接起来的计算机组成的网络。采用广播(broadcast)技术共享传输媒介传送。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;特点&lt;/strong&gt;：分布距离近（通常在1000-2000m范围内），传输速度高，连接费用低，数据传输可靠，延迟低，误码率低，易维护。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;广域网（WAN）&lt;/code&gt;：也称为远程网，它的联网设备分布范围很广，从数百公里至数千或数万公里不等。它所涉及的地理范围可以是市、地区、省、国家，乃至世界范围。广域网是通过卫星、微波、无线电、电话线、光纤等传输介质连接的国家网络和国际网络，它是全球计算机网络的主干网络。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;特点&lt;/strong&gt;：地理范围没有限制；传输介质复杂；由于长距离的传输，数据的传输速率较低，且容易出现错误，采用的技术比较复杂。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;城域网（MAN）&lt;/code&gt;：传送距离介于LAN和WAN之间(通常是一个城市）。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;特点&lt;/strong&gt;：采用的传输介质相对复杂；数据传输速率次于局域网；数据传输距离相对局域网要长，信号容易受到干扰；组网比较复杂，成本较高。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;区域网（CAN）&lt;/code&gt;：介于LAN和MAN 之间的自治性网络，由某一实体（企业、高校、小区、研究院所、政府等）独立管理，若干相对独立的LAN组成，外连城域网或因特网。&lt;/p&gt;
+
+&lt;h3 id=&#34;按网络通信方式分类&#34;&gt;按网络通信方式分类&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;点到点式网络&lt;/code&gt;：点到点传播指网络中每两台主机、两台节点交换机之间或主机与节点交换机之间都存在一条物理信道，即每条物理线路连接一对计算机。机器（包括主机和节点交换机）沿某信道发送的数据确定无疑地只有信道另一端的唯一一台机器收到。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;广播式网络&lt;/code&gt;：广播式网络中的广播是指网络中所有连网计算机都共享一个公共通信信道，当一台计算机利用共享通信信道发送报文分组时，所有其它计算机都会将会接收并处理这个分组。由于发送的分组中带有目的地址与源地址，网络中所有计算机接收到该分组的计算机将检查目的地址是否与本节点的地址相同。如果被接受报文分组的目的地址与本节点地址相同，则接受该分组，否则将收到的分组丢弃。&lt;/p&gt;
+
+&lt;h3 id=&#34;按拓补结构分类&#34;&gt;按拓补结构分类&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;星型&lt;/code&gt;：均需通过中央节点。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;总线型&lt;/code&gt;：一次只允许传输一路信号。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;环型&lt;/code&gt;：成闭合环形发送数据。&lt;/p&gt;
+
+&lt;h2 id=&#34;网络协议三要素&#34;&gt;网络协议三要素&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;语法&lt;/code&gt;：数据与控制信息的结构或格式 。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;语义&lt;/code&gt;：需要发出何种控制信息，完成何种动作以及做出何种响应。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;时序&lt;/code&gt;：事件实现顺序的详细说明。&lt;/p&gt;
+
+&lt;h2 id=&#34;osi参考模型&#34;&gt;OSI参考模型&lt;/h2&gt;
+
+&lt;p&gt;⑦&lt;strong&gt;应用层&lt;/strong&gt;——⑥&lt;strong&gt;表示层&lt;/strong&gt;——⑤&lt;strong&gt;会话层&lt;/strong&gt;——④&lt;strong&gt;传输层&lt;/strong&gt;——③&lt;strong&gt;网络层&lt;/strong&gt;——②&lt;strong&gt;数据链路层&lt;/strong&gt;——①&lt;strong&gt;物理层&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;软件（⑦⑥⑤④）&lt;/code&gt;：由软件实现（面向通信用户），资源子网的任务。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;网络（③②①）&lt;/code&gt;：由硬件实现（完成传送服务），通信子网任务。&lt;/p&gt;
+
+&lt;p&gt;同层对等实体间进行信息交换时必须遵守的规则称为&lt;strong&gt;协议&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;相邻层间进行信息交换时必须遵守的规则称为&lt;strong&gt;接口&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;下一层对上一层提供操作服务称为&lt;strong&gt;服务&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;上一层对下一层通过称为&lt;strong&gt;调用&lt;/strong&gt;关系实现。&lt;/p&gt;
+
+&lt;h2 id=&#34;tcp-ip的体系结构&#34;&gt;TCP/IP的体系结构&lt;/h2&gt;
+
+&lt;p&gt;⑤&lt;strong&gt;应用层&lt;/strong&gt;——④&lt;strong&gt;传输层&lt;/strong&gt;——③&lt;strong&gt;网络层&lt;/strong&gt;——②&lt;strong&gt;数据链路层&lt;/strong&gt;——①&lt;strong&gt;物理层&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;数据传送顺序&lt;/code&gt;：&lt;/p&gt;
+
+&lt;p&gt;主机1——&lt;/p&gt;
+
+&lt;p&gt;⑤（应用进程数据加上应用层首部，成为应用层 PDU）&lt;/p&gt;
+
+&lt;p&gt;④（应用层 PDU加上运输层首部，成为运输层报文）&lt;/p&gt;
+
+&lt;p&gt;③（运输层报文加上网络层首部，成为IP数据报（或分组））&lt;/p&gt;
+
+&lt;p&gt;②（IP数据报加上链路层首部和尾部，成为数据链路层帧）&lt;/p&gt;
+
+&lt;p&gt;①（把比特流传送到物理媒体）&lt;/p&gt;
+
+&lt;p&gt;—物理传输媒体—①②③④⑤——主机2&lt;/p&gt;
+
+&lt;h2 id=&#34;题&#34;&gt;题&lt;/h2&gt;
+
+&lt;p&gt;（×）如果一台计算机可以和其它地理位置的另一台计算机进行通信，那么这台计算机就是一个遵循OSI标准的开放系统。&lt;/p&gt;
+
+&lt;p&gt;（×）ISO划分网络层次的基本原则是：不同的节点都有相同的层次；不同节点的相同层次可以有不同的功能。&lt;/p&gt;
+
+&lt;p&gt;（√）协议是“水平的”，即协议是控制对等实体之间的通信的规则。&lt;/p&gt;
+
+&lt;p&gt;（√）服务是“垂直的”，即服务是由下层向上层通过层间接口提供的。&lt;/p&gt;
+
+&lt;p&gt;（√）数据链路不等同于链路，它在链路上加了控制数据传输的规程。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;网卡&lt;/strong&gt;实现的主要功能是物理层与数据链路层的功能。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;网络层的功能&lt;/strong&gt;：路由选择、流量控制、分组交换。&lt;/p&gt;
+
+&lt;p&gt;在开放系统连接环境中，&lt;strong&gt;两个N层实体进行通信&lt;/strong&gt;，他们可能用到的服务是&lt;strong&gt;N-1层&lt;/strong&gt;提供的服务。&lt;/p&gt;
+
+&lt;p&gt;对等实体在一次交互作用中传送的信息单位称为&lt;strong&gt;协议数据单元&lt;/strong&gt;，它包括&lt;strong&gt;控制信息和用户信息&lt;/strong&gt;两部分。&lt;/p&gt;
+
+&lt;p&gt;网络协议是计算机网络和分布系统中相互通信的&lt;strong&gt;同等层实体&lt;/strong&gt;间交换信息时必须遵守的规则的集合。&lt;/p&gt;
+
+&lt;p&gt;协议的关键成分中&lt;strong&gt;语法&lt;/strong&gt;是数据和控制信息的结构或格式；&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;语义&lt;/strong&gt;是用于协调和进行差错处理的控制信息；&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;时序&lt;/strong&gt;是对事件实现顺序的详细说明。&lt;/p&gt;
+
+&lt;p&gt;而网络体系结构则是&lt;strong&gt;网络各层、层中协议和层间接口的集合&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;数据通信和物理层&#34;&gt;数据通信和物理层&lt;/h1&gt;
+
+&lt;p&gt;&lt;code&gt;物理层的主要任务&lt;/code&gt;：确定与传输媒体的接口的一些特性，即：
+&lt;strong&gt;机械特性&lt;/strong&gt;、&lt;strong&gt;电气特性&lt;/strong&gt;、&lt;strong&gt;功能特性&lt;/strong&gt;、&lt;strong&gt;规程特性&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;h2 id=&#34;数据通信系统的模型&#34;&gt;数据通信系统的模型&lt;/h2&gt;
+
+&lt;p&gt;（输入汉字）—&lt;strong&gt;PC&lt;/strong&gt;—（数字比特流）—&lt;strong&gt;调制解调器&lt;/strong&gt;—（模拟信号）—&lt;strong&gt;公用电话网&lt;/strong&gt;—（模拟信号）—&lt;strong&gt;调制解调器&lt;/strong&gt;—（数字比特流）—&lt;strong&gt;PC&lt;/strong&gt;—（显示汉字）&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>杂题</title>
@@ -4764,7 +4914,7 @@ Assume we are dealing with an environment which could only store integers within
 
 &lt;h1 id=&#34;java内存区域&#34;&gt;JAVA内存区域&lt;/h1&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/JVM/RuntimeDataArea.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kaftjq.bn.files.1drv.com/y4mS6vvsA9ypbLWdrf592ni-F5HWviDc0m_3jez5dmgtqnLFzrA2I-5gYaXq5DO7cpt4kJV6QM6o5ayel6jDpoAZBDJb3iO7-hWXAcw2TMQvphu-vsexMHGtm8BOQNEenhstL8BSOqeh194hxKAIv2-MkcoAOSnDhiGzLnjuJ2pk5wTouPKOq7G4G5Qbwxi6AKLdHGMmvq2O9vR991cmC3URw/RuntimeDataArea.jpg&#34;&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;程序计数器&#34;&gt;程序计数器&lt;/h2&gt;
 
@@ -4801,13 +4951,13 @@ Assume we are dealing with an environment which could only store integers within
 
 &lt;p&gt;JAVA堆中会划分出一块内存作为句柄池，reference中存储的就是对象的句柄地址，句柄中包含对象实例数据和类型数据各自的具体地址信息。
 优点：稳定，对象被移动只会改变句柄中实例数据指针，而reference本身不需要修改。
-&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/JVM/bing.jpg&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://jwftjq.bn.files.1drv.com/y4m1Tt8l7LeH5vWIEdq9c9zdVLyXr97wgn_YmcfDDpNdsaMBPbQYNOPUHedGOlXS7eakVI0oOoSZB08TeRrB4AShVp4Cjku2__xXuUErtgTONnVAkoLvlKzLnXvWWvy17OtXmMy8kmOzJmFAKtbbhANvZDqePqLNx8WZaz3D3XmCfP_N9xfROXXJf4gBf7diI7aKzV0_LS4H0F_bR41vHwmUg/bing.jpg&#34;&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;直接指针&#34;&gt;直接指针&lt;/h3&gt;
 
 &lt;p&gt;reference中存储的直接就是对象地址。
 优点：速度更快，节省一次指针定位的时间开销。
-&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/JVM/direct.jpg&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://jgftjq.bn.files.1drv.com/y4mssPKlB9jDykLBWj5lx5qcSxOgCJSru_-T0QsY7K4fAl8ndPpxgMriCJbz0h7FLNcoKWMVXtfRP0tBeI4dbcylX2w907qFY9B0F3fkxIHbAJ15X2Q4vigtsrK9CmKqCZY7faysTIzcl59klwSsH_qRMjLnWhfETvGJx4GJ_cNIVehrSrTpnY2qQG3ECW9FVtX0SIXyrA8edX5LCz5KSWhpg/direct.jpg&#34;&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -4825,7 +4975,7 @@ Assume we are dealing with an environment which could only store integers within
 
 &lt;p&gt;通过&lt;code&gt;GC Roots&lt;/code&gt;对象作为起始点，向下搜索节点，搜索走过的路径称为&lt;code&gt;引用链&lt;/code&gt;，当一个对象到&lt;code&gt;GC Roots&lt;/code&gt;没有任何引用链项链时，证明此对象不可用。
 如下图，obj5、obj6、obj7虽然互相关联，但到&lt;code&gt;GC Roots&lt;/code&gt;不可达，所以将被判定为可回收对象。
-&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/JVM/reachability.jpg&#34;&gt;
+&lt;img src=&#34;https://kqftjq.bn.files.1drv.com/y4mEPZS2f6F0u6RwfW_Q8InHU8TZmxpOmVZPp8r9FT4kDWqlIZooNqKkMfnpaRbbVRskS3wKsXiLdRcwr_7DTzovRXrmA2LdgwZCQzGbhvM09_kpIoHj9PusWU3sDFQW_Zh8gogoZw666MjOr_e6rba3mMgip051IGPaCpMTTNbgXZEjVMcs6ldl-Z5VTri89PouQ7-9PDy6I4nNILal9zcPg/reachability.jpg&#34;&gt;
 JAVA中可作为&lt;code&gt;GC Roots&lt;/code&gt;的对象包括以下几种：
 * 虚拟机栈（栈帧中的本地变量表）中引用的对象
 * 方法区中类静态属性引用的对象
@@ -5076,7 +5226,7 @@ public class NotInitialization{
 
 &lt;h3 id=&#34;无向图&#34;&gt;无向图&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/graph/wuxiang.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kziiuw.bn.files.1drv.com/y4m2IUbPTi0WnWXtECNGRHz4MuWlq5pBUsSiFq9tVOzQgBJV4m0FjI3KKjGlGsBGDYiykRy5q8q6wn1gnqO5rkKcPq0wkyW4J-RRvoFJ4IqbITdICYRPZtpwgXPJL9UNpaE5HXpnJf9kFnk8ZbBDnlbD15sPxH7usDK8Hn0M2Alg5MaSe0FxCbT7oo2dwG7MF4tKnl_VcyW9LX5vGkwvHO-VA/wuxiang.jpg&#34;&gt;&lt;/p&gt;
 
 &lt;p&gt;数组矩阵表示如下：
 &lt;table border=&#34;1&#34; style=&#34;width:100%;text-align:center;margin: 0;padding: 0&#34;&gt;&lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/p&gt;
@@ -5085,7 +5235,7 @@ public class NotInitialization{
 
 &lt;h3 id=&#34;有向图&#34;&gt;有向图&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/graph/youxiang.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://nqftjq.bn.files.1drv.com/y4mFSMrs-TX1vnTJPsZiGJPR43BPUVl1ejkW3sxyvtG4DH00x4RwCvZ2SjOO8faQfdRfakm5sDcKKBFt02MEjp_bn4bnsFvVrUWpSgQPD_IrykT4DTfWh8_nIBYgQOGzPx1Zgijx5WOFHn4IG--ZzAjD0l9ECDiZXmj2tL5sPW4kKrFnLafDABDk5aXCEfndwZvgqJTf8TCyrobC6UC_ycx3Q/youxiang.jpg&#34;&gt;&lt;/p&gt;
 
 &lt;p&gt;数组矩阵表示如下：
 &lt;table border=&#34;1&#34; style=&#34;width:100%;text-align:center;margin: 0;padding: 0&#34;&gt;&lt;tr&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;7&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;9&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;6&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/p&gt;
@@ -5094,7 +5244,7 @@ public class NotInitialization{
 
 &lt;h1 id=&#34;图的遍历&#34;&gt;图的遍历&lt;/h1&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/graph/bianli.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i5iiuw.bn.files.1drv.com/y4mqiNfh_Kms7FbOONXFdjYC0gQVkfuloNCjB_DOyJExl2e1AkHnaUN8lJN5MhFS57JvjMxq-U1xsKR5hmnSFLU4GvkRiX0kDk5Js7MwS_FGISPoB8vcHa9-1a9do30XEUyiajTmk8AScPEEPSMrs1YxctMGjGn77jPf_40ft6vj31bhlthm7ZTh3z2sMzsiSQAmeeJZeGPRlgZnObnGCKoNQ/bianli.jpg&#34;&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;深度优先搜索&#34;&gt;深度优先搜索&lt;/h2&gt;
 
@@ -5133,7 +5283,7 @@ public class NotInitialization{
 广度优先搜索的遍历访问顺序并不唯一。&lt;/p&gt;
 
 &lt;p&gt;假设以&lt;code&gt;V1&lt;/code&gt;为起点，则可划分为下图：
-&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/graph/fenceng.jpg&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://jziiuw.bn.files.1drv.com/y4mTokhO7WiYqo2IvZseXV5EHASpsTO-aRZvnw7X25uHngheqwi971jMOBIkf1yeER8QJerf-2RKZcOTnXfuZ1yFkgmqEhuL0TZbJTYi_PbiA8qC6RATb2fnAmj6feMDTeyG4kj6m22KSE0m0El8lToGUPupd1qq60wnekTHs8sPXtBnvjDwR-3TXBlt2u80Tj69kIM7cV_pT_cIVAtEmG24g/fenceng.jpg&#34;&gt;&lt;/p&gt;
 
 &lt;p&gt;第一层（V1）：
 &lt;code&gt;V1&lt;/code&gt;有两个邻接点&lt;code&gt;V2&lt;/code&gt;、&lt;code&gt;V3&lt;/code&gt;，则先访问&lt;code&gt;V2&lt;/code&gt;，再访问&lt;code&gt;V3&lt;/code&gt;（或先访问&lt;code&gt;V3&lt;/code&gt;，再访问&lt;code&gt;V2&lt;/code&gt;皆可，以下皆如此）；
@@ -5153,7 +5303,7 @@ public class NotInitialization{
 &lt;p&gt;在连通网的所有生成树中，所有边的代价和最小的生成树，称为最小生成树。
 最小生成树中不存在回路。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/graph/mini.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://j5iiuw.bn.files.1drv.com/y4mlTpiFkVd9CxeKKmK2sFkAloYrcXLdQ5R3GkwZgzgfPtIgjqK0pmlLRjjmHF5XwgYLdPCTEYBEywm1PlwFQUQNgK9U6C37Coh4zPX6HV_CVi_UXcFR9yxuEJVfgu-qe1ce5zCzu-9M6F21Z7YqxOULCVuf2HDZRtu64Kft5vNjz7fIKUo3O_DMzDjwynKNdtMndd3dWDeQxeykB-JZVhbiA/mini.jpg&#34;&gt;&lt;/p&gt;
 
 &lt;p&gt;可得数组矩阵：
 &lt;table border=&#34;1&#34; style=&#34;width:100%;text-align:center;margin: 0;padding: 0&#34;&gt;&lt;tr&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;6&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;6&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;6&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;6&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;6&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;6&lt;/td&gt;&lt;td&gt;∞&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/p&gt;
@@ -5162,7 +5312,7 @@ public class NotInitialization{
 
 &lt;p&gt;此算法可以称为“加点法”，每次迭代选择代价最小的边对应的点，加入到最小生成树中。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/graph/prim.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kpiiuw.bn.files.1drv.com/y4mja8RDcpPdxAbesqpRa5bEQ45M4qCsiOldNGo6t_HiYftqnhssC9dMdLQiSXzwDjsGUNK88_0M-pSLL6DFEXzHVWM-kuoYoXD8UTOqK4YPVAiir1nAfu_v1p36kPC5suMarx6LFaxHwTLofjicFlCx0RKt9NGtc0fuxbzLjO8msOZMO34xqOuS-PbKIUQGvFyjP7iHacnAz0DZnKNFhYb_Q/prim.jpg&#34;&gt;&lt;/p&gt;
 
 &lt;p&gt;设：
 * 所有结点V={V1,V2,V3,V4,V5,V6}
@@ -5193,7 +5343,7 @@ public class NotInitialization{
 
 &lt;p&gt;每次在剩下的所有未选取的边中，找最小边，如果和已选取的边构成回路，则放弃，选取次小边。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/graph/kruskal.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kjiiuw.bn.files.1drv.com/y4m5Pe_CTVaOvlExT9TkkcaSW_jqcUtgsqSEmjwSmeku-ZNsuEQRujcfJF7_xJJ-FoQCFztoCyz4nCnMcMyZMaxex72wMoycSwGG5KlOluK0yhG5fyk0Sdt1bZobL_jfgY0t51UdJCT35JpyLLWkZdVqZyuLfH0WVdc74-VZBuoO2WaDd83u32FR_8XXFR-qaxa27hPMaH3tnV3ri2H0_GFbQ/kruskal.jpg&#34;&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -5201,7 +5351,7 @@ public class NotInitialization{
 
 &lt;h2 id=&#34;有向带权图&#34;&gt;有向带权图&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/graph/directGraph.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://jpiiuw.bn.files.1drv.com/y4mTGASFsvVJ2BiRIKmLiFCAkFmC8iOV4KR4I-BR_yv7JRPkXX3GNwXea05EUNqaZhbR5toBr20EmsQN4XUSsCUgOoJs9R0Qfmr2IyvqE-auyRgiM2NOapt4awLS5QqngSxa3mnugaxhECSa2TWj-V6BcHm6FD-QjaViSjnczCzf-GHkUtNRs1kRis4HlW1d7yVA86kVaWZKo8GyPGc1_Z3vg/directGraph.jpg&#34;&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;迪杰斯特拉-dijkstra-算法&#34;&gt;迪杰斯特拉（Dijkstra）算法&lt;/h2&gt;
 
@@ -5461,12 +5611,14 @@ class B extends A{
 &lt;p&gt;&lt;code&gt;Throwable&lt;/code&gt;可以用来表示任何可以作为异常抛出的类，分为两种：&lt;code&gt;Error&lt;/code&gt;和 &lt;code&gt;Exception&lt;/code&gt;。
 其中&lt;code&gt;Error&lt;/code&gt;用来表示&lt;code&gt;JVM&lt;/code&gt;无法处理的错误，&lt;code&gt;Exception&lt;/code&gt;分为两种：
 * &lt;code&gt;检查异常&lt;/code&gt;：需要用&lt;code&gt;try{}catch(){}&lt;/code&gt;语句捕获并进行处理，并且可以从异常中恢复；
-* &lt;code&gt;未检查异常&lt;/code&gt;：是程序运行时错误，例如除 0 会引发 Arithmetic Exception，此时程序奔溃并且无法恢复。
-&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/javareview/Throwable.png&#34;&gt;&lt;/p&gt;
+* &lt;code&gt;未检查异常&lt;/code&gt;：是程序运行时错误，例如除 0 会引发 Arithmetic Exception，此时程序奔溃并且无法恢复。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://naftjq.bn.files.1drv.com/y4mIn93zBdQu-j42tZHKYVBryrhCpRmU8CXOblKlLPDl7KjEP1SDkh7w-KhMZPnIw-ELRwY00Z6ISUKvm7sbWD4DpU8h_SZHDEU8wQ9nTRQXbjSJ6o-kjTgv1vei9ZJFmT8uWMe_zSY7V1j6wF4DB21zl5pcgaLyINoxq5lBTYCBp7nWZyOK8YCIDN1gnFHHdXEGkvasweBJNUVYDlpVPLMOA/Throwable.png&#34;&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.tianmaying.com/tutorial/Java-Exception&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Java 入门之异常处理&lt;/a&gt;
-&lt;a href=&#34;http://www.importnew.com/7383.html&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Java 异常的面试问题及答案 -Part 1&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.tianmaying.com/tutorial/Java-Exception&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Java 入门之异常处理&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.importnew.com/7383.html&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Java 异常的面试问题及答案 -Part 1&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h1 id=&#34;反射&#34;&gt;反射&lt;/h1&gt;
@@ -5626,7 +5778,7 @@ t.start();
 
 &lt;p&gt;每层右结点&amp;lt;=左结点&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/tree/BinaryTree1.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://naeiag.bn.files.1drv.com/y4mw24pldelRnvMbpEKYgSuThzrUU7DnlcMeW7GfIjhuxY4sYwWYChAa4i2do0cR7V4IligQSyfnwJAsMkuSG2TzmlJ2MaZb00G05LHzmKjFL-MEk2eVzwWSpo_2Phel1AuRp9oICC9vIXtCBL5JXOvMYuox05WgYdCkRDV5iFl89l6hf8Njq70sa0bjZc8ylg5jVSRsO-UXrX1W4Bzdiv-gg/BinaryTree1.jpg&#34;&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;性质1&#34;&gt;性质1：&lt;/h3&gt;
 
@@ -5689,7 +5841,7 @@ t.start();
 &lt;p&gt;具有n个结点的完全二叉树的深度为&lt;code&gt;[log2(n)]+1&lt;/code&gt;。
 &lt;code&gt;[x]&lt;/code&gt;：不大于x的整数。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/tree/BinaryTree2.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://jweiag.bn.files.1drv.com/y4m_xyrWm6j7eraiwTfU1QqXQcB4gA7F-dKpNjLZlyJWr7euyekAMlMwl5WlJBpcVmJ0zA-eelIrlUVOnZMQnp4pKnAYRF3CWvKO3o8A5aXd1ro6UXdb1OqMv3aZ_4BENHue9Vgr3haZgn39gAIWXuOT_hDMxWleB-BbzHXDNGEo2o_PnQ8DexgET6woluyDOumdXGkyQe4sCdSfQJ_-DckBQ/BinaryTree2.jpg&#34;&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;性质5&#34;&gt;性质5：&lt;/h3&gt;
 
@@ -5739,7 +5891,7 @@ void createBiTree(BiTree *T){
 &lt;p&gt;遍历左子树-&amp;gt;遍历右子树-&amp;gt;访问根节点&lt;/p&gt;
 
 &lt;p&gt;例：（ABC  DE G  F   ）
-&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/tree/BinaryTree3.png&#34;&gt;
+&lt;img src=&#34;https://jgeiag.bn.files.1drv.com/y4moFzuiwte-ELTa5X12es438n1NnIddzc_IlqOPrLH5ikweTCv53I74P1IsT3MoAQLOZ-DrO2Vzrhsqpi_mkcS9ho-OLFf_8jTjzM7jd_AfYyVPHbfbRE4UbpR4MVAQVrVVou3SoaxBSddKGPbhj72mOA7kxQB27tDV6kW6fDRLRhp8oPo2514GdIBxlv88fCBFJkv7Xrj0ZZTgtM0uxC5uQ/BinaryTree3.png&#34;&gt;
 先序：ABCDEGF
 中序：CBEGDFA
 后序：CGEFDBA&lt;/p&gt;
@@ -5865,10 +6017,10 @@ public void levelTraversal(TreeNode root) {
 &lt;h2 id=&#34;森林与二叉树的转换&#34;&gt;森林与二叉树的转换&lt;/h2&gt;
 
 &lt;p&gt;例1：
-&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/tree/tree2Binary1.png&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://kweiag.bn.files.1drv.com/y4mBFC_TaX4ozCYYptF6uNtbtmAIJrB5GodlPsqTRABNaIfl-fmn90rjCm2E1ePBUeGF0emxn9VWFGBPkUXvxu_fz_VnnrA-VqJpNdJlk_4pprN--QGntUi2d1D9EfNHXzVwRvn2u0qh3j_vEU9Hk7CjNbkFt_lHTJBXS6NA7RH4qV2UYG6sY5XrkKtu6VGFyWGrSHMD0k6N3DAvFGliRmj_Q/tree2Binary1.png&#34;&gt;&lt;/p&gt;
 
 &lt;p&gt;例2：
-&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/tree/tree2Binary2.png&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://kgeiag.bn.files.1drv.com/y4mFs5cHMf46GgmNsST0z1Dbn1PyHq-8h0Z5SRXrJe29OPLk81kzq1kVpcwlZudXNoImoFt1m9XW9yBpo2zdUGnPZEwXMacx1cqhfKqfazMqRsYLKY3paO6AxPr4LAaR2VdqZv1T0PthTsD39Ov8adgKNCpqlQ9YsbEJ_LmeUcm2QRHcqXZQ1UHOGMAGIvBRXrHQcAYi5syIQNoZwl5AsCheQ/tree2Binary2.png&#34;&gt;&lt;/p&gt;
 
 &lt;h1 id=&#34;哈夫曼树&#34;&gt;哈夫曼树&lt;/h1&gt;
 
@@ -5876,21 +6028,21 @@ public void levelTraversal(TreeNode root) {
 
 &lt;p&gt;带权路径长度WPL最小的二叉树称作最优二叉树或哈夫曼树。
 例：
-&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/tree/huffman.png&#34;&gt;
+&lt;img src=&#34;https://kqeiag.bn.files.1drv.com/y4mjJ3jLSKJCuFnSwKp3hphJ_TlZlZOurEwkMLNaWZzwQiSoy4vfnHSRgFyCTBSShdrColdtdKyfpqZz26MPbZpZgzpFzgCAv5cCZS8wyf38C5YMLQUsKXt78Of-auspj_Fx800dwk1HGokozrZIypQ3cvtZELYqhSbJY31Hrym5IGsae4Tw2fdYvVNF2nYbZhcieiXMinibPanukl-Vnw0qg/huffman.png&#34;&gt;
 (1)WPL=7*1+5*2+2*3+4*3=35
 (2)WPL=7*2+5*2+2*2+4*2=36
 则(1)为哈夫曼树。&lt;/p&gt;
 
 &lt;h3 id=&#34;构造&#34;&gt;构造：&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/tree/2huffman.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://nqeiag.bn.files.1drv.com/y4mtY-hgF-E3b4LfCp8kGsWr6tHpDgkr77CYQqRql2VAYKIHxwlM6bG2BJ_RlVujCTRueBZKFa-LsyDor5p09hr2C9WUdCBAd_XR5XGiuOs7LFEs0d_Sul3gVK_LnirrKN6Wc_afQSAIMqQFg53IEByRISmaMsJeS5fpwHnVq3tiHGTrhM6PXlsYNqQE5WDPjFzT0d-Y1xzHnz9cGAf-PECeg/2huffman.png&#34;&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;哈夫曼编码&#34;&gt;哈夫曼编码：&lt;/h3&gt;
 
 &lt;p&gt;左结点为0，右结点为1。&lt;/p&gt;
 
 &lt;p&gt;例：
-&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/tree/hufumancode.png&#34;&gt;
+&lt;img src=&#34;https://kaeiag.bn.files.1drv.com/y4mTadIjaGMzRebBMob-kf3ecmDrYRCiqPZiINXzkdH5iuhTyM2k_Vq8F7QBvmR5GVyNOLzABDEDazSIvw0Vi88Uk41aATmcVLLHr2PpyyMRHpUuvp7C0fuD2zm3qgbsQxB_IFa9TgRN3GVx-DmR1SqO7ohs_oWHPGdoqmTrmzIzvlRO0npa2qigEuPhkbhwNFA8ZkgnUXQzaUO6KenUWLlvw/hufumancode.png&#34;&gt;
 则编码为
 * a（0）
 * b（10）
@@ -6738,13 +6890,13 @@ public class UserController {
 &lt;h1 id=&#34;验证&#34;&gt;验证&lt;/h1&gt;
 
 &lt;p&gt;未携带Token时访问&lt;a href=&#34;http://localhost:8080/index，访问被拒绝：&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;http://localhost:8080/index，访问被拒绝：&lt;/a&gt;
-&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/springsecurity-jwt/1.jpg&#34;&gt;
+&lt;img src=&#34;https://kwftjq.bn.files.1drv.com/y4mLN6XM62GWIInzusIeY7sQcQWjwHTO_0zHzSqts0nEs1lIjvk0VrfkZR5VyeHlSvofY1aB68v2eZu776Lkb3tf7pXqIA_gWwtpA88HIUwU6PrCV5blf7igvATkKijg3olUlq4v_P_T3bWtU7eiXKDKUK9sjAFM_MkyKbaa1VnbURuJXvedzFI8h1rWYZ8kGgON5LuNiiUXE2cNrkGLoCmvw/1.jpg&#34;&gt;
 访问&lt;a href=&#34;http://localhost:8080/auth/login进行登录，这里使用test用户，得到Token：&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;http://localhost:8080/auth/login进行登录，这里使用test用户，得到Token：&lt;/a&gt;
-&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/springsecurity-jwt/2.jpg&#34;&gt;
+&lt;img src=&#34;https://kgftjq.bn.files.1drv.com/y4mV4uAmxcJNNu516A3d9HRZelJmLCq-x6djnCFooGokChtC9RZ1dDlkiPPam0rEoGSysAWDbIXqUgaMm-MUihu1QLR5bzKHoak8UrowacUakX9c7q6IrNw8FTZCv570wkfR4GBXWPOP9E3UTH2F6xA8gfyHpmLWio4Z6skYG_jOgCJS6I0s4Pf8yD0l0mD0Oz-H4vCLwAO99gj_da_hPQvrg/2.jpg&#34;&gt;
 携带Token访问&lt;a href=&#34;http://localhost:8080/index，访问成功：&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;http://localhost:8080/index，访问成功：&lt;/a&gt;
-&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/springsecurity-jwt/3.jpg&#34;&gt;
+&lt;img src=&#34;https://lqftjq.bn.files.1drv.com/y4miboLO4EzoRUc90_XtLVwL_liBhgh-yqgIYA4rAISP6yKEkhqV222VZ8p36QEsqHfvQaqY7xAd1YLS-UIuJeLQFbU1TM4VYX7QYR3uno2wWsCBkBiuTF1QgTfyT9UGTD94m2wfRs-uyiM1cP1sctFB6Ta594rDdahoc3VYsUX-zz_DOwSnUHICi6t6XZuJ3KWdgpIUtlpCeHt7wh6iy4LcQ/3.jpg&#34;&gt;
 携带Token访问&lt;a href=&#34;http://localhost:8080/admin，由于test用户无ROLE_ADMIN角色，访问被拒绝：&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;http://localhost:8080/admin，由于test用户无ROLE_ADMIN角色，访问被拒绝：&lt;/a&gt;
-&lt;img src=&#34;http://otho0rxyj.bkt.clouddn.com/image/blog/springsecurity-jwt/4.jpg&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://laftjq.bn.files.1drv.com/y4mUXp89oAWZKmTmBJWzBBg9Pr-VOoIFOQAaZTpCb1c5ce9szfpcldYz7Vl3CoPMvImXawfeuAlDy7TZg3zNuNwQwcmxGY-A1Xd2wS1usJ9rCYrKf78ltfMpaakLmDUpY_7e5EmVJDiHGBIX345pIId5wCj7o956g4Cj9Q_1dpAIbDSXJZqtoXm7DnQxjhhS5yuUFG-R0EOWobflr7CPKVD9g/4.jpg&#34;&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -6812,1555 +6964,6 @@ obj = {
 getItem(arr,&amp;quot;id&amp;quot;,&amp;quot;2&amp;quot;).name 
 getItem(arr,&amp;quot;name&amp;quot;,&amp;quot;123&amp;quot;).name 
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>NEW YEAR 2018</title>
-      <link>https://boseman1024.github.io/2018/new-year-2018/</link>
-      <pubDate>Fri, 16 Feb 2018 00:00:57 +0000</pubDate>
-      
-      <guid>https://boseman1024.github.io/2018/new-year-2018/</guid>
-      <description>
-
-&lt;p&gt;&lt;center&gt;
-&lt;h1&gt;HAPPY 201&lt;del&gt;7&lt;/del&gt; 8&lt;/h1&gt;
-&lt;h2&gt;NEW YEAR. NEW YOU.&lt;/h2&gt;
-&lt;h3&gt;Just kidding.&lt;/h3&gt;
-&lt;h4&gt;You&amp;rsquo;re still the same.&lt;/h4&gt;
-&lt;h5&gt;piece of shit you were yesterday.&lt;/h5&gt;
-&lt;/center&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;十一月&#34;&gt;十一月&lt;/h1&gt;
-
-&lt;p&gt;&lt;strong&gt;11月27日19点15分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;记：&lt;/p&gt;
-
-&lt;p&gt;《人生的智慧》——叔本华&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-人所展现的表象&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「他们在别人头脑中的形象比起自己的本质存在更令他们牵肠挂肚。这种把非直接为我们存在的东西作为直接的存在来加以看重的愚蠢做法，人们称之为虚荣，以表示这种渴望、努力所具有的虚幻和空洞本质。同样，从上面的论述可以轻易看出：这种虚荣为了手段而忘记了目的，它和贪婪同属一类性质。」&lt;/p&gt;
-
-&lt;p&gt;「人们头脑里面的认识和见解，绝大部分都是虚假荒唐和黑白颠倒的。」&lt;/p&gt;
-
-&lt;p&gt;「我在这里谈论的这一源自人类本性的愚蠢，生发了三个主要芽条：好胜、虚荣和骄傲。虚荣和骄傲之间的差别在于：骄傲就是确信自己拥有某一方面的突出价值，但虚荣则尽力让别人确信自己拥有某一方面的突出价值；在大多数的情况下，伴随着虚荣的还有这样一个隐藏着的希望：通过唤起别人的确信，能够使自己真的拥有这一份确信。因为，骄傲是发自内在的、直接的自我敬重；而虚荣则是从外在、因而使间接地努力试图获取这一自我敬重。因此，虚荣使人健谈，但骄傲却使人沉默。但是，虚荣的人应该知道：要获得自己梦寐以求的别人高度的评价，那如果他保持沉默，而不是夸夸其谈——哪怕他的嘴里可以说出美妙、动听的话语——他将更加容易和更有把握地达到目的。」&lt;/p&gt;
-
-&lt;p&gt;「谦虚是美德——这一句话是蠢人地一项聪明的发明；因为根据这一说法每个人都要把自己说成像一个傻瓜似的，这就巧妙地把所有人都拉到同一个水平线上。这样做的结果就是在这世界上，似乎除了傻瓜之外，再没别样的人了。」&lt;/p&gt;
-
-&lt;p&gt;「因此，我认为，客观上，名誉是他人对我们的价值的看法；主观上，则是我们对于他人看法的顾忌。」&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;11月26日19点42分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Donut Hole.&lt;/p&gt;
-
-&lt;p&gt;记：&lt;/p&gt;
-
-&lt;p&gt;《人生的智慧》——叔本华&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-基本的划分&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「正如每个人都囿于自己的皮囊，每个人也同样囿于自己的意识。一个人只能直接活在自己的意识之中。因此，外在世界对他帮助不大。」&lt;/p&gt;
-
-&lt;p&gt;「一个人所能得到的属于他的快乐，从一开始就已经由这个人的个性规定了。一个人精神能力的范围尤其决定性地限定了他领略高级快乐的能力。如果这个人的精神能力相当有限，那么，所有来自外在的努力——别人或者运气所能为他做的一切——都不会使他超越只能领略平庸无奇、夹杂着动物性的快乐的范围。他只能享受感官的乐趣、低级的社交、庸俗的消费和闲适的家庭生活。」&lt;/p&gt;
-
-&lt;p&gt;「财富除了能满足人的真正、自然的需求以外，对于我们的真正幸福没有多大影响。相反，为了保管好偌大的财产，我们会有许多不可避免的操劳，它们打扰了我们舒适悠闲的生活。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-人的自身&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「使我们快乐或者忧伤的事物，不是那些客观、真实的事物，而是我们对这些事物的理解和把握。」&lt;/p&gt;
-
-&lt;p&gt;「对生活稍作考察就可以知道：痛苦和无聊是人类幸福的两个死敌，关于这一点，我可以作一个补充：每当我们感到快活，在我们远离上述的一个敌人的时候，我们也就接近了另一个敌人，反之亦然。所以说，我们的生活确实就是在着两者之中或强或弱地摇摆。」&lt;/p&gt;
-
-&lt;p&gt;「因此无论如何，我们不应该从他人哪里，或者从自身以外期望太多。一个人对另一个人所能做的只是极为有限。归根到底，每个人都孑然独立，这时候，关键的问题就是这单独的人是个什么样的人。」&lt;/p&gt;
-
-&lt;p&gt;「在这个世界上，卑劣和恶毒普遍占据着统治的地位，而愚蠢地嗓门叫喊得至为响亮，他们的话语也更有分量。」&lt;/p&gt;
-
-&lt;p&gt;「我们的现实生活在没有受到情欲的驱动时会变得无聊和乏味；一旦受到情欲的驱动，很快就会变得痛苦不堪。因此，只有那些思想禀赋超常的人才时幸运的，他们的智力超出了意欲所需要的程度。只有这种人才能够在过着实际生活的同时，还享有一种不带痛苦的精神生活。他们全副身心地沉浸在这种精神生活当中，乐此不疲。仅仅拥有闲暇，即智力不需要为意欲服务，并不足以使人们享有精神生活；为能享有精神生活，人们必须具备某种真正充裕有余的能力。只有具备了这种充裕有余的能力，才能有资格从事并不服务于意欲的纯粹精神上的活动。」&lt;/p&gt;
-
-&lt;p&gt;「根据个人精神思想能力参差不齐的充裕程度，而相应在现实生活的同时，还有着无数等级的思想生活：从仅仅只是收集和描绘昆虫、鸟类、矿物、钱币之类的精神乐趣，一直到创作出杰出的文学和哲学作品。类似的精神生活使我们得以避免低劣的社交，以及许许多多的危险、不幸、损失和纵欲。如果人们完全是在这个现实生活里追求幸福，那他们就会遭遇上述这些不好的东西。所以，例如，虽然我的哲学并没有给我带来具体的好处，但它却使我避免了许多的损失。但是，常人却寄希望于身外之物，寄望于从财产、地位、妻子、儿女、朋友、社会人群那里获取生活快乐；他把自己一生的幸福寄托在这些上面。因此一旦他失去了这些东西，或者对这些东西的幻想破灭，那他的幸福也就随之烟消云散了。为把这种情形表达清楚，我们可以这样说：这个人的重心在他的自身之外。」&lt;/p&gt;
-
-&lt;p&gt;「人是匮乏的儿子，他并不是自由发挥思想的人。因此，闲暇很快就成了普通大众的包袱。的确，如果人们不能通过各种幻想的、虚假的目标，以各式游戏消遣和爱好来填塞时间，到后，闲暇就会变成了痛苦。基于同样的原因，闲暇还会给人们带来危险，因为“当一个人无所事事的时候难以保持安静”是相当正确的。」&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;11月23日16点08分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;这身体真没用。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;11月22日12点45分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;记：&lt;/p&gt;
-
-&lt;p&gt;《强风吹拂》——三浦紫苑&lt;/p&gt;
-
-&lt;p&gt;「不管跑不跑步，每个人都有自己的痛苦，同理，也有各自的喜悦。不论任何人，都有他必须面对的烦恼；即使明知愿望无法达成，也挣扎着向前进。&lt;/p&gt;
-
-&lt;p&gt;　　既然不论去任何地方都一样，不如坚定立场，遵循内心的渴望坚持到最后。」&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;11月20日21点47分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;结果还是绕回原点。&lt;/p&gt;
-
-&lt;p&gt;废人。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;11月19日12点38分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;记：&lt;/p&gt;
-
-&lt;p&gt;《斜阳》——太宰治&lt;/p&gt;
-
-&lt;p&gt;「我感到无论怎样努力，也活不下去般的忧虑。这就是那种叫做不安的感情吧，痛苦的浪潮一阵阵涌上心头，犹如白云匆匆飘过雷阵雨后的天空一般，将我的心脏忽而抽紧，忽而放松，我感到自己的脉搏凝滞了，呼吸微弱了，视野迷蒙了，全身的力量都从指尖消失了似的，无法继续编织下去了。」&lt;/p&gt;
-
-&lt;p&gt;「颓废？但是，不这样我就无法活下去。比起说这样的话责备我的人，反倒是那些对我说“你去死吧”的人更可爱吧。这样更爽快。但是，叫你去死的人绝无仅有，大家都是些自私自利、谨小慎微的伪君子。」&lt;/p&gt;
-
-&lt;p&gt;「我装作早熟，人人就都说我早熟。我装成懒汉，人人就说我是懒汉。我假装不会写小说，人人就说我不会写小说。我伪装成骗子，人们就说我是个骗子。我摆阔，人人就说我是有钱人。我表现得很冷淡，人人说我是个冷漠的家伙。然而，当我真的痛苦万分、发出呻吟时，人人却说我是佯装痛苦，无病呻吟。」&lt;/p&gt;
-
-&lt;p&gt;「人有生存的权利，同样，也应该有死的权力。」&lt;/p&gt;
-
-&lt;p&gt;「我还是一死了之的好。我没有所谓的生活能力，也没有本事和他人争夺金钱。我就连占别人便宜都做不到。和上原先生一起喝酒玩乐时，我也都是自己付自己的帐。上原先生认为这是贵族的廉价自尊，非常厌恶，但是，我并非是为了自尊才自己付帐的。我只是非常害怕用他辛苦工作赚来的钱，花在无聊的吃喝和抱女人上，我真的做不到。我总是说因为尊重上原先生的工作，那自然是谎言，其实我自己也不太清楚为何这么做。不知为什么，白吃白喝别人的，总会使我惧怕。尤其是对方用凭自己本事赚来的钱请我吃喝时，更叫我痛苦万分。」&lt;/p&gt;
-
-&lt;p&gt;《樱桃》——太宰治&lt;/p&gt;
-
-&lt;p&gt;「人这辈子，真是不容易。时时处处都会碰到枷锁，稍微一动弹，便会血流如注。」&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;11月17日09点36分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;24岁。&lt;/p&gt;
-
-&lt;p&gt;扛过去了。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;11月16日08点19分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;累了。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;11月15日09点38分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;到头来还是控制不了情绪。&lt;/p&gt;
-
-&lt;p&gt;记：&lt;/p&gt;
-
-&lt;p&gt;《自卑与超越》——阿尔弗雷德·阿德勒&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-平衡生活的三条纽带&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「这是被宠坏的孩子的典型生活模式：无论遇到什么苦难，总是想着寻求他人的帮助，而不是自己解决问题，并且把自己的负担压在别人的身上。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-夫妻是平等的伙伴关系&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「在婚姻中，我们给对方的关心胜过给自己的，我们的婚姻关系才有可能是平等的。如果两个人为对方多着想，婚姻中就不会有束缚感或自卑感了。我可以肯定地说，婚姻关系想要平等，双方必须有这样的态度。因为只有我们为对方努力付出了，对方才感觉到安全感，才会觉得自己是被需要的。而且，我发现婚姻幸福有一个基本前提：让对方感到他/她是最有价值的，他/她是被需要的/最优秀的；他/她是你最好的伴侣和朋友。这种感觉，是需要你用实际行动去证明的。」&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;11月14日17点52分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;又开始了，一次又一次。&lt;/p&gt;
-
-&lt;p&gt;记：&lt;/p&gt;
-
-&lt;p&gt;《自卑与超越》——阿尔弗雷德·阿德勒&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-理解记忆&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「只有我们真正关心他人，对于他人的合作感兴趣，我们才能可能获得心理治疗的成功。」&lt;/p&gt;
-
-&lt;p&gt;「记忆是不会说谎的，记忆也是人的所有心理现象中最能反映真实自我的一个。」&lt;/p&gt;
-
-&lt;p&gt;「记忆绝不会与个体的生活模式背道而驰。一个总是觉得“别人都想看我笑话”的人，他的记忆中充满的也都是被人侮辱，伤自尊的事情。只有他的人生态度发生改变，他的记忆色彩才会改变。人生态度改变了，认知观念改变了，记忆中的事情才会有所改变，对于同一个事情，才会有截然不同的解释。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-关于早期记忆的六个案例&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「最初记忆可以折射出他生活态度的雏形，让我们了解到他将生命作为自己的人生起点。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-个体心理学派与梦&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「做梦就是在保护我们的生活模式不被现实和常识的要求所威胁。」&lt;/p&gt;
-
-&lt;p&gt;「每个梦中我们都是在自我陶醉、自我催眠。它的目的就是引起我们的某种感觉，这种感觉能为我们清醒状态时候想要解决问题的方法提供支持。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-梦的构成&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「隐喻是能让人充满想象的，但是必须注意：对一个在生命意义方面已经偏差了的人来说，运用隐喻和符号来解决问题是一件很危险的事。」&lt;/p&gt;
-
-&lt;p&gt;「梦的目的是自欺欺人，让我们自己陶醉其中。」&lt;/p&gt;
-
-&lt;p&gt;「梦虽然有许多种不同的变化，每个梦都依照我们现实中遇到的问题反映出人生态度想要加强的一面。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-母亲的影响&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「女性对于母亲这一角色的态度影响着整个人类社会。所以，无论任何时候，女性的角色和地位都不应该被低等化。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-父亲的角色和责任&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「婚姻实质上是两个平等的人在人生路上的陪伴和结合，在家庭地位上没有高低之分。家庭中所有的事情没有控制和权威可言。」&lt;/p&gt;
-
-&lt;p&gt;「家庭责任是两人共同承担的，只是分工不同，父亲承担着赚钱养家的主要责任，而妻子承担着其他的责任，如此而已。夫妻之间，应该平等相待。至于赚钱，谁有能力谁赚，这不应该成为应该影响家庭和谐的问题。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-教育的变革&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「现代教育的思想是：我们要教会孩子自立并为他人着想。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-天赋与习得&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「“善”与“恶”像其他性格特征一样，都是在特定环境下才有意义，都是相对而言的。它们是人们在社会环境中与外界切磋磨合产生的结果，它们蕴含了一种判断，即“为他人着想”还是“只为自己着想”。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-区分孩子的个性&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「懒惰的孩子则是没有意识到什么是真正的失败，因为他们没有面临过真正的考验。他们遇到问题总是在逃避，也不和别人竞争。别人会认为，只是因为他懒惰，才没有成功的。他自己也会认为只要努力去做，就一定可以成功。这位自己提供了失败的借口，以此保持自尊。」&lt;/p&gt;
-
-&lt;p&gt;「懒惰的孩子还有一点好处就是：当他做了一点点工作时，别人就会夸奖他。如果是平时就很努力的孩子做的，就不会受到表扬。懒惰的孩子以此种方式生活在别人的期望里，他也是个被宠坏的孩子。他们从儿童时期就开始形成依赖别人的习惯。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-如何矫正犯罪行为&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「总之，如果一个人不与他人合作，对别人不感兴趣，不想为人类做出贡献，那么他的人生只能是一片荒芜，也不会遗留下任何有用的东西。只有懂得奉献的人，才会有所成就，如果我们以此来教育孩子，那么他们成人后会乐于与人合作，即使遭遇困境，他们也会勇敢面对，以不损害他人的利益的方式来解决问题。」&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;11月13日13点39分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;记：&lt;/p&gt;
-
-&lt;p&gt;《爱在黎明破晓时》&lt;/p&gt;
-
-&lt;p&gt;「If she&amp;rsquo;d ever got to know him,&lt;/p&gt;
-
-&lt;p&gt;一旦了解了他，&lt;/p&gt;
-
-&lt;p&gt;I&amp;rsquo;m sure he would have disappointed her eventually.&lt;/p&gt;
-
-&lt;p&gt;她最终会对他感到失望。&lt;/p&gt;
-
-&lt;p&gt;It&amp;rsquo;s just,people have these romantic projections they put on everything.&lt;/p&gt;
-
-&lt;p&gt;人们将浪漫想象得高于一切，&lt;/p&gt;
-
-&lt;p&gt;that&amp;rsquo;s not based on any kind of reality&lt;/p&gt;
-
-&lt;p&gt;那没有任何事实依据。」&lt;/p&gt;
-
-&lt;p&gt;《自卑与超越》——阿尔弗雷德·阿德勒&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-理解记忆&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「只有我们真正关心他人，对于他人的合作感兴趣，我们才可能获得心理治疗的成功。」&lt;/p&gt;
-
-&lt;p&gt;「记忆是不会说谎的，记忆也是人的所有心理现象中最能反映真实自我的一个。」&lt;/p&gt;
-
-&lt;p&gt;「记忆绝不会与个体的生活模式背道而驰。一个总是觉得“别人都想看我笑话”的人，他的记忆中充满的也都是被人侮辱，伤自尊的事情。只有他的人生态度发生改变，他的记忆色彩才会改变，记忆中的事情才会有所改变，对于同一个事情，才会有截然不同的解释。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-关于早期记忆的六个案例&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「最初记忆可以折射出他生活态度的雏形，让我们了解到他将什么作为自己的人生起点。」&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;11月12日12点15分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;记忆是靠不住的。&lt;/p&gt;
-
-&lt;p&gt;人本心向死亡。&lt;/p&gt;
-
-&lt;p&gt;记：&lt;/p&gt;
-
-&lt;p&gt;《自卑与超越》——阿尔弗雷德·阿德勒&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-前言&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「正是由于人类会有自卑感，才会有不断取得发展和进步的不竭动力。」&lt;/p&gt;
-
-&lt;p&gt;「人的潜力是没有局限的，更不是天注定的，只要肯去挖掘，每个人都有成功和飞跃的机会。这也是阿德勒个体心理学的一个重要原则。」&lt;/p&gt;
-
-&lt;p&gt;「他认为，人们总是追寻生命的意义，然而，很多人想略了一点，那就是个人意义没有任何价值，真正的生命意义存在于个体与他人的交互作用中。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-生活于你的意义&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「真实是对人类的真实，对于人类目的的真实。除此之外，毫无真实可言。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-生命中的三大问题&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「我们生存于他人的联系中，如果我们选择孤独，便等于选择了死亡。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-真正的生命意义&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「生命的意义在于乐于关注他人，渴望成为社会大家庭的一员，梦想着为人类和社会贡献自己的力量。」&lt;/p&gt;
-
-&lt;p&gt;「所有真正“生命意义”的真正标志是：可以与他人分享，且得到绝大多数人认可。」&lt;/p&gt;
-
-&lt;p&gt;「如果一个人的理想和行为都想着为他人贡献的方向，并为之奴隶，他的人生自然会朝着最能体现生命价值的方向发展。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-童年对人生的影响&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「经验并非成功或失败之母。我们的生活经验对我们没有太大用处，起决定作用的是我们赋予经验的认知和意义。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-合作的重要性&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「如果找到了人性曲解的初始端，并配以有效的治疗方法，那人性是可以改变的。这里所谓的有效方法即培养个体与人合作的勇气和精神。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-情感影响发展&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「我们只要留心观察个人的行为举止就能了解这个人。行为举止是永远受到人生意义的制约的。」&lt;/p&gt;
-
-&lt;p&gt;「只有渴望将自己融入社会整体而不是至关注自己的人，才能成功学会如何补偿自己的缺憾。只是想逃避困难的人，必然会落后于他人。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-身型、性格与心智&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「精神是一个整体，一个人的人生态度、生活模式会影响他的一生。一个人的精神思想也会和人生态度相一致。如果我们发现某种情绪很明显地出现了问题，与自身的利益不一致，只摆脱这种情绪是没有用的，必须从人生态度上进行转变，因为这种情绪也是人生态度和生活模式的表现。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-自卑情结&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「自卑情结是指一个人在意识到他要面对一个他无法解决的问题时，表现出的无所适从。」&lt;/p&gt;
-
-&lt;p&gt;「由于安全感的缺失，他从来不把自己的兴趣扩展到熟悉的几个人之外。因为他已经能很熟练地掌控这一范围内的人，如果接触新的人，他害怕不能按他习惯的方式来控制局势。」&lt;/p&gt;
-
-&lt;p&gt;「生活的不确定性正是我们希望的来源。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-追求优越感&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「人人都在追求属于自己独有的一种优越感。它取决于人们赋予生命的意义。」&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;11月11日09点38分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;心不静。&lt;/p&gt;
-
-&lt;p&gt;别当真。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;11月10日00点20分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;拖后腿的。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;11月7日20点41分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;畏惧承担责任的人是为懦夫，&lt;/p&gt;
-
-&lt;p&gt;连责任都意识不到的人不配为人。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;11月6日22点11分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;经济不独立，人格不独立，无关男女。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;11月5日14点35分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;乱七八糟。&lt;/p&gt;
-
-&lt;p&gt;瘦了，头发重两斤？&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;11月4日22点37分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;记：&lt;/p&gt;
-
-&lt;p&gt;《伤逝——涓生的手记》——鲁迅&lt;/p&gt;
-
-&lt;p&gt;「我是我自己的，他们谁也没有干涉我的权利！」&lt;/p&gt;
-
-&lt;p&gt;「她早已什么书也不看，已不知道人的生活的第一着是求生，向着这求生的道路，是必须携手同行，或奋身孤往的了，倘使只知道捶着一个人的衣角，那便是虽战士也难于战斗，只得一同灭亡。」&lt;/p&gt;
-
-&lt;p&gt;「依然是这样的破屋，这样的板床，这样的半枯的槐树和紫藤，但那时使我希望，欢欣，爱，生活的，却全都逝去了。只有一个虚空。我用真实去换来的虚空存在。&lt;/p&gt;
-
-&lt;p&gt;　　新的生路还很多，我必须跨进去，因为我还活着。但我还不知道怎样跨出那第一步。有时，仿佛看见那生路就像一条灰白的长蛇，自己蜿蜒地向我奔来，我等着，等着，看看临近，但忽然便消失在黑暗里了。」&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;11月3日18点20分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;论运动的必要性。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;11月2日21点23分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;记：&lt;/p&gt;
-
-&lt;p&gt;《朝花夕拾》——鲁迅&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-狗·猫·鼠&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「人们的各种礼式，局外人可以不见不闻，我就满不管，但如果当我正要看书或睡觉的时候，有人来勒令朗诵情书，奉陪作揖，那是为自卫起见，还要用长竹竿来抵御的。还有，平素不大交往的人，忽而寄给我一个红帖子，上面印着“为舍妹出阁”，“小儿完姻”，“敬请观礼”或“阖第光临”这些含有“阴险的暗示”的句子，使我不化钱便总觉得有些过意不去的，我也不十分高兴。」&lt;/p&gt;
-
-&lt;p&gt;「经验既多，一旦大悟，知道猫的偷鱼肉，拖小鸡，深夜大叫，人们自然十之九是憎恶的，而这憎恶是在猫身上。假如我出而为人们驱除这憎恶，打伤或杀害了它，它便立刻变为可怜，那憎恶倒移在我身上了。所以，目下的办法，是凡遇猫们捣乱，至于有人讨厌时，我便站出去，在门口大声叱曰：“嘘！滚！”小小平静，即回书房，这样，就长保着御侮保家的资格。其实这方法，中国的官兵就常在实做的，他们总不肯扫清土匪或扑灭敌人，因为这么一来，就要不被重视，甚至于因失其用处而被裁汰。」&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;11月1日22点22分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;如果是？的话，一定能做得很好。&lt;/p&gt;
-
-&lt;p&gt;记：&lt;/p&gt;
-
-&lt;p&gt;《荒原狼》——赫尔曼·黑塞&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-哈立·哈勒手记&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「自杀者所特有的东西是他感受到他那个自我——不管有无道理——是自然界里特别危险、极不可靠并被噩运困扰的胚芽，他总感觉自己受到强大的攻击、遇到危险，就像立于悬崖峭壁之巅，只要外界轻轻一推，或者内心稍稍软弱，就足以堕入万丈深渊。这种人在其命运之路上的特点是，自杀是他们最有可能的死亡方式，至少他们自己是这样想象的。这种情绪往往是在少年时代就已端倪可见，而且伴随终身。这种情绪并不是缘于生命力特别弱，正相反，人们从这些“自杀者”身上发现，他们都是坚忍不拔，有所追求，有着勇敢无畏的性格。但是，正如有些人稍有微恙即易发高烧一样，这些敏感的、神经质的、我们称之为“自杀者”的人稍受一点震动，就会产生强烈的自杀念头。要是我们能有一种科学，它有勇气和责任心担当起对人的研究，如果我们有像人类学、心理学那样的科学，那么，上述事实就会人人明了。&lt;/p&gt;
-
-&lt;p&gt;　　这里我们所说的有关自杀者的问题，无疑只是涉及表面的东西，是心理学，也就是物理学的一部分。从形而上学观点来看，事情就会是另一个样子，而且清楚得多。因为按照形而上学的观点来看，呈现在我们面前的“自杀者”是被个人犯罪感击中的人，是不再追求自我完善和自我发展而是把追求自我解脱、返回母体、返回上帝、返回宇宙作为生活目标的人。这类人当中的很多人无力在某一天去实行实际上的自杀，因为他们已经深刻地认清了自杀的罪孽。而对我们来说，他们还是自杀者，因为他们的救世主不是生，而是死。他们随波逐流，皈依另一个世界，熄灭生命，返回原始。」&lt;/p&gt;
-
-&lt;h1 id=&#34;十月&#34;&gt;十月&lt;/h1&gt;
-
-&lt;p&gt;&lt;strong&gt;10月23日22点33分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;我存在我。&lt;/p&gt;
-
-&lt;p&gt;记：&lt;/p&gt;
-
-&lt;p&gt;《惶然录》——费尔南多·佩索阿&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-重读自己&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「人类心灵的全部生活，只是在依稀微光中的一种运动。我们生活在意识的晨曦中，无法确定我们自己是什么，或者确定我们以为自己是什么。即便是我们当中的佼佼者，也存在着对某些事物诸多自以为是的感觉，存在着一些我们无法测定的谬以千里。我们碰巧处于一出戏剧的幕间休息，有时候，透过特定的门洞，我们得以窥探到台上的场景是何模样。整个世界如夜晚声音一样混沌不清。&lt;/p&gt;
-
-&lt;p&gt;　　我刚刚重读了这些纸页，上面是我清清楚楚写下的文字，将要存在到它可能存在到的时限。我问自己：这些是什么？这些是为了什么？我感受自己的时候我是谁？我是自己的时候又有什么东西在我心身中死去？&lt;/p&gt;
-
-&lt;p&gt;　　像一个高高立于山巅的人，试图弄明白山谷里的人们及其一切纷纭驳杂的生活，我俯瞰自己，像遥看一片模糊不清的风景。&lt;/p&gt;
-
-&lt;p&gt;　　在这样的时刻，当我的灵魂陷入地狱，以至一个最小的细节都可以像一纸悼词，使我惊悸不宁。&lt;/p&gt;
-
-&lt;p&gt;　　我要叫喊，似乎觉得任何人都能听到我的声音。但是，我所有的感受只是极度的疲惫，像流云一样一阵又一阵地袭来，像阳光将尽之时的形状，像辽阔牧场上的绿草若明若暗。&lt;/p&gt;
-
-&lt;p&gt;　　我一个人抓瞎式地忙于寻找一件东西，而这件东西从来没有人向我描述过。我们跟自己玩捉迷藏的游戏。我相信在某个地方有这一切的超验理性，一些可耳闻而无法目击的流动的神力。&lt;/p&gt;
-
-&lt;p&gt;　　是的，我重读这些纸页，它们代表着空虚的时光，安定或者幻觉的瞬间，化入风景的伟大希望，房间从无人迹般的恐怖，一点声音，一种极度的困乏，以及尚未写就的真理。&lt;/p&gt;
-
-&lt;p&gt;　　在有些事情上，任何人都是虚妄的。我们每个人的虚妄，包括着我们忘记了别人也像我们一样有灵魂。我的虚妄包含在零星纸片里，零星短章里，特定的怀疑之中……&lt;/p&gt;
-
-&lt;p&gt;　　我说过我重读着这些纸页么？我在说谎。我根本不敢去读它，不能去读它。我该怎么办？这些纸页简直就是另外一个人，我再也无法理解……」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-语言政治&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「在一种外化的白日梦里，让词语把我当作一个坐在它们膝头的小姑娘抚慰。它们仅仅是无意义的句子，是水流的缓缓漂移，如同一缕细流忘我地混同和消失于波涛，又一次次再生，永无止境地后浪推着前浪。观念和意象，表达地颤抖，就是这样从我身上流过，一束丝绸瑟瑟作响飘逝的过程，月光中一片闪烁不定的观念碎片，斑驳而微弱。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-御座与皇冠&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「清净无为是我们面对万事万物的安慰，而有为并不是我们的伟大供养者。想象的能力从来就是一切，永远不会把我们导向行动。除非在梦里，没有一个人可以成为世界之王。然而，如果我们说句实话，我们每一个人都有号令世界的欲望。&lt;/p&gt;
-
-&lt;p&gt;　　不能成为什么，但能想像什么，这是真正的御座。不能要求什么，但能欲望什么，这是真正的皇冠。任何由我们放弃的东西，都会由我们完整无缺地保留在自己梦中。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-格言几则&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「明确的占有，固定的看法，直觉，激情以及定型和可辨认的性格，所有这些都有助于我们的灵魂造就成一件可怕的事实，造就成它的物化和外化。生活是一件甜蜜的事情，是对一切东西和我们自己采取视而不见顺其自然（这是保证生活能切合明智态度的唯一道路）的态度。&lt;/p&gt;
-
-&lt;p&gt;　　人们在自己和他物之间自动调节的一种常备能力，显示出最高等级的知识和洞明。&lt;/p&gt;
-
-&lt;p&gt;　　对于我们自己来说，我们的个性甚至都是无法看透的：这就是为什么我们的职责就是不断梦想，包括梦想我们自己，不可能对自己持有什么定见。&lt;/p&gt;
-
-&lt;p&gt;　　我们特别要避开别人对我们个性的侵犯。任何他者对我们的兴趣，都是一种无可比拟的粗俗。谨防每天的招呼语“你好吗”成为一种不可饶恕的侵凌，唯一的事情就是应当看出，一般来说，这句话事实上完全空洞而且缺乏诚意。&lt;/p&gt;
-
-&lt;p&gt;　　爱仅仅是对独处的逐渐厌倦：于是，爱就是我们对自己的怯懦，再加上我们对自己的背叛（我们不再施爱这一点真是至关重要的）。&lt;/p&gt;
-
-&lt;p&gt;　　给别人一个好建议，是对这个人犯错误的能力，表现出一种毫不尊重的态度，而这种能力是上帝赐予的。更进一步来说，他人与我们应当保留在行动上各行其是的优越。向他人索取建议，唯一可能的理由，使我们随后干起来的时候恰好可以与他人的建议南辕北辙。在这个时候，我们才知道自己确实是自己，在行动上与属于他者的一切格格不入。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-万物无灵&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「气象构成了事物的灵魂。每一样东西都有自己的表现模式，而所谓表现其实均为外来之物。&lt;/p&gt;
-
-&lt;p&gt;　　每一件东西都有三大要素，这三大要素集中起来便可以显示出这个东西的外形：一种材料的量；我们了解它的方式；还有它存在的气象。我现在写作用的这张桌子是一些木头，是这间房子里家具中的一件。我对这张桌子的印象，如果要得到转述，就必须加上各种各样的概念：它是用木头做的，我把它叫作桌子，特定的用途和目的使它获得属性，这一切反映或者插入事物之中，从而使其呈现获得外在的精神。事物就是利用这一切，实现了自己的转换。色彩是被给予的，色彩有消退的方式，木结疤和裂缝犹在，所有这一切你都会注意到，都是从外部而不是它内在的木质着眼，都是从外部而不是从它内在的木质着眼，这些就是赋予它某种精神的东西。而精神的内核，它之所以是一张桌子，它的个别性，同样是外加而生的。&lt;/p&gt;
-
-&lt;p&gt;　　这样，我以为这不仅仅是一个人类或者一个文学的错误，不仅仅是我们把具有一颗灵魂的属性，赋予了那些我们称其为非生命体的东西。成为一件东西，就是成为了一种属性。说树在感受，说河在奔走，说一片落霞令人肝肠寸断，或者说宁静的海（并非生来就蓝得像天空一样）在灿烂微笑（因为太阳在上面照耀），也许都是荒唐。但是同样荒唐的，是给一个事物加上美，加上色彩、形式、也许甚至还有它的存在。海是一些咸水。&lt;/p&gt;
-
-&lt;p&gt;　　落霞不过是阳光从特定经度和纬度的消失。在我面前玩耍的小孩，则是一些细胞的智能团体，但他也是一个由亚原子运动所组成的限时之物，是一个在显微镜观测之下如太阳系万千星体般的奇异的电子球体。&lt;/p&gt;
-
-&lt;p&gt;　　一切事物都由外而生，甚至人类的灵魂，也可能不过是闪闪阳光对粪堆的表面投照，而那粪堆才是人之躯体。&lt;/p&gt;
-
-&lt;p&gt;　　对于那些强大得足以从中得出结论的人来说，这些思考里含有一整套哲学的种子。而我不是那样的人。关于逻辑哲学专注然而朦胧的想法，于我飘忽而过，消失于一道金色阳光的景象之中。阳光闪烁在一片石头墙那边的一个粪堆，那个粪堆似乎是一些暗黑、潮湿、杂乱的草料。&lt;/p&gt;
-
-&lt;p&gt;　　这就是我的状况。当我想要思索，我却观看。当我想要走出自己的灵魂，我会突然失魂落魄地止步，在陡峭的螺旋阶梯上刚走出第一步，就远望顶楼的窗子，看见金褐色的阳光在楼顶弥漫消散。」&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;10月22日22点16分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;记：&lt;/p&gt;
-
-&lt;p&gt;《道德的谱系》——弗里德里希·尼采&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-第一章 “善与恶”、“好与坏”&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「一定量的力就意味着同等量的欲求、意志和作为——更确切地说，力无非就是这些欲求、意志和作为本身而已。」&lt;/p&gt;
-
-&lt;p&gt;《惶然录》——费尔南多·佩索阿&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-爱情是习惯套语&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「我们从来没有爱过什么人。我们只是爱着我们自己关于何许人可爱的观念。我们爱自己的观念，简言之，我们爱的是自己。&lt;/p&gt;
-
-&lt;p&gt;　　这是任何一类爱的真理。在性爱中，我们通过另一个人的身体媒介，寻找自己的愉悦。在非性爱中，我们通过自己已有观念的媒介，寻找自己的愉悦。手淫者也许是一个可怜的造物，但就实而论，他是表现合乎逻辑的自爱者。只有他才是既不伪饰也不自欺的人。&lt;/p&gt;
-
-&lt;p&gt;　　一个灵魂和另一个灵魂之间的关系，通过交流语言和打手势这样不确定以及歧义的事物来表达。这种特别的方式，使素昧平生的我们相互了解。当两个人说“我爱你”的时候（或者想，或者交流情感），每一个人都意含着不同的什么，意含着不同的生活，甚至可能是抽象的总体印象中一点不同的色彩和芳香——这种印象构成了灵魂的活动。&lt;/p&gt;
-
-&lt;p&gt;　　我今天头脑清醒，好像我已经完全死去。我的思想裸露如一个骷髅，脱除了对交际幻象的情欲包装。这些我起先构想然后放弃的考虑，没有什么报由，完全没有什么根由，至少与我意识深处存在的任何东西不相干。也许，我们职员与一个姑娘外出以后体验到的失望爱情，无非是一些来自爱情事务报道的习惯套语，来自本地报纸对外国报纸的照搬重印；无非是我体内一种隐隐的恶心而我尚未设法给予生理排除。&lt;/p&gt;
-
-&lt;p&gt;　　关于维吉尔的评论家错了。完全可以理解的是，我们上述所有的感受都使人疲惫。生活意味着不要思考。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-动物的快乐&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「我从来没有大声宣布过自己信赖动物们的快乐，除非有时候我将其用作一种套路，来言说对这种假定性感受的支持。成为快乐者，必须知道自己是快乐的。一个人从无梦的一场好睡之中得到的唯一快乐，是醒来以后知道自己无梦地睡过了。快乐存在于快乐之外。&lt;/p&gt;
-
-&lt;p&gt;　　没有知觉就没有快乐。但是，对快乐的知觉带来不快乐，因为知觉一个人的快乐，就是知觉这个人已经度过了快乐，随之而来的是无奈曲终人散。深处快乐之中，就如同深处任何事局当中，知觉毁灭着一切。然而，没有知觉又不能存在。&lt;/p&gt;
-
-&lt;p&gt;　　只有黑格尔不惜笔墨要设法让两方面绝对同一。在感受或者生命的动能当中，存在与非存在之物从来不会混淆或者被混淆；通过一些相互转化的综合过程，两件事依然保留着相互的排斥。&lt;/p&gt;
-
-&lt;p&gt;　　那么，一个人该怎么办？在疏离的时刻，如同自己是一个生物体并且快乐一时，在这一刻感受着快乐，甚至对自己的感受毫无所知，完全不知此身何身今夕何夕。用自己的感受封锁思想。&lt;/p&gt;
-
-&lt;p&gt;　　这就是我在今天下午相信的东西。到明天早上事情可能又会有变，因为到明天早上将会有另一个不同的我。明天我将会成为哪一类的信奉者？我不知道。因为我如果要知道那一点，我就需要已经深处彼时彼地。关于明天或今天的事，甚至我眼下信奉的永恒上帝也无法预知，因为我在今天是我，而到明天也许就不再存在。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-无法兼得&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「我们在生活的前景，是我们更多地诚服于两种矛盾的真理。&lt;/p&gt;
-
-&lt;p&gt;　　第一件是，面对着生活的现实，所有的文学虚构和艺术相形见绌，哪怕它们确实能够给我们提供高于生活的愉悦，但也毫无意义。事实上，它们像一些梦幻，使我们得以体验到生活中从来没有的感受，魔变出生活中从来没有的图景；但它们只是梦幻而已，一个人从中苏醒之后，不会有记忆或者怀旧的愿望，更不会奢望从今往后据此过上一种高级生活。&lt;/p&gt;
-
-&lt;p&gt;　　第二件是，所有高尚心灵都希望过上一种充实的生活，希望体验一切事物和一切感受，包括知道地球的每一个角落。由于不可能做到这一点，因此生活只能有主观性的满足，只能放弃什么都占全的大胃口。&lt;/p&gt;
-
-&lt;p&gt;　　这两个真理互相不可化约。聪明人将会竭力避免去调和它们的尝试，也竭力避免它们之间厚此薄彼。然而，他将不得不在他们二者之间择一而从，并且对于不能同时选择另一项而深感懊丧，或者懊丧于不能把这两项都给予干脆的拒绝，从而使自己像某种个人的涅槃圣境高高升华。&lt;/p&gt;
-
-&lt;p&gt;　　快乐的人，在生活对他的自然给予之外别无奢求，几乎循着一种猫的直觉，有太阳的时候就寻找太阳，没有太阳的时候就找个暖和的去处将就。快乐的人，在想象的趣味中放弃他的生活，在对别人生活的冥想中寻找乐趣，不是体验对他们的印象，而是体验这些印象的外在状貌。快乐的人，已经放弃了自己的一切，于是不再有所失落或者有所减少。&lt;/p&gt;
-
-&lt;p&gt;　　乡下人，小说读者，清教苦行主义者：他们是真正快乐的人，因为他们完全放弃了个我——首先是因为他们靠直觉生存，而直觉是非个别化的；其次是因为他们通过想象来生活，而想象是转瞬即逝的；再次是因为他们虽生犹殁，也就没有死亡，没有休眠。&lt;/p&gt;
-
-&lt;p&gt;　　没有什么东西能够满足我，没有什么东西能够抚慰我，一切——不论存在还是不存在——都使我深感厌腻。我既不需求自己的灵魂也不希望将它放弃。我欲望自己并不欲望的东西，放弃自己没有放弃的东西。我既不能成为一切无也不能成为一切有：我只是一座桥，架设在我之所无与我之所愿之间。」&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;10月21日21点27分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;记：&lt;/p&gt;
-
-&lt;p&gt;《惶然录》——费尔南多·佩索阿&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-一种有关无所谓的美学&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「在任何对象那里，梦者试图感觉的都是十足的无所谓，它们像对象本身一样来自梦者内心的激发。&lt;/p&gt;
-
-&lt;p&gt;　　如何迅速而本能地知道从一切对象和事件那里抽象出仅仅适合做梦的材料，如何给任何包含着外部世界的现实留下心死，这就是智者内求于己的东西。&lt;/p&gt;
-
-&lt;p&gt;　　智者从来不去牵肠挂肚地注重一己地感受，而且能把暗淡无光的胜利提高到这样的高度，即能够以无所谓的态度看待一己地雄心、追求以及欲望；历经喜乐哀愁却无动于衷，兴趣索然，仍然平常自立……&lt;/p&gt;
-
-&lt;p&gt;　　一个人能够获得的最高自律是无所谓地对待自己，相信自己的灵魂和肉体不过是房子和花园，命运规定了一个人必须在此度过一生。&lt;/p&gt;
-
-&lt;p&gt;　　一个人对待自己的梦幻和内心欲望，应当有一种伟大主宰无所谓的随意傲慢，就连最高级的精巧也表现在对它们的无视之中。一个人在自己的主宰之下应当有一种谦卑之感，应当明白在我们的呈现之中，我们从来并不独立，我们是自己的见证。这一点重要性在于，我们总是把自己的行为，看成眼前的一个陌生者，采取一种研究的和冷静旁观的态度，因为高贵而无所谓，因为无所谓而淡然处之。&lt;/p&gt;
-
-&lt;p&gt;　　为了不使自己的卑行出现于我们自己眼中，我们应当习惯于不再怀有雄心、激情
-、欲望、希冀、冲动以及碌碌执迷的感觉。有这一条就足够了。为了实现这一条，我们必须记住，我们总是处于自己的呈现之中，我们从不独立，从不悠闲自在。&lt;/p&gt;
-
-&lt;p&gt;　　我们必须驾驭所有的激情或者雄心，因为激情和雄心使我们失去自我保护；同样地，我们也断断乎不能培育欲望或者希冀，因为它们只是一些低下而有失体面的行为；我们绝不能臣服于突然的冲动或者碌碌执迷，因为在他人的眼里，仓促之举是鲁莽的，而急不可待永远是粗俗。&lt;/p&gt;
-
-&lt;p&gt;　　一个贵族是这样的人，他总是意识到自己从不独立的事实；这就是规范和礼仪总是自然而然属于贵族的原因。我们必须成为内在化的贵族。我们必须把他们从他们的楼台亭阁里拖出来，取代我们的意识和灵魂。让我们对待自己的时候总是不失规范和礼仪，总是有这样的举止，使他人能够在一旁的研究和受用中获益。&lt;/p&gt;
-
-&lt;p&gt;　　我们每一个人都是整整一个社会，这样的话，起码可以给我们生命的城区带来一种特定的优雅和荣耀，可以确保我们感官所举行的庆典显示出良好的品位和自我节制，而我们思想的盛宴便能显示出清醒的谦恭有礼。让其他的灵魂在我们周围建筑他们可怜而肮脏的棚户吧，但是让我们清楚地标志出我们的区域四界，确保我们的房屋从正面直到我们不便示人的私室深处，一切都是高贵的，安详的，铭刻着庄重和谨慎。&lt;/p&gt;
-
-&lt;p&gt;　　我们必须为每一种情感找到最为安详的表达范本，把爱情减弱，仅仅成为爱的梦影，一种在月光下两轮微小光波碰撞时苍白而颤抖的内向衍生；我们必须把欲望制作成虚幻而无害之物，一种灵魂细微而私下的微笑；把它制作成一种甚至从不考虑要宣称自己存在的东西，根本不要去认识它。我们必须把憎恨当作一条犯迷糊的蛇那样哄着人睡，只是在它的眼中安排恐慌以保留痛苦，就像在我们灵魂的眼中，仅仅为一个唯美主义者保留着合适的表达。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-死者的自由&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「自由是孤立的可能性。只有你离开了人们，感到无需为了钱、或者为了合群、或者为了爱情、光荣甚至好奇去追寻他们，你才能获得自由——那些事情没有哪一件可以得到宁静和寂寞的滋养。如果你不能一个人活着，你就是命定的奴隶。虽然你可能拥有所有精神和灵魂的优越品质，你仍然不会比一个高等奴隶或者一个知识苦役强多少，你仍然没有自由。但这不是你的悲剧，因为这一类与生俱来的悲剧不是你的，而是属于命运。&lt;/p&gt;
-
-&lt;p&gt;　　不幸降临于你，是生活的重荷本身使你成为了奴隶。不幸降临于你，你生来自由并且具有自食其力和独自生存下去的能力，贫困还是迫使你进入他人的公司。这个悲剧是你独自一人的，必须由你独自一人来承担。&lt;/p&gt;
-
-&lt;p&gt;　　生来自由是人最伟大的品质，是淡薄隐士得以高于帝王、甚至高于上帝之所在。君王和上帝的自足，仅仅依靠他们的权力，而不是依靠他们对权力的蔑视。&lt;/p&gt;
-
-&lt;p&gt;　　死亡是一种解放，因为死亡以后一无所求。死亡使可怜的奴隶总算有幸摆脱了他所有的愉快和悲伤，还有他如此期望的安稳生活。死亡使国王总算摆脱了他无意舍离的统治，使无偿奉献爱情的女人们总算摆脱了她们如此倾心的征服。这些人总算胜利地从生活命定的征战中摆脱了出来。&lt;/p&gt;
-
-&lt;p&gt;　　死亡以罕有的华丽装束，包裹着可怜而荒诞的尸体并且使之高尚。在这里，你才有了一个自由的人，即使我们得承认这不是他追求的自由。一个人在这里有了不再为奴的自由，虽然他为失去奴隶生涯而哭泣。作为一个人的国王在这里也许变得十分可笑，他过去唯一辉煌的东西居然只是他的王号，他凭借着这个王号才成为一个至高无上的存在，正像他眼下看上去无论是怎样的古里古怪，但凭借一死同样成为了一种至高无上的存在——死亡使他自由。&lt;/p&gt;
-
-&lt;p&gt;　　我累了，关上我窗子的百叶板，为了自己片刻的自由而拒绝世界。明天，我将回到一个奴隶的生存，但是现在，我独处一人，无需任何人，唯恐可怕的什么声音和什么人的到场打搅到我，我有自己的小小自由，我得意的片刻。&lt;/p&gt;
-
-&lt;p&gt;　　坐在自己的椅子里，我忘记了如此压抑着我的生活。我仅有的痛感是自己一度感觉过痛。」&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;10月20日14点34分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;自欺欺人的优越感。&lt;/p&gt;
-
-&lt;p&gt;想要肯定自己。&lt;/p&gt;
-
-&lt;p&gt;记：&lt;/p&gt;
-
-&lt;p&gt;《惶然录》——费尔南多·佩索阿&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-抱歉&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「当我们经常生活在抽象之中——是思想的抽象或者一个人对感觉的思想——都几乎会很快对我们自己的感觉和意志形成对抗。根据我们的情形来看，现实生活中我们感觉最深的事情都会变成幻觉。&lt;/p&gt;
-
-&lt;p&gt;　　对于有的人来说，我毕竟还算得上一个名副其实的好朋友。&lt;/p&gt;
-
-&lt;p&gt;　　他病了，或者死了，这种传闻只会给我留下一些羞于去感受的印象，模糊、不确定而且乏味无趣。只有看到事件本身，发现它的状貌就摆在我面前，我才能会为之所动。太多活生生的印象对于一个人来说，实际上会侵蚀他想象的能力，特别是想象真实的能力。如果脑子里塞满了事情本来不是、或者无法成为的模样，那么到头来，我们甚至就不能设想事情实际上的样子。&lt;/p&gt;
-
-&lt;p&gt;　　昨天，我听到自己的一个就不见面却常常引起我怀旧之情的老朋友，到医院去做一个手术。我当时唯一清晰而且确定的感受，是不无沮丧，我不得不去看他一下。而与此相关的讽刺性意味是，如果我不能被看望病人这件事给麻烦一下的话，我又只能为没有这样做而懊悔。&lt;/p&gt;
-
-&lt;p&gt;　　这就是一切……在与幻影搏斗了多少年以后，我终于在思想、感觉以及存在方面成为了自己这个样子。虽然我从来不是一个正常人，对正常人的怀旧却进入了我的存在之本。但是，这一点，也只有这一点，使我感觉的全部。我不会真正对一个去做手术的朋友心怀歉意，也不会真正心怀歉意地对待所有其他去做手术的人，还有所有人在这个世界里地得失和苦乐。&lt;/p&gt;
-
-&lt;p&gt;　　我仅仅是抱歉，我居然不知道如何成为有所抱歉地人。&lt;/p&gt;
-
-&lt;p&gt;　　而在接下来地一刻，我不可避免地受制于一种莫名的冲动，不免想起了其他一些事情。然后，似乎是在一种神志的昏迷中，树叶沙沙，还有清流落池的声音，一处人间仙境混杂着我没想去感受以及无法去感受的一切……我试图去感受，但再也不知道如何才能做到。我已经成为了一个自己的影子，向这个影子缴出了自己的全部存在。与德国小说里的人物施乐密赫不同的是，这不是我卖给魔鬼的影子，而是我的实体。我的受害是因为我没有受害，是因为我不知道何为受害。我是一个活人吗？&lt;/p&gt;
-
-&lt;p&gt;　　或者我的活着仅仅是伪装？我是睡着了还是已经醒来？&lt;/p&gt;
-
-&lt;p&gt;　　一阵轻轻的风，带来炎热天气里的凉爽，使我忘记了一切。&lt;/p&gt;
-
-&lt;p&gt;　　我的眼皮感受到了愉快的沉重……我想象那同一颗金光灿烂的太阳，正徐徐落在一片我不在场的田野，而且是并不希望自己在场的田野……&lt;/p&gt;
-
-&lt;p&gt;　　一切巨大的寂静从城市的喧嚣中弥漫而来……多么轻柔！&lt;/p&gt;
-
-&lt;p&gt;　　但是，到底有多轻柔？也许我并无真正的感受。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-荒诞&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「最痛苦的感受，最刺心的情绪，也是最为荒诞的——比如向往某事恰恰是因为此事绝不可能，比如对从来没有的东西百般怀念，比如对一直拥有的东西百般欲望，还比如有一个人深深苦恼于他不是别人，或者一个人洋洋得意于世界实实在在就这么回事。这一切心灵意识的中间色调创造了我们内心一种粗略的图景，一轮太阳永远落在我们视野之下。然后，我们自己的感官成为深夜里的一片荒原，幽暗的芦苇虚掩着无舟野渡，两岸之间的江流渐渐地由暗趋明。&lt;/p&gt;
-
-&lt;p&gt;　　我不知道，这些感受是不是无望所带来的慢性疯狂，是不是我们经历过的前世所留下来的某种追忆——混沉而杂乱，像梦中的零星所见。它们在眼下看来当然荒诞。但原初出现的时候，在我们不知其然的时候，却并非那样。我不知道，我们是否一度是另外一些生命，其伟大的面貌直到今天才为我们不那么全面地加以感知；我们是否是我们留下的一些幻影，正在自己居于其中的幻影里，在脆弱的两维想象里失去自己的三维固体属性。&lt;/p&gt;
-
-&lt;p&gt;　　我知道，这些情绪产生的思想在心灵中熊熊燃烧。与它们相连的事物不可能被想象，与它们在幻象中相遇的事物，其本质不可能得到发现。所有这一切沉沉地压在一个人身上，就像一个受到判决的人不知道判决来自何方，来自何人，并且是依据什么。&lt;/p&gt;
-
-&lt;p&gt;　　但是，这一切留下了一种生活地苦涩及其所有表现形式，留下了对它所有欲望和方式一种预定的疲惫，对所有感受一种无名的烦恼。在隐痛地某些瞬间，我们甚至在梦中也不可能成为一个恋人或者一个英雄，甚至无法快乐。四野茫茫，连关于空的观念也是空。对于我们来说，一切都是用我们难以领会的另一种语言说出来的，仅仅是一些响着的音节，无法在我们的理解中激发回应。生命、心灵和世界皆为虚无。所有的上帝在一次比一次更彻底的死亡中死去，所有的一切比真空还要更加空空如也。这是一种空无的躁动。&lt;/p&gt;
-
-&lt;p&gt;　　如果我想一想，环视周围，看现实是否会熄灭我的渴望，我会看见莫可名状的房子，莫可名状的脸，莫可名状的动作。&lt;/p&gt;
-
-&lt;p&gt;　　石头，身体，观念——所有一切都已经死去。所有的运动都是僵止的另一种类型，所有的一切都被死寂之手掌握。对于我来说，无，意味着一切有。一切看上去都是陌生的，并不是因为我发现它们新奇，而是我不知道它们是什么。世界已经失去。在我灵魂的深处——瞬时的现实只是——一种强烈的、看不见的疼痛，一种黑房子里抽泣之声的忧伤。」&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;10月17日12点36分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;记：&lt;/p&gt;
-
-&lt;p&gt;《惶然录》——费尔南多·佩索阿&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-不会发送的信件&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「我爱你，就像我爱太阳西沉或月光遍地的时候，我想要说什么的那一刻，但是，我想要的不过是占有那一刻的感觉。」&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;10月15日12点31分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;人生的意义在于自身思维而非繁殖。&lt;/p&gt;
-
-&lt;p&gt;记：&lt;/p&gt;
-
-&lt;p&gt;《惶然录》——费尔南多·佩索阿&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-离别&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「我把时间当作一种可怕的疼痛来体验。当我不得不离开什么东西的时候，总是可笑地黯然神伤：在那间可怜的租来的小小房间里，我度过了几个月的时光；在那张乡间旅店的桌子旁，我每周六都在那里用过餐；还有那间火车站的候车室，我在那里耗费了两个小时等候火车。但是，生活中的这些美好事情形而上地伤害着我——当我不得不离开它们的时候，以我神经能够控制的全部敏感，我想，我再也见不着它们了，至少再也见不着在严格意义下此时此刻之中的它们了。一个地狱在我的心灵里洞开，一阵来自时间上帝的狂风，猛烈地吹打着我苍白的面孔。&lt;/p&gt;
-
-&lt;p&gt;　　时间！消逝！叫我过去和未来的所为从不可追！我过去和未来的所有永不可驻！死者！那些在我孩提时代曾经爱过我的死者。当我回忆他们的时候，我的整个心已经冷漠，我感到自己的心已经从每一颗心灵里放逐，孤零零游荡在自己的暗夜里，像一个乞丐在沿街每一张紧闭和寂静的大门前哭泣。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-理解毁灭爱&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「我为了理解而毁灭自己。理解是对爱的忘却。我对达·芬奇那个既十分虚假同时又十分深刻的说法茫然无知，他说一个人只能在理解的时候，才可能对什么东西爱起来，或者恨起来。&lt;/p&gt;
-
-&lt;p&gt;　　孤独折磨着我；陪伴则压抑着我。另一个人的在场搅乱着我的思想；我以一种特殊的抽象方式梦想着他们的在场，而我的任何分析能力都无法解说这种方式。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-孤闭&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「被强制着与他人交际的整个意念压抑着我。一位朋友关于晚餐的简单邀请，使我产生的痛苦难以言表。任何社交职责的念头——取去参加一次葬礼，在办公室与人讨论什么问题，去车站迎接什么人（无论认识或不认识的）——仅仅是这样的念头就足以阻塞我整整一天的思想，有时候甚至可以让我前一个晚上就忧心忡忡，无法安睡。到了这一步，现实倒完全无所谓了，它的到来肯定还不会有如此之多的纷乱，而我从来不知道这种纷乱一而再地发生了多少。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-无善无恶&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「不论我们知道与否，我们全都有一种形而上的思维；同样，不论我们喜欢与否，我们也全都有一种道德观念。&lt;/p&gt;
-
-&lt;p&gt;　　而我的道德观极为简单——对任何人既不行善也不作恶。&lt;/p&gt;
-
-&lt;p&gt;　　不作恶，不仅是因为认识到别人也拥有我裁判自己的同样权力，有权不被别人妨碍，而且还因为我认为世界上已经有足够的自然之恶，无须再由我来添加什么。在这个世界上，我们都是同一条船上的乘客，从一个未知的港口启航，驶向另一个对于我们来说同样是异乡的港口；因此我们应该以旅伴之谊来相互对待。而我不选择善举，是因为不知道善是什么，也不知道自以为做了什么善事时，这件事到底是不是善。当我施舍的时候，或者试图教育或训导别人的时候，我怎么知道自己或许不是制造了恶？疑惑之下，我只能放弃。&lt;/p&gt;
-
-&lt;p&gt;　　我更愿意相信，帮助或者慈善，在某种情况下也是干涉他人生活的一种恶行。好心是一种心血来潮，我们没有权力让自己即便是人道的或者侠义心肠的一时兴起，使他人成为受害者。&lt;/p&gt;
-
-&lt;p&gt;　　如果处于道德的原因，我决定不对他人行善，也就不要求任何他人对我行善。我最痛恨的事情，是自己生病的时候受惠于他人的照看，因为这也是我讨厌对别人做的事情。我从不探访病中的朋友。无论什么时候我在病中被什么人探访，我都感到这每一次探访都是对我自己选择的隐私，构成了一种不方便的、搅扰的、无理的侵犯。我不喜欢别人给我什么东西，他们似乎是迫使我也给他们一些东西——给他们或者其他的人，而对于他们来说那些东西完全不重要。&lt;/p&gt;
-
-&lt;p&gt;　　我在一种强烈拒绝的姿态下极为合群。我是但求无害的体现。但是，我仅此而已，我不想要超出这一点，也无能超出这一点。面对一切事物，我都感到一种生动的亲柔，一种智慧的关切，不过这统统只是矫情。我对任何事物都没有信仰，没有希望，也没有上帝的悲悯。我没有感受到别的什么，只是反感和厌恶那些各种类型的真诚及其真诚的信徒，还有各种类型神秘主义及其神秘的教友，或许更不可接受的，是所有真诚者的真诚，还有所有神秘者的神秘。当那些神秘主义传播着福音，当他们试图说服另一个人的知识和意志去寻求真理或改变世界，我几乎感到一种生理的恶心。&lt;/p&gt;
-
-&lt;p&gt;　　我意识到自己的幸运，不再有任何牵挂，这样我就得以从关爱什么人的职责中解脱，这种职责不可避免地压迫着我。我仅有的怀旧，只是文学性的。童年的回忆会给我的眼里注满泪水，但这些泪水闪烁着诗韵，一些散文片断正是在泪水里已经得到准备。我把童年当作一些外在于我的东西来回忆，并且通过外在的东西来完成回忆。我只能回忆外在的东西。使我对童年心怀柔情的，不是乡下黄昏的温馨注入了我的心灵，而是一些物化的方式：放着茶壶的桌子，屋子里四周家具的形状，人们的面孔和身体的动作。我的怀旧总是指向往日特定的画面。&lt;/p&gt;
-
-&lt;p&gt;　　这就是为什么我对自己的童年百般依恋，就像对待别人的童年一样：它们都失落在无边的过去，成为纯粹的视觉现象被我的文学思维所察觉。我感受到了亲柔，不是因为我回忆而是因为我观看。&lt;/p&gt;
-
-&lt;p&gt;　　我从来没有爱过谁。我最爱的东西一直是感觉——在我意识试图里记录下来的场景，被我敏锐双耳所捕捉到的印象，外在世界里的卑微之物凭借香水向我开口，述说往日的故事（如此容易被气味所激发）——也就是说，它们向我馈赠现实和情感，比那个遥远下午一块烤房深处的烤面包要强烈得多。当时，我参加了叔叔的葬礼，然后走在回家的路上，叔叔是那样地喜欢过我，但不知道为什么，我在回家的路上只有一种模模糊糊如释重负的温柔之感。&lt;/p&gt;
-
-&lt;p&gt;　　这是我的道德，我的形而上学，或者是我自己：甚至在自己的灵魂里我也只是一个黄昏里的路人。我不属于任何事物，也不渴望任何事物。我什么也不是，只是某些非个人感觉的抽象中心，一块有感觉的镜片，虽然从墙上跌落下来，但还是在映照着万千世界。我不知道这一切给我带来的是快乐的还是不快乐的，我对此毫不在乎。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-清楚的日记&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「我的生活：一出悲剧，仅仅一开场就被上帝们一阵倒彩哄下了台。&lt;/p&gt;
-
-&lt;p&gt;　　朋友：没有。只有少许熟人，他们认为与我还合得来，如果我被一列火车撞倒，或者在送葬的日子里碰上大雨，他们也许会为我感到不安。&lt;/p&gt;
-
-&lt;p&gt;　　对于我从生活中隐退的自然回报，是一种我在别人那里造成的无能为力，即没法对我表示同情。这是一种环绕着我的寒气，是一圈拒斥他人的冷冷光环。我一直避免去体会自己孤独的痛感，而取得精神的区别，使疏离看上去是一个避难所，使我从一切烦恼中获得静静的自由，是如此的艰难。&lt;/p&gt;
-
-&lt;p&gt;　　我从来不相信眼前演示着的友谊，就像我不会相信他们的爱，那种爱怎么说也是不可能的。我为此受到伤害的表情是如此的复杂和细微，尽管我对眼前那些自称是朋友的人从来没有幻想，尽管我一直没法从他们那里去体会幻灭。&lt;/p&gt;
-
-&lt;p&gt;　　我从来一刻也不怀疑，他们都会背叛我，但他们一旦这样做，我还是一次次感到震惊。甚至我一直期待着发生的事一旦发生，对于我来说，它还是出乎意料。&lt;/p&gt;
-
-&lt;p&gt;　　就像我从来没有在自己身上发现可以吸引另一个人的品质，我也从来无法相信他人可以感到他们对我的吸引。如同一个卑微傻子想出来的意见，可以被一个又一个的事实粉碎——那些出乎意料的事实居然一直被我信心十足地意料——不总是证明我的胜算。&lt;/p&gt;
-
-&lt;p&gt;　　我甚至无法想象他们以前对我的怜悯之感，虽然我身体笨拙而且让人难以接受，但还没有一败涂地到那种程度，以至要在既无法吸引同情甚至在同情明显不存的时候，成为他人垂怜的什么候选对象。而且也不可能有什么同情会垂顾我的品质，会表达遗憾，因为没有一种对于精神废人的遗憾。这样，我被拉入一片其他人盲视的沉陷地带，在那里不愿意吸引任何人的同情。&lt;/p&gt;
-
-&lt;p&gt;　　我毕其一生来试图适应这一点，不去太深地感觉它的全部残忍和卑鄙。&lt;/p&gt;
-
-&lt;p&gt;　　一个人需要一种特定的知识勇气，去无所畏惧地承认，一个人不过是人类的一个碎片，一个活着的流产小儿，一个还没有疯到需要锁起来的疯子；但是，承认了这一点之后，一个人甚至更需要精神的勇气，使自己完全适应他的命运，欣然接受反而没有背叛，没有弃权，没有任何抗议动作或者试图代表抗议的动作。自然已经把基本的灾难降临于他。想要完全浑然不觉就是想要太多的痛苦，因为人性不愿意接受恶，只能承认它就是这么回事并且把它称之为善，如果你把它当作一种恶来接受，除了受伤之外你别无出路。&lt;/p&gt;
-
-&lt;p&gt;　　我的不行——一种对于自己的快乐的不幸——藏在我对自己的想象当中。我像别人看着我一样看到自己并且开始讨厌自己，这不是因为我认识到自己品质理应受到蔑视，而是因为我像别人看我一样看见自己，感受到他们感受中对我的某一类蔑视。&lt;/p&gt;
-
-&lt;p&gt;　　我承受着自治的羞耻。因为这是一种缺乏高贵的蒙难，不会有日后的复活相随，我能做的一切就是承受它全部的下箭。&lt;/p&gt;
-
-&lt;p&gt;　　后来我明白，只有完全缺乏审美感觉的人才可能爱我，而他们这样做的时候只能被我反感。甚至对我的喜欢，都不过是他人一时兴起的冷漠而已。&lt;/p&gt;
-
-&lt;p&gt;　　让我们清楚地看透我们自己，看透他人是如何看透我们！&lt;/p&gt;
-
-&lt;p&gt;　　让我们直面真实！基督钉死在十字架时最后的呼喊向我们传来，他看见了，面对面地看见了他的真实：我的主呵，我的主呵，汝为何弃我？」&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;10月14日9点33分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;想学架子鼓。&lt;/p&gt;
-
-&lt;p&gt;Nobody is normal.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;10月11日13点38分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;拿到N2证书了，反而不明白是为了什么。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;10月10日23点13分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;拎不清。&lt;/p&gt;
-
-&lt;p&gt;记：&lt;/p&gt;
-
-&lt;p&gt;《惶然录》——费尔南多·佩索阿&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-嫉妒&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「我嫉妒每一个人，因为他们不是我。与之有关的一切不可能性，是这件事看起来总是至关重要。这一点造成了我每天忧郁的主体部分，让沮丧填满了每一个黯淡的时刻。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-写作治病&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「从今以后，我会碰到一些事情。当这些事情照常突如其来的时候，生活将一种极度的烦闷强加给我的情感，对着一种如此剧烈的烦闷，任何疗救都于事无补。自杀看来使过于不当和过时了，即便有人假定这种办法可以确保遗忘，但也没有什么意义。这种烦闷渴求的并不是简单的停止生命——这也许是可能或者不可能的——而是比这更可怕，更深重的东西，是想要从来彻底的不曾存在，而这一点当然无法做到。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-我是书中的人物&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「我会一直不知不觉地见证自己生命地逐渐耗竭，还有一切我向往之物的缓缓破灭。我可以说，真实不需要花环来提醒自己已经死亡，据此而言，这世界上没有一件东西是我愿意得到的，我也无法在任何一件事情中，把我的瞬时梦想安顿片刻——这种梦想还没有坠落和破碎在我的窗下，还没有像一块成团的泥土从街上高高的阳台上的一个花钵里倾落，然后散落成地上的残土。事情甚至是这样的，命运总是最先和最早地试图使我热爱和愿望某一件事物，在紧接下来的第二天，我就在命运的圣谕之下看得十分清楚，自己不曾亦不会那样去做。&lt;/p&gt;
-
-&lt;p&gt;　　尽管这样，如同是自己的一个冷嘲的旁观者，我从来没有失去观察生活的兴趣。眼下，即使事先知道每一个尝试的希望都会破灭，我还是领受着特别的愉悦，同时享乐于幻灭和痛苦，还有一种苦涩的甜蜜，而其中的甜蜜更为突出。我是一个忧郁的战略家，每战皆失，在眼下一次次新的交战前夕，勾画出命运退却的诸多细节，欣赏着他自己做出的计划。&lt;/p&gt;
-
-&lt;p&gt;　　我的期望将会落空，我不能够在对此无知的的情况下来伸展期望。这种命运像邪恶的造物纠缠着我。无论什么时候，我在街上看见一个少女的身影，在惊异然而无聊的瞬间，会觉得她是多么像是我的人儿。然而，每一次，她都使我的白日梦破灭，让我活活地看见她遇见另一个男人，明显是她的丈夫或者情侣。&lt;/p&gt;
-
-&lt;p&gt;　　一种罗曼蒂克，就会造成这样的惨剧，而一个局外人却可以把这件事当作一出喜剧。然而，我身兼两职，因为对自己来说，我既是一个罗曼蒂克情种又是一个局外人，只是把书页向下翻，享乐于一个又一个冷嘲热讽的故事。&lt;/p&gt;
-
-&lt;p&gt;　　有些人说，生活中不能没有希望；另一些说，正是希望使生活丧失了意义。而对于我来说，希望和失望都不存在，生活仅仅是一张把我自己包含在内的画，但是在我的观看下，更像是一出没有情节的戏剧，纯粹是为了悦目而演出——生活是一场支离破碎的芭蕾舞，是一棵树上狂乱翻飞的树叶，是随着阳光变化颜色的云彩，是城市奇特地段那混乱无序地网状老街。&lt;/p&gt;
-
-&lt;p&gt;　　在很大程度上，我是自己写下的散文。我用辞藻和段落使自己成形，给自己加上标点，而且用一连串意象使自己成为一个国王；就像孩子们做的那样，给自己戴上一顶报纸叠成地王冠。用一连串词语寻找韵律以便让自己华丽炫目；就像疯子们做的那样，把梦中依然盛开的干枯花朵披戴在自己身上。&lt;/p&gt;
-
-&lt;p&gt;　　更进一步地说，我成为意识本身，像一个注满锯屑的玩偶那样沉静，无论什么时候推它一下，它那顶缝在突出帽子顶端的铃铛就会摇晃：生活叮叮当当响在一个死者的头上，对命运构成小小的警告。&lt;/p&gt;
-
-&lt;p&gt;　　事情经常是这样，即便我正处于平静的不满，但我仍然不会有空虚和单调之感，不会有这种思想慢慢潜入自己意识情绪的方式！事情经常是这样，像从其他混杂噪音中听出了某种声音，我没有感到与人类生活如此相异的生活有什么苦涩，倒是感到在这种生活里，唯一发生的事情只是对生活有所意识。事情经常是这样，我从自己身上苏醒过来，不曾把放逐的我回看一眼。我多么想成为终极的空无之人：这个幸运者至少可以感受到真实的苦涩；我多么想成为生活充实的人，他感受到疲劳而不是单调，受害而不仅仅是想象受害，是真正地给自己一刀而不是慢慢地死去。&lt;/p&gt;
-
-&lt;p&gt;　　我已经成了一本书里的人物，一段已经被阅读的生活。&lt;/p&gt;
-
-&lt;p&gt;　　与我的意愿完全相反，我的所感是为了自己能将其记录下来的感受，我的所思是后来出现在词语中的思想，而且混杂着只会彻底毁坏这些思想的意象，并且在意味着外物介入的韵律中展开。在这所有的重写中，我毁灭了自己。在这所有的思想中，我现在的思想不仅仅属于我，不是我自己。我探测自己的深度，但弄丢了自己的准绳；我毕其一生想知道自己深还是浅，但只能用自己的肉眼来目测，而展示于眼前的一切，在一口巨井的幽黑水面上清清楚楚，不过是这个人看见了在对视自己的一张脸。&lt;/p&gt;
-
-&lt;p&gt;　　我像一张扑克，属于古代未知的某一套牌，是失落了的某一盒牌中仅存的残余。我没有意义，不知道自己的价值，没有什么东西可以用来比较自己从而对自己加以寻找，在生活中也没有可以赖以辨识自己的目标。于是，在我用来描述自己的一连串意象里——既不真实亦非不真实——我更像意象而不是我。我在实在之外谈论自己，把自己的心灵用如墨水，其意图仅仅是写作。但是，反应渐渐微弱，我重新屈从于自己，返回到原样的我，即便这个我什么也不是。一种类似枯泪的东西在我大睁的眼睛里燃烧，一种从来没有感受过的焦虑扼住了我干涩的喉头。然而，如果大哭一场的话，我并不知道自己是为什么而哭，也不知道为什么我还没有哭出来，也不知道为什么我还没有哭出来。幻境就像影子一样紧紧粘着我。我所向往的一切就是入眠。」&lt;/p&gt;
-
-&lt;h1 id=&#34;九月&#34;&gt;九月&lt;/h1&gt;
-
-&lt;p&gt;&lt;strong&gt;9月28日21点04分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;恶&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;9月25日18点56分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;什么也记不住。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;9月22日21点49分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;脑壳炸裂。&lt;/p&gt;
-
-&lt;h1 id=&#34;八月&#34;&gt;八月&lt;/h1&gt;
-
-&lt;p&gt;&lt;strong&gt;8月22日12点05分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;N2过了。&lt;/p&gt;
-
-&lt;h1 id=&#34;七月&#34;&gt;七月&lt;/h1&gt;
-
-&lt;p&gt;&lt;strong&gt;7月13日17点02分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;放暑假了。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;7月1日21点31分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;N2结束了，听力炸了。&lt;/p&gt;
-
-&lt;p&gt;天気がいいから、一緒に散歩にまび。&lt;/p&gt;
-
-&lt;h1 id=&#34;六月&#34;&gt;六月&lt;/h1&gt;
-
-&lt;p&gt;&lt;strong&gt;6月26日21点50分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;由内向外渗透的异样感，&lt;/p&gt;
-
-&lt;p&gt;被突如其来的不安笼罩，&lt;/p&gt;
-
-&lt;p&gt;一时之间不知所措。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;6月21日22点42分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;物欲。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;6月15日18点11分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;拔了两颗智齿。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;6月12日 16点23分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;今年过了一半。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;6月10日 9点58分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;想成为碎片。&lt;/p&gt;
-
-&lt;h1 id=&#34;五月&#34;&gt;五月&lt;/h1&gt;
-
-&lt;p&gt;&lt;strong&gt;5月27日 19点50分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;人的高度，&lt;/p&gt;
-
-&lt;p&gt;思想的限度。&lt;/p&gt;
-
-&lt;h1 id=&#34;四月&#34;&gt;四月&lt;/h1&gt;
-
-&lt;p&gt;&lt;strong&gt;4月30日 11点45分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;又偷懒了。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;4月24日 21点43分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;记：&lt;/p&gt;
-
-&lt;p&gt;《狂言之神》——太宰治&lt;/p&gt;
-
-&lt;p&gt;「我无法生猛地活下去，因此要死。」&lt;/p&gt;
-
-&lt;p&gt;「人类最悲痛的表情不是眼泪，也不是白发，更不是眉心的皱纹。最苦恼的场合，人会默默微笑。」&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;4月18日 21点11分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;比猪还蠢。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;4月13日 19点53分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;总有人比你强。&lt;/p&gt;
-
-&lt;p&gt;Boy Meets Girl.&lt;/p&gt;
-
-&lt;p&gt;记：&lt;/p&gt;
-
-&lt;p&gt;《惶然录》——费尔南多·佩索阿&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-我游历第八大洲&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「我们从来不能从自己体内抽身而去。我们从来不能成为另外的人，除非运用我们对自己的想象性感觉，我们才能他变。真正的景观是我们自己创造的，因为我们是它们的上帝。它们在我们眼里实际的样子，恰恰就是它们被造就的样子。我对世界七大洲的任何地方既没有兴趣，也没有真正去看过。我游历我自己的第八大洲。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-两种人&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「有些人把他们不能实现的生活，变成一个伟大的梦。另一些人完全没有梦，连梦一下也做不到。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-雾或者烟&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「没有什么东西是明确的，甚至没有什么东西是不明确的。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-雨&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「最后，光斑闪闪的一片黑色屋顶之上，温暖早晨的寒光终于划破黑暗，像启示录带来的一种震痛。已经很多次了，深广的夜晚渐渐明亮起来。已经很多次了，以同样的恐惧——我面对另一天的到来，面对生活以及它虚构的用途以及徒劳无益的活动。我生理上的个性，有形的、社会的、可用言语交流的个性毫无意义，只是在他人的思想和行动那里，才能派上点用场。&lt;/p&gt;
-
-&lt;p&gt;　　我再一次是我，准确地说我不是。伴随着黑暗之光的到来，灰暗的疑惑充斥其中，窗叶子咔咔作响，我开始感到自己的抗拒无法坚守得太久。我躺在床上没有睡觉，只是有一种把睡觉的可能性持续下去的感觉，一种飘然入梦的感觉。我已经不知道什么真实或者现实的所在，睡在清爽而温暖的清洁床单之间，除了舒适之感，对自己身体的存在却浑然不觉。我自觉潮水般离我而去的是无意识的快乐，而随着这种快乐，我才能得以享乐于自己的意识，慵懒，动物般地张望，半开半合的双眼，像太阳光下的猫，还有我断断续续想象的逻辑运作。我感到半影状态的优越正从我的身上滑离而去，我不时颤动着的睫毛之树下有缓缓的河水在流淌，瀑布的低语在我耳中缓缓的脉搏声中和持续着的微弱雨声中消失。我渐渐地把自己失落在生命里。&lt;/p&gt;
-
-&lt;p&gt;　　我不知道自己是睡着了，抑或仅仅是有睡觉的自我感觉。&lt;/p&gt;
-
-&lt;p&gt;　　我的梦不会有这样精确的间隔节奏，但就像从一个醒着的梦里开始醒过来，我注意到城市生活的最初骚动，从楼下我不知道的什么地方，从上帝造就的街道那里浪一般汹涌而起。它们是快乐的喧响，滤入苍凉的雨声，我眼下不能听出这雨声是响在现在还是响在过去……我只能从远方零碎闪光中过量的灰暗，从依稀亮色投来络光影；辨出在清晨这一时间里不常有的黑暗，辨出眼下的时间。我听到的声音充盈着欢乐，四处飘散。它们使我心痛，就像是来召唤我与它们同行，要把我送入验明正身之后的行刑。&lt;/p&gt;
-
-&lt;p&gt;　　每一天，我都躺在知觉空白的床上听到破晓。白天对于我来说似乎是生活中伟大的事件，而我缺乏勇气来面对。我感觉到的每一天都是从它幻影的床榻上升起来，把被子全都撕碎在楼下的大街小巷，意在把我传到什么地方接受审判。而每一天的破晓之时，我都被判决。我体内这个永远可恶的恶人纠缠着床榻，就像舍不下已经死去的母亲；我一次次把自己埋入枕头，就像投入保姆的怀抱，以求她在陌生人面前保护我。&lt;/p&gt;
-
-&lt;p&gt;　　树荫之下惬意午休着的巨兽，高高草丛的阴凉之处疲乏不堪的街上顽童，黑人在温暖午后长久的沉沉睡意以及舒心的哈欠和迟钝的双目，还有我们大脑休息时一片宁静的安适：这一切把我们从遗忘中遥拍着慢慢送入梦乡，在梦乡莫名的抚爱之中，逼近着灵魂的窗口。&lt;/p&gt;
-
-&lt;p&gt;　　睡吧，让我并不自知的走神，身体躺下来，忘记自己的躯体，欣悦于无意识状态中的自由，在遥远茂密大森林中一个被遗忘的静静湖泊那里避难。&lt;/p&gt;
-
-&lt;p&gt;　　这仅仅是看来还有点呼吸的一个废物，无法醒来感觉到新鲜和活力的一个半死者，灵魂中为了留下忘却的一种千头万绪的编织。&lt;/p&gt;
-
-&lt;p&gt;　　但是，像是一片不愿罢休的听众喊声再起以示抗议，我再一次听到突然的雨声喧哗，渗透着正在渐渐明亮起来的天地。&lt;/p&gt;
-
-&lt;p&gt;　　我感到一阵假定的寒意彻骨，好像自己被吓着了。我蜷缩着身子，面对着苍凉和人类，面对着在微暗中留给我的一切，终于哭了。是的，我为自己的孤独、生命以及痛苦而哭，我的痛苦被抛弃在现实生活大路边，就像一辆没有轮子的破车，陷在泥粪堆里。我为万事万物而哭，为我儿时曾经就坐的膝盖现在已经不在，为曾经伸向我的手现在已经消失，为未能抓住我的手臂，为哭泣时可以依靠的肩头其实从来就不曾有过……天终于亮了，痛苦在我心头的破晓像白日的严酷真理，我梦想、思考以及忘记的一切——所有的一切，处在一种幻影、虚拟以及懊悔的混合之中，在往日世界的苏醒中一起翻滚，落入生活的一堆碎片，像一串葡萄被哪个小家伙偷到墙角里吃掉然后吐下的残渣。&lt;/p&gt;
-
-&lt;p&gt;　　如同召唤人们前去祈祷的钟声响了，白日的嘈杂人声突然更为喧闹。在楼房的深处，如闻一声爆炸，我听到有人轻轻关闭了内门，然后走向今天的世界。我听到有拖鞋的声音走过古怪的走廊然后直逼我的心里。以一种仓皇的动作，像什么人最终找到了自杀的办法，我掀开被子在床上坐起来。我醒过来了。&lt;/p&gt;
-
-&lt;p&gt;　　窗外什么地方的雨声已经停歇。我很高兴，已经履行了某种莫名的职责。我突然果断地起了床，走到窗前打开了通向一天的窗子，让洁净的雨雾以幽暗之光浸润着我的双眼。我打开了窗，让清凉的空气湿润着我热乎乎的皮肤。是的，还在下雨。但是，即便一切都照此原封不动地下去，到头来又有什么大不了呢！&lt;/p&gt;
-
-&lt;p&gt;　　我要焕然一新，我要生活下去，我要向生活伸出脖子，承担轭套的巨大沉重。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-单调与更糟的单调&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「人们说单调是一种病，折磨着闲散之人，或者只是伤及那些无所事事者。不管怎样，这种灵魂的折磨还是有轻重之分的：比如在一种预先安排却又很少得到怜悯的命运之下，那些工作着或者假装工作着（他们说到底是一回事）的人，比真正的闲人所受到的打击要多得多。&lt;/p&gt;
-
-&lt;p&gt;　　最为糟糕的事情，莫过于让我们看到，印度人以及尚在开发过程中的民族，尚有一种内心生活的光辉，这种光辉与他们生活平淡无奇的日复一日，与他们肮脏甚至不一定真正肮脏的生活，形成了强烈的对比。看来，更为沉重的单调总是发生在它没有闲散作为借口的时候。体面和忙碌的单调，是所有单调中最为糟糕的一种。&lt;/p&gt;
-
-&lt;p&gt;　　单调不是无所事事百无聊赖所带来的一种病，而是感到没有什么事情值得一做时更为麻烦的一种病。因为是故，有更多的人不得不陷入更糟的单调。&lt;/p&gt;
-
-&lt;p&gt;　　我如此经常地从帐本里抬起头来，逃出自己的抄写和对于整个世界空空如也的脑袋。如果我闲着，什么也没做，没有什么可做，那可能还好一些，因为那种单调虽然货真价实，我至少可以从中取乐。在我当下的状态里，在不适的感觉里没有舒缓，没有高贵，没有安逸，只有自己造成的每个动作中的一种极度乏味，没有任何一种潜伏着乏味的行动是自己愿意所为。」&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;4月11日 12点07分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;厌学。&lt;/p&gt;
-
-&lt;p&gt;记：&lt;/p&gt;
-
-&lt;p&gt;《维庸之妻》——太宰治&lt;/p&gt;
-
-&lt;p&gt;「可俗话说，人这辈子就如同地狱，寸善尺魔，真是一点不假。一年三百六十五天，无忧无虑的日子能有一天——不，能有半天，就算是幸福的人了。」&lt;/p&gt;
-
-&lt;p&gt;「我这个人吧，表面上很风光，其实特别想去死呢，我自打一出生就整天想着去死。为了其他人，我也是死了的好，这是毫无疑问的。即使这样，我怎么也死不成。一定有可怕的怪物，就是不让我死。」&lt;/p&gt;
-
-&lt;p&gt;「不是人也无所谓啊，我们只要能活着就行了。」&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;4月9日 22点48分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;记：&lt;/p&gt;
-
-&lt;p&gt;《潘多拉之匣》——太宰治&lt;/p&gt;
-
-&lt;p&gt;「想到这些，我感到茫然无措。我完全不知道今后的路该怎么走，而且，像我这样不求进取的人，活着就是给人增添麻烦，没有任何意义，每想到此，我就痛苦万分，像你这样的高材生是理解不了的。“自己活着就是给别人增添麻烦，我是一个多余的人。”世间没有比这个念头更令人痛苦的了。」&lt;/p&gt;
-
-&lt;p&gt;「说到底，我们的微笑，由来于那颗躺在潘多拉之匣一角的小石子。对于和死亡毗邻而居的人而言，比起生死的问题来，一朵花的微笑更能铭记于心。现在的我们仿佛是被某种幽幽的花香吸引着，乘上了一艘完全陌生的大船，沿着命运的航线随波逐流。我并不知道这艘所谓“天意”的大船，将到达哪座岛屿，但是，我们必须信赖这次航行。我甚至感觉，是死去还是活着，这些已经不再是决定一个人是幸或不幸的关键了。死者归于圆满，生者则立于航船的甲板上合掌祈祷。大船飞速驶离了岸边——“死亡是一件好事。”」&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;4月8日 21点18分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;记：&lt;/p&gt;
-
-&lt;p&gt;《惶然录》——费尔南多·佩索阿&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-潜在的宫殿&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「行动，是真正的智慧。我愿意成为我愿意成为的人。但是我必须愿望自己所愿望的东西。成功意味着已经成功，而不仅仅是潜在的成功。任何一大块土地都是宫殿的潜在可能，但是如果还没建起来，宫殿在哪里？」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-自我折腾&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「我做着有关里斯本与卡斯凯什之间旅行的白日梦。我去卡斯凯什那里为老板在那里的一所房子付税。我急切地向往着来回各一个小时的旅行，让我有机会看看总是在改变着面容的伟大河流以及它的大西洋人海口。事实上，一路上我迷失在抽象的思考里，我投出去的目光，并没有看见自己一直如此向往的河上风光。回来的一路上，我又迷失在对这种感受的分析之中。&lt;/p&gt;
-
-&lt;p&gt;　　我不能描述旅行中哪怕最小的细节，以及我见过的最小片断。&lt;/p&gt;
-
-&lt;p&gt;　　我的健忘和自身折腾只露下这些纸页，不知道比起自我折腾来说，它们是好一些或者是更糟一些。&lt;/p&gt;
-
-&lt;p&gt;　　火车缓缓开进了车站，我已经到达里斯本，还没有任何结论。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-楼上的琴声&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「我猜想，虽然我仅仅是这一切的一个载体，虽然我感受到的向往既不真正属于我，也未见得真有什么玄秘，但作为一段截取来的情感，它属于不可知道的第三者。对于我来说，这些情感是文学性的，就像维埃拉说的，是文学性的。我的伤害和痛苦来自自己想象的感受，它们仅仅存在于我的想象中，还有我对于他者思想或者情感性的怀旧之中。这种怀旧留给我盈目的泪水。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-我是凯撒&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「我们把生活想象成什么样，它就是什么样。对于有一块园子的农民来说，园子就是他的一切，是他的帝国。凯撒有庞大帝国，仍嫌帝国狭窄，帝国就只是他的园子。小人物有一个帝国。大人物只有一个园子。除了我们的感受以外我们一无所有，这是他们的真实，却不能被他们领悟，而我们必须立足于自己生活的现实。&lt;/p&gt;
-
-&lt;p&gt;　　但所有这些都是虚无。&lt;/p&gt;
-
-&lt;p&gt;　　我做了很多梦，现在已经把梦做累了。但我并不厌倦梦。&lt;/p&gt;
-
-&lt;p&gt;　　没有人厌倦梦，因为梦就是忘却，而忘却不会成为我们的负担，忘却是我们完全保持清醒时无梦的沉睡。我在梦里得到了一切。&lt;/p&gt;
-
-&lt;p&gt;　　我已经醒了，那又有什么关系？我已经当过了多少次凯撒呵！&lt;/p&gt;
-
-&lt;p&gt;　　这是何等精神意义上的光荣！当凯撒在一个海盗的宽宏大量下死里逃生以后，他长久和艰难地寻找这个人，逮捕他并且下令把他钉死在十字架上。当拿破仑在圣·海伦娜岛上定下最后的意愿和遗嘱，他将一大笔遗产，留给一个曾经试图行刺威灵顿的罪犯。如此灵魂的伟大，却与他们的患斜眼疾的邻居差不多同日而语！……我已经不计其数地当过凯撒并且在梦里继续当下去！&lt;/p&gt;
-
-&lt;p&gt;　　不管我多少次当上了凯撒，还没有喜欢上真正的凯撒。我的真正帝国是我的梦，只因为它们最后都去烟消云散。我的军队征战南北但无关紧要，不会有人死去。也没有城头的王旗变幻。我从来没有让梦里军队的所到之处，有旗帜飘入我梦中凝定的视野。在道拉多雷斯大街上我不计数地成为凯撒。作为凯撒的我，至今生活在我的想象里，而真正的凯撒们统统早就死了，现在的道拉多雷斯大街已无迹可循。&lt;/p&gt;
-
-&lt;p&gt;　　我把一个空空的火柴盒，丢入我高高窗户外的街头垃圾堆，然后坐在椅子里倾听。落下去的火柴盒送回了清晰的回声，让我知道大街的荒芜，这一事实似乎显示着某种意义。没有声音可以从整个城市的声音里分离出来。是的，整个星期天城市的声音——这么多无法破译各行其是的声音。&lt;/p&gt;
-
-&lt;p&gt;　　一个人需要的现实世界，作为最为深邃思想的起点，是何等的小：吃中饭晚了一点点，用完了火柴然后把空火柴盒抛向街头，因为中饭吃得太晚以致稍感不适，除了可怜落日的许诺以外空中什么也没有得星期天，还有我既不属于这个世界也不属于其他如此形而上问题的生命。&lt;/p&gt;
-
-&lt;p&gt;　　但是，我当了多少次凯撒！」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-旅行者本身就是旅行&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「你想要旅行么？要旅行的话，你只需要存在就行。在我身体的列车里，在我的命运旅行途中如同一站接一站的一日复一日里，我探出头去看见了街道和广场，看见了姿势和面容，它们总是相同，一如它们总是相异。说到底，命运是穿越所有景观的通道。&lt;/p&gt;
-
-&lt;p&gt;　　如果我想象什么，我就能看见它。如果我旅行的话，我会看得到更多的什么吗？只有想象的极端贫弱，才能为意在感受的旅行提供辩解。&lt;/p&gt;
-
-&lt;p&gt;　　“通向N市的任何一条道路，都会把你引向世界的终点。”&lt;/p&gt;
-
-&lt;p&gt;　　但是，一旦你把世界完全看了个透，世界的终点就与你出发时的N市没有什么两样。事实上，世界的终点以及世界的起点，只不过是我们有关世界的概念。仅仅是在我们的内心里，景观才成其为景观。这就是为什么说我想象它们，它们就存在。如果它们存在，那么我看见它们就像我看见别的景观。所以干嘛要旅行呢？在马德里，在柏林，在波斯，在中国，在南极和北极，我在什么地方可以有异于内在的我？可以感受到我特别不同的感受？&lt;/p&gt;
-
-&lt;p&gt;　　生活全看我们是如何把它造就。旅行者本身就是旅行。我们看到的，并不是我们所看到的，而是我们自己。」&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;4月2日 22点22分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;三天打鱼，两天晒网。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;4月1日 19点38分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;小明问小强：“你有橡皮膏吗？”&lt;/p&gt;
-
-&lt;p&gt;小强挠挠脑袋，抱歉地说：“我没有橡皮膏！”&lt;/p&gt;
-
-&lt;p&gt;小明哈哈大笑：“你还没有橡——皮——高！”&lt;/p&gt;
-
-&lt;p&gt;到底在些干什么啊。&lt;/p&gt;
-
-&lt;p&gt;记：&lt;/p&gt;
-
-&lt;p&gt;《惶然录》——费尔南多·佩索阿&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-自闭&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「最小的事情都可以如此容易地折磨我，知道了这一点以后，我总是小心翼翼地避免碰到这种情况。一片流云飘过太阳，也足以给我伤害之感，那么我生活中无边无际的满天暗云人何以堪？&lt;/p&gt;
-
-&lt;p&gt;　　我的自闭不是对快乐的寻求，我无法去赢得快乐。我的自闭也不是对平静的寻求，平静的获得仅仅取决于它从来就不会失去。我寻求的是沉睡，是熄灭，是一种微不足道的放弃。&lt;/p&gt;
-
-&lt;p&gt;　　对于我来说，陋室四壁即是监狱也是遥远的地平线，即是卧榻也是棺木。我最快乐的时候，使我既不思想也不向往的时候，甚至没有梦的时候，我把自己失落在某种虚有所获的麻木之中，生活的地表上青苔生长。我品尝自己什么也不是的荒诞感，预尝一种死亡和熄灭的滋味，却没有丝毫苦涩。&lt;/p&gt;
-
-&lt;p&gt;　　我从来没有可以叫做“主宰”的人。没有基督为我而死、没有佛陀为我指出正信之道。在我梦幻的深处，没有太阳神阿波罗或者智慧神雅典娜在我面前出现，照亮我的灵魂。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-文明是关于自然的教育&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「在所有人的眼里，文明意味着再生。但是，对于我或者感觉与我相同的人们来说，人造品似乎已经成为自然以及陌生的自然。不，应该这样说：人造品并没有成为自然，而自然以及完全变质变样。我憎恶汽车，我的快乐里无须汽车和其他科学的产品——电话和电报——它们使生活变得方便；我也不靠这些产品提供乐趣——留声机和收音机——热爱这些东西的人当然可以从中取乐。&lt;/p&gt;
-
-&lt;p&gt;　　我对这些东西毫无兴趣，一无所求。但是我热爱塔格斯河，因为伟大的城市坐落在它的岸边。我欣赏长天，因为我能够从贝克萨区的四楼窗户里看到它。比起格雷卡或者阿尔康塔雷远望静静月光的波光闪闪，乡村或者自然里没有任何一件事情可以与之媲美。对于我来说，阳光下里斯本变幻无穷的色彩，也比任何鲜花更好看。&lt;/p&gt;
-
-&lt;p&gt;　　只有穿上衣装的人，才能发现裸体的美丽。对于声色的节制，其压倒一切的价值就是可以为能量增压。人造品是人们享乐于自然性的一种方式。我之所以在广阔田野里其乐融融，是因为我并不生活在这里。一个人倘若从来没有收到过制约，也就不可能有自由的概念。文明是一种关于自然的教育。人造品提供了人们接近自然之道。然而，我们万万不可做的，是不要错把人造品当作自然。人类最高灵魂的本质，就存在于自然与人造品之间的和谐之中。」&lt;/p&gt;
-
-&lt;h1 id=&#34;三月&#34;&gt;三月&lt;/h1&gt;
-
-&lt;p&gt;&lt;strong&gt;3月30日 20点05分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Banana Slugs&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;3月27日 16点24分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;记：&lt;/p&gt;
-
-&lt;p&gt;《惶然录》——费尔南多·佩索阿&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-生活是伟大的失眠&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「我找到自己之日，就是失落自己之时。如果我相信，我就必然怀疑。——我紧紧抓住一些东西的时候，我的手必定空无一物。我去睡觉就如我正在出去散步。生活毕竟是一次伟大的失眠，我们做过或想过的一切，都处在清澈的半醒状态之中。」&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;3月26日 22点31分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;记：&lt;/p&gt;
-
-&lt;p&gt;《惶然录》——费尔南多·佩索阿&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-童心不再&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「不过，如果我像观察城市这样近切地观察自己，我明白自己一切希望所寄地今天，就像其他的每一天也会要完蛋。」&lt;/p&gt;
-
-&lt;p&gt;「我早已看见了一切，包括看见过那些我从来没有看见以及从来无意看见的一切。即便未来景观的无聊感已经渗入我的血液，即便我痛苦地明白这一点，我还是不得不再一次怀着预先已有的乏味感，把目光投向我早已相逢的景观。」&lt;/p&gt;
-
-&lt;p&gt;「依凭着阳台，欣悦于日照，我看着整个城市的千姿百态，唯有一种想法用上心头——任何牢不可破的东西都将死亡，都将消失，都不能再见到阳光倾洒街市，不能思考和感觉，都将把我遗忘，就像对待废弃的包装纸，来对待太阳的运行以及它的整个白日。它们在生命的偶尔努力中不辞而去，就像一个人将沉甸甸的外衣脱在大床跟前。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-纸牌游戏&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「我写下这一切，只是为了给自己的感觉退退烧。我自供的东西无足轻重，因为本来就没有任何东西说得上重要。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-亦同亦异&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「一天过去以后，留下的东西还是昨天留下的东西，也是明天将会留下的东西，我有永不满足的、不可测量的渴望，即渴望成为自己的一个同者又是自己的一个异者。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-生活之奴&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「一切事物的单调包围着我，就像我进了监狱。而今天是我狱中岁月中的一天。不过，那种单调只是我自己的单调。其实，每一张即便是昨天与我们相逢的人面，而今天也有了完全不同之处，因为今天不是昨天。每一天都是特定的一天，世界上永远不会有另外的一天与之相似。只有在心灵中，才会有绝对的同一（尽管是一种虚假的同一），使很多事物与很多事物相类聚并且被简化。世界是由海角和尖峰组成的；我们的弱视症使我们只能看到四处弥漫的薄薄迷雾而已。&lt;/p&gt;
-
-&lt;p&gt;　　我希望能够远走，逃离我的所知，逃离我的所有，逃离我的所爱。我想要出发，不是去飘渺幻境中的西印度，不是去远离其它南大陆的巨大海岛，我只是想去任何地方，不论是村庄或者荒原，只要不是在这里就行。我向往的只是不再见到这些人面，不再过这种没完没了的日子。我想做到的，是卸下我已成习惯的伪装，成为另一个我，以此得到喘息。我想要睡意临近之感，这种睡眠是生活的期许而不是生活的休息。靠着海边的一个木棚，甚至崎岖山脉边缘的一个山洞，对于我来说都够了。不幸的是，我在这些事情上从来都是事与愿违。&lt;/p&gt;
-
-&lt;p&gt;　　奴役是生活的唯一法律。不会有其他的法律，因为这条法律必须被人们遵从，没有造反或者另求庇护的可能。有一些人生来就是奴隶，有一些人都来成为奴隶，还有一些人则是强制之下被迫为奴。我们所有人对自由的怯懦的爱，是无可辩驳的证据，证明我们的奴隶生活是如何与我们般配——因为一旦自由降临我们，我们全会将其当作一件太新鲜、太奇怪的东西而避之不及。甚至，我刚刚表达了我对一个木棚或山洞的愿望，希望在那里解除一切事物的单调，也就是说解除我之为我的单调，我真正有胆量动身去那个木棚或山洞么？单调一直存在于我的内心，我知道并且理解这一点，我是否因此就再也不能从中解脱？到哪里都是窒息，因么无论我在哪里都是我在哪里，当整个事情与空气无关而是肺出了毛病的时候，我的呼吸还能在生命地方得到改善？谁说我情不自禁地呼唤着纯净的太阳和空旷的田野，还有明亮的海洋和广阔的地平线，而不再会惦记我的床或者我的食品？不再会走下八段楼梯来到街上？不会再拐进街角的烟草店？不再会对身边闲得无事的理发匠问候早安？&lt;/p&gt;
-
-&lt;p&gt;　　我们周围的一切成为了我们的一部分，以它的血肉和生命的一切经验渗透着我们，就像巨大蜘蛛之神布下的网，再我们轻摇于风中的地方，轻轻缚住我们。用柔弱的陷阱诱捕我们，以便我们慢慢地死去。一切就是我们，我们就是一切。但如果一切都是虚无，那么事情还有什么意义？一道阳光暗去，一抹突然间阴沉逼人的乌云移来，一阵微风轻轻吹起，寂静降临了，抹去了这些特定的面容、这些嗡嗡人语，还有谈话时的轻松微笑，然后星群在夜空中如同残缺难解的象形符号毫无意义地浮现。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-一个人是群体&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「从天而降的倾盆大雨终于停歇，天空洁净，大地潮润而闪闪发光——世间的一切在大雨留下的凉爽中欢快地欣欣向荣，生活重新变得特别澄明。大雨给每一颗灵魂提供了蓝天，为每一个心胸提供了新鲜。&lt;/p&gt;
-
-&lt;p&gt;　　无论我们喜欢或是不喜欢，我们都是这一刻所有形式和色彩的奴隶，是天空和大地的居民。我们对周围一切漫不经心也好，感怀之深也好，下雨的时候一如放晴的时候，心境都不会固持不变。只要一下雨，或者一停雨，难以察觉的变化便会发生。也许只存在于内心深处的最为抽象的情绪在这个时候才能为我们所感。我们感触到这些变化，但对此并无了解，因为我们感觉着天气的时候甚至并未察觉出自己在这样做。&lt;/p&gt;
-
-&lt;p&gt;　　我们中的每一个人都比一个人更丰富，比很多人更丰富，比我们自己每一个人的无限增殖更丰富。这就是为什么一个无视周围一切的人，也可以因周围一切而高兴或者悲戚，从而有别于自己。我们的存在是一片巨大的殖民地，有很多不同类型的人，有所有各个相异的思想和感觉共处其中。今天，当工作不足带给我合法空闲从而让我记下这少许印象的时候，我是小心抄写它们的人，是刚才还在闲中得乐的人，是遥望天空即便并不能从那里真正看清什么的人，是思考这一切的人，是轻易得到生理感觉并且注意到自己双手一直有些发冷的人。像一个千差万别但紧密聚合的群体，我的整个世界由不同的人组成，只是形单影只的组合工程，其静静的身子伏在B先生高高的写字台前写作。在这里，我找到了他从我这里借走的吸墨纸。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-单调产生的快乐&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「大多数的人以其愚笨生活在他们的生活之中，而这一回，愚笨中的智慧更使我惊讶。&lt;/p&gt;
-
-&lt;p&gt;　　显而易见，智慧生活的单调是极其可怕的。我在这个普通的餐馆吃中饭，看见柜台后面的厨师，还有右边的老侍者，正在像对待这里所有的客人一样为我服务，我相信，他这样做已经有三十年了。这些人过着一种怎样的生活？即便过上四十年，那个厨师还是差不多在厨房里度过他的每一天，有一点点休息，相对来说少了点睡眠，有时候去他的村子打一转，回来时拖沓了一点但无须愧疚。」他慢慢地积攒着自己慢慢赚来的钱，不打算花掉的钱。他将要落病并且不得不放弃（永远地）他的厨房，进入他在G省买下的墓地。他在里斯本活了四十年，但他从没有去过R区，没有去过戏院，只去过一次C区（那里的马戏小丑嵌入他生活的深处历久弥新）。他结婚了，为什么结婚和怎样结的婚？我一无所知。他有四个儿子和一个女儿。当他冲着我的餐桌把身子斜靠在柜台上，他的微笑传达着一种伟大的、庄重的、充实的快乐。他并没有装模作样，没有任何理由这样做。&lt;/p&gt;
-
-&lt;p&gt;　　他之所以显得快乐，是因为他确实快乐。&lt;/p&gt;
-
-&lt;p&gt;　　那个刚刚给我上了咖啡的老侍者又怎么样呢？在他的一生中，他数以万次地这样上咖啡，活得与厨师无异，唯一地区别是他干活的餐厅与其他人干活的厨房有四五码之遥。这样说当然撇开了另一些小区别，诸如他有两个小孩而不是五个小孩，他更经常地去G市，他比厨师更了解里斯本（如同更了解O市，他在那里呆过四年），他同样是充实地。&lt;/p&gt;
-
-&lt;p&gt;　　我带着真正的惊骇，再一次观看那些生类地全景，几乎为他们感到恐惧、悲伤以及惊乱。我发现那些没有感到恐惧、悲伤以及惊乱的人，正好是生活在他们生活中并且最有权力这样做的人。文学想象的核心错误，就是这样的观念：别人都像我们并且必定像我们一样感受。人类的幸运在于，每一个人都是他们自己，只有天才才被赋予成为别人的能力。&lt;/p&gt;
-
-&lt;p&gt;　　一切事物最终来说都是相对的。街头一个小小的事故，把餐馆厨师吸引到门口，此时的他，比我寻思一个最具原创性的念头，比我阅读一本最好的书或者欣悦于一些无用的梦，有更多的娱乐。而且，如果生活本质上是单调的，那么真理就是：他比我更容易也更好地逃出了单调。真理不属于任何人，因此他并不比我更多地拥有真理，但他拥有快乐。&lt;/p&gt;
-
-&lt;p&gt;　　聪明人把他的生活变得单调，以便使最小的事故都富有伟大的意义。任何历险的猎手在打了三只狮子以后都会丧失猎狮的兴致，而在我单调的厨师那里，他目击的所有街头斗殴都能令他赏心悦目，从中获益。对于从来没有离开过里斯本的人来说，驾驶电车去一趟B区就像无终无止的远游，如果有一天让他探访S市，他也许会觉得去了火星，在另一方面，遍游了全球的旅行者，走出方圆五千英里以外就再也不能发现什么新的东西。他总是看见新的东西，哪里有新奇，哪里就有见多不怪的厌倦，而后者总是毁灭了前者。真正的聪明人，都能够从他自己的躺椅里欣赏整个世界的壮景，无须同任何人说话，无需了解任何阅读的方法，他仅仅需要知道如何运用自己的五种感官，还有一颗灵魂里纯真的悲哀。&lt;/p&gt;
-
-&lt;p&gt;　　一个人为了摆脱他的单调，必须使存在单调化。一个人必须使每一天都如此平常不觉，那么在最微小的事故中才有欢娱可供探测。在我日复一日的工作当中，充满着乏味、重复、不得要领的事情，幻象使我神不守舍：遥远海岛的残梦，在另一个时代的花园大道上举行的种种聚会，不同的景象，不同的感受，另一个不同的我。但是，平心而论，我意识到如果那一天我真的得到了那一切，它们就会无一例外地不再是我的了。&lt;/p&gt;
-
-&lt;p&gt;　　事实是，V先生的比任何梦中国王更有价值；道拉多雷斯大街上的办公室比所有虚构花园里的宽广大道更有价值。因为正是V先生，才使我能够享乐于国王梦：正因为道拉多雷斯大街，才使我能够享乐于内心中种种不可能存在的山光水色。&lt;/p&gt;
-
-&lt;p&gt;　　如果梦中的国王属于我，我还有何可梦？如果我拥有那些绝无可能的山光水色，那么还有什么东西可为幻影。&lt;/p&gt;
-
-&lt;p&gt;　　我一直被这种单调护佑。相同日子的乏味雷同，我不可区分的今天和昨天，使我得以开心地享乐于迷人时间的飞逝，还有眼前世间任意的流变，还有大街下面什么地方源源送来的笑浪，夜间办公室关闭时巨大的自由感，我余生岁月的无穷无尽。&lt;/p&gt;
-
-&lt;p&gt;　　因为我是无，我才能够想想我自己是一切。如果我是某个人，我就不能够进入想象中的这个人。一个会计助理可以把他自己想象成罗马国王，但英国国王不能，因为英国国王已经失去了把自己梦想成另一个国王的能力。他的现实限制了他的感受。」&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;3月25日 09点52分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;记：&lt;/p&gt;
-
-&lt;p&gt;《假面告白》——三岛由纪夫&lt;/p&gt;
-
-&lt;p&gt;「归根结蒂，只有从过分期待的东西、事前过分修饰的东西中逃脱出来，否则别无他途。」&lt;/p&gt;
-
-&lt;p&gt;「他的前途只有两条，一条是走上歧途，另一条是拼命装懂。究竟走哪条路，这是由他的软弱性和勇气的气质来决定，而不是由量来决定的。因为不论走哪条路，都需要等量的勇气和等量的软弱性。而且不论走哪条路，都需要有一种对怠惰的如同诗一般的持久的渴望。」&lt;/p&gt;
-
-&lt;p&gt;「正如我多次说过的，对我来说，未来是个沉重的负担。人生从一开始就以义务观念束缚着我。我明知尽义务对我来说是不可能的，但人生却以不履行义务为由来责备我，折磨我。我想，倘使以死让这种人生的期待落空，心里就一定会很轻松的吧。」&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;3月24日 13点28分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;任性。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;3月23日 15点30分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;《星期一的朋友》&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;3月21日 21点04分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;该在哪里？该做些什么？&lt;/p&gt;
-
-&lt;p&gt;脑袋空空。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;3月20日 22点05分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;傲慢。&lt;/p&gt;
-
-&lt;p&gt;记：&lt;/p&gt;
-
-&lt;p&gt;《小说灯笼》——太宰治&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-猫头鹰通信&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「“不，关于这件事，我倒是很放心。因为我到现在还是小孩。”大家都笑了。我并非有意逗大家笑，只是认真说出我的悲叹。」&lt;/p&gt;
-
-&lt;p&gt;「生活上，我尽量过得合乎常理。因为苍白忧郁，反而显得俗气。」&lt;/p&gt;
-
-&lt;p&gt;「你至今没有失败过吧？究竟行不行，要自己实际做做看，跌倒了受伤了才能说这句话。什么都没做就说自己不行，这只是怠惰。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-新郎&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「我最近真的认为，要把一天的义务，当作一辈子的义务，严肃地努力实践，不可以敷衍了事。对于喜欢的人，也要今早不加粉饰地告诉对方。肮脏的算计就别做了。无悔地坦率行动。剩下的，只能交给天意。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-永别&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「三井的临终之美，真是无与伦比。我不太想用“美”这种不负责任又带点敷衍搪塞的花言巧语，但无可奈何，那真的就是“美”。那时三井躺在床上，静静地和在枕边做针线活儿的母亲闲话家常，忽然不说话了。就只是这样。在清朗的晴天，完全无风的和煦春日，樱花也会禁不起自己的重量，宛如溢出般地飘落，呈现出小规模的花吹雪。桌上插在杯子里地大朵玫瑰，深夜也会如碎裂般地散落。这不是风造成的，是自己散落。与天地的叹息一起散落。碰到飞天之神的白绢衣摆而散落。我认为 人类至高的荣冠，是美丽的临终。」&lt;/p&gt;
-
-&lt;p&gt;《The Great Dictator movie》——Charles Chaplin&lt;/p&gt;
-
-&lt;p&gt;《大独裁者》——查理·卓别林&lt;/p&gt;
-
-&lt;p&gt;「Fight For Liberty&lt;/p&gt;
-
-&lt;p&gt;为自由而战&lt;/p&gt;
-
-&lt;p&gt;I&amp;rsquo;m sorry, but I don&amp;rsquo;t want to be an emperor. That&amp;rsquo;s not my business.&lt;/p&gt;
-
-&lt;p&gt;很抱歉，我不想做统治者——我对此毫无兴趣。&lt;/p&gt;
-
-&lt;p&gt;I don&amp;rsquo;t want to rule or conquer anyone.&lt;/p&gt;
-
-&lt;p&gt;我不想统治任何人，也不想征服任何人。&lt;/p&gt;
-
-&lt;p&gt;I should like to help everyone if possible; Jew, Gentile, black man, white.&lt;/p&gt;
-
-&lt;p&gt;如果可以的话，我愿意帮助每一个人，不管是犹太人，非犹太人，黑人，还是白人。&lt;/p&gt;
-
-&lt;p&gt;We all want to help one another. Human beings are like that.&lt;/p&gt;
-
-&lt;p&gt;我们都乐意相互帮助。这是人类的天性。&lt;/p&gt;
-
-&lt;p&gt;We want to live by each other&amp;rsquo;s happiness, not by each other&amp;rsquo;s misery.&lt;/p&gt;
-
-&lt;p&gt;我们都乐意生活在他人的幸福之中，而不是眼看着他人痛苦。&lt;/p&gt;
-
-&lt;p&gt;We don&amp;rsquo;t want to hate and despise one another.&lt;/p&gt;
-
-&lt;p&gt;我们都不愿互相仇恨，互相歧视。&lt;/p&gt;
-
-&lt;p&gt;In this world there is room for everyone, and the good earth is rich and can provide for everyone.&lt;/p&gt;
-
-&lt;p&gt;在这个世界上，有足够的空间让每个人得以生存，而土地是丰饶的，可以使每一个人都丰衣足食。&lt;/p&gt;
-
-&lt;p&gt;The way of life can be free and beautiful. But we have lost the way.&lt;/p&gt;
-
-&lt;p&gt;生命可以是自由的，美好的。但我们失去了这样的生活。&lt;/p&gt;
-
-&lt;p&gt;Greed has poisoned men&amp;rsquo;s souls, has barricaded the world with hate, has goose-stepped us into misery and bloodshed.&lt;/p&gt;
-
-&lt;p&gt;贪婪毒害了人类的灵魂——它把世界锁在仇恨当中；它操纵的军队迈着正步，将我们领入痛苦与杀戮。&lt;/p&gt;
-
-&lt;p&gt;We have developed speed, but we have shut ourselves in.&lt;/p&gt;
-
-&lt;p&gt;我们发展了速度，却孤立了自己。&lt;/p&gt;
-
-&lt;p&gt;Machinery that gives abundance has left us in want.&lt;/p&gt;
-
-&lt;p&gt;机器为我们提供了更多可能，却给我们带来了更多欲望。&lt;/p&gt;
-
-&lt;p&gt;Our knowledge as made us cynical; our cleverness, hard and unkind.&lt;/p&gt;
-
-&lt;p&gt;学识把我们变得刻薄，才智把我们变得冷酷无情。&lt;/p&gt;
-
-&lt;p&gt;We think too much and feel too little.&lt;/p&gt;
-
-&lt;p&gt;我们思考得太多，感受得太少。&lt;/p&gt;
-
-&lt;p&gt;More than machinery, we need humanity.&lt;/p&gt;
-
-&lt;p&gt;然而我们需要的是人性，而不是机械性。&lt;/p&gt;
-
-&lt;p&gt;More than cleverness, we need kindness and gentleness.&lt;/p&gt;
-
-&lt;p&gt;是温和友善，而不是才智。&lt;/p&gt;
-
-&lt;p&gt;Without these qualities, life will be violent and all will be lost.&lt;/p&gt;
-
-&lt;p&gt;少了这些品质，生命将陷于暴戾，而我们将丧失一切。&lt;/p&gt;
-
-&lt;p&gt;The airplane and the radio have brought us closer together.&lt;/p&gt;
-
-&lt;p&gt;飞行机和收音机将我们联系得更加紧密。&lt;/p&gt;
-
-&lt;p&gt;The very nature of these inventions cries out for the goodness in men; cries out for universal brotherhood; for the unity of us all.&lt;/p&gt;
-
-&lt;p&gt;这类发明的性质本身就在呼唤人类的善良，呼唤全世界的友爱团结。&lt;/p&gt;
-
-&lt;p&gt;Even now my voice is reaching millions throughout the world, millions of despairing men, women, and little children, victims of a system that makes men torture and imprison innocent people.&lt;/p&gt;
-
-&lt;p&gt;就像现在，我的声音传向世界各地无数人们的耳中，传向无数的绝望的人们：男人，女人，孩子。所有在这个折磨和禁锢无辜者的体制下承受牺牲的人们。&lt;/p&gt;
-
-&lt;p&gt;To those who can hear me, I say, do not despair.&lt;/p&gt;
-
-&lt;p&gt;所有能听到我声音的人们，请听我说，不要绝望。&lt;/p&gt;
-
-&lt;p&gt;The misery that is now upon us is but the passing of greed, the bitterness of men who fear the way of human progress.&lt;/p&gt;
-
-&lt;p&gt;我们现在所承受的不幸，仅仅是来自一部分人的贪婪和痛苦，他们害怕的是当今人类的进步。&lt;/p&gt;
-
-&lt;p&gt;The hate of men will pass, and dictators die, and the power they took from the people will return to the people.&lt;/p&gt;
-
-&lt;p&gt;人们的仇恨终会消逝，独裁者也注定会死去，而他们从人民手中掳走的权利终将交还给人民。&lt;/p&gt;
-
-&lt;p&gt;And so long as men die, liberty will never perish.&lt;/p&gt;
-
-&lt;p&gt;只要我们不畏牺牲，自由就永远也不会消失！&lt;/p&gt;
-
-&lt;p&gt;Soldiers! Don&amp;rsquo;t give yourselves to brutes, men who despise you, enslave you; who regiment your lives, tell you what to do, what to think and what to feel!&lt;/p&gt;
-
-&lt;p&gt;战士们！别听命于残暴的畜生——他们蔑视你们，奴役你们；控制你们，告诉你们怎样行事，怎样思考，甚至怎样感受！&lt;/p&gt;
-
-&lt;p&gt;Who drill you, diet you, treat you like cattle, use you as cannon fodder.&lt;/p&gt;
-
-&lt;p&gt;他们训练你们，供养你们，像牲口似的对待你们，把你们视如炮灰。&lt;/p&gt;
-
-&lt;p&gt;Don&amp;rsquo;t give yourselves to these unnatural men - machine men with machine minds and machine hearts!&lt;/p&gt;
-
-&lt;p&gt;别听命于这些变态的人——这些有着机器头脑、机器心脏的机器人！
-You are not machines, you are not cattle, you are men!&lt;/p&gt;
-
-&lt;p&gt;你们不是机器，不是牲口，你们是人！&lt;/p&gt;
-
-&lt;p&gt;You have the love of humanity in your hearts!&lt;/p&gt;
-
-&lt;p&gt;你们心里拥有的是人性之爱！&lt;/p&gt;
-
-&lt;p&gt;You don&amp;rsquo;t hate! Only the unloved hate; the unloved and the unnatural.&lt;/p&gt;
-
-&lt;p&gt;你们心里没有仇恨。只有得不到爱、丧失理性的人才会心怀仇恨。&lt;/p&gt;
-
-&lt;p&gt;Soldiers! Don&amp;rsquo;t fight for slavery! Fight for liberty!&lt;/p&gt;
-
-&lt;p&gt;战士们！不要为了奴役而战！要为自由而战！&lt;/p&gt;
-
-&lt;p&gt;In the seventeenth chapter of St. Luke, it is written that the kingdom of God is within man, not one man nor a group of men, but in all men! In you!&lt;/p&gt;
-
-&lt;p&gt;《路加福音》第十七章里写着，上帝的国度属于人类，它不属于某一个人，不属于某一个集团，它属于全人类！属于你！&lt;/p&gt;
-
-&lt;p&gt;You, the people, have the power, the power to create machines, the power to create happiness!&lt;/p&gt;
-
-&lt;p&gt;人民啊，你们拥有权力，你们能创造机器，创造幸福！&lt;/p&gt;
-
-&lt;p&gt;You, the people, have the power to make this life free and beautiful, to make this life a wonderful adventure.&lt;/p&gt;
-
-&lt;p&gt;人民啊，你们能活得自由活得美好，能享受生命这一场奇妙的旅程！&lt;/p&gt;
-
-&lt;p&gt;Then in the name of democracy, let us use that power.&lt;/p&gt;
-
-&lt;p&gt;因此，让我们以民主的名义行使这种权力。&lt;/p&gt;
-
-&lt;p&gt;Let us all unite.&lt;/p&gt;
-
-&lt;p&gt;让我们全体团结起来。&lt;/p&gt;
-
-&lt;p&gt;Let us fight for a new world, a decent world that will give men a chance to work, that will give youth a future and old age a security.&lt;/p&gt;
-
-&lt;p&gt;为一个崭新的世界而战，那是一个美好的世界，它使壮有所用，少有所求，老有所安。&lt;/p&gt;
-
-&lt;p&gt;By the promise of these things, brutes have risen to power.&lt;/p&gt;
-
-&lt;p&gt;正是因为许下了这样的承诺，一群野蛮人窃取了人民的权力。&lt;/p&gt;
-
-&lt;p&gt;But they lie! They do not fulfill that promise. They never will! Dictators free themselves but they enslave the people.&lt;/p&gt;
-
-&lt;p&gt;但他们完全是在撒谎！他们根本没能履行那些承诺！并且永远不会！独裁者只是让自己享受自由，却奴役他的人民。&lt;/p&gt;
-
-&lt;p&gt;Now let us fight to fulfill that promise.&lt;/p&gt;
-
-&lt;p&gt;现在就让我们自己起来战斗，来兑现承诺。&lt;/p&gt;
-
-&lt;p&gt;Let us fight to free the world!&lt;/p&gt;
-
-&lt;p&gt;让我们起来战斗，解放全球！&lt;/p&gt;
-
-&lt;p&gt;To do away with national barriers!&lt;/p&gt;
-
-&lt;p&gt;去消灭国家的界限！&lt;/p&gt;
-
-&lt;p&gt;To do away with greed, with hate and intolerance!&lt;/p&gt;
-
-&lt;p&gt;消灭贪欲，消灭仇恨，消灭&lt;/p&gt;
-
-&lt;p&gt;Let us fight for a world of reason, a world where science and progress will lead to all men&amp;rsquo;s happiness.&lt;/p&gt;
-
-&lt;p&gt;让我们为一个理性的世界而战，让科学与进步为全人类造福。&lt;/p&gt;
-
-&lt;p&gt;Soldiers, in the name of democracy, let us all unite!&lt;/p&gt;
-
-&lt;p&gt;战士们，让我们以民主的名义团结起来！」&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;3月19日 21点58分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;读再多的书眼前也是空空如也，&lt;/p&gt;
-
-&lt;p&gt;榆木脑袋。&lt;/p&gt;
-
-&lt;p&gt;暴躁。&lt;/p&gt;
-
-&lt;p&gt;记：&lt;/p&gt;
-
-&lt;p&gt;《小说灯笼》——太宰治&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-小说灯笼&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「人在幸福之际，通常不会留意到别人的苦楚。」&lt;/p&gt;
-
-&lt;p&gt;「纵使没有“被爱的资格”，人也应该永远还有“爱人的资格”。我认为一个人真正的谦虚，是懂得爱人的喜悦。光只会追求被爱的喜悦，这才是野蛮无知的行为。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-小相簿&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「痛苦的时候，能坦然流露痛苦的表情，是很幸福的人；紧张的时候，能直接显露紧张的姿势，是很幸福的人。但我痛苦的时候却想哈哈傻笑，真是伤脑筋。即使内心紧张得要命，也会开始说蠢话，真实伤脑筋。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-漫谈服装&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「不只是旅行，走在人生的旅途上，拎着太多行李，无疑是阴郁的源头。行李愈少愈好。」&lt;/p&gt;
-
-&lt;p&gt;「我深信若非来自懦弱的极致内省，无法发出真正庄严的光明。总之，我想试着继续活下去，亦即，本着最高的自尊与最低的生活，试着活下去。」&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;3月18日 22点31分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;薔薇（ばら）：玫瑰
-？？？&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;3月14日 20点10分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;记：&lt;/p&gt;
-
-&lt;p&gt;《论世间苦难》——叔本华&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-论存在之虚无&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「人的生命必是一个错误，这只需略加考察即可证明：人是各种难以满足的需求的集合体，需求的满足别无他物，只是无痛苦的状态，人被无聊所占据；无聊直接证明：存在本身没有价值，因为无聊无非是对存在之虚无的感受。如果生命，以欲求为我们本性和存在的生命，本具正面价值和真正内涵，便不会有无聊一事，存在本身即能令我们完整和满足。实际情况却是，我们从存在本身并不能获得乐趣，除非我们在追求生命，这样由于遥不可及、困难重重，我们的目标就显得似乎能够令我们满足（而一旦获得，这种假象即告破灭）；或者除非我们正从事纯智力的活动，这样实际上我们置身生活之外远观，犹如戏院里的看客。即便感官愉悦本身也存在于不断的追求之中，目标一旦实现，愉悦随即消失。我们若非从事上述这样或那样的活动，而是回到存在本身，我们便被存在的虚无和徒劳所左右，这种感觉就叫无聊。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-论对生存意志的肯定与否定&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「否定生存意志绝不意味着物质的消亡，仅仅意味着无欲无求——先前不断欲求的不再欲求。意志如同自在之物，我们只能通过欲求行动来了解。因此，无求之后，意志为何物，会做些什么，我们既不能言说也无法觉察。因此否定生存意志对我们而言，是从有到无的转变，我们是欲求的现象。」&lt;/p&gt;
-
-&lt;p&gt;「稍加深思即可发现，欲成为罪，并非因为欲望之间偶然碰撞而招致伤害和罪恶。如果欲望产生的就是这样的后果，那它必然从一开始就根本是有罪的，整个生存意志都应该摈弃。世间充斥的残忍和磨难，实际上只是生存意志以各种形式客观化的必然结果，因此只是肯定生存意志的注脚。人必有死，这证明我们的存在本身蕴含有罪。」&lt;/p&gt;
-
-&lt;p&gt;「世界精神：因此，这就是你劳作和受苦的目的，是你存在的目的，也是此外种种存在的目的。
-人：但我从生存中能够获得什么？生存若是充盈的，我得到的只是悲苦；若是空虚的，我得到的只是无聊。我付出那么多幸苦，受到那么多折磨，你能给我的却少得可怜。&lt;/p&gt;
-
-&lt;p&gt;世界精神：惟其贫乏，这种报酬对你的辛劳和苦恼来说才是合适的。&lt;/p&gt;
-
-&lt;p&gt;人：怎么会这样！我理解不了。&lt;/p&gt;
-
-&lt;p&gt;世界精神：我知道。（旁白）我是否要告诉他生活的价值正在于此，即教他停止对生活的欲求？因为应由生活亲自教会他这一重要的入门仪式。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-论我们的本质存在不能被死亡摧毁&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「日常生活中，如果有人什么都想知道，又什么都不想学，他向你问起死后的存在，那么最恰当也许是最正确的回答是：“你死后和你生前一样。”因为这个回答暗示，要求某种存在物有开端却没有结束，这样做毫无道理。不过，这个回答也隐含着一层意思——有两种不同的有，因此必有两种不同的无。不过你也许会回答：“不管你死后会是什么样子，即便一切化为乌有，都是自然而然的，适合于你的，正像你现在的机体存在一样，因此你最应该担心的是转变的那一刻。”是的，以成熟的心态考虑这个问题，就会把我们引向这样的结论：我们这样的生命压根不存在反而更好，所以我们不再存在或一段时间不再存在，就像我们原本不曾存在过一样，从理性角度看来，并不值得我们忧虑。」&lt;/p&gt;
-
-&lt;p&gt;「人死去，自在之物也化为乌有，这是不可想象的。人类凭直觉可以直接认识到：人的死亡是现象在时间——一切现象的形式——中的终止，而自在之物却不受其影响。我们都感到：我们并非某人凭空创造的存在，因此我们相信，虽然死亡能终止我们的生命，却不能终止我们的存在。」
-「越是清楚地觉察到万物脆弱、虚无和梦幻般得特点，你越会清晰地觉察到自己内部存在地不朽，因为上述特点由此映衬方显鲜明，正如要觉察轮船行驶的速度，只能去看静止的河岸，而不是看轮船本身。」&lt;/p&gt;
-
-&lt;p&gt;「只要活着，我们就意识到，我们一直站在时间的中段，而绝非其终点。由此可以推知，我们每个人身上都体现着无尽时间不变的中段。恰恰是这一点给我们活着的信心，而不是始终生活在死亡的恐惧之中。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-论自杀&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「在精神饱受摧残的人看来，自杀引起的肉体痛苦变得毫无意义。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-论哲学及智力&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「真理不能发现，最主要的原因并非事物呈现假象而导致谬误，也非直接源于推理能力的薄弱，而是由于成见和偏见——这些伪前提挡住了通往真理的道路，就像逆风将船吹离陆地，扬帆转舵均无济于事。」&lt;/p&gt;
-
-&lt;p&gt;「人们几乎相信，我们的思考有一半是不自觉地发生的。我们达成一个结论时，通常并未认真地思考引出此结论地前提。这明显体现在下列事实中：有时某事发生了，我们不可能预知其后果；它对我们自身会有什么影响，我们更不可能做出估计；但它却对我们的整个情绪造成了实实在在的影响，让我们由喜转悲，或由悲转喜，这只能是不自觉思考的结果。在下述事例中这一点体现得更加明显：我对一些理论问题或实践问题掌握了一些实际资料，我并没有再去想它，但几天以后，问题的答案不请自到，呈现在我的脑海中，然而，为什么会这样，对我来说，就像运算机一样，是个不解之谜。这又是一个不自觉思考的例子。几乎可以做到一个大胆的生理学假设：自觉思考发生在大脑表面，不自觉思考发生在大脑内部。」&lt;/p&gt;
-
-&lt;p&gt;「我们对某事物已有一定之见，对与之相关的新观点就会采取防卫和否定的态度，这很自然。新观点就像一个敌人，突破进入我们自身信条的封闭体系，打破了我们由此体系而得的心灵的平静，要求我们付出额外的努力，并宣布此前的努力作废。因此，将我们从错误中拯救出来的真理就像药水，不仅味道苦涩难忍，而且不能立竿见影，须经一段时间才发挥效力。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-论美学&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「喜足无非是痛苦的消散，其本质是否定的，痛苦则是肯定的。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-论书籍与写作&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「思想从头脑传递到纸上，要比从纸上传递到头脑容易得多。」&lt;/p&gt;
-
-&lt;p&gt;「买书是件好事，如果同时能买到读书时间的话；但人们通常误以为，买了书就等于拥有了书的内容。」&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;3月12日 20点28分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;根性。&lt;/p&gt;
-
-&lt;p&gt;记：&lt;/p&gt;
-
-&lt;p&gt;《答汪长禄书》——胡适&lt;/p&gt;
-
-&lt;p&gt;「“父母于子无恩”的话，从王充、孔融以来，也很久了。从前有人说我曾提倡这话，我实在不能承认。直到今年我自己生了一个儿子，我才想到这个问题上去。我想这个孩子自己并不曾自由主张要生在我家，我们做父的不征得他的同意，就糊里糊涂地给了他一条生命。况且我们也并不曾有意送给他这条生命。我们即无意，如何能居功？如何能自以为有恩于他？&lt;/p&gt;
-
-&lt;p&gt;　　他既无意求生，我们生了他，我们对他只有抱歉，更不能“市恩”了。我们糊里糊涂地替社会上添了一个人，这个人将来一生的苦乐祸，这个人将来在社会上的功罪，我们应该负一部分的责任。说得偏激一点，我们生一个儿子，就好比替他种下了祸根，又替社会种下了祸根。他也许养成坏习惯，做一个短命浪子；他也许更堕落下去，做一个军阀派的走狗。所以我们“教他养他”，只是我们自己减轻罪过的法子，只是我们种下祸根之后自己补过弥缝的法子。这可以说是恩典吗？&lt;/p&gt;
-
-&lt;p&gt;　　我所说的，是从做父母的一方面设想的，是从我个人对于我自己的儿子设想的，所以我的题目是“我的儿子”。我的意思是要我这个儿子晓得我对他只有抱歉，决不居功，决不市恩。至于我的儿子将来怎样待我，那是他自己的事。我决不期望他报答我的恩，因为我已宣言无恩于他。&lt;/p&gt;
-
-&lt;p&gt;　　先生说我把一般做儿子的抬举起来，看做一个“白吃不还帐”的主顾。这是先生误会我的地方。我的意思恰同这个相反。我想把一般做父母的抬高起来，叫他们不要把自己看做一种“放高利债”的债主。&lt;/p&gt;
-
-&lt;p&gt;　　先生又怪我把“孝”字驱逐出境。我要问先生，现在“孝子”两个字究竟还有什么意义？现在的人死了父母都称“孝子”。孝子就是居父母丧的儿子（古书称为“主人”），无论怎样忤逆不孝的人，一穿上麻衣，带上高粱冠，拿着哭丧棒，人家就称他作“孝子”。&lt;/p&gt;
-
-&lt;p&gt;　　我的意思以为古人把一切做人的道理都包在孝字里，故战阵无勇，莅官不敬，等等都是不孝。这种学说，先生也承认他流弊百出。所以我要我的儿子做一个堂堂的人，不要他做我的孝顺儿子。我的意想以为“一个堂堂的人”决不至于做打爹骂娘的事，决不至于对他的父母毫无感情。 」&lt;/p&gt;
-
-&lt;p&gt;《给青年的十二封信》——朱光潜&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-谈动&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「朋友，我们都不过是自然的奴隶，要征服自然，只得服从自然。违反自然，烦恼才乘虚而入，要排解烦闷，也须得使你的自然冲动有机会发泄。人生来好动，好发展，好创造。能动，能发展，能创造，便是顺从自然，便能享受快乐；不动，不发展，不创造，便是摧残生机，便不免感觉烦恼。」&lt;/p&gt;
-
-&lt;p&gt;「愁生于郁，解愁的方法在泄；郁由于静止，求泄的方法在动。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-谈静&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「物理上有一条定律说：两物不能同时并存于同一空间。这个定律在心理方面也可以说得通。一般人不能感受趣味，大半因为心地太忙，不空所以不灵。我所谓“静”，便是指心界的空灵，不是指物界的沉寂，物界永远不沉寂的。你的心境愈空灵，你愈不觉得物界沉寂，或者我还可以进一步说，你的心界愈空灵，你也愈不觉得物界喧嘈。所以习静并不必定要逃空谷，也不必定学佛家静坐参禅。静与闲也不同。许多闲人不必都能领略静中趣味，而能领略静中趣味的人，也不必定要闲。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-谈十字街头&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「传说尊旧，时尚趋新，新旧虽不同，而盲从附和，不假思索，则根本无二致。社会是专制的，是压迫的，是不容自我伸张的。比方九十九个人守贞节，你一个人偏要不贞，你固然是伤风俗，大逆不道；可是如果九十九个人都是娼妓，你一个人偏要守贞节，你也会成为社会的公敌，被人唾弃的。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-谈多元宇宙&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「我以为恋爱也是自成一个宇宙；在“恋爱的宇宙”里，我们只能问某人是否真纯，不能问某人之爱某人是否应该。其实就是只“应该不应该”的问题，恋爱也是不能打消的。从生物学观点看，生殖对于种族为重大的利益，而对于个体则为重大的牺牲。带有重大的牺牲，不能不兼有重大的引诱，所以性欲本能在诸本能中最为强烈。我们可以说，人应该生存，应该绵延种族，所以应该恋爱。但是这番话仍然是站在“道德的宇宙”中说的，在“恋爱的宇宙”中，恋爱不是这样机械的东西，它是至上的，神圣的，含有无穷奥秘的。在恋爱的状态中，两人脉搏的一起一落，两人心灵的一往一复，都恰能忻合无间。在这种境界，如果身家、财产、学业、名誉、道德等等观念渗入一分，则恋爱真纯的程度便须减少一分。真能恋爱的人只是为恋爱而恋爱，恋爱以外，不复另有宇宙。」&lt;/p&gt;
-
-&lt;p&gt;「恋爱是人格的交感共鸣，所以恋爱真纯的程度以人格高下为准，一般人误解恋爱，动于一时飘忽的性欲冲动而发生婚姻关系，境过则情迁，色衰则爱弛，这虽是冒名恋爱，实则只是纵欲。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-谈情与理&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「记得几年前有一位学生物学的朋友在《学灯》上发表一篇文章，说穷到究竟，人生只不过是吃饭与交媾。他的题目我一时记不起，仿佛是“悲”，“哀”一类的字。专从理智着想，他的话是千真万确的。但是他忘记了人是有感情的动物。有了感情，这个世界便另是一个世界，而这个人生便是另一个人生，决不是吃饭交媾就可以了事的。」&lt;/p&gt;
-
-&lt;p&gt;「胡先生所以得此结论，是假定孝只是一种报酬，只是一种问理的道德。把孝当作这样解释，我也不赞成把它“列为一种信条”。但是我们要知道真孝并不是一种报酬，并不是借债还息。孝只是一种爱，而凡爱都是以心感心，以情动情，决不像生意买卖，时时抓住算盘子，计算你给我二五，我应该报酬你一十。换句话说，孝是情感，不是理智的。世间有许多慈母，不惜牺牲一切，以护养她的婴儿；世间也有许多婴儿，无论到了怎样的困穷忧戚的境遇，总可以把头埋在母亲的怀里，得那不能在别处得到的保护与安慰。这就是孝的起源，这也就是一切爱的起源。这种孝全是激于至诚的，是我所谓问心的道德。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-谈摆脱&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「“摆脱不开”便是人生悲剧的起源。畏首畏尾，徘徊歧路，心境既多苦痛，而事业也不能成就。许多人的生命都是这样模模糊糊的过去的。要免除这种人生悲剧，第一须要“摆脱得开”。消极说是“摆脱得开”，积极说便是“提的起”，便是“抓得住”。认定一个目标，便专心致志的向那里走，其余一切都置之度外，这是成功的秘诀，也是免除烦恼的秘诀。」&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;-谈人生与我&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;「从草木虫鱼的生活，我学得一个经验。我不在生活以外别求生活方法，不在生活以外别求生活目的。世间少我一个，多我一个，或者我时而幸运，时而受灾祸侵逼，我以为这都无伤天地之和。你如果问我，人们应该如何生活才好呢？我说，就顺着自然所给的本性生活着，像草木虫鱼一样。你如果问我，人们生活在这幻变无常得世相中究竟为着什么？我说，生活就是为着生活，别无其他目的。你如果向我埋怨天公说，人生是多么苦恼呵！我说，人们并非生在这个世界来享幸福得，所以那并不算奇怪。」&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;3月11日 20点13分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;没有才能。&lt;/p&gt;
-
-&lt;p&gt;记：&lt;/p&gt;
-
-&lt;p&gt;《无名的裘德》——托马斯·哈代&lt;/p&gt;
-
-&lt;p&gt;「人们如果选择了自己的生活方式，就会被他们每一个人看作是邪恶的，这真让我受不了！实际上就是这些看法，会把那些心底最好的人也弄得不顾一切，而真正成为了不道德的人！」&lt;/p&gt;
-
-&lt;p&gt;「因为它们给我们罩上了一团阴影，虽然咱们并‘未曾亏负谁，未曾败坏谁，未曾占谁的便宜’，不过也许是我们按‘自己认为是的而行动’过吧。」&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;3月8日 20点06分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;会好的。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;3月6日 22点58分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;记：&lt;/p&gt;
-
-&lt;p&gt;《悉达多》——赫尔曼·黑塞&lt;/p&gt;
-
-&lt;p&gt;「一瞬间，当周围的世界在他心中溶解并退散，当他像太空的一颗恒星一般孤独地伫立，一种冰冷的绝望感吞没了他；但是，他比以往任何时候都坚定地成为他自己。」&lt;/p&gt;
-
-&lt;p&gt;「在梦中醒来，他为一种巨大的悲哀地感觉所吞没。他觉得自己已经毫无价值、毫无意义地浪费了自己地生命；他没有留下任何有生命活力地东西，没有留下任何哪怕是有丝毫价值或者值得的东西。他孤零零地站在那儿，像海岸上一个遭受船难的幸存者。」&lt;/p&gt;
-
-&lt;p&gt;「无常之物须臾变灭。」&lt;/p&gt;
-
-&lt;p&gt;「他不再去分辨不同的音声——诸如愉悦之声与哀泣之声，童稚之声与雄浑之声；所有思慕者的哀叹，智者的欢笑，愤怒者的叫喊，濒死者的呻吟都融入彼此，互为纠结与交织，以千万种方式缠绕在一起，而所有的音声，所有的目标，所有的渴望，所有的善与恶，悲伤与欢乐，所有这一切共同构成了统一的世界，所有这一切共同交融成万物奔流不息的进程，所有这一切共同谱成了生命永恒的旋律。当他不再着意分辨哀叹与欢笑，当他的心灵不再执着于任何一种特定的音声并不再任其占据他的自我，当他倾听所有的一切，倾听圆融与统一，正当此时，那宏大的万音交响之歌只包含一个“唵”（Om）——圆满之音。」&lt;/p&gt;
-
-&lt;p&gt;「每一真理的反面也同样真实。只有偏面的真理才能形诸于言辞；事实上，以语言表达或思维的一切都只能是偏面的，只是半个真理而已，它们都缺乏完备、圆融与统一。世界之所以表面如此是因为我们有一种幻觉，即认为时间是某种真实之物。时间并无实体。而如果时间并非真实，那么仿佛存在于现实与永恒，痛苦与快乐，善与恶之间的分界线也只是一种幻象。」&lt;/p&gt;
-
-&lt;p&gt;「一个人可以去爱世上之物，但一个人不能去爱词句。所有教义于我毫无用处。那些教义没有软硬的感觉，没有颜色，没有尖角，没有气息和味道，它们只是一些词句而已，可能就是这一点阻碍你得到内心的宁静。而假若“物”虚幻无实，那么我自身也同样虚幻无实体，它们永远与我有着相同的本质。这正是它们可爱而可敬的原因，正因如此我才会去热爱它们。」&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;3月5日 22点37分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;记：&lt;/p&gt;
-
-&lt;p&gt;《活出意义来》——维克多·弗兰克&lt;/p&gt;
-
-&lt;p&gt;「人一旦因为看不到未来而自甘沉沦，便容易有满腹的怀旧愁思。营中人喜欢回味过去，借以忘却眼前的痛苦，现状因而变得较不真实。可是，除去现状中的真实特点，很可能伏下一个危机。当事人势必容易忽略现实中的确存在着，而且可堪运用的机会。把目前的“暂时存在”当成虚幻不实的存在——这种态度本身正是使俘虏丧失其生命力的一大重大原因。人一旦有了这种态度，任何事物看在他眼里都显得毫无意义。他忘了艰困的外在环境通常能给人一个机会，让人超越自己，成而得到精神上的成长。他不把集中营的困境看成是考验内力的试金石，他不看重自己的生命，反而轻蔑它，当它是无足轻重的玩意儿。他宁可阖上眼皮，耽溺于过去。这样的人自然会觉得人生没有意义了。」&lt;/p&gt;
-
-&lt;p&gt;「在生命中的每一种情境向人提出挑战，同时提出疑难要他去解决，因此生命意义的问题事实上应该颠倒过来。人不应该去问他的生命意义是什么。他必须要认清，“他”才是被询问的人。一言以蔽之，每一个人都被生命询问，而他只有用自己的生命才能回答此问题；只有以“负责”来答复生命。」&lt;/p&gt;
-
-&lt;p&gt;「所有生命中的痛苦，我们四周的死亡，有意义吗？如果没有，那么人的生命终究毫无意义。如果生命的意义只依赖一些偶发事件——可以脱逃或不能脱逃的偶发事件——那么人生终究不值得一活。」&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;3月1日 18点46分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;记：&lt;/p&gt;
-
-&lt;p&gt;《如蕤》——沈从文&lt;/p&gt;
-
-&lt;p&gt;「海边没有一株稍稍倔强的树，也无一个稍稍倔强的人。为她倾倒的人虽多，却皆在同样情形下露出蠢相，做出同样的事情，世故一些的先是借些别的原因同在一处，其次就是去了人的样子，变成一只狗了。年纪轻些的，则就只知写出那种又粗鲁又笨拙的信，爱了就谦卑谄媚，装模作样，眼看到自己所做的糊涂样子，还不能够引动女人，既不知道如何改善方法，便做出更可笑的表示，或要自杀，或说请你好好防备，如何如何。一切爱不是极其愚蠢，就是极其下流，故她把这些爱看得一钱不值。」&lt;/p&gt;
-
-&lt;p&gt;「不爱既不必用口说我就明白，爱也可以无需用口说。」&lt;/p&gt;
-
-&lt;p&gt;「我不知为什么，总觉得走了较好，为了我的快乐，为了不委屈我自己的感情，我就走了。莫想起一切过去所有痛苦，过去既成为过去，也值不得把感情放在那上面去受折磨。你本来就不明白我的。我所希望的，几年来为这点儿愿心经验一切痛苦，也只是要你明白我。现在你既然已明白我，而且爱了我，为了把我们生命解释得更美一些，我走了，当然比我同你住下去较好的。」&lt;/p&gt;
-
-&lt;h1 id=&#34;二月&#34;&gt;二月&lt;/h1&gt;
-
-&lt;p&gt;&lt;strong&gt;2月27日 16点54分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;头发剪了。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;2月26日 03点55分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Aimer《Ref:rain》&lt;/p&gt;
-
-&lt;p&gt;弱い、弱い、弱い。&lt;/p&gt;
-
-&lt;p&gt;「君のような秀才にはわかるまいが、『自分の生きていることが人に迷惑をかける。僕は余計者だ』という意識ほどつらい思いは世の中に無い。」&lt;/p&gt;
-
-&lt;p&gt;「弱虫は、幸福をさえおそれるものです。綿で怪我するんです。幸福に傷つけられる事もあるんです。」&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;2月25日 00点52分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;成为理想的人。&lt;/p&gt;
-
-&lt;p&gt;记：&lt;/p&gt;
-
-&lt;p&gt;《八骏图》——沈从文&lt;/p&gt;
-
-&lt;p&gt;「一切都近于多余。因为我走到任何一处皆将为回忆所围困。新的有什么可以把我从泥淖里拉出？这世界没有“新”，连烦恼也是很旧了的东西。」&lt;/p&gt;
-
-&lt;p&gt;「这世界上也有人不了解海，不知爱海。也有人了解海，不敢爱海。」&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;2月24日 00点30分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;幻想与无来由的期待。&lt;/p&gt;
-
-&lt;p&gt;记：&lt;/p&gt;
-
-&lt;p&gt;《边城》——沈从文&lt;/p&gt;
-
-&lt;p&gt;「因为我命里或只许我撑个渡船。」&lt;/p&gt;
-
-&lt;p&gt;「这个人也许永远不回来了，也许“明天”回来。」&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;2月22日 01点54分&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;想去看海。&lt;/p&gt;
-
-&lt;p&gt;不要给人添麻烦了。&lt;/p&gt;
 </description>
     </item>
     
