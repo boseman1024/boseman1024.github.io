@@ -107,7 +107,7 @@ TCP/IP的体系结构 ⑤应用层——④传输层——③网络层——②�
     "datePublished": "2018-12-06 13:46:33 &#43;0000 UTC",
     "dateModified" : "2018-12-06 13:46:33 &#43;0000 UTC",
     "url" : "https://boseman1024.github.io/2018/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/",
-    "wordCount" : "326",
+    "wordCount" : "417",
     "keywords" : [ "计算机网络", "KUMA2X"]
 }
 </script>
@@ -575,6 +575,190 @@ TCP/IP的体系结构 ⑤应用层——④传输层——③网络层——②�
 <p><strong>题③</strong></p>
 
 <p>在一个带宽为3kHz、没有噪声的信道，传输二进制信号时能够达到的极限数据传输率为（<strong>6Kbps</strong>）。一个带宽为3kHz、信噪比为30dB的信道，能够达到的极限数据传输率为（<strong>30Kbps</strong>）。上述结果表明，（<strong>条件不同，不能进行直接的比较</strong>）。根据Nyquist定理，为了保证传输质量，达到3Kbps的数据传输率需要的带宽为（<strong>6kHz</strong>）。在一个无限带宽的无噪声信道上，传输二进制信号，当信号的带宽为3kHz时，能达到的极限数据传输率为（<strong>6</strong>）Kbps。</p>
+
+<h2 id="数据通信方式">数据通信方式</h2>
+
+<p><code>信息交互方式</code>：</p>
+
+<ul>
+<li><p>单工模式（单向通信）：信息只能朝着一个方向传递，信息传输方向不能改变。只需一条信道。</p></li>
+
+<li><p>半双工模式（双向交替通信）：数据信息可以双向传递，但不能同时进行。在此方式中信息流轮流使用发送和接收装置。</p></li>
+
+<li><p>全双工模式（双向同时通信）：能同时进行双向通信。需要两条不同方向的信道。</p></li>
+</ul>
+
+<p><code>各个二进制位是否同时传输</code>：</p>
+
+<ul>
+<li><p>并行传输：几位数据同时从一个设备发往另一设备，传输速度快。</p></li>
+
+<li><p>串行传输：数据一位位地按顺序传送，一次只能传送一位。实现容易，但传输速度慢。</p></li>
+</ul>
+
+<p><code>串行传输方式</code>：</p>
+
+<ul>
+<li><p>同步传输：以固定的时钟节拍来连续串行发送数字信号，要求接收端按照发送端所发送码元的频率或起止时间来接收数据，使得收发双方在时序上保持一致。</p></li>
+
+<li><p>异步传输：以字符为单位进行同步的，以字符为传输单位，字符与字符（一个字符结束到下一个字符开始）之间的时间间隔是可变的，并不需要严格地限制它们的时间关系。</p></li>
+</ul>
+
+<p><strong>题</strong>：</p>
+
+<p>异步传输中，假定停止位为2位，1位偶校验，数据位为8位，传输效率为多少？</p>
+
+<p><strong>解</strong>：</p>
+
+<p>传输效率 = 8 / (1+1+2+8) = 66.6%</p>
+
+<p><code>基带频带方式</code>：</p>
+
+<ul>
+<li><p>基带传输：在信道中直接传送基带信号。</p></li>
+
+<li><p>频带传输：将基带信号调制成模拟信号，放到信道的通频带宽之内进行传输。</p></li>
+</ul>
+
+<p><strong>基带信号</strong>：指在通信电缆上原封不动的传输有计算机或终端产生的0或1数字脉冲信号。就是将数字信号 1 或 0 直接用两种不同的电压来表示，然后送到线路上去传输。</p>
+
+<p><strong>宽带信号</strong>：是将基带信号进行调制后形成的频分复用模拟信号。</p>
+
+<h2 id="数据编码技术">数据编码技术</h2>
+
+<p><code>数据编码方式</code>：</p>
+
+<ul>
+<li><p>模拟数据编码</p></li>
+
+<li><p>数字数据编码</p></li>
+</ul>
+
+<p>模拟数据和数字数据都可以用模拟信号或数字信号来表示，因而也可以用其中任意一种形式传输。</p>
+
+<p><code>数字信号编码技术</code>:</p>
+
+<ul>
+<li><p>非归零码NRZ：用信号的幅值来表示二进制数据，负电平用于示一个二进制值，正电平用于表示另一个二进制值。</p></li>
+
+<li><p>曼彻斯特编码：每个比特间隔的中间位置处都存在一个跳变。这种中间处的跳变既含有时钟信息，也含有数据信息：从低到高的跳变代表1，从高到低的跳变代表0（注意有些系统也可能相反）。</p></li>
+
+<li><p>差分曼彻斯特编码：比特间隔中间位置处的跳变仅含有时钟信息。在比特间隔开始处如果出现跳变表示0，如果没有跳变表示1。</p></li>
+</ul>
+
+<p><strong>解码</strong>：在解码过程，只要把前一位的后半位和本位的前半位进行“异或”即可判别出“0”或“1”的不同状态。两者相同，表示在码位之间无跳变发生，表示的是“1”；两者不同，表示在码位之间有跳变发生，表示的是“0”。</p>
+
+<ul>
+<li>mB/nB编码：把m比特的二进制数据块（block）用n比特的二进制代码块来表示。2m个数据码是从2n个nB码选出来的。根据需要，一般要使“0”和“1”等概率、连续的“0”和“1”数目小。</li>
+</ul>
+
+<p>对于mB/nB码，编码开销增加了<strong>(n-m)/m%</strong>。</p>
+
+<p><strong>4B/5B编码</strong>：把4比特的二进制数据块用5比特的二进制码代码块来表示，将欲发送的数据流每4比特作为一块，然后将每一块按4B/5B编码规则转换成相应的5B码。</p>
+
+<p><img src="https://i5jtrg.bn.files.1drv.com/y4mcaDGHdiSqyFE-nbbAgrdh-UOp7dqyYpJrQjCncqp3CXIEn1GlUhDLWyo6GtXzU6RvQ5_g9hEjSwlI9Q3Pj7Zzw3Ig3X6ebuTCrTZwoI_6KMiFHnYF0hksDtPv-rguL275a_fQqBzQY_lia2ujcCsUZqkFX-804XYqmXqWmFxC0GqXFP6Dz2tgbpAFAgujwZA3Azcx5Nl-uzbKoozg9H_wQ/4B-5B.PNG"></p>
+
+<ul>
+<li>多进制编码：数字数据编码中，通常利用码元的某些特征，如幅值、相位等来携带数字数据，这些特征可以有多种状态，称为码元状态数，每种状态可以表示一个数，编成多进制码。</li>
+</ul>
+
+<p><code>调制器</code>：把要发送的基带信号转换为频率范围在300-3400Hz之间的模拟信号（载波信号，载波通常是正弦波或余弦波），以便在电话用户线上传送。</p>
+
+<p><code>解调器</code>：把电话用户线上传送来的模拟信号转换为数字信号。</p>
+
+<hr />
+
+<h1 id="传输层">传输层</h1>
+
+<p><code>传输层功能</code>：</p>
+
+<ul>
+<li><p>连接管理</p></li>
+
+<li><p>流量控制</p></li>
+
+<li><p>差错检测</p></li>
+
+<li><p>对用户请求的响应</p></li>
+
+<li><p>建立无连接或面向连接的通信</p></li>
+</ul>
+
+<h2 id="端口">端口</h2>
+
+<p><code>端口</code>：让应用层的各种应用进程都能将其数据通过端口向下交付给传输层，以及让传输层知道应当将其报文段中的数据向上通过端口交付给应用层相应的进程，即用来标志应用层的进程。在通信时，只有找到了端口，才能最后找到我们所要找的目的进程。 其用一个 16 位二进制比特进行标识。</p>
+
+<p><code>端口分类</code>：</p>
+
+<ul>
+<li>熟知端口：号码为0-1023的端口才能作为熟知端口。</li>
+</ul>
+
+<p><img src="https://jjjtrg.bn.files.1drv.com/y4mZOtK4hHHbiQ-rToxgqIiBl-7rRmt9Om3MzsTbd064gLeNTeaSXvjpJdSo08UDn-RwTkZLQTgJRWiY_kyxFcMb2NpMAhjgoM6qNjCcmBOdNChoAulCzrDTd5MqduoH4SF9S0R2TYq9mFJNw5s4HIy4TwaRZ9y7ad-zxMRTULJLrMS4ljJSMi4Hra8ykRtS7Or0sJ4ZIBCSLtLfybQWYb9IQ/port.PNG"></p>
+
+<ul>
+<li>注册端口：操作系统将这些端口动态的分配给各个进程，同一进程两次分配有可能分配到不同的端口。</li>
+</ul>
+
+<h2 id="传输层协议">传输层协议</h2>
+
+<p><code>传输协议数据单元</code>：两个对等传输实体在通信时传送的数据单位叫作传输协议数据单元TPDU。</p>
+
+<p><code>用户数据报协议UDP</code>：无连接的传输服务，不需要先建立连接，对方的传输层在收到 UDP报文后，不需要给出任何确认。逻辑通信信道是一条不可靠信道。</p>
+
+<p><strong>协议数据单元</strong>：UDP报文或用户数据报</p>
+
+<p><strong>特点</strong>：</p>
+
+<ul>
+<li><p>UDP是无连接的，即发送数据之前不需要建立连接，因而减少了开销和发送数据之前的时延。</p></li>
+
+<li><p>UDP没有拥塞控制，也不保证可靠交付，因此主机不需要维持具有许多参数的、复杂的连接状态表。</p></li>
+
+<li><p>网络出现的拥塞不会使源主机的发送速率降低。这对传输实时数据是很重要的。</p></li>
+
+<li><p>UDP 支持一对一、一对多、多对一和多对多的交互通信。</p></li>
+
+<li><p>UDP 的首部开销小，只有8个字节。</p></li>
+
+<li><p>UDP 是面向报文的。</p></li>
+</ul>
+
+<p><strong>使用UDP协议的各种应用和应用层协议</strong>：</p>
+
+<p><img src="https://mzjtrg.bn.files.1drv.com/y4mXf4PyqNdMa6uTNP5rpPcOX63-ncjwOic2kMXCF4O2_dsJqHLYC6173OM9NGhGpP_gU9-zkZwmVsPOXn248sIVvA2RehfJi_t6ZDUGe0yKjyShrxPHCQJgtUxIT5OArDrQaY3Qc2_3sgfrDRxcvDDJ6obG6Zm_OF0l3XpHQ8aFDoOY8P9o81VBPTlw2wL4lb5TdcGpCP-tiC-c7q5tEhVgA/UDP-port.PNG"></p>
+
+<p><strong>UDP首部格式</strong>：</p>
+
+<p><img src="https://mpjtrg.bn.files.1drv.com/y4mkpO0v0YDgcEae5pbnOZIalxHIye82M-EJ0YO69cVaCK_kS78eaAWF49Rve3r1ENiOaZZ4-91L5tLnxJzus9Li13H1nOxgVndvku6Klrdq_89QDa13cJk2xaba7_rnQPxPy9BCv0uUiCnML4twZ657cmxE6J2vxq3JXQk_nP2C06laO-3Bjhx6sAZYPBPOhI15ecDT4qV9sN1pLPSYziFPg/UDP.PNG"></p>
+
+<ul>
+<li><p>源端口：发送端的UDP端口，当不需要返回数据时，该字段为0。</p></li>
+
+<li><p>目的端口：接收端的UDP端口，必须使用。</p></li>
+
+<li><p>长度：UDP数据报总长度，其最小值是8（仅有首部）。</p></li>
+
+<li><p>检验和：在计算检验和时，临时把“伪首部”和UDP用户数据报连接在一起。伪首部仅仅是为了计算检验和，不进行传输。该字段是可选的，如果该字段为“0”就表示不计算检验和。当应用程序对传输效率的重视程度高于可靠性时，就可以选择不进行检验。</p></li>
+</ul>
+
+<p><code>传输控制协议TCP</code>：提供可靠的、面向连接的传输服务。逻辑通信信道是一条全双工可靠信道。</p>
+
+<p><strong>协议数据单元</strong>：TCP报文段</p>
+
+<p><strong>特点</strong>：</p>
+
+<ul>
+<li><p>TCP是面向连接的传输层协议。</p></li>
+
+<li><p>由于TCP 连接只能有两个端点(endpoint)，因此TCP连接只能是点对点的（一对一）。TCP不能用于多播和广播。</p></li>
+
+<li><p>TCP提供可靠交付的服务。通过TCP连接传送的数据，无差错、不丢失、不重复、并且按序到达。</p></li>
+
+<li><p>TCP提供全双工通信。</p></li>
+
+<li><p>面向字节流。</p></li>
+</ul>
 
     </div>
 
