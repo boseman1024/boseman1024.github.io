@@ -6,8 +6,592 @@
     <description>Recent content in KUMA2X on KUMA2X</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 06 Dec 2018 13:46:33 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 09 Jan 2019 19:50:12 +0000</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>面试题总结</title>
+      <link>https://boseman1024.github.io/2019/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Wed, 09 Jan 2019 19:50:12 +0000</pubDate>
+      
+      <guid>https://boseman1024.github.io/2019/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93/</guid>
+      <description>
+
+&lt;h1 id=&#34;计算机基础知识&#34;&gt;计算机基础知识&lt;/h1&gt;
+
+&lt;h2 id=&#34;数据结构&#34;&gt;数据结构&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;什么是队列、栈、链表&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;什么是树（平衡树,排序树,B树,B+树,R树,红黑树）、堆（大根堆、小根堆）、图（有向图、无向图、拓扑）&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;栈和队列的相同和不同之处&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;栈通常采用的两种存储结构&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;两个栈实现队列，和两个队列实现栈&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;算法&#34;&gt;算法&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;排序都有哪几种方法？&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;会写常用的排序算法，如快排，归并等。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;各种排序算法的时间复杂度和稳定性 ，重点快排。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;单链表的遍历和逆序&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;深度优先搜索和广度优先搜索&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;最小生成树&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;常见Hash算法，哈希的原理和代价&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;全排列、贪心算法、KMP算法、hash算法&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;一致性Hash算法&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;操作系统&#34;&gt;操作系统&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;虚拟内存管理&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;换页算法&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;进程间通信&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;进程同步：生产者消费者问题、哲学家就餐问题、读者写者问题&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;死锁的四个必要条件，避免方法&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Linux的一些基本命令，如ls、tail、chmod等&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;计算机网络&#34;&gt;计算机网络&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;tcp,udp区别&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;HTTP请求和响应的全过程&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;HTTP常见响应码：200、301、302、404、500&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;get和post的区别&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;forward和redirect的区别&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;osi七层模型&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;em&gt;答：&lt;/em&gt; 物理层-数据链路层-网络层-传输层-会话层-表示层-应用层&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;tcp/ip四层模型及原理&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;TCP和UDP区别&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;TCP的三次握手，四次关闭&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;em&gt;答：&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;TCP三次握手过程：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;第一步：client发送syn 到server 发起握手；&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;第二步：server收到syn后回复syn+ack给client；&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;第三步：client收到syn+ack后，回复server一个ack表示收到了server的syn+ack&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;TCP四次关闭（挥手）：&lt;/p&gt;
+
+&lt;p&gt;关闭连接时，当收到对方的FIN报文通知时，它仅仅表示对方没有数据发送给你了；但未必你所有的数据都全部发送给对方了，所以你可能未必会马上会关闭SOCKET,也即你可能还需要发送一些数据给对方之后，再发送FIN报文给对方来表示你同意现在可以关闭连接了。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;第一步：主动方发送fin+ack到被动方发起请求关闭连接；&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;第二步：被动方收到后回复ack给主动方表示收到fin+ack；&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;第三步：被动方发送fin+ack到主动方表示同意关闭连接；&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;第四步：主动方收到fin+ack后回复ack表示收到fin+ack；&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;丢包,粘包，&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;容量控制，拥塞控制&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;子网划分&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;IPV4和IPV6&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;HTTPS和HTTP/2&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;数据库&#34;&gt;数据库&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;范式&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;数据库事务和隔离级别&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;为什么需要锁，锁定分类，锁粒度&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;乐观锁，悲观锁的概念及实现方式&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;分页如何实现（Oracle，MySql）&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Mysql引擎&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;MYSQL语句优化&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;从一张大表读取数据，如何解决性能问题&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;内连接，左连接，右连接作用及区别&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Statement和PreparedStatement之间的区别&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;索引以及索引的实现(B+树介绍、和B树、R树区别&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;什么是数据库连接池&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;海量数据处理&#34;&gt;海量数据处理&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;海量日志数据，如何提取出某日访问淘宝次数最多的IP&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;上亿数据，统计其中出现次数最多的前N个数据&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;5亿个int，找出他们的中位数&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;两个文件，各存放50亿条URL，每个URL占64字节。内存限制是4G，找出两个文件中相同的URL&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;有40亿个不重复的unsigned int的整数，没排过序，现在给一个数，如何快速判断这个数是否在这40亿个数当中。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;提示：分治、Hash映射、堆排序、双层桶划分、Bloom filter、bitmap、数据库索引、mapreduce&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;java基础&#34;&gt;Java基础&lt;/h1&gt;
+
+&lt;h2 id=&#34;封装-继承-多态&#34;&gt;封装、继承、多态&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Java中实现多态的机制是什么，动态多态和静态多态的区别&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;接口和抽象类的区别，如何选择&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Java能不能多继承，可不可以多实现&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Static Nested Class 和 Inner Class的不同&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;重载和重写的区别。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;是否可以继承String类&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;构造器是否可被override?&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;public,protected,private的区别?&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;集合相关&#34;&gt;集合相关&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;列举几个Java中Collection类库中的常用类&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;List、Set、Map是否都继承自Collection接口？存储特点分别是什么？&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ArrayList、LinkedList和Vector之间的区别与联系&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;HashMap和Hashtable、TreeMap以及ConcurrentHashMap的区别&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Collection 和 Collections的区别&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;其他的集合类：treeset,linkedhashmap等。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;异常相关&#34;&gt;异常相关&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Error和Exception的区别&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;异常的类型，什么是运行时异常&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;final、finally和finalize的区别&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;try-catch-finally中，如果在catch中return了，finally中的代码还会执行么，原理是什么？&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;列举3个以上的RuntimeException&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Java中的异常处理机制的简单原理和应用&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;其它&#34;&gt;其它&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;String和StringBuffer、StringBuilder的区别&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;==和equals的区别&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;hashCode的作用，和equals方法的关系&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Input/OutputStream和Reader/Writer有什么区别&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;如何在字符流和字节流之间转换？&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;switch可以使用那些数据类型&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Java的四种引用&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;序列化与反序列化&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;正则表达式&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;int和Integer的区别，什么是自动装箱和自动拆箱&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;java高级&#34;&gt;Java高级&lt;/h1&gt;
+
+&lt;h2 id=&#34;多线程&#34;&gt;多线程&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;进程和线程的区别&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;并行和并发的区别和联系&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;同步与异步&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;多线程的实现方式，有什么区别&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;什么叫守护线程&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;如何停止一个线程？&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;什么是线程安全？&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;synchronized 和 lock的区别&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;当一个线程进入一个对象的一个synchronized方法后，其它线程是否可进入此对象的其它方法?&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;启动一个线程是用run()还是start()?&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;wait和sleep的区别&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;notify和notifyAll的区别&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;线程池的作用&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Java中线程池相关的类&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;jvm底层技术&#34;&gt;JVM底层技术&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;gc的概念，如果A和B对象循环引用，是否可以被GC？&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;jvm gc如何判断对象是否需要回收，有哪几种方式？&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Java中能不能主动触发GC&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;JVM的内存结构，堆和栈的区别&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;JVM堆的分代&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Java中的内存溢出是什么，和内存泄露有什么关系&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Java的类加载机制，什么是双亲委派&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ClassLoader的类加载方式&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;io&#34;&gt;IO&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;NIO、AIO和BIO 之间的区别&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;IO和NIO常用用法&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;其它-1&#34;&gt;其它&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;hashcode 有哪些算法&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;反射的基本概念，反射是否可以调用私有方法&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Java中范型的概念&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;JVM启动参数，-Xms和 -Xmx&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;代理机制的实现&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;String s = new String(&amp;ldquo;s&amp;rdquo;)，创建了几个对象。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;em&gt;答：&lt;/em&gt; 如果常量池中已存在“s”，则直接引用，即只会创建一个对象；若常量池中不存在，则先创建后引用，也就是有两个。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;java-web&#34;&gt;Java Web&lt;/h1&gt;
+
+&lt;h2 id=&#34;servlet&#34;&gt;Servlet&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;JSP和Servlet的区别，Servelt的概念。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Servlet的生命周期&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Servlet中的session工作原理 ，以及设置过期时间的方式&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Servlet中，filter的应用场景有哪些？&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;JSP的动态include和静态include&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;web.xml中常用配置及作用&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Servlet的线程安全问题&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;mvc框架&#34;&gt;MVC框架&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;介绍几个常用的MVC框架&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;什么是MVC&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Struts中请求的实现过程&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Spring mvc与Struts mvc的区别&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Service嵌套事务处理，如何回滚&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;struts2 中拦截器与过滤器的区别及执行顺序&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;struts2拦截器的实现原理&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;http相关&#34;&gt;http相关&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;session和cookie的区别&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;HTTP请求中session实现原理？&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;如果客户端禁止Cookie能实现Session吗？&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;http中 get和post区别&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;redirect与forward的区别&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;常见的web请求返回的状态码。404、302、301、500分别代表什么&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;ssh相关&#34;&gt;SSH相关&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Hibernate/Ibatis/MyBatis之间的区别&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;什么是OR Mapping&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;hibernate的缓存机制、一级和二级缓存&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;使用Spring的好处是什么，Spring的核心理念&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;什么是AOP和IOC，实现原理是什么&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;spring bean的初始化过程&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Spring的事务管理 ，Spring bean注入的几种方式&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;spring四种依赖注入方式&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;容器相关&#34;&gt;容器相关&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;什么是web服务器、什么是应用服务器&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;常用的web服务器有哪些？&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Tomcat和weblogic的区别&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;web安全&#34;&gt;web安全&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;什么是SQL注入 ，如何避免。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;什么是XSS攻击，如何避免&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;什么是CSRF攻击，如何避免&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;动态代理&#34;&gt;动态代理&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Java的动态代理的概念&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Java的动态代理的实现&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;编码问题&#34;&gt;编码问题&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;常用的字符编码&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;如何解决中文乱码问题&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;其它-2&#34;&gt;其它&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;XML的解析方式，以及优缺点。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;什么是ajax，Ajax如何解决跨域问题&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;设计模式&#34;&gt;设计模式&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;谈一下自己了解或者熟悉的设计模式&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Singleton的几种实现方式，实现一个线程安全的单例。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;工厂模式和抽象工厂模式之间的区别&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;知识的综合能力&#34;&gt;知识的综合能力&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;请介绍一下一个http请求的全过程，描述的越全面越好&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;当你在浏览器地址栏输入www.taobao.com，敲下回车之后都发生了什么&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;工具使用&#34;&gt;工具使用&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;知道git/svn是干什么的吗？用过吗&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;知道maven/gradle是干什么的吗？用过吗&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;平常使用什么IDE，为什么&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;平常使用什么浏览器，为什么&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;平常开发机器是什么操作系统的&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;会在Linux上开发吗。Linux常用命令会吗&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;技术热情&#34;&gt;技术热情&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;当前Java的最新版本&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Java8的lambda表达式&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Java8的stream API&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Java9的模块化&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Java10的局部变量类型推断&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Spring Boot2.0&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;HTTP/2&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;会翻墙么，知道翻墙的原理吗&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>技术文章索引</title>
+      <link>https://boseman1024.github.io/2019/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0%E7%B4%A2%E5%BC%95/</link>
+      <pubDate>Wed, 09 Jan 2019 19:42:33 +0000</pubDate>
+      
+      <guid>https://boseman1024.github.io/2019/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0%E7%B4%A2%E5%BC%95/</guid>
+      <description>
+
+&lt;h1 id=&#34;索引&#34;&gt;索引&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#java&#34;&gt;JAVA基础&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#rpc&#34;&gt;RPC&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#TCP&#34;&gt;TCP/IP、HTTP&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;a-name-java-style-cursor-default-color-000-java基础-a&#34;&gt;&lt;a name=&#34;java&#34; style=&#34;cursor:default;color:#000;&#34;&gt;JAVA基础&lt;/a&gt;&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://mp.weixin.qq.com/s?__biz=MzI3NzE0NjcwMg==&amp;amp;mid=2650121551&amp;amp;idx=1&amp;amp;sn=b14691e0daeca8d1283fc8a860732405&amp;amp;chksm=f36bb86ec41c3178bb5f17ae733ffa73a7249e39fcc473f63db928c909466397b352b493c0a3&amp;amp;scene=21#wechat_redirect&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;String有关的那点事儿&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.hollischuang.com/archives/1150&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Java对象的序列化与反序列化&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;a-name-rpc-style-cursor-default-color-000-rpc-a&#34;&gt;&lt;a name=&#34;rpc&#34; style=&#34;cursor:default;color:#000;&#34;&gt;RPC&lt;/a&gt;&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.jianshu.com/p/2accc2840a1b&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;什么是RPC&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.jianshu.com/p/5b90a4e70783&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;实现一个简单的RPC&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;a-name-tcp-style-cursor-default-color-000-tcp-ip-http-a&#34;&gt;&lt;a name=&#34;TCP&#34; style=&#34;cursor:default;color:#000;&#34;&gt;TCP/IP、HTTP&lt;/a&gt;&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://102.alibaba.com/detail?id=140&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;TCP 三次握手原理&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>IN 2019</title>
+      <link>https://boseman1024.github.io/2019/in-2019/</link>
+      <pubDate>Tue, 01 Jan 2019 10:42:33 +0000</pubDate>
+      
+      <guid>https://boseman1024.github.io/2019/in-2019/</guid>
+      <description>
+
+&lt;p&gt;&lt;center&gt;
+&lt;h1&gt;SHUT UP!&lt;/h1&gt;
+&lt;h2&gt;黙ってくれ！&lt;/h2&gt;
+&lt;h3&gt;静かに。&lt;/h3&gt;
+&lt;h4&gt;BE SILENT.&lt;/h4&gt;
+&lt;h5&gt;2019&lt;/h5&gt;
+&lt;/center&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;一月&#34;&gt;一月&lt;/h1&gt;
+
+&lt;p&gt;&lt;strong&gt;1月4日12点23分&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;世味薄最好，人情淡最好。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1月1日10点42分&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;NOTHING.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>计算机网络笔记</title>
@@ -6822,683 +7406,6 @@ public interface SysMenuMapper {
     &amp;quot;&amp;lt;/foreach&amp;gt;&amp;lt;/script&amp;gt;&amp;quot;
 })
 int insertRoleMenu(@Param(&amp;quot;id&amp;quot;)int id,@Param(&amp;quot;menus&amp;quot;) List&amp;lt;Integer&amp;gt; menus);
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>层级关系数据转树型结构JSON</title>
-      <link>https://boseman1024.github.io/2018/%E5%B9%B3%E7%BA%A7json%E8%BD%AC%E5%B1%82%E7%BA%A7%E6%A0%91%E5%9E%8B%E7%BB%93%E6%9E%84json/</link>
-      <pubDate>Tue, 01 May 2018 20:08:31 +0000</pubDate>
-      
-      <guid>https://boseman1024.github.io/2018/%E5%B9%B3%E7%BA%A7json%E8%BD%AC%E5%B1%82%E7%BA%A7%E6%A0%91%E5%9E%8B%E7%BB%93%E6%9E%84json/</guid>
-      <description>&lt;p&gt;原始数据结构如下：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;[{
-    &amp;quot;id&amp;quot;: 0,
-    &amp;quot;name&amp;quot;: &amp;quot;home&amp;quot;,
-    &amp;quot;url&amp;quot;: &amp;quot;1&amp;quot;,
-    &amp;quot;path&amp;quot;: &amp;quot;/home&amp;quot;,
-    &amp;quot;component&amp;quot;: &amp;quot;Gate&amp;quot;,
-    &amp;quot;iconcls&amp;quot;: &amp;quot;el-icon-menu&amp;quot;
-}, {
-    &amp;quot;id&amp;quot;: 1,
-    &amp;quot;name&amp;quot;: &amp;quot;user&amp;quot;,
-    &amp;quot;url&amp;quot;: &amp;quot;0&amp;quot;,
-    &amp;quot;path&amp;quot;: &amp;quot;&amp;quot;,
-    &amp;quot;iconcls&amp;quot;: &amp;quot;el-icon-document&amp;quot;
-}, {
-    &amp;quot;id&amp;quot;: 2,
-    &amp;quot;name&amp;quot;: &amp;quot;User&amp;quot;,
-    &amp;quot;url&amp;quot;: &amp;quot;1&amp;quot;,
-    &amp;quot;path&amp;quot;: &amp;quot;/user/user&amp;quot;,
-    &amp;quot;component&amp;quot;: &amp;quot;user/User&amp;quot;,
-    &amp;quot;parentid&amp;quot;: 1
-}, {
-    &amp;quot;id&amp;quot;: 3,
-    &amp;quot;name&amp;quot;: &amp;quot;Role&amp;quot;,
-    &amp;quot;url&amp;quot;: &amp;quot;1&amp;quot;,
-    &amp;quot;path&amp;quot;: &amp;quot;/user/role&amp;quot;,
-    &amp;quot;component&amp;quot;: &amp;quot;user/Role&amp;quot;,
-    &amp;quot;parentid&amp;quot;: 1
-}, {
-    &amp;quot;id&amp;quot;: 7,
-    &amp;quot;name&amp;quot;: &amp;quot;Permission&amp;quot;,
-    &amp;quot;url&amp;quot;: &amp;quot;1&amp;quot;,
-    &amp;quot;path&amp;quot;: &amp;quot;/user/permission&amp;quot;,
-    &amp;quot;component&amp;quot;: &amp;quot;user/Permission&amp;quot;,
-    &amp;quot;parentid&amp;quot;: 1
-}, {
-    &amp;quot;id&amp;quot;: 8,
-    &amp;quot;name&amp;quot;: &amp;quot;Menu&amp;quot;,
-    &amp;quot;url&amp;quot;: &amp;quot;1&amp;quot;,
-    &amp;quot;path&amp;quot;: &amp;quot;/user/menu&amp;quot;,
-    &amp;quot;component&amp;quot;: &amp;quot;user/Menu&amp;quot;,
-    &amp;quot;parentid&amp;quot;: 1
-}]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;通过递归的方式转换：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;const getJsonTree = function(data,parentid){
-    let tree=[]
-    for(let i=0;i&amp;lt;data.length;i++){ 
-        let node=data[i]
-        if(node.parentid==parentid ){ 
-            let newNode={
-                id:node.id,
-                name:node.name,
-                path:node.path, 
-                component:node.component,
-                meta:{
-                    url:node.url,
-                    iconcls:node.iconcls,
-                    parentid:node.parentid
-                },
-                children:getJsonTree(data,node.id)
-            }
-            tree.push(newNode)             
-        }
-    }
-    return tree
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;转换后结果如下：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;[{
-    &amp;quot;id&amp;quot;: 0,
-    &amp;quot;name&amp;quot;: &amp;quot;home&amp;quot;,
-    &amp;quot;path&amp;quot;: &amp;quot;/home&amp;quot;,
-    &amp;quot;component&amp;quot;: &amp;quot;Gate&amp;quot;,
-    &amp;quot;meta&amp;quot;: {
-        &amp;quot;url&amp;quot;: &amp;quot;1&amp;quot;,
-        &amp;quot;iconcls&amp;quot;: &amp;quot;el-icon-menu&amp;quot;,
-        &amp;quot;parentid&amp;quot;: null
-    },
-    &amp;quot;children&amp;quot;: []
-}, {
-    &amp;quot;id&amp;quot;: 1,
-    &amp;quot;name&amp;quot;: &amp;quot;user&amp;quot;,
-    &amp;quot;path&amp;quot;: &amp;quot;&amp;quot;,
-    &amp;quot;component&amp;quot;: null,
-    &amp;quot;meta&amp;quot;: {
-        &amp;quot;url&amp;quot;: &amp;quot;0&amp;quot;,
-        &amp;quot;iconcls&amp;quot;: &amp;quot;el-icon-document&amp;quot;,
-        &amp;quot;parentid&amp;quot;: null
-    },
-    &amp;quot;children&amp;quot;: [{
-        &amp;quot;id&amp;quot;: 2,
-        &amp;quot;name&amp;quot;: &amp;quot;User&amp;quot;,
-        &amp;quot;path&amp;quot;: &amp;quot;/user/user&amp;quot;,
-        &amp;quot;component&amp;quot;: &amp;quot;user/User&amp;quot;,
-        &amp;quot;meta&amp;quot;: {
-            &amp;quot;url&amp;quot;: &amp;quot;1&amp;quot;,
-            &amp;quot;iconcls&amp;quot;: null,
-            &amp;quot;parentid&amp;quot;: 1
-        },
-        &amp;quot;children&amp;quot;: []
-    }, {
-        &amp;quot;id&amp;quot;: 3,
-        &amp;quot;name&amp;quot;: &amp;quot;Role&amp;quot;,
-        &amp;quot;path&amp;quot;: &amp;quot;/user/role&amp;quot;,
-        &amp;quot;component&amp;quot;: &amp;quot;user/Role&amp;quot;,
-        &amp;quot;meta&amp;quot;: {
-            &amp;quot;url&amp;quot;: &amp;quot;1&amp;quot;,
-            &amp;quot;iconcls&amp;quot;: null,
-            &amp;quot;parentid&amp;quot;: 1
-        },
-        &amp;quot;children&amp;quot;: []
-    }, {
-        &amp;quot;id&amp;quot;: 7,
-        &amp;quot;name&amp;quot;: &amp;quot;Permission&amp;quot;,
-        &amp;quot;path&amp;quot;: &amp;quot;/user/permission&amp;quot;,
-        &amp;quot;component&amp;quot;: &amp;quot;user/Permission&amp;quot;,
-        &amp;quot;meta&amp;quot;: {
-            &amp;quot;url&amp;quot;: &amp;quot;1&amp;quot;,
-            &amp;quot;iconcls&amp;quot;: null,
-            &amp;quot;parentid&amp;quot;: 1
-        },
-        &amp;quot;children&amp;quot;: []
-    }, {
-        &amp;quot;id&amp;quot;: 8,
-        &amp;quot;name&amp;quot;: &amp;quot;Menu&amp;quot;,
-        &amp;quot;path&amp;quot;: &amp;quot;/user/menu&amp;quot;,
-        &amp;quot;component&amp;quot;: &amp;quot;user/Menu&amp;quot;,
-        &amp;quot;meta&amp;quot;: {
-            &amp;quot;url&amp;quot;: &amp;quot;1&amp;quot;,
-            &amp;quot;iconcls&amp;quot;: null,
-            &amp;quot;parentid&amp;quot;: 1
-        },
-        &amp;quot;children&amp;quot;: []
-    }]
-}]
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>SpringBoot整合Spring Security&#43;JWT</title>
-      <link>https://boseman1024.github.io/2018/springboot%E9%9B%86%E6%88%90spring-security-jwt/</link>
-      <pubDate>Mon, 16 Apr 2018 20:40:54 +0000</pubDate>
-      
-      <guid>https://boseman1024.github.io/2018/springboot%E9%9B%86%E6%88%90spring-security-jwt/</guid>
-      <description>
-
-&lt;h3 id=&#34;demo-https-github-com-boseman1024-springsecurity-jwt&#34;&gt;&lt;a href=&#34;https://github.com/boseman1024/SpringSecurity-JWT&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;DEMO&lt;/a&gt;&lt;/h3&gt;
-
-&lt;h1 id=&#34;准备&#34;&gt;准备&lt;/h1&gt;
-
-&lt;h2 id=&#34;maven依赖&#34;&gt;MAVEN依赖&lt;/h2&gt;
-
-&lt;p&gt;在&lt;code&gt;pom.xml&lt;/code&gt;引入所需依赖如下：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;parent&amp;gt;
-    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
-    &amp;lt;artifactId&amp;gt;spring-boot-starter-parent&amp;lt;/artifactId&amp;gt;
-    &amp;lt;version&amp;gt;2.0.1.RELEASE&amp;lt;/version&amp;gt;
-    &amp;lt;relativePath/&amp;gt; &amp;lt;!-- lookup parent from repository --&amp;gt;
-&amp;lt;/parent&amp;gt;
-
-&amp;lt;!--SpringBoot--&amp;gt;
-&amp;lt;dependency&amp;gt;
-    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
-    &amp;lt;artifactId&amp;gt;spring-boot-starter-web&amp;lt;/artifactId&amp;gt;
-&amp;lt;/dependency&amp;gt;
-&amp;lt;dependency&amp;gt;
-    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
-    &amp;lt;artifactId&amp;gt;spring-boot-starter-test&amp;lt;/artifactId&amp;gt;
-    &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
-&amp;lt;/dependency&amp;gt;
-
-&amp;lt;!--Spring Security --&amp;gt;
-&amp;lt;dependency&amp;gt;
-    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
-    &amp;lt;artifactId&amp;gt;spring-boot-starter-security&amp;lt;/artifactId&amp;gt;
-&amp;lt;/dependency&amp;gt;
-&amp;lt;dependency&amp;gt;
-    &amp;lt;groupId&amp;gt;org.springframework.security&amp;lt;/groupId&amp;gt;
-    &amp;lt;artifactId&amp;gt;spring-security-test&amp;lt;/artifactId&amp;gt;
-    &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
-&amp;lt;/dependency&amp;gt;
-
-&amp;lt;!--JWT--&amp;gt;
-&amp;lt;dependency&amp;gt;
-    &amp;lt;groupId&amp;gt;io.jsonwebtoken&amp;lt;/groupId&amp;gt;
-    &amp;lt;artifactId&amp;gt;jjwt&amp;lt;/artifactId&amp;gt;
-    &amp;lt;version&amp;gt;0.9.0&amp;lt;/version&amp;gt;
-&amp;lt;/dependency&amp;gt;
-
-&amp;lt;!--Mybatis--&amp;gt;
-&amp;lt;dependency&amp;gt;
-    &amp;lt;groupId&amp;gt;org.mybatis.spring.boot&amp;lt;/groupId&amp;gt;
-    &amp;lt;artifactId&amp;gt;mybatis-spring-boot-starter&amp;lt;/artifactId&amp;gt;
-    &amp;lt;version&amp;gt;1.3.2&amp;lt;/version&amp;gt;
-&amp;lt;/dependency&amp;gt;
-&amp;lt;!--MYSQL--&amp;gt;
-&amp;lt;dependency&amp;gt;
-    &amp;lt;groupId&amp;gt;mysql&amp;lt;/groupId&amp;gt;
-    &amp;lt;artifactId&amp;gt;mysql-connector-java&amp;lt;/artifactId&amp;gt;
-    &amp;lt;scope&amp;gt;runtime&amp;lt;/scope&amp;gt;
-&amp;lt;/dependency&amp;gt;
-
-&amp;lt;!--可选：druid连接池--&amp;gt;
-&amp;lt;dependency&amp;gt;
-    &amp;lt;groupId&amp;gt;com.alibaba&amp;lt;/groupId&amp;gt;
-    &amp;lt;artifactId&amp;gt;druid&amp;lt;/artifactId&amp;gt;
-    &amp;lt;version&amp;gt;1.1.9&amp;lt;/version&amp;gt;
-&amp;lt;/dependency&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;基本配置&#34;&gt;基本配置&lt;/h2&gt;
-
-&lt;p&gt;在&lt;code&gt;application.yml&lt;/code&gt;中配置SpringBoot应用，
-配置后在项目中可通过&lt;code&gt;@Value(&amp;quot;${jwt.secret}&amp;quot;)&lt;/code&gt;的方式注入值。
-&lt;code&gt;application.yml&lt;/code&gt;配置如下：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;spring:
-  # 数据库配置
-  datasource:
-    url: jdbc:mysql://localhost/xauth?useSSL=true&amp;amp;useUnicode=true&amp;amp;characterEncoding=UTF-8
-    username: root
-    password: root
-    driver-class-name: com.mysql.jdbc.Driver
-
-    # 若使用druid连接池，配置如下：
-    # 设置druid数据源
-    type: com.alibaba.druid.pool.DruidDataSource
-    # 下面为连接池的补充设置，应用到上面所有数据源中
-    # 初始化大小，最小，最大
-    initialSize: 1
-    minIdle: 3
-    maxActive: 20
-    # 配置获取连接等待超时的时间
-    maxWait: 60000
-    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
-    timeBetweenEvictionRunsMillis: 60000
-    # 配置一个连接在池中最小生存的时间，单位是毫秒
-    minEvictableIdleTimeMillis: 30000
-    validationQuery: select &#39;x&#39;
-    testWhileIdle: true
-    testOnBorrow: false
-    testOnReturn: false
-    # 打开PSCache，并且指定每个连接上PSCache的大小
-    oolPreparedStatements: true
-    maxPoolPreparedStatementPerConnectionSize: 20
-    # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，&#39;wall&#39;用于防火墙
-    filters: stat,wall,slf4j
-    # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
-    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
-    # 合并多个DruidDataSource的监控数据
-    #useGlobalDataSourceStat: true
-
-  # Spring Secutiry提供默认用户、密码及权限
-  #security:
-  #  user:
-  #    name: admin
-  #    password: admin
-  #    authorities:  #ROLE_ADMIN，ROLE_USER……
-
-# JWT 认证配置
-jwt:
-  header: Authorization #认证方式
-  secret: X-kuma2x      #加密盐
-  expiration: 604800    #过期时间，token七天不过期
-  tokenHead: &amp;quot;Bearer &amp;quot;  #Token前缀，用于检验是否Token
-  exceptUrl: &amp;quot;/auth/**&amp;quot; #允许匿名访问路径
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;用户表-角色表-权限表-mapper类-略-见项目demo&#34;&gt;用户表、角色表、权限表、Mapper类：略，见项目DEMO。&lt;/h2&gt;
-
-&lt;h1 id=&#34;具体实现&#34;&gt;具体实现&lt;/h1&gt;
-
-&lt;p&gt;新建一个工具类&lt;code&gt;JWTUtil&lt;/code&gt;，实现常用的方法：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Component
-public class JWTUtil {
-
-    @Value(&amp;quot;${jwt.secret}&amp;quot;)
-    private String secret;
-    @Value(&amp;quot;${jwt.expiration}&amp;quot;)
-    private Long expiration;
-
-    /**
-     * 根据Token获取用户名Username
-     * @param token
-     * @return
-     */
-    public String getUsernameByToken(String token){
-        String username;
-        try {
-            Claims claims = Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
-            username = claims.getSubject();
-        }catch (Exception e){
-            username = null;
-        }
-        return username;
-    }
-
-    /**
-     * 检验Token是否过期
-     * @param Token
-     * @return
-     */
-    public Boolean isTokenExpired(String Token){
-        Claims claims;
-        try{
-            claims = Jwts.parser().setSigningKey(secret).parseClaimsJws(Token).getBody();
-        }catch (Exception e){
-            claims = null;
-        }
-        return claims.getExpiration().before(new Date());
-    }
-
-    /**
-     * 生成Token
-     * @param userDetails
-     * @return
-     */
-    public String initToken(UserDetails userDetails){
-        //生成数据声明claims
-        Map&amp;lt;String,Object&amp;gt; claims = new HashMap&amp;lt;&amp;gt;();
-        claims.put(&amp;quot;sub&amp;quot;,userDetails.getUsername());
-        claims.put(&amp;quot;created&amp;quot;,new Date());
-
-        String Token = Jwts.builder().setClaims(claims)
-                //设置过期时间
-                .setExpiration(new Date(System.currentTimeMillis()+expiration*1000))
-                //加密算法+盐
-                .signWith(SignatureAlgorithm.HS512,secret).compact();
-        return Token;
-    }
-
-    /**
-     * 验证Token是否正确
-     * @param Token
-     * @param userDetails
-     * @return
-     */
-    public Boolean valiadateToken(String Token,UserDetails userDetails){
-        String username = getUsernameByToken(Token);
-        Boolean result = (!isTokenExpired(Token)&amp;amp;&amp;amp; username.equals(userDetails.getUsername()));
-        return result;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;为控制数据源（文本、xml、数据库等），需要实现&lt;code&gt;UserDetailsService&lt;/code&gt;接口，该接口提供&lt;code&gt;loadUserByUsername&lt;/code&gt;方法根据用户名查找用户并返回&lt;code&gt;UserDetails&lt;/code&gt;，在后续会用&lt;code&gt;UserDetails&lt;/code&gt;的信息来比对请求的用户名、密码是否正确。
-在&lt;code&gt;UserServiceImpl&lt;/code&gt;类中实现具体方法：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public interface UserService extends UserDetailsService{}
-
-@Service()
-public class UserServiceImpl implements UserService {
-    //获取全局AuthenticationManagerBuilder
-    @Autowired
-    private AuthenticationManagerBuilder authenticationManagerBuilder;
-    @Autowired
-    private SysUserMapper sysUserMapper;
-    @Resource
-    private JWTUtil jwtUtil;
-
-    /***
-     * 继承UserDetailsService类重写loadUserByUsername
-     * 根据用户名查找用户并返回
-     * @param username
-     * @return
-     * @throws UsernameNotFoundException
-     */
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        System.out.println(&amp;quot;===loadUserByUsername===&amp;quot;);
-        SysUser user = sysUserMapper.selectByUsername(username);
-        if(user == null){
-            System.out.println(&amp;quot;User Not Found&amp;quot;);
-            throw new UsernameNotFoundException(&amp;quot;User Not Found&amp;quot;);
-        }
-        return new org.springframework.security.core.userdetails.User(user.getUsername()
-                ,user.getPassword(),user.getEnabled()==1,
-                true,true,true,mapToGrantedAuthorities(user.getRole()));
-    }
-
-    /**
-     *获取用户所有权限集合
-     * @param authorities
-     * @return List&amp;lt;GrantedAuthority&amp;gt;
-     */
-    private static List&amp;lt;GrantedAuthority&amp;gt; mapToGrantedAuthorities(List&amp;lt;SysRole&amp;gt; authorities) {
-        Set&amp;lt;GrantedAuthority&amp;gt; setAuths=new HashSet&amp;lt;&amp;gt;();
-        for(SysRole userRole:authorities){
-            /*
-            for(SysMenu sysMenu : userRole.getMenus()){
-                setAuths.add(new SimpleGrantedAuthority(sysMenu.getName()));
-            }
-            */
-            setAuths.add(new SimpleGrantedAuthority(userRole.getName()));
-        }
-        List&amp;lt;GrantedAuthority&amp;gt; result=new ArrayList&amp;lt;&amp;gt;(setAuths);
-        return result;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;创建Token校验过滤器&lt;code&gt;JWTAuthenticationFilter&lt;/code&gt;，判断每次请求是否授权请求、是否携带Token以及Token是否正确，是否过期。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class JWTAuthenticationFilter extends OncePerRequestFilter {
-    @Value(&amp;quot;${jwt.header}&amp;quot;)
-    private String header;
-    @Value(&amp;quot;${jwt.tokenHead}&amp;quot;)
-    private String tokenHead;
-    @Resource
-    private JWTUtil jwtUtil;
-    @Resource
-    private UserDetailsService userDetailsService;
-
-    @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
-        System.out.println(&amp;quot;======JWTAuthenticationFilter=======&amp;quot;);
-        String tokenHeader = request.getHeader(header);
-        if(tokenHeader!=null&amp;amp;&amp;amp;tokenHeader.startsWith(tokenHead)){
-            String token = tokenHeader.substring(tokenHead.length());
-            String username = jwtUtil.getUsernameByToken(token);
-            logger.info(&amp;quot;Token CHECK:&amp;quot;+username);
-            if(username!=null&amp;amp;&amp;amp; SecurityContextHolder.getContext().getAuthentication() == null){
-                UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-                if(jwtUtil.valiadateToken(token,userDetails)){
-                    UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
-                            userDetails, null, userDetails.getAuthorities());
-                    authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(
-                            request));
-                    logger.info(&amp;quot;authenticated user &amp;quot; + username + &amp;quot;, setting security context&amp;quot;);
-                    SecurityContextHolder.getContext().setAuthentication(authentication);
-                }
-            }
-        }
-        chain.doFilter(request,response);
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;建立&lt;code&gt;WebSecurityConfig&lt;/code&gt;类继承&lt;code&gt;WebSecurityConfigurerAdapter&lt;/code&gt;来对Spring Security进行配置。
-使用&lt;code&gt;@EnableWebSecurity&lt;/code&gt;注解启用Spring Security。
-使用&lt;code&gt;@EnableGlobalMethodSecurity&lt;/code&gt;注解启用访问权限控制，
-例如：&lt;code&gt;@PreAuthorize(&amp;quot;hasRole(&#39;ADMIN&#39;)&amp;quot;)&lt;/code&gt;。
-&lt;code&gt;WebSecurityConfig&lt;/code&gt;类如下：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Configuration
-@EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    @Value(&amp;quot;${jwt.exceptUrl}&amp;quot;)
-    private String exceptUrl;
-    @Resource
-    private UserDetailsService userDetailsService;
-
-    @Bean
-    public JWTAuthenticationFilter authenticationTokenFilter() throws Exception {
-        return new JWTAuthenticationFilter();
-    }
-
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        // 源码：
-        // ((HttpSecurity)((HttpSecurity)((ExpressionUrlAuthorizationConfigurer.AuthorizedUrl)http.authorizeRequests().anyRequest()).authenticated().and()).formLogin().and()).httpBasic();
-
-        //启用跨域
-        http.cors().and()
-            //使用JWT，禁用csrf
-            .csrf().disable()
-            //基于token所以禁用session
-            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-            .and()
-            .authorizeRequests()
-                .antMatchers(
-                        HttpMethod.GET,
-                        &amp;quot;/&amp;quot;,
-                        &amp;quot;/*.html&amp;quot;,
-                        &amp;quot;/favicon.ico&amp;quot;,
-                        &amp;quot;/**/*.html&amp;quot;,
-                        &amp;quot;/**/*.css&amp;quot;,
-                        &amp;quot;/**/*.js&amp;quot;
-                ).permitAll()
-                //允许匿名访问
-                .antMatchers(exceptUrl).permitAll()
-                //除上以外所有请求均需授权访问
-                .anyRequest().authenticated();
-
-        //将Token校验过滤器JWTAuthenticationFilter加载于用户名密码认证过滤器UsernamePasswordAuthenticationFilter之前。
-        http.addFilterBefore(authenticationTokenFilter(),UsernamePasswordAuthenticationFilter.class);
-
-        //禁用缓存
-        http.headers().cacheControl().disable();
-    }
-
-    //AuthenticationManagerBuilder 通过 @Autowired 注解被注入到一个 @Bean 中的方法，这会导致它构造的是全局的AuthenticationManager
-    @Autowired
-    protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                //设置userDetailsService
-                .userDetailsService(userDetailsService)
-                //加载密码编码器
-                .passwordEncoder(passwordEncoder());
-    }
-/*
-    //使用 @Override 注解会导致 AuthenticationManagerBuilder 构建的是一个局部的AuthenticationManager
-    @Override
-    public configure(AuthenticationManagerBuilder builder) {
-        auth.jdbcAuthentication().dataSource(dataSource).withUser(&amp;quot;dave&amp;quot;)
-                .password(&amp;quot;secret&amp;quot;).roles(&amp;quot;USER&amp;quot;);
-    }
-
-*/
-    //装载BCrypt密码编码器
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;在&lt;code&gt;UserServiceImpl&lt;/code&gt;中加入登录处理login方法并生成Token返回。
-生成Token时也可使用从数据库取出携带其余信息的实体类。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    /****
-     * 登录
-     * 生成jwtToken并返回
-     * @param user
-     * @return
-     */
-    @Override
-    public String login(String username,String password) {
-        //password = passwordEncoder.encode(password);
-        AuthenticationManager authenticationManager = authenticationManagerBuilder.getObject();
-        //绕开SS的Filter手动的完成验证并设置Authentication对象：
-        //用户名和密码获得之后组合成 UsernamePasswordAuthenticationToken 的实例
-        UsernamePasswordAuthenticationToken upToken = new UsernamePasswordAuthenticationToken(username, password);
-        if(authenticationManager==null){
-            throw new AuthenticationServiceException(&amp;quot;no authenticationManager defined&amp;quot;);
-        }
-        //将该令牌传递给 AuthenticationManager 实例进行验证,验证成功后，AuthenticationManager 会返回填充好的 Authentication 实例
-        Authentication authentication = authenticationManager.authenticate(upToken);
-        //通过调用 SecurityContextHolder.getContext().setAuthentication(...) 建立安全上下文的实例，传递到返回的身份认证对象上
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-
-        //生成token并返回，多一次loadUserByUsername
-        UserDetails userDetails = loadUserByUsername(username);
-        //User user = sysUserMapper.selectByUsername(username);
-        String token = jwtUtil.initToken(userDetails);
-        return token;
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;最后在&lt;code&gt;UserController&lt;/code&gt;实现Login进行登录以及其他测试路径。
-&lt;code&gt;@PreAuthorize&lt;/code&gt;通过表达式&lt;code&gt;hasRole(&#39;ADMIN&#39;)&lt;/code&gt;等来进行权限限制。
-&lt;code&gt;hasRole&lt;/code&gt;表达式中，默认每个角色名有个前缀“&lt;code&gt;ROLE_&lt;/code&gt;”，即在数据库中存储的为“&lt;code&gt;ROLE_ADMIN&lt;/code&gt;”。
-&lt;code&gt;@PreAuthorize&lt;/code&gt;也可修饰Controller。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@RestController
-public class UserController {
-    @Resource
-    private UserService userService;
-
-    @RequestMapping(&amp;quot;/index&amp;quot;)
-    public String index(){
-        return &amp;quot;index&amp;quot;;
-    }
-
-    @RequestMapping(&amp;quot;/admin&amp;quot;)
-    // 访问需要ADMIN角色
-    @PreAuthorize(&amp;quot;hasRole(&#39;ADMIN&#39;)&amp;quot;)
-    public String admin(){
-        return &amp;quot;admin&amp;quot;;
-    }
-
-    @PostMapping(&amp;quot;/auth/login&amp;quot;)
-    public Map&amp;lt;String,String&amp;gt; Login(HttpServletRequest request){
-        String token = userService.login(request.getParameter(&amp;quot;username&amp;quot;),request.getParameter(&amp;quot;password&amp;quot;));
-        Map&amp;lt;String,String&amp;gt; tokenMap = new HashMap&amp;lt;&amp;gt;();
-        tokenMap.put(&amp;quot;token&amp;quot;,token);
-        return tokenMap;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;验证&#34;&gt;验证&lt;/h1&gt;
-
-&lt;p&gt;未携带Token时访问&lt;a href=&#34;http://localhost:8080/index，访问被拒绝：&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;http://localhost:8080/index，访问被拒绝：&lt;/a&gt;
-&lt;img src=&#34;https://kwftjq.bn.files.1drv.com/y4mLN6XM62GWIInzusIeY7sQcQWjwHTO_0zHzSqts0nEs1lIjvk0VrfkZR5VyeHlSvofY1aB68v2eZu776Lkb3tf7pXqIA_gWwtpA88HIUwU6PrCV5blf7igvATkKijg3olUlq4v_P_T3bWtU7eiXKDKUK9sjAFM_MkyKbaa1VnbURuJXvedzFI8h1rWYZ8kGgON5LuNiiUXE2cNrkGLoCmvw/1.jpg&#34;&gt;
-访问&lt;a href=&#34;http://localhost:8080/auth/login进行登录，这里使用test用户，得到Token：&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;http://localhost:8080/auth/login进行登录，这里使用test用户，得到Token：&lt;/a&gt;
-&lt;img src=&#34;https://kgftjq.bn.files.1drv.com/y4mV4uAmxcJNNu516A3d9HRZelJmLCq-x6djnCFooGokChtC9RZ1dDlkiPPam0rEoGSysAWDbIXqUgaMm-MUihu1QLR5bzKHoak8UrowacUakX9c7q6IrNw8FTZCv570wkfR4GBXWPOP9E3UTH2F6xA8gfyHpmLWio4Z6skYG_jOgCJS6I0s4Pf8yD0l0mD0Oz-H4vCLwAO99gj_da_hPQvrg/2.jpg&#34;&gt;
-携带Token访问&lt;a href=&#34;http://localhost:8080/index，访问成功：&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;http://localhost:8080/index，访问成功：&lt;/a&gt;
-&lt;img src=&#34;https://lqftjq.bn.files.1drv.com/y4miboLO4EzoRUc90_XtLVwL_liBhgh-yqgIYA4rAISP6yKEkhqV222VZ8p36QEsqHfvQaqY7xAd1YLS-UIuJeLQFbU1TM4VYX7QYR3uno2wWsCBkBiuTF1QgTfyT9UGTD94m2wfRs-uyiM1cP1sctFB6Ta594rDdahoc3VYsUX-zz_DOwSnUHICi6t6XZuJ3KWdgpIUtlpCeHt7wh6iy4LcQ/3.jpg&#34;&gt;
-携带Token访问&lt;a href=&#34;http://localhost:8080/admin，由于test用户无ROLE_ADMIN角色，访问被拒绝：&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;http://localhost:8080/admin，由于test用户无ROLE_ADMIN角色，访问被拒绝：&lt;/a&gt;
-&lt;img src=&#34;https://laftjq.bn.files.1drv.com/y4mUXp89oAWZKmTmBJWzBBg9Pr-VOoIFOQAaZTpCb1c5ce9szfpcldYz7Vl3CoPMvImXawfeuAlDy7TZg3zNuNwQwcmxGY-A1Xd2wS1usJ9rCYrKf78ltfMpaakLmDUpY_7e5EmVJDiHGBIX345pIId5wCj7o956g4Cj9Q_1dpAIbDSXJZqtoXm7DnQxjhhS5yuUFG-R0EOWobflr7CPKVD9g/4.jpg&#34;&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>JSON查询数据</title>
-      <link>https://boseman1024.github.io/2018/json%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/</link>
-      <pubDate>Fri, 30 Mar 2018 23:04:11 +0000</pubDate>
-      
-      <guid>https://boseman1024.github.io/2018/json%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE/</guid>
-      <description>
-
-&lt;p&gt;若原始数据结构如下：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var arr = [{
-    id:1,
-    name:&#39;a&#39;
-},{
-    id:2,
-    name:&#39;b&#39;
-}];
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;①改变数据结构&#34;&gt;①改变数据结构&lt;/h2&gt;
-
-&lt;p&gt;可转换数据结构，把id变成key为：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var obj = {};
-arr.forEach(function (v,i) {
-    obj[v.id] = v;
-});
-或
-for (let i = 0; i &amp;lt; arr.length;i++){
-    obj[arr[i].id] = arr[i]
-}
-
-obj = {
-    1:{
-        id:1,
-        name:&#39;a&#39;,
-    },
-    2:{
-        id:2,
-        name:&#39;b&#39;
-    }
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;之后就可根据id获取元素数据&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;obj[id].name
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;②根据key查询元素&#34;&gt;②根据key查询元素&lt;/h2&gt;
-
-&lt;p&gt;功能类似select name from json where id = 1&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;function getItem(arr,n,v) {  
-    for (var i = 0; i &amp;lt; arr.length; i++){
-        if (arr[i][n]==v){
-            return arr[i];  
-        }
-    }
-}  
-   
-getItem(arr,&amp;quot;id&amp;quot;,&amp;quot;2&amp;quot;).name 
-getItem(arr,&amp;quot;name&amp;quot;,&amp;quot;123&amp;quot;).name 
 &lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
