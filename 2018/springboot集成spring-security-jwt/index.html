@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noodp"/>
-  <meta name="author" content="Kuma2x">
+  <meta name="author" content="轴心">
   
   
   
@@ -22,10 +22,10 @@
   <title>
        
        
-           SpringBoot整合Spring Security&#43;JWT | KUMA2X
+           SpringBoot整合Spring Security&#43;JWT | 轴心
        
   </title>
-  <meta name="title" content="SpringBoot整合Spring Security&#43;JWT | KUMA2X">
+  <meta name="title" content="SpringBoot整合Spring Security&#43;JWT | 轴心">
     
 
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -50,17 +50,17 @@
 &lt;parent&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt; &lt;version&gt;2.0.1.RELEASE&lt;/version&gt; &lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt; &lt;/parent&gt; &lt;!--SpringBoot--&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt; &lt;scope&gt;test&lt;/scope&gt; &lt;/dependency&gt; &lt;!--Spring Security --&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-security&lt;/artifactId&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.security&lt;/groupId&gt; &lt;artifactId&gt;spring-security-test&lt;/artifactId&gt; &lt;scope&gt;test&lt;/scope&gt; &lt;/dependency&gt; &lt;!--JWT--&gt; &lt;dependency&gt; &lt;groupId&gt;io.jsonwebtoken&lt;/groupId&gt; &lt;artifactId&gt;jjwt&lt;/artifactId&gt; &lt;version&gt;0.9.0&lt;/version&gt; &lt;/dependency&gt; &lt;!--Mybatis--&gt; &lt;dependency&gt; &lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt; &lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt; &lt;version&gt;1.3.2&lt;/version&gt; &lt;/dependency&gt; &lt;!--MYSQL--&gt; &lt;dependency&gt; &lt;groupId&gt;mysql&lt;/groupId&gt; &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt; &lt;scope&gt;runtime&lt;/scope&gt; &lt;/dependency&gt; &lt;!--可选：druid连接池--&gt; &lt;dependency&gt; &lt;groupId&gt;com.alibaba&lt;/groupId&gt; &lt;artifactId&gt;druid&lt;/artifactId&gt; &lt;version&gt;1.1.9&lt;/version&gt; &lt;/dependency&gt;  基本配置 在application.yml中配置SpringBoot应用， 配置后在项目中可通过@Value(&quot;${jwt.secret}&quot;)的方式注入值。 application.yml配置如下：
 spring: # 数据库配置 datasource: url: jdbc:mysql://localhost/xauth?",
     "inLanguage" : "en-us",
-    "author" : "Kuma2x",
-    "creator" : "Kuma2x",
-    "publisher": "Kuma2x",
-    "accountablePerson" : "Kuma2x",
-    "copyrightHolder" : "Kuma2x",
+    "author" : "轴心",
+    "creator" : "轴心",
+    "publisher": "轴心",
+    "accountablePerson" : "轴心",
+    "copyrightHolder" : "轴心",
     "copyrightYear" : "2018",
     "datePublished": "2018-04-16 20:40:54 &#43;0000 UTC",
     "dateModified" : "2018-04-16 20:40:54 &#43;0000 UTC",
     "url" : "https://boseman1024.github.io/2018/springboot%E9%9B%86%E6%88%90spring-security-jwt/",
     "wordCount" : "761",
-    "keywords" : [ "JAVA","JWT","Spring", "KUMA2X"]
+    "keywords" : [ "JAVA","JWT","Spring", "轴心"]
 }
 </script>
 
@@ -74,7 +74,7 @@ spring: # 数据库配置 datasource: url: jdbc:mysql://localhost/xauth?",
         <nav class="navbar">
     <div class="container">
         <div class="navbar-header header-logo">
-        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://boseman1024.github.io/">KUMA2X</a>
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://boseman1024.github.io/">轴心</a>
         </div>
         <div class="menu navbar-right">
                 
@@ -91,7 +91,7 @@ spring: # 数据库配置 datasource: url: jdbc:mysql://localhost/xauth?",
 <nav class="navbar-mobile" id="nav-mobile" style="display: none">
      <div class="container">
         <div class="navbar-header">
-            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://boseman1024.github.io/">KUMA2X</a></div>
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://boseman1024.github.io/">轴心</a></div>
             <div class="menu-toggle">
                 <span></span><span></span><span></span>
             </div>
@@ -116,7 +116,7 @@ spring: # 数据库配置 datasource: url: jdbc:mysql://localhost/xauth?",
     <header class="post-header">
         <h1 class="post-title" itemprop="name headline">SpringBoot整合Spring Security&#43;JWT</h1>
         <div class="post-meta">
-                Written by <a itemprop="name" href="https://boseman1024.github.io/" rel="author">Kuma2x</a> with ♥ 
+                Written by <a itemprop="name" href="https://boseman1024.github.io/" rel="author">轴心</a> with ♥ 
                 <span class="post-time">
                 on <time datetime=2018-04-16 itemprop="datePublished">April 16, 2018</time>
                 </span>
@@ -603,7 +603,7 @@ public class UserController {
              
             <p class="copyright-item">
                 <span>Author:</span>
-                <span>Kuma2x </span>
+                <span>轴心 </span>
                 </p>
             
            
@@ -660,7 +660,7 @@ public class UserController {
     	 <i class="iconfont icon-love"></i> 
          </span>
          
-            <span class="author" itemprop="copyrightHolder"><a href="https://boseman1024.github.io/">Kuma2x</a> | </span> 
+            <span class="author" itemprop="copyrightHolder"><a href="https://boseman1024.github.io/">轴心</a> | </span> 
          
 
          
