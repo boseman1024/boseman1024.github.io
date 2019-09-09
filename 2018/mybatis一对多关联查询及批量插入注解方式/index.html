@@ -41,16 +41,12 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https://boseman1024.github.io/"
+         "@id": "https:\/\/boseman1024.github.io\/"
     },
     "articleSection" : "posts",
     "name" : "Mybatis：一对多关联查询及批量插入（注解方式）",
     "headline" : "Mybatis：一对多关联查询及批量插入（注解方式）",
-    "description" : "一对多关联查询 通过@Results构造结果映射： * javaType：返回类型 * property：指定属性 * column：将作为指定参数传递给指定方法（即例中selectMenuByRid方法）
-例：
-//角色mapper public interface SysRoleMapper { @Select(&quot;select * from sys_role&quot;) @Results({ @Result(property=&quot;name&quot;,column=&quot;name&quot;), @Result(property=&quot;namezh&quot;,column=&quot;namezh&quot;), @Result(property=&quot;menus&quot;,column=&quot;id&quot;,javaType=List.class,many=@Many(select=&quot;com.kuma2x.xauth.mapper.SysMenuMapper.selectMenuByRid&quot;)) }) List&lt;SysRole&gt; selectRoleByUId(int uid); } //菜单mapper public interface SysMenuMapper { //通过角色id在角色菜单关联表中查询到该角色所拥有菜单权限 @Select(&quot;select * from sys_menu,sys_role_menu where sys_menu.id = sys_role_menu.mid and sys_role_menu.rid = #{rid}&quot;) List&lt;Integer&gt; selectMenuByRid(int rid); }  批量插入 使用&lt;script&gt;标签可像XML语法一样书写。 通过&lt;foreach&gt;迭代集合进行插入，注解中参数需通过@Param指定参数。
-foreach标签的属性主要有： * item：迭代时集合中每个元素的别名。 * index：每个元素在集合中迭代序列。 * collection：指定集合。 * open：该语句的开始符。 * separator：每次迭代的分隔符。 * close：该语句的结束符。
-&lt;foreach collection=&quot;list&quot; index=&quot;index&quot; item=&quot;item&quot; open=&quot;(&quot; separator=&quot;,&quot; close=&quot;)&quot;&gt; #{item} &lt;/foreach&gt;  完整示例：",
+    "description" : "一对多关联查询 通过@Results构造结果映射： * javaType：返回类型 * property：指定属性 * column：将作为指定参数传递给指定方法（即例中selectMenuByRid方法）\n例：\n\/\/角色mapper public interface SysRoleMapper { @Select(\x26quot;select * from sys_role\x26quot;) @Results({ @Result(property=\x26quot;name\x26quot;,column=\x26quot;name\x26quot;), @Result(property=\x26quot;namezh\x26quot;,column=\x26quot;namezh\x26quot;), @Result(property=\x26quot;menus\x26quot;,column=\x26quot;id\x26quot;,javaType=List.class,many=@Many(select=\x26quot;com.kuma2x.xauth.mapper.SysMenuMapper.selectMenuByRid\x26quot;)) }) List\x26lt;SysRole\x26gt; selectRoleByUId(int uid); } \/\/菜单mapper public interface SysMenuMapper { \/\/通过角色id在角色菜单关联表中查询到该角色所拥有菜单权限 @Select(\x26quot;select * from sys_menu,sys_role_menu where sys_menu.id = sys_role_menu.mid and sys_role_menu.rid = #{rid}\x26quot;) List\x26lt;Integer\x26gt; selectMenuByRid(int rid); }  批量插入 使用\x26lt;script\x26gt;标签可像XML语法一样书写。 通过\x26lt;foreach\x26gt;迭代集合进行插入，注解中参数需通过@Param指定参数。\nforeach标签的属性主要有： * item：迭代时集合中每个元素的别名。 * index：每个元素在集合中迭代序列。 * collection：指定集合。 * open：该语句的开始符。 * separator：每次迭代的分隔符。 * close：该语句的结束符。\n\x26lt;foreach collection=\x26quot;list\x26quot; index=\x26quot;index\x26quot; item=\x26quot;item\x26quot; open=\x26quot;(\x26quot; separator=\x26quot;,\x26quot; close=\x26quot;)\x26quot;\x26gt; #{item} \x26lt;\/foreach\x26gt;  完整示例：",
     "inLanguage" : "en-us",
     "author" : "轴心",
     "creator" : "轴心",
@@ -58,9 +54,9 @@ foreach标签的属性主要有： * item：迭代时集合中每个元素的别
     "accountablePerson" : "轴心",
     "copyrightHolder" : "轴心",
     "copyrightYear" : "2018",
-    "datePublished": "2018-05-01 20:50:27 &#43;0000 UTC",
-    "dateModified" : "2018-05-01 20:50:27 &#43;0000 UTC",
-    "url" : "https://boseman1024.github.io/2018/mybatis%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E8%81%94%E6%9F%A5%E8%AF%A2%E5%8F%8A%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%B3%A8%E8%A7%A3%E6%96%B9%E5%BC%8F/",
+    "datePublished": "2018-05-01 20:50:27 \x2b0000 UTC",
+    "dateModified" : "2018-05-01 20:50:27 \x2b0000 UTC",
+    "url" : "https:\/\/boseman1024.github.io\/2018\/mybatis%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%85%B3%E8%81%94%E6%9F%A5%E8%AF%A2%E5%8F%8A%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%B3%A8%E8%A7%A3%E6%96%B9%E5%BC%8F\/",
     "wordCount" : "96",
     "keywords" : [ "JAVA","Mybatis", "轴心"]
 }

@@ -41,16 +41,12 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https://boseman1024.github.io/"
+         "@id": "https:\/\/boseman1024.github.io\/"
     },
     "articleSection" : "posts",
     "name" : "JAVA基础整理",
     "headline" : "JAVA基础整理",
-    "description" : "八大基本类型： * 字节型（byte）-8位 * 短整型（short）-16位 * 整型（int）-32位 * 长整型（long）-64位 * 字符型（char）-16位 * 浮点型（float）-32位 * 双精度型（double）-64位 * 布尔型（boolean）-1位
-基本类型都有对应的包装类型，基本类型与其对应的包装类型之间的赋值使用自动装箱与拆箱完成。
-Integer x = 2; // 装箱 int y = x; // 拆箱  new Integer(123)与Integer.valueOf(123)的区别在于，new Integer(123)每次都会新建一个对象，而Integer.valueOf(123)可能会使用缓存对象，因此多次使用Integer.valueOf(123)会取得同一个对象的引用。
-Integer x = new Integer(123); Integer y = new Integer(123); System.out.println(x == y); // false Integer z = Integer.valueOf(123); Integer k = Integer.valueOf(123); System.out.println(z == k); // true  编译器会在自动装箱过程调用valueOf()方法，因此多个Integer实例使用自动装箱来创建并且值相同，那么就会引用相同的对象。
-Integer m = 123; Integer n = 123; System.",
+    "description" : "八大基本类型： * 字节型（byte）-8位 * 短整型（short）-16位 * 整型（int）-32位 * 长整型（long）-64位 * 字符型（char）-16位 * 浮点型（float）-32位 * 双精度型（double）-64位 * 布尔型（boolean）-1位\n基本类型都有对应的包装类型，基本类型与其对应的包装类型之间的赋值使用自动装箱与拆箱完成。\nInteger x = 2; \/\/ 装箱 int y = x; \/\/ 拆箱  new Integer(123)与Integer.valueOf(123)的区别在于，new Integer(123)每次都会新建一个对象，而Integer.valueOf(123)可能会使用缓存对象，因此多次使用Integer.valueOf(123)会取得同一个对象的引用。\nInteger x = new Integer(123); Integer y = new Integer(123); System.out.println(x == y); \/\/ false Integer z = Integer.valueOf(123); Integer k = Integer.valueOf(123); System.out.println(z == k); \/\/ true  编译器会在自动装箱过程调用valueOf()方法，因此多个Integer实例使用自动装箱来创建并且值相同，那么就会引用相同的对象。\nInteger m = 123; Integer n = 123; System.",
     "inLanguage" : "en-us",
     "author" : "轴心",
     "creator" : "轴心",
@@ -58,9 +54,9 @@ Integer m = 123; Integer n = 123; System.",
     "accountablePerson" : "轴心",
     "copyrightHolder" : "轴心",
     "copyrightYear" : "2018",
-    "datePublished": "2018-06-03 21:47:14 &#43;0000 UTC",
-    "dateModified" : "2018-06-03 21:47:14 &#43;0000 UTC",
-    "url" : "https://boseman1024.github.io/2018/java%E5%9F%BA%E7%A1%80%E6%95%B4%E7%90%86/",
+    "datePublished": "2018-06-03 21:47:14 \x2b0000 UTC",
+    "dateModified" : "2018-06-03 21:47:14 \x2b0000 UTC",
+    "url" : "https:\/\/boseman1024.github.io\/2018\/java%E5%9F%BA%E7%A1%80%E6%95%B4%E7%90%86\/",
     "wordCount" : "525",
     "keywords" : [ "JAVA", "轴心"]
 }
@@ -227,11 +223,11 @@ String为封装类，属于引用类型。</p>
 
 <pre><code class="language-java">label:
 while(condition){
-    for(condition){
-        if(condition){
-            break label;//跳出最外层循环，打印end
-        }
-    }
+	for(condition){
+		if(condition){
+			break label;//跳出最外层循环，打印end
+		}
+	}
 }
 System.out.println(&quot;end&quot;);
 </code></pre>
@@ -245,7 +241,7 @@ java总是采用按值调用，即方法得到的是所有参数值的一个拷�
 <p>例：</p>
 
 <pre><code class="language-java">public void add(int num){
-    num += 100;
+	num += 100;
 }
 int money = 100;
 add(money);
@@ -258,7 +254,7 @@ Employee a = new Employee(&quot;Jack&quot;);
 Employee b = new Employee(&quot;Bob&quot;);
 
 public void raiseSalary(Employee x){
-    x.salary += 1000;
+	x.salary += 1000;
 }
 raiseSalary(a);
 /*
@@ -267,9 +263,9 @@ x为a值的拷贝，即a的引用对象。
 x.salary+1000即a.salary+1000。
 */
 public void swap(Employee x,Employee y){
-    Employee temp = x;
-    x = y;
-    y = temp;
+	Employee temp = x;
+	x = y;
+	y = temp;
 }
 
 swap(a,b);
@@ -357,17 +353,17 @@ y-&gt;Jack
 * 抽象类可以包含具体数据和具体方法（不推荐）</p>
 
 <pre><code class="language-java">abstract class A{
-    abstract void player();
-    public void s(){
-        System.out.println(&quot;1&quot;);
-    }
+	abstract void player();
+	public void s(){
+		System.out.println(&quot;1&quot;);
+	}
 }
 class B extends A{
-    @Override
-    public void player(){
-        System.out.println(&quot;2&quot;);
-        super.s();
-    }
+	@Override
+	public void player(){
+		System.out.println(&quot;2&quot;);
+		super.s();
+	}
 }
 </code></pre>
 
@@ -429,8 +425,8 @@ friends.add(&quot;tony&quot;);
 invite(friends);
 //如果不再需要friends这个数组列表，可以作为一个匿名列表并为其添加元素。
 invite(new ArrayList&lt;String&gt;(){{
-    add(&quot;harry&quot;);add(&quot;tony&quot;);
-    }
+	add(&quot;harry&quot;);add(&quot;tony&quot;);
+	}
 });
 //外层括号建立了ArrayList的一个匿名子类，内层括号则是对象构造块。
 </code></pre>
@@ -511,13 +507,13 @@ result.retainAll(b);
 
 <pre><code class="language-java">//Runnable接口
 public interface Runnable{
-    void run();
+	void run();
 }
 //实现线程类
 class MyRunnable implements Runnable{
-    public void run(){
-        //code
-    }
+	public void run(){
+		//code
+	}
 }
 //创建线程类对象
 Runnable r = new MyRunnable();

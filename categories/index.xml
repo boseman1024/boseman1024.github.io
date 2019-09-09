@@ -6,18 +6,10 @@
     <description>Recent content in Categories on 轴心</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Wed, 09 Jan 2019 19:50:12 +0000</lastBuildDate>
     
 	<atom:link href="https://boseman1024.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>白日梦</title>
-      <link>https://boseman1024.github.io/categories/%E7%99%BD%E6%97%A5%E6%A2%A6/</link>
-      <pubDate>Tue, 01 Jan 2019 10:42:33 +0000</pubDate>
-      
-      <guid>https://boseman1024.github.io/categories/%E7%99%BD%E6%97%A5%E6%A2%A6/</guid>
-      <description></description>
-    </item>
     
     <item>
       <title>睁眼瞎</title>
@@ -25,6 +17,15 @@
       <pubDate>Wed, 09 Jan 2019 19:50:12 +0000</pubDate>
       
       <guid>https://boseman1024.github.io/categories/%E7%9D%81%E7%9C%BC%E7%9E%8E/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>白日梦</title>
+      <link>https://boseman1024.github.io/categories/%E7%99%BD%E6%97%A5%E6%A2%A6/</link>
+      <pubDate>Tue, 01 Jan 2019 10:42:33 +0000</pubDate>
+      
+      <guid>https://boseman1024.github.io/categories/%E7%99%BD%E6%97%A5%E6%A2%A6/</guid>
       <description></description>
     </item>
     

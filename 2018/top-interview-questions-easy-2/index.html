@@ -41,19 +41,12 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https://boseman1024.github.io/"
+         "@id": "https:\/\/boseman1024.github.io\/"
     },
     "articleSection" : "posts",
     "name" : "Top Interview Questions-Easy-②",
     "headline" : "Top Interview Questions-Easy-②",
-    "description" : "Dynamic Programming Climbing Stairs 爬楼梯，实质为斐波那契数列 You are climbing a stair case. It takes n steps to reach to the top.
-Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
-Note: Given n will be a positive integer.
-Example 1:
- Input: 2
-Output: 2
-Explanation: There are two ways to climb to the top.
- 1 step + 1 step",
+    "description" : "Dynamic Programming Climbing Stairs 爬楼梯，实质为斐波那契数列 You are climbing a stair case. It takes n steps to reach to the top.\nEach time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?\nNote: Given n will be a positive integer.\nExample 1:\n Input: 2\nOutput: 2\nExplanation: There are two ways to climb to the top.\n 1 step \x2b 1 step",
     "inLanguage" : "en-us",
     "author" : "轴心",
     "creator" : "轴心",
@@ -61,9 +54,9 @@ Explanation: There are two ways to climb to the top.
     "accountablePerson" : "轴心",
     "copyrightHolder" : "轴心",
     "copyrightYear" : "2018",
-    "datePublished": "2018-09-27 15:08:22 &#43;0000 UTC",
-    "dateModified" : "2018-09-27 15:08:22 &#43;0000 UTC",
-    "url" : "https://boseman1024.github.io/2018/top-interview-questions-easy-2/",
+    "datePublished": "2018-09-27 15:08:22 \x2b0000 UTC",
+    "dateModified" : "2018-09-27 15:08:22 \x2b0000 UTC",
+    "url" : "https:\/\/boseman1024.github.io\/2018\/top-interview-questions-easy-2\/",
     "wordCount" : "3312",
     "keywords" : [ "数据结构与算法","LeetCode","JAVA", "轴心"]
 }
@@ -247,7 +240,7 @@ Explanation: There are two ways to climb to the top.
         if(nums.length&lt;1||nums==null) {return 0;}
         int sum = nums[0];
         int temp = 0;
-        for(int i:nums){
+		for(int i:nums){
             temp+=i;
             sum = Math.max(sum,temp);
             temp = temp&lt;0?0:temp;
@@ -292,8 +285,8 @@ Explanation: There are two ways to climb to the top.
 <h3 id="解答-2">解答：</h3>
 
 <pre><code class="language-java">class Solution {
-    //2ms
-    public int maxProfit(int[] prices) {
+	//2ms
+	public int maxProfit(int[] prices) {
         int max = 0;
         int minPrice = Integer.MAX_VALUE;
         for(int i:prices){
@@ -301,14 +294,14 @@ Explanation: There are two ways to climb to the top.
             max = Math.max(max,i-minPrice);
         }
         return max;
-    }
-    //400ms+
+   	}
+	//400ms+
     public int maxProfit(int[] prices) {
         int max = 0;
         for(int i=0;i&lt;prices.length;i++){
             for(int j=i+1;j&lt;prices.length;j++){
                 if(prices[i]&lt;prices[j]){
-                    max = Math.max(max,prices[j]-prices[i]);
+                	max = Math.max(max,prices[j]-prices[i]);
                 }
             }
         }
@@ -606,7 +599,7 @@ Explanation: Integer 128 has binary representation 00000000000000000000000010000
 <h3 id="解答-7">解答：</h3>
 
 <pre><code class="language-java">class Solution {
-    //0+1+2+……+n = n*(n+1)/2
+	//0+1+2+……+n = n*(n+1)/2
     public int missingNumber(int[] nums) {
         int sum = nums.length*(nums.length+1)/2;
         for(int i=0;i&lt;nums.length;i++){sum-=nums[i];}
@@ -638,15 +631,15 @@ Explanation: Integer 128 has binary representation 00000000000000000000000010000
 <h3 id="解答-8">解答</h3>
 
 <pre><code class="language-java">public class Solution {
-    //位运算？不会
+	//位运算？不会
     // you need treat n as an unsigned value
     //转换为二进制字符串，不足位数前补0，反转字符串
     public int reverseBits(int n) {
         String s = Integer.toBinaryString(n);
         int length = s.length();
-        for(int i=0;i&lt;(32-length);i++) {s='0'+s;}
-        String sb = new StringBuilder(s).reverse().toString();
-        return (int)Long.parseLong(sb,2);
+		for(int i=0;i&lt;(32-length);i++) {s='0'+s;}
+		String sb = new StringBuilder(s).reverse().toString();
+		return (int)Long.parseLong(sb,2);
     }
 }
 </code></pre>
@@ -677,8 +670,8 @@ Explanation: Integer 128 has binary representation 00000000000000000000000010000
  * }
  */
 class Solution {
-    //8ms
-    public boolean isSymmetric(TreeNode root) {
+	//8ms
+	public boolean isSymmetric(TreeNode root) {
         return isSymmetric(root,root);
     }
     public boolean isSymmetric(TreeNode left,TreeNode right){
@@ -686,8 +679,8 @@ class Solution {
         if(left==null||right==null){return false;}
         if(left.val!=right.val){return false;}
         return isSymmetric(left.left,right.right)&amp;&amp;isSymmetric(left.right,right.left);
-    }
-    //-----------------------------------------------
+   	}
+	//-----------------------------------------------
     //先将二叉树化为按层划分的集合，再做镜像校验
     List&lt;List&lt;Integer&gt;&gt; all;
     public boolean isSymmetric(TreeNode root) {
@@ -1054,8 +1047,8 @@ class Solution {
     public List&lt;String&gt; fizzBuzz(int n) {
         List&lt;String&gt; list = new ArrayList&lt;&gt;();
         for(int i=1;i&lt;=n;i++){
-            boolean isThree = i%3==0;
-            boolean isFive = i%5==0
+        	boolean isThree = i%3==0;
+        	boolean isFive = i%5==0
             if(isThree&amp;&amp;isFive){list.add(&quot;FizzBuzz&quot;);
             }else if(isThree){list.add(&quot;Fizz&quot;);
             }else if(isFive){list.add(&quot;Buzz&quot;);
@@ -1086,9 +1079,9 @@ class Solution {
 <h3 id="解答-16">解答：</h3>
 
 <pre><code class="language-java">class Solution {
-    //筛法求素数：若已知一个数为素数，则该数的倍数均非素数。
-    //21ms，筛法求素数
-    public int countPrimes(int n) {
+	//筛法求素数：若已知一个数为素数，则该数的倍数均非素数。
+	//21ms，筛法求素数
+	public int countPrimes(int n) {
         boolean[] isPrime = new boolean[n];
         int count = 0;
         for(int i=2;i&lt;n;i++){
@@ -1099,14 +1092,14 @@ class Solution {
         }
         return count;
     }
-    //120ms，筛法求素数
+	//120ms，筛法求素数
     public int countPrimes(int n) {
         if(n==0||n==1){return 0;}
         int[] num = new int[n];
         int[] result = new int[n];
         int count = 0;
         for(int i=2;i&lt;n;i++){
-            //是素数，存入result
+        	//是素数，存入result
             if(num[i]==0){result[count++]=i;}
             //将所求素数的倍数设为1，均非素数
             for(int j=2*i;j&lt;n;j+=i){num[j]=1;}
@@ -1254,40 +1247,40 @@ class Solution {
     public int myAtoi(String str) {
         if(str.trim().length()&lt;1||str==null){return 0;}
         str = str.trim();
-        char c = str.charAt(0);
-        boolean flag = false;
-        if(c=='-') {
-            flag = true;
+		char c = str.charAt(0);
+		boolean flag = false;
+		if(c=='-') {
+			flag = true;
             str = str.substring(1,str.length());
-        }else if(c=='+'){str = str.substring(1,str.length());
+		}else if(c=='+'){str = str.substring(1,str.length());
         }else if(c&lt;'0'||c&gt;'9'){return 0;}
         //&quot;-+2&quot;
-        if(str.length()&lt;1||str.charAt(0)&lt;'0'||str.charAt(0)&gt;'9'){return 0;}
-        //&quot; 0000000123&quot;
+		if(str.length()&lt;1||str.charAt(0)&lt;'0'||str.charAt(0)&gt;'9'){return 0;}
+		//&quot; 0000000123&quot;
         boolean isZero = true;
-        int zeroNum = 0;
-        for(int i=0;i&lt;str.length();i++) {
-            char num = str.charAt(i);
+		int zeroNum = 0;
+		for(int i=0;i&lt;str.length();i++) {
+			char num = str.charAt(i);
             if(isZero&amp;&amp;num=='0') {zeroNum++;
             }else {isZero = false;}
-            if(num&lt;'0'||num&gt;'9'){
-                str = str.substring(0,i);
-                break;
-            }
-        }
+			if(num&lt;'0'||num&gt;'9'){
+				str = str.substring(0,i);
+				break;
+			}
+		}
         str = str.substring(zeroNum, str.length());
         //&quot;000000000&quot;
         if(str.length()&lt;1) {return 0;}
         //&quot;200000000000000000000&quot;，防止溢出
         String MAX = String.valueOf(Integer.MAX_VALUE);
-        String MIN = String.valueOf(Integer.MIN_VALUE);
-        if(!flag&amp;&amp;str.length()&gt;MAX.length()) {return Integer.MAX_VALUE;
-        }else if(flag&amp;&amp;str.length()&gt;MIN.length()-1){return Integer.MIN_VALUE;
-        }
+		String MIN = String.valueOf(Integer.MIN_VALUE);
+		if(!flag&amp;&amp;str.length()&gt;MAX.length()) {return Integer.MAX_VALUE;
+		}else if(flag&amp;&amp;str.length()&gt;MIN.length()-1){return Integer.MIN_VALUE;
+		}
         long result = flag?-1*Long.parseLong(str):Long.parseLong(str);
-        result = result&gt;Integer.MAX_VALUE?Integer.MAX_VALUE:result;
-        result = result&lt;Integer.MIN_VALUE?Integer.MIN_VALUE:result;
-        return (int)result;
+		result = result&gt;Integer.MAX_VALUE?Integer.MAX_VALUE:result;
+		result = result&lt;Integer.MIN_VALUE?Integer.MIN_VALUE:result;
+		return (int)result;
     }
 }
 </code></pre>
@@ -1323,8 +1316,8 @@ class Solution {
 <h3 id="解答-19">解答：</h3>
 
 <pre><code class="language-java">class Solution {
-    //排序后比较头尾
-    public String longestCommonPrefix(String[] strs) {
+	//排序后比较头尾
+	public String longestCommonPrefix(String[] strs) {
         if(strs.length==0||strs==null){return &quot;&quot;;}
         Arrays.sort(strs);
         String pre = &quot;&quot;;
@@ -1376,7 +1369,7 @@ class Solution {
 <h3 id="解答-20">解答：</h3>
 
 <pre><code class="language-java">class Solution {
-    //java API
+	//java API
     public int strStr(String haystack, String needle) {
         return haystack.indexOf(needle);
     }
@@ -1410,8 +1403,8 @@ class Solution {
 <h3 id="解答-21">解答：</h3>
 
 <pre><code class="language-java">class Solution {
-    //存入字母表，判断字母表个数，1ms
-    public boolean isAnagram(String s, String t) {
+	//存入字母表，判断字母表个数，1ms
+	public boolean isAnagram(String s, String t) {
         if(s.length()!=t.length()){return false;}
         int[] charMap = new int[26];
         char[] sc = s.toCharArray();
@@ -1423,7 +1416,7 @@ class Solution {
         }
         return true;
     }
-    //转数组并排序比较是否匹配
+	//转数组并排序比较是否匹配
     public boolean isAnagram(String s, String t) {
         if(s.length()!=t.length()){return false;}
         char[] sc = s.toCharArray();
@@ -1459,11 +1452,11 @@ class Solution {
 
 <pre><code class="language-java">class Solution {
     public int firstUniqChar(String s) {
-        for(int i=0;i&lt;s.length();i++) {
-            if(s.indexOf(s.charAt(i))==s.lastIndexOf(s.charAt(i))) {
-                return i;
-            }
-        }
+		for(int i=0;i&lt;s.length();i++) {
+			if(s.indexOf(s.charAt(i))==s.lastIndexOf(s.charAt(i))) {
+				return i;
+			}
+		}
         return -1;
     }
 }
@@ -1477,25 +1470,25 @@ class Solution {
 
 <pre><code class="language-java">public boolean isPalindrome(String s) {
     char[] str = s.toLowerCase().toCharArray();
-    int i=0;
-    int j=str.length-1;
-    while(i&lt;j) {
-        while(i&lt;str.length&amp;&amp;!isChar(str[i])) {
-            i++;
-        }
-        while(j&gt;=0&amp;&amp;!isChar(str[j])) {
-            j--;
-        }
-        if(i&lt;j&amp;&amp;str[i]!=str[j]) {
+	int i=0;
+	int j=str.length-1;
+	while(i&lt;j) {
+		while(i&lt;str.length&amp;&amp;!isChar(str[i])) {
+			i++;
+		}
+		while(j&gt;=0&amp;&amp;!isChar(str[j])) {
+			j--;
+		}
+		if(i&lt;j&amp;&amp;str[i]!=str[j]) {
             return false;
-        }
-        i++;
-        j--;
-    }
-    return true;
+		}
+		i++;
+		j--;
+	}
+	return true;
 }
 public boolean isChar(char c) {
-    return ('a'&lt;=c&amp;&amp;c&lt;='z')||('A'&lt;=c&amp;&amp;c&lt;='Z')||(c&gt;='0'&amp;&amp;c&lt;='9');
+	return ('a'&lt;=c&amp;&amp;c&lt;='z')||('A'&lt;=c&amp;&amp;c&lt;='Z')||(c&gt;='0'&amp;&amp;c&lt;='9');
 }
 </code></pre>
 
@@ -1512,34 +1505,34 @@ Assume we are dealing with an environment which could only store integers within
 
 <pre><code class="language-java">class Solution {
     public int reverse(int x) {
-        //数值
-        if(x&gt;Integer.MAX_VALUE||x&lt;Integer.MIN_VALUE){
-            return 0;
+    	//数值
+    	if(x&gt;Integer.MAX_VALUE||x&lt;Integer.MIN_VALUE){
+        	return 0;
         }
         long num = 0;
-        while(x!=0) {
-            num*=10;
-            num += x%10;
-            x /= 10;
-        }
-        if(num&lt;=Integer.MAX_VALUE&amp;&amp;num&gt;=Integer.MIN_VALUE){
-            return (int)num;
+		while(x!=0) {
+			num*=10;
+			num += x%10;
+			x /= 10;
+		}
+		if(num&lt;=Integer.MAX_VALUE&amp;&amp;num&gt;=Integer.MIN_VALUE){
+        	return (int)num;
         }
         return 0;
-        //转换字符串
+    	//转换字符串
         boolean flag = false;
         long num = x;
-        if(num&lt;0) {
-            num *=-1;
-            flag = true;
-        }
-        String str = new StringBuffer(String.valueOf(num)).reverse().toString();
-        num = Long.parseLong(str);
+		if(num&lt;0) {
+			num *=-1;
+			flag = true;
+		}
+		String str = new StringBuffer(String.valueOf(num)).reverse().toString();
+		num = Long.parseLong(str);
         if(num&gt;Integer.MAX_VALUE ||num&lt;Integer.MIN_VALUE ){
             return 0;
         }else if(flag) {
-            num*=-1;
-        }
+			num*=-1;
+		}
         return (int)num;
     }
 }
@@ -1552,7 +1545,7 @@ Assume we are dealing with an environment which could only store integers within
 <h3 id="解答-25">解答：</h3>
 
 <pre><code class="language-java">public String reverseString(String s) {
-    return new StringBuffer(s).reverse().toString();
+	return new StringBuffer(s).reverse().toString();
 }
 </code></pre>
 

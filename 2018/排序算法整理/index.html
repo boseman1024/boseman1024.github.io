@@ -41,12 +41,12 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https://boseman1024.github.io/"
+         "@id": "https:\/\/boseman1024.github.io\/"
     },
     "articleSection" : "posts",
     "name" : "排序算法整理",
     "headline" : "排序算法整理",
-    "description" : "冒泡排序 public static void Bubble(int num[]) { for(int i=0;i&lt;num.length-1;i++) { for(int j=0;j&lt;num.length-i-1;j++) { if(num[j]&gt;num[j+1]) { int temp = num[j+1]; num[j+1] = num[j]; num[j] = temp; } } } }  选择排序 public static void Selection(int num[]) { for(int i=0;i&lt;num.length;i++) { //最小元素的下标 int min = i; //找出最小元素 for(int j=i;j&lt;num.length;j++) { if(num[j]&lt;num[min]) { min = j; } } //交换元素 int temp = num[i]; num[i] = num[min]; num[min] = temp; } show(num); }  插入排序 直接插入排序 public static void StraightInsert(int num[]) { for(int i=1;i&lt;num.",
+    "description" : "冒泡排序 public static void Bubble(int num[]) { for(int i=0;i\x26lt;num.length-1;i\x2b\x2b) { for(int j=0;j\x26lt;num.length-i-1;j\x2b\x2b) { if(num[j]\x26gt;num[j\x2b1]) { int temp = num[j\x2b1]; num[j\x2b1] = num[j]; num[j] = temp; } } } }  选择排序 public static void Selection(int num[]) { for(int i=0;i\x26lt;num.length;i\x2b\x2b) { \/\/最小元素的下标 int min = i; \/\/找出最小元素 for(int j=i;j\x26lt;num.length;j\x2b\x2b) { if(num[j]\x26lt;num[min]) { min = j; } } \/\/交换元素 int temp = num[i]; num[i] = num[min]; num[min] = temp; } show(num); }  插入排序 直接插入排序 public static void StraightInsert(int num[]) { for(int i=1;i\x26lt;num.",
     "inLanguage" : "en-us",
     "author" : "轴心",
     "creator" : "轴心",
@@ -54,9 +54,9 @@
     "accountablePerson" : "轴心",
     "copyrightHolder" : "轴心",
     "copyrightYear" : "2018",
-    "datePublished": "2018-06-14 13:56:22 &#43;0000 UTC",
-    "dateModified" : "2018-06-14 13:56:22 &#43;0000 UTC",
-    "url" : "https://boseman1024.github.io/2018/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/",
+    "datePublished": "2018-06-14 13:56:22 \x2b0000 UTC",
+    "dateModified" : "2018-06-14 13:56:22 \x2b0000 UTC",
+    "url" : "https:\/\/boseman1024.github.io\/2018\/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86\/",
     "wordCount" : "153",
     "keywords" : [ "数据结构与算法","JAVA", "轴心"]
 }
@@ -147,15 +147,15 @@
 <h2 id="冒泡排序">冒泡排序</h2>
 
 <pre><code class="language-java">public static void Bubble(int num[]) {
-    for(int i=0;i&lt;num.length-1;i++) {
-        for(int j=0;j&lt;num.length-i-1;j++) {
-            if(num[j]&gt;num[j+1]) {
-                int temp = num[j+1];
-                num[j+1] = num[j];
-                num[j] = temp;
-            }
-        }
-    }
+	for(int i=0;i&lt;num.length-1;i++) {
+		for(int j=0;j&lt;num.length-i-1;j++) {
+			if(num[j]&gt;num[j+1]) {
+				int temp = num[j+1];
+				num[j+1] = num[j];
+				num[j] = temp;
+			}
+		}
+	}
 }
 </code></pre>
 
@@ -164,21 +164,21 @@
 <h2 id="选择排序">选择排序</h2>
 
 <pre><code class="language-java">public static void Selection(int num[]) {
-    for(int i=0;i&lt;num.length;i++) {
-        //最小元素的下标
-        int min = i;
-        //找出最小元素
-        for(int j=i;j&lt;num.length;j++) {
-            if(num[j]&lt;num[min]) {
-                min = j;
-            }
-        }
-        //交换元素
-        int temp = num[i];
-        num[i] = num[min];
-        num[min] = temp;
-    }
-    show(num);
+	for(int i=0;i&lt;num.length;i++) {
+		//最小元素的下标
+		int min = i;
+		//找出最小元素
+		for(int j=i;j&lt;num.length;j++) {
+			if(num[j]&lt;num[min]) {
+				min = j;
+			}
+		}
+		//交换元素
+		int temp = num[i];
+		num[i] = num[min];
+		num[min] = temp;
+	}
+	show(num);
 }
 </code></pre>
 
@@ -189,15 +189,15 @@
 <h3 id="直接插入排序">直接插入排序</h3>
 
 <pre><code class="language-java">public static void StraightInsert(int num[]) {
-    for(int i=1;i&lt;num.length;i++) {
-        int temp = num[i];
-        int j=i;
-        while(j&gt;0&amp;&amp;temp&lt;num[j-1]) {
-            num[j] = num[j-1];
-            j--;
-        }
-        num[j]=temp;
-    }
+	for(int i=1;i&lt;num.length;i++) {
+		int temp = num[i];
+		int j=i;
+		while(j&gt;0&amp;&amp;temp&lt;num[j-1]) {
+			num[j] = num[j-1];
+			j--;
+		}
+		num[j]=temp;
+	}
 }
 </code></pre>
 
@@ -206,25 +206,25 @@
 <h3 id="二分插入排序">二分插入排序</h3>
 
 <pre><code class="language-java">public static void DichotomyInsert(int num[]) {
-    for(int i=1;i&lt;num.length;i++) {
-        int low = 0;
-        int high = i-1;
-        int temp = num[i];
-        while(low&lt;=high) {
-            int mid = low+(high-low)/2; //取中间点
-            if(temp&gt;num[mid]) {
-                low = mid+1; //插入点在右半区间
-            }else {
-                high = mid-1; //插入点在左半区间
-            }
-        }
-        //插入点在low，low到i为止的所有元素向右移动一位
-        for(int j=i-1;j&gt;=low;j--) {
-            num[j+1] = num[j];
-        }
-        //插入low位置
-        num[low] = temp;
-    }
+	for(int i=1;i&lt;num.length;i++) {
+		int low = 0;
+		int high = i-1;
+		int temp = num[i];
+		while(low&lt;=high) {
+			int mid = low+(high-low)/2; //取中间点
+			if(temp&gt;num[mid]) {
+				low = mid+1; //插入点在右半区间
+			}else {
+				high = mid-1; //插入点在左半区间
+			}
+		}
+		//插入点在low，low到i为止的所有元素向右移动一位
+		for(int j=i-1;j&gt;=low;j--) {
+			num[j+1] = num[j];
+		}
+		//插入low位置
+		num[low] = temp;
+	}
 }
 </code></pre>
 

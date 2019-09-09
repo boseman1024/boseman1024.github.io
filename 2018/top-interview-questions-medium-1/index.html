@@ -41,17 +41,12 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https://boseman1024.github.io/"
+         "@id": "https:\/\/boseman1024.github.io\/"
     },
     "articleSection" : "posts",
     "name" : "Top Interview Questions-Medium-①",
     "headline" : "Top Interview Questions-Medium-①",
-    "description" : "Design Insert Delete GetRandom O(1) 设计数据结构实现时间复杂度为O(1)的插入、删除、获取随机数 Design a data structure that supports all following operations in average O(1) time.
- insert(val): Inserts an item val to the set if not already present.
- remove(val): Removes an item val from the set if present.
- getRandom: Returns a random element from current set of elements. Each element must have the same probability of being returned.
-  Example:
- // Init an empty set.",
+    "description" : "Design Insert Delete GetRandom O(1) 设计数据结构实现时间复杂度为O(1)的插入、删除、获取随机数 Design a data structure that supports all following operations in average O(1) time.\n insert(val): Inserts an item val to the set if not already present.\n remove(val): Removes an item val from the set if present.\n getRandom: Returns a random element from current set of elements. Each element must have the same probability of being returned.\n  Example:\n \/\/ Init an empty set.",
     "inLanguage" : "en-us",
     "author" : "轴心",
     "creator" : "轴心",
@@ -59,9 +54,9 @@
     "accountablePerson" : "轴心",
     "copyrightHolder" : "轴心",
     "copyrightYear" : "2018",
-    "datePublished": "2018-09-29 22:59:34 &#43;0000 UTC",
-    "dateModified" : "2018-09-29 22:59:34 &#43;0000 UTC",
-    "url" : "https://boseman1024.github.io/2018/top-interview-questions-medium-1/",
+    "datePublished": "2018-09-29 22:59:34 \x2b0000 UTC",
+    "dateModified" : "2018-09-29 22:59:34 \x2b0000 UTC",
+    "url" : "https:\/\/boseman1024.github.io\/2018\/top-interview-questions-medium-1\/",
     "wordCount" : "4430",
     "keywords" : [ "数据结构与算法","LeetCode","JAVA", "轴心"]
 }
@@ -1106,7 +1101,7 @@ class Solution {
 <h3 id="解答-14">解答：</h3>
 
 <pre><code class="language-java">class Solution {
-    //24ms
+	//24ms
     public List&lt;Integer&gt; topKFrequent(int[] nums, int k) {
         List&lt;Integer&gt; list = new ArrayList&lt;&gt;();
         //若nums长度等于k，直接返回
@@ -1119,13 +1114,13 @@ class Solution {
         Map&lt;Integer,Integer&gt; map = new HashMap&lt;&gt;();
         //修改TreeMap为降序，默认为升序
         Map&lt;Integer,List&lt;Integer&gt;&gt; mapTree = new TreeMap&lt;&gt;(new Comparator&lt;Integer&gt;() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return o2-o1;
-            }
-             
-        });
-        //将每个数及对应个数放入map中
+			@Override
+			public int compare(Integer o1, Integer o2) {
+				return o2-o1;
+			}
+			 
+		});
+		//将每个数及对应个数放入map中
         for(int i:nums){
             map.put(i,map.getOrDefault(i,0)+1);
         }
@@ -1186,14 +1181,14 @@ class Solution {
         int high = nums.length-1;
         int i=0;
         while(i&lt;=high){
-            //nums[i]=0|1,i进位
+        	//nums[i]=0|1,i进位
             if(nums[i]==0){
-                //若nums[low]=1,交换后nums[low]=0,nums[i]=1,之后则i进位跳过1，若有0再交换使0永远再1之前
+            	//若nums[low]=1,交换后nums[low]=0,nums[i]=1,之后则i进位跳过1，若有0再交换使0永远再1之前
                 nums[i]=nums[low];
                 nums[low]=0;
                 low++;
             }else if(nums[i]==2){
-                //nums[i]==2,i不进位
+            	//nums[i]==2,i不进位
                 nums[i]=nums[high];
                 nums[high]=2;
                 high--;
@@ -1501,8 +1496,8 @@ class Solution {
 <h3 id="解答-20">解答：</h3>
 
 <pre><code class="language-java">class Solution {
-    //16ms，key为字母排序后的字符串，检验map中是否存在key
-    public List&lt;List&lt;String&gt;&gt; groupAnagrams(String[] strs) {
+	//16ms，key为字母排序后的字符串，检验map中是否存在key
+	public List&lt;List&lt;String&gt;&gt; groupAnagrams(String[] strs) {
         if(strs==null || strs.length==0) return null;
         HashMap&lt;String,List&lt;String&gt;&gt; map = new HashMap&lt;&gt;();
         for(String s : strs){
@@ -1514,31 +1509,31 @@ class Solution {
         }
         return new ArrayList(map.values());        
     }
-    //775 ms，每个字符串排序字母后比较每个List&lt;String&gt;的排序字母后的字符串
+	//775 ms，每个字符串排序字母后比较每个List&lt;String&gt;的排序字母后的字符串
     public List&lt;List&lt;String&gt;&gt; groupAnagrams(String[] strs) {
         List&lt;List&lt;String&gt;&gt; group = new ArrayList&lt;&gt;();
-            for(String s:strs){
-                char[] temp = s.toCharArray();
-                Arrays.sort(temp);
-                String sortS = String.valueOf(temp);
-                boolean have = false;
-                for(List&lt;String&gt; list:group){
-                    if(s.length()!=list.get(0).length()){continue;}
-                    char[] chs = list.get(0).toCharArray();
-                    Arrays.sort(chs);
-                    String sortChs = String.valueOf(chs);
-                    if(sortChs.equals(sortS)) {
-                        have = true;
-                        list.add(s);
-                        break;
-                    }
-                }
-                if(!have) {
-                    List&lt;String&gt; newList = new ArrayList&lt;&gt;();
-                    newList.add(s);
-                    group.add(newList);
-                }
-          }
+	        for(String s:strs){
+	        	char[] temp = s.toCharArray();
+	            Arrays.sort(temp);
+	            String sortS = String.valueOf(temp);
+	            boolean have = false;
+	            for(List&lt;String&gt; list:group){
+	            	if(s.length()!=list.get(0).length()){continue;}
+	                char[] chs = list.get(0).toCharArray();
+	                Arrays.sort(chs);
+		            String sortChs = String.valueOf(chs);
+	                if(sortChs.equals(sortS)) {
+	                	have = true;
+	                	list.add(s);
+	                	break;
+	                }
+	            }
+	            if(!have) {
+	            	List&lt;String&gt; newList = new ArrayList&lt;&gt;();
+	            	newList.add(s);
+	            	group.add(newList);
+	            }
+	      }
         return group;
     }
 }
@@ -1652,19 +1647,19 @@ public class Solution {
  * }
  */
 class Solution {
-    public ListNode oddEvenList(ListNode head) {
-        if (head!=null){
-            ListNode odd=head,even=head.next,evenHead=even;
-            while(even!=null&amp;&amp;even.next!=null){
-                odd.next = odd.next.next; 
-                even.next = even.next.next; 
-                odd = odd.next;
-                even = even.next;
-            }
-            odd.next = evenHead; 
-        }
-        return head;
-    }
+	public ListNode oddEvenList(ListNode head) {
+    	if (head!=null){
+        	ListNode odd=head,even=head.next,evenHead=even;
+        	while(even!=null&amp;&amp;even.next!=null){
+            	odd.next = odd.next.next; 
+            	even.next = even.next.next; 
+            	odd = odd.next;
+            	even = even.next;
+        	}
+        	odd.next = evenHead; 
+    	}
+    	return head;
+	}
     public ListNode oddEvenList(ListNode head) {
         if(head==null||head.next==null||head.next.next==null){return head;}
         ListNode odd = new ListNode(head.val);
@@ -1733,11 +1728,11 @@ class Solution {
                 l2=l2.next;
             }
             /**
-             *sum=12/pre.next=2
-             *sum=1
-             *sum=15/pre.next=5
-             *sum=1
-             */
+			 *sum=12/pre.next=2
+			 *sum=1
+			 *sum=15/pre.next=5
+			 *sum=1
+			 */
             pre.next = new ListNode(sum%10);
             pre = pre.next;
             sum/=10;
@@ -1842,12 +1837,12 @@ class Solution {
 <h3 id="解答-25">解答：</h3>
 
 <pre><code class="language-java">class Solution {
-    /**
-    *实质为斐波那契数列
-    *x^n=
-    *   [x^(n/2)]*[x^(n/2)]; n为偶数
-    *   {x[(n-1)/2]}*{x[(n-1)/2]}*x; n为奇数
-    */
+	/**
+	*实质为斐波那契数列
+	*x^n=
+	*	[x^(n/2)]*[x^(n/2)]; n为偶数
+	*	{x[(n-1)/2]}*{x[(n-1)/2]}*x; n为奇数
+	*/
     public double myPow(double x,int n) {
         if(n==0){return 1;}
         if(n&lt;0){
@@ -1967,12 +1962,12 @@ class Solution {
 <h3 id="解答-27">解答：</h3>
 
 <pre><code class="language-java">class Solution {
-    /**
-    * 1*2*3*…*n=1*2*3*(2*2)*5*(2*3)*(2*2*2)*(3*3)*(2*5)*…
-    * 只有2*5所得结果尾部为0
-    * 2的个数比5多
-    * 可得0的个数 = n由多少个5的乘积组成
-    */
+	/**
+	* 1*2*3*…*n=1*2*3*(2*2)*5*(2*3)*(2*2*2)*(3*3)*(2*5)*…
+	* 只有2*5所得结果尾部为0
+	* 2的个数比5多
+	* 可得0的个数 = n由多少个5的乘积组成
+	*/
     public int trailingZeroes(int n) {
         if(n==0){return 0;}
         return n/5+trailingZeroes(n/5);

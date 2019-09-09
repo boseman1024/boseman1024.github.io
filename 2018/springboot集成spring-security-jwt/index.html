@@ -41,14 +41,12 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https://boseman1024.github.io/"
+         "@id": "https:\/\/boseman1024.github.io\/"
     },
     "articleSection" : "posts",
-    "name" : "SpringBoot整合Spring Security&#43;JWT",
-    "headline" : "SpringBoot整合Spring Security&#43;JWT",
-    "description" : "DEMO 准备 MAVEN依赖 在pom.xml引入所需依赖如下：
-&lt;parent&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt; &lt;version&gt;2.0.1.RELEASE&lt;/version&gt; &lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt; &lt;/parent&gt; &lt;!--SpringBoot--&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt; &lt;scope&gt;test&lt;/scope&gt; &lt;/dependency&gt; &lt;!--Spring Security --&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-security&lt;/artifactId&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.security&lt;/groupId&gt; &lt;artifactId&gt;spring-security-test&lt;/artifactId&gt; &lt;scope&gt;test&lt;/scope&gt; &lt;/dependency&gt; &lt;!--JWT--&gt; &lt;dependency&gt; &lt;groupId&gt;io.jsonwebtoken&lt;/groupId&gt; &lt;artifactId&gt;jjwt&lt;/artifactId&gt; &lt;version&gt;0.9.0&lt;/version&gt; &lt;/dependency&gt; &lt;!--Mybatis--&gt; &lt;dependency&gt; &lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt; &lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt; &lt;version&gt;1.3.2&lt;/version&gt; &lt;/dependency&gt; &lt;!--MYSQL--&gt; &lt;dependency&gt; &lt;groupId&gt;mysql&lt;/groupId&gt; &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt; &lt;scope&gt;runtime&lt;/scope&gt; &lt;/dependency&gt; &lt;!--可选：druid连接池--&gt; &lt;dependency&gt; &lt;groupId&gt;com.alibaba&lt;/groupId&gt; &lt;artifactId&gt;druid&lt;/artifactId&gt; &lt;version&gt;1.1.9&lt;/version&gt; &lt;/dependency&gt;  基本配置 在application.yml中配置SpringBoot应用， 配置后在项目中可通过@Value(&quot;${jwt.secret}&quot;)的方式注入值。 application.yml配置如下：
-spring: # 数据库配置 datasource: url: jdbc:mysql://localhost/xauth?",
+    "name" : "SpringBoot整合Spring Security\x2bJWT",
+    "headline" : "SpringBoot整合Spring Security\x2bJWT",
+    "description" : "DEMO 准备 MAVEN依赖 在pom.xml引入所需依赖如下：\n\x26lt;parent\x26gt; \x26lt;groupId\x26gt;org.springframework.boot\x26lt;\/groupId\x26gt; \x26lt;artifactId\x26gt;spring-boot-starter-parent\x26lt;\/artifactId\x26gt; \x26lt;version\x26gt;2.0.1.RELEASE\x26lt;\/version\x26gt; \x26lt;relativePath\/\x26gt; \x26lt;!-- lookup parent from repository --\x26gt; \x26lt;\/parent\x26gt; \x26lt;!--SpringBoot--\x26gt; \x26lt;dependency\x26gt; \x26lt;groupId\x26gt;org.springframework.boot\x26lt;\/groupId\x26gt; \x26lt;artifactId\x26gt;spring-boot-starter-web\x26lt;\/artifactId\x26gt; \x26lt;\/dependency\x26gt; \x26lt;dependency\x26gt; \x26lt;groupId\x26gt;org.springframework.boot\x26lt;\/groupId\x26gt; \x26lt;artifactId\x26gt;spring-boot-starter-test\x26lt;\/artifactId\x26gt; \x26lt;scope\x26gt;test\x26lt;\/scope\x26gt; \x26lt;\/dependency\x26gt; \x26lt;!--Spring Security --\x26gt; \x26lt;dependency\x26gt; \x26lt;groupId\x26gt;org.springframework.boot\x26lt;\/groupId\x26gt; \x26lt;artifactId\x26gt;spring-boot-starter-security\x26lt;\/artifactId\x26gt; \x26lt;\/dependency\x26gt; \x26lt;dependency\x26gt; \x26lt;groupId\x26gt;org.springframework.security\x26lt;\/groupId\x26gt; \x26lt;artifactId\x26gt;spring-security-test\x26lt;\/artifactId\x26gt; \x26lt;scope\x26gt;test\x26lt;\/scope\x26gt; \x26lt;\/dependency\x26gt; \x26lt;!--JWT--\x26gt; \x26lt;dependency\x26gt; \x26lt;groupId\x26gt;io.jsonwebtoken\x26lt;\/groupId\x26gt; \x26lt;artifactId\x26gt;jjwt\x26lt;\/artifactId\x26gt; \x26lt;version\x26gt;0.9.0\x26lt;\/version\x26gt; \x26lt;\/dependency\x26gt; \x26lt;!--Mybatis--\x26gt; \x26lt;dependency\x26gt; \x26lt;groupId\x26gt;org.mybatis.spring.boot\x26lt;\/groupId\x26gt; \x26lt;artifactId\x26gt;mybatis-spring-boot-starter\x26lt;\/artifactId\x26gt; \x26lt;version\x26gt;1.3.2\x26lt;\/version\x26gt; \x26lt;\/dependency\x26gt; \x26lt;!--MYSQL--\x26gt; \x26lt;dependency\x26gt; \x26lt;groupId\x26gt;mysql\x26lt;\/groupId\x26gt; \x26lt;artifactId\x26gt;mysql-connector-java\x26lt;\/artifactId\x26gt; \x26lt;scope\x26gt;runtime\x26lt;\/scope\x26gt; \x26lt;\/dependency\x26gt; \x26lt;!--可选：druid连接池--\x26gt; \x26lt;dependency\x26gt; \x26lt;groupId\x26gt;com.alibaba\x26lt;\/groupId\x26gt; \x26lt;artifactId\x26gt;druid\x26lt;\/artifactId\x26gt; \x26lt;version\x26gt;1.1.9\x26lt;\/version\x26gt; \x26lt;\/dependency\x26gt;  基本配置 在application.yml中配置SpringBoot应用， 配置后在项目中可通过@Value(\x26quot;${jwt.secret}\x26quot;)的方式注入值。 application.yml配置如下：\nspring: # 数据库配置 datasource: url: jdbc:mysql:\/\/localhost\/xauth?",
     "inLanguage" : "en-us",
     "author" : "轴心",
     "creator" : "轴心",
@@ -56,9 +54,9 @@ spring: # 数据库配置 datasource: url: jdbc:mysql://localhost/xauth?",
     "accountablePerson" : "轴心",
     "copyrightHolder" : "轴心",
     "copyrightYear" : "2018",
-    "datePublished": "2018-04-16 20:40:54 &#43;0000 UTC",
-    "dateModified" : "2018-04-16 20:40:54 &#43;0000 UTC",
-    "url" : "https://boseman1024.github.io/2018/springboot%E9%9B%86%E6%88%90spring-security-jwt/",
+    "datePublished": "2018-04-16 20:40:54 \x2b0000 UTC",
+    "dateModified" : "2018-04-16 20:40:54 \x2b0000 UTC",
+    "url" : "https:\/\/boseman1024.github.io\/2018\/springboot%E9%9B%86%E6%88%90spring-security-jwt\/",
     "wordCount" : "761",
     "keywords" : [ "JAVA","JWT","Spring", "轴心"]
 }
@@ -157,59 +155,59 @@ spring: # 数据库配置 datasource: url: jdbc:mysql://localhost/xauth?",
 <p>在<code>pom.xml</code>引入所需依赖如下：</p>
 
 <pre><code class="language-xml">&lt;parent&gt;
-    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-    &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
-    &lt;version&gt;2.0.1.RELEASE&lt;/version&gt;
-    &lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;
+	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+	&lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+	&lt;version&gt;2.0.1.RELEASE&lt;/version&gt;
+	&lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;
 &lt;/parent&gt;
 
 &lt;!--SpringBoot--&gt;
 &lt;dependency&gt;
-    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-    &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+	&lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
 &lt;/dependency&gt;
 &lt;dependency&gt;
-    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-    &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
-    &lt;scope&gt;test&lt;/scope&gt;
+	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+	&lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+	&lt;scope&gt;test&lt;/scope&gt;
 &lt;/dependency&gt;
 
 &lt;!--Spring Security --&gt;
 &lt;dependency&gt;
-    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-    &lt;artifactId&gt;spring-boot-starter-security&lt;/artifactId&gt;
+	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+	&lt;artifactId&gt;spring-boot-starter-security&lt;/artifactId&gt;
 &lt;/dependency&gt;
 &lt;dependency&gt;
-    &lt;groupId&gt;org.springframework.security&lt;/groupId&gt;
-    &lt;artifactId&gt;spring-security-test&lt;/artifactId&gt;
-    &lt;scope&gt;test&lt;/scope&gt;
+	&lt;groupId&gt;org.springframework.security&lt;/groupId&gt;
+	&lt;artifactId&gt;spring-security-test&lt;/artifactId&gt;
+	&lt;scope&gt;test&lt;/scope&gt;
 &lt;/dependency&gt;
 
 &lt;!--JWT--&gt;
 &lt;dependency&gt;
-    &lt;groupId&gt;io.jsonwebtoken&lt;/groupId&gt;
-    &lt;artifactId&gt;jjwt&lt;/artifactId&gt;
-    &lt;version&gt;0.9.0&lt;/version&gt;
+	&lt;groupId&gt;io.jsonwebtoken&lt;/groupId&gt;
+	&lt;artifactId&gt;jjwt&lt;/artifactId&gt;
+	&lt;version&gt;0.9.0&lt;/version&gt;
 &lt;/dependency&gt;
 
 &lt;!--Mybatis--&gt;
 &lt;dependency&gt;
-    &lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt;
-    &lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt;
-    &lt;version&gt;1.3.2&lt;/version&gt;
+	&lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt;
+	&lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt;
+	&lt;version&gt;1.3.2&lt;/version&gt;
 &lt;/dependency&gt;
 &lt;!--MYSQL--&gt;
 &lt;dependency&gt;
-    &lt;groupId&gt;mysql&lt;/groupId&gt;
-    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
-    &lt;scope&gt;runtime&lt;/scope&gt;
+	&lt;groupId&gt;mysql&lt;/groupId&gt;
+	&lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+	&lt;scope&gt;runtime&lt;/scope&gt;
 &lt;/dependency&gt;
 
 &lt;!--可选：druid连接池--&gt;
 &lt;dependency&gt;
-    &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
-    &lt;artifactId&gt;druid&lt;/artifactId&gt;
-    &lt;version&gt;1.1.9&lt;/version&gt;
+	&lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+	&lt;artifactId&gt;druid&lt;/artifactId&gt;
+	&lt;version&gt;1.1.9&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
 
@@ -525,7 +523,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 <p>在<code>UserServiceImpl</code>中加入登录处理login方法并生成Token返回。
 生成Token时也可使用从数据库取出携带其余信息的实体类。</p>
 
-<pre><code class="language-java">    /****
+<pre><code class="language-java">	/****
      * 登录
      * 生成jwtToken并返回
      * @param user

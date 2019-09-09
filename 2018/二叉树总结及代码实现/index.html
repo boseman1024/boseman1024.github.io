@@ -41,19 +41,12 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https://boseman1024.github.io/"
+         "@id": "https:\/\/boseman1024.github.io\/"
     },
     "articleSection" : "posts",
     "name" : "二叉树总结及代码实现",
     "headline" : "二叉树总结及代码实现",
-    "description" : "二叉树 完全二叉树： 每层右结点&lt;=左结点
-性质1： 在二叉树的第i层上至多有2^(i-1)个结点（i&gt;=1）。
-   层数i　 每层最多结点数　     1 2^0=1   2 2^1=2   3 2^2=4   4 2^3=8    性质2： 深度为k的二叉树至多有2^k-1个结点。
-例： 深度k=4时，由2^k-1可得最大结点数为15=1+2+4+8。
-性质3： 设： * 度为0的结点个数为n0 * 度为1的结点个数为n1 * 度为2的结点个数为n2 * 总共有多少结点为N * 二叉树分支总数为B
-则 N = n0+n1+n2 B = 2*n2+n2 （2*(A+B+C)+D） N = B+1
-性质4： 具有n个结点的完全二叉树的深度为[log2(n)]+1。 [x]：不大于x的整数。
-性质5： 设总结点数为n，结点从左往右，从上到下编号i。 * 若i=1，则i结点是二叉树的根；若i&gt;1，则i的父结点为[i/2]。 * 若2\*i&gt;n，则结点i无左结点；否则其左结点为2\*i。 * 若2\*i+1&gt;n，则结点i无右结点；否则右结点为2\*i+1。",
+    "description" : "二叉树 完全二叉树： 每层右结点\x26lt;=左结点\n性质1： 在二叉树的第i层上至多有2^(i-1)个结点（i\x26gt;=1）。\n   层数i　 每层最多结点数　     1 2^0=1   2 2^1=2   3 2^2=4   4 2^3=8    性质2： 深度为k的二叉树至多有2^k-1个结点。\n例： 深度k=4时，由2^k-1可得最大结点数为15=1\x2b2\x2b4\x2b8。\n性质3： 设： * 度为0的结点个数为n0 * 度为1的结点个数为n1 * 度为2的结点个数为n2 * 总共有多少结点为N * 二叉树分支总数为B\n则 N = n0\x2bn1\x2bn2 B = 2*n2\x2bn2 （2*(A\x2bB\x2bC)\x2bD） N = B\x2b1\n性质4： 具有n个结点的完全二叉树的深度为[log2(n)]\x2b1。 [x]：不大于x的整数。\n性质5： 设总结点数为n，结点从左往右，从上到下编号i。 * 若i=1，则i结点是二叉树的根；若i\x26gt;1，则i的父结点为[i\/2]。 * 若2\\*i\x26gt;n，则结点i无左结点；否则其左结点为2\\*i。 * 若2\\*i\x2b1\x26gt;n，则结点i无右结点；否则右结点为2\\*i\x2b1。",
     "inLanguage" : "en-us",
     "author" : "轴心",
     "creator" : "轴心",
@@ -61,9 +54,9 @@
     "accountablePerson" : "轴心",
     "copyrightHolder" : "轴心",
     "copyrightYear" : "2018",
-    "datePublished": "2018-05-27 11:31:26 &#43;0000 UTC",
-    "dateModified" : "2018-05-27 11:31:26 &#43;0000 UTC",
-    "url" : "https://boseman1024.github.io/2018/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/",
+    "datePublished": "2018-05-27 11:31:26 \x2b0000 UTC",
+    "dateModified" : "2018-05-27 11:31:26 \x2b0000 UTC",
+    "url" : "https:\/\/boseman1024.github.io\/2018\/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0\/",
     "wordCount" : "334",
     "keywords" : [ "数据结构与算法","C", "轴心"]
 }
@@ -238,22 +231,22 @@
 <p>根据先序遍历创建二叉树：</p>
 
 <pre><code class="language-c">typedef struct BiTnode{
-    char data;
-    struct BiTnode *lchild;
-    struct BiTnode *rchild;
+	char data;
+	struct BiTnode *lchild;
+	struct BiTnode *rchild;
 }BiTNode,* BiTree;
 
 void createBiTree(BiTree *T){
-    char ch;
-    scanf(&quot;%c&quot;,&amp;ch);
-    if(ch == ' '){
-        *T = NULL;
-    }else{
-        *T=(BiTNode *)malloc(sizeof(BiTNode));
-        (*T)-&gt;data= ch;
-        createBiTree(&amp;(*T)-&gt;lchild);
-        createBiTree(&amp;(*T)-&gt;rchild);
-    }
+	char ch;
+	scanf(&quot;%c&quot;,&amp;ch);
+	if(ch == ' '){
+		*T = NULL;
+	}else{
+		*T=(BiTNode *)malloc(sizeof(BiTNode));
+		(*T)-&gt;data= ch;
+		createBiTree(&amp;(*T)-&gt;lchild);
+		createBiTree(&amp;(*T)-&gt;rchild);
+	}
 }
 </code></pre>
 
@@ -282,25 +275,25 @@ void createBiTree(BiTree *T){
 <p>递归方式：</p>
 
 <pre><code class="language-c">void preOrderTraverse(BiTree T){
-    if(T){
-        printf(&quot;%c&quot;,T-&gt;data);
-        preOrderTraverse(T-&gt;lchild);
-        preOrderTraverse(T-&gt;rchild);
-    }
+	if(T){
+		printf(&quot;%c&quot;,T-&gt;data);
+		preOrderTraverse(T-&gt;lchild);
+		preOrderTraverse(T-&gt;rchild);
+	}
 }
 void inOrderTraverse(BiTree T){
-    if(T){
-        inOrderTraverse(T-&gt;lchild);
-        printf(&quot;%c&quot;,T-&gt;data);
-        inOrderTraverse(T-&gt;rchild);
-    }
+	if(T){
+		inOrderTraverse(T-&gt;lchild);
+		printf(&quot;%c&quot;,T-&gt;data);
+		inOrderTraverse(T-&gt;rchild);
+	}
 }
 void postOrderTraverse(BiTree T){
-    if(T){
-        postOrderTraverse(T-&gt;lchild);
-        postOrderTraverse(T-&gt;rchild);
-        printf(&quot;%c&quot;,T-&gt;data);
-    }
+	if(T){
+		postOrderTraverse(T-&gt;lchild);
+		postOrderTraverse(T-&gt;rchild);
+		printf(&quot;%c&quot;,T-&gt;data);
+	}
 }
 </code></pre>
 
@@ -320,9 +313,9 @@ public void preOrderTraversal(TreeNode root) {
     stack.push(root);
     TreeNode node;
     while(!stack.empty()){
-        node = stack.pop();
-        if(node!=null){
-            System.out.println(node.val);
+    	node = stack.pop();
+    	if(node!=null){
+        	System.out.println(node.val);
             stack.push(node.right);
             stack.push(node.left);
         }
@@ -338,8 +331,8 @@ public void inOrderTraversal(TreeNode root) {
             node = node.left;
         }
         if(!stack.empty()){
-            node = stack.pop();
-            System.out.println(node.val);
+        	node = stack.pop();
+        	System.out.println(node.val);
             //若有右右结点，将其压入栈
             node = node.right;
         }

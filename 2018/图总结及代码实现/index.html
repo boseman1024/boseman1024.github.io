@@ -41,23 +41,12 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https://boseman1024.github.io/"
+         "@id": "https:\/\/boseman1024.github.io\/"
     },
     "articleSection" : "posts",
     "name" : "图总结及代码实现",
     "headline" : "图总结及代码实现",
-    "description" : "图 数组表示法 无向图 数组矩阵表示如下： 010101101000010101101011000101101110
-有向图 数组矩阵表示如下： ∞5∞7∞∞∞∞4∞∞∞∞∞∞∞∞9∞∞5∞∞6∞∞∞5∞∞3∞∞∞1∞
-图的遍历 深度优先搜索 其过程简要来说是对每一个可能的分支路径深入到不能再深入为止，而且每个节点只能访问一次。 深度优先搜索的遍历访问顺序并不唯一。
-假设以V1为起点， V1有两个邻接点V2与V3且都未被访问，则访问V2（或访问v3开始皆可，以下皆如此）； V2有三个邻接点V1、V4、V5，V1已被访问，V4与V5都未被访问，则访问V4； V4有两个邻接点V2与V8，只有V8未被访问，则访问V8； V8有两个邻接点V4与V5，V4已被访问，则访问V5； V5有两个邻接点V2与V8，且V2、V8都已被访问，则从头搜索V1的邻接点V2、V3，V2已被访问，则访问V3； V3有三个邻接点V1、V6、V7且未被访问，则访问V6； V6有两个邻接点V3与V7，V3已被访问，则访问V7。
-则以V1为起点的深度优先搜索访问顺序为： V1-&gt;V2-&gt;V4-&gt;V8-&gt;V5-&gt;V3-&gt;V6-&gt;V7
-public void dfs(int[][] grid,int i,int j,int rows,int cols){ if(i&lt;0||j&lt;0||i&gt;=rows||j&gt;=cols||grid[i][j]==-1){return;} System.out.println(grid[i][j]); //标记已访问点 grid[i][j]=-1; dfs(grid,i,j+1,rows,cols); dfs(grid,i,j-1,rows,cols); dfs(grid,i+1,j,rows,cols); dfs(grid,i-1,j,rows,cols); }  广度优先搜索 类似于树的按层次遍历的过程，可先将图按层划分。 广度优先搜索的遍历访问顺序并不唯一。
-假设以V1为起点，则可划分为下图： 第一层（V1）： V1有两个邻接点V2、V3，则先访问V2，再访问V3（或先访问V3，再访问V2皆可，以下皆如此）； 第二层(V2、V3)： V2有三个邻接点V1、V4、V5，V1已被访问，则访问V4、V5； V3有两个邻接点V6、V7且都未被访问，则访问V6、V7； 第三层（V4、V5、V6、V7）： V4有两个邻接点V2与V8，V2已被访问，则访问V8。
-则以V1为起点的广度优先搜索访问顺序为： V1-&gt;V2-&gt;V3-&gt;V4-&gt;V5-&gt;V6-&gt;V7-&gt;V8
-最小生成树 在连通网的所有生成树中，所有边的代价和最小的生成树，称为最小生成树。 最小生成树中不存在回路。
-可得数组矩阵： ∞615∞∞6∞5∞3∞15∞5645∞5∞∞2∞36∞∞6∞∞426∞
-普里姆（Prim）算法 此算法可以称为“加点法”，每次迭代选择代价最小的边对应的点，加入到最小生成树中。
-设： * 所有结点V={V1,V2,V3,V4,V5,V6} * 已选结点U={} * 剩余结点V-U * 代价最小的边MIN",
+    "description" : "图 数组表示法 无向图 数组矩阵表示如下： 010101101000010101101011000101101110\n有向图 数组矩阵表示如下： ∞5∞7∞∞∞∞4∞∞∞∞∞∞∞∞9∞∞5∞∞6∞∞∞5∞∞3∞∞∞1∞\n图的遍历 深度优先搜索 其过程简要来说是对每一个可能的分支路径深入到不能再深入为止，而且每个节点只能访问一次。 深度优先搜索的遍历访问顺序并不唯一。\n假设以V1为起点， V1有两个邻接点V2与V3且都未被访问，则访问V2（或访问v3开始皆可，以下皆如此）； V2有三个邻接点V1、V4、V5，V1已被访问，V4与V5都未被访问，则访问V4； V4有两个邻接点V2与V8，只有V8未被访问，则访问V8； V8有两个邻接点V4与V5，V4已被访问，则访问V5； V5有两个邻接点V2与V8，且V2、V8都已被访问，则从头搜索V1的邻接点V2、V3，V2已被访问，则访问V3； V3有三个邻接点V1、V6、V7且未被访问，则访问V6； V6有两个邻接点V3与V7，V3已被访问，则访问V7。\n则以V1为起点的深度优先搜索访问顺序为： V1-\x26gt;V2-\x26gt;V4-\x26gt;V8-\x26gt;V5-\x26gt;V3-\x26gt;V6-\x26gt;V7\npublic void dfs(int[][] grid,int i,int j,int rows,int cols){ if(i\x26lt;0||j\x26lt;0||i\x26gt;=rows||j\x26gt;=cols||grid[i][j]==-1){return;} System.out.println(grid[i][j]); \/\/标记已访问点 grid[i][j]=-1; dfs(grid,i,j\x2b1,rows,cols); dfs(grid,i,j-1,rows,cols); dfs(grid,i\x2b1,j,rows,cols); dfs(grid,i-1,j,rows,cols); }  广度优先搜索 类似于树的按层次遍历的过程，可先将图按层划分。 广度优先搜索的遍历访问顺序并不唯一。\n假设以V1为起点，则可划分为下图： 第一层（V1）： V1有两个邻接点V2、V3，则先访问V2，再访问V3（或先访问V3，再访问V2皆可，以下皆如此）； 第二层(V2、V3)： V2有三个邻接点V1、V4、V5，V1已被访问，则访问V4、V5； V3有两个邻接点V6、V7且都未被访问，则访问V6、V7； 第三层（V4、V5、V6、V7）： V4有两个邻接点V2与V8，V2已被访问，则访问V8。\n则以V1为起点的广度优先搜索访问顺序为： V1-\x26gt;V2-\x26gt;V3-\x26gt;V4-\x26gt;V5-\x26gt;V6-\x26gt;V7-\x26gt;V8\n最小生成树 在连通网的所有生成树中，所有边的代价和最小的生成树，称为最小生成树。 最小生成树中不存在回路。\n可得数组矩阵： ∞615∞∞6∞5∞3∞15∞5645∞5∞∞2∞36∞∞6∞∞426∞\n普里姆（Prim）算法 此算法可以称为“加点法”，每次迭代选择代价最小的边对应的点，加入到最小生成树中。\n设： * 所有结点V={V1,V2,V3,V4,V5,V6} * 已选结点U={} * 剩余结点V-U * 代价最小的边MIN",
     "inLanguage" : "en-us",
     "author" : "轴心",
     "creator" : "轴心",
@@ -65,9 +54,9 @@ public void dfs(int[][] grid,int i,int j,int rows,int cols){ if(i&lt;0||j&lt;0||
     "accountablePerson" : "轴心",
     "copyrightHolder" : "轴心",
     "copyrightYear" : "2018",
-    "datePublished": "2018-06-07 11:31:26 &#43;0000 UTC",
-    "dateModified" : "2018-06-07 11:31:26 &#43;0000 UTC",
-    "url" : "https://boseman1024.github.io/2018/%E5%9B%BE%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/",
+    "datePublished": "2018-06-07 11:31:26 \x2b0000 UTC",
+    "dateModified" : "2018-06-07 11:31:26 \x2b0000 UTC",
+    "url" : "https:\/\/boseman1024.github.io\/2018\/%E5%9B%BE%E6%80%BB%E7%BB%93%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0\/",
     "wordCount" : "117",
     "keywords" : [ "数据结构与算法","C", "轴心"]
 }
