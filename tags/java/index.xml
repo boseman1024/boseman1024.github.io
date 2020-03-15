@@ -6,10 +6,24 @@
     <description>Recent content in JAVA on 轴心</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 22 Feb 2020 15:12:26 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 24 Feb 2020 22:41:11 +0000</lastBuildDate>
     
 	<atom:link href="https://boseman1024.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>设计模式总结</title>
+      <link>https://boseman1024.github.io/2020/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Mon, 24 Feb 2020 22:41:11 +0000</pubDate>
+      
+      <guid>https://boseman1024.github.io/2020/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93/</guid>
+      <description>单例模式 常见的单例模式实现方式有五种：懒汉模式、饿汉模式、双重检测锁式、静态内部类式和枚举单例。
+特点：
+ 只有一个实例 负责创建自己的对象，自我实例化 提供全局访问点（对外提供获取实例的静态方法）  应用场景：需要频繁实例化的对象，例如：
+ 网站计数器 用于读取配置文件的类 数据库连接池 Spring中，每个Bean默认单例，便于Spring容器管理 Servlet中Application Windows中任务管理器，回收站  实现 懒汉模式：线程不安全，延迟初始化，即只有在真正使用的时候才会实例化一个对象并交给自己的引用。
+public class Singleton { private static Singleton instance; private Singleton(){} public static Singleton getInstance(){ if(instance == null){ instance = new Singleton(); } return instance; } }  饿汉模式：线程安全，调用效率高。在加载类的时候对象就已经创建了，不能延时加载，所以加载类的速度比较慢，但是获取对象的速度比较快。
+public class Singleton { private static Singleton instance = new Singleton(); private Singleton(){} public static Singleton getInstance(){ return instance; } }  双重检测锁式：</description>
+    </item>
     
     <item>
       <title>JAVA并发笔记</title>

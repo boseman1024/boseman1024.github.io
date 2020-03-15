@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="轴心">
+  
+  
+  
+  <link rel="prev" href="https://boseman1024.github.io/2020/java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%E7%AC%94%E8%AE%B0/" />
+  
+  <link rel="canonical" href="https://boseman1024.github.io/2020/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           设计模式总结 | 轴心
+       
+  </title>
+  <meta name="title" content="设计模式总结 | 轴心">
+    
+
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/boseman1024.github.io\/"
+    },
+    "articleSection" : "posts",
+    "name" : "设计模式总结",
+    "headline" : "设计模式总结",
+    "description" : "单例模式 常见的单例模式实现方式有五种：懒汉模式、饿汉模式、双重检测锁式、静态内部类式和枚举单例。\n特点：\n 只有一个实例 负责创建自己的对象，自我实例化 提供全局访问点（对外提供获取实例的静态方法）  应用场景：需要频繁实例化的对象，例如：\n 网站计数器 用于读取配置文件的类 数据库连接池 Spring中，每个Bean默认单例，便于Spring容器管理 Servlet中Application Windows中任务管理器，回收站  实现 懒汉模式：线程不安全，延迟初始化，即只有在真正使用的时候才会实例化一个对象并交给自己的引用。\npublic class Singleton { private static Singleton instance; private Singleton(){} public static Singleton getInstance(){ if(instance == null){ instance = new Singleton(); } return instance; } }  饿汉模式：线程安全，调用效率高。在加载类的时候对象就已经创建了，不能延时加载，所以加载类的速度比较慢，但是获取对象的速度比较快。\npublic class Singleton { private static Singleton instance = new Singleton(); private Singleton(){} public static Singleton getInstance(){ return instance; } }  双重检测锁式：",
+    "inLanguage" : "en-us",
+    "author" : "轴心",
+    "creator" : "轴心",
+    "publisher": "轴心",
+    "accountablePerson" : "轴心",
+    "copyrightHolder" : "轴心",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-02-24 22:41:11 \x2b0000 UTC",
+    "dateModified" : "2020-02-24 22:41:11 \x2b0000 UTC",
+    "url" : "https:\/\/boseman1024.github.io\/2020\/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93\/",
+    "wordCount" : "178",
+    "keywords" : [ "JAVA", "轴心"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://boseman1024.github.io/">轴心</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://boseman1024.github.io/">轴心</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">设计模式总结</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://boseman1024.github.io/" rel="author">轴心</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2020-02-24 itemprop="datePublished">February 24, 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://boseman1024.github.io/categories/%E7%9D%81%E7%9C%BC%E7%9E%8E/"> 睁眼瞎 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="单例模式">单例模式</h1>
+
+<p>常见的单例模式实现方式有五种：懒汉模式、饿汉模式、双重检测锁式、静态内部类式和枚举单例。</p>
+
+<p><strong>特点</strong>：</p>
+
+<ul>
+<li>只有一个实例</li>
+<li>负责创建自己的对象，自我实例化</li>
+<li>提供全局访问点（对外提供获取实例的静态方法）</li>
+</ul>
+
+<p><strong>应用场景</strong>：需要频繁实例化的对象，例如：</p>
+
+<ul>
+<li>网站计数器</li>
+<li>用于读取配置文件的类</li>
+<li>数据库连接池</li>
+<li>Spring中，每个Bean默认单例，便于Spring容器管理</li>
+<li>Servlet中Application</li>
+<li>Windows中任务管理器，回收站</li>
+</ul>
+
+<h2 id="实现">实现</h2>
+
+<p><strong>懒汉模式</strong>：<strong>线程不安全</strong>，延迟初始化，即只有在真正使用的时候才会实例化一个对象并交给自己的引用。</p>
+
+<pre><code class="language-java">public class Singleton {  
+    private static Singleton instance;  
+    private Singleton(){}
+    public static Singleton getInstance(){
+    if(instance == null){
+        instance = new Singleton();
+    }
+    return instance;
+    }
+}
+</code></pre>
+
+<p><strong>饿汉模式</strong>：<strong>线程安全</strong>，调用效率高。在加载类的时候对象就已经创建了，不能延时加载，所以加载类的速度比较慢，但是获取对象的速度比较快。</p>
+
+<pre><code class="language-java">public class Singleton {  
+    private static Singleton instance = new Singleton();
+    private Singleton(){}
+    public static Singleton getInstance(){
+    	return instance;
+    }
+}
+</code></pre>
+
+<p><strong>双重检测锁式</strong>：</p>
+
+<pre><code class="language-java">public class Singleton {  
+    private volatile static Singleton singleton;
+    private Singleton (){}
+    public static Singleton getSingleton(){
+	    if (singleton == null){
+	        synchronized (Singleton.class){
+		        if (singleton == null) {
+		            singleton = new Singleton();
+		        }
+	        }
+	    }
+	    return singleton;
+    }
+}
+</code></pre>
+
+<p><strong>问</strong>：
+synchronized能保证可见性，为什么单例模式还需要加volatile关键字？</p>
+
+<p><strong>答</strong>：
+new Singleton()非原子操作，可分解为以下步骤，其中2、3可能重排：
+1. memory = allocate(); // 分配对象的内存空间
+2. ctorInstance(memory); // 初始化对象
+3. singleton = memory; // 设置singleton变量指向刚分配的内存地址</p>
+
+<p><strong>静态内部类式</strong>：</p>
+
+<p>外部类加载时并不需要立即加载内部类，内部类不被加载则不去初始化INSTANCE，故而不占内存。即当SingleTon第一次被加载时，并不需要去加载SingleTonHoler，只有当getInstance()方法第一次被调用时，才会去初始化INSTANCE。不仅能确保线程安全，也能保证单例的唯一性，同时也延迟了单例的实例化。</p>
+
+<pre><code class="language-java">public class SingleTon{
+	private SingleTon(){}
+	private static class SingleTonHoler{
+		private static SingleTon INSTANCE = new SingleTon();
+ 	}
+	public static SingleTon getInstance(){
+		return SingleTonHoler.INSTANCE;
+	}
+}
+</code></pre>
+
+<p><strong>枚举单例</strong>：</p>
+
+<blockquote>
+<p>单元素的枚举类型已经成为实现Singleton的最佳方法
+                      &ndash; 出自 《effective java》</p>
+</blockquote>
+
+<pre><code class="language-java">public enum  SingleTon {
+    INSTANCE;
+    private Obj obj;
+    private SingleTon(){
+    	obj = new Obj();
+    }
+    public SingleTon getInstance(){
+        return obj;
+    }
+}
+</code></pre>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>轴心 </span>
+                </p>
+            
+           
+           
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://boseman1024.github.io/tags/java/">
+                    #JAVA</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://boseman1024.github.io/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://boseman1024.github.io/2020/java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%E7%AC%94%E8%AE%B0/" class="prev" rel="prev" title="JAVA并发笔记"><i class="iconfont icon-left"></i>&nbsp;JAVA并发笔记</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2018 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://boseman1024.github.io/">轴心</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
