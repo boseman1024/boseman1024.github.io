@@ -6,10 +6,21 @@
     <description>Recent content in 睁眼瞎 on 轴心</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 24 Feb 2020 22:41:11 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 21 Mar 2020 14:46:26 +0000</lastBuildDate>
     
 	<atom:link href="https://boseman1024.github.io/categories/%E7%9D%81%E7%9C%BC%E7%9E%8E/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>轨迹纠偏及平滑轨迹（dart）</title>
+      <link>https://boseman1024.github.io/2020/%E8%BD%A8%E8%BF%B9%E7%BA%A0%E5%81%8F%E5%8F%8A%E5%B9%B3%E6%BB%91%E8%BD%A8%E8%BF%B9dart/</link>
+      <pubDate>Sat, 21 Mar 2020 14:46:26 +0000</pubDate>
+      
+      <guid>https://boseman1024.github.io/2020/%E8%BD%A8%E8%BF%B9%E7%BA%A0%E5%81%8F%E5%8F%8A%E5%B9%B3%E6%BB%91%E8%BD%A8%E8%BF%B9dart/</guid>
+      <description>DEMO
+轨迹纠偏算法 参考TraceByAmap项目
+import &#39;package:amap_map_fluttify/amap_map_fluttify.dart&#39;; import &#39;package:x_gogo/map/taskType.dart&#39;; class PointFilter { bool isFirst = true; var weight1 = {}; var weight2 = {}; List w1List = []; List w2List = []; num w1Count = 0; num MAN_MAX_SPEED = 10; List pointList = []; TaskType taskType = TaskType.WALK; PointFilter(taskType){ if(taskType==TaskType.WALK){ MAN_MAX_SPEED = 5; } if(taskType==TaskType.RIDING){ MAN_MAX_SPEED = 10; } if(taskType==TaskType.DRIVING){ MAN_MAX_SPEED = 30; } } Future&amp;lt;bool&amp;gt; checkPoint(var point) async{ try{ print(&#39;轨迹过滤：点$point&#39;); if(isFirst){ isFirst = false; weight1[&#39;lat&#39;] = point[&#39;lat&#39;]; weight1[&#39;lng&#39;] = point[&#39;lng&#39;]; weight1[&#39;speed&#39;] = point[&#39;speed&#39;]; weight1[&#39;time&#39;] = point[&#39;time&#39;]; w1List.</description>
+    </item>
     
     <item>
       <title>设计模式总结</title>
